@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
+		A7515F252231ADAD00380978 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F232231ADAD00380978 /* Content.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A760459B22308DA5007F3268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459A22308DA5007F3268 /* ViewController.swift */; };
 		A760459D22308DA5007F3268 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459C22308DA5007F3268 /* Document.swift */; };
@@ -32,8 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		A7515F232231ADAD00380978 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
-		A760459522308DA5007F3268 /* ChronicyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChronicyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A760459A22308DA5007F3268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A760459C22308DA5007F3268 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -65,7 +69,7 @@
 		A760459622308DA5007F3268 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A760459522308DA5007F3268 /* ChronicyMacOS.app */,
+				A760459522308DA5007F3268 /* Chronicy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,8 +78,10 @@
 			isa = PBXGroup;
 			children = (
 				A760459822308DA5007F3268 /* AppDelegate.swift */,
+				A7515F222231ADAD00380978 /* WindowController.swift */,
 				A760459A22308DA5007F3268 /* ViewController.swift */,
 				A760459C22308DA5007F3268 /* Document.swift */,
+				A7515F232231ADAD00380978 /* Content.swift */,
 				A76045A022308DA6007F3268 /* Main.storyboard */,
 				A760459E22308DA6007F3268 /* Assets.xcassets */,
 				A76045AB22308DAD007F3268 /* Supporting Files */,
@@ -119,7 +125,7 @@
 			);
 			name = ChronicyMacOS;
 			productName = ChronicyMacOS;
-			productReference = A760459522308DA5007F3268 /* ChronicyMacOS.app */;
+			productReference = A760459522308DA5007F3268 /* Chronicy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,6 +139,11 @@
 				TargetAttributes = {
 					A760459422308DA5007F3268 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -188,7 +199,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A760459B22308DA5007F3268 /* ViewController.swift in Sources */,
+				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
+				A7515F252231ADAD00380978 /* Content.swift in Sources */,
 				A760459D22308DA5007F3268 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +293,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chronicy;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -346,7 +359,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chronicy;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

@@ -5,12 +5,10 @@
 //  Created by Alexandru Istrate on 07/03/2019.
 //
 
-import Cocoa
+import Cocoa;
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -20,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    func applicationShouldTerminate(_ sender: NSApplication)-> NSApplication.TerminateReply {
+        return .terminateNow
+    }
 
 }
-

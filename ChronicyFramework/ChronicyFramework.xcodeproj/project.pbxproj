@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76045B122308EC1007F3268 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76045B022308EC1007F3268 /* Timeline.swift */; };
+		A76045B322308EE2007F3268 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76045B222308EE2007F3268 /* Moment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A760458722308D47007F3268 /* ChronicyFrameworkMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A76045B022308EC1007F3268 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		A76045B222308EE2007F3268 /* Moment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 		A760459022308D54007F3268 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A76045AF22308EAA007F3268 /* Timeline */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -66,6 +71,15 @@
 				A760458B22308D47007F3268 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A76045AF22308EAA007F3268 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A76045B022308EC1007F3268 /* Timeline.swift */,
+				A76045B222308EE2007F3268 /* Moment.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +124,7 @@
 				TargetAttributes = {
 					A760458622308D47007F3268 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -145,6 +160,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76045B122308EC1007F3268 /* Timeline.swift in Sources */,
+				A76045B322308EE2007F3268 /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +184,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -249,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

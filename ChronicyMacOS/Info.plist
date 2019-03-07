@@ -9,18 +9,22 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>chronicy</string>
+				<string>timeline</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>DocumentType</string>
+			<string>Timeline Document</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>????</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.timeline</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).Document</string>
 		</dict>
@@ -47,5 +51,23 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Timeline Document</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.timeline</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>timeline</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
