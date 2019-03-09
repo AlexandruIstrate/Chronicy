@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7252A3A22342EE900EE554A /* TimelineStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A3922342EE900EE554A /* TimelineStackView.swift */; };
+		A7252A3C22342F0400EE554A /* TimelineStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7252A3B22342F0400EE554A /* TimelineStackView.xib */; };
+		A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A3D22342F5900EE554A /* TimelineCellView.swift */; };
+		A7252A4022342F7500EE554A /* TimelineCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7252A3F22342F7500EE554A /* TimelineCellView.xib */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A7515F252231ADAD00380978 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F232231ADAD00380978 /* Content.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A760459B22308DA5007F3268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459A22308DA5007F3268 /* ViewController.swift */; };
 		A760459D22308DA5007F3268 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459C22308DA5007F3268 /* Document.swift */; };
-		A760459F22308DA6007F3268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A760459E22308DA6007F3268 /* Assets.xcassets */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
+		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
+		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
+		A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584A2231CDCA0077124A /* TimelineView.swift */; };
+		A7E2584E2231D1400077124A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584D2231D1400077124A /* Renderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +31,7 @@
 			remoteGlobalIDString = A760458722308D47007F3268;
 			remoteInfo = ChronicyFrameworkMacOS;
 		};
-		A76045AC22308DEA007F3268 /* PBXContainerItemProxy */ = {
+		A77618032231CB410038E815 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */;
 			proxyType = 1;
@@ -34,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7252A3922342EE900EE554A /* TimelineStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineStackView.swift; sourceTree = "<group>"; };
+		A7252A3B22342F0400EE554A /* TimelineStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineStackView.xib; sourceTree = "<group>"; };
+		A7252A3D22342F5900EE554A /* TimelineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCellView.swift; sourceTree = "<group>"; };
+		A7252A3F22342F7500EE554A /* TimelineCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCellView.xib; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A7515F232231ADAD00380978 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
@@ -41,10 +52,13 @@
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A760459A22308DA5007F3268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A760459C22308DA5007F3268 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		A760459E22308DA6007F3268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
+		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A7E2584A2231CDCA0077124A /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		A7E2584D2231D1400077124A /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +72,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7252A41223430E700EE554A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A760459A22308DA5007F3268 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A7252A422234315900EE554A /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				A7515F222231ADAD00380978 /* WindowController.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		A7252A432234319400EE554A /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				A760459C22308DA5007F3268 /* Document.swift */,
+				A7515F232231ADAD00380978 /* Content.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
 		A760458022308D01007F3268 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */,
+				A76045A722308DA6007F3268 /* ChronicyFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,13 +116,15 @@
 		A760459722308DA5007F3268 /* ChronicyMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				A7252A432234319400EE554A /* Document */,
+				A7E2584C2231D1160077124A /* Drawing */,
+				A77618022231CA080038E815 /* Views */,
+				A7252A41223430E700EE554A /* View Controllers */,
+				A77617FF2231C8A40038E815 /* Utils */,
+				A7252A422234315900EE554A /* Window */,
 				A760459822308DA5007F3268 /* AppDelegate.swift */,
-				A7515F222231ADAD00380978 /* WindowController.swift */,
-				A760459A22308DA5007F3268 /* ViewController.swift */,
-				A760459C22308DA5007F3268 /* Document.swift */,
-				A7515F232231ADAD00380978 /* Content.swift */,
 				A76045A022308DA6007F3268 /* Main.storyboard */,
-				A760459E22308DA6007F3268 /* Assets.xcassets */,
+				A77617F92231C1450038E815 /* Assets.xcassets */,
 				A76045AB22308DAD007F3268 /* Supporting Files */,
 			);
 			path = ChronicyMacOS;
@@ -98,6 +139,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A77617FF2231C8A40038E815 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A77618002231C8BD0038E815 /* Log.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A77618022231CA080038E815 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7E2584A2231CDCA0077124A /* TimelineView.swift */,
+				A7252A3922342EE900EE554A /* TimelineStackView.swift */,
+				A7252A3B22342F0400EE554A /* TimelineStackView.xib */,
+				A7252A3D22342F5900EE554A /* TimelineCellView.swift */,
+				A7252A3F22342F7500EE554A /* TimelineCellView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A7C5C160223088B000C0B27B = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +166,14 @@
 				A760459722308DA5007F3268 /* ChronicyMacOS */,
 				A760459622308DA5007F3268 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A7E2584C2231D1160077124A /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				A7E2584D2231D1400077124A /* Renderer.swift */,
+			);
+			path = Drawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +190,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A76045AD22308DEA007F3268 /* PBXTargetDependency */,
+				A77618042231CB410038E815 /* PBXTargetDependency */,
 			);
 			name = ChronicyMacOS;
 			productName = ChronicyMacOS;
@@ -172,10 +241,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */ = {
+		A76045A722308DA6007F3268 /* ChronicyFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = ChronicyFrameworkMacOS.framework;
+			path = ChronicyFramework.framework;
 			remoteRef = A76045A622308DA6007F3268 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -186,8 +255,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A760459F22308DA6007F3268 /* Assets.xcassets in Resources */,
+				A7252A3C22342F0400EE554A /* TimelineStackView.xib in Resources */,
+				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
+				A7252A4022342F7500EE554A /* TimelineCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,8 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7252A3A22342EE900EE554A /* TimelineStackView.swift in Sources */,
+				A7E2584E2231D1400077124A /* Renderer.swift in Sources */,
 				A760459B22308DA5007F3268 /* ViewController.swift in Sources */,
+				A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */,
+				A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
+				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7515F252231ADAD00380978 /* Content.swift in Sources */,
 				A760459D22308DA5007F3268 /* Document.swift in Sources */,
@@ -209,10 +285,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A76045AD22308DEA007F3268 /* PBXTargetDependency */ = {
+		A77618042231CB410038E815 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ChronicyFrameworkMacOS;
-			targetProxy = A76045AC22308DEA007F3268 /* PBXContainerItemProxy */;
+			targetProxy = A77618032231CB410038E815 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

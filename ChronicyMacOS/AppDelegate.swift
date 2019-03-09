@@ -6,20 +6,24 @@
 //
 
 import Cocoa;
+import ChronicyFramework;
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // TODO: Move
+        Log.target = ConsoleLogTarget();
+        
+        Log.info(message: "Application did finish launching");
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        Log.info(message: "Application will terminate");
     }
 
     func applicationShouldTerminate(_ sender: NSApplication)-> NSApplication.TerminateReply {
-        return .terminateNow
+        return .terminateNow;
     }
 
 }

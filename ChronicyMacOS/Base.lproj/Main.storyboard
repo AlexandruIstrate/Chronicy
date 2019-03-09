@@ -716,46 +716,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLp-eY-fSk">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ymw-9l-veU" customClass="TimelineView" customModule="Chronicy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="a6q-mG-7ce">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="E0u-iA-KeT">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="800" height="600"/>
-                                            <size key="maxSize" width="800" height="10000000"/>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <binding destination="5gI-5U-AMq" name="value" keyPath="representedObject.contentString" id="Hfd-3x-ikM">
-                                                    <dictionary key="options">
-                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <outlet property="delegate" destination="5gI-5U-AMq" id="DFD-bd-csP"/>
-                                            </connections>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jDK-Za-BQt">
-                                    <rect key="frame" x="-100" y="-100" width="480" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="5w4-ag-NiN">
-                                    <rect key="frame" x="784" y="0.0" width="16" height="600"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yLp-eY-fSk" secondAttribute="bottom" id="1lH-WC-wM9"/>
-                            <constraint firstItem="yLp-eY-fSk" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" id="QHf-FW-Bie"/>
-                            <constraint firstAttribute="trailing" secondItem="yLp-eY-fSk" secondAttribute="trailing" id="ojl-bk-NGE"/>
-                            <constraint firstItem="yLp-eY-fSk" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" id="x50-d0-FBr"/>
+                            <constraint firstItem="ymw-9l-veU" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" id="U5p-EW-mXL"/>
+                            <constraint firstAttribute="bottom" secondItem="ymw-9l-veU" secondAttribute="bottom" id="aXa-an-Pm9"/>
+                            <constraint firstItem="ymw-9l-veU" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" id="baR-fr-zPV"/>
+                            <constraint firstAttribute="trailing" secondItem="ymw-9l-veU" secondAttribute="trailing" id="d1f-Rc-kK6"/>
                         </constraints>
                     </view>
                 </viewController>

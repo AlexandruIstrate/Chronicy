@@ -9,40 +9,31 @@ import Cocoa;
 
 class ViewController: NSViewController, NSTextViewDelegate {
 
-    /// - Tag: setRepresentedObjectExample
     override var representedObject: Any? {
         didSet {
             // Pass down the represented object to all of the child view controllers.
-            for child in children {
-                child.representedObject = representedObject
+            for child: NSViewController in children {
+                child.representedObject = representedObject;
             }
         }
     }
 
     weak var document: Document? {
-        if let docRepresentedObject = representedObject as? Document {
-            return docRepresentedObject
+        if let docRepresentedObject: Document = representedObject as? Document {
+            return docRepresentedObject;
         }
-        return nil
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
+        
+        return nil;
     }
 
     // MARK: - NSTextViewDelegate
 
     func textDidBeginEditing(_ notification: Notification) {
-        document?.objectDidBeginEditing(self)
+        document?.objectDidBeginEditing(self);
     }
 
     func textDidEndEditing(_ notification: Notification) {
-        document?.objectDidEndEditing(self)
+        document?.objectDidEndEditing(self);
     }
 
 }
