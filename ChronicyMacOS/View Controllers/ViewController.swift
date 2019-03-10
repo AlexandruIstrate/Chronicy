@@ -6,8 +6,13 @@
 //
 
 import Cocoa;
+import ChronicyFramework;
 
 class ViewController: NSViewController, NSTextViewDelegate {
+    
+    @IBOutlet private weak var timelineView: TimelineView!;
+    
+    private var timeline: Timeline = Timeline(name: "Test");
 
     override var representedObject: Any? {
         didSet {
@@ -25,6 +30,11 @@ class ViewController: NSViewController, NSTextViewDelegate {
         
         return nil;
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        self.timelineView.dataSource = self;
+    }
 
     // MARK: - NSTextViewDelegate
 
@@ -36,4 +46,14 @@ class ViewController: NSViewController, NSTextViewDelegate {
         document?.objectDidEndEditing(self);
     }
 
+}
+
+extension ViewController: TimelineViewDataSource {
+    func stackCount() -> Int {
+        return 0;
+    }
+    
+    func stack(at index: Int) -> TimelineStackView {
+        return TimelineStackView();
+    }
 }

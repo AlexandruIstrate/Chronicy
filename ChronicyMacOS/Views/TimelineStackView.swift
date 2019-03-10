@@ -5,39 +5,51 @@
 //  Created by Alexandru Istrate on 09/03/2019.
 //
 
-import Cocoa
+import Cocoa;
+import ChronicyFramework;
 
+@IBDesignable
 class TimelineStackView: NSView {
     
+    private var cellCount: Int = 0;
     private var cells: [TimelineCellView] = [];
-
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect);
-        setupView();
-    }
     
-    required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder);
-        setupView();
-    }
+    public var dataSource: TimelineStackViewDataSource? { didSet { reloadData(); } }
+    public var delegate: TimelineStackViewDelegate?;
     
+    public func reloadData() {
+        guard let dataSource: TimelineStackViewDataSource = self.dataSource else {
+            return;
+        }
+        
+        self.cellCount = dataSource.cellCount();
+        
+        for i in 0..<self.cellCount {
+            self.cells.append(dataSource.cell(at: i));
+        }
+        
+        layoutCells();
+    }
 }
 
 extension TimelineStackView {
-    private func setupView() {
-//        self.addSubview(TimelineCellView(frame: NSRect(x: 0, y: 0, width: 800, height: 600)));
-        
-//        NSNib.init(nibNamed: NSNib.Name("TimelineStackView"), bundle: nil)?.instantiate(withOwner: self, topLevelObjects: nil);
-//        self.addSubview(NSButton(frame: NSRect(x: 0, y: 0, width: 100, height: 100)));
-        
-//        guard let nib: NSNib = NSNib.init(nibNamed: "TimelineStackView", bundle: nil) else {
-//            fatalError("Could not find NIB!");
-//        }
-//        
-//        var topLevelObjects: NSArray = NSArray(array: []);
-//        
-//        guard nib.instantiate(withOwner: self, topLevelObjects: topLevelObjects) else {
-//            fatalError("Could not instantiate NIB!");
-//        }
+    private func layoutCells() {
+        for _ in 0..<cellCount {
+            guard let view: TimelineCellView = TimelineCellView.fromNib() else {
+                Log.error(message: "Could not load TimelineCellView!");
+                return;
+            }
+            
+            self.addSubview(view);
+        }
     }
+}
+
+protocol TimelineStackViewDataSource {
+    func cellCount() -> Int;
+    func cell(at index: Int) -> TimelineCellView;
+}
+
+protocol TimelineStackViewDelegate {
+    func cellHeight() -> Int;
 }

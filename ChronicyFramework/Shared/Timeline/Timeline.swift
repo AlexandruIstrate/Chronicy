@@ -8,10 +8,8 @@
 import Foundation;
 
 public class Timeline {
-    public var name: String;
-    private var internalTasks: [Task] = [];
-    
-    public var tasks: [Task] { return self.internalTasks; }
+    public private(set) var name: String;
+    public private(set) var tasks: [Task] = [];
     
     public init(name: String) {
         self.name = name;
@@ -22,13 +20,13 @@ extension Timeline: TimeExpressible {
     public typealias T = [Task];
     
     public func older(than date: Date) -> T {
-        return internalTasks.filter({ (task: Task) -> Bool in
+        return tasks.filter({ (task: Task) -> Bool in
             return task.date < date;
         });
     }
     
     public func newer(than date: Date) -> T {
-        return internalTasks.filter({ (task: Task) -> Bool in
+        return tasks.filter({ (task: Task) -> Bool in
             return task.date > date;
         });
     }

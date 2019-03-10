@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7109E25223570C200E3EB29 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E24223570C200E3EB29 /* Module.swift */; };
+		A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E262235741A00E3EB29 /* ModuleManager.swift */; };
+		A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E282235756E00E3EB29 /* TrackableProperty.swift */; };
+		A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
 		A7252A452234323900EE554A /* TimelineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A442234323900EE554A /* TimelineManager.swift */; };
-		A7252A48223444A000EE554A /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A47223444A000EE554A /* Trackable.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A76045B122308EC1007F3268 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76045B022308EC1007F3268 /* Timeline.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
@@ -17,8 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7109E24223570C200E3EB29 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		A7109E262235741A00E3EB29 /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
+		A7109E282235756E00E3EB29 /* TrackableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
+		A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A7252A442234323900EE554A /* TimelineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineManager.swift; sourceTree = "<group>"; };
-		A7252A47223444A000EE554A /* Trackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trackable.swift; sourceTree = "<group>"; };
 		A760458722308D47007F3268 /* ChronicyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,10 +45,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7109E2C22357D4900E3EB29 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		A7252A46223443D900EE554A /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				A7252A47223444A000EE554A /* Trackable.swift */,
+				A7109E282235756E00E3EB29 /* TrackableProperty.swift */,
+				A7109E24223570C200E3EB29 /* Module.swift */,
+				A7109E262235741A00E3EB29 /* ModuleManager.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -75,6 +91,7 @@
 		A760459022308D54007F3268 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A7109E2C22357D4900E3EB29 /* Application */,
 				A76045AF22308EAA007F3268 /* Timeline */,
 				A7252A46223443D900EE554A /* Tracking */,
 				A77617FB2231C3270038E815 /* Utils */,
@@ -188,12 +205,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
 				A76045B122308EC1007F3268 /* Timeline.swift in Sources */,
 				A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */,
+				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
 				A7B1938A2233FA87002BA598 /* Task.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A7252A452234323900EE554A /* TimelineManager.swift in Sources */,
-				A7252A48223444A000EE554A /* Trackable.swift in Sources */,
+				A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */,
+				A7109E25223570C200E3EB29 /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

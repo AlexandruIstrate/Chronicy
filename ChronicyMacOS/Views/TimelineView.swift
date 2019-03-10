@@ -11,22 +11,41 @@ import ChronicyFramework;
 @IBDesignable
 class TimelineView: NSScrollView {
     
+    private var stackCount: Int = 0;
     private var stacks: [TimelineStackView] = [];
     
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect);
-        setupView();
-    }
+    public var dataSource: TimelineViewDataSource? { didSet { reloadData(); } }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder);
-        setupView();
+    public func reloadData() {
+        guard let dataSource: TimelineViewDataSource = self.dataSource else {
+            return;
+        }
+        
+        self.stackCount = dataSource.stackCount();
+        
+        for i in 0..<self.stackCount {
+            self.stacks.append(dataSource.stack(at: i));
+        }
+        
+        layoutStacks();
     }
 
 }
 
 extension TimelineView {
-    private func setupView() {
-        self.addSubview(TimelineStackView(frame: NSRect(x: 0, y: 0, width: 800, height: 600)));
+    private func layoutStacks() {
+        for _ in 0..<stackCount {
+            guard let view: TimelineStackView = TimelineStackView.fromNib() else {
+                Log.error(message: "Could not load TimelineStackView!");
+                return;
+            }
+            
+            self.addSubview(view);
+        }
     }
+}
+
+protocol TimelineViewDataSource {
+    func stackCount() -> Int;
+    func stack(at index: Int) -> TimelineStackView;
 }

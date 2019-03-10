@@ -7,6 +7,7 @@
 
 import Cocoa;
 
+@IBDesignable
 class TimelineCellView: NSView {
     
 }

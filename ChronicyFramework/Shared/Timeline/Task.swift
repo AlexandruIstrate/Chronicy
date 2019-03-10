@@ -11,26 +11,24 @@ public class Task {
     public let name: String;
     public let date: Date = Date();
     
-    private var internalActions: [Action] = [];
-    
-    public var actions: [Action] { return self.internalActions; }
+    public private(set) var actions: [Action] = [];
     
     public init(name: String) {
         self.name = name;
     }
     
     public func add(action: Action) {
-        internalActions.append(action);
+        actions.append(action);
     }
     
     public func remove(action: Action) {
-        internalActions.removeAll { (iter: Action) -> Bool in
+        actions.removeAll { (iter: Action) -> Bool in
             return iter == action;
         }
     }
     
     public func has(action: Action) -> Bool {
-        return internalActions.contains(action);
+        return actions.contains(action);
     }
 }
 
@@ -46,13 +44,13 @@ extension Task: TimeExpressible {
     public typealias T = [Action];
     
     public func older(than date: Date) -> T {
-        return internalActions.filter({ (action: Action) -> Bool in
+        return actions.filter({ (action: Action) -> Bool in
             return action.date < date;
         });
     }
     
     public func newer(than date: Date) -> T {
-        return internalActions.filter({ (action: Action) -> Bool in
+        return actions.filter({ (action: Action) -> Bool in
             return action.date > date;
         });
     }

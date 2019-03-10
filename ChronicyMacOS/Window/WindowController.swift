@@ -7,6 +7,7 @@
 
 import Cocoa;
 
+// TODO: Remove "Show Tabs" from application menu
 class WindowController: NSWindowController, NSWindowDelegate {
     
     required init?(coder aDecoder: NSCoder) {

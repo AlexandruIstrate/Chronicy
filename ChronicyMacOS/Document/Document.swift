@@ -5,7 +5,8 @@
 //  Created by Alexandru Istrate on 07/03/2019.
 //
 
-import Cocoa
+import Cocoa;
+import ChronicyFramework;
 
 class Document: NSDocument {
     
@@ -42,7 +43,7 @@ class Document: NSDocument {
             return;
         }
         
-        addWindowController(windowController)
+        self.addWindowController(windowController)
         
         // Set the view controller's represented object as your document.
         guard let contentVC: ViewController = windowController.contentViewController as? ViewController else {
