@@ -15,7 +15,7 @@
 		A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A3D22342F5900EE554A /* TimelineCellView.swift */; };
 		A7252A4022342F7500EE554A /* TimelineCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7252A3F22342F7500EE554A /* TimelineCellView.xib */; };
 		A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72BB15D2237280C008575FC /* Cocoa.framework */; };
-		A72BB16F2237280C008575FC /* ChronicySafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A72BB16F2237280C008575FC /* Chronicy Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1802237287D008575FC /* SafariExtensionHandler.swift */; };
 		A72BB1892237287D008575FC /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1822237287D008575FC /* SafariExtensionViewController.xib */; };
 		A72BB18A2237287D008575FC /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1842237287D008575FC /* script.js */; };
@@ -64,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A72BB16F2237280C008575FC /* ChronicySafariExtension.appex in Embed App Extensions */,
+				A72BB16F2237280C008575FC /* Chronicy Safari Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +79,7 @@
 		A7252A3B22342F0400EE554A /* TimelineStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineStackView.xib; sourceTree = "<group>"; };
 		A7252A3D22342F5900EE554A /* TimelineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCellView.swift; sourceTree = "<group>"; };
 		A7252A3F22342F7500EE554A /* TimelineCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCellView.xib; sourceTree = "<group>"; };
-		A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicySafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chronicy Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
 		A72BB1812237287D008575FC /* ChronicySafariExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ChronicySafariExtension.entitlements; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A760459522308DA5007F3268 /* Chronicy.app */,
-				A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */,
+				A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			);
 			name = ChronicySafariExtension;
 			productName = ChronicySafariExtension;
-			productReference = A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */;
+			productReference = A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		A760459422308DA5007F3268 /* ChronicyMacOS */ = {
@@ -527,7 +527,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Chronicy Safari Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -593,7 +593,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Chronicy Safari Extension";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
