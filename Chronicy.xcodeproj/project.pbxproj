@@ -23,7 +23,6 @@
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584A2231CDCA0077124A /* TimelineView.swift */; };
-		A7E2584E2231D1400077124A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584D2231D1400077124A /* Renderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7E2584A2231CDCA0077124A /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
-		A7E2584D2231D1400077124A /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +147,6 @@
 				A7109E3222358E0700E3EB29 /* Application */,
 				A7109E21223567FF00E3EB29 /* Tracking */,
 				A7252A432234319400EE554A /* Document */,
-				A7E2584C2231D1160077124A /* Drawing */,
 				A77618022231CA080038E815 /* Views */,
 				A7252A41223430E700EE554A /* View Controllers */,
 				A77617FF2231C8A40038E815 /* Utils */,
@@ -199,14 +196,6 @@
 				A760459722308DA5007F3268 /* ChronicyMacOS */,
 				A760459622308DA5007F3268 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A7E2584C2231D1160077124A /* Drawing */ = {
-			isa = PBXGroup;
-			children = (
-				A7E2584D2231D1400077124A /* Renderer.swift */,
-			);
-			path = Drawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7252A3A22342EE900EE554A /* TimelineStackView.swift in Sources */,
-				A7E2584E2231D1400077124A /* Renderer.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
 				A760459B22308DA5007F3268 /* ViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
