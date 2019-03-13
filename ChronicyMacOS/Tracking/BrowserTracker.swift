@@ -68,3 +68,17 @@ class SafariBrowserModule: BrowserModule {
     }
     
 }
+
+extension SafariBrowserModule {
+    class OpenPagesProperty: TrackableProperty {
+        typealias T = [URL];
+        
+        func hasUpdates() -> Bool {
+            return false;
+        }
+        
+        func newData() -> T {
+            return [];
+        }
+    }
+}

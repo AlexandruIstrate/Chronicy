@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70AAD18223874040069CCF3 /* EnhancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AAD17223874040069CCF3 /* EnhancedView.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A70AAD17223874040069CCF3 /* EnhancedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedView.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		A77618022231CA080038E815 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A70AAD17223874040069CCF3 /* EnhancedView.swift */,
 				A7E2584A2231CDCA0077124A /* TimelineView.swift */,
 				A7252A3922342EE900EE554A /* TimelineStackView.swift */,
 				A7252A3B22342F0400EE554A /* TimelineStackView.xib */,
@@ -297,6 +300,7 @@
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
 				A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */,
 				A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */,
+				A70AAD18223874040069CCF3 /* EnhancedView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,

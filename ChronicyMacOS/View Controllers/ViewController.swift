@@ -33,7 +33,16 @@ class ViewController: NSViewController, NSTextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        timeline.add(task: Task(name: "Task 1"));
+        timeline.add(task: Task(name: "Task 2"));
+        timeline.add(task: Task(name: "Task 3"));
+        timeline.tasks.first!.add(action: Action(name: "Test", date: Date()));
+        
         self.timelineView.dataSource = self;
+        
+        self.timelineView.onLoadData();
+        self.timelineView.onLayoutView();
     }
 
     // MARK: - NSTextViewDelegate
@@ -50,10 +59,32 @@ class ViewController: NSViewController, NSTextViewDelegate {
 
 extension ViewController: TimelineViewDataSource {
     func stackCount() -> Int {
-        return 0;
+        return timeline.tasks.count;
     }
-    
-    func stack(at index: Int) -> TimelineStackView {
-        return TimelineStackView();
+
+    func stack(for view: TimelineView, at index: Int) -> TimelineStackView {
+        guard let stack: TimelineStackView = TimelineStackView.fromNib() else {
+            Log.fatal(message: "Could not create TimelineStackView.");
+            fatalError();
+        }
+        
+        stack.dataSource = self;
+        return stack;
+    }
+}
+
+extension ViewController: TimelineStackViewDataSource {
+    func cellCount() -> Int {
+//        return timeline.tasks.first!.actions.count;
+        return 3;
+    }
+
+    func cell(for stack: TimelineStackView, at index: Int) -> TimelineCellView {
+        guard let cell: TimelineCellView = TimelineCellView.fromNib() else {
+            Log.fatal(message: "Could not create TimelineCellView.");
+            fatalError();
+        }
+        
+        return cell;
     }
 }

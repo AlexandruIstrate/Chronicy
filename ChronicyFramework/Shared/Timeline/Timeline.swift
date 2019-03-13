@@ -14,6 +14,16 @@ public class Timeline {
     public init(name: String) {
         self.name = name;
     }
+    
+    public func add(task: Task) {
+        tasks.append(task);
+    }
+    
+    public func remove(task: Task) {
+        tasks.removeAll { (iter: Task) -> Bool in
+            return iter == task;
+        }
+    }
 }
 
 extension Timeline: TimeExpressible {

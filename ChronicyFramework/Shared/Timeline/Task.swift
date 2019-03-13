@@ -59,4 +59,9 @@ extension Task: TimeExpressible {
 public struct Action: Equatable {
     let name: String;
     let date: Date;
+    
+    public init(name: String, date: Date) {
+        self.name = name;
+        self.date = date;
+    }
 }

@@ -12,23 +12,24 @@
             <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NSi-QN-ZY3">
-                    <rect key="frame" x="-6" y="572" width="262" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mmX-JN-9Rr">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4b-yE-3c6">
-                    <rect key="frame" x="-6" y="-7" width="262" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dNh-0s-dJR">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIX-d6-4TC">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
+                </stackView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="rIX-d6-4TC" secondAttribute="bottom" id="Cxt-Kz-waX"/>
+                <constraint firstItem="rIX-d6-4TC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="YNq-vi-EwU"/>
+                <constraint firstAttribute="trailing" secondItem="rIX-d6-4TC" secondAttribute="trailing" id="YuO-BO-A7e"/>
+                <constraint firstItem="rIX-d6-4TC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ZWL-ef-PFe"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="background">
+                    <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="stackView" destination="rIX-d6-4TC" id="zoF-5K-1ee"/>
+            </connections>
         </customView>
     </objects>
 </document>
