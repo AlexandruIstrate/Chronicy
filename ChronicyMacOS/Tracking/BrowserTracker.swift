@@ -65,6 +65,7 @@ class SafariBrowserModule: BrowserModule {
     
     func update() {
         // TODO: Add
+        Log.info(message: "SafariBrowserModule Updated!");
     }
     
 }

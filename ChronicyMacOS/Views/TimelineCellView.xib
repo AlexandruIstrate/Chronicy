@@ -5,11 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TimelineCellView" customModule="Chronicy" customModuleProvider="target">
-            <connections>
-                <outlet property="titleLabel" destination="nwI-wJ-Jwa" id="dTX-qc-XnS"/>
-            </connections>
-        </customObject>
+        <customObject id="-2" userLabel="File's Owner" customClass="TimelineCellView" customModule="Chronicy" customModuleProvider="target"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" customClass="TimelineCellView" customModule="Chronicy" customModuleProvider="target">
@@ -34,6 +30,9 @@
                     <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="titleLabel" destination="nwI-wJ-Jwa" id="V2d-1d-mOx"/>
+            </connections>
         </customView>
     </objects>
 </document>

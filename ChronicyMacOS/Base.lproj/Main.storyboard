@@ -715,21 +715,7 @@
                     <view key="view" wantsLayer="YES" id="ERx-hH-rdd">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="sP5-NF-r7B" customClass="TimelineView" customModule="Chronicy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                            </customView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="sP5-NF-r7B" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" id="GDS-bP-YL4"/>
-                            <constraint firstAttribute="trailing" secondItem="sP5-NF-r7B" secondAttribute="trailing" id="GRJ-0I-nAx"/>
-                            <constraint firstItem="sP5-NF-r7B" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" id="Skx-rR-eNY"/>
-                            <constraint firstAttribute="bottom" secondItem="sP5-NF-r7B" secondAttribute="bottom" id="kT8-EO-dAs"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="timelineView" destination="sP5-NF-r7B" id="DyT-ua-adc"/>
-                    </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

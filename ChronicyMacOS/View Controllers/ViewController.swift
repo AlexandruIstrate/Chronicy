@@ -10,7 +10,7 @@ import ChronicyFramework;
 
 class ViewController: NSViewController, NSTextViewDelegate {
     
-    @IBOutlet private weak var timelineView: TimelineView!;
+    private var timelineView: TimelineView!;
     
     private var timeline: Timeline = Timeline(name: "Test");
 
@@ -33,6 +33,9 @@ class ViewController: NSViewController, NSTextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.loadMainView();
+        
+        ModuleManager.manager.add(module: SafariBrowserModule());
         
         timeline.add(task: Task(name: "Task 1"));
         timeline.add(task: Task(name: "Task 2"));
@@ -59,7 +62,8 @@ class ViewController: NSViewController, NSTextViewDelegate {
 
 extension ViewController: TimelineViewDataSource {
     func stackCount() -> Int {
-        return timeline.tasks.count;
+//        return timeline.tasks.count;
+        return 3;
     }
 
     func stack(for view: TimelineView, at index: Int) -> TimelineStackView {
@@ -86,5 +90,19 @@ extension ViewController: TimelineStackViewDataSource {
         }
         
         return cell;
+    }
+}
+
+extension ViewController {
+    private func loadMainView() {
+        self.timelineView = TimelineView.fromNib();
+//        self.timelineView.translatesAutoresizingMaskIntoConstraints = false;
+//        
+//        self.timelineView.topAnchor.constraint(equalTo: self.view.topAnchor);
+//        self.timelineView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor);
+//        self.timelineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor);
+//        self.timelineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor);
+        
+        self.view.addSubview(timelineView);
     }
 }
