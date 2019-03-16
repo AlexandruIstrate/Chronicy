@@ -30,6 +30,10 @@
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
+		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
+		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
+		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
+		A7AC817E223AF935004AF83C /* StateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AC817D223AF935004AF83C /* StateAdapter.swift */; };
 		A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584A2231CDCA0077124A /* TimelineView.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +86,6 @@
 		A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chronicy Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
-		A72BB1812237287D008575FC /* ChronicySafariExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ChronicySafariExtension.entitlements; sourceTree = "<group>"; };
 		A72BB1832237287D008575FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		A72BB1842237287D008575FC /* script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		A72BB1852237287D008575FC /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
@@ -100,6 +103,11 @@
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
+		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
+		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
+		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
+		A7AC817D223AF935004AF83C /* StateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAdapter.swift; sourceTree = "<group>"; };
 		A7E2584A2231CDCA0077124A /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,11 +190,13 @@
 		A72BB17F2237287D008575FC /* ChronicySafariExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A79886762239AB610029A791 /* State */,
+				A798867122399C490029A791 /* Data */,
 				A72BB1802237287D008575FC /* SafariExtensionHandler.swift */,
+				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
 				A72BB1822237287D008575FC /* SafariExtensionViewController.xib */,
 				A72BB1842237287D008575FC /* script.js */,
 				A72BB1852237287D008575FC /* ToolbarItemIcon.pdf */,
-				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
 				A72BB18E223728AF008575FC /* Supporting Files */,
 			);
 			path = ChronicySafariExtension;
@@ -196,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A72BB1872237287D008575FC /* Info.plist */,
-				A72BB1812237287D008575FC /* ChronicySafariExtension.entitlements */,
+				A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,6 +276,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A798867122399C490029A791 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A798867222399C690029A791 /* ContentTracker.swift */,
+				A798867422399D520029A791 /* ContentTrackerManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A79886762239AB610029A791 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				A79886772239AB760029A791 /* ExtensionStateManager.swift */,
+				A7AC817D223AF935004AF83C /* StateAdapter.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		A7C5C160223088B000C0B27B = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +356,11 @@
 				TargetAttributes = {
 					A72BB15A2237280C008575FC = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					A760459422308DA5007F3268 = {
 						CreatedOnToolsVersion = 10.1;
@@ -404,7 +437,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */,
 				A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */,
+				A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */,
+				A7AC817E223AF935004AF83C /* StateAdapter.swift in Sources */,
+				A798867322399C690029A791 /* ContentTracker.swift in Sources */,
 				A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,11 +532,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = ChronicySafariExtension/ChronicySafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = "ChronicySafariExtension/Chronicy Safari Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -528,6 +566,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
 				PRODUCT_NAME = "Chronicy Safari Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -568,11 +607,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = ChronicySafariExtension/ChronicySafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = "ChronicySafariExtension/Chronicy Safari Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -594,6 +634,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
 				PRODUCT_NAME = "Chronicy Safari Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -637,11 +678,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = ChronicyMacOS/ChronicyMacOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -669,6 +711,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS;
 				PRODUCT_NAME = Chronicy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -711,11 +754,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = ChronicyMacOS/ChronicyMacOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -736,6 +780,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS;
 				PRODUCT_NAME = Chronicy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
