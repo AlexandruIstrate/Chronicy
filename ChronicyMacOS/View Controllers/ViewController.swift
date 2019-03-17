@@ -35,6 +35,13 @@ class ViewController: NSViewController, NSTextViewDelegate {
         super.viewDidLoad();
         self.loadMainView();
         
+//        let defaults: UserDefaults = UserDefaults(suiteName: "extension.ro.internals")!;
+//        print(defaults.object(forKey: "testMessage"));
+
+//        let objectManager: ObjectManager = ObjectManager();
+//        let msg: String? = objectManager.get(for: "testMessage");
+//        print(msg);
+        
         ModuleManager.manager.add(module: SafariBrowserModule());
         
         timeline.add(task: Task(name: "Task 1"));

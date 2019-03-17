@@ -27,6 +27,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
+        let defaults: UserDefaults = UserDefaults(suiteName: "extension.ro.internals")!;
+        defaults.set(Date().description, forKey: "testMessage");
+        defaults.synchronize();
+        
         return SafariExtensionViewController.shared;
     }
 

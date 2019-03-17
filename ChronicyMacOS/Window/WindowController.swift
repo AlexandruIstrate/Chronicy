@@ -19,3 +19,21 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
     
 }
+
+extension WindowController {
+    @IBAction private func onAdd(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func onRemove(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func onShowEditPane(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func onChangeViewMode(_ sender: Any) {
+        
+    }
+}

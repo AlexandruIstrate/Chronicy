@@ -8,8 +8,5 @@
 import Foundation;
 
 public protocol TrackableProperty {
-    associatedtype T;
-    
-    func hasUpdates() -> Bool;
-    func newData() -> T;
+    func onRefreshData();
 }

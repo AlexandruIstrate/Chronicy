@@ -26,5 +26,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminate(_ sender: NSApplication)-> NSApplication.TerminateReply {
         return .terminateNow;
     }
-
+    
 }

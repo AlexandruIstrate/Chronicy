@@ -17,69 +17,12 @@ enum Browser {
     case other(name: String);
 }
 
-protocol BrowserModule: Module {
-    func browserName() -> Browser;
-    func browserVersion() -> BrowserVersion;
+class BrowserModule: Module {
+    func browserName() -> Browser { fatalError("Method browserName is abstract and must be implemented in a subclass of this class."); }
+    func browserVersion() -> BrowserVersion { fatalError("Method browserVersion is abstract and must be implemented in a subclass of this class."); }
     
-    func launch(/* with: BrowserLaunchParams */);
+    func launch(/* with: BrowserLaunchParams */) { fatalError("Method launch is abstract and must be implemented in a subclass of this class."); }
     
-    func loadExtension(/* with: ExtensionLoadParams */);
-    func unloadExtension();
-}
-
-class SafariBrowserModule: BrowserModule {
-    
-    func browserName() -> Browser {
-        return .safari;
-    }
-    
-    func browserVersion() -> BrowserVersion {
-        return (0, 0, 0);
-    }
-    
-    func launch() {
-        Log.info(message: "Launching Safari...");
-        
-        Log.info(message: "Succesfuly launched Safari!");
-    }
-    
-    func loadExtension() {
-        Log.info(message: "Loading Safari extension...");
-        
-        Log.info(message: "Succesfuly loaded Safari extension!");
-    }
-    
-    func unloadExtension() {
-        Log.info(message: "Unloading Safari extension...");
-        
-        Log.info(message: "Succesfuly unloaded Safari extension!");
-    }
-    
-    func moduleName() -> String {
-        return "SafariBrowserModule";
-    }
-    
-    func priority() -> ModulePriority {
-        return .low;    // We don't want to slow down browsing
-    }
-    
-    func update() {
-        // TODO: Add
-        Log.info(message: "SafariBrowserModule Updated!");
-    }
-    
-}
-
-extension SafariBrowserModule {
-    class OpenPagesProperty: TrackableProperty {
-        typealias T = [URL];
-        
-        func hasUpdates() -> Bool {
-            return false;
-        }
-        
-        func newData() -> T {
-            return [];
-        }
-    }
+    func loadExtension(/* with: ExtensionLoadParams */) { fatalError("Method loadExtension is abstract and must be implemented in a subclass of this class."); }
+    func unloadExtension() {}
 }
