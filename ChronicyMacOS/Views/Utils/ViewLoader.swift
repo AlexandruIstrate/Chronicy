@@ -7,7 +7,11 @@
 
 import Cocoa;
 
-extension NSView {
+protocol FromXibLoadable {
+    static func fromNib<T: NSView>(nibName: String, with bundle: Bundle) -> T?;
+}
+
+extension NSView: FromXibLoadable {
     public static func fromNib<T: NSView>(nibName: String = String(describing: T.self), with bundle: Bundle = Bundle.main) -> T? {
         var topLevelArray: NSArray?;
         bundle.loadNibNamed(NSNib.Name(nibName), owner: self, topLevelObjects: &topLevelArray);

@@ -9,7 +9,7 @@ import Cocoa;
 import ChronicyFramework;
 
 @IBDesignable
-class TimelineView: NSScrollView {
+class TimelineView: NSView {
     
     @IBOutlet private weak var stackView: NSStackView!;
     

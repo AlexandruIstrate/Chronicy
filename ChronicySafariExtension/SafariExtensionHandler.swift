@@ -16,6 +16,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
     
+    override func messageReceivedFromContainingApp(withName messageName: String, userInfo: [String : Any]? = nil) {
+        NSLog("The extension received a message (\(messageName)) from containing app with userInfo (\(userInfo ?? [:]))");
+    }
+    
     override func toolbarItemClicked(in window: SFSafariWindow) {
         // This method will be called when your toolbar item is clicked.
         NSLog("The extension's toolbar item was clicked");
@@ -27,9 +31,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-        let defaults: UserDefaults = UserDefaults(suiteName: "extension.ro.internals")!;
-        defaults.set(Date().description, forKey: "testMessage");
-        defaults.synchronize();
+//        let defaults: UserDefaults = UserDefaults(suiteName: "extension.ro.internals")!;
+//        defaults.set(Date().description, forKey: "testMessage");
+//        defaults.synchronize();
+
+        DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: "extension.ro.internals");
+        DistributedObjectManager.manager.set(object: "Message from Safari: \(Date().description)", for: "test");
         
         return SafariExtensionViewController.shared;
     }

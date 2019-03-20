@@ -11,7 +11,6 @@ import ChronicyFramework;
 class SafariBrowserModule: BrowserModule {
     
     public var currentPage: CurrentPageProperty = CurrentPageProperty();
-    public var openPages: OpenPagesProperty = OpenPagesProperty();
     
     override func browserName() -> Browser {
         return .safari;
@@ -58,24 +57,17 @@ class SafariBrowserModule: BrowserModule {
 
 extension SafariBrowserModule {
     class CurrentPageProperty: TrackableProperty {
-        init() {
-            
-        }
+        
+        public var url: URL?;
         
         func onRefreshData() {
-            
-        }
-    }
-    
-    class OpenPagesProperty: TrackableProperty {
-        func onRefreshData() {
-            
+            self.url = DistributedObjectManager.manager.get(for: "currentPageURL");
         }
     }
 }
 
 extension SafariBrowserModule {
     private func setupProperties() {
-        self.properties = [ currentPage, openPages ];
+        self.properties = [ currentPage ];
     }
 }

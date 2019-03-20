@@ -1,8 +1,8 @@
 //
 //  DistributedObjectManager.swift
-//  ChronicyFrameworkMacOS
+//  ChronicySafariExtension
 //
-//  Created by Alexandru Istrate on 17/03/2019.
+//  Created by Alexandru Istrate on 18/03/2019.
 //
 
 import Foundation;
@@ -66,10 +66,10 @@ public class DistributedObjectManager {
             
             return decodedObject.object;
         } catch let e as KeyStorageError {
-            Log.error(message: "An error occurred while retrieving object for key \(key): \(e.localizedDescription)");
+//            Log.error(message: "An error occurred while retrieving object for key \(key): \(e.localizedDescription)");
             return nil;
         } catch {
-            Log.error(message: "An unknown occurred while retrieving object for key \(key).");
+//            Log.error(message: "An unknown occurred while retrieving object for key \(key).");
             return nil;
         }
     }
@@ -80,15 +80,15 @@ public class DistributedObjectManager {
             let data: Data = try encoder.encode(DistributedObject<T>(object: object));
             
             guard let string: String = String(data: data, encoding: encoding) else {
-                Log.error(message: "Could not convert object data to String with encoding \(encoding.description).");
+//                Log.error(message: "Could not convert object data to String with encoding \(encoding.description).");
                 return;
             }
             
             try keyStorage.set(object: string, for: key);
         } catch let e as KeyStorageError {
-            Log.error(message: "An error occurred while setting object for key \(key): \(e.localizedDescription)");
+//            Log.error(message: "An error occurred while setting object for key \(key): \(e.localizedDescription)");
         } catch {
-            Log.error(message: "An unknown occurred while setting object for key \(key).");
+//            Log.error(message: "An unknown occurred while setting object for key \(key).");
         }
     }
     

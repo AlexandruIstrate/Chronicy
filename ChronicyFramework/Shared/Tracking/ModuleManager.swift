@@ -15,14 +15,8 @@ public class ModuleManager {
     private let updateQueue: DispatchQueue = DispatchQueue(label: "ModuleManagerUpdateQueue", qos: .background);
     
     private init() {
-//        updateQueue.async {
-//            while true {
-//                for module: Module in self.modules {
-//                    // TODO: Take priority into consideration
-//                    module.update();
-//                }
-//            }
-//        }
+        let timer: Timer = Timer(fireAt: Date(), interval: 5, target: self, selector: #selector(onUpdate), userInfo: nil, repeats: true);
+        RunLoop.main.add(timer, forMode: .common);
     }
     
     public func add(module: Module) {
@@ -36,6 +30,15 @@ public class ModuleManager {
             self.modules.removeAll { (iter: Module) -> Bool in
                 return iter.moduleName() == module.moduleName();
             }
+        }
+    }
+}
+
+extension ModuleManager {
+    @objc
+    private func onUpdate() {
+        for module: Module in modules {
+            module.update();
         }
     }
 }

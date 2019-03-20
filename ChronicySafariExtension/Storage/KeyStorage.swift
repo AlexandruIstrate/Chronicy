@@ -1,8 +1,8 @@
 //
 //  KeyStorage.swift
-//  ChronicyFrameworkMacOS
+//  ChronicySafariExtension
 //
-//  Created by Alexandru Istrate on 17/03/2019.
+//  Created by Alexandru Istrate on 18/03/2019.
 //
 
 import Foundation;
