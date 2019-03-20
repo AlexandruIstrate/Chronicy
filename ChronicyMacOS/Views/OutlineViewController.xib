@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="OutlineViewController" customModule="Chronicy" customModuleProvider="target">
+            <connections>
+                <outlet property="stackView" destination="Yhm-wY-fNa" id="hpi-ml-Z28"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhm-wY-fNa">
+                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Yhm-wY-fNa" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6iQ-C0-iBd"/>
+                <constraint firstAttribute="bottom" secondItem="Yhm-wY-fNa" secondAttribute="bottom" id="RL3-wR-BCn"/>
+                <constraint firstItem="Yhm-wY-fNa" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Xg4-6r-2Rg"/>
+                <constraint firstAttribute="trailing" secondItem="Yhm-wY-fNa" secondAttribute="trailing" id="g7k-Ud-oI3"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

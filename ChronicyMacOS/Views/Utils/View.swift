@@ -1,8 +1,8 @@
 //
-//  CustomView.swift
+//  View.swift
 //  ChronicyMacOS
 //
-//  Created by Alexandru Istrate on 13/03/2019.
+//  Created by Alexandru Istrate on 20/03/2019.
 //
 
 import Cocoa;
@@ -17,8 +17,8 @@ extension NSView {
     
     @IBInspectable
     public var cornerRadius: CGFloat {
-        get { return 0.0; }
-        set {  }
+        get { return self.layer?.cornerRadius ?? 0.0; }
+        set { self.wantsLayer = true; self.layer?.cornerRadius = newValue; }
     }
     
 }

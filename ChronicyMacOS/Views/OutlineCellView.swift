@@ -8,7 +8,7 @@
 import Cocoa;
 
 @IBDesignable
-class TimelineCellView: NSView {
+class OutlineCellView: NSView {
 
     @IBOutlet private weak var titleLabel: NSTextField!;
     
@@ -18,7 +18,7 @@ class TimelineCellView: NSView {
     }
 }
 
-extension TimelineCellView: CustomOperationSeparatable {
+extension OutlineCellView: CustomOperationSeparatable {
     func onLoadData() {
         
     }

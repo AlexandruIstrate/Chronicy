@@ -1,5 +1,5 @@
 //
-//  TimelineStackView.swift
+//  OutlineStackView.swift
 //  ChronicyMacOS
 //
 //  Created by Alexandru Istrate on 09/03/2019.
@@ -9,27 +9,27 @@ import Cocoa;
 import ChronicyFramework;
 
 @IBDesignable
-class TimelineStackView: NSView {
+class OutlineStackView: NSView {
 
     @IBOutlet private weak var stackView: NSStackView!;
     
     private var cellCount: Int = 0;
-    private var cells: [TimelineCellView] = [];
+    private var cells: [OutlineCellView] = [];
 
-    public var dataSource: TimelineStackViewDataSource?;
+    public var dataSource: OutlineStackViewDataSource?;
 
 }
 
-extension TimelineStackView: CustomOperationSeparatable {
+extension OutlineStackView: CustomOperationSeparatable {
     func onLoadData() {
-        guard let dataSource: TimelineStackViewDataSource = self.dataSource else {
+        guard let dataSource: OutlineStackViewDataSource = self.dataSource else {
             return;
         }
         
         self.cellCount = dataSource.cellCount();
         
         for i in 0..<self.cellCount {
-            let cell: TimelineCellView = dataSource.cell(for: self, at: i);
+            let cell: OutlineCellView = dataSource.cell(for: self, at: i);
             self.cells.append(cell);
             
             cell.onLoadData();
@@ -38,7 +38,7 @@ extension TimelineStackView: CustomOperationSeparatable {
     
     func onLayoutView() {
         for i in 0..<cellCount {
-            let cell: TimelineCellView = cells[i];
+            let cell: OutlineCellView = cells[i];
             self.stackView.addView(cell, in: .top);
             
             cell.onLayoutView();
@@ -46,7 +46,7 @@ extension TimelineStackView: CustomOperationSeparatable {
     }
 }
 
-protocol TimelineStackViewDataSource {
+protocol OutlineStackViewDataSource {
     func cellCount() -> Int;
-    func cell(for stack: TimelineStackView, at index: Int) -> TimelineCellView;
+    func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView;
 }

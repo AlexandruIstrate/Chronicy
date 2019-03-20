@@ -10,14 +10,9 @@
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A70913E32240168C00073349 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E22240168C00073349 /* KeyStorage.swift */; };
 		A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E4224016AD00073349 /* DistributedObjectManager.swift */; };
-		A70AAD18223874040069CCF3 /* EnhancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AAD17223874040069CCF3 /* EnhancedView.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
-		A7252A3A22342EE900EE554A /* TimelineStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A3922342EE900EE554A /* TimelineStackView.swift */; };
-		A7252A3C22342F0400EE554A /* TimelineStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7252A3B22342F0400EE554A /* TimelineStackView.xib */; };
-		A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A3D22342F5900EE554A /* TimelineCellView.swift */; };
-		A7252A4022342F7500EE554A /* TimelineCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7252A3F22342F7500EE554A /* TimelineCellView.xib */; };
 		A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72BB15D2237280C008575FC /* Cocoa.framework */; };
 		A72BB16F2237280C008575FC /* Chronicy Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1802237287D008575FC /* SafariExtensionHandler.swift */; };
@@ -29,16 +24,20 @@
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
-		A760459B22308DA5007F3268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459A22308DA5007F3268 /* ViewController.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
+		A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AC222429EF500C5A94E /* OutlineViewController.swift */; };
+		A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AC322429EF500C5A94E /* OutlineViewController.xib */; };
+		A7A88ACF2242B0A600C5A94E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88ACE2242B0A600C5A94E /* View.swift */; };
+		A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AD42242B7BF00C5A94E /* OutlineStackView.swift */; };
+		A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AD52242B7BF00C5A94E /* OutlineCellView.swift */; };
+		A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AD62242B7BF00C5A94E /* OutlineCellView.xib */; };
+		A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AD72242B7BF00C5A94E /* OutlineStackView.xib */; };
 		A7AC817E223AF935004AF83C /* StateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AC817D223AF935004AF83C /* StateAdapter.swift */; };
-		A7BC9638223961E700367A76 /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BC9637223961E700367A76 /* TimelineView.xib */; };
-		A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2584A2231CDCA0077124A /* TimelineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,14 +82,9 @@
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A70913E22240168C00073349 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyStorage.swift; path = ChronicySafariExtension/Storage/KeyStorage.swift; sourceTree = SOURCE_ROOT; };
 		A70913E4224016AD00073349 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
-		A70AAD17223874040069CCF3 /* EnhancedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedView.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
-		A7252A3922342EE900EE554A /* TimelineStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineStackView.swift; sourceTree = "<group>"; };
-		A7252A3B22342F0400EE554A /* TimelineStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineStackView.xib; sourceTree = "<group>"; };
-		A7252A3D22342F5900EE554A /* TimelineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCellView.swift; sourceTree = "<group>"; };
-		A7252A3F22342F7500EE554A /* TimelineCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCellView.xib; sourceTree = "<group>"; };
 		A72BB15B2237280C008575FC /* Chronicy Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chronicy Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -104,7 +98,6 @@
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
 		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A760459A22308DA5007F3268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
@@ -114,9 +107,14 @@
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
+		A7A88AC222429EF500C5A94E /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
+		A7A88AC322429EF500C5A94E /* OutlineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineViewController.xib; sourceTree = "<group>"; };
+		A7A88ACE2242B0A600C5A94E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		A7A88AD42242B7BF00C5A94E /* OutlineStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineStackView.swift; sourceTree = "<group>"; };
+		A7A88AD52242B7BF00C5A94E /* OutlineCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineCellView.swift; sourceTree = "<group>"; };
+		A7A88AD62242B7BF00C5A94E /* OutlineCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutlineCellView.xib; sourceTree = "<group>"; };
+		A7A88AD72242B7BF00C5A94E /* OutlineStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutlineStackView.xib; sourceTree = "<group>"; };
 		A7AC817D223AF935004AF83C /* StateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAdapter.swift; sourceTree = "<group>"; };
-		A7BC9637223961E700367A76 /* TimelineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineView.xib; sourceTree = "<group>"; };
-		A7E2584A2231CDCA0077124A /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +157,7 @@
 		A7109E2F2235845D00E3EB29 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A7A88ACE2242B0A600C5A94E /* View.swift */,
 				A7109E302235849400E3EB29 /* ViewLoader.swift */,
 			);
 			path = Utils;
@@ -170,14 +169,6 @@
 				A7109E3322358E3800E3EB29 /* ApplicationManager.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		A7252A41223430E700EE554A /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				A760459A22308DA5007F3268 /* ViewController.swift */,
-			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		A7252A422234315900EE554A /* Window */ = {
@@ -245,7 +236,6 @@
 				A7109E3222358E0700E3EB29 /* Application */,
 				A7109E21223567FF00E3EB29 /* Tracking */,
 				A77618022231CA080038E815 /* Views */,
-				A7252A41223430E700EE554A /* View Controllers */,
 				A77617FF2231C8A40038E815 /* Utils */,
 				A7252A422234315900EE554A /* Window */,
 				A760459822308DA5007F3268 /* AppDelegate.swift */,
@@ -276,13 +266,12 @@
 		A77618022231CA080038E815 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A70AAD17223874040069CCF3 /* EnhancedView.swift */,
-				A7E2584A2231CDCA0077124A /* TimelineView.swift */,
-				A7BC9637223961E700367A76 /* TimelineView.xib */,
-				A7252A3922342EE900EE554A /* TimelineStackView.swift */,
-				A7252A3B22342F0400EE554A /* TimelineStackView.xib */,
-				A7252A3D22342F5900EE554A /* TimelineCellView.swift */,
-				A7252A3F22342F7500EE554A /* TimelineCellView.xib */,
+				A7A88AC222429EF500C5A94E /* OutlineViewController.swift */,
+				A7A88AC322429EF500C5A94E /* OutlineViewController.xib */,
+				A7A88AD42242B7BF00C5A94E /* OutlineStackView.swift */,
+				A7A88AD72242B7BF00C5A94E /* OutlineStackView.xib */,
+				A7A88AD52242B7BF00C5A94E /* OutlineCellView.swift */,
+				A7A88AD62242B7BF00C5A94E /* OutlineCellView.xib */,
 				A7109E2F2235845D00E3EB29 /* Utils */,
 			);
 			path = Views;
@@ -450,11 +439,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BC9638223961E700367A76 /* TimelineView.xib in Resources */,
-				A7252A3C22342F0400EE554A /* TimelineStackView.xib in Resources */,
+				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
-				A7252A4022342F7500EE554A /* TimelineCellView.xib in Resources */,
+				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
+				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,17 +470,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7252A3A22342EE900EE554A /* TimelineStackView.swift in Sources */,
 				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
+				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
-				A760459B22308DA5007F3268 /* ViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
-				A7252A3E22342F5900EE554A /* TimelineCellView.swift in Sources */,
-				A7E2584B2231CDCA0077124A /* TimelineView.swift in Sources */,
-				A70AAD18223874040069CCF3 /* EnhancedView.swift in Sources */,
+				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
+				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
+				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
