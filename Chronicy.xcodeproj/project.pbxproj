@@ -27,11 +27,9 @@
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
 		A72BB18D2237287D008575FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1872237287D008575FC /* Info.plist */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
-		A7515F252231ADAD00380978 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F232231ADAD00380978 /* Content.swift */; };
 		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A760459B22308DA5007F3268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459A22308DA5007F3268 /* ViewController.swift */; };
-		A760459D22308DA5007F3268 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459C22308DA5007F3268 /* Document.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
@@ -102,13 +100,11 @@
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		A7515F232231ADAD00380978 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
 		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A760459A22308DA5007F3268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A760459C22308DA5007F3268 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
@@ -192,15 +188,6 @@
 			path = Window;
 			sourceTree = "<group>";
 		};
-		A7252A432234319400EE554A /* Document */ = {
-			isa = PBXGroup;
-			children = (
-				A760459C22308DA5007F3268 /* Document.swift */,
-				A7515F232231ADAD00380978 /* Content.swift */,
-			);
-			path = Document;
-			sourceTree = "<group>";
-		};
 		A72BB15C2237280C008575FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +244,6 @@
 			children = (
 				A7109E3222358E0700E3EB29 /* Application */,
 				A7109E21223567FF00E3EB29 /* Tracking */,
-				A7252A432234319400EE554A /* Document */,
 				A77618022231CA080038E815 /* Views */,
 				A7252A41223430E700EE554A /* View Controllers */,
 				A77617FF2231C8A40038E815 /* Utils */,
@@ -507,8 +493,6 @@
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
-				A7515F252231ADAD00380978 /* Content.swift in Sources */,
-				A760459D22308DA5007F3268 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

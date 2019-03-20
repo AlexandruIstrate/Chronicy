@@ -23,13 +23,13 @@ class ViewController: NSViewController, NSTextViewDelegate {
         }
     }
 
-    weak var document: Document? {
-        if let docRepresentedObject: Document = representedObject as? Document {
-            return docRepresentedObject;
-        }
-        
-        return nil;
-    }
+//    weak var document: Document? {
+//        if let docRepresentedObject: Document = representedObject as? Document {
+//            return docRepresentedObject;
+//        }
+//
+//        return nil;
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -50,13 +50,13 @@ class ViewController: NSViewController, NSTextViewDelegate {
 
     // MARK: - NSTextViewDelegate
 
-    func textDidBeginEditing(_ notification: Notification) {
-        document?.objectDidBeginEditing(self);
-    }
-
-    func textDidEndEditing(_ notification: Notification) {
-        document?.objectDidEndEditing(self);
-    }
+//    func textDidBeginEditing(_ notification: Notification) {
+//        document?.objectDidBeginEditing(self);
+//    }
+//
+//    func textDidEndEditing(_ notification: Notification) {
+//        document?.objectDidEndEditing(self);
+//    }
 
 }
 
