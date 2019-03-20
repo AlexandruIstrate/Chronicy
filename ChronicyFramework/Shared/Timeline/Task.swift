@@ -8,13 +8,16 @@
 import Foundation;
 
 public class Task {
-    public let name: String;
-    public let date: Date = Date();
+    public var name: String;
+    public var comment: String;
+    public let date: Date;
     
     public private(set) var actions: [Action] = [];
     
-    public init(name: String) {
+    public init(name: String, comment: String = "", date: Date = Date()) {
         self.name = name;
+        self.comment = comment;
+        self.date = date;
     }
     
     public func add(action: Action) {
@@ -34,9 +37,10 @@ public class Task {
 
 extension Task: Equatable {
     public static func == (lhs: Task, rhs: Task) -> Bool {
-        return lhs.name == rhs.name &&
-               lhs.date == rhs.date &&
-               lhs.actions == rhs.actions;
+        return lhs.name     == rhs.name &&
+               lhs.comment  == rhs.comment &&
+               lhs.date     == rhs.date &&
+               lhs.actions  == rhs.actions;
     }
 }
 
@@ -57,11 +61,13 @@ extension Task: TimeExpressible {
 }
 
 public struct Action: Equatable {
-    let name: String;
+    var name: String;
+    var comment: String;
     let date: Date;
     
-    public init(name: String, date: Date) {
+    public init(name: String, comment: String = "", date: Date = Date()) {
         self.name = name;
+        self.comment = comment;
         self.date = date;
     }
 }

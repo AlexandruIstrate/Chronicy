@@ -17,19 +17,6 @@ class OutlineViewController: NSViewController {
     
     public var dataSource: OutlineViewDataSource?;
     
-    public var timeline: Timeline = Timeline(name: "Test");
-    
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        self.timeline.add(task: Task(name: "Test"))
-        
-        self.dataSource = self;
-        
-        self.onLoadData();
-        self.onLayoutView();
-    }
-    
 }
 
 extension OutlineViewController: CustomOperationSeparatable {
@@ -58,39 +45,6 @@ extension OutlineViewController: CustomOperationSeparatable {
 
     }
 }
-
-extension OutlineViewController: OutlineViewDataSource {
-    func stackCount() -> Int {
-        return timeline.tasks.count;
-    }
-    
-    func stack(for view: OutlineViewController, at index: Int) -> OutlineStackView {
-        guard let stack: OutlineStackView = OutlineStackView.fromNib() else {
-            Log.fatal(message: "Could not create TimelineStackView.");
-            fatalError();
-        }
-        
-        stack.dataSource = self;
-        return stack;
-    }
-}
-
-extension OutlineViewController: OutlineStackViewDataSource {
-    func cellCount() -> Int {
-//        return timeline.tasks.first?.actions.count ?? 0;
-        return 5;
-    }
-    
-    func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
-        guard let cell: OutlineCellView = OutlineCellView.fromNib() else {
-            Log.fatal(message: "Could not create OutlineCellView.");
-            fatalError();
-        }
-        
-        return cell;
-    }
-}
-
 
 protocol OutlineViewDataSource {
     func stackCount() -> Int;
