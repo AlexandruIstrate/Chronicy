@@ -18,8 +18,10 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        self.timeline.add(task: Task(name: "Finally fixed the UI"));
-        self.timeline.add(task: Task(name: "Test"));
+        let task: Task = Task(name: "Test");
+        task.add(action: Action(name: "Action"));
+        
+        self.timeline.add(task: task);
         
         setupContentView();
         setupTimeline();
@@ -45,8 +47,8 @@ extension MainViewController: OutlineViewDataSource {
 
 extension MainViewController: OutlineStackViewDataSource {
     func cellCount() -> Int {
-        //        return timeline.tasks.first?.actions.count ?? 0;
-        return 5;
+        return timeline.tasks.first?.actions.count ?? 0;
+//        return 5;
     }
     
     func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
@@ -54,6 +56,8 @@ extension MainViewController: OutlineStackViewDataSource {
             Log.fatal(message: "Could not create OutlineCellView.");
             fatalError();
         }
+        cell.background = NSColor(calibratedRed: 0.22, green: 0.43, blue: 0.66, alpha: 1);
+        cell.cornerRadius = 15.0;
         
         return cell;
     }

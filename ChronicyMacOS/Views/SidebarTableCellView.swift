@@ -9,14 +9,13 @@ import Cocoa;
 
 class SidebarTableCellView: NSTableCellView {
     
-}
-
-class SidebarTableCellData: NSObject {
-    @objc public dynamic var title: String;
-    @objc public dynamic var icon: NSImage;
+    public var title: String {
+        get { return self.textField?.stringValue ?? ""; }
+        set { self.textField?.stringValue = newValue; }
+    }
     
-    init(title: String, icon: NSImage) {
-        self.title = title;
-        self.icon = icon;
+    public var icon: NSImage {
+        get { return self.imageView!.image!; }
+        set { self.imageView?.image = newValue; }
     }
 }

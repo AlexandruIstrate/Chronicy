@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7098C4F224518920026BAFC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7098C4E224518920026BAFC /* Notification.swift */; };
 		A7109E25223570C200E3EB29 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E24223570C200E3EB29 /* Module.swift */; };
 		A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E262235741A00E3EB29 /* ModuleManager.swift */; };
 		A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E282235756E00E3EB29 /* TrackableProperty.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7098C4E224518920026BAFC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A7109E24223570C200E3EB29 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A7109E262235741A00E3EB29 /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A7109E282235756E00E3EB29 /* TrackableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				A77617FC2231C3660038E815 /* Log.swift */,
 				A72204102240227C001E1BD5 /* SharedConstants.swift */,
+				A7098C4E224518920026BAFC /* Notification.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
 				A758DEBA223E78830060B4FE /* DistributedObjectManager.swift in Sources */,
 				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
+				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
 				A7B1938A2233FA87002BA598 /* Task.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A7252A452234323900EE554A /* TimelineManager.swift in Sources */,

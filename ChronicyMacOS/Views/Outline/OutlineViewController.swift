@@ -17,6 +17,21 @@ class OutlineViewController: NSViewController {
     
     public var dataSource: OutlineViewDataSource?;
     
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
+        setupObservers();
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder);
+        setupObservers();
+    }
+    
+    public func reloadData() {
+        onLoadData();
+        onLayoutView();
+    }
+
 }
 
 extension OutlineViewController: CustomOperationSeparatable {
@@ -44,6 +59,30 @@ extension OutlineViewController: CustomOperationSeparatable {
         }
 
     }
+}
+
+extension OutlineViewController {
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onAdd), name: WindowController.Notifications.toolbarAdd.name, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(onRemove), name: WindowController.Notifications.toolbarRemove.name, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(onEdit), name: WindowController.Notifications.toolbarEdit.name, object: nil);
+    }
+    
+    @objc
+    private func onAdd(notification: Notification) {
+        Log.info(message: "onAdd");
+    }
+    
+    @objc
+    private func onRemove(notification: Notification) {
+        Log.info(message: "onRemove");
+    }
+    
+    @objc
+    private func onEdit(notification: Notification) {
+        Log.info(message: "onEdit");
+    }
+
 }
 
 protocol OutlineViewDataSource {

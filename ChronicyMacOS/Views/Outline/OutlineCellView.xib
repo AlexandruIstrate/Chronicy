@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,14 +21,63 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mn8-cX-p8w">
+                    <rect key="frame" x="226" y="46" width="38" height="38"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="More" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2od-pn-o4d">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onOptionsButtonPressed:" target="c22-O7-iKe" id="dNy-t2-Nkl"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XF4-RM-VyR">
+                    <rect key="frame" x="14" y="33" width="252" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="trE-jh-33Z">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PQ9-l9-oUT">
+                    <rect key="frame" x="14" y="12" width="37" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" usesSingleLineMode="YES" id="zNF-rn-QqC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="SubtitleColor"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWm-42-ohR">
+                    <rect key="frame" x="221" y="2" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="IVf-iR-mss"/>
+                </imageView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="XF4-RM-VyR" secondAttribute="trailing" constant="16" id="10W-N4-RnF"/>
+                <constraint firstItem="Mn8-cX-p8w" firstAttribute="leading" secondItem="nwI-wJ-Jwa" secondAttribute="trailing" constant="152" id="1B3-Gm-rFV"/>
+                <constraint firstAttribute="trailing" secondItem="PQ9-l9-oUT" secondAttribute="trailing" constant="231" id="4dJ-eW-sGf"/>
+                <constraint firstItem="PQ9-l9-oUT" firstAttribute="top" secondItem="XF4-RM-VyR" secondAttribute="bottom" constant="4" id="6Nm-JY-ZED"/>
+                <constraint firstAttribute="trailing" secondItem="Mn8-cX-p8w" secondAttribute="trailing" constant="16" id="9BU-c9-SVM"/>
+                <constraint firstItem="XF4-RM-VyR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="Eg9-nc-kS0"/>
+                <constraint firstItem="Mn8-cX-p8w" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="YFY-fo-dFe"/>
+                <constraint firstItem="XF4-RM-VyR" firstAttribute="top" secondItem="nwI-wJ-Jwa" secondAttribute="bottom" constant="4" id="aSZ-DQ-haO"/>
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="k2U-t0-yUR"/>
+                <constraint firstItem="PQ9-l9-oUT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="lm3-yI-uAz"/>
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="wLG-Rh-yvZ"/>
             </constraints>
             <connections>
+                <outlet property="dateLabel" destination="XF4-RM-VyR" id="8bY-FC-iil"/>
+                <outlet property="iconImageView" destination="hWm-42-ohR" id="hkN-LK-Awa"/>
+                <outlet property="subtitleLabel" destination="PQ9-l9-oUT" id="m4Y-Uo-Xs0"/>
                 <outlet property="titleLabel" destination="nwI-wJ-Jwa" id="V2d-1d-mOx"/>
             </connections>
         </customView>
     </objects>
+    <resources>
+        <image name="More" width="37.5" height="37.5"/>
+        <namedColor name="SubtitleColor">
+            <color red="0.70588235294117652" green="0.70588235294117652" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
