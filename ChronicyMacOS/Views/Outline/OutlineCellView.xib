@@ -25,14 +25,6 @@
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="k2U-t0-yUR"/>
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="wLG-Rh-yvZ"/>
             </constraints>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="color" keyPath="background">
-                    <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="20"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="titleLabel" destination="nwI-wJ-Jwa" id="V2d-1d-mOx"/>
             </connections>

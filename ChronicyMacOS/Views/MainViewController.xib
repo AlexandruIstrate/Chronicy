@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="Chronicy" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="fMa-P3-ncr" id="wSM-dL-rKT"/>
                 <outlet property="sidebarView" destination="alx-j9-feN" id="5CG-2X-dDL"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -80,18 +79,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="fMa-P3-ncr">
-                    <rect key="frame" x="150" y="0.0" width="330" height="272"/>
-                </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fMa-P3-ncr" secondAttribute="bottom" id="9aV-Nm-87P"/>
                 <constraint firstAttribute="bottom" secondItem="VZH-i3-Q7I" secondAttribute="bottom" id="9lL-6W-MlH"/>
                 <constraint firstItem="VZH-i3-Q7I" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Mxb-Za-c3Q"/>
-                <constraint firstItem="fMa-P3-ncr" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="fhp-vd-Ruv"/>
                 <constraint firstItem="VZH-i3-Q7I" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="gAg-BN-9ir"/>
-                <constraint firstAttribute="trailing" secondItem="fMa-P3-ncr" secondAttribute="trailing" id="rXJ-n6-pW7"/>
-                <constraint firstItem="fMa-P3-ncr" firstAttribute="leading" secondItem="VZH-i3-Q7I" secondAttribute="trailing" id="rnz-t4-850"/>
             </constraints>
         </customView>
     </objects>

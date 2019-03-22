@@ -10,6 +10,7 @@
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A70913E32240168C00073349 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E22240168C00073349 /* KeyStorage.swift */; };
 		A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E4224016AD00073349 /* DistributedObjectManager.swift */; };
+		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
@@ -89,6 +90,7 @@
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A70913E22240168C00073349 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyStorage.swift; path = ChronicySafariExtension/Storage/KeyStorage.swift; sourceTree = SOURCE_ROOT; };
 		A70913E4224016AD00073349 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
+		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				A7A88ADC2242C44300C5A94E /* MainViewController.swift */,
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
 				A774D8182242CEAB00D69C7E /* SidebarView.swift */,
+				A7099EEC2243108700482698 /* SidebarTableCellView.swift */,
 				A7A88AE42242C80900C5A94E /* Outline */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
 				A7A88AEB2242C87E00C5A94E /* Editors */,
@@ -530,6 +533,7 @@
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
+				A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */,
