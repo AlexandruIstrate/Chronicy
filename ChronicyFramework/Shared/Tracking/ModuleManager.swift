@@ -11,7 +11,7 @@ public class ModuleManager {
     
     public static let manager: ModuleManager = ModuleManager();
     
-    private var modules: [Module] = [];
+    public private(set) var modules: [Module] = [];
     private let updateQueue: DispatchQueue = DispatchQueue(label: "ModuleManagerUpdateQueue", qos: .background);
     
     private init() {

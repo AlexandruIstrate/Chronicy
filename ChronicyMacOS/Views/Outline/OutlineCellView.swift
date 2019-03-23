@@ -8,7 +8,7 @@
 import Cocoa;
 
 @IBDesignable
-class OutlineCellView: NSView {
+class OutlineCellView: NSTableCellView {
 
     @IBOutlet private weak var titleLabel: NSTextField!;
     @IBOutlet private weak var dateLabel: NSTextField!;

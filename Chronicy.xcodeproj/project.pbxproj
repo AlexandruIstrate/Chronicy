@@ -22,6 +22,9 @@
 		A72BB18B2237287D008575FC /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1852237287D008575FC /* ToolbarItemIcon.pdf */; };
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
 		A72BB18D2237287D008575FC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1872237287D008575FC /* Info.plist */; };
+		A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */; };
+		A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */; };
+		A731E7632245BD5B000B62FB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E7622245BD5B000B62FB /* Task.swift */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
@@ -102,6 +105,9 @@
 		A72BB1852237287D008575FC /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManagerViewController.swift; sourceTree = "<group>"; };
+		A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModuleManagerViewController.xib; sourceTree = "<group>"; };
+		A731E7622245BD5B000B62FB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 			children = (
 				A798867222399C690029A791 /* ContentTracker.swift */,
 				A798867422399D520029A791 /* ContentTrackerManager.swift */,
+				A731E7622245BD5B000B62FB /* Task.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -348,6 +355,8 @@
 			children = (
 				A7A88AE02242C80500C5A94E /* EditTimelineViewController.swift */,
 				A7A88AE12242C80500C5A94E /* EditTimelineViewController.xib */,
+				A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */,
+				A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -488,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
+				A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A7A88AE32242C80500C5A94E /* EditTimelineViewController.xib in Resources */,
@@ -507,6 +517,7 @@
 			files = (
 				A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */,
 				A70913E32240168C00073349 /* KeyStorage.swift in Sources */,
+				A731E7632245BD5B000B62FB /* Task.swift in Sources */,
 				A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */,
 				A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */,
 				A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */,
@@ -534,6 +545,7 @@
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
 				A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */,
+				A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */,

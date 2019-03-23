@@ -40,7 +40,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PQ9-l9-oUT">
-                    <rect key="frame" x="14" y="12" width="37" height="17"/>
+                    <rect key="frame" x="14" y="12" width="252" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" usesSingleLineMode="YES" id="zNF-rn-QqC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="SubtitleColor"/>
@@ -55,8 +55,7 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="XF4-RM-VyR" secondAttribute="trailing" constant="16" id="10W-N4-RnF"/>
-                <constraint firstItem="Mn8-cX-p8w" firstAttribute="leading" secondItem="nwI-wJ-Jwa" secondAttribute="trailing" constant="152" id="1B3-Gm-rFV"/>
-                <constraint firstAttribute="trailing" secondItem="PQ9-l9-oUT" secondAttribute="trailing" constant="231" id="4dJ-eW-sGf"/>
+                <constraint firstAttribute="trailing" secondItem="PQ9-l9-oUT" secondAttribute="trailing" constant="16" id="4dJ-eW-sGf"/>
                 <constraint firstItem="PQ9-l9-oUT" firstAttribute="top" secondItem="XF4-RM-VyR" secondAttribute="bottom" constant="4" id="6Nm-JY-ZED"/>
                 <constraint firstAttribute="trailing" secondItem="Mn8-cX-p8w" secondAttribute="trailing" constant="16" id="9BU-c9-SVM"/>
                 <constraint firstItem="XF4-RM-VyR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="Eg9-nc-kS0"/>

@@ -71,6 +71,13 @@
 			path = Tracking;
 			sourceTree = "<group>";
 		};
+		A731E7612245ABD9000B62FB /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		A758DEBB223EE5CF0060B4FE /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +117,7 @@
 				A7109E2C22357D4900E3EB29 /* Application */,
 				A76045AF22308EAA007F3268 /* Timeline */,
 				A7252A46223443D900EE554A /* Tracking */,
+				A731E7612245ABD9000B62FB /* Core Data */,
 				A758DEBB223EE5CF0060B4FE /* Storage */,
 				A784FDE2223DB7B200A07C5E /* Inter Communication */,
 				A77617FB2231C3270038E815 /* Utils */,

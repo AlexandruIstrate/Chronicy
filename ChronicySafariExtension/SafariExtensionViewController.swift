@@ -9,8 +9,8 @@ import SafariServices;
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
-    @IBOutlet private var stateController: NSArrayController!;
-    @IBOutlet private weak var stateDropDown: NSPopUpButton!;
+    @IBOutlet private var taskController: NSArrayController!;
+    @IBOutlet private var stateController: NSObjectController!;
     
     private static let availableStates: [ExtensionStateManager.State] = [.enabled, .disabled];
     
@@ -22,9 +22,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.stateController.content = SafariExtensionViewController.availableStates.map({ (state: ExtensionStateManager.State) -> StateAdapter in
-            return StateAdapter(state: state);
-        });
+//        self.stateController.content = SafariExtensionViewController.availableStates.map({ (state: ExtensionStateManager.State) -> StateAdapter in
+//            return StateAdapter(state: state);
+//        });
     }
     
 }
