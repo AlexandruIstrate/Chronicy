@@ -6,6 +6,7 @@
 //
 
 import Cocoa;
+import ChronicyFramework;
 
 @IBDesignable
 class OutlineCellView: NSTableCellView {
@@ -15,36 +16,43 @@ class OutlineCellView: NSTableCellView {
     @IBOutlet private weak var subtitleLabel: NSTextField!;
     @IBOutlet private weak var iconImageView: NSImageView!;
     
-    @IBInspectable
-    public var title: String = String() {
-        didSet {
-            self.titleLabel.stringValue = self.title;
-        }
-    }
+    private lazy var optionsMenu: NSMenu = {
+        let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
+        
+        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit", comment: ""), action: #selector(onEdit), keyEquivalent: "");
+        edit.target = self;
+        
+        let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");
+        delete.target = self;
+        
+        menu.items = [ edit, delete ];
+        return menu;
+    } ();
+    
+    public var cellIndex: Int = 0;
+    
+    public weak var parent: OutlineStackView?;
+    
+    public var delegate: OutlineCellViewDelegate?;
     
     @IBInspectable
-    public var subtitle: String = String() {
-        didSet {
-            self.subtitleLabel.stringValue = self.subtitle;
-        }
-    }
+    public var title: String = String();
     
     @IBInspectable
-    public var date: Date = Date() {
-        didSet {
-            self.dateLabel.stringValue = dateFormatter.string(from: self.date);
-        }
-    }
+    public var subtitle: String = String();
     
     @IBInspectable
-    public var dateFormat: String = "MMM d, h:mm a";
+    public var date: Date = Date();
     
 //    @IBInspectable
-//    public var icon: NSImage = NSImage(named: NSImage.Name("More"))! {
+//    public var dateFormat: String = "MMM d, h:mm a" {
 //        didSet {
-//            self.iconImageView.image = self.icon;
+//            self.dateFormatter.dateFormat = self.dateFormat;
 //        }
 //    }
+    
+//    @IBInspectable
+//    public var icon: NSImage = NSImage(named: NSImage.Name("More"))!;
     
     @IBInspectable
     public var background: NSColor = NSColor.white {
@@ -88,7 +96,13 @@ class OutlineCellView: NSTableCellView {
         }
     }
     
-    private let dateFormatter: DateFormatter = DateFormatter();
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter: DateFormatter = DateFormatter();
+        formatter.dateStyle = .short;
+        formatter.timeStyle = .short;
+        
+        return formatter;
+    } ()
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect);
@@ -108,27 +122,12 @@ class OutlineCellView: NSTableCellView {
         self.layer?.shadowOffset = self.shadowOffset;
         self.layer?.shadowRadius = self.shadowRadius;
         self.layer?.cornerRadius = self.cornerRadius;
-        
-//        backgroundIV.image = backgroundImage
-//        backgroundIV.layer.cornerRadius = self.layer.cornerRadius
-//        backgroundIV.clipsToBounds = true
-//        backgroundIV.contentMode = .scaleAspectFill
-//
-//        backgroundIV.frame.origin = bounds.origin
-//        backgroundIV.frame.size = CGSize(width: bounds.width, height: bounds.height)
-//        contentInset = 6
     }
     
     @IBAction private func onOptionsButtonPressed(_ sender: NSButton) {
-        
+        optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: sender.bounds.origin, in: sender);
     }
     
-}
-
-extension OutlineCellView {
-    private func setupView() {
-        self.wantsLayer = true;
-    }
 }
 
 extension OutlineCellView: CustomOperationSeparatable {
@@ -137,6 +136,29 @@ extension OutlineCellView: CustomOperationSeparatable {
     }
     
     func onLayoutView() {
-        
+        self.titleLabel.stringValue = self.title;
+        self.subtitleLabel.stringValue = self.subtitle;
+        self.dateLabel.stringValue = dateFormatter.string(from: self.date);
     }
+}
+
+extension OutlineCellView {
+    private func setupView() {
+        self.wantsLayer = true;
+    }
+    
+    @objc
+    private func onEdit() {
+        self.delegate?.onEdit(cellView: self);
+    }
+    
+    @objc
+    private func onDelete() {
+        self.delegate?.onDelete(cellView: self);
+    }
+}
+
+protocol OutlineCellViewDelegate {
+    func onEdit(cellView: OutlineCellView);
+    func onDelete(cellView: OutlineCellView);
 }

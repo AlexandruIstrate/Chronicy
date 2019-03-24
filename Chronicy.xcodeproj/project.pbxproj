@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
-		A70913E32240168C00073349 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E22240168C00073349 /* KeyStorage.swift */; };
 		A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E4224016AD00073349 /* DistributedObjectManager.swift */; };
 		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
@@ -44,11 +43,13 @@
 		A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AD72242B7BF00C5A94E /* OutlineStackView.xib */; };
 		A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88ADC2242C44300C5A94E /* MainViewController.swift */; };
 		A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88ADD2242C44300C5A94E /* MainViewController.xib */; };
-		A7A88AE22242C80500C5A94E /* EditTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE02242C80500C5A94E /* EditTimelineViewController.swift */; };
-		A7A88AE32242C80500C5A94E /* EditTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE12242C80500C5A94E /* EditTimelineViewController.xib */; };
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
-		A7AC817E223AF935004AF83C /* StateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AC817D223AF935004AF83C /* StateAdapter.swift */; };
+		A7E451282247EEED00848AF5 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E451272247EEED00848AF5 /* KeyStorage.swift */; };
+		A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* TaskEditorViewController.swift */; };
+		A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */; };
+		A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */; };
+		A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +92,6 @@
 
 /* Begin PBXFileReference section */
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
-		A70913E22240168C00073349 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyStorage.swift; path = ChronicySafariExtension/Storage/KeyStorage.swift; sourceTree = SOURCE_ROOT; };
 		A70913E4224016AD00073349 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
@@ -132,11 +132,13 @@
 		A7A88AD72242B7BF00C5A94E /* OutlineStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutlineStackView.xib; sourceTree = "<group>"; };
 		A7A88ADC2242C44300C5A94E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A7A88ADD2242C44300C5A94E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		A7A88AE02242C80500C5A94E /* EditTimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimelineViewController.swift; sourceTree = "<group>"; };
-		A7A88AE12242C80500C5A94E /* EditTimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimelineViewController.xib; sourceTree = "<group>"; };
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
-		A7AC817D223AF935004AF83C /* StateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAdapter.swift; sourceTree = "<group>"; };
+		A7E451272247EEED00848AF5 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
+		A7E45129224811C200848AF5 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
+		A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskEditorViewController.xib; sourceTree = "<group>"; };
+		A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditorViewController.swift; sourceTree = "<group>"; };
+		A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionEditorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,15 +160,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A70913E12240165E00073349 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				A70913E22240168C00073349 /* KeyStorage.swift */,
-			);
-			name = Storage;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		A7109E21223567FF00E3EB29 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,9 +205,9 @@
 		A72BB17F2237287D008575FC /* ChronicySafariExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A7E451262247EEC500848AF5 /* Storage */,
 				A79886762239AB610029A791 /* State */,
 				A798867122399C490029A791 /* Data */,
-				A70913E12240165E00073349 /* Storage */,
 				A7A71AFA223DCEDC0084C57A /* Inter Communication */,
 				A72BB1802237287D008575FC /* SafariExtensionHandler.swift */,
 				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
@@ -314,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				A79886772239AB760029A791 /* ExtensionStateManager.swift */,
-				A7AC817D223AF935004AF83C /* StateAdapter.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -353,8 +345,10 @@
 		A7A88AEB2242C87E00C5A94E /* Editors */ = {
 			isa = PBXGroup;
 			children = (
-				A7A88AE02242C80500C5A94E /* EditTimelineViewController.swift */,
-				A7A88AE12242C80500C5A94E /* EditTimelineViewController.xib */,
+				A7E45129224811C200848AF5 /* TaskEditorViewController.swift */,
+				A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */,
+				A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */,
+				A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */,
 				A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */,
 				A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */,
 			);
@@ -370,6 +364,14 @@
 				A72BB15C2237280C008575FC /* Frameworks */,
 				A760459622308DA5007F3268 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A7E451262247EEC500848AF5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A7E451272247EEED00848AF5 /* KeyStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,11 +498,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */,
+				A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
-				A7A88AE32242C80500C5A94E /* EditTimelineViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
@@ -516,12 +519,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */,
-				A70913E32240168C00073349 /* KeyStorage.swift in Sources */,
 				A731E7632245BD5B000B62FB /* Task.swift in Sources */,
 				A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */,
 				A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */,
 				A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */,
-				A7AC817E223AF935004AF83C /* StateAdapter.swift in Sources */,
+				A7E451282247EEED00848AF5 /* KeyStorage.swift in Sources */,
 				A798867322399C690029A791 /* ContentTracker.swift in Sources */,
 				A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */,
 				A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */,
@@ -532,14 +534,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */,
 				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
+				A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
-				A7A88AE22242C80500C5A94E /* EditTimelineViewController.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,

@@ -65,7 +65,7 @@ extension SidebarView: NSOutlineViewDataSource, NSOutlineViewDelegate {
         
         if let header: String = sidebarItem.header {
             cell.textField?.stringValue = header.uppercased();
-        } else if let content: String = sidebarItem.header {
+        } else if let content: String = sidebarItem.content {
             cell.textField?.stringValue = content;
         } else {
             Log.warining(message: "SidebarItem should have either a header or some content");

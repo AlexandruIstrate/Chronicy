@@ -693,14 +693,14 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6q0-ol-e6i"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="2S8-3S-B7u"/>
-                                <toolbarItem implicitItemIdentifier="332CA692-49BB-46EE-B17C-3ECD86FEBBD7" label="Add" paletteLabel="Add" image="Add" id="2ob-88-1xS">
+                                <toolbarItem implicitItemIdentifier="332CA692-49BB-46EE-B17C-3ECD86FEBBD7" label="Add" paletteLabel="Add" id="2ob-88-1xS">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="50" height="25"/>
                                     <size key="maxSize" width="50" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="or8-0y-Dir">
                                         <rect key="frame" x="0.0" y="14" width="50" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Add" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CbA-Iv-Tas">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CbA-Iv-Tas">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -709,14 +709,14 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="20EDC910-DF03-4FC2-8FBC-DE2B8279303C" label="Remove" paletteLabel="Remove" image="Remove" id="dlK-Zn-crM">
+                                <toolbarItem implicitItemIdentifier="20EDC910-DF03-4FC2-8FBC-DE2B8279303C" label="Remove" paletteLabel="Remove" id="dlK-Zn-crM">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="50" height="25"/>
                                     <size key="maxSize" width="50" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="ZPX-4z-0bY">
                                         <rect key="frame" x="0.0" y="14" width="50" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Remove" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wtr-eb-whi">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wtr-eb-whi">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -725,14 +725,14 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="F31818CA-34D8-471B-986B-0B0DF289E3C7" label="Edit" paletteLabel="Edit" image="Edit" id="NdR-oH-9rD">
+                                <toolbarItem implicitItemIdentifier="F31818CA-34D8-471B-986B-0B0DF289E3C7" label="Edit" paletteLabel="Edit" id="NdR-oH-9rD">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="50" height="25"/>
                                     <size key="maxSize" width="50" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="nX9-a4-Rmm">
                                         <rect key="frame" x="0.0" y="14" width="50" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w9U-qM-7a3">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w9U-qM-7a3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -783,9 +783,4 @@
             <point key="canvasLocation" x="75" y="1037"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Add" width="48" height="48"/>
-        <image name="Edit" width="48" height="48"/>
-        <image name="Remove" width="48" height="48"/>
-    </resources>
 </document>

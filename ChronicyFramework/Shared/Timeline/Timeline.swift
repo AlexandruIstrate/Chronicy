@@ -19,6 +19,14 @@ public class Timeline {
         tasks.append(task);
     }
     
+    @discardableResult
+    public func insertNewTask() -> Task {
+        let task: Task = Task(name: "New Task");
+        self.tasks.append(task);
+        
+        return task;
+    }
+    
     public func remove(task: Task) {
         tasks.removeAll { (iter: Task) -> Bool in
             return iter == task;

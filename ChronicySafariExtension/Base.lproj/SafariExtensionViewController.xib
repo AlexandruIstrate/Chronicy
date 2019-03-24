@@ -7,9 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModule="Chronicy_Safari_Extension" customModuleProvider="target">
             <connections>
-                <outlet property="stateController" destination="b9D-WC-jhU" id="Rc8-JB-Ads"/>
-                <outlet property="stateDropDown" destination="Psk-lK-jZp" id="vBB-W6-HFV"/>
-                <outlet property="taskController" destination="JcN-c2-aU0" id="Hli-Ls-2Tb"/>
+                <outlet property="enabledCheckbox" destination="Thf-oX-cSH" id="gHm-Az-O0h"/>
+                <outlet property="taskDropdown" destination="Psk-lK-jZp" id="be8-YL-daQ"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
@@ -32,19 +31,13 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Psk-lK-jZp">
                             <rect key="frame" x="42" y="-3" width="259" height="25"/>
-                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SDN-9o-4Qh" id="gtF-7b-53h">
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="gtF-7b-53h">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="A5o-s5-0AK">
-                                    <items>
-                                        <menuItem title="Item 1" state="on" id="SDN-9o-4Qh"/>
-                                        <menuItem title="Item 2" id="N0y-ds-V81"/>
-                                        <menuItem title="Item 3" id="2Vg-6E-NbR"/>
-                                    </items>
-                                </menu>
+                                <menu key="menu" id="A5o-s5-0AK"/>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="JcN-c2-aU0" name="content" keyPath="arrangedObjects.stateString" id="ceJ-G0-Elb"/>
+                                <action selector="onTaskChanged:" target="-2" id="NNC-cE-o3j"/>
                             </connections>
                         </popUpButton>
                     </subviews>
@@ -63,6 +56,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="onTrackingChanged:" target="-2" id="8n0-lM-uVy"/>
+                    </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NCN-Bi-49U">
                     <rect key="frame" x="64" y="102" width="202" height="40"/>
@@ -83,7 +79,5 @@
                 <constraint firstItem="FGs-j6-00m" firstAttribute="top" secondItem="NCN-Bi-49U" secondAttribute="bottom" constant="8" id="y1w-IL-buD"/>
             </constraints>
         </customView>
-        <arrayController id="JcN-c2-aU0"/>
-        <objectController id="b9D-WC-jhU"/>
     </objects>
 </document>

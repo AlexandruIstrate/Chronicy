@@ -19,8 +19,11 @@
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A76045B122308EC1007F3268 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76045B022308EC1007F3268 /* Timeline.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
+		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
+		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
 		A7B1938A2233FA87002BA598 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B193892233FA87002BA598 /* Task.swift */; };
 		A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1938B2233FF57002BA598 /* TimeExpressible.swift */; };
+		A7E4513222482D0300848AF5 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4513122482D0300848AF5 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +41,11 @@
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045B022308EC1007F3268 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7B193892233FA87002BA598 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A7B1938B2233FF57002BA598 /* TimeExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExpressible.swift; sourceTree = "<group>"; };
+		A7E4513122482D0300848AF5 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 		A731E7612245ABD9000B62FB /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				A7A52A6C2246777E0086E01F /* CoreDataStack.swift */,
+				A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				A7B1938B2233FF57002BA598 /* TimeExpressible.swift */,
 				A76045B022308EC1007F3268 /* Timeline.swift */,
 				A7B193892233FA87002BA598 /* Task.swift */,
+				A7E4513122482D0300848AF5 /* Action.swift */,
 				A7252A442234323900EE554A /* TimelineManager.swift */,
 			);
 			path = Timeline;
@@ -246,13 +255,16 @@
 				A758DEB8223E75C10060B4FE /* KeyStorage.swift in Sources */,
 				A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
+				A7E4513222482D0300848AF5 /* Action.swift in Sources */,
 				A758DEBA223E78830060B4FE /* DistributedObjectManager.swift in Sources */,
 				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
+				A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
 				A7B1938A2233FA87002BA598 /* Task.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A7252A452234323900EE554A /* TimelineManager.swift in Sources */,
 				A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */,
+				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
 				A7109E25223570C200E3EB29 /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +467,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A7A52A722246E9460086E01F /* Timeline.xcdatamodel */,
+			);
+			currentVersion = A7A52A722246E9460086E01F /* Timeline.xcdatamodel */;
+			path = Timeline.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A760457922308D01007F3268 /* Project object */;
 }

@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNz-5W-oWc">
-                    <rect key="frame" x="6" y="553" width="78" height="39"/>
+                    <rect key="frame" x="6" y="551" width="78" height="41"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="vCG-KU-HVj">
                         <font key="font" metaFont="system" size="32"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -21,20 +21,27 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Twt-ZI-tyX">
-                    <rect key="frame" x="204" y="554" width="38" height="38"/>
+                    <rect key="frame" x="202" y="552" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="KYM-Vv-Cwm"/>
+                        <constraint firstAttribute="width" secondItem="Twt-ZI-tyX" secondAttribute="height" multiplier="1:1" id="cH1-8f-2X9"/>
+                    </constraints>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="More" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q9e-m5-cXC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="onOptionsClicked:" target="c22-O7-iKe" id="k2i-f3-0uQ"/>
+                    </connections>
                 </button>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="102" horizontalPageScroll="10" verticalLineScroll="102" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-Sd-Ti9">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="545"/>
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="543"/>
                     <clipView key="contentView" id="HIQ-pw-2lz">
-                        <rect key="frame" x="1" y="1" width="248" height="543"/>
+                        <rect key="frame" x="1" y="1" width="248" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" id="dsn-6g-7uC">
-                                <rect key="frame" x="0.0" y="0.0" width="248" height="543"/>
+                                <rect key="frame" x="0.0" y="0.0" width="248" height="541"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -86,6 +93,7 @@
                 <constraint firstItem="Mze-Sd-Ti9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="zOq-rp-jAH"/>
             </constraints>
             <connections>
+                <outlet property="nameLabel" destination="yNz-5W-oWc" id="9al-8w-Ic6"/>
                 <outlet property="tableView" destination="dsn-6g-7uC" id="QtP-83-nVX"/>
             </connections>
             <point key="canvasLocation" x="139" y="151"/>

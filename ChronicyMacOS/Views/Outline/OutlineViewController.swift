@@ -17,16 +17,6 @@ class OutlineViewController: NSViewController {
     
     public var dataSource: OutlineViewDataSource?;
     
-    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
-        setupObservers();
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder);
-        setupObservers();
-    }
-    
     public func reloadData() {
         onLoadData();
         onLayoutView();
@@ -40,10 +30,13 @@ extension OutlineViewController: CustomOperationSeparatable {
             return;
         }
         
-        self.internalStackCount = dataSource.stackCount();
+        self.removeAll();
+        self.internalStackCount = dataSource.stackCount(for: self);
         
         for i in 0..<self.internalStackCount {
             let stack: OutlineStackView = dataSource.stack(for: self, at: i);
+            stack.stackIndex = i;
+            stack.parent = self;
             self.stacks.append(stack);
             
             stack.onLoadData();
@@ -62,30 +55,16 @@ extension OutlineViewController: CustomOperationSeparatable {
 }
 
 extension OutlineViewController {
-    private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onAdd), name: WindowController.Notifications.toolbarAdd.name, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(onRemove), name: WindowController.Notifications.toolbarRemove.name, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(onEdit), name: WindowController.Notifications.toolbarEdit.name, object: nil);
+    private func removeAll() {
+        self.stacks.removeAll();
+        
+        for view: NSView in stackView.views {
+            stackView.removeView(view);
+        }
     }
-    
-    @objc
-    private func onAdd(notification: Notification) {
-        Log.info(message: "onAdd");
-    }
-    
-    @objc
-    private func onRemove(notification: Notification) {
-        Log.info(message: "onRemove");
-    }
-    
-    @objc
-    private func onEdit(notification: Notification) {
-        Log.info(message: "onEdit");
-    }
-
 }
 
 protocol OutlineViewDataSource {
-    func stackCount() -> Int;
+    func stackCount(for view: OutlineViewController) -> Int;
     func stack(for view: OutlineViewController, at index: Int) -> OutlineStackView;
 }

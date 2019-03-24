@@ -24,6 +24,14 @@ public class Task {
         actions.append(action);
     }
     
+    @discardableResult
+    public func insertNewAction() -> Action {
+        let action: Action = Action(name: "New Action");
+        self.actions.append(action);
+        
+        return action;
+    }
+    
     public func remove(action: Action) {
         actions.removeAll { (iter: Action) -> Bool in
             return iter == action;
@@ -57,17 +65,5 @@ extension Task: TimeExpressible {
         return actions.filter({ (action: Action) -> Bool in
             return action.date > date;
         });
-    }
-}
-
-public struct Action: Equatable {
-    var name: String;
-    var comment: String;
-    let date: Date;
-    
-    public init(name: String, comment: String = "", date: Date = Date()) {
-        self.name = name;
-        self.comment = comment;
-        self.date = date;
     }
 }

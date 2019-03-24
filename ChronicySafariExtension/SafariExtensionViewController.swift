@@ -9,10 +9,8 @@ import SafariServices;
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
-    @IBOutlet private var taskController: NSArrayController!;
-    @IBOutlet private var stateController: NSObjectController!;
-    
-    private static let availableStates: [ExtensionStateManager.State] = [.enabled, .disabled];
+    @IBOutlet private weak var taskDropdown: NSPopUpButton!;
+    @IBOutlet private weak var enabledCheckbox: NSButton!;
     
     public static let shared: SafariExtensionViewController = {
         let shared: SafariExtensionViewController = SafariExtensionViewController();
@@ -22,9 +20,20 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
-//        self.stateController.content = SafariExtensionViewController.availableStates.map({ (state: ExtensionStateManager.State) -> StateAdapter in
-//            return StateAdapter(state: state);
-//        });
+        setupData();
     }
     
+    @IBAction func onTaskChanged(_ sender: NSPopUpButton) {
+        
+    }
+    
+    @IBAction func onTrackingChanged(_ sender: NSButton) {
+        ExtensionStateManager.manager.state = ((sender.state == NSControl.StateValue.on) ? .enabled : .disabled);
+    }
+}
+
+extension SafariExtensionViewController {
+    private func setupData() {
+        
+    }
 }
