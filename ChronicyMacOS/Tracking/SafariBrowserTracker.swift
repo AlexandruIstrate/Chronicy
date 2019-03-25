@@ -50,7 +50,7 @@ class SafariBrowserModule: BrowserModule {
     
     override func update() {
         super.update();
-        Log.info(message: "SafariBrowserModule Updated!");
+//        Log.info(message: "SafariBrowserModule Updated!");
     }
     
 }
