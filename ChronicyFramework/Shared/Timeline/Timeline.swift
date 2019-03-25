@@ -33,7 +33,6 @@ public class Timeline: NSManagedObject {
         
         return task;
     }
-
     
 }
 

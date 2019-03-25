@@ -67,7 +67,7 @@ extension MainViewController: OutlineStackViewDataSource, OutlineStackViewDelega
         
         let action: Action = self.timeline.tasksArray[stack.stackIndex].actionsArray[index];
         cell.title = action.name;
-        cell.date = action.date as Date;
+        cell.date = action.date;
         
         return cell;
     }
