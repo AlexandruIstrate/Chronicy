@@ -6,14 +6,17 @@
 //
 
 import Foundation;
+import CoreData;
 
-// TODO: Load from CoreData
 public class TimelineManager {
+    
+    private let coreDataStack: CoreDataStack = CoreDataStack.stack;
     
     public let timeline: Timeline;
     
     public init(timelineName: String) {
-        self.timeline = Timeline(name: timelineName);
+        let item: NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Timeline", into: coreDataStack.managedObjectContext);
+        self.timeline = item as! Timeline;
     }
     
     public func add(task: Task) {

@@ -9,10 +9,22 @@ import CoreData;
 
 public class CoreDataStack {
     
+    public static let stack: CoreDataStack = CoreDataStack();
+    
+    private init() {}
+    
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        return self.persistentContainer.viewContext;
+    } ();
+    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container: NSPersistentContainer = NSPersistentContainer(name: "Timeline");
         container.loadPersistentStores() { (description: NSPersistentStoreDescription, error: Error?) in
-//            return nil;
+            guard let error: Error = error else {
+                return;
+            }
+            
+            Log.fatal(message: "Could not create CoreData container! Reason: \(error)");
         }
         
         return container;

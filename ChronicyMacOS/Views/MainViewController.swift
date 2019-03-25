@@ -13,7 +13,9 @@ class MainViewController: NSViewController {
     @IBOutlet private weak var sidebarView: SidebarView!;
     
     private var outlineView: OutlineViewController!;
-    private var timeline: Timeline = Timeline(name: "Test");
+    
+    private var timelineManager: TimelineManager = TimelineManager(timelineName: "Test");
+    private var timeline: Timeline { return timelineManager.timeline; }
 
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -38,7 +40,7 @@ extension MainViewController: OutlineViewDataSource {
             fatalError();
         }
         
-        let task: Task = timeline.tasks[index];
+        let task: Task = timeline.tasksArray[index];
         
         stack.dataSource = self;
         stack.delegate = self;
@@ -50,7 +52,7 @@ extension MainViewController: OutlineViewDataSource {
 
 extension MainViewController: OutlineStackViewDataSource, OutlineStackViewDelegate {
     func cellCount(for stack: OutlineStackView, at index: Int) -> Int {
-        return timeline.tasks[index].actions.count;
+        return timeline.tasksArray[index].actions.count;
     }
     
     func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
@@ -63,22 +65,22 @@ extension MainViewController: OutlineStackViewDataSource, OutlineStackViewDelega
         cell.cornerRadius = 15.0;
         cell.delegate = self;
         
-        let action: Action = self.timeline.tasks[stack.stackIndex].actions[index];
+        let action: Action = self.timeline.tasksArray[stack.stackIndex].actionsArray[index];
         cell.title = action.name;
-        cell.date = action.date;
+        cell.date = action.date as Date;
         
         return cell;
     }
     
     func onAdd(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         task.insertNewAction();
         
         self.outlineView.reloadData();
     }
     
     func onEdit(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         
         let editor: TaskEditorViewController = TaskEditorViewController();
         editor.taskTitle = task.name;
@@ -99,7 +101,7 @@ extension MainViewController: OutlineStackViewDataSource, OutlineStackViewDelega
     }
     
     func onDelete(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         self.timeline.remove(task: task);
         
         self.outlineView.reloadData();
@@ -113,7 +115,7 @@ extension MainViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let action: Action = self.timeline.tasks[stackView.stackIndex].actions[cellView.cellIndex];
+        let action: Action = self.timeline.tasksArray[stackView.stackIndex].actionsArray[cellView.cellIndex];
         
         let editor: ActionEditorViewController = ActionEditorViewController();
         editor.actionTitle = action.name;
