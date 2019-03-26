@@ -6,6 +6,7 @@
 //
 
 import SafariServices;
+import ChronicyFramework;
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
@@ -13,16 +14,17 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
         page.getPropertiesWithCompletionHandler { properties in
             NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+            
+            guard let url: URL = properties?.url else {
+                return;
+            }
+            
+            ContentTrackerManager.manager.sendData(data: url, trackerType: .url);
         }
     }
     
     override func messageReceivedFromContainingApp(withName messageName: String, userInfo: [String : Any]? = nil) {
         NSLog("The extension received a message (\(messageName)) from containing app with userInfo (\(userInfo ?? [:]))");
-    }
-    
-    override func toolbarItemClicked(in window: SFSafariWindow) {
-        // This method will be called when your toolbar item is clicked.
-        NSLog("The extension's toolbar item was clicked");
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
@@ -31,12 +33,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-//        let defaults: UserDefaults = UserDefaults(suiteName: "extension.ro.internals")!;
-//        defaults.set(Date().description, forKey: "testMessage");
-//        defaults.synchronize();
-
-        DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: "extension.ro.internals");
-        DistributedObjectManager.manager.set(object: "Message from Safari: \(Date().description)", for: "test");
+        if let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks) {
+            print(tasks);
+        }
         
         return SafariExtensionViewController.shared;
     }

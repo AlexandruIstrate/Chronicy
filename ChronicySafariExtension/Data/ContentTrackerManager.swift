@@ -25,7 +25,7 @@ class ContentTrackerManager {
         self.trackers.removeValue(forKey: tracker.trackerType());
     }
     
-    public func sendMessage(message: String, trackerType: ContentTrackerType? = nil) {
+    public func sendData(data: Any, trackerType: ContentTrackerType? = nil) {
         let matchingTrackers: [ContentTracker]!;
         
         if let trackerType: ContentTrackerType = trackerType {
@@ -36,7 +36,7 @@ class ContentTrackerManager {
         }
         
         for tracker: ContentTracker in matchingTrackers {
-            tracker.sendMessage(message: message);
+            tracker.sendData(data: data);
         }
     }
     

@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
-		A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913E4224016AD00073349 /* DistributedObjectManager.swift */; };
 		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
+		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
@@ -45,7 +45,6 @@
 		A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88ADD2242C44300C5A94E /* MainViewController.xib */; };
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
-		A7E451282247EEED00848AF5 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E451272247EEED00848AF5 /* KeyStorage.swift */; };
 		A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* TaskEditorViewController.swift */; };
 		A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */; };
@@ -74,6 +73,13 @@
 			remoteGlobalIDString = A760458622308D47007F3268;
 			remoteInfo = ChronicyFrameworkMacOS;
 		};
+		A7A68A682249605B0090860A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A760458622308D47007F3268;
+			remoteInfo = ChronicyFrameworkMacOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,8 +98,8 @@
 
 /* Begin PBXFileReference section */
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
-		A70913E4224016AD00073349 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
+		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
@@ -134,7 +140,6 @@
 		A7A88ADD2242C44300C5A94E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
-		A7E451272247EEED00848AF5 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		A7E45129224811C200848AF5 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditorViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				A7515F222231ADAD00380978 /* WindowController.swift */,
+				A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -205,7 +211,6 @@
 		A72BB17F2237287D008575FC /* ChronicySafariExtension */ = {
 			isa = PBXGroup;
 			children = (
-				A7E451262247EEC500848AF5 /* Storage */,
 				A79886762239AB610029A791 /* State */,
 				A798867122399C490029A791 /* Data */,
 				A7A71AFA223DCEDC0084C57A /* Inter Communication */,
@@ -314,7 +319,6 @@
 		A7A71AFA223DCEDC0084C57A /* Inter Communication */ = {
 			isa = PBXGroup;
 			children = (
-				A70913E4224016AD00073349 /* DistributedObjectManager.swift */,
 				A70913DE224007B100073349 /* ApplicationMessaging.swift */,
 			);
 			path = "Inter Communication";
@@ -366,14 +370,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		A7E451262247EEC500848AF5 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				A7E451272247EEED00848AF5 /* KeyStorage.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +384,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A7A68A692249605B0090860A /* PBXTargetDependency */,
 			);
 			name = ChronicySafariExtension;
 			productName = ChronicySafariExtension;
@@ -522,8 +519,6 @@
 				A731E7632245BD5B000B62FB /* Task.swift in Sources */,
 				A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */,
 				A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */,
-				A70913E5224016AD00073349 /* DistributedObjectManager.swift in Sources */,
-				A7E451282247EEED00848AF5 /* KeyStorage.swift in Sources */,
 				A798867322399C690029A791 /* ContentTracker.swift in Sources */,
 				A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */,
 				A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */,
@@ -551,6 +546,7 @@
 				A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
+				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
 				A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +563,11 @@
 			isa = PBXTargetDependency;
 			name = ChronicyFrameworkMacOS;
 			targetProxy = A77618032231CB410038E815 /* PBXContainerItemProxy */;
+		};
+		A7A68A692249605B0090860A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChronicyFrameworkMacOS;
+			targetProxy = A7A68A682249605B0090860A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

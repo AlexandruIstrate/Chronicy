@@ -17,12 +17,15 @@ public class Timeline {
     
     public func add(task: Task) {
         tasks.append(task);
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskAdded.rawValue), object: self, userInfo: nil);
     }
     
     @discardableResult
     public func insertNewTask() -> Task {
         let task: Task = Task(name: "New Task");
-        self.tasks.append(task);
+        self.add(task: task);
         
         return task;
     }
@@ -31,6 +34,9 @@ public class Timeline {
         tasks.removeAll { (iter: Task) -> Bool in
             return iter == task;
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskRemoved.rawValue), object: self, userInfo: nil);
     }
 }
 
@@ -47,5 +53,13 @@ extension Timeline: TimeExpressible {
         return tasks.filter({ (task: Task) -> Bool in
             return task.date > date;
         });
+    }
+}
+
+extension Timeline {
+    public enum Notifications: String, NotificationName {
+        case tasksModified;
+        case taskAdded;
+        case taskRemoved;
     }
 }

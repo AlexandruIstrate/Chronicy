@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,10 +19,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGs-j6-00m">
-                    <rect key="frame" x="16" y="73" width="298" height="21"/>
+                    <rect key="frame" x="16" y="72" width="298" height="22"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7AR-bI-SGU">
-                            <rect key="frame" x="-2" y="2" width="32" height="17"/>
+                            <rect key="frame" x="-2" y="3" width="32" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Task" id="gsI-Br-GiS">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -30,7 +30,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Psk-lK-jZp">
-                            <rect key="frame" x="42" y="-3" width="259" height="25"/>
+                            <rect key="frame" x="42" y="-2" width="259" height="25"/>
                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="gtF-7b-53h">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -51,7 +51,7 @@
                     </customSpacing>
                 </stackView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Thf-oX-cSH">
-                    <rect key="frame" x="130" y="35" width="71" height="18"/>
+                    <rect key="frame" x="130" y="34" width="71" height="18"/>
                     <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="50n-tl-wCK">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -72,6 +72,7 @@
                 <constraint firstItem="Thf-oX-cSH" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="FSZ-KH-1hQ"/>
                 <constraint firstAttribute="trailing" secondItem="FGs-j6-00m" secondAttribute="trailing" constant="16" id="HHW-zX-SuX"/>
                 <constraint firstItem="NCN-Bi-49U" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="Xnp-KT-G87"/>
+                <constraint firstAttribute="bottom" secondItem="Thf-oX-cSH" secondAttribute="bottom" constant="36" id="Yp5-t7-Sfs"/>
                 <constraint firstAttribute="trailing" secondItem="NCN-Bi-49U" secondAttribute="trailing" constant="64" id="Z9k-rK-Hs2"/>
                 <constraint firstItem="Thf-oX-cSH" firstAttribute="top" secondItem="FGs-j6-00m" secondAttribute="bottom" constant="22" id="cyd-us-76k"/>
                 <constraint firstItem="NCN-Bi-49U" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="64" id="e9f-Le-8iI"/>

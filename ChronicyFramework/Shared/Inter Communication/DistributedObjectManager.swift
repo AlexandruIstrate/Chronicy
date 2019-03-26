@@ -24,6 +24,7 @@ public class DistributedObjectManager {
     public static var manager: DistributedObjectManager = DistributedObjectManager();
     
     private var subscribers: [ObjectManagerDelegate] = [];
+    private let dispatchQueue: DispatchQueue = DispatchQueue(label: "DistributedObjectManagerQueue", attributes: .concurrent);
     
     public var keyStorage: KeyStorage = MemoryKeyStorage();
     public var encoding: String.Encoding = .utf8;
@@ -37,6 +38,30 @@ public class DistributedObjectManager {
     private init() {}
     
     public func get<T: Codable>(for key: String) -> T? {
+        var result: T!;
+        
+        dispatchQueue.sync {
+            result = self.getInternal(for: key);
+        }
+        
+        return result;
+    }
+    
+    public func set<T: Codable>(object: T, for key: String) {
+        dispatchQueue.async(flags: .barrier) {
+            self.setInternal(object: object, for: key);
+        }
+    }
+    
+    public func subscribe(subscriber: ObjectManagerDelegate) {
+        dispatchQueue.async(flags: .barrier) {
+            self.subscribers.append(subscriber);
+        }
+    }
+}
+
+extension DistributedObjectManager {
+    private func getInternal<T: Codable>(for key: String) -> T? {
         do {
             let decoder: JSONDecoder = JSONDecoder();
             
@@ -74,7 +99,7 @@ public class DistributedObjectManager {
         }
     }
     
-    public func set<T: Codable>(object: T, for key: String) {
+    private func setInternal<T: Codable>(object: T, for key: String) {
         do {
             let encoder: JSONEncoder = JSONEncoder();
             let data: Data = try encoder.encode(DistributedObject<T>(object: object));
@@ -90,10 +115,6 @@ public class DistributedObjectManager {
         } catch {
             Log.error(message: "An unknown occurred while setting object for key \(key).");
         }
-    }
-    
-    public func subscribe(subscriber: ObjectManagerDelegate) {
-        self.subscribers.append(subscriber);
     }
 }
 

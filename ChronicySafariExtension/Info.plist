@@ -53,7 +53,7 @@
 				<string>*</string>
 			</array>
 			<key>Level</key>
-			<string>Some</string>
+			<string>All</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableDescription</key>

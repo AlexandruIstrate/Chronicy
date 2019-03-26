@@ -20,7 +20,9 @@ class MainViewController: NSViewController {
         
         setupContentView();
         setupTimeline();
+        
         setupObservers();
+        registerTaskObservers();
         
         setupModules();
     }
@@ -187,5 +189,25 @@ extension MainViewController {
     @objc
     private func onApplicationEdit(notification: Notification) {
         Log.info(message: "onEdit");
+    }
+}
+
+extension MainViewController {
+    private func registerTaskObservers() {
+        let nc: NotificationCenter = NotificationCenter.default;
+        nc.addObserver(self, selector: #selector(onTasksModified), name: NSNotification.Name(rawValue: Timeline.Notifications.tasksModified.rawValue), object: nil);
+    }
+    
+    private func deregisterTaskObservers() {
+        let nc: NotificationCenter = NotificationCenter.default;
+        nc.removeObserver(self, name: NSNotification.Name(rawValue: Timeline.Notifications.tasksModified.rawValue), object: nil);
+    }
+    
+    @objc
+    private func onTasksModified(notification: Notification) {
+        let taskNames: [String] = self.timeline.tasks.map { (task: Task) -> String in
+            return task.name;
+        }
+        DistributedObjectManager.manager.set(object: taskNames, for: SharedConstants.DistributedObjectKeys.tasks);
     }
 }

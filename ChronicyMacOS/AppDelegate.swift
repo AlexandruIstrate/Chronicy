@@ -13,7 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         Log.target = ConsoleLogTarget();
+        
         DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: SharedConstants.appGroupSuiteName);
+        DistributedObjectManager.manager.retrievalAction = .remove;
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

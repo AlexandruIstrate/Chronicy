@@ -38,7 +38,7 @@ class ActionEditorViewController: NSViewController {
     }
     
     @IBAction private func onOKPressed(_ sender: NSButton) {
-        self.actionComment = self.titleTextField.stringValue;
+        self.actionTitle = self.titleTextField.stringValue;
         self.actionComment = self.commentTextView.string;
         self.actionDate = self.datePicker.dateValue;
         

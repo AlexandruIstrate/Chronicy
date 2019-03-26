@@ -19,9 +19,18 @@ public class ModuleManager {
         RunLoop.main.add(timer, forMode: .common);
     }
     
+    deinit {
+        updateQueue.async(flags: .barrier) {
+            for module: Module in self.modules {
+                module.onUnload();
+            }
+        }
+    }
+    
     public func add(module: Module) {
         updateQueue.async(flags: .barrier) {
             self.modules.append(module);
+            module.onLoad();
         }
     }
     
@@ -30,6 +39,7 @@ public class ModuleManager {
             self.modules.removeAll { (iter: Module) -> Bool in
                 return iter.moduleName() == module.moduleName();
             }
+            module.onUnload();
         }
     }
 }

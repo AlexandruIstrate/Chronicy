@@ -22,7 +22,4 @@ class BrowserModule: Module {
     func browserVersion() -> BrowserVersion { fatalError("Method browserVersion is abstract and must be implemented in a subclass of this class."); }
     
     func launch(/* with: BrowserLaunchParams */) { fatalError("Method launch is abstract and must be implemented in a subclass of this class."); }
-    
-    func loadExtension(/* with: ExtensionLoadParams */) { fatalError("Method loadExtension is abstract and must be implemented in a subclass of this class."); }
-    func unloadExtension() {}
 }

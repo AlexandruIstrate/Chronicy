@@ -6,10 +6,11 @@
 //
 
 import Foundation;
+import ChronicyFramework;
 
 protocol ContentTracker {
     func trackerType() -> ContentTrackerType;
-    func sendMessage(message: Any);
+    func sendData(data: Any);
 }
 
 enum ContentTrackerType {
@@ -21,8 +22,8 @@ class URLTracker: ContentTracker {
         return .url;
     }
     
-    func sendMessage(message: Any) {
-        guard let url: URL = message as? URL else {
+    func sendData(data: Any) {
+        guard let url: URL = data as? URL else {
             fatalError("Not compatible with URL!");
         }
         

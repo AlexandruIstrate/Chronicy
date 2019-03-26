@@ -69,10 +69,16 @@ extension SidebarView: NSOutlineViewDataSource, NSOutlineViewDelegate {
             cell.textField?.stringValue = content;
         } else {
             Log.warining(message: "SidebarItem should have either a header or some content");
-            return nil;
         }
         
+        cell.imageView?.image = sidebarItem.icon;
+        
         return cell;
+    }
+    
+    func outlineViewSelectionDidChange(_ notification: Notification) {
+        let selectedItem: SidebarItem = self.items[self.selectedRow];
+        selectedItem.callback?(selectedItem, self);
     }
 }
 
@@ -93,33 +99,32 @@ extension SidebarView {
     }
     
     private func setupSidebarItems() {
-        self.add(sidebarItem: SidebarItem(header: "Items"));
-        self.add(sidebarItem: SidebarItem(content: "Test"));
-        self.add(sidebarItem: SidebarItem(content: "Test"));
-        self.add(sidebarItem: SidebarItem(content: "Test"));
+        self.add(sidebarItem: SidebarItem(header: "Navigate"));
+        
+        self.add(sidebarItem: SidebarItem(content: "Outline", icon: NSImage(named: NSImage.Name("Outline"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
+            
+        }));
+        self.add(sidebarItem: SidebarItem(content: "Timeline", icon: NSImage(named: NSImage.Name("Timeline"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
+            
+        }));
+        self.add(sidebarItem: SidebarItem(content: "Trackers", icon: NSImage(named: NSImage.Name("Trackers"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
+            
+        }));
     }
 }
 
 struct SidebarItem {
     var header: String?;
     var content: String?;
-    var data: Any?;
+    var icon: NSImage?;
     
     typealias SidebarItemCallback = (SidebarItem, NSOutlineView) -> ();
     var callback: SidebarItemCallback?;
     
-    init(header: String?, content: String?, data: Any?, callback: SidebarItemCallback?) {
+    init(header: String? = nil, content: String? = nil, icon: NSImage? = nil, callback: SidebarItemCallback? = nil) {
         self.header = header;
         self.content = content;
-        self.data = data;
+        self.icon = icon;
         self.callback = callback;
-    }
-    
-    init(header: String, data: Any? = nil, callback: SidebarItemCallback? = nil) {
-        self.init(header: header, content: nil, data: data, callback: callback);
-    }
-    
-    init(content: String, data: Any? = nil, callback: SidebarItemCallback? = nil) {
-        self.init(header: nil, content: content, data: data, callback: callback);
     }
 }

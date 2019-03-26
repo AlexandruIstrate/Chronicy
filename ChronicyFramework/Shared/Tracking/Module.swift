@@ -23,6 +23,14 @@ open class Module {
         return .low;
     }
     
+    open func onLoad() {
+        
+    }
+    
+    open func onUnload() {
+        
+    }
+    
     open func update() {
         for property: TrackableProperty in properties {
             property.onRefreshData();
