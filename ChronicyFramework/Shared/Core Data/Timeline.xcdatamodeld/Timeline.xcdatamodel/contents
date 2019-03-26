@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Action" representedClassName=".Action" syncable="YES">
         <attribute name="comment" attributeType="String" syncable="YES"/>
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="575322600" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="actions" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="comment" attributeType="String" syncable="YES"/>
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="575322600" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="actions" toMany="YES" deletionRule="Nullify" destinationEntity="Action" inverseName="task" inverseEntity="Action" syncable="YES"/>
         <relationship name="timeline" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="tasks" inverseEntity="Timeline" syncable="YES"/>
@@ -18,8 +18,8 @@
         <relationship name="tasks" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="timeline" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Action" positionX="-50.83984375" positionY="141.81640625" width="128" height="103"/>
-        <element name="Task" positionX="-54" positionY="0" width="128" height="118"/>
+        <element name="Action" positionX="-50.83984375" positionY="141.81640625" width="128" height="105"/>
+        <element name="Task" positionX="-54" positionY="0" width="128" height="120"/>
         <element name="Timeline" positionX="-229.48046875" positionY="-80.5859375" width="128" height="73"/>
     </elements>
 </model>

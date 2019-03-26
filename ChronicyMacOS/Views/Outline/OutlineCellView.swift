@@ -19,7 +19,7 @@ class OutlineCellView: NSTableCellView {
     private lazy var optionsMenu: NSMenu = {
         let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
         
-        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit", comment: ""), action: #selector(onEdit), keyEquivalent: "");
+        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit...", comment: ""), action: #selector(onEdit), keyEquivalent: "");
         edit.target = self;
         
         let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");
@@ -98,8 +98,10 @@ class OutlineCellView: NSTableCellView {
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter();
+        formatter.timeZone = TimeZone.autoupdatingCurrent;
         formatter.dateStyle = .short;
         formatter.timeStyle = .short;
+//        formatter.dateFormat = "MMM d, h:mm a";
         
         return formatter;
     } ()

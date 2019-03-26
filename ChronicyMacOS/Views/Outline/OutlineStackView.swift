@@ -20,7 +20,7 @@ class OutlineStackView: NSView {
         let add: NSMenuItem = NSMenuItem(title: NSLocalizedString("Add", comment: ""), action: #selector(onAdd), keyEquivalent: "");
         add.target = self;
 
-        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit", comment: ""), action: #selector(onEdit), keyEquivalent: "");
+        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit...", comment: ""), action: #selector(onEdit), keyEquivalent: "");
         edit.target = self;
         
         let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");

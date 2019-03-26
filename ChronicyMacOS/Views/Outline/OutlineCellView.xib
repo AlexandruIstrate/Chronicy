@@ -23,6 +23,10 @@
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mn8-cX-p8w">
                     <rect key="frame" x="214" y="34" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="SIg-a8-Jq5"/>
+                        <constraint firstAttribute="width" secondItem="Mn8-cX-p8w" secondAttribute="height" multiplier="1:1" id="nDc-al-dUl"/>
+                    </constraints>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="More" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2od-pn-o4d">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>

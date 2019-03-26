@@ -26,6 +26,8 @@
 		A731E7632245BD5B000B62FB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E7622245BD5B000B62FB /* Task.swift */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
+		A7599030224ACF5C003E8BF8 /* InteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */; };
+		A7599031224ACF5C003E8BF8 /* InteractionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
 		A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A774D8182242CEAB00D69C7E /* SidebarView.swift */; };
@@ -118,6 +120,8 @@
 		A731E7622245BD5B000B62FB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
+		A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsViewController.swift; sourceTree = "<group>"; };
+		A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InteractionsViewController.xib; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
 		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 				A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */,
 				A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */,
 				A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */,
+				A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */,
+				A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */,
 				A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
+				A7599031224ACF5C003E8BF8 /* InteractionsViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
@@ -552,6 +559,7 @@
 				A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
+				A7599030224ACF5C003E8BF8 /* InteractionsViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,

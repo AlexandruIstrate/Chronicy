@@ -1,5 +1,5 @@
 //
-//  Task+CoreDataClass.swift
+//  Task.swift
 //  
 //
 //  Created by Alexandru Istrate on 25/03/2019.
@@ -27,8 +27,11 @@ public class Task: NSManagedObject {
     
     @discardableResult
     public func insertNewAction() -> Action {
-        let action: Action = NSEntityDescription.insertNewObject(forEntityName: "Action", into: CoreDataStack.stack.managedObjectContext) as! Action;
-        self.actions.insert(action);
+        let action: Action = NSEntityDescription.insertNewObject(forEntityName: "Action", into: CoreDataStack.stack.managedObjectContext!) as! Action;
+        action.name = "New Action";
+        action.comment = "";
+        action.date = Date();
+        self.add(action: action);
         
         return action;
     }

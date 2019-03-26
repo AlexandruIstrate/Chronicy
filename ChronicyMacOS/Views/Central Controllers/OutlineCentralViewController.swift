@@ -18,11 +18,12 @@ class OutlineCentralViewController: NSViewController {
         
         setupContentView();
         setupTimeline();
-        
         setupObservers();
-        registerTaskObservers();
-        
-        setupModules();
+    }
+    
+    override func viewWillDisappear() {
+        try! CoreDataStack.stack.managedObjectContext!.save();
+        super.viewWillDisappear();
     }
     
 }
@@ -38,7 +39,7 @@ extension OutlineCentralViewController: OutlineViewDataSource {
             fatalError();
         }
         
-        let task: Task = timeline.tasks[index];
+        let task: Task = timeline.tasksArray[index];
         
         stack.dataSource = self;
         stack.delegate = self;
@@ -50,7 +51,7 @@ extension OutlineCentralViewController: OutlineViewDataSource {
 
 extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStackViewDelegate {
     func cellCount(for stack: OutlineStackView, at index: Int) -> Int {
-        return timeline.tasks[index].actions.count;
+        return timeline.tasksArray[index].actionsArray.count;
     }
     
     func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
@@ -63,22 +64,23 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         cell.cornerRadius = 15.0;
         cell.delegate = self;
         
-        let action: Action = self.timeline.tasks[stack.stackIndex].actions[index];
+        let action: Action = self.timeline.tasksArray[stack.stackIndex].actionsArray[index];
         cell.title = action.name;
-        cell.date = action.date;
+        cell.subtitle = action.comment;
+        cell.date = action.date as Date;
         
         return cell;
     }
     
     func onAdd(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         task.insertNewAction();
         
         self.outlineView.reloadData();
     }
     
     func onEdit(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         
         let editor: TaskEditorViewController = TaskEditorViewController();
         editor.taskTitle = task.name;
@@ -99,7 +101,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
     }
     
     func onDelete(stackView: OutlineStackView) {
-        let task: Task = timeline.tasks[stackView.stackIndex];
+        let task: Task = timeline.tasksArray[stackView.stackIndex];
         self.timeline.remove(task: task);
         
         self.outlineView.reloadData();
@@ -113,12 +115,12 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let action: Action = self.timeline.tasks[stackView.stackIndex].actions[cellView.cellIndex];
+        let action: Action = self.timeline.tasksArray[stackView.stackIndex].actionsArray[cellView.cellIndex];
         
         let editor: ActionEditorViewController = ActionEditorViewController();
         editor.actionTitle = action.name;
         editor.actionComment = action.comment;
-        editor.actionDate = action.date;
+        editor.actionDate = action.date as Date;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -141,8 +143,8 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let task: Task = self.timeline.tasks[stackView.stackIndex];
-        let action: Action = task.actions[cellView.cellIndex];
+        let task: Task = self.timeline.tasksArray[stackView.stackIndex];
+        let action: Action = task.actionsArray[cellView.cellIndex];
         
         task.remove(action: action);
         self.outlineView.reloadData();
@@ -175,11 +177,7 @@ extension OutlineCentralViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onApplicationRemove), name: WindowController.Notifications.toolbarRemove.name, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(onApplicationEdit), name: WindowController.Notifications.toolbarEdit.name, object: nil);
     }
-    
-    private func setupModules() {
-        ModuleManager.manager.add(module: SafariBrowserModule());
-    }
-    
+        
     @objc
     private func onApplicationAdd(notification: Notification) {
         self.timeline.insertNewTask();
@@ -200,26 +198,6 @@ extension OutlineCentralViewController {
     @objc
     private func onApplicationEdit(notification: Notification) {
         Log.info(message: "onEdit");
-    }
-}
-
-extension OutlineCentralViewController {
-    private func registerTaskObservers() {
-        let nc: NotificationCenter = NotificationCenter.default;
-        nc.addObserver(self, selector: #selector(onTasksModified), name: NSNotification.Name(rawValue: Timeline.Notifications.tasksModified.rawValue), object: nil);
-    }
-    
-    private func deregisterTaskObservers() {
-        let nc: NotificationCenter = NotificationCenter.default;
-        nc.removeObserver(self, name: NSNotification.Name(rawValue: Timeline.Notifications.tasksModified.rawValue), object: nil);
-    }
-    
-    @objc
-    private func onTasksModified(notification: Notification) {
-        let taskNames: [String] = self.timeline.tasks.map { (task: Task) -> String in
-            return task.name;
-        }
-        DistributedObjectManager.manager.set(object: taskNames, for: SharedConstants.DistributedObjectKeys.tasks);
     }
 }
 

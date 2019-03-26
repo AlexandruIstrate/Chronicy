@@ -37,11 +37,11 @@ public class DistributedObjectManager {
     
     private init() {}
     
-    public func get<T: Codable>(for key: String) -> T? {
+    public func get<T: Codable>(for key: String, action: OnRetrievalAction? = nil) -> T? {
         var result: T!;
         
         dispatchQueue.sync {
-            result = self.getInternal(for: key);
+            result = self.getInternal(for: key, action: (action ?? self.retrievalAction));
         }
         
         return result;
@@ -61,7 +61,7 @@ public class DistributedObjectManager {
 }
 
 extension DistributedObjectManager {
-    private func getInternal<T: Codable>(for key: String) -> T? {
+    private func getInternal<T: Codable>(for key: String, action: OnRetrievalAction) -> T? {
         do {
             let decoder: JSONDecoder = JSONDecoder();
             
@@ -77,7 +77,7 @@ extension DistributedObjectManager {
                 return nil;
             }
             
-            switch retrievalAction {
+            switch action {
             case .keepUnchanged:
                 break;
                 
@@ -90,9 +90,9 @@ extension DistributedObjectManager {
             }
             
             return decodedObject.object;
-        } catch let e as KeyStorageError {
+//        } catch let e as KeyStorageError {
 //            Log.error(message: "An error occurred while retrieving object for key \(key): \(e.localizedDescription)");
-            return nil;
+//            return nil;
         } catch {
 //            Log.error(message: "An unknown occurred while retrieving object for key \(key).");
             return nil;
@@ -110,7 +110,7 @@ extension DistributedObjectManager {
             }
             
             try keyStorage.set(object: string, for: key);
-        } catch let e as KeyStorageError {
+//        } catch let e as KeyStorageError {
 //            Log.error(message: "An error occurred while setting object for key \(key): \(e.localizedDescription)");
         } catch {
 //            Log.error(message: "An unknown occurred while setting object for key \(key).");

@@ -34,6 +34,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
 extension SafariExtensionViewController {
     private func setupData() {
+        TaskManager.manager.load();
         
+        for task: Task in TaskManager.manager.tasks {
+            self.taskDropdown.addItem(withTitle: task.name);
+        }
     }
 }

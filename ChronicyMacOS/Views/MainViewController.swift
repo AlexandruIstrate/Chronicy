@@ -27,6 +27,8 @@ class MainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.setupModules();
+        
         self.showCenterView(viewController: OutlineCentralViewController());
     }
     
@@ -54,5 +56,9 @@ extension MainViewController {
         view.bottomAnchor.constraint(equalTo: cv.bottomAnchor).isActive = true;
         view.leadingAnchor.constraint(equalTo: sidebarView.trailingAnchor).isActive = true;
         view.trailingAnchor.constraint(equalTo: cv.trailingAnchor).isActive = true;
+    }
+    
+    private func setupModules() {
+        ModuleManager.manager.add(module: SafariBrowserModule());
     }
 }

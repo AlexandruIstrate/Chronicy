@@ -24,13 +24,12 @@ class ModuleManagerViewController: NSViewController {
 extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     enum CellIdentifier: String {
-        case checkCell = "CheckCell";
         case nameAndIconCell = "NameAndIconCell";
+        case stateCell = "StateCell";
     }
     
     public func numberOfRows(in tableView: NSTableView) -> Int {
-//        return moduleManager.modules.count;
-        return 5;
+        return moduleManager.modules.count;
     }
     
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -38,11 +37,11 @@ extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegat
         
         switch tableColumn {
         case tableView.tableColumns[0]:
-            cellIdentifier = .checkCell;
+            cellIdentifier = .nameAndIconCell;
             break;
             
         case tableView.tableColumns[1]:
-            cellIdentifier = .nameAndIconCell;
+            cellIdentifier = .stateCell;
             break;
             
         default:
@@ -54,6 +53,9 @@ extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegat
             Log.error(message: "Could not create cell for ModuleManagerViewController, with identifier \(cellIdentifier.rawValue)")
             return nil;
         }
+        
+        let module: Module = moduleManager.modules[row];
+        cell.textField?.stringValue = module.moduleName();
         
         return cell;
     }

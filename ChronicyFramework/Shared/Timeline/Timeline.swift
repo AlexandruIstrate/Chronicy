@@ -1,5 +1,5 @@
 //
-//  Timeline+CoreDataClass.swift
+//  Timeline.swift
 //  
 //
 //  Created by Alexandru Istrate on 25/03/2019.
@@ -18,34 +18,29 @@ public class Timeline: NSManagedObject {
     }
     
     public func add(task: Task) {
-        tasks.append(task);
+        self.addToTasks(task);
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskAdded.rawValue), object: self, userInfo: nil);
-        
-        self.addToTasks(task);
     }
     
     public func remove(task: Task) {
         self.removeFromTasks(task);
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskRemoved.rawValue), object: self, userInfo: nil);
     }
     
     
     @discardableResult
     public func insertNewTask() -> Task {
-        let task: Task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: CoreDataStack.stack.managedObjectContext) as! Task;
-        self.tasks.insert(task);
+        let task: Task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: CoreDataStack.stack.managedObjectContext!) as! Task;
+        task.name = "New Task";
+        task.comment = "";
+        task.date = Date();
+        self.add(task: task);
         
         return task;
-    }
-    
-    public func remove(task: Task) {
-        tasks.removeAll { (iter: Task) -> Bool in
-            return iter == task;
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskRemoved.rawValue), object: self, userInfo: nil);
     }
 }
 
