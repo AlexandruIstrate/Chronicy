@@ -102,13 +102,13 @@ extension SidebarView {
         self.add(sidebarItem: SidebarItem(header: "Navigate"));
         
         self.add(sidebarItem: SidebarItem(content: "Outline", icon: NSImage(named: NSImage.Name("Outline"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
-            
+            MainViewController.shared.showCenterView(viewController: OutlineCentralViewController());
         }));
         self.add(sidebarItem: SidebarItem(content: "Timeline", icon: NSImage(named: NSImage.Name("Timeline"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
             
         }));
         self.add(sidebarItem: SidebarItem(content: "Trackers", icon: NSImage(named: NSImage.Name("Trackers"))!, callback: { (sidebarItem: SidebarItem, outlineView: NSOutlineView) in
-            
+            MainViewController.shared.showCenterView(viewController: ModuleManagerViewController());
         }));
     }
 }

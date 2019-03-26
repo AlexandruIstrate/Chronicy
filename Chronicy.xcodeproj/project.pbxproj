@@ -34,6 +34,8 @@
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
+		A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */; };
+		A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */; };
 		A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AC222429EF500C5A94E /* OutlineViewController.swift */; };
 		A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AC322429EF500C5A94E /* OutlineViewController.xib */; };
 		A7A88ACF2242B0A600C5A94E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88ACE2242B0A600C5A94E /* View.swift */; };
@@ -129,6 +131,8 @@
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
+		A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineCentralViewController.swift; sourceTree = "<group>"; };
+		A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineCentralViewController.xib; sourceTree = "<group>"; };
 		A7A88AC222429EF500C5A94E /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		A7A88AC322429EF500C5A94E /* OutlineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineViewController.xib; sourceTree = "<group>"; };
 		A7A88ACE2242B0A600C5A94E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
 				A774D8182242CEAB00D69C7E /* SidebarView.swift */,
 				A7099EEC2243108700482698 /* SidebarTableCellView.swift */,
+				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
 				A7A88AEB2242C87E00C5A94E /* Editors */,
@@ -322,6 +327,15 @@
 				A70913DE224007B100073349 /* ApplicationMessaging.swift */,
 			);
 			path = "Inter Communication";
+			sourceTree = "<group>";
+		};
+		A7A7C2EB224A7A1E000D114E /* Central Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */,
+				A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */,
+			);
+			path = "Central Controllers";
 			sourceTree = "<group>";
 		};
 		A7A88AE42242C80900C5A94E /* Outline */ = {
@@ -504,6 +518,7 @@
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
+				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +561,7 @@
 				A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
+				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
 				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
 				A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */,
 			);

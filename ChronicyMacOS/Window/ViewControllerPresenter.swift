@@ -11,9 +11,4 @@ class ViewControllerPresenter {
     
     public var rootViewController: NSViewController?;
     
-    public private(set) var currentlyPresented: NSViewController?;
-    
-    public func present(viewController: NSViewController) {
-        
-    }
 }

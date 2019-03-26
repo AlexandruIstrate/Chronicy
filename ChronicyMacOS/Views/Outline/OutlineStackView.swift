@@ -41,6 +41,8 @@ class OutlineStackView: NSView {
     public var stackIndex: Int = 0;
     public var title: String = String();
     
+    public var selectionIndex: Int { return self.tableView.selectedRow; }
+    
     @IBAction private func onOptionsClicked(_ sender: NSButton) {
         optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: sender.bounds.origin, in: sender);
     }

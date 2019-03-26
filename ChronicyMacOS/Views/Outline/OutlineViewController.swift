@@ -17,6 +17,9 @@ class OutlineViewController: NSViewController {
     
     public var dataSource: OutlineViewDataSource?;
     
+    public var selectedStackIndex: Int? { return getSelectedStackIndex(); }
+    public var selectedActionIndex: Int? { return getSelectedActionIndex(); }
+    
     public func reloadData() {
         onLoadData();
         onLayoutView();
@@ -61,6 +64,23 @@ extension OutlineViewController {
         for view: NSView in stackView.views {
             stackView.removeView(view);
         }
+    }
+    
+    private func getSelectedStackIndex() -> Int? {
+        return nil;
+    }
+    
+    private func getSelectedActionIndex() -> Int? {
+        var index: Int?;
+        
+        for stack: OutlineStackView in self.stacks {
+            if stack.selectionIndex >= 0 {
+                index = stack.selectionIndex;
+                break;
+            }
+        }
+        
+        return index;
     }
 }
 

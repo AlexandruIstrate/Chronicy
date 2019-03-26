@@ -53,7 +53,7 @@ extension SafariBrowserModule {
         
         func onRefreshData() {
             self.url = DistributedObjectManager.manager.get(for: "currentPageURL");
-            Log.info(message: "URL is \(String(describing: url))");
+//            Log.info(message: "URL is \(String(describing: url))");
         }
     }
 }

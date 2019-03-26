@@ -10,10 +10,12 @@ import Foundation;
 // TODO: Load from CoreData
 public class TimelineManager {
     
+    public static let manager: TimelineManager = TimelineManager(name: "Main");
+    
     public let timeline: Timeline;
     
-    public init(timelineName: String) {
-        self.timeline = Timeline(name: timelineName);
+    private init(name: String) {
+        self.timeline = Timeline(name: name);
     }
     
     public func add(task: Task) {
