@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A7098C4F224518920026BAFC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7098C4E224518920026BAFC /* Notification.swift */; };
+		A709AB552248FD65002841A8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB4F2248FD65002841A8 /* Timeline.swift */; };
+		A709AB562248FD65002841A8 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB502248FD65002841A8 /* Task.swift */; };
+		A709AB582248FD65002841A8 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB522248FD65002841A8 /* Action.swift */; };
 		A7109E25223570C200E3EB29 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E24223570C200E3EB29 /* Module.swift */; };
 		A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E262235741A00E3EB29 /* ModuleManager.swift */; };
 		A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E282235756E00E3EB29 /* TrackableProperty.swift */; };
@@ -17,17 +20,18 @@
 		A758DEB8223E75C10060B4FE /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEB7223E75C10060B4FE /* KeyStorage.swift */; };
 		A758DEBA223E78830060B4FE /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEB9223E78830060B4FE /* DistributedObjectManager.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A76045B122308EC1007F3268 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76045B022308EC1007F3268 /* Timeline.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
-		A7B1938A2233FA87002BA598 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B193892233FA87002BA598 /* Task.swift */; };
 		A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1938B2233FF57002BA598 /* TimeExpressible.swift */; };
-		A7E4513222482D0300848AF5 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4513122482D0300848AF5 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7033133224912330001172A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A7098C4E224518920026BAFC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		A709AB4F2248FD65002841A8 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = /Users/andu/Projects/Chronicy/ChronicyFramework/Shared/Timeline/Timeline.swift; sourceTree = "<absolute>"; };
+		A709AB502248FD65002841A8 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = /Users/andu/Projects/Chronicy/ChronicyFramework/Shared/Timeline/Task.swift; sourceTree = "<absolute>"; };
+		A709AB522248FD65002841A8 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Action.swift; path = /Users/andu/Projects/Chronicy/ChronicyFramework/Shared/Timeline/Action.swift; sourceTree = "<absolute>"; };
 		A7109E24223570C200E3EB29 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A7109E262235741A00E3EB29 /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A7109E282235756E00E3EB29 /* TrackableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
@@ -39,13 +43,10 @@
 		A760458722308D47007F3268 /* ChronicyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A76045B022308EC1007F3268 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
-		A7B193892233FA87002BA598 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A7B1938B2233FF57002BA598 /* TimeExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExpressible.swift; sourceTree = "<group>"; };
-		A7E4513122482D0300848AF5 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7033132224912330001172A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7033133224912330001172A /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A7109E2C22357D4900E3EB29 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +109,7 @@
 				A760459022308D54007F3268 /* Shared */,
 				A760458922308D47007F3268 /* ChronicyFrameworkMacOS */,
 				A760458822308D47007F3268 /* Products */,
+				A7033132224912330001172A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,9 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				A7B1938B2233FF57002BA598 /* TimeExpressible.swift */,
-				A76045B022308EC1007F3268 /* Timeline.swift */,
-				A7B193892233FA87002BA598 /* Task.swift */,
-				A7E4513122482D0300848AF5 /* Action.swift */,
+				A709AB4F2248FD65002841A8 /* Timeline.swift */,
+				A709AB502248FD65002841A8 /* Task.swift */,
+				A709AB522248FD65002841A8 /* Action.swift */,
 				A7252A442234323900EE554A /* TimelineManager.swift */,
 			);
 			path = Timeline;
@@ -251,21 +261,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
-				A76045B122308EC1007F3268 /* Timeline.swift in Sources */,
 				A758DEB8223E75C10060B4FE /* KeyStorage.swift in Sources */,
 				A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
-				A7E4513222482D0300848AF5 /* Action.swift in Sources */,
 				A758DEBA223E78830060B4FE /* DistributedObjectManager.swift in Sources */,
 				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
+				A709AB562248FD65002841A8 /* Task.swift in Sources */,
 				A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
-				A7B1938A2233FA87002BA598 /* Task.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A7252A452234323900EE554A /* TimelineManager.swift in Sources */,
+				A709AB552248FD65002841A8 /* Timeline.swift in Sources */,
 				A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
 				A7109E25223570C200E3EB29 /* Module.swift in Sources */,
+				A709AB582248FD65002841A8 /* Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

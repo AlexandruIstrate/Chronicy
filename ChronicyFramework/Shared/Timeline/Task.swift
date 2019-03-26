@@ -1,69 +1,67 @@
 //
-//  Task.swift
-//  ChronicyFrameworkMacOS
+//  Task+CoreDataClass.swift
+//  
 //
-//  Created by Alexandru Istrate on 09/03/2019.
+//  Created by Alexandru Istrate on 25/03/2019.
+//
 //
 
 import Foundation;
+import CoreData;
 
-public class Task {
-    public var name: String;
-    public var comment: String;
-    public let date: Date;
+public class Task: NSManagedObject {
     
-    public private(set) var actions: [Action] = [];
-    
-    public init(name: String, comment: String = "", date: Date = Date()) {
-        self.name = name;
-        self.comment = comment;
-        self.date = date;
+    public var actionsArray: [Action] {
+        return Array(self.actions.sorted(by: { (first: Action, second: Action) -> Bool in
+            return (first.date.compare(second.date as Date) == .orderedAscending);
+        }))
+    }
+
+    public func add(action: Action) {
+        self.addToActions(action);
     }
     
-    public func add(action: Action) {
-        actions.append(action);
+    public func remove(action: Action) {
+        self.removeFromActions(action);
     }
     
     @discardableResult
     public func insertNewAction() -> Action {
-        let action: Action = Action(name: "New Action");
-        self.actions.append(action);
+        let action: Action = NSEntityDescription.insertNewObject(forEntityName: "Action", into: CoreDataStack.stack.managedObjectContext) as! Action;
+        self.actions.insert(action);
         
         return action;
     }
-    
-    public func remove(action: Action) {
-        actions.removeAll { (iter: Action) -> Bool in
-            return iter == action;
-        }
-    }
-    
-    public func has(action: Action) -> Bool {
-        return actions.contains(action);
-    }
+
 }
 
-extension Task: Equatable {
-    public static func == (lhs: Task, rhs: Task) -> Bool {
-        return lhs.name     == rhs.name &&
-               lhs.comment  == rhs.comment &&
-               lhs.date     == rhs.date &&
-               lhs.actions  == rhs.actions;
+extension Task {
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
+        return NSFetchRequest<Task>(entityName: "Task")
     }
+    
+    @NSManaged public var comment: String;
+    @NSManaged public var date: Date;
+    @NSManaged public var name: String;
+    @NSManaged public var actions: Set<Action>;
+    
+    @NSManaged public weak var timeline: Timeline?;
+    
 }
 
-extension Task: TimeExpressible {
-    public typealias T = [Action];
+extension Task {
     
-    public func older(than date: Date) -> T {
-        return actions.filter({ (action: Action) -> Bool in
-            return action.date < date;
-        });
-    }
+    @objc(addActionsObject:)
+    @NSManaged public func addToActions(_ value: Action)
     
-    public func newer(than date: Date) -> T {
-        return actions.filter({ (action: Action) -> Bool in
-            return action.date > date;
-        });
-    }
+    @objc(removeActionsObject:)
+    @NSManaged public func removeFromActions(_ value: Action)
+    
+    @objc(addActions:)
+    @NSManaged public func addToActions(_ values: NSSet)
+    
+    @objc(removeActions:)
+    @NSManaged public func removeFromActions(_ values: NSSet)
+    
 }

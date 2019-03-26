@@ -1,18 +1,20 @@
 //
-//  Timeline.swift
-//  ChronicyFrameworkMacOS
+//  Timeline+CoreDataClass.swift
+//  
 //
-//  Created by Alexandru Istrate on 07/03/2019.
+//  Created by Alexandru Istrate on 25/03/2019.
+//
 //
 
 import Foundation;
+import CoreData;
 
-public class Timeline {
-    public private(set) var name: String;
-    public private(set) var tasks: [Task] = [];
+public class Timeline: NSManagedObject {
     
-    public init(name: String) {
-        self.name = name;
+    public var tasksArray: [Task] {
+        return Array(self.tasks.sorted(by: { (first: Task, second: Task) -> Bool in
+            return (first.date.compare(second.date as Date) == .orderedAscending);
+        }))
     }
     
     public func add(task: Task) {
@@ -20,12 +22,19 @@ public class Timeline {
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskAdded.rawValue), object: self, userInfo: nil);
+        
+        self.addToTasks(task);
     }
+    
+    public func remove(task: Task) {
+        self.removeFromTasks(task);
+    }
+    
     
     @discardableResult
     public func insertNewTask() -> Task {
-        let task: Task = Task(name: "New Task");
-        self.add(task: task);
+        let task: Task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: CoreDataStack.stack.managedObjectContext) as! Task;
+        self.tasks.insert(task);
         
         return task;
     }
@@ -40,20 +49,31 @@ public class Timeline {
     }
 }
 
-extension Timeline: TimeExpressible {
-    public typealias T = [Task];
+extension Timeline {
     
-    public func older(than date: Date) -> T {
-        return tasks.filter({ (task: Task) -> Bool in
-            return task.date < date;
-        });
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Timeline> {
+        return NSFetchRequest<Timeline>(entityName: "Timeline");
     }
     
-    public func newer(than date: Date) -> T {
-        return tasks.filter({ (task: Task) -> Bool in
-            return task.date > date;
-        });
-    }
+    @NSManaged public var name: String;
+    @NSManaged public var tasks: Set<Task>;
+    
+}
+
+extension Timeline {
+    
+    @objc(addTasksObject:)
+    @NSManaged public func addToTasks(_ value: Task)
+    
+    @objc(removeTasksObject:)
+    @NSManaged public func removeFromTasks(_ value: Task)
+    
+    @objc(addTasks:)
+    @NSManaged public func addToTasks(_ values: NSSet)
+    
+    @objc(removeTasks:)
+    @NSManaged public func removeFromTasks(_ values: NSSet)
+    
 }
 
 extension Timeline {
