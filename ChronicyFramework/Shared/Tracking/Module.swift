@@ -23,6 +23,10 @@ open class Module {
         return .low;
     }
     
+    open func triggers() -> [ModuleTrigger] {
+        return [];
+    }
+    
     open func onLoad() {
         
     }
@@ -42,4 +46,9 @@ public enum ModulePriority {
     case low;
     case medium;
     case high;
+}
+
+public protocol ModuleTrigger {
+    typealias Key = String;
+    static func key() -> Key;
 }

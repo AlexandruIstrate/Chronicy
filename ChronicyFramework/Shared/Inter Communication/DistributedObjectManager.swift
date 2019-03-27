@@ -26,7 +26,7 @@ public class DistributedObjectManager {
     private var subscribers: [ObjectManagerDelegate] = [];
     private let dispatchQueue: DispatchQueue = DispatchQueue(label: "DistributedObjectManagerQueue", attributes: .concurrent);
     
-    public var keyStorage: KeyStorage = MemoryKeyStorage();
+    public var keyStorage: KeyStorage = UserDefaultsKeyStorage(suiteName: SharedConstants.appGroupSuiteName);
     public var encoding: String.Encoding = .utf8;
     
     public enum OnRetrievalAction {

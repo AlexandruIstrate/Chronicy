@@ -15,6 +15,7 @@ protocol ContentTracker {
 
 enum ContentTrackerType {
     case url;
+    case task;
 }
 
 class URLTracker: ContentTracker {
@@ -27,6 +28,20 @@ class URLTracker: ContentTracker {
             fatalError("Not compatible with URL!");
         }
         
-        DistributedObjectManager.manager.set(object: url, for: "currentPageURL");
+        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURL);
+    }
+}
+
+class TaskTracker: ContentTracker {
+    func trackerType() -> ContentTrackerType {
+        return .task;
+    }
+    
+    func sendData(data: Any) {
+        guard let taskName: String = data as? String else {
+            fatalError("Not compatible with URL!");
+        }
+        
+        DistributedObjectManager.manager.set(object: taskName, for: SharedConstants.DistributedObjectKeys.browserSelectedTask);
     }
 }

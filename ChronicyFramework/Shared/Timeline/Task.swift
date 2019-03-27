@@ -31,6 +31,7 @@ public class Task: NSManagedObject {
         action.name = "New Action";
         action.comment = "";
         action.date = Date();
+        action.task = nil;
         self.add(action: action);
         
         return action;
@@ -49,7 +50,7 @@ extension Task {
     @NSManaged public var name: String;
     @NSManaged public var actions: Set<Action>;
     
-    @NSManaged public weak var timeline: Timeline?;
+    @NSManaged public var timeline: Timeline?;
     
 }
 

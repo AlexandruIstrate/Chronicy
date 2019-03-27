@@ -18,8 +18,18 @@ enum Browser {
 }
 
 class BrowserModule: Module {
+    override func triggers() -> [ModuleTrigger] {
+        return [ URLRecievedTrigger() ];
+    }
+    
     func browserName() -> Browser { fatalError("Method browserName is abstract and must be implemented in a subclass of this class."); }
     func browserVersion() -> BrowserVersion { fatalError("Method browserVersion is abstract and must be implemented in a subclass of this class."); }
     
     func launch(/* with: BrowserLaunchParams */) { fatalError("Method launch is abstract and must be implemented in a subclass of this class."); }
+}
+
+class URLRecievedTrigger: ModuleTrigger {
+    static func key() -> String {
+        return "URLRecieved";
+    }
 }

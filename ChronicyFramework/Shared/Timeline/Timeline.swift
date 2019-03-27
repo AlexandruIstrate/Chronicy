@@ -38,9 +38,16 @@ public class Timeline: NSManagedObject {
         task.name = "New Task";
         task.comment = "";
         task.date = Date();
+        task.timeline = nil;
         self.add(task: task);
         
         return task;
+    }
+    
+    public func task(forName: String) -> Task? {
+        return self.tasks.first { (task: Task) -> Bool in
+            return task.name == forName;
+        }
     }
 }
 

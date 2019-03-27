@@ -20,11 +20,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
-        setupData();
+        
+        loadTasks();
+        displayTasks();
     }
     
     @IBAction func onTaskChanged(_ sender: NSPopUpButton) {
+        guard let taskName: String = sender.selectedItem?.title else {
+            return;
+        }
         
+        ContentTrackerManager.manager.sendData(data: taskName, trackerType: .task);
     }
     
     @IBAction func onTrackingChanged(_ sender: NSButton) {
@@ -33,8 +39,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 }
 
 extension SafariExtensionViewController {
-    private func setupData() {
+    private func loadTasks() {
         TaskManager.manager.load();
+    }
+    
+    private func displayTasks() {
+        self.taskDropdown.removeAllItems();
         
         for task: Task in TaskManager.manager.tasks {
             self.taskDropdown.addItem(withTitle: task.name);

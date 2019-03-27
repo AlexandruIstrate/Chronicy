@@ -8,11 +8,13 @@
 import Cocoa;
 import ChronicyFramework;
 
+import CoreData;
+
 class OutlineCentralViewController: NSViewController {
 
     private var outlineView: OutlineViewController!;
     private var timeline: Timeline = TimelineManager.manager.timeline;
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,7 @@ class OutlineCentralViewController: NSViewController {
     }
     
     override func viewWillDisappear() {
-        try! CoreDataStack.stack.managedObjectContext!.save();
+        self.saveData();
         super.viewWillDisappear();
     }
     
@@ -199,5 +201,14 @@ extension OutlineCentralViewController {
     private func onApplicationEdit(notification: Notification) {
         Log.info(message: "onEdit");
     }
+    
+    private func saveData() {
+        do {
+            guard ((try CoreDataStack.stack.managedObjectContext?.save()) != nil) else {
+                throw NSError(domain: "CoreData", code: 99679, userInfo: nil);
+            }
+        } catch let e {
+            self.presentError(e);
+        }
+    }
 }
-

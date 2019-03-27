@@ -24,6 +24,7 @@
 		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
 		A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1938B2233FF57002BA598 /* TimeExpressible.swift */; };
+		A7BC2838224B9FA100A1A6DE /* InteractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2837224B9FA100A1A6DE /* InteractionsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7B1938B2233FF57002BA598 /* TimeExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExpressible.swift; sourceTree = "<group>"; };
+		A7BC2837224B9FA100A1A6DE /* InteractionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				A7109E282235756E00E3EB29 /* TrackableProperty.swift */,
 				A7109E24223570C200E3EB29 /* Module.swift */,
 				A7109E262235741A00E3EB29 /* ModuleManager.swift */,
+				A7BC2837224B9FA100A1A6DE /* InteractionsManager.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
 				A7109E25223570C200E3EB29 /* Module.swift in Sources */,
+				A7BC2838224B9FA100A1A6DE /* InteractionsManager.swift in Sources */,
 				A709AB582248FD65002841A8 /* Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

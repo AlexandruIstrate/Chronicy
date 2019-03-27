@@ -19,6 +19,6 @@ public class Action: NSManagedObject {
     @NSManaged public var date: Date;
     @NSManaged public var name: String;
     
-    @NSManaged public weak var task: Task?;
+    @NSManaged public var task: Task?;
 
 }

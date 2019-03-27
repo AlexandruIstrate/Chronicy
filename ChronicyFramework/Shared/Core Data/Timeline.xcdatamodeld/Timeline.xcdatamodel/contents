@@ -11,7 +11,7 @@
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="575322600" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="actions" toMany="YES" deletionRule="Nullify" destinationEntity="Action" inverseName="task" inverseEntity="Action" syncable="YES"/>
-        <relationship name="timeline" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="tasks" inverseEntity="Timeline" syncable="YES"/>
+        <relationship name="timeline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="tasks" inverseEntity="Timeline" syncable="YES"/>
     </entity>
     <entity name="Timeline" representedClassName=".Timeline" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>

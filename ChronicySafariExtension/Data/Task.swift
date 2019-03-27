@@ -31,7 +31,7 @@ class TaskManager {
     }
     
     public func load() {
-        guard let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks, action: .none) else {
+        guard let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks, action: .keepUnchanged) else {
             return;
         }
         

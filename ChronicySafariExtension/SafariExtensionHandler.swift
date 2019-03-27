@@ -33,9 +33,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-//        if let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks) {
-//            print(tasks);
-//        }
+        if let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks, action: .keepUnchanged) {
+            print(tasks);
+        }
         
         return SafariExtensionViewController.shared;
     }
