@@ -28,7 +28,7 @@ public class Task: NSManagedObject {
     @discardableResult
     public func insertNewAction() -> Action {
         let action: Action = NSEntityDescription.insertNewObject(forEntityName: "Action", into: CoreDataStack.stack.managedObjectContext!) as! Action;
-        action.name = "New Action";
+        action.name = NSLocalizedString("New Action", comment: "");
         action.comment = "";
         action.date = Date();
         action.task = nil;

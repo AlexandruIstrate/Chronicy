@@ -31,11 +31,13 @@ class TaskManager {
     }
     
     public func load() {
-        guard let tasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks, action: .keepUnchanged) else {
+        guard let newTasks: [String] = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.tasks, action: .keepUnchanged) else {
             return;
         }
         
-        for taskName: String in tasks {
+        self.tasks.removeAll();
+        
+        for taskName: String in newTasks {
             self.tasks.append(Task(name: taskName));
         }
     }

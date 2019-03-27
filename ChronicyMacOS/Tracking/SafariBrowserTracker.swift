@@ -53,32 +53,32 @@ extension SafariBrowserModule {
         
         func onRefreshData() {
             self.url = DistributedObjectManager.manager.get(for: "currentPageURL");
-            Log.info(message: "URL is \(String(describing: url))");
+//            Log.info(message: "URL is \(String(describing: url))");
             
-            guard let urlString: String = self.url?.absoluteString else {
-                Log.error(message: "Could not get string from URL!");
+            guard let url: URL = self.url else {
+//                Log.error(message: "URL is nil!");
                 return;
             }
+            
+            let urlString: String = url.absoluteString;
+            Log.info(message: "URL is \(urlString)");
             
             guard let taskName: String = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.browserSelectedTask, action: .keepUnchanged) else {
                 Log.error(message: "Could not get task name!");
                 return;
             }
             
-//            TimelineManager.manager.timeline.task(forName: taskName)?.add(action: )
             guard let action: Action = TimelineManager.manager.timeline.task(forName: taskName)?.insertNewAction() else {
                 Log.error(message: "Could not get action for task name!");
                 return;
             }
             
-            action.name = urlString;
+            action.name = NSLocalizedString("Visited Webpage", comment: "");
+            action.comment = urlString;
             Log.info(message: "Added action with data: \(urlString)");
             
-            let im: InteractionsManager = InteractionsManager.manager;
-            im.register(trigger: URLRecievedTrigger.key()) { (key: URLRecievedTrigger.Key) in
-                
-            };
-            im.raise(trigger: URLRecievedTrigger.key());
+            InteractionsManager.manager.raise(trigger: URLRecievedTrigger());
+            MainViewController.shared.reloadContentViewData();
         }
     }
 }

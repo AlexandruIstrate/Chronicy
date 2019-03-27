@@ -15,6 +15,6 @@ class ApplicationMessaging {
     private init() {}
     
     public func sendURL(url: URL) {
-        DistributedObjectManager.manager.set(object: url, for: "currentPageURL");
+        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURL);
     }
 }

@@ -20,22 +20,22 @@ public class Timeline: NSManagedObject {
     public func add(task: Task) {
         self.addToTasks(task);
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskAdded.rawValue), object: self, userInfo: nil);
+        self.notifyChanged();
+        self.notifyAdded();
     }
     
     public func remove(task: Task) {
         self.removeFromTasks(task);
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskRemoved.rawValue), object: self, userInfo: nil);
+        self.notifyChanged();
+        self.notifyRemoved();
     }
     
     
     @discardableResult
     public func insertNewTask() -> Task {
         let task: Task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: CoreDataStack.stack.managedObjectContext!) as! Task;
-        task.name = "New Task";
+        task.name = NSLocalizedString("New Task", comment: "");
         task.comment = "";
         task.date = Date();
         task.timeline = nil;
@@ -49,6 +49,10 @@ public class Timeline: NSManagedObject {
             return task.name == forName;
         }
     }
+    
+    public func notifyChanged() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.tasksModified.rawValue), object: self, userInfo: nil);
+    }
 }
 
 extension Timeline {
@@ -59,10 +63,6 @@ extension Timeline {
     
     @NSManaged public var name: String;
     @NSManaged public var tasks: Set<Task>;
-    
-}
-
-extension Timeline {
     
     @objc(addTasksObject:)
     @NSManaged public func addToTasks(_ value: Task)
@@ -83,5 +83,15 @@ extension Timeline {
         case tasksModified;
         case taskAdded;
         case taskRemoved;
+    }
+}
+
+extension Timeline {
+    private func notifyAdded() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskAdded.rawValue), object: self, userInfo: nil);
+    }
+    
+    private func notifyRemoved() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.taskRemoved.rawValue), object: self, userInfo: nil);
     }
 }

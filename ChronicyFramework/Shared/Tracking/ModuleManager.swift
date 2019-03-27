@@ -11,8 +11,18 @@ public class ModuleManager {
     
     public static let manager: ModuleManager = ModuleManager();
     
-    public private(set) var modules: [Module] = [];
+    private var internalModules: [Module] = [];
     private let updateQueue: DispatchQueue = DispatchQueue(label: "ModuleManagerUpdateQueue", qos: .background);
+    
+    public var modules: [Module] {
+        var result: [Module] = [];
+        
+        updateQueue.sync {
+            result = self.internalModules;
+        }
+        
+        return result;
+    }
     
     private init() {
         let timer: Timer = Timer(fireAt: Date(), interval: 5, target: self, selector: #selector(onUpdate), userInfo: nil, repeats: true);
@@ -21,7 +31,7 @@ public class ModuleManager {
     
     deinit {
         updateQueue.async(flags: .barrier) {
-            for module: Module in self.modules {
+            for module: Module in self.internalModules {
                 module.onUnload();
             }
         }
@@ -29,18 +39,22 @@ public class ModuleManager {
     
     public func add(module: Module) {
         updateQueue.async(flags: .barrier) {
-            self.modules.append(module);
+            self.internalModules.append(module);
             module.onLoad();
         }
+        
+        InteractionsManager.manager.reload();
     }
     
     public func remove(module: Module) {
         updateQueue.async(flags: .barrier) {
-            self.modules.removeAll { (iter: Module) -> Bool in
+            self.internalModules.removeAll { (iter: Module) -> Bool in
                 return iter.moduleName() == module.moduleName();
             }
             module.onUnload();
         }
+        
+        InteractionsManager.manager.reload();
     }
 }
 

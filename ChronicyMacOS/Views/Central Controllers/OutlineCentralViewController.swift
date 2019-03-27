@@ -97,6 +97,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             task.comment = editor.taskComment;
             
             self.outlineView.reloadData();
+            self.timeline.notifyChanged();
         };
         
         presentAsSheet(editor);
@@ -149,6 +150,12 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
         let action: Action = task.actionsArray[cellView.cellIndex];
         
         task.remove(action: action);
+        self.outlineView.reloadData();
+    }
+}
+
+extension OutlineCentralViewController: ContentView {
+    func reloadData() {
         self.outlineView.reloadData();
     }
 }

@@ -45,13 +45,13 @@ class ActionEditorViewController: NSViewController {
         self.actionColor = self.colorWell.color;
         self.actionIcon = self.iconImageView.image;
 
-        completion?(true);
         self.dismiss(nil);
+        completion?(true);
     }
     
     @IBAction func onCancelPressed(_ sender: NSButton) {
-        completion?(false);
         self.dismiss(nil);
+        completion?(false);
     }
     
 }

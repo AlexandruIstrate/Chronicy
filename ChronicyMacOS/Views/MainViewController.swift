@@ -43,6 +43,14 @@ class MainViewController: NSViewController {
         setupContentView(view: view);
     }
     
+    public func reloadContentViewData() {
+        guard let view: ContentView = centerView as? ContentView else {
+            return;
+        }
+        
+        view.reloadData();
+    }
+    
 }
 
 extension MainViewController {

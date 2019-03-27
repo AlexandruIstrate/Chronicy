@@ -8,24 +8,31 @@
 import Foundation;
 
 public class InteractionsManager {
+    public typealias Interactable = (ModuleTrigger & KeyInstance);
     
     public static let manager: InteractionsManager = InteractionsManager();
+    public private(set) var triggers: [Interactable] = [];
     
-    public typealias Interaction = (ModuleTrigger.Key) -> ();
-    
-    private var triggers: [ModuleTrigger.Key : Interaction] = [:];
-    
-    private init() {}
-    
-    public func register(trigger: ModuleTrigger.Key, action: @escaping Interaction) {
-        triggers[trigger] = action;
+    private init() {
+        self.reload();
     }
     
-    public func raise(trigger: ModuleTrigger.Key) {
-        triggers.filter { (arg: (ModuleTrigger.Key, InteractionsManager.Interaction)) -> Bool in
-            return trigger == arg.0;
-        }.forEach { (arg: (key: ModuleTrigger.Key, value: InteractionsManager.Interaction)) in
-            arg.value(arg.key);
+    public func register(trigger: Interactable, action: @escaping ModuleTrigger.TriggerAction) {
+        trigger.action = action;
+        self.triggers.append(trigger);
+    }
+    
+    public func raise(trigger: Interactable) {
+        self.triggers.first { (iter: ModuleTrigger) -> Bool in
+            return iter == trigger;
+        }?.action?(trigger);
+    }
+    
+    public func reload() {
+        self.triggers.removeAll();
+        
+        for module: Module in ModuleManager.manager.modules {
+            triggers.append(contentsOf: module.triggers());
         }
     }
 }
