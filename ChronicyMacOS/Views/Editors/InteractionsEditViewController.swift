@@ -31,6 +31,16 @@ class InteractionsEditViewController: NSViewController {
                 NotificationSender.default.show(title: "New Action", subtitle: "You have accesed a web page");
             }
             
+        case 1:
+            self.selectedAction = { (trigger: ModuleTrigger) in
+                do {
+                    try ApplicationManager.manager.launch(defaultApplication: .terminal);
+                } catch let e {
+                    Log.error(message: "Could not open Terminal!");
+                    self.presentError(e);
+                }
+            }
+            
         default:
             break;
         }
@@ -52,7 +62,7 @@ class InteractionsEditViewController: NSViewController {
 extension InteractionsEditViewController {
     private func loadData() {
         // TODO: Use data from the model
-        let items: [String] = ["Show a Notification"];
+        let items: [String] = ["Show a Notification", "Open Terminal"];
         self.actionsPopUp.addItems(withTitles: items);
     }
 }

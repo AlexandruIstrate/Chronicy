@@ -18,6 +18,7 @@ public enum ApplicationLauncherError: Error {
 
 public enum DefaultApplication: String {
     case safari = "com.apple.safari";
+    case terminal = "com.apple.terminal";
 }
 
 public class ApplicationManager {

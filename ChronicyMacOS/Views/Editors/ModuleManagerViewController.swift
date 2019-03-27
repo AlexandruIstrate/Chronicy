@@ -24,7 +24,7 @@ class ModuleManagerViewController: NSViewController {
 extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     enum CellIdentifier: String {
-        case nameAndIconCell = "NameAndIconCell";
+        case nameCell = "NameCell";
         case stateCell = "StateCell";
     }
     
@@ -37,7 +37,7 @@ extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegat
         
         switch tableColumn {
         case tableView.tableColumns[0]:
-            cellIdentifier = .nameAndIconCell;
+            cellIdentifier = .nameCell;
             break;
             
         case tableView.tableColumns[1]:
