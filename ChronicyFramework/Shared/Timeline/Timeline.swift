@@ -25,7 +25,12 @@ public class Timeline: NSManagedObject {
     }
     
     public func remove(task: Task) {
+        let initialCount: Int = self.tasks.count;
+        
         self.removeFromTasks(task);
+        
+        let newCount: Int = self.tasks.count;
+        assert(newCount < initialCount, "Task not removed!");
         
         self.notifyChanged();
         self.notifyRemoved();

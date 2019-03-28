@@ -138,6 +138,8 @@ extension OutlineCellView: CustomOperationSeparatable {
     }
     
     func onLayoutView() {
+        self.setupFonts();
+        
         self.titleLabel.stringValue = self.title;
         self.subtitleLabel.stringValue = self.subtitle;
         self.dateLabel.stringValue = dateFormatter.string(from: self.date);
@@ -147,6 +149,17 @@ extension OutlineCellView: CustomOperationSeparatable {
 extension OutlineCellView {
     private func setupView() {
         self.wantsLayer = true;
+    }
+    
+    private func setupFonts() {
+        let titleFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 25.0);
+        self.titleLabel.font = titleFont;
+        
+        let subtitleFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 13.0);
+        self.subtitleLabel.font = subtitleFont;
+        
+        let dateFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 13.0);
+        self.dateLabel.font = dateFont;
     }
     
     @objc

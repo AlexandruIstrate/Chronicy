@@ -61,11 +61,13 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NCN-Bi-49U">
-                    <rect key="frame" x="64" y="102" width="202" height="40"/>
+                    <rect key="frame" x="145" y="102" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="2hj-py-RoM"/>
+                        <constraint firstAttribute="width" secondItem="NCN-Bi-49U" secondAttribute="height" multiplier="1:1" id="8aN-3k-NxW"/>
+                        <constraint firstAttribute="width" constant="40" id="ewA-5g-aAo"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WVc-tM-a7w"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainIcon" id="WVc-tM-a7w"/>
                 </imageView>
             </subviews>
             <constraints>
@@ -73,12 +75,15 @@
                 <constraint firstAttribute="trailing" secondItem="FGs-j6-00m" secondAttribute="trailing" constant="16" id="HHW-zX-SuX"/>
                 <constraint firstItem="NCN-Bi-49U" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="Xnp-KT-G87"/>
                 <constraint firstAttribute="bottom" secondItem="Thf-oX-cSH" secondAttribute="bottom" constant="36" id="Yp5-t7-Sfs"/>
-                <constraint firstAttribute="trailing" secondItem="NCN-Bi-49U" secondAttribute="trailing" constant="64" id="Z9k-rK-Hs2"/>
                 <constraint firstItem="Thf-oX-cSH" firstAttribute="top" secondItem="FGs-j6-00m" secondAttribute="bottom" constant="22" id="cyd-us-76k"/>
-                <constraint firstItem="NCN-Bi-49U" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="64" id="e9f-Le-8iI"/>
+                <constraint firstItem="NCN-Bi-49U" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="145" id="lU8-4g-5Ek"/>
+                <constraint firstAttribute="trailing" secondItem="NCN-Bi-49U" secondAttribute="trailing" constant="145" id="lrn-MG-XeF"/>
                 <constraint firstItem="FGs-j6-00m" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="vtI-TU-qTV"/>
                 <constraint firstItem="FGs-j6-00m" firstAttribute="top" secondItem="NCN-Bi-49U" secondAttribute="bottom" constant="8" id="y1w-IL-buD"/>
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="MainIcon" width="45" height="45"/>
+    </resources>
 </document>

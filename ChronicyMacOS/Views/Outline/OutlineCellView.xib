@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +16,7 @@
                     <rect key="frame" x="14" y="54" width="62" height="30"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="VrD-Dt-dvF">
                         <font key="font" metaFont="system" size="25"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -39,7 +38,7 @@
                     <rect key="frame" x="14" y="33" width="252" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="trE-jh-33Z">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -47,7 +46,7 @@
                     <rect key="frame" x="14" y="12" width="252" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" usesSingleLineMode="YES" id="zNF-rn-QqC">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="SubtitleColor"/>
+                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -80,8 +79,5 @@
     </objects>
     <resources>
         <image name="More" width="50" height="50"/>
-        <namedColor name="SubtitleColor">
-            <color red="0.70588235294117652" green="0.70588235294117652" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

@@ -72,6 +72,7 @@ extension OutlineStackView: CustomOperationSeparatable {
     }
     
     func onLayoutView() {
+        self.setupFonts();
         self.nameLabel.stringValue = title;
         
         for cell: OutlineCellView in cells {
@@ -99,6 +100,11 @@ extension OutlineStackView {
     private func setupTable() {
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+    }
+    
+    private func setupFonts() {
+        let titleFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 32.0);
+        self.nameLabel.font = titleFont;
     }
     
     @objc

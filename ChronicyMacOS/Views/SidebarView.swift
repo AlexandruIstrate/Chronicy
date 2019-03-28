@@ -13,6 +13,10 @@ class SidebarView: NSOutlineView {
     public static let defaultBackgroundColor: NSColor = NSColor(calibratedRed: 25, green: 25, blue: 25, alpha: 255);
     
     private var items: [SidebarItem] = [];
+    
+    private lazy var textLabelFont: NSFont? = {
+        return NSFont(name: "JosefinSans-Regular", size: 13.0);
+    } ();
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect);
@@ -62,6 +66,8 @@ extension SidebarView: NSOutlineViewDataSource, NSOutlineViewDelegate {
             Log.error(message: "Cannot convert SidebarView table view to NSTableCellView");
             return nil;
         }
+        
+        cell.textField?.font = self.textLabelFont;
         
         if let header: String = sidebarItem.header {
             cell.textField?.stringValue = header.uppercased();

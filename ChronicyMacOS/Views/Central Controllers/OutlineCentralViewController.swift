@@ -61,10 +61,22 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             Log.fatal(message: "Could not create OutlineCellView.");
             fatalError();
         }
-        
-        cell.background = NSColor(calibratedRed: 0.22, green: 0.43, blue: 0.66, alpha: 1);
+
+        cell.background = NSColor(calibratedRed: 70 / 255.0, green: 168 / 255.0, blue: 74 / 255.0, alpha: 1);
         cell.cornerRadius = 15.0;
         cell.delegate = self;
+        
+//        var colors: [NSColor] = [];
+//
+//        var i: Float = 0.0;
+//        while i < 1.0 {
+//            let color: NSColor = NSColor(hue: CGFloat(i), saturation: 1.0, brightness: 0.25, alpha: 1.0);
+//            colors.append(color);
+//
+//            i += 0.05;
+//        }
+        
+//        cell.background = colors.randomElement() ?? NSColor(calibratedRed: 0.22, green: 0.43, blue: 0.66, alpha: 1);
         
         let action: Action = self.timeline.tasksArray[stack.stackIndex].actionsArray[index];
         cell.title = action.name;
@@ -78,7 +90,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         let task: Task = timeline.tasksArray[stackView.stackIndex];
         task.insertNewAction();
         
-        self.outlineView.reloadData();
+        self.reloadData();
     }
     
     func onEdit(stackView: OutlineStackView) {
@@ -96,7 +108,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             task.name = editor.taskTitle;
             task.comment = editor.taskComment;
             
-            self.outlineView.reloadData();
+            self.reloadData();
             self.timeline.notifyChanged();
         };
         
@@ -107,7 +119,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         let task: Task = timeline.tasksArray[stackView.stackIndex];
         self.timeline.remove(task: task);
         
-        self.outlineView.reloadData();
+        self.reloadData();
     }
 }
 
@@ -134,7 +146,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             action.comment = editor.actionComment;
             action.date = editor.actionDate;
             
-            self.outlineView.reloadData();
+            self.reloadData();
         };
         
         self.presentAsSheet(editor);
@@ -150,12 +162,13 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
         let action: Action = task.actionsArray[cellView.cellIndex];
         
         task.remove(action: action);
-        self.outlineView.reloadData();
+        self.reloadData();
     }
 }
 
 extension OutlineCentralViewController: ContentView {
     func reloadData() {
+        self.saveData();
         self.outlineView.reloadData();
     }
 }
@@ -190,7 +203,7 @@ extension OutlineCentralViewController {
     @objc
     private func onApplicationAdd(notification: Notification) {
         self.timeline.insertNewTask();
-        self.outlineView.reloadData();
+        self.reloadData();
     }
     
     @objc
@@ -211,6 +224,10 @@ extension OutlineCentralViewController {
     
     private func saveData() {
         do {
+            guard (CoreDataStack.stack.managedObjectContext?.hasChanges ?? false) else {
+                return;
+            }
+            
             guard ((try CoreDataStack.stack.managedObjectContext?.save()) != nil) else {
                 throw NSError(domain: "CoreData", code: 99679, userInfo: nil);
             }

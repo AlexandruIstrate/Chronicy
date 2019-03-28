@@ -726,10 +726,7 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="2ob-88-1xS"/>
-                                <toolbarItem reference="dlK-Zn-crM"/>
-                                <toolbarItem reference="NdR-oH-9rD"/>
                                 <toolbarItem reference="2S8-3S-B7u"/>
-                                <toolbarItem reference="GtR-dl-M8R"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>

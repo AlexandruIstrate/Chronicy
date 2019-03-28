@@ -14,6 +14,10 @@ class ModuleManagerViewController: NSViewController {
     
     private let moduleManager: ModuleManager = ModuleManager.manager;
     
+    private lazy var textLabelFont: NSFont? = {
+        return NSFont(name: "JosefinSans-Regular", size: 13.0);
+    } ();
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         setup();
@@ -53,6 +57,8 @@ extension ModuleManagerViewController: NSTableViewDataSource, NSTableViewDelegat
             Log.error(message: "Could not create cell for ModuleManagerViewController, with identifier \(cellIdentifier.rawValue)")
             return nil;
         }
+        
+        cell.textField?.font = self.textLabelFont;
         
         let module: Module = moduleManager.modules[row];
         cell.textField?.stringValue = module.moduleName();
