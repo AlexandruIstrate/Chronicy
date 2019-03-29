@@ -23,6 +23,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         
         loadTasks();
         displayTasks();
+        displayState();
     }
     
     @IBAction func onTaskChanged(_ sender: NSPopUpButton) {
@@ -34,7 +35,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     @IBAction func onTrackingChanged(_ sender: NSButton) {
-        ExtensionStateManager.manager.state = ((sender.state == NSControl.StateValue.on) ? .enabled : .disabled);
+        ExtensionStateManager.manager.state = ((sender.state == .on) ? .enabled : .disabled);
     }
 }
 
@@ -49,5 +50,10 @@ extension SafariExtensionViewController {
         for task: Task in TaskManager.manager.tasks {
             self.taskDropdown.addItem(withTitle: task.name);
         }
+    }
+    
+    private func displayState() {
+        let state: ExtensionStateManager.State = ExtensionStateManager.manager.state;
+        self.enabledCheckbox.state = (state == .enabled ? .on : .off);
     }
 }

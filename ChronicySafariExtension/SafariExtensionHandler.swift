@@ -10,10 +10,19 @@ import ChronicyFramework;
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
+    override init() {
+        super.init();
+        self.setup();
+    }
+    
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
         page.getPropertiesWithCompletionHandler { properties in
             NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+            
+            guard ExtensionStateManager.manager.state == .enabled else {
+                return;
+            }
             
             guard let url: URL = properties?.url else {
                 return;
@@ -40,4 +49,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return SafariExtensionViewController.shared;
     }
 
+}
+
+extension SafariExtensionHandler {
+    private func setup() {
+        
+    }
 }
