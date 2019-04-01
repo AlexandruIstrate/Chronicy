@@ -17,13 +17,13 @@
 		A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
 		A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72204102240227C001E1BD5 /* SharedConstants.swift */; };
 		A7252A452234323900EE554A /* TimelineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7252A442234323900EE554A /* TimelineManager.swift */; };
-		A7544E7C2251E4D1001C5FCB /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7544E7B2251E4D1001C5FCB /* KeyStorage.swift */; };
-		A7544E7F2251E53A001C5FCB /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7544E7E2251E53A001C5FCB /* DistributedObjectManager.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
 		A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1938B2233FF57002BA598 /* TimeExpressible.swift */; };
+		A7B2D429225273840012A9E5 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D428225273840012A9E5 /* KeyStorage.swift */; };
+		A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D42A2252738B0012A9E5 /* DistributedObjectManager.swift */; };
 		A7BC2838224B9FA100A1A6DE /* InteractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2837224B9FA100A1A6DE /* InteractionsManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +39,6 @@
 		A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A72204102240227C001E1BD5 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		A7252A442234323900EE554A /* TimelineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineManager.swift; sourceTree = "<group>"; };
-		A7544E7B2251E4D1001C5FCB /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
-		A7544E7E2251E53A001C5FCB /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A760458722308D47007F3268 /* ChronicyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +46,8 @@
 		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7B1938B2233FF57002BA598 /* TimeExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExpressible.swift; sourceTree = "<group>"; };
+		A7B2D428225273840012A9E5 /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
+		A7B2D42A2252738B0012A9E5 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A7BC2837224B9FA100A1A6DE /* InteractionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,22 +98,6 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		A7544E7A2251E47F001C5FCB /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				A7544E7B2251E4D1001C5FCB /* KeyStorage.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
-		A7544E7D2251E4EE001C5FCB /* Inter Communication */ = {
-			isa = PBXGroup;
-			children = (
-				A7544E7E2251E53A001C5FCB /* DistributedObjectManager.swift */,
-			);
-			path = "Inter Communication";
-			sourceTree = "<group>";
-		};
 		A760457822308D01007F3268 = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +131,9 @@
 				A76045AF22308EAA007F3268 /* Timeline */,
 				A7252A46223443D900EE554A /* Tracking */,
 				A731E7612245ABD9000B62FB /* Core Data */,
-				A7544E7A2251E47F001C5FCB /* Storage */,
-				A7544E7D2251E4EE001C5FCB /* Inter Communication */,
+				A7B2D426225273090012A9E5 /* Storage */,
+				A7B2D427225273510012A9E5 /* Inter Communication */,
+				A7B2D42C225274AF0012A9E5 /* Web */,
 				A77617FB2231C3270038E815 /* Utils */,
 			);
 			path = Shared;
@@ -183,6 +168,29 @@
 				A7098C4E224518920026BAFC /* Notification.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A7B2D426225273090012A9E5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A7B2D428225273840012A9E5 /* KeyStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		A7B2D427225273510012A9E5 /* Inter Communication */ = {
+			isa = PBXGroup;
+			children = (
+				A7B2D42A2252738B0012A9E5 /* DistributedObjectManager.swift */,
+			);
+			path = "Inter Communication";
+			sourceTree = "<group>";
+		};
+		A7B2D42C225274AF0012A9E5 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,14 +275,14 @@
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
 				A7B1938C2233FF57002BA598 /* TimeExpressible.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
-				A7544E7C2251E4D1001C5FCB /* KeyStorage.swift in Sources */,
-				A7544E7F2251E53A001C5FCB /* DistributedObjectManager.swift in Sources */,
 				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
+				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,
 				A709AB562248FD65002841A8 /* Task.swift in Sources */,
 				A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A7252A452234323900EE554A /* TimelineManager.swift in Sources */,
+				A7B2D429225273840012A9E5 /* KeyStorage.swift in Sources */,
 				A709AB552248FD65002841A8 /* Timeline.swift in Sources */,
 				A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,

@@ -11,7 +11,7 @@ public class SharedConstants {
     public static var appGroupSuiteName: String = "extension.ro.internals";
     
     public class DistributedObjectKeys {
-        public static var pageURL: String = "currentPageURL";
+        public static var pageURL: String = NSLocalizedString("currentPageURL", comment: "");
         public static var tasks: String = "tasks";
         public static var browserSelectedTask: String = "browserSelectedTask";
     }

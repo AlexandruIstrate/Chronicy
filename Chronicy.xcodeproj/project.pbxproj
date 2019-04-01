@@ -21,14 +21,10 @@
 		A72BB18A2237287D008575FC /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1842237287D008575FC /* script.js */; };
 		A72BB18B2237287D008575FC /* Old.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1852237287D008575FC /* Old.pdf */; };
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
-		A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */; };
-		A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */; };
 		A731E7632245BD5B000B62FB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E7622245BD5B000B62FB /* Task.swift */; };
 		A740E290224D0071007DA788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A740E28F224D0071007DA788 /* Assets.xcassets */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
-		A7599030224ACF5C003E8BF8 /* InteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */; };
-		A7599031224ACF5C003E8BF8 /* InteractionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
 		A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A774D8182242CEAB00D69C7E /* SidebarView.swift */; };
@@ -55,8 +51,6 @@
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
 		A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2839224BB20700A1A6DE /* TableView.swift */; };
-		A7BC283D224BCCE700A1A6DE /* InteractionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC283B224BCCE700A1A6DE /* InteractionsEditViewController.swift */; };
-		A7BC283E224BCCE700A1A6DE /* InteractionsEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BC283C224BCCE700A1A6DE /* InteractionsEditViewController.xib */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
 		A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* TaskEditorViewController.swift */; };
@@ -119,14 +113,10 @@
 		A72BB1852237287D008575FC /* Old.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Old.pdf; sourceTree = "<group>"; };
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManagerViewController.swift; sourceTree = "<group>"; };
-		A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModuleManagerViewController.xib; sourceTree = "<group>"; };
 		A731E7622245BD5B000B62FB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A740E28F224D0071007DA788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
-		A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsViewController.swift; sourceTree = "<group>"; };
-		A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InteractionsViewController.xib; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
 		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,8 +148,6 @@
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
 		A7BC2839224BB20700A1A6DE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		A7BC283B224BCCE700A1A6DE /* InteractionsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsEditViewController.swift; sourceTree = "<group>"; };
-		A7BC283C224BCCE700A1A6DE /* InteractionsEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InteractionsEditViewController.xib; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7E45129224811C200848AF5 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
@@ -402,12 +390,6 @@
 				A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */,
 				A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */,
 				A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */,
-				A731E75D2245A53E000B62FB /* ModuleManagerViewController.swift */,
-				A731E75E2245A53E000B62FB /* ModuleManagerViewController.xib */,
-				A759902E224ACF5C003E8BF8 /* InteractionsViewController.swift */,
-				A759902F224ACF5C003E8BF8 /* InteractionsViewController.xib */,
-				A7BC283B224BCCE700A1A6DE /* InteractionsEditViewController.swift */,
-				A7BC283C224BCCE700A1A6DE /* InteractionsEditViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -558,13 +540,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BC283E224BCCE700A1A6DE /* InteractionsEditViewController.xib in Resources */,
 				A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
-				A731E7602245A53E000B62FB /* ModuleManagerViewController.xib in Resources */,
 				A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
-				A7599031224ACF5C003E8BF8 /* InteractionsViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
@@ -609,16 +588,13 @@
 				A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
-				A7599030224ACF5C003E8BF8 /* InteractionsViewController.swift in Sources */,
 				A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
-				A7BC283D224BCCE700A1A6DE /* InteractionsEditViewController.swift in Sources */,
 				A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */,
-				A731E75F2245A53E000B62FB /* ModuleManagerViewController.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
