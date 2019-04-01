@@ -41,9 +41,6 @@
 		A7A4B60A224BFF3400A12CC0 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B609224BFF3400A12CC0 /* DistributedObjectManager.swift */; };
 		A7A4B60C224BFF4C00A12CC0 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B60B224BFF4C00A12CC0 /* KeyStorage.swift */; };
 		A7A4B60F224BFF8300A12CC0 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B60E224BFF8300A12CC0 /* SharedConstants.swift */; };
-		A7A6BD8A224C341800F0424B /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A7A6BD89224C341800F0424B /* icon.icns */; };
-		A7A6BD8C224C341800F0424B /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A6BD8B224C341800F0424B /* ShareViewController.swift */; };
-		A7A6BD91224C341800F0424B /* ChronicyShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A7A6BD87224C341800F0424B /* ChronicyShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */; };
 		A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */; };
 		A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AC222429EF500C5A94E /* OutlineViewController.swift */; };
@@ -90,13 +87,6 @@
 			remoteGlobalIDString = A760458622308D47007F3268;
 			remoteInfo = ChronicyFrameworkMacOS;
 		};
-		A7A6BD8F224C341800F0424B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7C5C161223088B000C0B27B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7A6BD86224C341800F0424B;
-			remoteInfo = ChronicyShareExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,7 +97,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				A72BB16F2237280C008575FC /* ChronicySafariExtension.appex in Embed App Extensions */,
-				A7A6BD91224C341800F0424B /* ChronicyShareExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,11 +144,6 @@
 		A7A4B609224BFF3400A12CC0 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A7A4B60B224BFF4C00A12CC0 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		A7A4B60E224BFF8300A12CC0 /* SharedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
-		A7A6BD87224C341800F0424B /* ChronicyShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicyShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A6BD89224C341800F0424B /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		A7A6BD8B224C341800F0424B /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		A7A6BD8D224C341800F0424B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7A6BD8E224C341800F0424B /* ChronicyShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyShareExtension.entitlements; sourceTree = "<group>"; };
 		A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineCentralViewController.swift; sourceTree = "<group>"; };
 		A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineCentralViewController.xib; sourceTree = "<group>"; };
 		A7A88AC222429EF500C5A94E /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
@@ -194,13 +178,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A760459222308DA5007F3268 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A6BD84224C341800F0424B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,7 +272,6 @@
 			children = (
 				A760459522308DA5007F3268 /* Chronicy.app */,
 				A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */,
-				A7A6BD87224C341800F0424B /* ChronicyShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -378,17 +354,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A7A6BD88224C341800F0424B /* ChronicyShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				A7A6BD89224C341800F0424B /* icon.icns */,
-				A7A6BD8B224C341800F0424B /* ShareViewController.swift */,
-				A7A6BD8D224C341800F0424B /* Info.plist */,
-				A7A6BD8E224C341800F0424B /* ChronicyShareExtension.entitlements */,
-			);
-			path = ChronicyShareExtension;
-			sourceTree = "<group>";
-		};
 		A7A71AFA223DCEDC0084C57A /* Inter Communication */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,7 +426,6 @@
 				A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */,
 				A760459722308DA5007F3268 /* ChronicyMacOS */,
 				A72BB17F2237287D008575FC /* ChronicySafariExtension */,
-				A7A6BD88224C341800F0424B /* ChronicyShareExtension */,
 				A72BB15C2237280C008575FC /* Frameworks */,
 				A760459622308DA5007F3268 /* Products */,
 			);
@@ -501,29 +465,11 @@
 			dependencies = (
 				A77618042231CB410038E815 /* PBXTargetDependency */,
 				A72BB16E2237280C008575FC /* PBXTargetDependency */,
-				A7A6BD90224C341800F0424B /* PBXTargetDependency */,
 			);
 			name = ChronicyMacOS;
 			productName = ChronicyMacOS;
 			productReference = A760459522308DA5007F3268 /* Chronicy.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A7A6BD86224C341800F0424B /* ChronicyShareExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A6BD92224C341800F0424B /* Build configuration list for PBXNativeTarget "ChronicyShareExtension" */;
-			buildPhases = (
-				A7A6BD83224C341800F0424B /* Sources */,
-				A7A6BD84224C341800F0424B /* Frameworks */,
-				A7A6BD85224C341800F0424B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ChronicyShareExtension;
-			productName = ChronicyShareExtension;
-			productReference = A7A6BD87224C341800F0424B /* ChronicyShareExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -558,14 +504,6 @@
 							};
 						};
 					};
-					A7A6BD86224C341800F0424B = {
-						CreatedOnToolsVersion = 10.2;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.Mac = {
-								enabled = 1;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = A7C5C164223088B000C0B27B /* Build configuration list for PBXProject "Chronicy" */;
@@ -589,7 +527,6 @@
 			targets = (
 				A760459422308DA5007F3268 /* ChronicyMacOS */,
 				A72BB15A2237280C008575FC /* ChronicySafariExtension */,
-				A7A6BD86224C341800F0424B /* ChronicyShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -635,14 +572,6 @@
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A6BD85224C341800F0424B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A6BD8A224C341800F0424B /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,14 +627,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A6BD83224C341800F0424B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A6BD8C224C341800F0424B /* ShareViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -718,11 +639,6 @@
 			isa = PBXTargetDependency;
 			name = ChronicyFrameworkMacOS;
 			targetProxy = A77618032231CB410038E815 /* PBXContainerItemProxy */;
-		};
-		A7A6BD90224C341800F0424B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7A6BD86224C341800F0424B /* ChronicyShareExtension */;
-			targetProxy = A7A6BD8F224C341800F0424B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1034,101 +950,6 @@
 			};
 			name = Release;
 		};
-		A7A6BD93224C341800F0424B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = ChronicyShareExtension/ChronicyShareExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 938D7ZG3MN;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = ChronicyShareExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicyShareExtension;
-				PRODUCT_NAME = $TARGET_NAME;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		A7A6BD94224C341800F0424B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = ChronicyShareExtension/ChronicyShareExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 938D7ZG3MN;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = ChronicyShareExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicyShareExtension;
-				PRODUCT_NAME = $TARGET_NAME;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		A7C5C165223088B000C0B27B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1210,15 +1031,6 @@
 			buildConfigurations = (
 				A76045A922308DA6007F3268 /* Debug */,
 				A76045AA22308DA6007F3268 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A7A6BD92224C341800F0424B /* Build configuration list for PBXNativeTarget "ChronicyShareExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A6BD93224C341800F0424B /* Debug */,
-				A7A6BD94224C341800F0424B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
