@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282FC8AC17313513307E566E /* Pods_ChronicyMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */; };
+		49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */; };
+		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
@@ -115,6 +118,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		250C3BDCA196C59D57DB047F /* Pods-ChronicySafariExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicySafariExtension.release.xcconfig"; path = "Target Support Files/Pods-ChronicySafariExtension/Pods-ChronicySafariExtension.release.xcconfig"; sourceTree = "<group>"; };
+		39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyShareExtension/Pods-ChronicyShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicyMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicySafariExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1F18DCD2C902D217BD9287 /* Pods-ChronicySafariExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicySafariExtension.debug.xcconfig"; path = "Target Support Files/Pods-ChronicySafariExtension/Pods-ChronicySafariExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ChronicyShareExtension/Pods-ChronicyShareExtension.release.xcconfig"; sourceTree = "<group>"; };
+		7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicyShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.release.xcconfig"; sourceTree = "<group>"; };
+		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
@@ -190,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */,
+				54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282FC8AC17313513307E566E /* Pods_ChronicyMacOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +265,9 @@
 			isa = PBXGroup;
 			children = (
 				A72BB15D2237280C008575FC /* Cocoa.framework */,
+				4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */,
+				4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */,
+				7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -464,7 +482,22 @@
 				A75220C72252044500C7A54E /* ChronicyShareExtension */,
 				A72BB15C2237280C008575FC /* Frameworks */,
 				A760459622308DA5007F3268 /* Products */,
+				FC6FC963088942473FEF7BD3 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		FC6FC963088942473FEF7BD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */,
+				87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */,
+				4C1F18DCD2C902D217BD9287 /* Pods-ChronicySafariExtension.debug.xcconfig */,
+				250C3BDCA196C59D57DB047F /* Pods-ChronicySafariExtension.release.xcconfig */,
+				39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */,
+				52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,6 +507,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A72BB1702237280C008575FC /* Build configuration list for PBXNativeTarget "ChronicySafariExtension" */;
 			buildPhases = (
+				BA91167D5881F10570D6050D /* [CP] Check Pods Manifest.lock */,
 				A72BB1572237280C008575FC /* Sources */,
 				A72BB1582237280C008575FC /* Frameworks */,
 				A72BB1592237280C008575FC /* Resources */,
@@ -491,6 +525,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A75220D42252044500C7A54E /* Build configuration list for PBXNativeTarget "ChronicyShareExtension" */;
 			buildPhases = (
+				91D712661576E15E1D530773 /* [CP] Check Pods Manifest.lock */,
 				A75220C22252044500C7A54E /* Sources */,
 				A75220C32252044500C7A54E /* Frameworks */,
 				A75220C42252044500C7A54E /* Resources */,
@@ -508,10 +543,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A76045A822308DA6007F3268 /* Build configuration list for PBXNativeTarget "ChronicyMacOS" */;
 			buildPhases = (
+				20F8683AA56D47E70966C780 /* [CP] Check Pods Manifest.lock */,
 				A760459122308DA5007F3268 /* Sources */,
 				A760459222308DA5007F3268 /* Frameworks */,
 				A760459322308DA5007F3268 /* Resources */,
 				A72BB1732237280C008575FC /* Embed App Extensions */,
+				6474AFAE115EFBFA7EA0271C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -643,6 +680,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20F8683AA56D47E70966C780 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChronicyMacOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6474AFAE115EFBFA7EA0271C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91D712661576E15E1D530773 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChronicyShareExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA91167D5881F10570D6050D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChronicySafariExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A72BB1572237280C008575FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -751,6 +879,7 @@
 /* Begin XCBuildConfiguration section */
 		A72BB1712237280C008575FC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C1F18DCD2C902D217BD9287 /* Pods-ChronicySafariExtension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -814,7 +943,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = $TARGET_NAME;
+				PRODUCT_NAME = "$TARGET_NAME";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -826,6 +955,7 @@
 		};
 		A72BB1722237280C008575FC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 250C3BDCA196C59D57DB047F /* Pods-ChronicySafariExtension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -882,7 +1012,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = $TARGET_NAME;
+				PRODUCT_NAME = "$TARGET_NAME";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -894,6 +1024,7 @@
 		};
 		A75220D22252044500C7A54E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -944,6 +1075,7 @@
 		};
 		A75220D32252044500C7A54E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -989,6 +1121,7 @@
 		};
 		A76045A922308DA6007F3268 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1065,6 +1198,7 @@
 		};
 		A76045AA22308DA6007F3268 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
