@@ -5,12 +5,12 @@
 //  Created by Alexandru Istrate on 01/04/2019.
 //
 
-import Cocoa
+import Cocoa;
 
 class ShareViewController: NSViewController {
 
     override var nibName: NSNib.Name? {
-        return NSNib.Name("ShareViewController")
+        return NSNib.Name("ShareViewController");
     }
 
     override func loadView() {
@@ -29,8 +29,8 @@ class ShareViewController: NSViewController {
         let outputItem = NSExtensionItem()
         // Complete implementation by setting the appropriate value on the output item
     
-        let outputItems = [outputItem]
-        self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil)
+        let outputItems: [Any] = [outputItem];
+        self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil);
 }
 
     @IBAction func cancel(_ sender: AnyObject?) {
