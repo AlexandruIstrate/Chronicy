@@ -13,7 +13,7 @@ import CoreData;
 class OutlineCentralViewController: NSViewController {
 
     private var outlineView: OutlineViewController!;
-    private var timeline: Timeline = TimelineManager.manager.timeline;
+    private var notebook: Notebook = Notebook();
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class OutlineCentralViewController: NSViewController {
 
 extension OutlineCentralViewController: OutlineViewDataSource {
     func stackCount(for view: OutlineViewController) -> Int {
-        return timeline.tasks.count;
+        return notebook.items.count;
     }
     
     func stack(for view: OutlineViewController, at index: Int) -> OutlineStackView {
@@ -41,11 +41,11 @@ extension OutlineCentralViewController: OutlineViewDataSource {
             fatalError();
         }
         
-        let task: Task = timeline.tasksArray[index];
+        let cardStack: Stack = notebook.items[index];
         
         stack.dataSource = self;
         stack.delegate = self;
-        stack.title = task.name;
+        stack.title = cardStack.name;
         
         return stack;
     }
@@ -53,7 +53,7 @@ extension OutlineCentralViewController: OutlineViewDataSource {
 
 extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStackViewDelegate {
     func cellCount(for stack: OutlineStackView, at index: Int) -> Int {
-        return timeline.tasksArray[index].actionsArray.count;
+        return notebook.items[index].cards.count;
     }
     
     func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
@@ -78,46 +78,46 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         
 //        cell.background = colors.randomElement() ?? NSColor(calibratedRed: 0.22, green: 0.43, blue: 0.66, alpha: 1);
         
-        let action: Action = self.timeline.tasksArray[stack.stackIndex].actionsArray[index];
-        cell.title = action.name;
-        cell.subtitle = action.comment;
-        cell.date = action.date as Date;
+        let card: Card = self.notebook.items[stack.stackIndex].cards[index];
+        cell.title = card.title;
+//        cell.subtitle = action.comment;
+//        cell.date = action.date as Date;
         
         return cell;
     }
     
     func onAdd(stackView: OutlineStackView) {
-        let task: Task = timeline.tasksArray[stackView.stackIndex];
-        task.insertNewAction();
+        let cardStack: Stack = notebook.items[stackView.stackIndex];
+//        cardStack.insertNewAction();
         
         self.reloadData();
     }
     
     func onEdit(stackView: OutlineStackView) {
-        let task: Task = timeline.tasksArray[stackView.stackIndex];
+        let stack: Stack = notebook.items[stackView.stackIndex];
         
         let editor: TaskEditorViewController = TaskEditorViewController();
-        editor.taskTitle = task.name;
-        editor.taskComment = task.comment;
+        editor.taskTitle = stack.name;
+//        editor.taskComment = task.comment;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
                 return;
             }
             
-            task.name = editor.taskTitle;
-            task.comment = editor.taskComment;
+            stack.name = editor.taskTitle;
+//            task.comment = editor.taskComment;
             
             self.reloadData();
-            self.timeline.notifyChanged();
+//            self.timeline.notifyChanged();
         };
         
         presentAsSheet(editor);
     }
     
     func onDelete(stackView: OutlineStackView) {
-        let task: Task = timeline.tasksArray[stackView.stackIndex];
-        self.timeline.remove(task: task);
+        let cardStack: Stack = notebook.items[stackView.stackIndex];
+        self.notebook.remove(stack: cardStack);
         
         self.reloadData();
     }
@@ -130,21 +130,21 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let action: Action = self.timeline.tasksArray[stackView.stackIndex].actionsArray[cellView.cellIndex];
+        let card: Card = self.notebook.items[stackView.stackIndex].cards[cellView.cellIndex];
         
         let editor: ActionEditorViewController = ActionEditorViewController();
-        editor.actionTitle = action.name;
-        editor.actionComment = action.comment;
-        editor.actionDate = action.date as Date;
+        editor.actionTitle = card.title;
+//        editor.actionComment = action.comment;
+//        editor.actionDate = action.date as Date;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
                 return;
             }
             
-            action.name = editor.actionTitle;
-            action.comment = editor.actionComment;
-            action.date = editor.actionDate;
+            card.title = editor.actionTitle;
+//            action.comment = editor.actionComment;
+//            action.date = editor.actionDate;
             
             self.reloadData();
         };
@@ -158,10 +158,10 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let task: Task = self.timeline.tasksArray[stackView.stackIndex];
-        let action: Action = task.actionsArray[cellView.cellIndex];
+        let stack: Stack = self.notebook.items[stackView.stackIndex];
+        let card: Card = stack.cards[cellView.cellIndex];
         
-        task.remove(action: action);
+        stack.remove(card: card);
         self.reloadData();
     }
 }
@@ -202,7 +202,7 @@ extension OutlineCentralViewController {
         
     @objc
     private func onApplicationAdd(notification: Notification) {
-        self.timeline.insertNewTask();
+//        self.notebook.insertNewTask();
         self.reloadData();
     }
     

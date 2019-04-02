@@ -52,33 +52,33 @@ extension SafariBrowserModule {
         public var url: URL?;
         
         func onRefreshData() {
-            self.url = DistributedObjectManager.manager.get(for: "currentPageURL");
-//            Log.info(message: "URL is \(String(describing: url))");
-            
-            guard let url: URL = self.url else {
-//                Log.error(message: "URL is nil!");
-                return;
-            }
-            
-            let urlString: String = url.absoluteString;
-            Log.info(message: "URL is \(urlString)");
-            
-            guard let taskName: String = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.browserSelectedTask, action: .keepUnchanged) else {
-                Log.error(message: "Could not get task name!");
-                return;
-            }
-            
-            guard let action: Action = TimelineManager.manager.timeline.task(forName: taskName)?.insertNewAction() else {
-                Log.error(message: "Could not get action for task name!");
-                return;
-            }
-            
-            action.name = NSLocalizedString("Visited Webpage", comment: "");
-            action.comment = urlString;
-            Log.info(message: "Added action with data: \(urlString)");
-            
-            InteractionsManager.manager.raise(trigger: URLRecievedTrigger());
-            MainViewController.shared.reloadContentViewData();
+//            self.url = DistributedObjectManager.manager.get(for: "currentPageURL");
+////            Log.info(message: "URL is \(String(describing: url))");
+//
+//            guard let url: URL = self.url else {
+////                Log.error(message: "URL is nil!");
+//                return;
+//            }
+//
+//            let urlString: String = url.absoluteString;
+//            Log.info(message: "URL is \(urlString)");
+//
+//            guard let taskName: String = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.browserSelectedTask, action: .keepUnchanged) else {
+//                Log.error(message: "Could not get task name!");
+//                return;
+//            }
+//
+//            guard let action: Action = TimelineManager.manager.timeline.task(forName: taskName)?.insertNewAction() else {
+//                Log.error(message: "Could not get action for task name!");
+//                return;
+//            }
+//
+//            action.name = NSLocalizedString("Visited Webpage", comment: "");
+//            action.comment = urlString;
+//            Log.info(message: "Added action with data: \(urlString)");
+//
+//            InteractionsManager.manager.raise(trigger: URLRecievedTrigger());
+//            MainViewController.shared.reloadContentViewData();
         }
     }
 }

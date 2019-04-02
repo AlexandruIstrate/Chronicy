@@ -37,12 +37,6 @@
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
-		A78086AD22527D2800263A90 /* ModuleManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78086A722527D2800263A90 /* ModuleManagerViewController.swift */; };
-		A78086AE22527D2800263A90 /* ModuleManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78086A822527D2800263A90 /* ModuleManagerViewController.xib */; };
-		A78086AF22527D2800263A90 /* InteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78086A922527D2800263A90 /* InteractionsViewController.swift */; };
-		A78086B022527D2800263A90 /* InteractionsEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78086AA22527D2800263A90 /* InteractionsEditViewController.xib */; };
-		A78086B122527D2800263A90 /* InteractionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78086AB22527D2800263A90 /* InteractionsViewController.xib */; };
-		A78086B222527D2800263A90 /* InteractionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78086AC22527D2800263A90 /* InteractionsEditViewController.swift */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
@@ -161,12 +155,6 @@
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
-		A78086A722527D2800263A90 /* ModuleManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleManagerViewController.swift; sourceTree = "<group>"; };
-		A78086A822527D2800263A90 /* ModuleManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModuleManagerViewController.xib; sourceTree = "<group>"; };
-		A78086A922527D2800263A90 /* InteractionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionsViewController.swift; sourceTree = "<group>"; };
-		A78086AA22527D2800263A90 /* InteractionsEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractionsEditViewController.xib; sourceTree = "<group>"; };
-		A78086AB22527D2800263A90 /* InteractionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractionsViewController.xib; sourceTree = "<group>"; };
-		A78086AC22527D2800263A90 /* InteractionsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionsEditViewController.swift; sourceTree = "<group>"; };
 		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
@@ -455,12 +443,6 @@
 				A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */,
 				A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */,
 				A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */,
-				A78086AC22527D2800263A90 /* InteractionsEditViewController.swift */,
-				A78086AA22527D2800263A90 /* InteractionsEditViewController.xib */,
-				A78086A922527D2800263A90 /* InteractionsViewController.swift */,
-				A78086AB22527D2800263A90 /* InteractionsViewController.xib */,
-				A78086A722527D2800263A90 /* ModuleManagerViewController.swift */,
-				A78086A822527D2800263A90 /* ModuleManagerViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -496,7 +478,6 @@
 				39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */,
 				52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -661,13 +642,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A78086B022527D2800263A90 /* InteractionsEditViewController.xib in Resources */,
 				A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
-				A78086B122527D2800263A90 /* InteractionsViewController.xib in Resources */,
 				A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
-				A78086AE22527D2800263A90 /* ModuleManagerViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
@@ -803,19 +781,16 @@
 			files = (
 				A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
-				A78086AF22527D2800263A90 /* InteractionsViewController.swift in Sources */,
 				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
 				A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
-				A78086AD22527D2800263A90 /* ModuleManagerViewController.swift in Sources */,
 				A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
 				A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
-				A78086B222527D2800263A90 /* InteractionsEditViewController.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
@@ -943,7 +918,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$TARGET_NAME";
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1012,7 +987,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$TARGET_NAME";
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
