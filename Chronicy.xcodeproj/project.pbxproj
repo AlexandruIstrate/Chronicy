@@ -10,6 +10,7 @@
 		282FC8AC17313513307E566E /* Pods_ChronicyMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */; };
 		49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */; };
 		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
+		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
@@ -37,6 +38,11 @@
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
+		A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */; };
+		A78D4D212253DD6F005CE553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D4D202253DD6F005CE553 /* ViewController.swift */; };
+		A78D4D242253DD6F005CE553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D222253DD6F005CE553 /* Main.storyboard */; };
+		A78D4D262253DD70005CE553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D252253DD70005CE553 /* Assets.xcassets */; };
+		A78D4D292253DD70005CE553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
@@ -112,6 +118,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D7AC4F1658E40332169FC0F /* Pods-ChronicyiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicyiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		250C3BDCA196C59D57DB047F /* Pods-ChronicySafariExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicySafariExtension.release.xcconfig"; path = "Target Support Files/Pods-ChronicySafariExtension/Pods-ChronicySafariExtension.release.xcconfig"; sourceTree = "<group>"; };
 		39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyShareExtension/Pods-ChronicyShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicyMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +128,7 @@
 		52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ChronicyShareExtension/Pods-ChronicyShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChronicyShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.release.xcconfig"; sourceTree = "<group>"; };
+		8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
@@ -156,6 +165,13 @@
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
+		A78D4D1C2253DD6F005CE553 /* ChronicyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChronicyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A78D4D202253DD6F005CE553 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A78D4D232253DD6F005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A78D4D252253DD70005CE553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A78D4D282253DD70005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A78D4D2A2253DD70005CE553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
@@ -210,6 +226,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A78D4D192253DD6F005CE553 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -256,6 +280,7 @@
 				4451D2CE4F583D8E53A872ED /* Pods_ChronicyMacOS.framework */,
 				4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */,
 				7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */,
+				1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -313,6 +338,7 @@
 				A760459522308DA5007F3268 /* Chronicy.app */,
 				A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */,
 				A75220C62252044500C7A54E /* ChronicyShareExtension.appex */,
+				A78D4D1C2253DD6F005CE553 /* ChronicyiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -366,6 +392,27 @@
 				A7109E2F2235845D00E3EB29 /* Utils */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A78A33AF2253DEB80083EC9C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A78D4D2A2253DD70005CE553 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A78D4D1D2253DD6F005CE553 /* ChronicyiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */,
+				A78D4D202253DD6F005CE553 /* ViewController.swift */,
+				A78D4D222253DD6F005CE553 /* Main.storyboard */,
+				A78D4D252253DD70005CE553 /* Assets.xcassets */,
+				A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */,
+				A78A33AF2253DEB80083EC9C /* Supporting Files */,
+			);
+			path = ChronicyiOS;
 			sourceTree = "<group>";
 		};
 		A798867122399C490029A791 /* Data */ = {
@@ -462,6 +509,7 @@
 				A760459722308DA5007F3268 /* ChronicyMacOS */,
 				A72BB17F2237287D008575FC /* ChronicySafariExtension */,
 				A75220C72252044500C7A54E /* ChronicyShareExtension */,
+				A78D4D1D2253DD6F005CE553 /* ChronicyiOS */,
 				A72BB15C2237280C008575FC /* Frameworks */,
 				A760459622308DA5007F3268 /* Products */,
 				FC6FC963088942473FEF7BD3 /* Pods */,
@@ -477,6 +525,8 @@
 				250C3BDCA196C59D57DB047F /* Pods-ChronicySafariExtension.release.xcconfig */,
 				39724E4C21F2577A81734C36 /* Pods-ChronicyShareExtension.debug.xcconfig */,
 				52689800C34A1675E0FB469A /* Pods-ChronicyShareExtension.release.xcconfig */,
+				0D7AC4F1658E40332169FC0F /* Pods-ChronicyiOS.debug.xcconfig */,
+				8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -543,6 +593,25 @@
 			productReference = A760459522308DA5007F3268 /* Chronicy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A78D4D1B2253DD6F005CE553 /* ChronicyiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A78D4D2B2253DD70005CE553 /* Build configuration list for PBXNativeTarget "ChronicyiOS" */;
+			buildPhases = (
+				D87F515EEA8AC9A512A7FAD7 /* [CP] Check Pods Manifest.lock */,
+				A78D4D182253DD6F005CE553 /* Sources */,
+				A78D4D192253DD6F005CE553 /* Frameworks */,
+				A78D4D1A2253DD6F005CE553 /* Resources */,
+				99935A01655A84B3B8D1E23E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChronicyiOS;
+			productName = ChronicyiOS;
+			productReference = A78D4D1C2253DD6F005CE553 /* ChronicyiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -579,6 +648,9 @@
 							};
 						};
 					};
+					A78D4D1B2253DD6F005CE553 = {
+						CreatedOnToolsVersion = 10.2;
+					};
 				};
 			};
 			buildConfigurationList = A7C5C164223088B000C0B27B /* Build configuration list for PBXProject "Chronicy" */;
@@ -603,6 +675,7 @@
 				A760459422308DA5007F3268 /* ChronicyMacOS */,
 				A72BB15A2237280C008575FC /* ChronicySafariExtension */,
 				A75220C52252044500C7A54E /* ChronicyShareExtension */,
+				A78D4D1B2253DD6F005CE553 /* ChronicyiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -656,6 +729,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A78D4D1A2253DD6F005CE553 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A78D4D292253DD70005CE553 /* LaunchScreen.storyboard in Resources */,
+				A78D4D262253DD70005CE553 /* Assets.xcassets in Resources */,
+				A78D4D242253DD6F005CE553 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -687,16 +770,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -725,6 +803,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		99935A01655A84B3B8D1E23E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA91167D5881F10570D6050D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -741,6 +836,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ChronicySafariExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D87F515EEA8AC9A512A7FAD7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChronicyiOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -804,6 +921,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A78D4D182253DD6F005CE553 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A78D4D212253DD6F005CE553 /* ViewController.swift in Sources */,
+				A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -847,6 +973,22 @@
 				A76045A122308DA6007F3268 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A78D4D222253DD6F005CE553 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A78D4D232253DD6F005CE553 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A78D4D282253DD70005CE553 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -918,7 +1060,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = $TARGET_NAME;
+				PRODUCT_NAME = "$TARGET_NAME";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -987,7 +1129,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = $TARGET_NAME;
+				PRODUCT_NAME = "$TARGET_NAME";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1241,6 +1383,98 @@
 			};
 			name = Release;
 		};
+		A78D4D2C2253DD70005CE553 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D7AC4F1658E40332169FC0F /* Pods-ChronicyiOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ChronicyiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A78D4D2D2253DD70005CE553 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ChronicyiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		A7C5C165223088B000C0B27B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1331,6 +1565,15 @@
 			buildConfigurations = (
 				A76045A922308DA6007F3268 /* Debug */,
 				A76045AA22308DA6007F3268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A78D4D2B2253DD70005CE553 /* Build configuration list for PBXNativeTarget "ChronicyiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A78D4D2C2253DD70005CE553 /* Debug */,
+				A78D4D2D2253DD70005CE553 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

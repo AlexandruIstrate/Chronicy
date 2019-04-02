@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework
+${BUILT_PRODUCTS_DIR}/Cards/Cards.framework
+${BUILT_PRODUCTS_DIR}/Player/Player.framework
