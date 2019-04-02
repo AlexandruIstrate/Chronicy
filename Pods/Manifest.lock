@@ -3,26 +3,30 @@ PODS:
   - BulletinBoard (3.0.0)
   - Cards (1.4.0):
     - Player (= 0.13.0)
+  - FoldingCell (5.0.0)
   - Player (0.13.0)
 
 DEPENDENCIES:
   - Alamofire
   - BulletinBoard
   - Cards
+  - FoldingCell
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - BulletinBoard
     - Cards
+    - FoldingCell
     - Player
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
   Cards: 45ae6bd0eca7b5e8016d3b6cb30b60b04753f68f
+  FoldingCell: 49f5e6a036241db1a177610b4d4137d961ddd40a
   Player: 968d8d07d923bcdd6f7e4091c9e306eb44a5f7a4
 
-PODFILE CHECKSUM: 80712496189ff9fb3ef84cf0d659ecf8778f20c9
+PODFILE CHECKSUM: 1eb5dce28fa4a30c1266bbfc8c338be78d7e23bf
 
 COCOAPODS: 1.7.0.beta.3

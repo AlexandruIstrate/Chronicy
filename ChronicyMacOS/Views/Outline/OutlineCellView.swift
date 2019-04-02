@@ -16,24 +16,11 @@ class OutlineCellView: NSTableCellView {
     @IBOutlet private weak var subtitleLabel: NSTextField!;
     @IBOutlet private weak var iconImageView: NSImageView!;
     
-    private lazy var optionsMenu: NSMenu = {
-        let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
-        
-        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit...", comment: ""), action: #selector(onEdit), keyEquivalent: "");
-        edit.target = self;
-        
-        let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");
-        delete.target = self;
-        
-        menu.items = [ edit, delete ];
-        return menu;
-    } ();
-    
     public var cellIndex: Int = 0;
-    
     public weak var parent: OutlineStackView?;
     
     public var delegate: OutlineCellViewDelegate?;
+    public var interactionDelegate: ViewInteractionDelegate?;
     
     @IBInspectable
     public var title: String = String();
@@ -126,10 +113,15 @@ class OutlineCellView: NSTableCellView {
         self.layer?.cornerRadius = self.cornerRadius;
     }
     
-    @IBAction private func onOptionsButtonPressed(_ sender: NSButton) {
-        optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: sender.bounds.origin, in: sender);
+    override func mouseUp(with event: NSEvent) {
+        super.mouseUp(with: event);
+        self.interactionDelegate?.onRightClick(at: event.locationInWindow);
     }
-    
+
+    override func rightMouseUp(with event: NSEvent) {
+        super.rightMouseUp(with: event);
+        self.interactionDelegate?.onRightClick(at: event.locationInWindow);
+    }
 }
 
 extension OutlineCellView: CustomOperationSeparatable {
@@ -149,6 +141,9 @@ extension OutlineCellView: CustomOperationSeparatable {
 extension OutlineCellView {
     private func setupView() {
         self.wantsLayer = true;
+        
+        self.background = NSColor(calibratedRed: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1);
+        self.cornerRadius = 10.0;
     }
     
     private func setupFonts() {

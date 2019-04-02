@@ -18,6 +18,17 @@ class OutlineCentralViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let card1: Card = Card(title: "Card 1");
+        let card2: Card = Card(title: "Card 2");
+        let card3: Card = Card(title: "Card 3");
+        
+        let stack: Stack = Stack(name: "Stack");
+        stack.add(card: card1);
+        stack.add(card: card2);
+        stack.add(card: card3);
+        
+        self.notebook.add(stack: stack);
+        
         setupContentView();
         setupTimeline();
         setupObservers();
@@ -62,8 +73,6 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             fatalError();
         }
 
-        cell.background = NSColor(calibratedRed: 70 / 255.0, green: 168 / 255.0, blue: 74 / 255.0, alpha: 1);
-        cell.cornerRadius = 15.0;
         cell.delegate = self;
         
 //        var colors: [NSColor] = [];
@@ -132,7 +141,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
         
         let card: Card = self.notebook.items[stackView.stackIndex].cards[cellView.cellIndex];
         
-        let editor: ActionEditorViewController = ActionEditorViewController();
+        let editor: CardEditorViewController = CardEditorViewController();
         editor.actionTitle = card.title;
 //        editor.actionComment = action.comment;
 //        editor.actionDate = action.date as Date;

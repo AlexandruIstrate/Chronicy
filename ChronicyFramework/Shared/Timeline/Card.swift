@@ -14,7 +14,7 @@ public class Card {
     
     public private(set) var fields: [CustomField] = [];
     
-    init(title: String) {
+    public init(title: String) {
         self.title = title;
         self.date = Date();
     }

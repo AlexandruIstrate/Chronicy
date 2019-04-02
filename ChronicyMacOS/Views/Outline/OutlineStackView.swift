@@ -14,6 +14,8 @@ class OutlineStackView: NSView {
     @IBOutlet private weak var tableView: NSTableView!;
     @IBOutlet private weak var nameLabel: NSTextField!;
     
+    private static var defaultBackground: NSColor = NSColor(calibratedRed: 231 / 255.0, green: 239 / 255.0, blue: 244 / 255.0, alpha: 255 / 255.0);
+    
     private lazy var optionsMenu: NSMenu = {
         let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
         
@@ -73,6 +75,8 @@ extension OutlineStackView: CustomOperationSeparatable {
     
     func onLayoutView() {
         self.setupFonts();
+        self.setupView();
+        
         self.nameLabel.stringValue = title;
         
         for cell: OutlineCellView in cells {
@@ -97,6 +101,12 @@ extension OutlineStackView: NSTableViewDataSource, NSTableViewDelegate {
 }
 
 extension OutlineStackView {
+    private func setupView() {
+        self.wantsLayer = true;
+        self.layer?.backgroundColor = OutlineStackView.defaultBackground.cgColor;
+        self.tableView.backgroundColor = OutlineStackView.defaultBackground;
+    }
+    
     private func setupTable() {
         self.tableView.dataSource = self;
         self.tableView.delegate = self;

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,13 +62,14 @@
 		A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88ADD2242C44300C5A94E /* MainViewController.xib */; };
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
+		A7AE973D2253F083001BAC43 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE973C2253F083001BAC43 /* DetailsCell.swift */; };
 		A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2839224BB20700A1A6DE /* TableView.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
 		A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* TaskEditorViewController.swift */; };
 		A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */; };
-		A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */; };
-		A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */; };
+		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
+		A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,13 +192,14 @@
 		A7A88ADD2242C44300C5A94E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
+		A7AE973C2253F083001BAC43 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		A7BC2839224BB20700A1A6DE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7E45129224811C200848AF5 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskEditorViewController.xib; sourceTree = "<group>"; };
-		A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditorViewController.swift; sourceTree = "<group>"; };
-		A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionEditorViewController.xib; sourceTree = "<group>"; };
+		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
+		A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardEditorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +409,7 @@
 			children = (
 				A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */,
 				A78D4D202253DD6F005CE553 /* ViewController.swift */,
+				A7AE973C2253F083001BAC43 /* DetailsCell.swift */,
 				A78D4D222253DD6F005CE553 /* Main.storyboard */,
 				A78D4D252253DD70005CE553 /* Assets.xcassets */,
 				A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */,
@@ -488,8 +491,8 @@
 			children = (
 				A7E45129224811C200848AF5 /* TaskEditorViewController.swift */,
 				A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */,
-				A7E4512D22481BB200848AF5 /* ActionEditorViewController.swift */,
-				A7E4512E22481BB200848AF5 /* ActionEditorViewController.xib */,
+				A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */,
+				A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -717,7 +720,7 @@
 			files = (
 				A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
-				A7E4513022481BB200848AF5 /* ActionEditorViewController.xib in Resources */,
+				A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
@@ -896,7 +899,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E4512F22481BB200848AF5 /* ActionEditorViewController.swift in Sources */,
+				A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
 				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
@@ -925,6 +928,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7AE973D2253F083001BAC43 /* DetailsCell.swift in Sources */,
 				A78D4D212253DD6F005CE553 /* ViewController.swift in Sources */,
 				A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */,
 			);
@@ -1060,7 +1064,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$TARGET_NAME";
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1129,7 +1133,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.internals.ChronicyMacOS.ChronicySafariExtension;
-				PRODUCT_NAME = "$TARGET_NAME";
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

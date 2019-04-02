@@ -1,5 +1,5 @@
 //
-//  ActionEditorViewController.swift
+//  CardEditorViewController.swift
 //  ChronicyMacOS
 //
 //  Created by Alexandru Istrate on 24/03/2019.
@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ActionEditorViewController: NSViewController {
+class CardEditorViewController: NSViewController {
 
     @IBOutlet private weak var titleTextField: NSTextField!;
     @IBOutlet private var commentTextView: NSTextView!;
