@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,16 +18,31 @@
             <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhm-wY-fNa">
-                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhm-wY-fNa">
+                    <rect key="frame" x="16" y="16" width="768" height="568"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                            <color key="value" name="BehindBackground"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="Yhm-wY-fNa" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="6iQ-C0-iBd"/>
-                <constraint firstAttribute="bottom" secondItem="Yhm-wY-fNa" secondAttribute="bottom" id="RL3-wR-BCn"/>
-                <constraint firstItem="Yhm-wY-fNa" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Xg4-6r-2Rg"/>
-                <constraint firstAttribute="trailing" secondItem="Yhm-wY-fNa" secondAttribute="trailing" id="g7k-Ud-oI3"/>
+                <constraint firstItem="Yhm-wY-fNa" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="081-cs-L6M"/>
+                <constraint firstItem="Yhm-wY-fNa" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="5eY-KA-cy0"/>
+                <constraint firstAttribute="bottom" secondItem="Yhm-wY-fNa" secondAttribute="bottom" constant="16" id="O5o-FF-Pbg"/>
+                <constraint firstAttribute="trailing" secondItem="Yhm-wY-fNa" secondAttribute="trailing" constant="16" id="ia7-a8-BSu"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" name="BehindBackground"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
         </customView>
     </objects>
+    <resources>
+        <namedColor name="BehindBackground">
+            <color red="0.10588235294117647" green="0.53333333333333333" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

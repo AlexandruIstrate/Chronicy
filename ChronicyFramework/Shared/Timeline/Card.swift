@@ -13,6 +13,9 @@ public class Card {
     public var date: Date;
     
     public private(set) var fields: [CustomField] = [];
+    public private(set) lazy var inputTemplate: InputTemplate = {
+        return InputTemplate(name: self.title, fields: self.fields);
+    } ();
     
     public init(title: String) {
         self.title = title;
@@ -22,6 +25,7 @@ public class Card {
 
 extension Card: Equatable {
     public static func == (lhs: Card, rhs: Card) -> Bool {
-        return false;
+        // TODO: Change
+        return  lhs.title == rhs.title;
     }
 }

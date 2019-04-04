@@ -13,6 +13,9 @@
 		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
+		A70D399B22553AD900580FF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399A22553AD900580FF4 /* Color.swift */; };
+		A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D39A022554A9300580FF4 /* SidebarViewController.swift */; };
+		A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D39A122554A9300580FF4 /* SidebarViewController.xib */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
 		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
@@ -66,8 +69,8 @@
 		A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2839224BB20700A1A6DE /* TableView.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
-		A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* TaskEditorViewController.swift */; };
-		A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */; };
+		A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* StackEditorViewController.swift */; };
+		A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* StackEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
 		A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */; };
 /* End PBXBuildFile section */
@@ -133,6 +136,9 @@
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
+		A70D399A22553AD900580FF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A70D39A022554A9300580FF4 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		A70D39A122554A9300580FF4 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
 		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
@@ -196,8 +202,8 @@
 		A7BC2839224BB20700A1A6DE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A7E45129224811C200848AF5 /* TaskEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
-		A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskEditorViewController.xib; sourceTree = "<group>"; };
+		A7E45129224811C200848AF5 /* StackEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditorViewController.swift; sourceTree = "<group>"; };
+		A7E4512A224811C200848AF5 /* StackEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardEditorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				A7A88ACE2242B0A600C5A94E /* View.swift */,
+				A70D399A22553AD900580FF4 /* Color.swift */,
 				A7109E302235849400E3EB29 /* ViewLoader.swift */,
 				A7BC2839224BB20700A1A6DE /* TableView.swift */,
 			);
@@ -387,6 +394,8 @@
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
 				A774D8182242CEAB00D69C7E /* SidebarView.swift */,
 				A7099EEC2243108700482698 /* SidebarTableCellView.swift */,
+				A70D39A022554A9300580FF4 /* SidebarViewController.swift */,
+				A70D39A122554A9300580FF4 /* SidebarViewController.xib */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
@@ -489,8 +498,8 @@
 		A7A88AEB2242C87E00C5A94E /* Editors */ = {
 			isa = PBXGroup;
 			children = (
-				A7E45129224811C200848AF5 /* TaskEditorViewController.swift */,
-				A7E4512A224811C200848AF5 /* TaskEditorViewController.xib */,
+				A7E45129224811C200848AF5 /* StackEditorViewController.swift */,
+				A7E4512A224811C200848AF5 /* StackEditorViewController.xib */,
 				A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */,
 				A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */,
 			);
@@ -718,7 +727,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E4512C224811C200848AF5 /* TaskEditorViewController.xib in Resources */,
+				A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
@@ -729,6 +738,7 @@
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
+				A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,12 +911,14 @@
 			files = (
 				A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
+				A70D399B22553AD900580FF4 /* Color.swift in Sources */,
 				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
 				A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */,
+				A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
-				A7E4512B224811C200848AF5 /* TaskEditorViewController.swift in Sources */,
+				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
 				A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */,

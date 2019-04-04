@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -53,6 +54,11 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" name="StackBackground"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
                     </clipView>
@@ -75,6 +81,14 @@
                 <constraint firstItem="yNz-5W-oWc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="p96-VW-ZIC"/>
                 <constraint firstAttribute="trailing" secondItem="Mze-Sd-Ti9" secondAttribute="trailing" constant="16" id="usn-tS-SON"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" name="StackBackground"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="nameLabel" destination="yNz-5W-oWc" id="9al-8w-Ic6"/>
                 <outlet property="tableView" destination="dsn-6g-7uC" id="QtP-83-nVX"/>
@@ -82,4 +96,9 @@
             <point key="canvasLocation" x="139" y="151"/>
         </customView>
     </objects>
+    <resources>
+        <namedColor name="StackBackground">
+            <color red="0.90588235294117647" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

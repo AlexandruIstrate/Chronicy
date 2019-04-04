@@ -14,8 +14,6 @@ class OutlineStackView: NSView {
     @IBOutlet private weak var tableView: NSTableView!;
     @IBOutlet private weak var nameLabel: NSTextField!;
     
-    private static var defaultBackground: NSColor = NSColor(calibratedRed: 231 / 255.0, green: 239 / 255.0, blue: 244 / 255.0, alpha: 255 / 255.0);
-    
     private lazy var optionsMenu: NSMenu = {
         let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
         
@@ -39,6 +37,7 @@ class OutlineStackView: NSView {
 
     public var dataSource: OutlineStackViewDataSource?;
     public var delegate: OutlineStackViewDelegate?;
+    public var interactionDelegate: ViewInteractionDelegate?;
 
     public var stackIndex: Int = 0;
     public var title: String = String();
@@ -47,6 +46,16 @@ class OutlineStackView: NSView {
     
     @IBAction private func onOptionsClicked(_ sender: NSButton) {
         optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: sender.bounds.origin, in: sender);
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        super.mouseUp(with: event);
+        self.interactionDelegate?.onClick(at: event.locationInWindow, in: self);
+    }
+    
+    override func rightMouseDown(with event: NSEvent) {
+        super.rightMouseUp(with: event);
+        self.interactionDelegate?.onRightClick(at: event.locationInWindow, in: self);
     }
 
 }
@@ -75,7 +84,6 @@ extension OutlineStackView: CustomOperationSeparatable {
     
     func onLayoutView() {
         self.setupFonts();
-        self.setupView();
         
         self.nameLabel.stringValue = title;
         
@@ -101,12 +109,6 @@ extension OutlineStackView: NSTableViewDataSource, NSTableViewDelegate {
 }
 
 extension OutlineStackView {
-    private func setupView() {
-        self.wantsLayer = true;
-        self.layer?.backgroundColor = OutlineStackView.defaultBackground.cgColor;
-        self.tableView.backgroundColor = OutlineStackView.defaultBackground;
-    }
-    
     private func setupTable() {
         self.tableView.dataSource = self;
         self.tableView.delegate = self;

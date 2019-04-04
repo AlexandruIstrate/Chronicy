@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TaskEditorViewController" customModule="Chronicy" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="StackEditorViewController" customModule="Chronicy" customModuleProvider="target">
             <connections>
                 <outlet property="commentTextView" destination="8AS-cb-gK4" id="B5n-it-ovN"/>
                 <outlet property="titleTextField" destination="eRy-CZ-lfU" id="JYc-yc-S6N"/>
@@ -59,6 +59,10 @@
                             </textView>
                         </subviews>
                     </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="TiH-dg-q7s">
+                        <rect key="frame" x="-100" y="-100" width="373" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
                     <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="tIF-lr-jIg">
                         <rect key="frame" x="357" y="0.0" width="16" height="169"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -1,5 +1,5 @@
 //
-//  TaskEditor.swift
+//  StackEditorViewController.swift
 //  ChronicyMacOS
 //
 //  Created by Alexandru Istrate on 24/03/2019.
@@ -7,7 +7,7 @@
 
 import Cocoa;
 
-class TaskEditorViewController: NSViewController {
+class StackEditorViewController: NSViewController {
 
     @IBOutlet private weak var titleTextField: NSTextField!;
     @IBOutlet private weak var commentTextView: NSTextView!;

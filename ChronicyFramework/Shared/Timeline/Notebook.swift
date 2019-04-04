@@ -14,10 +14,11 @@ public protocol NotebookItem {
 
 public class Notebook {
     
+    public var name: String;
     public private(set) var items: [Stack] = [];
     
-    public init() {
-        
+    public init(name: String) {
+        self.name = name;
     }
     
     public func add(stack: Stack) {

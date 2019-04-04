@@ -12,7 +12,7 @@ class MainViewController: NSViewController {
     
     public private(set) static var shared: MainViewController!;
     
-    @IBOutlet private weak var sidebarView: SidebarView!;
+    private var sidebarView: SidebarViewController!;
     private var centerView: NSViewController?;
     
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
@@ -27,6 +27,8 @@ class MainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        self.setupSidebarView();
         self.setupModules();
         
         self.showCenterView(viewController: OutlineCentralViewController());
@@ -53,16 +55,30 @@ class MainViewController: NSViewController {
     
 }
 
-extension MainViewController {
+extension MainViewController {    
+    private func setupSidebarView() {
+        self.sidebarView = SidebarViewController();
+        self.view.addSubview(sidebarView.view);
+        
+        let cv: NSView = self.view;
+        let sv: NSView = self.sidebarView.view;
+        
+        sv.translatesAutoresizingMaskIntoConstraints = false;
+        sv.topAnchor.constraint(equalTo: cv.topAnchor).isActive = true;
+        sv.bottomAnchor.constraint(equalTo: cv.bottomAnchor).isActive = true;
+        sv.leadingAnchor.constraint(equalTo: cv.leadingAnchor).isActive = true;
+    }
+    
     private func setupContentView(view: NSView) {
         self.view.addSubview(view);
         
         let cv: NSView = self.view;
+        let sv: NSView = self.sidebarView.view;
         
         view.translatesAutoresizingMaskIntoConstraints = false;
         view.topAnchor.constraint(equalTo: cv.topAnchor).isActive = true;
         view.bottomAnchor.constraint(equalTo: cv.bottomAnchor).isActive = true;
-        view.leadingAnchor.constraint(equalTo: sidebarView.trailingAnchor).isActive = true;
+        view.leadingAnchor.constraint(equalTo: sv.trailingAnchor).isActive = true;
         view.trailingAnchor.constraint(equalTo: cv.trailingAnchor).isActive = true;
     }
     

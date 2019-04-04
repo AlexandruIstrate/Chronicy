@@ -5,8 +5,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ActionEditorViewController" customModule="Chronicy" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="CardEditorViewController" customModule="Chronicy" customModuleProvider="target">
             <connections>
+                <outlet property="activeTable" destination="Vfg-hy-BEQ" id="5a6-Bq-EBv"/>
+                <outlet property="availableOutline" destination="gsL-Ae-Uvm" id="8Z4-MF-GI7"/>
+                <outlet property="dateLabel" destination="4Bo-aJ-M51" id="3OQ-7M-OjO"/>
+                <outlet property="titleLabel" destination="yb3-Qm-b82" id="KxY-Ar-9db"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -84,13 +88,13 @@ DQ
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-TA-0jc">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-TA-0jc">
                     <rect key="frame" x="354" y="69" width="150" height="476"/>
                     <clipView key="contentView" drawsBackground="NO" id="Jhl-T6-LMY">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="476"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="X6y-iD-nS8" id="gsL-Ae-Uvm">
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="X6y-iD-nS8" id="gsL-Ae-Uvm">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="476"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A7098C4F224518920026BAFC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7098C4E224518920026BAFC /* Notification.swift */; };
 		A709AB562248FD65002841A8 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB502248FD65002841A8 /* Stack.swift */; };
+		A70D399D2255499900580FF4 /* InputTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399C2255499900580FF4 /* InputTemplate.swift */; };
 		A7109E25223570C200E3EB29 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E24223570C200E3EB29 /* Module.swift */; };
 		A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E262235741A00E3EB29 /* ModuleManager.swift */; };
 		A7109E292235756E00E3EB29 /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E282235756E00E3EB29 /* TrackableProperty.swift */; };
@@ -30,6 +31,7 @@
 		A7033133224912330001172A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A7098C4E224518920026BAFC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A709AB502248FD65002841A8 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = /Users/andu/Projects/Chronicy/ChronicyFramework/Shared/Timeline/Stack.swift; sourceTree = "<absolute>"; };
+		A70D399C2255499900580FF4 /* InputTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTemplate.swift; sourceTree = "<group>"; };
 		A7109E24223570C200E3EB29 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A7109E262235741A00E3EB29 /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A7109E282235756E00E3EB29 /* TrackableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				A709AB502248FD65002841A8 /* Stack.swift */,
 				A79E4E802252966700E385CA /* Card.swift */,
 				A79E4E842252987300E385CA /* CustomField.swift */,
+				A70D399C2255499900580FF4 /* InputTemplate.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
 				A79E4E812252966700E385CA /* Card.swift in Sources */,
+				A70D399D2255499900580FF4 /* InputTemplate.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
 				A7109E272235741A00E3EB29 /* ModuleManager.swift in Sources */,
 				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,
