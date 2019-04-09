@@ -22,6 +22,13 @@ class OutlineCellView: NSTableCellView {
     public var delegate: OutlineCellViewDelegate?;
     public var interactionDelegate: ViewInteractionDelegate?;
     
+    enum ActionTrigger {
+        case click, rightClick;
+    }
+    
+    public var editTrigger: ActionTrigger?;
+    public var deleteTrigger: ActionTrigger?;
+    
     @IBInspectable
     public var title: String = String();
     
@@ -53,11 +60,19 @@ class OutlineCellView: NSTableCellView {
     override func mouseDown(with event: NSEvent) {
         super.mouseUp(with: event);
         self.interactionDelegate?.onClick(at: event.locationInWindow, in: self);
+        
+        if self.editTrigger == .click {
+            self.onEdit();
+        }
     }
 
     override func rightMouseDown(with event: NSEvent) {
         super.rightMouseUp(with: event);
         self.interactionDelegate?.onRightClick(at: event.locationInWindow, in: self);
+        
+        if self.editTrigger == .rightClick {
+            self.onEdit();
+        }
     }
 }
 

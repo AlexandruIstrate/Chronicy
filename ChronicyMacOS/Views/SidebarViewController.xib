@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SidebarViewController" customModule="Chronicy" customModuleProvider="target">
             <connections>
-                <outlet property="navigationButtonsView" destination="01F-4a-DBW" id="zb2-Il-9Q0"/>
+                <outlet property="itemView" destination="Ugq-J1-Tnt" id="3sp-qB-Pys"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -18,18 +18,37 @@
             <rect key="frame" x="0.0" y="0.0" width="50" height="800"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01F-4a-DBW">
-                    <rect key="frame" x="0.0" y="50" width="50" height="630"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="7hF-IV-1nJ"/>
-                    </constraints>
-                </stackView>
+                <scrollView wantsLayer="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="sCG-pm-wo2">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="750"/>
+                    <clipView key="contentView" copiesOnScroll="NO" id="cXa-kn-n6g">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="750"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="Ugq-J1-Tnt">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="lHa-6E-0vY">
+                                    <size key="itemSize" width="50" height="50"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9Vp-iA-mdS">
+                        <rect key="frame" x="-100" y="-100" width="48" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="fc8-tz-XW5">
+                        <rect key="frame" x="-100" y="-100" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="01F-4a-DBW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="120" id="70l-cJ-Hje"/>
-                <constraint firstItem="01F-4a-DBW" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="KEX-bD-05x"/>
-                <constraint firstAttribute="trailing" secondItem="01F-4a-DBW" secondAttribute="trailing" id="Kvj-5t-EJX"/>
-                <constraint firstAttribute="bottom" secondItem="01F-4a-DBW" secondAttribute="bottom" constant="50" id="qca-Ch-go1"/>
+                <constraint firstAttribute="trailing" secondItem="sCG-pm-wo2" secondAttribute="trailing" id="0Cf-Pw-TYH"/>
+                <constraint firstItem="sCG-pm-wo2" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="50" id="1Ik-gY-g1d"/>
+                <constraint firstItem="sCG-pm-wo2" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="fCW-lC-Q9z"/>
+                <constraint firstAttribute="bottom" secondItem="sCG-pm-wo2" secondAttribute="bottom" id="hga-iF-xNI"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">

@@ -8,42 +8,45 @@
 import Cocoa
 
 class SidebarViewController: NSViewController {
-
-    @IBOutlet private weak var navigationButtonsView: NSStackView!;
+    
+    @IBOutlet private weak var itemView: NSCollectionView!;
     
     private var cells: [SidebarCell] = [];
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.setupItemView();
         
         self.cells.append(SidebarCell(title: nil, image: NSImage(named: NSImage.Name("Outline"))!, clickHandler: nil));
+        self.itemView.reloadData();
+    }
+    
+}
+
+extension SidebarViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.cells.count;
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        return SidebarViewItem();
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
-        self.loadData();
     }
     
 }
 
 extension SidebarViewController {
-    private func loadData() {
-        for cell: SidebarCell in cells {
-            self.navigationButtonsView.addView(buttonForCell(cell: cell), in: .center);
-        }
+    private func setupItemView() {
+        self.itemView.register(NSNib(nibNamed: "SidebarViewItem", bundle: Bundle.main), forItemWithIdentifier: NSUserInterfaceItemIdentifier("SidebarCell"));
     }
-    
-    private func buttonForCell(cell: SidebarCell) -> NSButton {
-        let button: NSButton = NSButton();
+}
 
-        
-        if let title: String = cell.title {
-            button.title = title;
-        }
-        
-        if let image: NSImage = cell.image {
-            button.image = image;
-        }
-        
-        return button;
-    }
+class SidebarViewItem: NSCollectionViewItem {
+    
 }
 
 struct SidebarCell {

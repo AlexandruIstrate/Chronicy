@@ -9,36 +9,43 @@ import Cocoa;
 import ChronicyFramework;
 
 class CardEditorViewController: NSViewController {
-
-    @IBOutlet private weak var titleLabel: NSTextField!;
-    @IBOutlet private weak var dateLabel: NSTextField!;
     
-    @IBOutlet private weak var availableOutline: NSOutlineView!;
-    @IBOutlet private weak var activeTable: NSScroller!;
+    @IBOutlet private weak var titleField: NSTextField!;
+    @IBOutlet private weak var datePicker: NSDatePicker!;
+    
+    @IBOutlet private weak var fieldsTable: NSTableView!;
+    @IBOutlet private weak var configureView: NSView!;
+    
+    @IBOutlet private weak var colorWell: NSColorWell!;
+    @IBOutlet private weak var tagsTable: NSTableView!;
+    
+    private var fieldsManager: CustomFieldManager = CustomFieldManager.manager;
     
     public var actionTitle: String = String();
     public var actionDate: Date = Date();
+    public var fields: [CustomField] = [];
     
-    public var actionColor: NSColor = NSColor.white;
-    
-    public private(set) var availableFields: [EditorField] = [];
-    public private(set) var activeFields: [EditorField] = [];
+    public var actionColor: NSColor = NSColor.white { didSet { self.colorWell.color = self.actionColor; } }
     
     typealias ActionEditorCompletionHandler = (Bool) -> ();
     public var completion: ActionEditorCompletionHandler?;
     
     enum Identifier: String {
-        case available;
-        case active;
+        case fieldCell = "FieldCell";
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
+        self.setup();
+    }
+    
+    override func viewWillAppear() {
+        self.setupDisplayValues();
+        super.viewWillAppear();
     }
     
     @IBAction private func onOKPressed(_ sender: NSButton) {
-        
+        setupReturnValues();
         self.dismiss(nil);
         completion?(true);
     }
@@ -50,39 +57,38 @@ class CardEditorViewController: NSViewController {
     
 }
 
-extension CardEditorViewController {
-    private func loadAvailable() {
-        
+extension CardEditorViewController: NSTableViewDataSource, NSTableViewDelegate {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.fieldsManager.fields.count;
     }
     
-    private func cellForField(field: EditorField, tableView: NSTableView, identifier: Identifier) -> NSTableCellView? {
-        guard let cell: NSTableCellView = tableView.makeCell(identifier: identifier.rawValue) else {
-            Log.error(message: "Could not create cell for CardEditorViewController with identifier \(identifier.rawValue)");
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let cell: NSTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(Identifier.fieldCell.rawValue), owner: self) as? NSTableCellView else {
+            Log.error(message: "Could not create cell for CardEditorViewController.");
             return nil;
         }
+        
+        let field: CustomField = self.fieldsManager.fields[row];
+        cell.textField?.stringValue = field.name;
         
         return cell;
     }
 }
 
-struct EditorField {
-    var name: String;
-    var value: Any?;    // Should this be here?
+extension CardEditorViewController {
+    private func setup() {
+        self.fieldsTable.dataSource = self;
+        self.fieldsTable.delegate = self;
+    }
+    
+    private func setupDisplayValues() {
+        self.titleField.stringValue = self.actionTitle;
+        self.datePicker.dateValue = self.actionDate;
+    }
+    
+    private func setupReturnValues() {
+        self.actionTitle = self.titleField.stringValue;
+        self.actionDate = self.datePicker.dateValue;
+    }
 }
 
-class FieldsTableDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
-    
-    public var fields: [EditorField] = [];
-    
-//    init(fields: [) {
-//
-//    }
-    
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.fields.count;
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        return nil;
-    }
-}

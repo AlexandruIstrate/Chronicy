@@ -13,6 +13,12 @@ public class Stack {
     public var name: String;
     public private(set) var cards: [Card] = [];
     
+    public struct Styling {
+        var color: CGColor;
+    }
+    
+    public var style: Styling = Styling(color: CGColor.white);
+    
     public init(name: String) {
         self.name = name;
     }
@@ -29,7 +35,7 @@ public class Stack {
     
     @discardableResult
     public func insertNewCard() -> Card {
-        let card: Card = Card(title: "Test");
+        let card: Card = Card(title: NSLocalizedString("Test", comment: ""));
         self.cards.append(card);
         return card;
     }

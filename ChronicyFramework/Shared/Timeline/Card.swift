@@ -17,10 +17,17 @@ public class Card {
         return InputTemplate(name: self.title, fields: self.fields);
     } ();
     
+    public struct Styling {
+        var color: CGColor;
+    }
+    
+    public var style: Styling = Styling(color: CGColor.white);
+    
     public init(title: String) {
         self.title = title;
         self.date = Date();
     }
+    
 }
 
 extension Card: Equatable {

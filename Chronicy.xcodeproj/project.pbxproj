@@ -17,10 +17,10 @@
 		A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D39A022554A9300580FF4 /* SidebarViewController.swift */; };
 		A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D39A122554A9300580FF4 /* SidebarViewController.xib */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
-		A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2A2235769900E3EB29 /* BrowserTracker.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
 		A71504C4224CFE5300DD1214 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */; };
+		A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */; };
 		A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72BB15D2237280C008575FC /* Cocoa.framework */; };
 		A72BB16F2237280C008575FC /* ChronicySafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1802237287D008575FC /* SafariExtensionHandler.swift */; };
@@ -34,10 +34,8 @@
 		A75220C92252044500C7A54E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75220C82252044500C7A54E /* ShareViewController.swift */; };
 		A75220CC2252044500C7A54E /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75220CA2252044500C7A54E /* ShareViewController.xib */; };
 		A75220D12252044500C7A54E /* ChronicyShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A75220C62252044500C7A54E /* ChronicyShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
-		A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A774D8182242CEAB00D69C7E /* SidebarView.swift */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
@@ -69,6 +67,7 @@
 		A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2839224BB20700A1A6DE /* TableView.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
+		A7DF74E7225BC4EF00F6081C /* SidebarViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */; };
 		A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* StackEditorViewController.swift */; };
 		A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* StackEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
@@ -140,10 +139,10 @@
 		A70D39A022554A9300580FF4 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		A70D39A122554A9300580FF4 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
-		A7109E2A2235769900E3EB29 /* BrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequestable.swift; sourceTree = "<group>"; };
 		A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicySafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -160,14 +159,12 @@
 		A75220CB2252044500C7A54E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareViewController.xib; sourceTree = "<group>"; };
 		A75220CD2252044500C7A54E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75220CE2252044500C7A54E /* ChronicyShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyShareExtension.entitlements; sourceTree = "<group>"; };
-		A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
 		A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChronicyFramework.xcodeproj; path = ChronicyFramework/ChronicyFramework.xcodeproj; sourceTree = "<group>"; };
 		A760459522308DA5007F3268 /* Chronicy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronicy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760459822308DA5007F3268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
-		A774D8182242CEAB00D69C7E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -202,6 +199,7 @@
 		A7BC2839224BB20700A1A6DE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewItem.xib; sourceTree = "<group>"; };
 		A7E45129224811C200848AF5 /* StackEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512A224811C200848AF5 /* StackEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
@@ -245,11 +243,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A70FBA8822580555007CE092 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		A7109E21223567FF00E3EB29 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				A7109E2A2235769900E3EB29 /* BrowserTracker.swift */,
-				A758DEBC223EEA3D0060B4FE /* SafariBrowserTracker.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -359,8 +363,9 @@
 				A7109E21223567FF00E3EB29 /* Tracking */,
 				A7BC283F224BDD6200A1A6DE /* Notifications */,
 				A77618022231CA080038E815 /* Views */,
-				A77617FF2231C8A40038E815 /* Utils */,
+				A70FBA8822580555007CE092 /* Web */,
 				A7252A422234315900EE554A /* Window */,
+				A77617FF2231C8A40038E815 /* Utils */,
 				A760459822308DA5007F3268 /* AppDelegate.swift */,
 				A76045A022308DA6007F3268 /* Main.storyboard */,
 				A77617F92231C1450038E815 /* Assets.xcassets */,
@@ -392,10 +397,10 @@
 			children = (
 				A7A88ADC2242C44300C5A94E /* MainViewController.swift */,
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
-				A774D8182242CEAB00D69C7E /* SidebarView.swift */,
 				A7099EEC2243108700482698 /* SidebarTableCellView.swift */,
 				A70D39A022554A9300580FF4 /* SidebarViewController.swift */,
 				A70D39A122554A9300580FF4 /* SidebarViewController.xib */,
+				A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
@@ -736,6 +741,7 @@
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
+				A7DF74E7225BC4EF00F6081C /* SidebarViewItem.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
 				A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */,
@@ -912,15 +918,13 @@
 				A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
 				A70D399B22553AD900580FF4 /* Color.swift in Sources */,
-				A758DEBD223EEA3D0060B4FE /* SafariBrowserTracker.swift in Sources */,
+				A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
-				A774D8192242CEAB00D69C7E /* SidebarView.swift in Sources */,
 				A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
 				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
-				A7109E2B2235769900E3EB29 /* BrowserTracker.swift in Sources */,
 				A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,

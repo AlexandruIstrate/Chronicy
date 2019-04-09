@@ -25,6 +25,13 @@ public class Notebook {
         self.items.append(stack);
     }
     
+    @discardableResult
+    public func insertNewStack() -> Stack {
+        let result: Stack = Stack(name: NSLocalizedString("New Stack", comment: ""));
+        self.items.append(result);
+        return result;
+    }
+    
     public func remove(stack: Stack) {
         self.items.removeAll { (iter: Stack) -> Bool in
             return iter == stack;

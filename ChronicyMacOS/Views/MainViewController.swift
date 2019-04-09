@@ -83,6 +83,6 @@ extension MainViewController {
     }
     
     private func setupModules() {
-        ModuleManager.manager.add(module: SafariBrowserModule());
+//        ModuleManager.manager.add(module: SafariBrowserModule());
     }
 }

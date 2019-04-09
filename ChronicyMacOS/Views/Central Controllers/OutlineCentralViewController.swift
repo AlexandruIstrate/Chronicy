@@ -27,9 +27,12 @@ class OutlineCentralViewController: NSViewController {
         stack1.add(card: card2);
         stack1.add(card: card3);
         
+        let otherCard1: Card = Card(title: "Card 1");
+        let otherCard2: Card = Card(title: "Card 2");
+        
         let stack2: Stack = Stack(name: "Stack");
-        stack2.add(card: card1);
-        stack2.add(card: card2);
+        stack2.add(card: otherCard1);
+        stack2.add(card: otherCard2);
         
         self.notebook.add(stack: stack1);
         self.notebook.add(stack: stack2);
@@ -78,32 +81,19 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             fatalError();
         }
 
+        cell.editTrigger = .click;
         cell.delegate = self;
-        cell.interactionDelegate = self;
-        
-//        var colors: [NSColor] = [];
-//
-//        var i: Float = 0.0;
-//        while i < 1.0 {
-//            let color: NSColor = NSColor(hue: CGFloat(i), saturation: 1.0, brightness: 0.25, alpha: 1.0);
-//            colors.append(color);
-//
-//            i += 0.05;
-//        }
-        
-//        cell.background = colors.randomElement() ?? NSColor(calibratedRed: 0.22, green: 0.43, blue: 0.66, alpha: 1);
         
         let card: Card = self.notebook.items[stack.stackIndex].cards[index];
         cell.title = card.title;
-//        cell.subtitle = action.comment;
-//        cell.date = action.date as Date;
+        cell.date = card.date;
         
         return cell;
     }
     
     func onAdd(stackView: OutlineStackView) {
         let cardStack: Stack = notebook.items[stackView.stackIndex];
-//        cardStack.insertNewAction();
+        cardStack.insertNewCard();
         
         self.reloadData();
     }
@@ -113,7 +103,6 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         
         let editor: StackEditorViewController = StackEditorViewController();
         editor.taskTitle = stack.name;
-//        editor.taskComment = task.comment;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -121,7 +110,6 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             }
             
             stack.name = editor.taskTitle;
-//            task.comment = editor.taskComment;
             
             self.reloadData();
 //            self.timeline.notifyChanged();
@@ -138,7 +126,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
     }
 }
 
-extension OutlineCentralViewController: OutlineCellViewDelegate, ViewInteractionDelegate {
+extension OutlineCentralViewController: OutlineCellViewDelegate {
     func onEdit(cellView: OutlineCellView) {
         guard let stackView: OutlineStackView = cellView.parent else {
             Log.error(message: "Could not find OutlineStackView for OutlineCellView!")
@@ -149,8 +137,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate, ViewInteraction
         
         let editor: CardEditorViewController = CardEditorViewController();
         editor.actionTitle = card.title;
-//        editor.actionComment = action.comment;
-//        editor.actionDate = action.date as Date;
+        editor.actionDate = card.date;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -158,8 +145,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate, ViewInteraction
             }
             
             card.title = editor.actionTitle;
-//            action.comment = editor.actionComment;
-//            action.date = editor.actionDate;
+            card.date = editor.actionDate;
             
             self.reloadData();
         };
@@ -178,15 +164,6 @@ extension OutlineCentralViewController: OutlineCellViewDelegate, ViewInteraction
         
         stack.remove(card: card);
         self.reloadData();
-    }
-    
-    func onClick(at point: CGPoint, in view: NSView) {
-        let editor: CardEditorViewController = CardEditorViewController();
-        self.presentAsSheet(editor);
-    }
-    
-    func onRightClick(at point: CGPoint, in view: NSView) {
-        
     }
 
 }
@@ -227,7 +204,7 @@ extension OutlineCentralViewController {
         
     @objc
     private func onApplicationAdd(notification: Notification) {
-//        self.notebook.insertNewTask();
+        self.notebook.insertNewStack();
         self.reloadData();
     }
     
