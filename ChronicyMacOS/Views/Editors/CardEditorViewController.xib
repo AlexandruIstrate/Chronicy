@@ -132,28 +132,40 @@ DQ
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView identifier="FieldCell" id="iac-8B-VKo">
-                                                                    <rect key="frame" x="1" y="1" width="212" height="17"/>
+                                                                <tableCellView identifier="FieldCell" misplaced="YES" id="KyC-BN-w7E">
+                                                                    <rect key="frame" x="1" y="1" width="212" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hx5-56-V8m">
-                                                                            <rect key="frame" x="3" y="0.0" width="17" height="17"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="0c1-jT-1ne"/>
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDt-9M-atc">
+                                                                            <rect key="frame" x="4" y="4" width="41" height="41"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="DDt-9M-atc" secondAttribute="height" multiplier="1:1" id="PxI-CE-tLE"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="QeT-iI-yA2"/>
                                                                         </imageView>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4W-2g-ALd">
-                                                                            <rect key="frame" x="25" y="0.0" width="187" height="17"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="jGb-2p-ybz">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-aR-Lad">
+                                                                            <rect key="frame" x="47" y="16" width="163" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="JdQ-l6-4Rj">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="mn9-aR-Lad" firstAttribute="top" secondItem="KyC-BN-w7E" secondAttribute="top" constant="16" id="GjO-gG-6yO"/>
+                                                                        <constraint firstItem="mn9-aR-Lad" firstAttribute="centerY" secondItem="KyC-BN-w7E" secondAttribute="centerY" id="LFH-0N-AWc"/>
+                                                                        <constraint firstItem="DDt-9M-atc" firstAttribute="top" secondItem="KyC-BN-w7E" secondAttribute="top" constant="4" id="OrZ-3G-Cf2"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="mn9-aR-Lad" secondAttribute="bottom" constant="16" id="S9e-ES-vNP"/>
+                                                                        <constraint firstItem="DDt-9M-atc" firstAttribute="centerY" secondItem="KyC-BN-w7E" secondAttribute="centerY" id="VHW-vA-no4"/>
+                                                                        <constraint firstItem="mn9-aR-Lad" firstAttribute="leading" secondItem="DDt-9M-atc" secondAttribute="trailing" constant="4" id="Wry-WW-Qkc"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="DDt-9M-atc" secondAttribute="bottom" constant="4" id="faX-1w-rDO"/>
+                                                                        <constraint firstItem="DDt-9M-atc" firstAttribute="leading" secondItem="KyC-BN-w7E" secondAttribute="leading" constant="4" id="khZ-s6-RFv"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="mn9-aR-Lad" secondAttribute="trailing" constant="4" id="ysk-2U-ydo"/>
+                                                                    </constraints>
                                                                     <connections>
-                                                                        <outlet property="imageView" destination="Hx5-56-V8m" id="chf-S9-nQn"/>
-                                                                        <outlet property="textField" destination="S4W-2g-ALd" id="8M2-um-aMY"/>
+                                                                        <outlet property="imageView" destination="DDt-9M-atc" id="AH1-IU-pBi"/>
+                                                                        <outlet property="textField" destination="mn9-aR-Lad" id="fsD-vj-P7p"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>

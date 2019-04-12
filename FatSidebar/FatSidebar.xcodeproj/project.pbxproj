@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		506D6C7D1E879AA500C366BF /* FatSidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C7C1E879AA500C366BF /* FatSidebarItem.swift */; };
+		506D6C801E879F9C00C366BF /* Collection+SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C7F1E879F9C00C366BF /* Collection+SafeSubscript.swift */; };
+		506D6C861E87BA1900C366BF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C851E87BA1900C366BF /* Theme.swift */; };
+		506D6C8A1E87C36400C366BF /* NSSize+Quadratic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C891E87C36400C366BF /* NSSize+Quadratic.swift */; };
+		506D6C8C1E87D64A00C366BF /* StatefulColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C8B1E87D64A00C366BF /* StatefulColor.swift */; };
+		506D6C8E1E87D67400C366BF /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C8D1E87D67400C366BF /* DefaultTheme.swift */; };
+		506D6C941E88302500C366BF /* Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C931E88302500C366BF /* Borders.swift */; };
+		506D6C961E88332600C366BF /* NSTextField+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6C951E88332600C366BF /* NSTextField+Label.swift */; };
+		506D6CA61E894F8400C366BF /* FatSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6CA51E894F8400C366BF /* FatSidebar.swift */; };
+		506D6CA81E8951E300C366BF /* NSView+ConstrainToSuperviewBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D6CA71E8951E300C366BF /* NSView+ConstrainToSuperviewBounds.swift */; };
+		507A3E8D1E9779CB00D0C3FD /* DraggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A3E8C1E9779CB00D0C3FD /* DraggingView.swift */; };
+		507A3E8F1E9779E600D0C3FD /* NSView+ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A3E8E1E9779E600D0C3FD /* NSView+ImageRepresentation.swift */; };
+		507A3E911E9779FB00D0C3FD /* Array+Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A3E901E9779FB00D0C3FD /* Array+Move.swift */; };
+		507A3E931E977A0F00D0C3FD /* DragViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A3E921E977A0F00D0C3FD /* DragViewContainer.swift */; };
+		507A3E951E97E71B00D0C3FD /* FatSidebarItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A3E941E97E71B00D0C3FD /* FatSidebarItemConfiguration.swift */; };
+		507CF3781E8797D000623B5E /* FatSidebar.h in Headers */ = {isa = PBXBuildFile; fileRef = 507CF36A1E8797D000623B5E /* FatSidebar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		507CF3931E87982A00623B5E /* FatSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CF3921E87982A00623B5E /* FatSidebarView.swift */; };
+		50A60C821E8CF0E30052849E /* FatSidebarItemOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A60C811E8CF0E30052849E /* FatSidebarItemOverlay.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		506D6C7C1E879AA500C366BF /* FatSidebarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatSidebarItem.swift; sourceTree = "<group>"; };
+		506D6C7F1E879F9C00C366BF /* Collection+SafeSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscript.swift"; sourceTree = "<group>"; };
+		506D6C851E87BA1900C366BF /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		506D6C891E87C36400C366BF /* NSSize+Quadratic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSSize+Quadratic.swift"; sourceTree = "<group>"; };
+		506D6C8B1E87D64A00C366BF /* StatefulColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulColor.swift; sourceTree = "<group>"; };
+		506D6C8D1E87D67400C366BF /* DefaultTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
+		506D6C931E88302500C366BF /* Borders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Borders.swift; sourceTree = "<group>"; };
+		506D6C951E88332600C366BF /* NSTextField+Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+Label.swift"; sourceTree = "<group>"; };
+		506D6CA51E894F8400C366BF /* FatSidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatSidebar.swift; sourceTree = "<group>"; };
+		506D6CA71E8951E300C366BF /* NSView+ConstrainToSuperviewBounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+ConstrainToSuperviewBounds.swift"; sourceTree = "<group>"; };
+		507A3E8C1E9779CB00D0C3FD /* DraggingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggingView.swift; sourceTree = "<group>"; };
+		507A3E8E1E9779E600D0C3FD /* NSView+ImageRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+ImageRepresentation.swift"; sourceTree = "<group>"; };
+		507A3E901E9779FB00D0C3FD /* Array+Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Move.swift"; sourceTree = "<group>"; };
+		507A3E921E977A0F00D0C3FD /* DragViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragViewContainer.swift; sourceTree = "<group>"; };
+		507A3E941E97E71B00D0C3FD /* FatSidebarItemConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatSidebarItemConfiguration.swift; sourceTree = "<group>"; };
+		507CF3671E8797D000623B5E /* FatSidebar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FatSidebar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		507CF36A1E8797D000623B5E /* FatSidebar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FatSidebar.h; sourceTree = "<group>"; };
+		507CF36B1E8797D000623B5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		507CF3921E87982A00623B5E /* FatSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatSidebarView.swift; sourceTree = "<group>"; };
+		50A60C811E8CF0E30052849E /* FatSidebarItemOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatSidebarItemOverlay.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		507CF3631E8797D000623B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		506D6C921E88301C00C366BF /* Theming */ = {
+			isa = PBXGroup;
+			children = (
+				506D6C851E87BA1900C366BF /* Theme.swift */,
+				506D6C8D1E87D67400C366BF /* DefaultTheme.swift */,
+				506D6C8B1E87D64A00C366BF /* StatefulColor.swift */,
+				506D6C931E88302500C366BF /* Borders.swift */,
+			);
+			name = Theming;
+			sourceTree = "<group>";
+		};
+		507A3E8B1E9779BF00D0C3FD /* Dragging */ = {
+			isa = PBXGroup;
+			children = (
+				507A3E8C1E9779CB00D0C3FD /* DraggingView.swift */,
+				507A3E921E977A0F00D0C3FD /* DragViewContainer.swift */,
+				507A3E901E9779FB00D0C3FD /* Array+Move.swift */,
+				507A3E8E1E9779E600D0C3FD /* NSView+ImageRepresentation.swift */,
+			);
+			name = Dragging;
+			sourceTree = "<group>";
+		};
+		507CF35D1E8797D000623B5E = {
+			isa = PBXGroup;
+			children = (
+				507CF3691E8797D000623B5E /* FatSidebar */,
+				507CF3681E8797D000623B5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		507CF3681E8797D000623B5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				507CF3671E8797D000623B5E /* FatSidebar.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		507CF3691E8797D000623B5E /* FatSidebar */ = {
+			isa = PBXGroup;
+			children = (
+				507CF36A1E8797D000623B5E /* FatSidebar.h */,
+				507CF36B1E8797D000623B5E /* Info.plist */,
+				506D6CA51E894F8400C366BF /* FatSidebar.swift */,
+				507CF3921E87982A00623B5E /* FatSidebarView.swift */,
+				506D6C7C1E879AA500C366BF /* FatSidebarItem.swift */,
+				507A3E941E97E71B00D0C3FD /* FatSidebarItemConfiguration.swift */,
+				50A60C811E8CF0E30052849E /* FatSidebarItemOverlay.swift */,
+				506D6C7F1E879F9C00C366BF /* Collection+SafeSubscript.swift */,
+				506D6C891E87C36400C366BF /* NSSize+Quadratic.swift */,
+				506D6C951E88332600C366BF /* NSTextField+Label.swift */,
+				506D6CA71E8951E300C366BF /* NSView+ConstrainToSuperviewBounds.swift */,
+				507A3E8B1E9779BF00D0C3FD /* Dragging */,
+				506D6C921E88301C00C366BF /* Theming */,
+			);
+			path = FatSidebar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		507CF3641E8797D000623B5E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				507CF3781E8797D000623B5E /* FatSidebar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		507CF3661E8797D000623B5E /* FatSidebar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 507CF37B1E8797D000623B5E /* Build configuration list for PBXNativeTarget "FatSidebar" */;
+			buildPhases = (
+				507CF3621E8797D000623B5E /* Sources */,
+				507CF3631E8797D000623B5E /* Frameworks */,
+				507CF3641E8797D000623B5E /* Headers */,
+				507CF3651E8797D000623B5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FatSidebar;
+			productName = FatSidebar;
+			productReference = 507CF3671E8797D000623B5E /* FatSidebar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		507CF35E1E8797D000623B5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Christian Tietze";
+				TargetAttributes = {
+					507CF3661E8797D000623B5E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FRMDA3XRGC;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 507CF3611E8797D000623B5E /* Build configuration list for PBXProject "FatSidebar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 507CF35D1E8797D000623B5E;
+			productRefGroup = 507CF3681E8797D000623B5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				507CF3661E8797D000623B5E /* FatSidebar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		507CF3651E8797D000623B5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		507CF3621E8797D000623B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A60C821E8CF0E30052849E /* FatSidebarItemOverlay.swift in Sources */,
+				506D6C8E1E87D67400C366BF /* DefaultTheme.swift in Sources */,
+				507A3E911E9779FB00D0C3FD /* Array+Move.swift in Sources */,
+				506D6C941E88302500C366BF /* Borders.swift in Sources */,
+				507A3E951E97E71B00D0C3FD /* FatSidebarItemConfiguration.swift in Sources */,
+				507CF3931E87982A00623B5E /* FatSidebarView.swift in Sources */,
+				506D6CA81E8951E300C366BF /* NSView+ConstrainToSuperviewBounds.swift in Sources */,
+				506D6C8C1E87D64A00C366BF /* StatefulColor.swift in Sources */,
+				506D6C961E88332600C366BF /* NSTextField+Label.swift in Sources */,
+				506D6C861E87BA1900C366BF /* Theme.swift in Sources */,
+				507A3E8D1E9779CB00D0C3FD /* DraggingView.swift in Sources */,
+				506D6CA61E894F8400C366BF /* FatSidebar.swift in Sources */,
+				506D6C8A1E87C36400C366BF /* NSSize+Quadratic.swift in Sources */,
+				506D6C801E879F9C00C366BF /* Collection+SafeSubscript.swift in Sources */,
+				507A3E8F1E9779E600D0C3FD /* NSView+ImageRepresentation.swift in Sources */,
+				507A3E931E977A0F00D0C3FD /* DragViewContainer.swift in Sources */,
+				506D6C7D1E879AA500C366BF /* FatSidebarItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		507CF3791E8797D000623B5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		507CF37A1E8797D000623B5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		507CF37C1E8797D000623B5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = FatSidebar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.FatSidebar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		507CF37D1E8797D000623B5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = FatSidebar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.FatSidebar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		507CF3611E8797D000623B5E /* Build configuration list for PBXProject "FatSidebar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507CF3791E8797D000623B5E /* Debug */,
+				507CF37A1E8797D000623B5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		507CF37B1E8797D000623B5E /* Build configuration list for PBXNativeTarget "FatSidebar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507CF37C1E8797D000623B5E /* Debug */,
+				507CF37D1E8797D000623B5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 507CF35E1E8797D000623B5E /* Project object */;
+}

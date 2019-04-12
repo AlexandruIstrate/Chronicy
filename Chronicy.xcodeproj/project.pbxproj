@@ -12,10 +12,7 @@
 		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
 		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
 		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
-		A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7099EEC2243108700482698 /* SidebarTableCellView.swift */; };
 		A70D399B22553AD900580FF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399A22553AD900580FF4 /* Color.swift */; };
-		A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D39A022554A9300580FF4 /* SidebarViewController.swift */; };
-		A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D39A122554A9300580FF4 /* SidebarViewController.xib */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
@@ -44,6 +41,8 @@
 		A78D4D242253DD6F005CE553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D222253DD6F005CE553 /* Main.storyboard */; };
 		A78D4D262253DD70005CE553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D252253DD70005CE553 /* Assets.xcassets */; };
 		A78D4D292253DD70005CE553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */; };
+		A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB49225F08E0004BA2E0 /* PageManager.swift */; };
+		A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB4C225F0F04004BA2E0 /* CardTag.swift */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
@@ -67,7 +66,9 @@
 		A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2839224BB20700A1A6DE /* TableView.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
-		A7DF74E7225BC4EF00F6081C /* SidebarViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */; };
+		A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CD7399225D119E00C94B23 /* FatSidebar.framework */; };
+		A7CD73A2225D1C2000C94B23 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD73A1225D1C2000C94B23 /* Sidebar.swift */; };
+		A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD73A3225D2BFC00C94B23 /* CustomField.swift */; };
 		A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45129224811C200848AF5 /* StackEditorViewController.swift */; };
 		A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* StackEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
@@ -103,6 +104,20 @@
 			remoteGlobalIDString = A760458622308D47007F3268;
 			remoteInfo = ChronicyFrameworkMacOS;
 		};
+		A7CD7398225D119E00C94B23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507CF3671E8797D000623B5E;
+			remoteInfo = FatSidebar;
+		};
+		A7CD739E225D14CF00C94B23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 507CF3661E8797D000623B5E;
+			remoteInfo = FatSidebar;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -134,10 +149,7 @@
 		8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
-		A7099EEC2243108700482698 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		A70D399A22553AD900580FF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		A70D39A022554A9300580FF4 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
-		A70D39A122554A9300580FF4 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
@@ -176,6 +188,8 @@
 		A78D4D252253DD70005CE553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A78D4D282253DD70005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A78D4D2A2253DD70005CE553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A794AB49225F08E0004BA2E0 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
+		A794AB4C225F0F04004BA2E0 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
@@ -199,7 +213,9 @@
 		A7BC2839224BB20700A1A6DE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewItem.xib; sourceTree = "<group>"; };
+		A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FatSidebar.xcodeproj; path = FatSidebar/FatSidebar.xcodeproj; sourceTree = "<group>"; };
+		A7CD73A1225D1C2000C94B23 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		A7CD73A3225D2BFC00C94B23 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		A7E45129224811C200848AF5 /* StackEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512A224811C200848AF5 /* StackEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				282FC8AC17313513307E566E /* Pods_ChronicyMacOS.framework in Frameworks */,
+				A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +376,7 @@
 		A760459722308DA5007F3268 /* ChronicyMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				A794AB4B225F0EF2004BA2E0 /* Model */,
 				A7109E3222358E0700E3EB29 /* Application */,
 				A7109E21223567FF00E3EB29 /* Tracking */,
 				A7BC283F224BDD6200A1A6DE /* Notifications */,
@@ -397,10 +415,9 @@
 			children = (
 				A7A88ADC2242C44300C5A94E /* MainViewController.swift */,
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
-				A7099EEC2243108700482698 /* SidebarTableCellView.swift */,
-				A70D39A022554A9300580FF4 /* SidebarViewController.swift */,
-				A70D39A122554A9300580FF4 /* SidebarViewController.xib */,
-				A7DF74E6225BC4EF00F6081C /* SidebarViewItem.xib */,
+				A7CD73A1225D1C2000C94B23 /* Sidebar.swift */,
+				A7CD73A3225D2BFC00C94B23 /* CustomField.swift */,
+				A794AB49225F08E0004BA2E0 /* PageManager.swift */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
@@ -430,6 +447,14 @@
 				A78A33AF2253DEB80083EC9C /* Supporting Files */,
 			);
 			path = ChronicyiOS;
+			sourceTree = "<group>";
+		};
+		A794AB4B225F0EF2004BA2E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A794AB4C225F0F04004BA2E0 /* CardTag.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A798867122399C490029A791 /* Data */ = {
@@ -522,6 +547,7 @@
 		A7C5C160223088B000C0B27B = {
 			isa = PBXGroup;
 			children = (
+				A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */,
 				A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */,
 				A760459722308DA5007F3268 /* ChronicyMacOS */,
 				A72BB17F2237287D008575FC /* ChronicySafariExtension */,
@@ -531,6 +557,14 @@
 				A760459622308DA5007F3268 /* Products */,
 				FC6FC963088942473FEF7BD3 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		A7CD7393225D119E00C94B23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7CD7399225D119E00C94B23 /* FatSidebar.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		FC6FC963088942473FEF7BD3 /* Pods */ = {
@@ -602,6 +636,7 @@
 			);
 			dependencies = (
 				A77618042231CB410038E815 /* PBXTargetDependency */,
+				A7CD739F225D14CF00C94B23 /* PBXTargetDependency */,
 				A72BB16E2237280C008575FC /* PBXTargetDependency */,
 				A75220D02252044500C7A54E /* PBXTargetDependency */,
 			);
@@ -686,6 +721,10 @@
 					ProductGroup = A760458022308D01007F3268 /* Products */;
 					ProjectRef = A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */;
 				},
+				{
+					ProductGroup = A7CD7393225D119E00C94B23 /* Products */;
+					ProjectRef = A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -703,6 +742,13 @@
 			fileType = wrapper.framework;
 			path = ChronicyFramework.framework;
 			remoteRef = A76045A622308DA6007F3268 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A7CD7399225D119E00C94B23 /* FatSidebar.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FatSidebar.framework;
+			remoteRef = A7CD7398225D119E00C94B23 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -741,10 +787,8 @@
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
-				A7DF74E7225BC4EF00F6081C /* SidebarViewItem.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
-				A70D39A322554A9300580FF4 /* SidebarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,21 +965,23 @@
 				A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
-				A70D39A222554A9300580FF4 /* SidebarViewController.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
+				A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */,
 				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7BC283A224BB20700A1A6DE /* TableView.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
+				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
+				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
-				A7099EED2243108700482698 /* SidebarTableCellView.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
 				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
+				A7CD73A2225D1C2000C94B23 /* Sidebar.swift in Sources */,
 				A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,6 +1013,11 @@
 			isa = PBXTargetDependency;
 			name = ChronicyFrameworkMacOS;
 			targetProxy = A77618032231CB410038E815 /* PBXContainerItemProxy */;
+		};
+		A7CD739F225D14CF00C94B23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FatSidebar;
+			targetProxy = A7CD739E225D14CF00C94B23 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

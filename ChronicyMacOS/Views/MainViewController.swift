@@ -7,13 +7,16 @@
 
 import Cocoa;
 import ChronicyFramework;
+import FatSidebar;
 
 class MainViewController: NSViewController {
     
     public private(set) static var shared: MainViewController!;
     
-    private var sidebarView: SidebarViewController!;
+    @IBOutlet private weak var sidebar: FatSidebar!
     private var centerView: NSViewController?;
+    
+    private var pageManager: PageManager = PageManager();
     
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
@@ -28,9 +31,10 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        self.setupSidebarView();
-        self.setupModules();
+        self.setupPages();
+        self.addSidebarItems();
         
+        self.setupSidebarView();
         self.showCenterView(viewController: OutlineCentralViewController());
     }
     
@@ -55,25 +59,38 @@ class MainViewController: NSViewController {
     
 }
 
-extension MainViewController {    
+extension MainViewController: FatSidebarDelegate {
+    func sidebar(_ sidebar: FatSidebar, didChangeSelection selectionIndex: Int) {
+        self.pageManager.select(at: selectionIndex);
+    }
+}
+
+extension MainViewController {
     private func setupSidebarView() {
-        self.sidebarView = SidebarViewController();
-        self.view.addSubview(sidebarView.view);
+        self.sidebar.theme = SidebarTheme();
+        self.sidebar.style = .small(iconSize: 24, padding: 6);
+        self.sidebar.selectionMode = .toggleOne;
+        self.sidebar.delegate = self;
+    }
+    
+    private func setupPages() {
+        let image: NSImage = NSImage(named: NSImage.Name("Outline"))!;
+        let color: NSColor? = NSColor(named: NSColor.Name(""));
         
-        let cv: NSView = self.view;
-        let sv: NSView = self.sidebarView.view;
+        let page: Page = Page(title: NSLocalizedString("Outline", comment: ""), icon: image, tint: color, onLoad: { (page: Page) in
+
+        }, onUnload: { (page: Page) in
+
+        });
         
-        sv.translatesAutoresizingMaskIntoConstraints = false;
-        sv.topAnchor.constraint(equalTo: cv.topAnchor).isActive = true;
-        sv.bottomAnchor.constraint(equalTo: cv.bottomAnchor).isActive = true;
-        sv.leadingAnchor.constraint(equalTo: cv.leadingAnchor).isActive = true;
+        self.pageManager.add(page: page);
     }
     
     private func setupContentView(view: NSView) {
         self.view.addSubview(view);
         
         let cv: NSView = self.view;
-        let sv: NSView = self.sidebarView.view;
+        let sv: NSView = self.sidebar;
         
         view.translatesAutoresizingMaskIntoConstraints = false;
         view.topAnchor.constraint(equalTo: cv.topAnchor).isActive = true;
@@ -82,7 +99,29 @@ extension MainViewController {
         view.trailingAnchor.constraint(equalTo: cv.trailingAnchor).isActive = true;
     }
     
-    private func setupModules() {
-//        ModuleManager.manager.add(module: SafariBrowserModule());
+    private func addSidebarItems() {
+        self.resetSidebar();
+        
+        for page: Page in self.pageManager.pages {
+            sidebar.appendItem(page);
+        }
+        
+        self.addSidebarTags();
+        
+        if self.sidebar.itemCount > 0 {
+            self.sidebar.selectItem(at: 0);
+        }
+    }
+    
+    private func addSidebarTags() {
+        for tag: CardTag in CardTagManager.manager.tags {
+            sidebar.appendItem(Page(title: tag.title, icon: NSImage(named: NSImage.Name("Tag"))!, tint: tag.nsColor, onLoad: { (page: Page) in
+                Log.info(message: page.title);
+            }));
+        }
+    }
+    
+    private func resetSidebar() {
+        self.sidebar.removeAllItems();
     }
 }

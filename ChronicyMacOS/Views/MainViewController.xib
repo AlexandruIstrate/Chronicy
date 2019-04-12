@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="Chronicy" customModuleProvider="target">
             <connections>
+                <outlet property="sidebar" destination="Fq8-BM-FPk" id="KqJ-Ud-aQH"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -15,6 +16,16 @@
         <customView id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="800" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fq8-BM-FPk" customClass="FatSidebar" customModule="FatSidebar">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="570"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Fq8-BM-FPk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="EWu-uK-KKY"/>
+                <constraint firstAttribute="bottom" secondItem="Fq8-BM-FPk" secondAttribute="bottom" id="STg-KW-dfb"/>
+                <constraint firstItem="Fq8-BM-FPk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="vlQ-qr-Cr1"/>
+            </constraints>
             <point key="canvasLocation" x="306.5" y="7"/>
         </customView>
     </objects>

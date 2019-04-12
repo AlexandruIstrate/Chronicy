@@ -8,7 +8,7 @@
 import Foundation;
 
 public protocol CustomField {
-    
+    var name: String { get set }
     var displayName: String { get }
     var value: Any? { get set }
     
@@ -20,16 +20,30 @@ public protocol CustomField {
 }
 
 extension CustomField {
-    public var name: String {
-        return String(describing: self);
+    public var typeName: String {
+        return self.type.rawValue;
     }
     
     public func valueOfType<T>() -> T? {
         return self.value as? T;
     }
+    
+    public func isCorrectType(value: Any, type: inout FieldType) -> Bool {
+        if value is String && type == .string {
+            type = .string;
+            return true;
+        }
+        
+        if value is Int && type == .number {
+            type = .number;
+            return true;
+        }
+        
+        return false;
+    }
 }
 
-public enum FieldType {
+public enum FieldType: String {
     case string;
     case number;
     // TODO: Add more
@@ -51,14 +65,14 @@ public class CustomFieldManager {
     
     public func deregister(field: CustomField) {
         self.fields.removeAll { (iter: CustomField) -> Bool in
-            return iter.displayName == field.displayName;
+            return iter.type == field.type;
         }
     }
     
     @discardableResult
     public func deregister(named: String) -> CustomField? {
         let field: CustomField? = self.fields.first { (iter: CustomField) -> Bool in
-            return iter.displayName == named;
+            return iter.name == named;
         }
         
         guard let result: CustomField = field else {
@@ -72,7 +86,7 @@ public class CustomFieldManager {
 
 extension CustomFieldManager {
     private func registerDefaults() {
-        register(field: TextField());
-        register(field: NumericField());
+        register(field: TextField(name: "textField"));
+        register(field: NumericField(name: "numericField"));
     }
 }

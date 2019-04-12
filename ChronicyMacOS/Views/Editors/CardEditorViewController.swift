@@ -37,6 +37,7 @@ class CardEditorViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.setup();
+        self.setupFields();
     }
     
     override func viewWillAppear() {
@@ -59,7 +60,7 @@ class CardEditorViewController: NSViewController {
 
 extension CardEditorViewController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.fieldsManager.fields.count;
+        return self.fields.count;
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -68,10 +69,19 @@ extension CardEditorViewController: NSTableViewDataSource, NSTableViewDelegate {
             return nil;
         }
         
-        let field: CustomField = self.fieldsManager.fields[row];
+        let field: CustomField = self.fields[row];
         cell.textField?.stringValue = field.name;
         
         return cell;
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let index: Int = self.fieldsTable.selectedRow;
+        let field: CustomField = self.fields[index];
+        
+        if let v: NSView = field.customView {
+            self.showConfigureView(view: v);
+        }
     }
 }
 
@@ -79,6 +89,11 @@ extension CardEditorViewController {
     private func setup() {
         self.fieldsTable.dataSource = self;
         self.fieldsTable.delegate = self;
+    }
+    
+    private func setupFields() {
+        // TODO: Concurrency
+        self.fields = self.fieldsManager.fields;
     }
     
     private func setupDisplayValues() {
@@ -90,5 +105,13 @@ extension CardEditorViewController {
         self.actionTitle = self.titleField.stringValue;
         self.actionDate = self.datePicker.dateValue;
     }
+    
+    private func showConfigureView(view: NSView) {
+        self.configureView.addSubview(view);
+        
+        view.topAnchor.constraint(equalTo: self.configureView.topAnchor).isActive = true;
+        view.bottomAnchor.constraint(equalTo: self.configureView.bottomAnchor).isActive = true;
+        view.leadingAnchor.constraint(equalTo: self.configureView.leadingAnchor).isActive = true;
+        view.trailingAnchor.constraint(equalTo: self.configureView.trailingAnchor).isActive = true;
+    }
 }
-

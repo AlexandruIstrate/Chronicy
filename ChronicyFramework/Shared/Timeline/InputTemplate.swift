@@ -12,8 +12,9 @@ public class InputTemplate {
     public var name: String;
     public var fields: [CustomField];
     
-    init(name: String, fields: [CustomField] = []) {
+    public init(name: String, fields: [CustomField] = []) {
         self.name = name;
         self.fields = [];
     }
+
 }

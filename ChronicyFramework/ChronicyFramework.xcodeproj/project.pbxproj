@@ -12,6 +12,7 @@
 		A70D399D2255499900580FF4 /* InputTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399C2255499900580FF4 /* InputTemplate.swift */; };
 		A70FBA8722580520007CE092 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FBA8622580520007CE092 /* RequestManager.swift */; };
 		A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
+		A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71900D9225EB8E4003F4CA6 /* CardTag.swift */; };
 		A71E06C1225941D900305EC4 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06C0225941D900305EC4 /* TrackingService.swift */; };
 		A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72204102240227C001E1BD5 /* SharedConstants.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +34,7 @@
 		A70D399C2255499900580FF4 /* InputTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTemplate.swift; sourceTree = "<group>"; };
 		A70FBA8622580520007CE092 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		A71900D9225EB8E4003F4CA6 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
 		A71E06C0225941D900305EC4 /* TrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingService.swift; sourceTree = "<group>"; };
 		A72204102240227C001E1BD5 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		A760458722308D47007F3268 /* ChronicyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				A79E4E842252987300E385CA /* CustomField.swift */,
 				A792BF25225B1D970098DC55 /* DefaultFields.swift */,
 				A70D399C2255499900580FF4 /* InputTemplate.swift */,
+				A71900D9225EB8E4003F4CA6 /* CardTag.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
 				A79E4E812252966700E385CA /* Card.swift in Sources */,
 				A70D399D2255499900580FF4 /* InputTemplate.swift in Sources */,
+				A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
 				A70FBA8722580520007CE092 /* RequestManager.swift in Sources */,
 				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,

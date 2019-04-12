@@ -13,6 +13,10 @@ public class Stack {
     public var name: String;
     public private(set) var cards: [Card] = [];
     
+    public private(set) lazy var inputTemplate: InputTemplate = {
+        return InputTemplate(name: self.name);
+    } ();
+    
     public struct Styling {
         var color: CGColor;
     }
@@ -39,6 +43,25 @@ public class Stack {
         self.cards.append(card);
         return card;
     }
+    
+    public func insert(items: [Any]) throws {
+        guard items.count == inputTemplate.fields.count else {
+            throw DataInsertionError.invalidFieldCount;
+        }
+        
+        for i: Int in 0..<items.count {
+            var field: CustomField = self.inputTemplate.fields[i];
+            let item: Any = items[i];
+            
+            var type: FieldType = .string;
+            
+            guard field.isCorrectType(value: item, type: &type) else {
+                throw DataInsertionError.invalidDataType;
+            }
+            
+            field.value = item;
+        }
+    }
 
 }
 
@@ -57,4 +80,9 @@ extension Stack: Equatable {
         return lhs.name    == rhs.name &&
                lhs.cards   == rhs.cards;
     }
+}
+
+public enum DataInsertionError: Error {
+    case invalidDataType;
+    case invalidFieldCount;
 }
