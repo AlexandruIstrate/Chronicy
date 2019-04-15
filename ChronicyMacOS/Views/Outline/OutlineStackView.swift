@@ -38,6 +38,9 @@ class OutlineStackView: NSView {
     public var dataSource: OutlineStackViewDataSource?;
     public var delegate: OutlineStackViewDelegate?;
     public var interactionDelegate: ViewInteractionDelegate?;
+    
+    public var editTrigger: OutlineViewController.ActionTrigger? = .click;
+    public var deleteTrigger: OutlineViewController.ActionTrigger?;
 
     public var stackIndex: Int = 0;
     public var title: String = String();
@@ -51,11 +54,19 @@ class OutlineStackView: NSView {
     override func mouseDown(with event: NSEvent) {
         super.mouseUp(with: event);
         self.interactionDelegate?.onClick(at: event.locationInWindow, in: self);
+        
+        if self.editTrigger == .click {
+            self.onEdit();
+        }
     }
     
     override func rightMouseDown(with event: NSEvent) {
         super.rightMouseUp(with: event);
         self.interactionDelegate?.onRightClick(at: event.locationInWindow, in: self);
+        
+        if self.editTrigger == .rightClick {
+            self.onEdit();
+        }
     }
 
 }

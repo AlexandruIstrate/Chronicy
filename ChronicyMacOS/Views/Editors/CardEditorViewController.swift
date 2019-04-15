@@ -19,8 +19,6 @@ class CardEditorViewController: NSViewController {
     @IBOutlet private weak var colorWell: NSColorWell!;
     @IBOutlet private weak var tagsTable: NSTableView!;
     
-    private var fieldsManager: CustomFieldManager = CustomFieldManager.manager;
-    
     public var actionTitle: String = String();
     public var actionDate: Date = Date();
     public var fields: [CustomField] = [];
@@ -37,7 +35,6 @@ class CardEditorViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.setup();
-        self.setupFields();
     }
     
     override func viewWillAppear() {
@@ -89,11 +86,6 @@ extension CardEditorViewController {
     private func setup() {
         self.fieldsTable.dataSource = self;
         self.fieldsTable.delegate = self;
-    }
-    
-    private func setupFields() {
-        // TODO: Concurrency
-        self.fields = self.fieldsManager.fields;
     }
     
     private func setupDisplayValues() {

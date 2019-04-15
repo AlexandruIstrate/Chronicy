@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A760459422308DA5007F3268"
-               BuildableName = "Chronicy.app"
+               BuildableName = "ChronicyMacOS.app"
                BlueprintName = "ChronicyMacOS"
                ReferencedContainer = "container:Chronicy.xcodeproj">
             </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A760459422308DA5007F3268"
-            BuildableName = "Chronicy.app"
+            BuildableName = "ChronicyMacOS.app"
             BlueprintName = "ChronicyMacOS"
             ReferencedContainer = "container:Chronicy.xcodeproj">
          </BuildableReference>
@@ -92,7 +92,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A760459422308DA5007F3268"
-            BuildableName = "Chronicy.app"
+            BuildableName = "ChronicyMacOS.app"
             BlueprintName = "ChronicyMacOS"
             ReferencedContainer = "container:Chronicy.xcodeproj">
          </BuildableReference>

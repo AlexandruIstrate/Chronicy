@@ -22,12 +22,8 @@ class OutlineCellView: NSTableCellView {
     public var delegate: OutlineCellViewDelegate?;
     public var interactionDelegate: ViewInteractionDelegate?;
     
-    enum ActionTrigger {
-        case click, rightClick;
-    }
-    
-    public var editTrigger: ActionTrigger?;
-    public var deleteTrigger: ActionTrigger?;
+    public var editTrigger: OutlineViewController.ActionTrigger? = .click;
+    public var deleteTrigger: OutlineViewController.ActionTrigger?;
     
     @IBInspectable
     public var title: String = String();
@@ -92,7 +88,6 @@ extension OutlineCellView: CustomOperationSeparatable {
 }
 
 extension OutlineCellView {
-    
     private func setupFonts() {
         let titleFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 25.0);
         self.titleLabel.font = titleFont;

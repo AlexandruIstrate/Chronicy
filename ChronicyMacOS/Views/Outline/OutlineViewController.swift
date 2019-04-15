@@ -20,6 +20,10 @@ class OutlineViewController: NSViewController {
     public var selectedStackIndex: Int? { return getSelectedStackIndex(); }
     public var selectedActionIndex: Int? { return getSelectedActionIndex(); }
     
+    enum ActionTrigger {
+        case click, rightClick;
+    }
+    
     public func reloadData() {
         onLoadData();
         onLayoutView();

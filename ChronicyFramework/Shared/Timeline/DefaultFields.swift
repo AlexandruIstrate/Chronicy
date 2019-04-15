@@ -7,7 +7,7 @@
 
 import Foundation;
 
-public class TextField: CustomField {
+public struct TextField: CustomField {
     public var name: String;
     public var displayName: String = "Text Field";
     public var value: Any?;
@@ -16,13 +16,13 @@ public class TextField: CustomField {
     
     public var valueChangedCallback: CustomField.FieldOnValueChangedCallback?;
     
-    public init(name: String, value: Any? = nil) {
+    public init(name: String, value: String? = nil) {
         self.name = name;
         self.value = value;
     }
 }
 
-public class NumericField: CustomField {
+public struct NumericField: CustomField {
     public var name: String;
     public var displayName: String = "Numeric Field";
     public var value: Any?;
@@ -31,7 +31,7 @@ public class NumericField: CustomField {
     
     public var valueChangedCallback: CustomField.FieldOnValueChangedCallback?;
     
-    public init(name: String, value: Any? = nil) {
+    public init(name: String, value: Float? = nil) {
         self.name = name;
         self.value = value;
     }

@@ -20,10 +20,6 @@ public protocol CustomField {
 }
 
 extension CustomField {
-    public var typeName: String {
-        return self.type.rawValue;
-    }
-    
     public func valueOfType<T>() -> T? {
         return self.value as? T;
     }
@@ -34,7 +30,7 @@ extension CustomField {
             return true;
         }
         
-        if value is Int && type == .number {
+        if value is Float && type == .number {
             type = .number;
             return true;
         }
@@ -47,20 +43,26 @@ public enum FieldType: String {
     case string;
     case number;
     // TODO: Add more
+    
+    public static var availableTypes: [FieldType] = {
+        return [.string, .number];
+    } ();
 }
 
-public class CustomFieldManager {
+public class CustomFieldInputTemplate {
     
-    public static let manager: CustomFieldManager = CustomFieldManager();
-    
-    public private(set) var fields: [CustomField] = [];
-    
-    private init() {
-        self.registerDefaults();
+    public var fields: [CustomField] = [];
+
+    public init() {
+        // No-Op
     }
     
     public func register(field: CustomField) {
         self.fields.append(field);
+    }
+    
+    public func register(fields: [CustomField]) {
+        self.fields.append(contentsOf: fields);
     }
     
     public func deregister(field: CustomField) {
@@ -81,12 +83,5 @@ public class CustomFieldManager {
         
         self.deregister(field: result);
         return result;
-    }
-}
-
-extension CustomFieldManager {
-    private func registerDefaults() {
-        register(field: TextField(name: "textField"));
-        register(field: NumericField(name: "numericField"));
     }
 }

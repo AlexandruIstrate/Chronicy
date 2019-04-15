@@ -1,13 +1,16 @@
 {
   "images" : [
     {
-      "idiom" : "mac",
-      "filename" : "icons8-360-degrees-filled-50.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
+      "idiom" : "universal",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

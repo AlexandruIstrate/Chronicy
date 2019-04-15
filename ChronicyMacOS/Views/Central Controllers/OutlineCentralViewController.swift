@@ -103,6 +103,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         
         let editor: StackEditorViewController = StackEditorViewController();
         editor.taskTitle = stack.name;
+        editor.fields = stack.inputTemplate.fields;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -110,6 +111,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             }
             
             stack.name = editor.taskTitle;
+            stack.inputTemplate.fields = editor.fields;
             
             self.reloadData();
 //            self.timeline.notifyChanged();
@@ -133,11 +135,13 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let card: Card = self.notebook.items[stackView.stackIndex].cards[cellView.cellIndex];
+        let stack: Stack = self.notebook.items[stackView.stackIndex];
+        let card: Card = stack.cards[cellView.cellIndex];
         
         let editor: CardEditorViewController = CardEditorViewController();
         editor.actionTitle = card.title;
         editor.actionDate = card.date;
+        editor.fields = stack.inputTemplate.fields;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -146,6 +150,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             
             card.title = editor.actionTitle;
             card.date = editor.actionDate;
+            card.fields = editor.fields;
             
             self.reloadData();
         };

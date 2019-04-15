@@ -23,16 +23,47 @@ extension CustomField {
         
         return view;
     }
+    
+    public var icon: NSImage? {
+        let icon: NSImage?;
+        
+        switch self {
+        case is TextField:
+            icon = (self as! TextField).icon;
+        case is NumericField:
+            icon = (self as! NumericField).icon;
+        default:
+            icon = nil;
+        }
+        
+        return icon;
+    }
 }
 
 extension TextField {
     public var customView: NSView? {
-        return NSButton(title: "Text", target: nil, action: nil);
+        let viewController: TextEditorViewController = TextEditorViewController();
+        
+        let view: NSView = viewController.view;
+        view.translatesAutoresizingMaskIntoConstraints = false;
+        return view;
+    }
+    
+    public var icon: NSImage? {
+        return NSImage(named: NSImage.Name(""));
     }
 }
 
 extension NumericField {
     public var customView: NSView? {
-        return NSButton(title: "Numeric", target: nil, action: nil);
+        let viewController: NumericEditorViewController = NumericEditorViewController();
+        
+        let view: NSView = viewController.view;
+        view.translatesAutoresizingMaskIntoConstraints = false;
+        return view;
+    }
+    
+    public var icon: NSImage? {
+        return NSImage(named: NSImage.Name(""));
     }
 }

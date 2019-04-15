@@ -42,5 +42,6 @@ target 'ChronicyiOS' do
   pod 'Cards'
   pod 'FoldingCell'
   pod 'BulletinBoard'
+  pod 'SPPermission'
   
 end

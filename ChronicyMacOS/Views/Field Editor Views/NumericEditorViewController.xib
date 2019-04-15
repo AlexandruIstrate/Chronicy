@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NumericEditorViewController" customModule="Chronicy" customModuleProvider="target">
+            <connections>
+                <outlet property="numberField" destination="WmK-ee-vp9" id="PVl-vT-fYU"/>
+                <outlet property="numberFormatter" destination="ZyO-Qa-SGa" id="Ga4-Gp-vpY"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KyG-KM-Wuc">
+                    <rect key="frame" x="14" y="365" width="38" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value" id="lgK-kD-Zfy">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WmK-ee-vp9">
+                    <rect key="frame" x="58" y="362" width="176" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ezx-49-oQD">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="ZyO-Qa-SGa"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lwY-vX-NJk">
+                    <rect key="frame" x="56" y="338" width="180" height="18"/>
+                    <buttonCell key="cell" type="check" title="Decimal numbers" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vrc-Fn-ikw">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onDecimalCheckboxToggled:" target="-2" id="dUt-6I-gcP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="WmK-ee-vp9" secondAttribute="trailing" constant="16" id="6bM-Bb-C8M"/>
+                <constraint firstItem="WmK-ee-vp9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="Gzn-0w-RTu"/>
+                <constraint firstItem="WmK-ee-vp9" firstAttribute="firstBaseline" secondItem="KyG-KM-Wuc" secondAttribute="firstBaseline" id="XSg-JJ-oZB"/>
+                <constraint firstItem="lwY-vX-NJk" firstAttribute="trailing" secondItem="WmK-ee-vp9" secondAttribute="trailing" id="d1q-3t-aYC"/>
+                <constraint firstItem="lwY-vX-NJk" firstAttribute="leading" secondItem="WmK-ee-vp9" secondAttribute="leading" id="ibh-Y3-Y7O"/>
+                <constraint firstItem="KyG-KM-Wuc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="jcK-E8-OcZ"/>
+                <constraint firstItem="lwY-vX-NJk" firstAttribute="top" secondItem="WmK-ee-vp9" secondAttribute="bottom" constant="8" id="smB-iG-rJ4"/>
+                <constraint firstItem="WmK-ee-vp9" firstAttribute="leading" secondItem="KyG-KM-Wuc" secondAttribute="trailing" constant="8" id="uI2-ZB-hJt"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

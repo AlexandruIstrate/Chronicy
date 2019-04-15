@@ -13,9 +13,7 @@ public class Stack {
     public var name: String;
     public private(set) var cards: [Card] = [];
     
-    public private(set) lazy var inputTemplate: InputTemplate = {
-        return InputTemplate(name: self.name);
-    } ();
+    public private(set) var inputTemplate: CustomFieldInputTemplate = CustomFieldInputTemplate();
     
     public struct Styling {
         var color: CGColor;

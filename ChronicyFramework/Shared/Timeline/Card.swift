@@ -12,7 +12,7 @@ public class Card {
     public var title: String;
     public var date: Date;
     
-    public private(set) var fields: [CustomField] = [];
+    public var fields: [CustomField] = [];
         
     public struct Styling {
         var color: CGColor;
