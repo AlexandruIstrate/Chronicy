@@ -46,6 +46,6 @@ public class CardTagManager {
 
 extension CardTagManager {
     private func setupDefaults() {
-        register(tag: CardTag(title: "Tag 1", color: CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)));
+//        register(tag: CardTag(title: "Tag 1", color: CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)));
     }
 }

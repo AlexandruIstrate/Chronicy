@@ -14,14 +14,3 @@ public protocol NotebookDataSource {
 public enum NotebookDataSourceError: Error {
     case unavailable;
 }
-
-public class ServerNotebookDataSource: NotebookDataSource {
-    public func retrieveNotebook() throws -> Notebook {
-        // TODO: Implement
-        throw NotebookDataSourceError.unavailable;
-    }
-    
-    public func getNotebookNames() -> [String] {
-        return [];
-    }
-}

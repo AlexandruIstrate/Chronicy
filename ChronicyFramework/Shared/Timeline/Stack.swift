@@ -19,7 +19,7 @@ public class Stack {
         var color: CGColor;
     }
     
-    public var style: Styling = Styling(color: CGColor.white);
+//    public var style: Styling = Styling(color: CGColor.white);
     
     public init(name: String) {
         self.name = name;

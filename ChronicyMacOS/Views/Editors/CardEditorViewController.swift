@@ -6,7 +6,7 @@
 //
 
 import Cocoa;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 class CardEditorViewController: NSViewController {
     

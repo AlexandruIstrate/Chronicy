@@ -6,7 +6,7 @@
 //
 
 import Cocoa;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,8 +16,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: SharedConstants.appGroupSuiteName);
         DistributedObjectManager.manager.retrievalAction = .remove;
-        
-        ApplicationManager.manager.launcher = MacOSApplicationLauncher();
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

@@ -6,7 +6,7 @@
 //
 
 import Foundation;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 class ApplicationMessaging {
     

@@ -6,7 +6,7 @@
 //
 
 import Cocoa;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 class MacOSApplicationLauncher: ApplicationLauncher {
     func launch(for bundleID: String) throws {

@@ -6,7 +6,7 @@
 //
 
 import Cocoa;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 class StackEditorViewController: NSViewController {
 
@@ -18,6 +18,10 @@ class StackEditorViewController: NSViewController {
     private lazy var menuItems: [String] = {
         return FieldType.availableTypes.map({ $0.rawValue; });
     } ();
+    
+    private var selectedRow: Int? {
+        return self.fieldsTable.selectedRow >= 0 ? self.fieldsTable.selectedRow : nil;
+    }
     
     public var taskTitle: String = String();
     public var fields: [CustomField] = [];
@@ -96,6 +100,14 @@ extension StackEditorViewController: NSTableViewDataSource, NSTableViewDelegate 
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         self.updateRemoveButtonState();
+        
+        guard let index: Int = self.selectedRow else {
+            return;
+        }
+        
+        guard let row: NSTableRowView = self.fieldsTable.rowView(atRow: index, makeIfNecessary: false) else {
+            return;
+        }
     }
 }
 
@@ -117,9 +129,7 @@ extension StackEditorViewController {
     }
     
     private func onRemove() {
-        let index: Int = self.fieldsTable.selectedRow;
-        
-        guard index >= 0 else {
+        guard let index: Int = self.selectedRow else {
             Log.warining(message: "Attempt to remove with no row selected");
             return;
         }

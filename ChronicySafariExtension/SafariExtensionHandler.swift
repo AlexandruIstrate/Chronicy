@@ -6,7 +6,7 @@
 //
 
 import SafariServices;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     

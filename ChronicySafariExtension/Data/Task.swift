@@ -6,7 +6,7 @@
 //
 
 import Foundation;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 struct Task: Equatable {
     var name: String;

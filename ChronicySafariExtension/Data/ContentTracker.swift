@@ -6,7 +6,7 @@
 //
 
 import Foundation;
-import ChronicyFramework;
+import ChronicyFrameworkMacOS;
 
 protocol ContentTracker {
     func trackerType() -> ContentTrackerType;

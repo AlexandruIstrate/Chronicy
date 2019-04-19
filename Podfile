@@ -40,7 +40,6 @@ target 'ChronicyiOS' do
   # Pods for ChronicyiOS
   pod 'Alamofire'
   pod 'Cards'
-  pod 'FoldingCell'
   pod 'BulletinBoard'
   pod 'SPPermission'
   

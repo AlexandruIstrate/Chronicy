@@ -26,10 +26,6 @@ public class ApplicationManager {
     private let queue: DispatchQueue = DispatchQueue(label: "ApplicationManagerDispatchQueue");
     public var launcher: ApplicationLauncher!;
     
-    public static let manager: ApplicationManager = ApplicationManager();
-    
-    private init() {}
-    
     public func launch(for bundleID: String) throws {
         try queue.sync {
             do {

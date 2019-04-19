@@ -22,6 +22,8 @@
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
 		A71504C4224CFE5300DD1214 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */; };
 		A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */; };
+		A7291F9A226652F000692B75 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
+		A7291F9C22667A7A00692B75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7291F9B22667A7A00692B75 /* MainViewController.swift */; };
 		A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72BB15D2237280C008575FC /* Cocoa.framework */; };
 		A72BB16F2237280C008575FC /* ChronicySafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1802237287D008575FC /* SafariExtensionHandler.swift */; };
@@ -41,10 +43,13 @@
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
 		A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */; };
-		A78D4D212253DD6F005CE553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D4D202253DD6F005CE553 /* ViewController.swift */; };
 		A78D4D242253DD6F005CE553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D222253DD6F005CE553 /* Main.storyboard */; };
 		A78D4D262253DD70005CE553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D252253DD70005CE553 /* Assets.xcassets */; };
 		A78D4D292253DD70005CE553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */; };
+		A78E6A692266458B006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
+		A78E6A8C226647A0006A00C7 /* ChronicyFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78E6A8B226647A0006A00C7 /* ChronicyFrameworkiOS.framework */; };
+		A78E6A8F22664889006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
+		A7926D0A22676ED3002F9478 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7926D0922676ED3002F9478 /* ArticleViewController.swift */; };
 		A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB49225F08E0004BA2E0 /* PageManager.swift */; };
 		A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB4C225F0F04004BA2E0 /* CardTag.swift */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
@@ -66,7 +71,6 @@
 		A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88ADD2242C44300C5A94E /* MainViewController.xib */; };
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
-		A7AE973D2253F083001BAC43 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE973C2253F083001BAC43 /* DetailsCell.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
 		A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CD7399225D119E00C94B23 /* FatSidebar.framework */; };
@@ -100,12 +104,12 @@
 			remoteGlobalIDString = A760458722308D47007F3268;
 			remoteInfo = ChronicyFrameworkMacOS;
 		};
-		A77618032231CB410038E815 /* PBXContainerItemProxy */ = {
+		A78E6A8A226647A0006A00C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A760457F22308D01007F3268 /* ChronicyFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A760458622308D47007F3268;
-			remoteInfo = ChronicyFrameworkMacOS;
+			proxyType = 2;
+			remoteGlobalIDString = A78E6A7022664688006A00C7;
+			remoteInfo = ChronicyFrameworkiOS;
 		};
 		A7CD7398225D119E00C94B23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -162,6 +166,7 @@
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequestable.swift; sourceTree = "<group>"; };
+		A7291F9B22667A7A00692B75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicySafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -190,11 +195,11 @@
 		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
 		A78D4D1C2253DD6F005CE553 /* ChronicyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChronicyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A78D4D202253DD6F005CE553 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A78D4D232253DD6F005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A78D4D252253DD70005CE553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A78D4D282253DD70005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A78D4D2A2253DD70005CE553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7926D0922676ED3002F9478 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		A794AB49225F08E0004BA2E0 /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		A794AB4C225F0F04004BA2E0 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
@@ -216,7 +221,6 @@
 		A7A88ADD2242C44300C5A94E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
-		A7AE973C2253F083001BAC43 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FatSidebar.xcodeproj; path = FatSidebar/FatSidebar.xcodeproj; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78E6A8F22664889006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */,
 				A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */,
 				54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */,
 			);
@@ -242,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7291F9A226652F000692B75 /* ChronicyFrameworkMacOS.framework in Frameworks */,
 				49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78E6A692266458B006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */,
 				282FC8AC17313513307E566E /* Pods_ChronicyMacOS.framework in Frameworks */,
 				A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */,
 			);
@@ -259,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78E6A8C226647A0006A00C7 /* ChronicyFrameworkiOS.framework in Frameworks */,
 				A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,7 +381,8 @@
 		A760458022308D01007F3268 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A76045A722308DA6007F3268 /* ChronicyFramework.framework */,
+				A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */,
+				A78E6A8B226647A0006A00C7 /* ChronicyFrameworkiOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,12 +464,12 @@
 		A78D4D1D2253DD6F005CE553 /* ChronicyiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A7926D0922676ED3002F9478 /* ArticleViewController.swift */,
+				A7291F9B22667A7A00692B75 /* MainViewController.swift */,
 				A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */,
-				A78D4D202253DD6F005CE553 /* ViewController.swift */,
-				A7AE973C2253F083001BAC43 /* DetailsCell.swift */,
 				A78D4D222253DD6F005CE553 /* Main.storyboard */,
-				A78D4D252253DD70005CE553 /* Assets.xcassets */,
 				A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */,
+				A78D4D252253DD70005CE553 /* Assets.xcassets */,
 				A78A33AF2253DEB80083EC9C /* Supporting Files */,
 			);
 			path = ChronicyiOS;
@@ -652,7 +661,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A77618042231CB410038E815 /* PBXTargetDependency */,
 				A7CD739F225D14CF00C94B23 /* PBXTargetDependency */,
 				A72BB16E2237280C008575FC /* PBXTargetDependency */,
 				A75220D02252044500C7A54E /* PBXTargetDependency */,
@@ -754,11 +762,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A76045A722308DA6007F3268 /* ChronicyFramework.framework */ = {
+		A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = ChronicyFramework.framework;
+			path = ChronicyFrameworkMacOS.framework;
 			remoteRef = A76045A622308DA6007F3268 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A78E6A8B226647A0006A00C7 /* ChronicyFrameworkiOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChronicyFrameworkiOS.framework;
+			remoteRef = A78E6A8A226647A0006A00C7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A7CD7399225D119E00C94B23 /* FatSidebar.framework */ = {
@@ -1010,9 +1025,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7AE973D2253F083001BAC43 /* DetailsCell.swift in Sources */,
-				A78D4D212253DD6F005CE553 /* ViewController.swift in Sources */,
 				A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */,
+				A7926D0A22676ED3002F9478 /* ArticleViewController.swift in Sources */,
+				A7291F9C22667A7A00692B75 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,11 +1043,6 @@
 			isa = PBXTargetDependency;
 			target = A75220C52252044500C7A54E /* ChronicyShareExtension */;
 			targetProxy = A75220CF2252044500C7A54E /* PBXContainerItemProxy */;
-		};
-		A77618042231CB410038E815 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ChronicyFrameworkMacOS;
-			targetProxy = A77618032231CB410038E815 /* PBXContainerItemProxy */;
 		};
 		A7CD739F225D14CF00C94B23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1495,6 +1505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1543,6 +1554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 938D7ZG3MN;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

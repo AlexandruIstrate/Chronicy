@@ -15,10 +15,10 @@ public class Card {
     public var fields: [CustomField] = [];
         
     public struct Styling {
-        var color: CGColor;
+        var color: CGColor?;
     }
     
-    public var style: Styling = Styling(color: CGColor.white);
+    public var style: Styling = Styling(color: nil);
     
     public init(title: String) {
         self.title = title;
