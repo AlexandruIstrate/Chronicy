@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		A7098C4F224518920026BAFC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7098C4E224518920026BAFC /* Notification.swift */; };
 		A709AB562248FD65002841A8 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB502248FD65002841A8 /* Stack.swift */; };
-		A70C2971226A4DB700966F50 /* WebAPIRequestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C2970226A4DB700966F50 /* WebAPIRequestInfo.swift */; };
+		A70C2971226A4DB700966F50 /* WebAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C2970226A4DB700966F50 /* WebAPIRequest.swift */; };
 		A70C2973226A728900966F50 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C2972226A728900966F50 /* URLManager.swift */; };
-		A70C2975226A739600966F50 /* WebAPIResponseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C2974226A739600966F50 /* WebAPIResponseInfo.swift */; };
+		A70C2975226A739600966F50 /* WebAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C2974226A739600966F50 /* WebAPIResponse.swift */; };
 		A70FBA8722580520007CE092 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FBA8622580520007CE092 /* RequestManager.swift */; };
 		A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
 		A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71900D9225EB8E4003F4CA6 /* CardTag.swift */; };
@@ -19,7 +19,6 @@
 		A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72204102240227C001E1BD5 /* SharedConstants.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
-		A78CB69D2262138700EEF127 /* NotebookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CB69C2262138700EEF127 /* NotebookDataSource.swift */; };
 		A78E6A7422664688006A00C7 /* ChronicyFrameworkiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A78E6A7222664688006A00C7 /* ChronicyFrameworkiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78E6A78226646AB006A00C7 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E822252975600E385CA /* Notebook.swift */; };
 		A78E6A79226646B2006A00C7 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB502248FD65002841A8 /* Stack.swift */; };
@@ -31,7 +30,6 @@
 		A78E6A7F226646CF006A00C7 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06C0225941D900305EC4 /* TrackingService.swift */; };
 		A78E6A80226646CF006A00C7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A78E6A81226646CF006A00C7 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D428225273840012A9E5 /* KeyStorage.swift */; };
-		A78E6A82226646CF006A00C7 /* NotebookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CB69C2262138700EEF127 /* NotebookDataSource.swift */; };
 		A78E6A83226646CF006A00C7 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D42A2252738B0012A9E5 /* DistributedObjectManager.swift */; };
 		A78E6A84226646CF006A00C7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FBA8622580520007CE092 /* RequestManager.swift */; };
 		A78E6A85226646CF006A00C7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
@@ -43,7 +41,6 @@
 		A79E4E852252987300E385CA /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E842252987300E385CA /* CustomField.swift */; };
 		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
-		A7AD5EB82268EFD4002298F4 /* ServerNotebookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EB72268EFD4002298F4 /* ServerNotebookDataSource.swift */; };
 		A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */; };
 		A7AD5EBC2268FBE9002298F4 /* ServerNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */; };
 		A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EBD2268FD37002298F4 /* WebAPI.swift */; };
@@ -55,9 +52,9 @@
 		A7033133224912330001172A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A7098C4E224518920026BAFC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A709AB502248FD65002841A8 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = /Users/andu/Projects/Chronicy/ChronicyFramework/Shared/Timeline/Stack.swift; sourceTree = "<absolute>"; };
-		A70C2970226A4DB700966F50 /* WebAPIRequestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequestInfo.swift; sourceTree = "<group>"; };
+		A70C2970226A4DB700966F50 /* WebAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequest.swift; sourceTree = "<group>"; };
 		A70C2972226A728900966F50 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
-		A70C2974226A739600966F50 /* WebAPIResponseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIResponseInfo.swift; sourceTree = "<group>"; };
+		A70C2974226A739600966F50 /* WebAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIResponse.swift; sourceTree = "<group>"; };
 		A70FBA8622580520007CE092 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71900D9225EB8E4003F4CA6 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
@@ -67,7 +64,6 @@
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		A78CB69C2262138700EEF127 /* NotebookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookDataSource.swift; sourceTree = "<group>"; };
 		A78E6A7022664688006A00C7 /* ChronicyFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78E6A7222664688006A00C7 /* ChronicyFrameworkiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkiOS.h; sourceTree = "<group>"; };
 		A78E6A7322664688006A00C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,7 +73,6 @@
 		A79E4E842252987300E385CA /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
-		A7AD5EB72268EFD4002298F4 /* ServerNotebookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNotebookDataSource.swift; sourceTree = "<group>"; };
 		A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EBD2268FD37002298F4 /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
@@ -116,8 +111,8 @@
 			children = (
 				A70FBA8622580520007CE092 /* RequestManager.swift */,
 				A7AD5EBD2268FD37002298F4 /* WebAPI.swift */,
-				A70C2970226A4DB700966F50 /* WebAPIRequestInfo.swift */,
-				A70C2974226A739600966F50 /* WebAPIResponseInfo.swift */,
+				A70C2970226A4DB700966F50 /* WebAPIRequest.swift */,
+				A70C2974226A739600966F50 /* WebAPIResponse.swift */,
 				A70C2972226A728900966F50 /* URLManager.swift */,
 			);
 			path = Web;
@@ -244,8 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				A7B2D428225273840012A9E5 /* KeyStorage.swift */,
-				A78CB69C2262138700EEF127 /* NotebookDataSource.swift */,
-				A7AD5EB72268EFD4002298F4 /* ServerNotebookDataSource.swift */,
 				A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */,
 				A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */,
 			);
@@ -381,12 +374,11 @@
 				A79E4E812252966700E385CA /* Card.swift in Sources */,
 				A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
-				A78CB69D2262138700EEF127 /* NotebookDataSource.swift in Sources */,
 				A7AD5EBC2268FBE9002298F4 /* ServerNotebookManager.swift in Sources */,
 				A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */,
 				A70FBA8722580520007CE092 /* RequestManager.swift in Sources */,
 				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,
-				A70C2971226A4DB700966F50 /* WebAPIRequestInfo.swift in Sources */,
+				A70C2971226A4DB700966F50 /* WebAPIRequest.swift in Sources */,
 				A709AB562248FD65002841A8 /* Stack.swift in Sources */,
 				A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
@@ -394,11 +386,10 @@
 				A792BF26225B1D970098DC55 /* DefaultFields.swift in Sources */,
 				A7B2D429225273840012A9E5 /* KeyStorage.swift in Sources */,
 				A79E4E832252975600E385CA /* Notebook.swift in Sources */,
-				A7AD5EB82268EFD4002298F4 /* ServerNotebookDataSource.swift in Sources */,
 				A79E4E852252987300E385CA /* CustomField.swift in Sources */,
 				A71E06C1225941D900305EC4 /* TrackingService.swift in Sources */,
 				A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */,
-				A70C2975226A739600966F50 /* WebAPIResponseInfo.swift in Sources */,
+				A70C2975226A739600966F50 /* WebAPIResponse.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +403,6 @@
 				A78E6A79226646B2006A00C7 /* Stack.swift in Sources */,
 				A78E6A84226646CF006A00C7 /* RequestManager.swift in Sources */,
 				A78E6A87226646CF006A00C7 /* Notification.swift in Sources */,
-				A78E6A82226646CF006A00C7 /* NotebookDataSource.swift in Sources */,
 				A78E6A7D226646B2006A00C7 /* CardTag.swift in Sources */,
 				A78E6A80226646CF006A00C7 /* CoreDataStack.swift in Sources */,
 				A78E6A7A226646B2006A00C7 /* Card.swift in Sources */,

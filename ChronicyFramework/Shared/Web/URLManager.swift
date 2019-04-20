@@ -31,4 +31,7 @@ public class URLManager {
 
 public enum URLKey {
     case auth;
+    case infoNotebook;
+    case infoAllNotebooks;
+    case notebook;
 }

@@ -7,7 +7,7 @@
 
 import Foundation;
 
-public typealias RequestCompletionCallback = (Codable?, Data?) -> ();
+public typealias RequestCompletionCallback = (Data?) -> ();
 public typealias RequestErrorCallback = (RequestError) -> ();
 
 public protocol Requestable {
@@ -32,7 +32,7 @@ public class RequestManager {
                 return;
             }
             
-            self.requestable?.request(with: json, url: url, type: requestType, onCompletion: { (codable: Codable?, data: Data?) in
+            self.requestable?.request(with: json, url: url, type: requestType, onCompletion: { (data: Data?) in
                 
             }, onError: { (error: RequestError) in
                 onError(error);
@@ -70,6 +70,7 @@ public enum RequestType: String {
 }
 
 public enum RequestError: Error {
+    case connectionError;
     case invalidRequestData;
     case invalidResponse;
     case generalFailure(reason: String);

@@ -8,13 +8,14 @@
 import Foundation;
 
 public protocol NotebookManager {
+    typealias NotebookManagerInfoCallback = (NotebookInfo?, NotebookManagerError?) -> ();
+    func getInfo(info: NotebookInfo, callback: @escaping NotebookManagerInfoCallback);
+    
     typealias NotebookManagerInfoAllCallback = ([NotebookInfo]?, NotebookManagerError?) -> ();
     func getInfo(callback: @escaping NotebookManagerInfoAllCallback);
     
-    typealias NotebookManagerInfoCallback = (NotebookInfo?, NotebookManagerError?) -> ();
-    func getInfo(id: String, callback: @escaping NotebookManagerInfoCallback);
-    
-    func dataSource(info: NotebookInfo) -> NotebookDataSource;
+    typealias NotebookManagerNotebookCallback = (Notebook?, NotebookManagerError?) -> ();
+    func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback);
 }
 
 public struct NotebookInfo {

@@ -9,24 +9,44 @@ import Foundation;
 
 public class ServerNotebookManager: NotebookManager {
     
-    private var dataSource: ServerNotebookDataSource!;
     private lazy var api: WebAPI = {
         return WebAPI();
     } ();
     
-    public init() {
-        self.dataSource = ServerNotebookDataSource(api: api);
+    private var token: String = "";
+    
+    public func getInfo(info: NotebookInfo, callback: @escaping NotebookManagerInfoCallback) {
+        self.api.getInfo(token: self.token, info: info) { (response: NotebookInfoResponse?, error: RequestError?) in
+            guard let response: NotebookInfoResponse = response else {
+                callback(nil, .fetchFailure);
+                return;
+            }
+            
+            callback(NotebookInfo(name: response.name, id: response.id, dateCreated: response.dateCreated), nil);
+        }
     }
     
     public func getInfo(callback: @escaping NotebookManagerInfoAllCallback) {
-        
+        self.api.getInfoForAll(token: self.token) { (response: NotebookInfoAllResponse?, error: RequestError?) in
+            guard let response: NotebookInfoAllResponse = response else {
+                callback(nil, .fetchFailure);
+                return;
+            }
+            
+            callback(response.notebooks.map({ (iter: NotebookInfoResponse) -> NotebookInfo in
+                return NotebookInfo(name: iter.name, id: iter.id, dateCreated: iter.dateCreated);
+            }), nil);
+        }
     }
     
-    public func getInfo(id: String, callback: @escaping NotebookManagerInfoCallback) {
-        
-    }
-    
-    public func dataSource(info: NotebookInfo) -> NotebookDataSource {
-        return dataSource;
+    public func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback) {
+        self.api.getNotebook(token: token, info: info) { (notebook: Notebook?, error: RequestError?) in
+            guard let notebook: Notebook = notebook else {
+                callback(nil, .fetchFailure);
+                return;
+            }
+            
+            callback(notebook, nil);
+        }
     }
 }
