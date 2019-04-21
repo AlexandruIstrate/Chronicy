@@ -41,6 +41,7 @@
 		A79E4E852252987300E385CA /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E842252987300E385CA /* CustomField.swift */; };
 		A7A52A6D2246777E0086E01F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A6C2246777E0086E01F /* CoreDataStack.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
+		A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */; };
 		A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */; };
 		A7AD5EBC2268FBE9002298F4 /* ServerNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */; };
 		A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EBD2268FD37002298F4 /* WebAPI.swift */; };
@@ -73,6 +74,7 @@
 		A79E4E842252987300E385CA /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		A7A52A6C2246777E0086E01F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
+		A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerNotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EBD2268FD37002298F4 /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				A7B2D428225273840012A9E5 /* KeyStorage.swift */,
 				A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */,
+				A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */,
 				A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */,
 			);
 			path = Data;
@@ -388,6 +391,7 @@
 				A79E4E832252975600E385CA /* Notebook.swift in Sources */,
 				A79E4E852252987300E385CA /* CustomField.swift in Sources */,
 				A71E06C1225941D900305EC4 /* TrackingService.swift in Sources */,
+				A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */,
 				A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */,
 				A70C2975226A739600966F50 /* WebAPIResponse.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
