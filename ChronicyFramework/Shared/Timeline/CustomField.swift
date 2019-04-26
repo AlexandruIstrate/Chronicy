@@ -13,10 +13,6 @@ public protocol CustomField {
     var value: Any? { get set }
     
     var type: FieldType { get }
- 
-    typealias FieldOnValueChangedCallback = (CustomField) -> ();
-    var valueChangedCallback: FieldOnValueChangedCallback? { get set }
-    
 }
 
 extension CustomField {

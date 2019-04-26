@@ -8,17 +8,11 @@
 import Foundation;
 
 public class Card {
-    
     public var title: String;
     public var date: Date;
     
     public var fields: [CustomField] = [];
-        
-    public struct Styling {
-        var color: CGColor?;
-    }
-    
-    public var style: Styling = Styling(color: nil);
+    public var tags: [CardTag] = [];
     
     public init(title: String) {
         self.title = title;

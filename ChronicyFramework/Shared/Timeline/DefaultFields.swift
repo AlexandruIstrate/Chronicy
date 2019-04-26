@@ -14,8 +14,6 @@ public struct TextField: CustomField {
     
     public var type: FieldType = .string;
     
-    public var valueChangedCallback: CustomField.FieldOnValueChangedCallback?;
-    
     public init(name: String, value: String? = nil) {
         self.name = name;
         self.value = value;
@@ -28,8 +26,6 @@ public struct NumericField: CustomField {
     public var value: Any?;
     
     public var type: FieldType = .number;
-    
-    public var valueChangedCallback: CustomField.FieldOnValueChangedCallback?;
     
     public init(name: String, value: Float? = nil) {
         self.name = name;

@@ -13,9 +13,9 @@ public protocol NotebookItem {
 }
 
 public class Notebook {
-    
     public var name: String;
     public private(set) var items: [Stack] = [];
+    public private(set) var activities: [Activity] = [];
     
     public init(name: String) {
         self.name = name;
@@ -36,5 +36,17 @@ public class Notebook {
         self.items.removeAll { (iter: Stack) -> Bool in
             return iter == stack;
         }
+    }
+    
+    public func add(activity: Activity) {
+        self.activities.append(activity);
+    }
+}
+
+extension Notebook: Equatable {
+    public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.items == rhs.items &&
+            lhs.activities == rhs.activities;
     }
 }

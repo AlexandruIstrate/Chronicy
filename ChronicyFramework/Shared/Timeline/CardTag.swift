@@ -6,6 +6,7 @@
 //
 
 import Foundation;
+import CoreGraphics;
 
 public struct CardTag: Equatable {
     public var title: String;
@@ -19,11 +20,9 @@ public struct CardTag: Equatable {
 
 public class CardTagManager {
     
-    public static var manager: CardTagManager = CardTagManager();
-    
     public private(set) var tags: [CardTag] = [];
     
-    private init() {
+    public init() {
         self.setupDefaults();
     }
     

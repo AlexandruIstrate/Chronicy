@@ -13,6 +13,8 @@ import CoreData;
 class OutlineCentralViewController: NSViewController {
 
     private var outlineView: OutlineViewController!;
+    
+    private let notebookManager: NotebookManager = LocalNotebookManager();
     private var notebook: Notebook = Notebook(name: "Main");
         
     override func viewDidLoad() {
@@ -37,9 +39,9 @@ class OutlineCentralViewController: NSViewController {
         self.notebook.add(stack: stack1);
         self.notebook.add(stack: stack2);
         
+//        displayLoadingView();
         setupContentView();
         setupTimeline();
-        setupObservers();
     }
     
     override func viewWillDisappear() {
@@ -201,10 +203,10 @@ extension OutlineCentralViewController {
         self.outlineView.onLayoutView();
     }
     
-    private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onApplicationAdd), name: WindowController.Notifications.toolbarAdd.name, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(onApplicationRemove), name: WindowController.Notifications.toolbarRemove.name, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(onApplicationEdit), name: WindowController.Notifications.toolbarEdit.name, object: nil);
+    private func displayLoadingView() {
+        let alert: NSAlert = NSAlert();
+        alert.messageText = "Test";
+        alert.runModal();
     }
         
     @objc
@@ -230,16 +232,16 @@ extension OutlineCentralViewController {
     }
     
     private func saveData() {
-        do {
-            guard (CoreDataStack.stack.managedObjectContext?.hasChanges ?? false) else {
-                return;
-            }
-            
-            guard ((try CoreDataStack.stack.managedObjectContext?.save()) != nil) else {
-                throw NSError(domain: "CoreData", code: 99679, userInfo: nil);
-            }
-        } catch let e {
-            self.presentError(e);
-        }
+//        do {
+//            guard (CoreDataStack.stack.managedObjectContext?.hasChanges ?? false) else {
+//                return;
+//            }
+//            
+//            guard ((try CoreDataStack.stack.managedObjectContext?.save()) != nil) else {
+//                throw NSError(domain: "CoreData", code: 99679, userInfo: nil);
+//            }
+//        } catch let e {
+//            self.presentError(e);
+//        }
     }
 }

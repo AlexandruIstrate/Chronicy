@@ -22,6 +22,12 @@
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
 		A71504C4224CFE5300DD1214 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */; };
 		A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */; };
+		A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE302270AC2D00ED840C /* ActivityViewController.swift */; };
+		A71EAE332270AC2D00ED840C /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71EAE312270AC2D00ED840C /* ActivityViewController.xib */; };
+		A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE362270FFBE00ED840C /* ActivityCellView.swift */; };
+		A71EAE392270FFDB00ED840C /* ActivityCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71EAE382270FFDB00ED840C /* ActivityCellView.xib */; };
+		A71EAE3E2271032F00ED840C /* NotebooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE3C2271032F00ED840C /* NotebooksViewController.swift */; };
+		A71EAE3F2271032F00ED840C /* NotebooksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71EAE3D2271032F00ED840C /* NotebooksViewController.xib */; };
 		A7291F9A226652F000692B75 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
 		A7291F9C22667A7A00692B75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7291F9B22667A7A00692B75 /* MainViewController.swift */; };
 		A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72BB15D2237280C008575FC /* Cocoa.framework */; };
@@ -166,6 +172,12 @@
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequestable.swift; sourceTree = "<group>"; };
+		A71EAE302270AC2D00ED840C /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		A71EAE312270AC2D00ED840C /* ActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
+		A71EAE362270FFBE00ED840C /* ActivityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellView.swift; sourceTree = "<group>"; };
+		A71EAE382270FFDB00ED840C /* ActivityCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCellView.xib; sourceTree = "<group>"; };
+		A71EAE3C2271032F00ED840C /* NotebooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebooksViewController.swift; sourceTree = "<group>"; };
+		A71EAE3D2271032F00ED840C /* NotebooksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebooksViewController.xib; sourceTree = "<group>"; };
 		A7291F9B22667A7A00692B75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A72BB15B2237280C008575FC /* ChronicySafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicySafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72BB15D2237280C008575FC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -318,6 +330,17 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		A71EAE2D2270AB6C00ED840C /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				A71EAE302270AC2D00ED840C /* ActivityViewController.swift */,
+				A71EAE312270AC2D00ED840C /* ActivityViewController.xib */,
+				A71EAE362270FFBE00ED840C /* ActivityCellView.swift */,
+				A71EAE382270FFDB00ED840C /* ActivityCellView.xib */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		A7252A422234315900EE554A /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,9 +466,12 @@
 				A7CD73A1225D1C2000C94B23 /* Sidebar.swift */,
 				A7CD73A3225D2BFC00C94B23 /* CustomField.swift */,
 				A794AB49225F08E0004BA2E0 /* PageManager.swift */,
+				A71EAE3C2271032F00ED840C /* NotebooksViewController.swift */,
+				A71EAE3D2271032F00ED840C /* NotebooksViewController.xib */,
 				A70D83222264BA11007A33D7 /* Field Editor Views */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
+				A71EAE2D2270AB6C00ED840C /* Activity */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
 				A7A88AEB2242C87E00C5A94E /* Editors */,
 				A7109E2F2235845D00E3EB29 /* Utils */,
@@ -811,10 +837,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A70D83282264BADF007A33D7 /* TextEditorViewController.xib in Resources */,
+				A71EAE392270FFDB00ED840C /* ActivityCellView.xib in Resources */,
 				A70D832C2264D277007A33D7 /* NumericEditorViewController.xib in Resources */,
 				A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */,
+				A71EAE332270AC2D00ED840C /* ActivityViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
@@ -823,6 +851,7 @@
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
+				A71EAE3F2271032F00ED840C /* NotebooksViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,12 +1037,15 @@
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
+				A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
+				A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */,
+				A71EAE3E2271032F00ED840C /* NotebooksViewController.swift in Sources */,
 				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
 				A70D83272264BADF007A33D7 /* TextEditorViewController.swift in Sources */,
 				A7CD73A2225D1C2000C94B23 /* Sidebar.swift in Sources */,

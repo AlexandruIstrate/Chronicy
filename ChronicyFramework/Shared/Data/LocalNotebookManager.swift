@@ -6,9 +6,15 @@
 //
 
 import Foundation;
-import CoreData;
 
 public class LocalNotebookManager: NotebookManager {
+    
+    private var storage: CoreDataStorage = CoreDataStorage();
+    
+    public init() {
+        
+    }
+    
     public func getInfo(info: NotebookInfo, callback: @escaping NotebookManagerInfoCallback) {
         
     }
@@ -20,19 +26,4 @@ public class LocalNotebookManager: NotebookManager {
     public func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback) {
         
     }
-}
-
-class CoreDataNotebook: NSManagedObject {
-    
-    public var notebook: Notebook?;
-    
-    @NSManaged public var name: String;
-}
-
-class CoreDataStack: NSManagedObject {
-    
-}
-
-class CoreDataCard: NSManagedObject {
-    
 }

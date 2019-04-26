@@ -14,22 +14,6 @@ class OutlineStackView: NSView {
     @IBOutlet private weak var tableView: NSTableView!;
     @IBOutlet private weak var nameLabel: NSTextField!;
     
-    private lazy var optionsMenu: NSMenu = {
-        let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
-        
-        let add: NSMenuItem = NSMenuItem(title: NSLocalizedString("Add", comment: ""), action: #selector(onAdd), keyEquivalent: "");
-        add.target = self;
-
-        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit...", comment: ""), action: #selector(onEdit), keyEquivalent: "");
-        edit.target = self;
-        
-        let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");
-        delete.target = self;
-        
-        menu.items = [ add, edit, delete ];
-        return menu;
-    } ();
-    
     private var internalCellCount: Int = 0;
     private var cells: [OutlineCellView] = [];
     
@@ -46,10 +30,6 @@ class OutlineStackView: NSView {
     public var title: String = String();
     
     public var selectionIndex: Int { return self.tableView.selectedRow; }
-    
-    @IBAction private func onOptionsClicked(_ sender: NSButton) {
-        optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: sender.bounds.origin, in: sender);
-    }
     
     override func mouseDown(with event: NSEvent) {
         super.mouseUp(with: event);

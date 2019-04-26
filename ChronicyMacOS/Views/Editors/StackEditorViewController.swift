@@ -97,18 +97,6 @@ extension StackEditorViewController: NSTableViewDataSource, NSTableViewDelegate 
             return nil;
         }
     }
-    
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        self.updateRemoveButtonState();
-        
-        guard let index: Int = self.selectedRow else {
-            return;
-        }
-        
-        guard let row: NSTableRowView = self.fieldsTable.rowView(atRow: index, makeIfNecessary: false) else {
-            return;
-        }
-    }
 }
 
 extension StackEditorViewController {

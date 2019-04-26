@@ -30,17 +30,17 @@ import FatSidebar;
 
 struct SidebarTheme: FatSidebarTheme {
     
-    let itemStyle: FatSidebarItemStyle = OmniFocusItemStyle()
-    let sidebarBackground = SidebarTheme.backgroundColor
+    let itemStyle: FatSidebarItemStyle = OmniFocusItemStyle();
+    let sidebarBackground = SidebarTheme.backgroundColor;
     
-    static var selectedColor: NSColor { return #colorLiteral(red: 0.901724875, green: 0.9334430099, blue: 0.9331719875, alpha: 1) }
-    static var recessedColor: NSColor { return #colorLiteral(red: 0.682291925, green: 0.6823920608, blue: 0.68227005, alpha: 1) }
-    static var backgroundColor: NSColor { return #colorLiteral(red: 0.7919496894, green: 0.8197044134, blue: 0.8194655776, alpha: 1) }
+    public static var selectedColor: NSColor { return NSColor(named: NSColor.Name("SidebarSelected")) ?? NSColor.white; }
+    public static var recessedColor: NSColor { return NSColor(named: NSColor.Name("SidebarRecessed")) ?? NSColor.white; }
+    public static var backgroundColor: NSColor { return NSColor(named: NSColor.Name("SidebarBackground")) ?? NSColor.white; }
     
     struct OmniFocusItemStyle: FatSidebarItemStyle {
         
         let font: NSFont? = NSFont.systemFont(ofSize: 14)
-        let labelColor = StatefulColor(single: NSColor.controlTextColor)
+        let labelColor = StatefulColor(single: NSColor(named: NSColor.Name("SidebarText")) ?? NSColor.white);
         
         let background = StatefulBackgroundColor(
             normal:      SidebarTheme.backgroundColor,
@@ -70,6 +70,7 @@ extension Page: FatSidebarItemConvertible {
         let item: FatSidebarItemConfiguration = FatSidebarItemConfiguration(title: self.title, image: icon, shadow: nil, animated: true) { (item: FatSidebarItem) in
             self.onLoadPage?(self);
         };
+        
         return item;
     }
 }

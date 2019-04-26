@@ -68,22 +68,22 @@ extension MainViewController: FatSidebarDelegate {
 extension MainViewController {
     private func setupSidebarView() {
         self.sidebar.theme = SidebarTheme();
-        self.sidebar.style = .small(iconSize: 24, padding: 6);
+        self.sidebar.style = .small(iconSize: 30, padding: 8);
         self.sidebar.selectionMode = .toggleOne;
         self.sidebar.delegate = self;
     }
     
     private func setupPages() {
-        let image: NSImage = NSImage(named: NSImage.Name("Outline"))!;
-        let color: NSColor? = NSColor(named: NSColor.Name(""));
-        
-        let page: Page = Page(title: NSLocalizedString("Outline", comment: ""), icon: image, tint: color, onLoad: { (page: Page) in
-
+        self.pageManager.add(page: Page(title: NSLocalizedString("Outline", comment: ""), icon: NSImage(named: NSImage.Name("Outline"))!, tint: NSColor(named: NSColor.Name("")), onLoad: { (page: Page) in
+            self.showCenterView(viewController: OutlineCentralViewController());
         }, onUnload: { (page: Page) in
 
-        });
-        
-        self.pageManager.add(page: page);
+        }));
+        self.pageManager.add(page: Page(title: NSLocalizedString("Activity", comment: ""), icon: NSImage(named: NSImage.Name("Activity"))!, tint: NSColor(named: NSColor.Name("")), onLoad: { (page: Page) in
+            self.showCenterView(viewController: ActivityViewController());
+        }, onUnload: { (page: Page) in
+            
+        }));
     }
     
     private func setupContentView(view: NSView) {
@@ -114,11 +114,11 @@ extension MainViewController {
     }
     
     private func addSidebarTags() {
-        for tag: CardTag in CardTagManager.manager.tags {
-            sidebar.appendItem(Page(title: tag.title, icon: NSImage(named: NSImage.Name("Tag"))!, tint: tag.nsColor, onLoad: { (page: Page) in
-                Log.info(message: page.title);
-            }));
-        }
+//        for tag: CardTag in CardTagManager.manager.tags {
+//            sidebar.appendItem(Page(title: tag.title, icon: NSImage(named: NSImage.Name("Tag"))!, tint: tag.nsColor, onLoad: { (page: Page) in
+//                Log.info(message: page.title);
+//            }));
+//        }
     }
     
     private func resetSidebar() {

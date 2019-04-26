@@ -15,12 +15,6 @@ public class Stack {
     
     public private(set) var inputTemplate: CustomFieldInputTemplate = CustomFieldInputTemplate();
     
-    public struct Styling {
-        var color: CGColor;
-    }
-    
-//    public var style: Styling = Styling(color: CGColor.white);
-    
     public init(name: String) {
         self.name = name;
     }
@@ -37,7 +31,7 @@ public class Stack {
     
     @discardableResult
     public func insertNewCard() -> Card {
-        let card: Card = Card(title: NSLocalizedString("Test", comment: ""));
+        let card: Card = Card(title: NSLocalizedString("New Card", comment: ""));
         self.cards.append(card);
         return card;
     }
