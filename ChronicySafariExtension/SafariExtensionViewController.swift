@@ -9,7 +9,8 @@ import SafariServices;
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
-    @IBOutlet private weak var taskDropdown: NSPopUpButton!;
+    @IBOutlet private weak var notebookDropdown: NSPopUpButton!;
+    @IBOutlet private weak var taskDropdown: NSPopUpButton!
     @IBOutlet private weak var enabledCheckbox: NSButton!;
     
     public static let shared: SafariExtensionViewController = {

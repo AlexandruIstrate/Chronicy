@@ -14,7 +14,7 @@ public protocol NotebookItem {
 
 public class Notebook {
     public var name: String;
-    public private(set) var items: [Stack] = [];
+    public private(set) var stacks: [Stack] = [];
     public private(set) var activities: [Activity] = [];
     
     public init(name: String) {
@@ -22,19 +22,36 @@ public class Notebook {
     }
     
     public func add(stack: Stack) {
-        self.items.append(stack);
+        self.stacks.append(stack);
     }
     
     @discardableResult
     public func insertNewStack() -> Stack {
-        let result: Stack = Stack(name: NSLocalizedString("New Stack", comment: ""));
-        self.items.append(result);
+        let nameRoot: String = "New Stack";
+        var name: String = nameRoot;
+        var index: Int = 1;
+        
+        while stacks.contains(where: { (iter: Stack) -> Bool in
+            iter.name == name;
+        }) {
+            name = "\(nameRoot) (\(index))";
+            index += 1;
+        }
+        
+        let result: Stack = Stack(name: NSLocalizedString(name, comment: ""));
+        self.stacks.append(result);
         return result;
     }
     
     public func remove(stack: Stack) {
-        self.items.removeAll { (iter: Stack) -> Bool in
+        self.stacks.removeAll { (iter: Stack) -> Bool in
             return iter == stack;
+        }
+    }
+    
+    public func remove(named: String) {
+        self.stacks.removeAll { (iter: Stack) -> Bool in
+            return iter.name == named;
         }
     }
     
@@ -46,7 +63,7 @@ public class Notebook {
 extension Notebook: Equatable {
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.name == rhs.name &&
-            lhs.items == rhs.items &&
+            lhs.stacks == rhs.stacks &&
             lhs.activities == rhs.activities;
     }
 }

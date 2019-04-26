@@ -49,6 +49,9 @@ class OutlineStackView: NSView {
         }
     }
 
+    @IBAction private func onAdd(_ sender: NSButton) {
+        self.delegate?.onAdd(stackView: self);
+    }
 }
 
 extension OutlineStackView: CustomOperationSeparatable {
@@ -109,20 +112,10 @@ extension OutlineStackView {
         let titleFont: NSFont? = NSFont(name: "JosefinSans-Regular", size: 32.0);
         self.nameLabel.font = titleFont;
     }
-    
-    @objc
-    private func onAdd() {
-        self.delegate?.onAdd(stackView: self);
-    }
-    
+ 
     @objc
     private func onEdit() {
         self.delegate?.onEdit(stackView: self);
-    }
-    
-    @objc
-    private func onDelete() {
-        self.delegate?.onDelete(stackView: self);
     }
 }
 

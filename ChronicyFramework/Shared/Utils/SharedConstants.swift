@@ -12,7 +12,10 @@ public class SharedConstants {
     
     public class DistributedObjectKeys {
         public static var pageURL: String = NSLocalizedString("currentPageURL", comment: "");
-        public static var tasks: String = "tasks";
-        public static var browserSelectedTask: String = "browserSelectedTask";
+        
+        public static var notebooks: String = "notebooks";
+        public static var stacks: String = "tasks";
+        
+        public static var browserSelectedStack: String = "browserSelectedTask";
     }
 }

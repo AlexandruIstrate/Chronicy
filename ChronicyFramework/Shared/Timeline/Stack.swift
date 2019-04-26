@@ -9,7 +9,6 @@
 import Foundation;
 
 public class Stack {
-    
     public var name: String;
     public private(set) var cards: [Card] = [];
     
@@ -31,7 +30,18 @@ public class Stack {
     
     @discardableResult
     public func insertNewCard() -> Card {
-        let card: Card = Card(title: NSLocalizedString("New Card", comment: ""));
+        let nameRoot: String = "New Card";
+        var name: String = nameRoot;
+        var index: Int = 1;
+        
+        while cards.contains(where: { (iter: Card) -> Bool in
+            iter.name == name;
+        }) {
+            name = "\(nameRoot) (\(index))";
+            index += 1;
+        }
+        
+        let card: Card = Card(title: NSLocalizedString(name, comment: ""));
         self.cards.append(card);
         return card;
     }

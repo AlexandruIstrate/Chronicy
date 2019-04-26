@@ -239,7 +239,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="onAdd:" target="jGA-0Y-lOj" id="nvR-Ob-SpW"/>
+                                            <action selector="onNotebooksMenuClicked:" target="jGA-0Y-lOj" id="SsZ-AN-fR0"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>

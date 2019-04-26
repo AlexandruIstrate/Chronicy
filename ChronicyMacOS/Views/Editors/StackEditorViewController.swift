@@ -97,6 +97,28 @@ extension StackEditorViewController: NSTableViewDataSource, NSTableViewDelegate 
             return nil;
         }
     }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        guard let index: Int = self.selectedRow else {
+            return;
+        }
+        
+        let field: CustomField = self.fields[index];
+        
+        guard let view: NSView = self.fieldsTable.view(atColumn: 0, row: index, makeIfNecessary: false) else {
+            return;
+        }
+        
+        guard let row: NSTableRowView = self.fieldsTable.rowView(atRow: index, makeIfNecessary: false) else {
+            return;
+        }
+        
+//        guard let view: NSView = row.view(atColumn: 0) as? NSView else {
+//            return;
+//        }
+        
+        Log.info(message: "Yes");
+    }
 }
 
 extension StackEditorViewController {

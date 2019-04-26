@@ -10,6 +10,8 @@ import ChronicyFrameworkMacOS;
 
 class WindowController: NSWindowController, NSWindowDelegate {
     
+    public private(set) static var shared: WindowController!;
+    
     @IBOutlet private weak var addButton: NSButton!;
     @IBOutlet private weak var removeButton: NSButton!;
     @IBOutlet private weak var editButton: NSButton!;
@@ -19,6 +21,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
     private var currentNotebookName: String?;
     
     public var delegate: WindowControllerDelegate?;
+    public var dataSource: WindowControllerDataSource? { didSet { self.reloadNotebooks(); } }
     
     public var canAdd: Bool = true { didSet { self.addButton.isEnabled = self.canAdd; } }
     public var canRemove: Bool = true { didSet { self.removeButton.isEnabled = self.canRemove; } }
@@ -37,7 +40,17 @@ class WindowController: NSWindowController, NSWindowDelegate {
         
         return mainVC;
     }
- 
+    
+    override init(window: NSWindow?) {
+        super.init(window: window);
+        setupSharedInstance();
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder);
+        setupSharedInstance();
+    }
+    
     @IBAction private func onAdd(_ sender: NSButton) {
         delegate?.onAdd();
     }
@@ -56,8 +69,35 @@ class WindowController: NSWindowController, NSWindowDelegate {
         self.currentNotebookName = newValue;
     }
     
+    @IBAction func onNotebooksMenuClicked(_ sender: NSButton) {
+        
+    }
+    
     @IBAction private func onSearch(_ sender: NSSearchField) {
         delegate?.onSearch(term: sender.stringValue);
+    }
+    
+    override func windowDidLoad() {
+        super.windowDidLoad();
+        self.setupPopUp();
+    }
+    
+    private func setupPopUp() {
+        self.notebookPopUp.removeAllItems();
+    }
+    
+    private func setupSharedInstance() {
+        WindowController.shared = self;
+    }
+    
+    private func reloadNotebooks() {
+        guard dataSource != nil else {
+            Log.warining(message: "Data source for WindowController is nil!");
+            return;
+        }
+        
+        self.notebookPopUp.removeAllItems();
+        self.notebookPopUp.addItems(withTitles: dataSource!.notebooks());
     }
 }
 
@@ -71,4 +111,8 @@ protocol WindowControllerDelegate {
     
     // TODO: Change return type
     func enabledItems() -> [Bool];
+}
+
+protocol WindowControllerDataSource {
+    func notebooks() -> [String];
 }

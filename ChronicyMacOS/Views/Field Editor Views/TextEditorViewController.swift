@@ -13,11 +13,13 @@ class TextEditorViewController: NSViewController {
     
     public var text: String = "";
     
-}
-
-// Delegate set in IB
-extension TextEditorViewController: NSTextViewDelegate {
-    func textDidChange(_ notification: Notification) {
+    override func viewDidLoad() {
+        super.viewDidLoad();
+    }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear();
         self.text = textView.string;
     }
+    
 }

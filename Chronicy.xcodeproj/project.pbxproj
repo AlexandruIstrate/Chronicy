@@ -35,10 +35,11 @@
 		A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1802237287D008575FC /* SafariExtensionHandler.swift */; };
 		A72BB1892237287D008575FC /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1822237287D008575FC /* SafariExtensionViewController.xib */; };
 		A72BB18A2237287D008575FC /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1842237287D008575FC /* script.js */; };
-		A72BB18B2237287D008575FC /* Old.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1852237287D008575FC /* Old.pdf */; };
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
 		A731E7632245BD5B000B62FB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E7622245BD5B000B62FB /* Task.swift */; };
 		A740E290224D0071007DA788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A740E28F224D0071007DA788 /* Assets.xcassets */; };
+		A7500D73227371E0007B5423 /* StackEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7500D71227371E0007B5423 /* StackEditViewController.swift */; };
+		A7500D74227371E0007B5423 /* StackEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7500D72227371E0007B5423 /* StackEditViewController.xib */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A75220C92252044500C7A54E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75220C82252044500C7A54E /* ShareViewController.swift */; };
 		A75220CC2252044500C7A54E /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75220CA2252044500C7A54E /* ShareViewController.xib */; };
@@ -184,11 +185,12 @@
 		A72BB1802237287D008575FC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
 		A72BB1832237287D008575FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		A72BB1842237287D008575FC /* script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		A72BB1852237287D008575FC /* Old.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Old.pdf; sourceTree = "<group>"; };
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A731E7622245BD5B000B62FB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A740E28F224D0071007DA788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7500D71227371E0007B5423 /* StackEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditViewController.swift; sourceTree = "<group>"; };
+		A7500D72227371E0007B5423 /* StackEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditViewController.xib; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A75220C62252044500C7A54E /* ChronicyShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicyShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75220C82252044500C7A54E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -373,7 +375,6 @@
 				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
 				A72BB1822237287D008575FC /* SafariExtensionViewController.xib */,
 				A72BB1842237287D008575FC /* script.js */,
-				A72BB1852237287D008575FC /* Old.pdf */,
 				A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */,
 				A740E28F224D0071007DA788 /* Assets.xcassets */,
 				A72BB18E223728AF008575FC /* Supporting Files */,
@@ -388,6 +389,15 @@
 				A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7500D6E227371AB007B5423 /* Tool Windows */ = {
+			isa = PBXGroup;
+			children = (
+				A7500D71227371E0007B5423 /* StackEditViewController.swift */,
+				A7500D72227371E0007B5423 /* StackEditViewController.xib */,
+			);
+			path = "Tool Windows";
 			sourceTree = "<group>";
 		};
 		A75220C72252044500C7A54E /* ChronicyShareExtension */ = {
@@ -474,6 +484,7 @@
 				A71EAE2D2270AB6C00ED840C /* Activity */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
 				A7A88AEB2242C87E00C5A94E /* Editors */,
+				A7500D6E227371AB007B5423 /* Tool Windows */,
 				A7109E2F2235845D00E3EB29 /* Utils */,
 			);
 			path = Views;
@@ -819,7 +830,6 @@
 				A72BB18A2237287D008575FC /* script.js in Resources */,
 				A71504C4224CFE5300DD1214 /* ToolbarItemIcon.pdf in Resources */,
 				A72BB1892237287D008575FC /* SafariExtensionViewController.xib in Resources */,
-				A72BB18B2237287D008575FC /* Old.pdf in Resources */,
 				A740E290224D0071007DA788 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,6 +859,7 @@
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
+				A7500D74227371E0007B5423 /* StackEditViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
 				A71EAE3F2271032F00ED840C /* NotebooksViewController.xib in Resources */,
@@ -1035,6 +1046,7 @@
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
+				A7500D73227371E0007B5423 /* StackEditViewController.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
 				A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */,

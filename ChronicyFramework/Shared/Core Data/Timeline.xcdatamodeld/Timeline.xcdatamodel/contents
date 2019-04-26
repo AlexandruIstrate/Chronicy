@@ -13,7 +13,12 @@
     </entity>
     <entity name="CoreDataNotebook" representedClassName="CoreDataNotebook" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="shelf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataShelf" inverseName="notebooks" inverseEntity="CoreDataShelf" syncable="YES"/>
         <relationship name="stacks" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataStack" inverseName="notebook" inverseEntity="CoreDataStack" syncable="YES"/>
+    </entity>
+    <entity name="CoreDataShelf" representedClassName="CoreDataShelf" syncable="YES">
+        <attribute name="placeholder" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notebooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataNotebook" inverseName="shelf" inverseEntity="CoreDataNotebook" syncable="YES"/>
     </entity>
     <entity name="CoreDataStack" representedClassName="CoreDataStack" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -23,7 +28,8 @@
     <elements>
         <element name="CoreDataCard" positionX="-183.03125" positionY="75.75" width="128" height="103"/>
         <element name="CoreDataCardTag" positionX="70.53125" positionY="1.93359375" width="128" height="90"/>
-        <element name="CoreDataNotebook" positionX="-710.41015625" positionY="58.7109375" width="128" height="73"/>
+        <element name="CoreDataNotebook" positionX="-710.41015625" positionY="58.7109375" width="128" height="90"/>
         <element name="CoreDataStack" positionX="-452.96875" positionY="147.4296875" width="128" height="88"/>
+        <element name="CoreDataShelf" positionX="-912.3984375" positionY="-98.14453125" width="128" height="73"/>
     </elements>
 </model>

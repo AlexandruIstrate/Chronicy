@@ -8,7 +8,15 @@
 import Foundation;
 
 protocol CoreDataObject: NSManagedObject {
-    func fetchRequest() -> NSFetchRequest<Self>;
+    static func fetchRequest() -> NSFetchRequest<Self>;
+}
+
+final class CoreDataShelf: NSManagedObject, CoreDataObject {
+    @NSManaged var notebooks: Set<CoreDataNotebook>;
+    
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataShelf> {
+        return NSFetchRequest<CoreDataShelf>(entityName: "CoreDataShelf");
+    }
 }
 
 final class CoreDataNotebook: NSManagedObject, CoreDataObject {
@@ -17,7 +25,9 @@ final class CoreDataNotebook: NSManagedObject, CoreDataObject {
     @NSManaged var name: String;
     @NSManaged var stacks: Set<CoreDataStack>;
     
-    func fetchRequest() -> NSFetchRequest<CoreDataNotebook> {
+    @NSManaged var shelf: CoreDataShelf?;
+    
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataNotebook> {
         fatalError("Not implemented!");
     }
 }
@@ -30,7 +40,7 @@ final class CoreDataStack: NSManagedObject, CoreDataObject {
     
     @NSManaged var notebook: CoreDataNotebook?;
     
-    func fetchRequest() -> NSFetchRequest<CoreDataStack> {
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataStack> {
         fatalError("Not implemented!");
     }
 }
@@ -46,7 +56,7 @@ final class CoreDataCard: NSManagedObject, CoreDataObject {
     
     @NSManaged var stack: CoreDataStack?;
     
-    func fetchRequest() -> NSFetchRequest<CoreDataCard> {
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataCard> {
         fatalError("Not implemented!");
     }
 }
@@ -61,7 +71,7 @@ final class CoreDataCustomField: NSManagedObject, CoreDataObject {
     
     @NSManaged var card: CoreDataCard?;
     
-    func fetchRequest() -> NSFetchRequest<CoreDataCustomField> {
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataCustomField> {
         fatalError("Not implemented!");
     }
 }
@@ -74,7 +84,7 @@ final class CoreDataCardTag: NSManagedObject, CoreDataObject {
     
     @NSManaged var card: CoreDataCard?;
     
-    func fetchRequest() -> NSFetchRequest<CoreDataCardTag> {
+    @nonobjc static func fetchRequest() -> NSFetchRequest<CoreDataCardTag> {
         fatalError("Not implemented!");
     }
 }

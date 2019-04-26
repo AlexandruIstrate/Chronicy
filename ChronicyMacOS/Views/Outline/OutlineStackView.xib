@@ -6,15 +6,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="OutlineStackView" customModule="Chronicy" customModuleProvider="target"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="OutlineStackView" customModule="ChronicyMacOS" customModuleProvider="target"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="OutlineStackView" customModule="Chronicy" customModuleProvider="target">
+        <customView id="c22-O7-iKe" customClass="OutlineStackView" customModule="ChronicyMacOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNz-5W-oWc">
-                    <rect key="frame" x="14" y="553" width="222" height="39"/>
+                    <rect key="frame" x="14" y="553" width="181" height="39"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="vCG-KU-HVj">
                         <font key="font" metaFont="system" size="32"/>
                         <color key="textColor" red="0.10588235294117647" green="0.17254901960784313" blue="0.29411764705882354" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +47,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="OutlineStackViewCell" id="PLQ-5a-jiz" customClass="OutlineCellView" customModule="Chronicy" customModuleProvider="target">
+                                            <tableCellView identifier="OutlineStackViewCell" id="PLQ-5a-jiz" customClass="OutlineCellView" customModule="ChronicyMacOS" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="5" width="215" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </tableCellView>
@@ -71,13 +71,29 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="suz-EP-gz8">
+                    <rect key="frame" x="203" y="552" width="37" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="suz-EP-gz8" secondAttribute="height" multiplier="1:1" id="Mmw-XR-owW"/>
+                        <constraint firstAttribute="width" constant="25" id="x2Z-0S-eBY"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="Add" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m5U-PV-1hQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onAdd:" target="c22-O7-iKe" id="W2U-Zz-SyS"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="yNz-5W-oWc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="3Bi-aE-1Yw"/>
                 <constraint firstItem="Mze-Sd-Ti9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="4Rf-dv-NNP"/>
+                <constraint firstAttribute="trailing" secondItem="suz-EP-gz8" secondAttribute="trailing" constant="16" id="9Jy-mY-mkV"/>
+                <constraint firstItem="suz-EP-gz8" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="IP7-ZX-4qo"/>
+                <constraint firstItem="suz-EP-gz8" firstAttribute="leading" secondItem="yNz-5W-oWc" secondAttribute="trailing" constant="16" id="Kp5-v0-kAa"/>
                 <constraint firstItem="Mze-Sd-Ti9" firstAttribute="top" secondItem="yNz-5W-oWc" secondAttribute="bottom" constant="8" id="acX-S0-7xr"/>
                 <constraint firstAttribute="bottom" secondItem="Mze-Sd-Ti9" secondAttribute="bottom" constant="16" id="fby-kT-KO4"/>
-                <constraint firstAttribute="trailing" secondItem="yNz-5W-oWc" secondAttribute="trailing" constant="16" id="iGK-eR-CEn"/>
                 <constraint firstItem="yNz-5W-oWc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="p96-VW-ZIC"/>
                 <constraint firstAttribute="trailing" secondItem="Mze-Sd-Ti9" secondAttribute="trailing" constant="16" id="usn-tS-SON"/>
             </constraints>
@@ -97,6 +113,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="Add" width="50" height="50"/>
         <namedColor name="StackBackground">
             <color red="0.90588235294117647" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
