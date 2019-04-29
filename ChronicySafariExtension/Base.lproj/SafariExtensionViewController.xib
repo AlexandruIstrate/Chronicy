@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="enabledCheckbox" destination="Thf-oX-cSH" id="gHm-Az-O0h"/>
                 <outlet property="notebookDropdown" destination="Psk-lK-jZp" id="b3w-dg-ui0"/>
-                <outlet property="taskDropdown" destination="f0K-xA-HVW" id="MGK-nB-9CI"/>
+                <outlet property="stackDropdown" destination="f0K-xA-HVW" id="MGK-nB-9CI"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
@@ -35,7 +35,7 @@
                         <menu key="menu" id="A5o-s5-0AK"/>
                     </popUpButtonCell>
                     <connections>
-                        <action selector="onTaskChanged:" target="-2" id="NNC-cE-o3j"/>
+                        <action selector="onNotebookChanged:" target="-2" id="9bh-ZA-fCl"/>
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2wG-qY-nGq">
@@ -54,7 +54,7 @@
                         <menu key="menu" id="C53-F4-OMq"/>
                     </popUpButtonCell>
                     <connections>
-                        <action selector="onTaskChanged:" target="-2" id="fAU-oR-wDV"/>
+                        <action selector="onStackChanged:" target="-2" id="fAU-oR-wDV"/>
                     </connections>
                 </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Thf-oX-cSH">

@@ -6,7 +6,6 @@
 //
 
 import Foundation;
-import ChronicyFrameworkMacOS;
 
 protocol ContentTracker {
     func trackerType() -> ContentTrackerType;
@@ -15,7 +14,8 @@ protocol ContentTracker {
 
 enum ContentTrackerType {
     case url;
-    case task;
+    case stack;
+    case notebook;
 }
 
 class URLTracker: ContentTracker {
@@ -25,23 +25,40 @@ class URLTracker: ContentTracker {
     
     func sendData(data: Any) {
         guard let url: URL = data as? URL else {
-            fatalError("Not compatible with URL!");
+            Log.error(message: "Not compatible with URL!");
+            return;
         }
         
-        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURL);
+        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURLData);
     }
 }
 
-class TaskTracker: ContentTracker {
+class NotebookTracker: ContentTracker {
     func trackerType() -> ContentTrackerType {
-        return .task;
+        return .notebook;
     }
     
     func sendData(data: Any) {
-        guard let taskName: String = data as? String else {
-            fatalError("Not compatible with URL!");
+        guard let notebookName: String = data as? String else {
+            Log.error(message: "Not compatible with notebook!");
+            return;
         }
         
-        DistributedObjectManager.manager.set(object: taskName, for: SharedConstants.DistributedObjectKeys.browserSelectedTask);
+        DistributedObjectManager.manager.set(object: notebookName, for: SharedConstants.DistributedObjectKeys.browserSelectedNotebook);
+    }
+}
+
+class StackTracker: ContentTracker {
+    func trackerType() -> ContentTrackerType {
+        return .stack;
+    }
+    
+    func sendData(data: Any) {
+        guard let stackName: String = data as? String else {
+            Log.error(message: "Not compatible with stack!");
+            return;
+        }
+        
+        DistributedObjectManager.manager.set(object: stackName, for: SharedConstants.DistributedObjectKeys.browserSelectedStack);
     }
 }

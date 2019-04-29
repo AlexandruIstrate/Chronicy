@@ -36,7 +36,6 @@
 		A72BB1892237287D008575FC /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1822237287D008575FC /* SafariExtensionViewController.xib */; };
 		A72BB18A2237287D008575FC /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1842237287D008575FC /* script.js */; };
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
-		A731E7632245BD5B000B62FB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731E7622245BD5B000B62FB /* Task.swift */; };
 		A740E290224D0071007DA788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A740E28F224D0071007DA788 /* Assets.xcassets */; };
 		A7500D73227371E0007B5423 /* StackEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7500D71227371E0007B5423 /* StackEditViewController.swift */; };
 		A7500D74227371E0007B5423 /* StackEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7500D72227371E0007B5423 /* StackEditViewController.xib */; };
@@ -49,22 +48,29 @@
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
+		A78631F622776D3900F53D4D /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F422776D3900F53D4D /* KeyStorage.swift */; };
+		A78631F722776D3900F53D4D /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F522776D3900F53D4D /* DistributedObjectManager.swift */; };
+		A78631F922776D6A00F53D4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F822776D6A00F53D4D /* Log.swift */; };
+		A78631FB22776D9D00F53D4D /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631FA22776D9D00F53D4D /* SharedConstants.swift */; };
+		A78CCC3422776F19007BAE9C /* ExtensionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3022776F19007BAE9C /* ExtensionStack.swift */; };
+		A78CCC3522776F19007BAE9C /* ExtensionNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3322776F19007BAE9C /* ExtensionNotebook.swift */; };
+		A78CCC39227770B1007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC38227770B1007BAE9C /* ExtensionField.swift */; };
+		A78CCC3D2277B469007BAE9C /* FieldDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3C2277B469007BAE9C /* FieldDefinition.swift */; };
+		A78CCC3F2277B499007BAE9C /* FieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3E2277B499007BAE9C /* FieldContainer.swift */; };
 		A78D4D1F2253DD6F005CE553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */; };
 		A78D4D242253DD6F005CE553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D222253DD6F005CE553 /* Main.storyboard */; };
 		A78D4D262253DD70005CE553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D252253DD70005CE553 /* Assets.xcassets */; };
 		A78D4D292253DD70005CE553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A78D4D272253DD70005CE553 /* LaunchScreen.storyboard */; };
 		A78E6A692266458B006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
 		A78E6A8C226647A0006A00C7 /* ChronicyFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78E6A8B226647A0006A00C7 /* ChronicyFrameworkiOS.framework */; };
-		A78E6A8F22664889006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76045A722308DA6007F3268 /* ChronicyFrameworkMacOS.framework */; };
 		A7926D0A22676ED3002F9478 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7926D0922676ED3002F9478 /* ArticleViewController.swift */; };
 		A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB49225F08E0004BA2E0 /* PageManager.swift */; };
 		A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A794AB4C225F0F04004BA2E0 /* CardTag.swift */; };
 		A798867322399C690029A791 /* ContentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867222399C690029A791 /* ContentTracker.swift */; };
 		A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A798867422399D520029A791 /* ContentTrackerManager.swift */; };
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
-		A7A4B60A224BFF3400A12CC0 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B609224BFF3400A12CC0 /* DistributedObjectManager.swift */; };
-		A7A4B60C224BFF4C00A12CC0 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B60B224BFF4C00A12CC0 /* KeyStorage.swift */; };
-		A7A4B60F224BFF8300A12CC0 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4B60E224BFF8300A12CC0 /* SharedConstants.swift */; };
+		A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB22273B1E200EE354C /* BrowserTracker.swift */; };
+		A79EEAB72273B1E200EE354C /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB52273B1E200EE354C /* SafariBrowserTracker.swift */; };
 		A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */; };
 		A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */; };
 		A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AC222429EF500C5A94E /* OutlineViewController.swift */; };
@@ -78,6 +84,7 @@
 		A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88ADD2242C44300C5A94E /* MainViewController.xib */; };
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
+		A7AB5AF122747040004EEDDD /* NotebookCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB5AF022747040004EEDDD /* NotebookCollection.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
 		A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CD7399225D119E00C94B23 /* FatSidebar.framework */; };
@@ -187,7 +194,6 @@
 		A72BB1842237287D008575FC /* script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A731E7622245BD5B000B62FB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A740E28F224D0071007DA788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7500D71227371E0007B5423 /* StackEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditViewController.swift; sourceTree = "<group>"; };
 		A7500D72227371E0007B5423 /* StackEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditViewController.xib; sourceTree = "<group>"; };
@@ -206,7 +212,16 @@
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		A78631F422776D3900F53D4D /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
+		A78631F522776D3900F53D4D /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
+		A78631F822776D6A00F53D4D /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A78631FA22776D9D00F53D4D /* SharedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
+		A78CCC3022776F19007BAE9C /* ExtensionStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionStack.swift; sourceTree = "<group>"; };
+		A78CCC3322776F19007BAE9C /* ExtensionNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNotebook.swift; sourceTree = "<group>"; };
+		A78CCC38227770B1007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
+		A78CCC3C2277B469007BAE9C /* FieldDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldDefinition.swift; sourceTree = "<group>"; };
+		A78CCC3E2277B499007BAE9C /* FieldContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldContainer.swift; sourceTree = "<group>"; };
 		A78D4D1C2253DD6F005CE553 /* ChronicyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChronicyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78D4D1E2253DD6F005CE553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A78D4D232253DD6F005CE553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,9 +234,8 @@
 		A798867222399C690029A791 /* ContentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTracker.swift; sourceTree = "<group>"; };
 		A798867422399D520029A791 /* ContentTrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTrackerManager.swift; sourceTree = "<group>"; };
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
-		A7A4B609224BFF3400A12CC0 /* DistributedObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
-		A7A4B60B224BFF4C00A12CC0 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
-		A7A4B60E224BFF8300A12CC0 /* SharedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
+		A79EEAB22273B1E200EE354C /* BrowserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
+		A79EEAB52273B1E200EE354C /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
 		A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineCentralViewController.swift; sourceTree = "<group>"; };
 		A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineCentralViewController.xib; sourceTree = "<group>"; };
 		A7A88AC222429EF500C5A94E /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +249,7 @@
 		A7A88ADD2242C44300C5A94E /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
+		A7AB5AF022747040004EEDDD /* NotebookCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCollection.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FatSidebar.xcodeproj; path = FatSidebar/FatSidebar.xcodeproj; sourceTree = "<group>"; };
@@ -251,7 +266,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A78E6A8F22664889006A00C7 /* ChronicyFrameworkMacOS.framework in Frameworks */,
 				A72BB15E2237280C008575FC /* Cocoa.framework in Frameworks */,
 				54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */,
 			);
@@ -310,6 +324,8 @@
 		A7109E21223567FF00E3EB29 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				A79EEAB22273B1E200EE354C /* BrowserTracker.swift */,
+				A79EEAB52273B1E200EE354C /* SafariBrowserTracker.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -367,10 +383,10 @@
 		A72BB17F2237287D008575FC /* ChronicySafariExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A78631F122776C8900F53D4D /* Dependencies */,
 				A79886762239AB610029A791 /* State */,
 				A798867122399C490029A791 /* Data */,
 				A7A71AFA223DCEDC0084C57A /* Inter Communication */,
-				A7A4B60D224BFF5F00A12CC0 /* Utils */,
 				A72BB1802237287D008575FC /* SafariExtensionHandler.swift */,
 				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
 				A72BB1822237287D008575FC /* SafariExtensionViewController.xib */,
@@ -490,6 +506,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A78631F122776C8900F53D4D /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				A78CCC3E2277B499007BAE9C /* FieldContainer.swift */,
+				A78CCC38227770B1007BAE9C /* ExtensionField.swift */,
+				A78CCC3322776F19007BAE9C /* ExtensionNotebook.swift */,
+				A78CCC3022776F19007BAE9C /* ExtensionStack.swift */,
+				A78631F522776D3900F53D4D /* DistributedObjectManager.swift */,
+				A78631F422776D3900F53D4D /* KeyStorage.swift */,
+				A78631F822776D6A00F53D4D /* Log.swift */,
+				A78631FA22776D9D00F53D4D /* SharedConstants.swift */,
+				A78CCC3C2277B469007BAE9C /* FieldDefinition.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
 		A78A33AF2253DEB80083EC9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,8 +557,7 @@
 			children = (
 				A798867222399C690029A791 /* ContentTracker.swift */,
 				A798867422399D520029A791 /* ContentTrackerManager.swift */,
-				A731E7622245BD5B000B62FB /* Task.swift */,
-				A7A4B60B224BFF4C00A12CC0 /* KeyStorage.swift */,
+				A7AB5AF022747040004EEDDD /* NotebookCollection.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -539,19 +570,10 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		A7A4B60D224BFF5F00A12CC0 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				A7A4B60E224BFF8300A12CC0 /* SharedConstants.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		A7A71AFA223DCEDC0084C57A /* Inter Communication */ = {
 			isa = PBXGroup;
 			children = (
 				A70913DE224007B100073349 /* ApplicationMessaging.swift */,
-				A7A4B609224BFF3400A12CC0 /* DistributedObjectManager.swift */,
 			);
 			path = "Inter Communication";
 			sourceTree = "<group>";
@@ -1008,16 +1030,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78CCC39227770B1007BAE9C /* ExtensionField.swift in Sources */,
 				A798867522399D520029A791 /* ContentTrackerManager.swift in Sources */,
-				A731E7632245BD5B000B62FB /* Task.swift in Sources */,
+				A78631FB22776D9D00F53D4D /* SharedConstants.swift in Sources */,
+				A78CCC3422776F19007BAE9C /* ExtensionStack.swift in Sources */,
+				A78631F622776D3900F53D4D /* KeyStorage.swift in Sources */,
+				A78631F922776D6A00F53D4D /* Log.swift in Sources */,
+				A78CCC3F2277B499007BAE9C /* FieldContainer.swift in Sources */,
 				A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */,
 				A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */,
+				A78631F722776D3900F53D4D /* DistributedObjectManager.swift in Sources */,
+				A78CCC3522776F19007BAE9C /* ExtensionNotebook.swift in Sources */,
+				A7AB5AF122747040004EEDDD /* NotebookCollection.swift in Sources */,
 				A798867322399C690029A791 /* ContentTracker.swift in Sources */,
-				A7A4B60C224BFF4C00A12CC0 /* KeyStorage.swift in Sources */,
-				A7A4B60F224BFF8300A12CC0 /* SharedConstants.swift in Sources */,
 				A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */,
-				A7A4B60A224BFF3400A12CC0 /* DistributedObjectManager.swift in Sources */,
 				A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */,
+				A78CCC3D2277B469007BAE9C /* FieldDefinition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,7 +1081,9 @@
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
+				A79EEAB72273B1E200EE354C /* SafariBrowserTracker.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
+				A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
 				A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */,

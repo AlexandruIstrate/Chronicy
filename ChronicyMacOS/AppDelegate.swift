@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: SharedConstants.appGroupSuiteName);
         DistributedObjectManager.manager.retrievalAction = .remove;
+        
+        ModuleManager.manager.add(module: SafariBrowserModule());
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

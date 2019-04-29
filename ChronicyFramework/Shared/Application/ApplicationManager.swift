@@ -23,6 +23,8 @@ public enum DefaultApplication: String {
 
 public class ApplicationManager {
     
+    public static let manager: ApplicationManager = ApplicationManager();
+    
     private let queue: DispatchQueue = DispatchQueue(label: "ApplicationManagerDispatchQueue");
     public var launcher: ApplicationLauncher!;
     

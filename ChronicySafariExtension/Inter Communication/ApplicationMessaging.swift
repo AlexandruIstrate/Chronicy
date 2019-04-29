@@ -6,7 +6,6 @@
 //
 
 import Foundation;
-import ChronicyFrameworkMacOS;
 
 class ApplicationMessaging {
     
@@ -15,6 +14,6 @@ class ApplicationMessaging {
     private init() {}
     
     public func sendURL(url: URL) {
-        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURL);
+        DistributedObjectManager.manager.set(object: url, for: SharedConstants.DistributedObjectKeys.pageURLData);
     }
 }

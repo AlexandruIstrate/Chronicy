@@ -4,4 +4,10 @@
    <FileRef
       location = "container:Chronicy.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Chronicy.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

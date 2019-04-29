@@ -19,6 +19,8 @@ class OutlineCentralViewController: NSViewController {
     
     private var notebookNames: [String] = [];
     
+    private let broadcaster: InformationBroadcaster = InformationBroadcaster();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -183,6 +185,8 @@ extension OutlineCentralViewController: ContentView {
     func reloadData() {
         self.saveData();
         self.outlineView.reloadData();
+        
+        broadcaster.broadcastNotebooks(notebooks: [notebook]);
     }
 }
 

@@ -3,7 +3,6 @@ PODS:
   - BulletinBoard (3.0.0)
   - Cards (1.4.0):
     - Player (= 0.13.0)
-  - FoldingCell (5.0.0)
   - Player (0.13.0)
   - SPPermission (3.0.5)
 
@@ -11,7 +10,6 @@ DEPENDENCIES:
   - Alamofire
   - BulletinBoard
   - Cards
-  - FoldingCell
   - SPPermission
 
 SPEC REPOS:
@@ -19,7 +17,6 @@ SPEC REPOS:
     - Alamofire
     - BulletinBoard
     - Cards
-    - FoldingCell
     - Player
     - SPPermission
 
@@ -27,10 +24,9 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
   Cards: 45ae6bd0eca7b5e8016d3b6cb30b60b04753f68f
-  FoldingCell: 49f5e6a036241db1a177610b4d4137d961ddd40a
   Player: 968d8d07d923bcdd6f7e4091c9e306eb44a5f7a4
   SPPermission: 6a6fcd3f5625dcb13c24de0d43fbfc4114f49532
 
-PODFILE CHECKSUM: 446b6bbe87ba631da1184b6eba20ada61e31203a
+PODFILE CHECKSUM: 02da3c173b530c631129caacf9328dd3cdf7d9e1
 
 COCOAPODS: 1.7.0.beta.3

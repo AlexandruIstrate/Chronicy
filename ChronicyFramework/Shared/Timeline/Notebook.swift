@@ -25,6 +25,10 @@ public class Notebook {
         self.stacks.append(stack);
     }
     
+    public func add(activity: Activity) {
+        self.activities.append(activity);
+    }
+    
     @discardableResult
     public func insertNewStack() -> Stack {
         let nameRoot: String = "New Stack";
@@ -55,8 +59,10 @@ public class Notebook {
         }
     }
     
-    public func add(activity: Activity) {
-        self.activities.append(activity);
+    public func findStack(named: String) -> Stack? {
+        return self.stacks.first { (iter: Stack) -> Bool in
+            return iter.name == named;
+        }
     }
 }
 

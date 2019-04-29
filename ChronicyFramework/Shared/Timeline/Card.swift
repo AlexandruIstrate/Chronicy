@@ -7,7 +7,7 @@
 
 import Foundation;
 
-public class Card {
+public class Card: FieldContainer {
     public var name: String;
     public var date: Date;
     
@@ -19,27 +19,6 @@ public class Card {
         self.date = Date();
     }
     
-    public func insertIntoFields(values: [Any?]) throws {
-        guard fields.count == values.count else {
-            throw InsertionError.wrongElementCount;
-        }
-        
-        for i in 0..<self.fields.count {
-            let field: CustomField = self.fields[i];
-            let value: Any? = values[i];
-            
-            var type: FieldType = FieldType.string;
-            
-            guard value != nil else {
-                continue;
-            }
-            
-            guard field.isCorrectType(value: value!, type: &type) else {
-                throw InsertionError.wrongTypes;
-            }
-        }
-    }
-    
 }
 
 extension Card: Equatable {
@@ -47,9 +26,4 @@ extension Card: Equatable {
         // TODO: Change
         return  lhs.name == rhs.name;
     }
-}
-
-public enum InsertionError: Error {
-    case wrongTypes;
-    case wrongElementCount;
 }

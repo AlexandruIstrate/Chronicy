@@ -15,13 +15,17 @@
 		A70FBA8722580520007CE092 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FBA8622580520007CE092 /* RequestManager.swift */; };
 		A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
 		A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71900D9225EB8E4003F4CA6 /* CardTag.swift */; };
-		A71E06C1225941D900305EC4 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06C0225941D900305EC4 /* TrackingService.swift */; };
 		A71EAE352270DB7800ED840C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE342270DB7800ED840C /* Activity.swift */; };
 		A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72204102240227C001E1BD5 /* SharedConstants.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76980E42274F60800281423 /* ExtensionNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76980E32274F60800281423 /* ExtensionNotebook.swift */; };
+		A76980E62274F64900281423 /* ExtensionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76980E52274F64900281423 /* ExtensionStack.swift */; };
+		A7702D1D227636EE00C66ECA /* FieldDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7702D1C227636EE00C66ECA /* FieldDefinition.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7781382226DDD84006762D1 /* CoreDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781381226DDD84006762D1 /* CoreDataTypes.swift */; };
 		A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781383226DDE44006762D1 /* CoreDataStorage.swift */; };
+		A78CCC3722776FAB007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3622776FAB007BAE9C /* ExtensionField.swift */; };
+		A78CCC3B2277722B007BAE9C /* InformationBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */; };
 		A78E6A7422664688006A00C7 /* ChronicyFrameworkiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A78E6A7222664688006A00C7 /* ChronicyFrameworkiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78E6A78226646AB006A00C7 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E822252975600E385CA /* Notebook.swift */; };
 		A78E6A79226646B2006A00C7 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709AB502248FD65002841A8 /* Stack.swift */; };
@@ -30,7 +34,6 @@
 		A78E6A7C226646B2006A00C7 /* DefaultFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A792BF25225B1D970098DC55 /* DefaultFields.swift */; };
 		A78E6A7D226646B2006A00C7 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71900D9225EB8E4003F4CA6 /* CardTag.swift */; };
 		A78E6A7E226646CF006A00C7 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */; };
-		A78E6A7F226646CF006A00C7 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06C0225941D900305EC4 /* TrackingService.swift */; };
 		A78E6A81226646CF006A00C7 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D428225273840012A9E5 /* KeyStorage.swift */; };
 		A78E6A83226646CF006A00C7 /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2D42A2252738B0012A9E5 /* DistributedObjectManager.swift */; };
 		A78E6A84226646CF006A00C7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FBA8622580520007CE092 /* RequestManager.swift */; };
@@ -41,6 +44,11 @@
 		A79E4E812252966700E385CA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E802252966700E385CA /* Card.swift */; };
 		A79E4E832252975600E385CA /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E822252975600E385CA /* Notebook.swift */; };
 		A79E4E852252987300E385CA /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E842252987300E385CA /* CustomField.swift */; };
+		A79EEAAE2273B19300EE354C /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAA2273B19200EE354C /* Module.swift */; };
+		A79EEAAF2273B19300EE354C /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAB2273B19300EE354C /* TrackableProperty.swift */; };
+		A79EEAB02273B19300EE354C /* InteractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAC2273B19300EE354C /* InteractionsManager.swift */; };
+		A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAD2273B19300EE354C /* ModuleManager.swift */; };
+		A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB82273B3EE00EE354C /* FieldContainer.swift */; };
 		A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Timeline.xcdatamodeld */; };
 		A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */; };
 		A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */; };
@@ -60,15 +68,19 @@
 		A70FBA8622580520007CE092 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		A7109E2D22357D9700E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71900D9225EB8E4003F4CA6 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
-		A71E06C0225941D900305EC4 /* TrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingService.swift; sourceTree = "<group>"; };
 		A71EAE342270DB7800ED840C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		A72204102240227C001E1BD5 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		A760458722308D47007F3268 /* ChronicyFrameworkMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A76980E32274F60800281423 /* ExtensionNotebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotebook.swift; sourceTree = "<group>"; };
+		A76980E52274F64900281423 /* ExtensionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStack.swift; sourceTree = "<group>"; };
+		A7702D1C227636EE00C66ECA /* FieldDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDefinition.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7781381226DDD84006762D1 /* CoreDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTypes.swift; sourceTree = "<group>"; };
 		A7781383226DDE44006762D1 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		A78CCC3622776FAB007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
+		A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBroadcaster.swift; sourceTree = "<group>"; };
 		A78E6A7022664688006A00C7 /* ChronicyFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78E6A7222664688006A00C7 /* ChronicyFrameworkiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkiOS.h; sourceTree = "<group>"; };
 		A78E6A7322664688006A00C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +88,11 @@
 		A79E4E802252966700E385CA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A79E4E822252975600E385CA /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
 		A79E4E842252987300E385CA /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
+		A79EEAAA2273B19200EE354C /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		A79EEAAB2273B19300EE354C /* TrackableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
+		A79EEAAC2273B19300EE354C /* InteractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionsManager.swift; sourceTree = "<group>"; };
+		A79EEAAD2273B19300EE354C /* ModuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
+		A79EEAB82273B3EE00EE354C /* FieldContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainer.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManager.swift; sourceTree = "<group>"; };
@@ -134,7 +151,13 @@
 		A7252A46223443D900EE554A /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				A71E06C0225941D900305EC4 /* TrackingService.swift */,
+				A79EEAAA2273B19200EE354C /* Module.swift */,
+				A79EEAAD2273B19300EE354C /* ModuleManager.swift */,
+				A79EEAAB2273B19300EE354C /* TrackableProperty.swift */,
+				A79EEAAC2273B19300EE354C /* InteractionsManager.swift */,
+				A79EEAB82273B3EE00EE354C /* FieldContainer.swift */,
+				A7702D1C227636EE00C66ECA /* FieldDefinition.swift */,
+				A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -180,6 +203,7 @@
 		A760459022308D54007F3268 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A76980E22274F5E500281423 /* Extension */,
 				A7109E2C22357D4900E3EB29 /* Application */,
 				A76045AF22308EAA007F3268 /* Timeline */,
 				A7252A46223443D900EE554A /* Tracking */,
@@ -213,6 +237,16 @@
 				A71EAE342270DB7800ED840C /* Activity.swift */,
 			);
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		A76980E22274F5E500281423 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A76980E32274F60800281423 /* ExtensionNotebook.swift */,
+				A76980E52274F64900281423 /* ExtensionStack.swift */,
+				A78CCC3622776FAB007BAE9C /* ExtensionField.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A77617FB2231C3270038E815 /* Utils */ = {
@@ -380,8 +414,11 @@
 				A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */,
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
 				A70C2973226A728900966F50 /* URLManager.swift in Sources */,
+				A79EEAAF2273B19300EE354C /* TrackableProperty.swift in Sources */,
+				A76980E62274F64900281423 /* ExtensionStack.swift in Sources */,
 				A7781382226DDD84006762D1 /* CoreDataTypes.swift in Sources */,
 				A79E4E812252966700E385CA /* Card.swift in Sources */,
+				A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */,
 				A71EAE352270DB7800ED840C /* Activity.swift in Sources */,
 				A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
@@ -391,15 +428,21 @@
 				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,
 				A70C2971226A4DB700966F50 /* WebAPIRequest.swift in Sources */,
 				A709AB562248FD65002841A8 /* Stack.swift in Sources */,
+				A76980E42274F60800281423 /* ExtensionNotebook.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A792BF26225B1D970098DC55 /* DefaultFields.swift in Sources */,
+				A79EEAB02273B19300EE354C /* InteractionsManager.swift in Sources */,
+				A79EEAAE2273B19300EE354C /* Module.swift in Sources */,
 				A7B2D429225273840012A9E5 /* KeyStorage.swift in Sources */,
 				A79E4E832252975600E385CA /* Notebook.swift in Sources */,
 				A79E4E852252987300E385CA /* CustomField.swift in Sources */,
-				A71E06C1225941D900305EC4 /* TrackingService.swift in Sources */,
 				A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */,
 				A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */,
+				A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */,
+				A78CCC3B2277722B007BAE9C /* InformationBroadcaster.swift in Sources */,
+				A78CCC3722776FAB007BAE9C /* ExtensionField.swift in Sources */,
+				A7702D1D227636EE00C66ECA /* FieldDefinition.swift in Sources */,
 				A70C2975226A739600966F50 /* WebAPIResponse.swift in Sources */,
 				A7A52A732246E9460086E01F /* Timeline.xcdatamodeld in Sources */,
 			);
@@ -416,7 +459,6 @@
 				A78E6A87226646CF006A00C7 /* Notification.swift in Sources */,
 				A78E6A7D226646B2006A00C7 /* CardTag.swift in Sources */,
 				A78E6A7A226646B2006A00C7 /* Card.swift in Sources */,
-				A78E6A7F226646CF006A00C7 /* TrackingService.swift in Sources */,
 				A78E6A85226646CF006A00C7 /* Log.swift in Sources */,
 				A78E6A7E226646CF006A00C7 /* ApplicationManager.swift in Sources */,
 				A78E6A78226646AB006A00C7 /* Notebook.swift in Sources */,
