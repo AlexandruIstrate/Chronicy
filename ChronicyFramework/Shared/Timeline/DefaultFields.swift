@@ -32,3 +32,15 @@ public struct NumericField: CustomField {
         self.value = value;
     }
 }
+
+extension CustomField {
+    public static func instantiate(by type: FieldType, name: String) -> CustomField {
+        switch type {
+        case .string:
+            return TextField(name: name);
+        
+        case .number:
+            return NumericField(name: name);
+        }
+    }
+}

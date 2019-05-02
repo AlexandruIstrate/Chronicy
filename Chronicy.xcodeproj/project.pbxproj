@@ -11,16 +11,18 @@
 		49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */; };
 		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
 		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
-		A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70913DE224007B100073349 /* ApplicationMessaging.swift */; };
 		A70D399B22553AD900580FF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399A22553AD900580FF4 /* Color.swift */; };
 		A70D83272264BADF007A33D7 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D83252264BADF007A33D7 /* TextEditorViewController.swift */; };
 		A70D83282264BADF007A33D7 /* TextEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D83262264BADF007A33D7 /* TextEditorViewController.xib */; };
 		A70D832B2264D277007A33D7 /* NumericEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D83292264D277007A33D7 /* NumericEditorViewController.swift */; };
 		A70D832C2264D277007A33D7 /* NumericEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D832A2264D277007A33D7 /* NumericEditorViewController.xib */; };
+		A70E8C872279DD86003FE68C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E8C862279DD86003FE68C /* EditorViewController.swift */; };
 		A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */; };
 		A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E302235849400E3EB29 /* ViewLoader.swift */; };
 		A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7109E3322358E3800E3EB29 /* ApplicationManager.swift */; };
 		A71504C4224CFE5300DD1214 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */; };
+		A718DF932279032C00990D2D /* StackFieldEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718DF912279032C00990D2D /* StackFieldEditorViewController.swift */; };
+		A718DF942279032C00990D2D /* StackFieldEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A718DF922279032C00990D2D /* StackFieldEditorViewController.xib */; };
 		A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */; };
 		A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE302270AC2D00ED840C /* ActivityViewController.swift */; };
 		A71EAE332270AC2D00ED840C /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71EAE312270AC2D00ED840C /* ActivityViewController.xib */; };
@@ -37,8 +39,8 @@
 		A72BB18A2237287D008575FC /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A72BB1842237287D008575FC /* script.js */; };
 		A72BB18C2237287D008575FC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72BB1862237287D008575FC /* SafariExtensionViewController.swift */; };
 		A740E290224D0071007DA788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A740E28F224D0071007DA788 /* Assets.xcassets */; };
-		A7500D73227371E0007B5423 /* StackEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7500D71227371E0007B5423 /* StackEditViewController.swift */; };
-		A7500D74227371E0007B5423 /* StackEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7500D72227371E0007B5423 /* StackEditViewController.xib */; };
+		A7500D73227371E0007B5423 /* StackRemoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7500D71227371E0007B5423 /* StackRemoveViewController.swift */; };
+		A7500D74227371E0007B5423 /* StackRemoveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7500D72227371E0007B5423 /* StackRemoveViewController.xib */; };
 		A7515F242231ADAD00380978 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7515F222231ADAD00380978 /* WindowController.swift */; };
 		A75220C92252044500C7A54E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75220C82252044500C7A54E /* ShareViewController.swift */; };
 		A75220CC2252044500C7A54E /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75220CA2252044500C7A54E /* ShareViewController.xib */; };
@@ -169,16 +171,18 @@
 		87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
-		A70913DE224007B100073349 /* ApplicationMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMessaging.swift; sourceTree = "<group>"; };
 		A70D399A22553AD900580FF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A70D83252264BADF007A33D7 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		A70D83262264BADF007A33D7 /* TextEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditorViewController.xib; sourceTree = "<group>"; };
 		A70D83292264D277007A33D7 /* NumericEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericEditorViewController.swift; sourceTree = "<group>"; };
 		A70D832A2264D277007A33D7 /* NumericEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumericEditorViewController.xib; sourceTree = "<group>"; };
+		A70E8C862279DD86003FE68C /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
 		A7109E302235849400E3EB29 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		A7109E3322358E3800E3EB29 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		A71504C3224CFE5200DD1214 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		A718DF912279032C00990D2D /* StackFieldEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackFieldEditorViewController.swift; sourceTree = "<group>"; };
+		A718DF922279032C00990D2D /* StackFieldEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackFieldEditorViewController.xib; sourceTree = "<group>"; };
 		A71E06BE22591C5700305EC4 /* AlamofireRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequestable.swift; sourceTree = "<group>"; };
 		A71EAE302270AC2D00ED840C /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		A71EAE312270AC2D00ED840C /* ActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
@@ -195,8 +199,8 @@
 		A72BB1862237287D008575FC /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		A72BB1872237287D008575FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A740E28F224D0071007DA788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A7500D71227371E0007B5423 /* StackEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEditViewController.swift; sourceTree = "<group>"; };
-		A7500D72227371E0007B5423 /* StackEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditViewController.xib; sourceTree = "<group>"; };
+		A7500D71227371E0007B5423 /* StackRemoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackRemoveViewController.swift; sourceTree = "<group>"; };
+		A7500D72227371E0007B5423 /* StackRemoveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackRemoveViewController.xib; sourceTree = "<group>"; };
 		A7515F222231ADAD00380978 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A75220C62252044500C7A54E /* ChronicyShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChronicyShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75220C82252044500C7A54E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 		A70D83222264BA11007A33D7 /* Field Editor Views */ = {
 			isa = PBXGroup;
 			children = (
+				A70E8C862279DD86003FE68C /* EditorViewController.swift */,
 				A70D83252264BADF007A33D7 /* TextEditorViewController.swift */,
 				A70D83262264BADF007A33D7 /* TextEditorViewController.xib */,
 				A70D83292264D277007A33D7 /* NumericEditorViewController.swift */,
@@ -386,7 +391,6 @@
 				A78631F122776C8900F53D4D /* Dependencies */,
 				A79886762239AB610029A791 /* State */,
 				A798867122399C490029A791 /* Data */,
-				A7A71AFA223DCEDC0084C57A /* Inter Communication */,
 				A72BB1802237287D008575FC /* SafariExtensionHandler.swift */,
 				A72BB1862237287D008575FC /* SafariExtensionViewController.swift */,
 				A72BB1822237287D008575FC /* SafariExtensionViewController.xib */,
@@ -410,8 +414,8 @@
 		A7500D6E227371AB007B5423 /* Tool Windows */ = {
 			isa = PBXGroup;
 			children = (
-				A7500D71227371E0007B5423 /* StackEditViewController.swift */,
-				A7500D72227371E0007B5423 /* StackEditViewController.xib */,
+				A7500D71227371E0007B5423 /* StackRemoveViewController.swift */,
+				A7500D72227371E0007B5423 /* StackRemoveViewController.xib */,
 			);
 			path = "Tool Windows";
 			sourceTree = "<group>";
@@ -570,14 +574,6 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		A7A71AFA223DCEDC0084C57A /* Inter Communication */ = {
-			isa = PBXGroup;
-			children = (
-				A70913DE224007B100073349 /* ApplicationMessaging.swift */,
-			);
-			path = "Inter Communication";
-			sourceTree = "<group>";
-		};
 		A7A7C2EB224A7A1E000D114E /* Central Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +613,8 @@
 				A7E4512A224811C200848AF5 /* StackEditorViewController.xib */,
 				A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */,
 				A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */,
+				A718DF912279032C00990D2D /* StackFieldEditorViewController.swift */,
+				A718DF922279032C00990D2D /* StackFieldEditorViewController.xib */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -871,6 +869,7 @@
 				A70D83282264BADF007A33D7 /* TextEditorViewController.xib in Resources */,
 				A71EAE392270FFDB00ED840C /* ActivityCellView.xib in Resources */,
 				A70D832C2264D277007A33D7 /* NumericEditorViewController.xib in Resources */,
+				A718DF942279032C00990D2D /* StackFieldEditorViewController.xib in Resources */,
 				A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */,
@@ -881,7 +880,7 @@
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
-				A7500D74227371E0007B5423 /* StackEditViewController.xib in Resources */,
+				A7500D74227371E0007B5423 /* StackRemoveViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
 				A71EAE3F2271032F00ED840C /* NotebooksViewController.xib in Resources */,
@@ -1043,7 +1042,6 @@
 				A78CCC3522776F19007BAE9C /* ExtensionNotebook.swift in Sources */,
 				A7AB5AF122747040004EEDDD /* NotebookCollection.swift in Sources */,
 				A798867322399C690029A791 /* ContentTracker.swift in Sources */,
-				A70913DF224007B100073349 /* ApplicationMessaging.swift in Sources */,
 				A72BB1882237287D008575FC /* SafariExtensionHandler.swift in Sources */,
 				A78CCC3D2277B469007BAE9C /* FieldDefinition.swift in Sources */,
 			);
@@ -1065,6 +1063,7 @@
 				A70D832B2264D277007A33D7 /* NumericEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
 				A70D399B22553AD900580FF4 /* Color.swift in Sources */,
+				A70E8C872279DD86003FE68C /* EditorViewController.swift in Sources */,
 				A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
@@ -1074,8 +1073,9 @@
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
-				A7500D73227371E0007B5423 /* StackEditViewController.swift in Sources */,
+				A7500D73227371E0007B5423 /* StackRemoveViewController.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
+				A718DF932279032C00990D2D /* StackFieldEditorViewController.swift in Sources */,
 				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
 				A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,

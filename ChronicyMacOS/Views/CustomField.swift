@@ -41,8 +41,12 @@ extension CustomField {
 }
 
 extension TextField {
-    public var customView: NSView? {
+    public func customView() -> NSView? {
         let viewController: TextEditorViewController = TextEditorViewController();
+        
+        if let text: String = self.value as? String {
+            viewController.text = text;
+        }
         
         let view: NSView = viewController.view;
         view.translatesAutoresizingMaskIntoConstraints = false;
@@ -57,6 +61,10 @@ extension TextField {
 extension NumericField {
     public var customView: NSView? {
         let viewController: NumericEditorViewController = NumericEditorViewController();
+        
+        if let number: Float = self.value as? Float {
+            viewController.value = number;
+        }
         
         let view: NSView = viewController.view;
         view.translatesAutoresizingMaskIntoConstraints = false;

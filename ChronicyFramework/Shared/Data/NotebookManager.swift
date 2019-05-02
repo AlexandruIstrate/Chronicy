@@ -8,14 +8,41 @@
 import Foundation;
 
 public protocol NotebookManager {
-    typealias NotebookManagerInfoCallback = (NotebookInfo?, NotebookManagerError?) -> ();
-    func getInfo(info: NotebookInfo, callback: @escaping NotebookManagerInfoCallback);
-    
-    typealias NotebookManagerInfoAllCallback = ([NotebookInfo]?, NotebookManagerError?) -> ();
-    func getInfo(callback: @escaping NotebookManagerInfoAllCallback);
+    typealias NotebookManagerInfoCallback = ([NotebookInfo]?, NotebookManagerError?) -> ();
+    func getInfo(callback: @escaping NotebookManagerInfoCallback);
     
     typealias NotebookManagerNotebookCallback = (Notebook?, NotebookManagerError?) -> ();
     func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback);
+    
+    func saveNotebook(notebook: Notebook);
+}
+
+extension NotebookManager {
+    public typealias NotebookManagerNamedCallback = (Notebook?, NotebookManagerError?) -> ();
+    public func named(name: String, callback: @escaping NotebookManagerNamedCallback) {
+        self.getInfo { (info: [NotebookInfo]?, error: NotebookManagerError?) in
+            guard let info: [NotebookInfo] = info else {
+                callback(nil, error);
+                return;
+            }
+            
+            guard let itemInfo: NotebookInfo = info.first(where: { (iter: NotebookInfo) -> Bool in
+                return iter.name == name;
+            }) else {
+                callback(nil, .itemNotFound);
+                return;
+            }
+            
+            self.retrieveNotebook(info: itemInfo, callback: { (notebook: Notebook?, error: NotebookManagerError?) in
+                guard let notebook: Notebook = notebook else {
+                    callback(nil, error);
+                    return;
+                }
+                
+                callback(notebook, nil);
+            })
+        }
+    }
 }
 
 public struct NotebookInfo {
@@ -32,4 +59,5 @@ public struct NotebookInfo {
 
 public enum NotebookManagerError: Error {
     case fetchFailure;
+    case itemNotFound;
 }

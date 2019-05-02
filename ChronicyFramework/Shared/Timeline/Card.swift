@@ -14,9 +14,9 @@ public class Card: FieldContainer {
     public var fields: [CustomField] = [];
     public var tags: [CardTag] = [];
     
-    public init(title: String) {
+    public init(title: String, date: Date = Date()) {
         self.name = title;
-        self.date = Date();
+        self.date = date;
     }
     
 }

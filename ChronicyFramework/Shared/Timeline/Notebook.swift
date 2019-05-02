@@ -14,8 +14,8 @@ public protocol NotebookItem {
 
 public class Notebook {
     public var name: String;
-    public private(set) var stacks: [Stack] = [];
-    public private(set) var activities: [Activity] = [];
+    public var stacks: [Stack] = [];
+    public var activities: [Activity] = [];
     
     public init(name: String) {
         self.name = name;

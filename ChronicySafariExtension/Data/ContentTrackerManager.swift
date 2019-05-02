@@ -49,6 +49,7 @@ class ContentTrackerManager {
 extension ContentTrackerManager {
     private func registerTrackers() {
         self.add(tracker: URLTracker());
+        self.add(tracker: NotebookTracker());
         self.add(tracker: StackTracker());
     }
 }

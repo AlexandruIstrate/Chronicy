@@ -77,12 +77,12 @@
                         <constraint firstAttribute="width" secondItem="suz-EP-gz8" secondAttribute="height" multiplier="1:1" id="Mmw-XR-owW"/>
                         <constraint firstAttribute="width" constant="25" id="x2Z-0S-eBY"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="Add" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m5U-PV-1hQ">
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="Options" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m5U-PV-1hQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="onAdd:" target="c22-O7-iKe" id="W2U-Zz-SyS"/>
+                        <action selector="onOptionsClicked:" target="c22-O7-iKe" id="hAV-7I-bcm"/>
                     </connections>
                 </button>
             </subviews>
@@ -113,7 +113,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="Add" width="50" height="50"/>
+        <image name="Options" width="50" height="50"/>
         <namedColor name="StackBackground">
             <color red="0.90588235294117647" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

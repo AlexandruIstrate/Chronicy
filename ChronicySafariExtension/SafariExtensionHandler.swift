@@ -27,6 +27,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 return;
             }
             
+            NotebookCollection.collection.load();
             ContentTrackerManager.manager.sendData(data: url, trackerType: .url);
         }
     }
@@ -48,6 +49,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
 extension SafariExtensionHandler {
     private func setup() {
-        
+        NotebookCollection.collection.load();
     }
 }

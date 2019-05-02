@@ -69,17 +69,17 @@ class WindowController: NSWindowController, NSWindowDelegate {
         self.currentNotebookName = newValue;
     }
     
-    @IBAction func onNotebooksMenuClicked(_ sender: NSButton) {
-        
+    @IBAction private func onNotebooksMenuClicked(_ sender: NSButton) {
+        delegate?.onNotebookMenu();
+    }
+    
+    @IBAction private func onRefresh(_ sender: NSButton) {
+        delegate?.onRefresh();
+        self.reloadNotebooks();
     }
     
     @IBAction private func onSearch(_ sender: NSSearchField) {
         delegate?.onSearch(term: sender.stringValue);
-    }
-    
-    override func windowDidLoad() {
-        super.windowDidLoad();
-        self.setupPopUp();
     }
     
     private func setupPopUp() {
@@ -91,13 +91,13 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
     
     private func reloadNotebooks() {
-        guard dataSource != nil else {
-            Log.warining(message: "Data source for WindowController is nil!");
+        guard let notebooks: [String] = dataSource?.notebooks() else {
+            Log.info(message: "No data source set for window");
             return;
         }
-        
+
         self.notebookPopUp.removeAllItems();
-        self.notebookPopUp.addItems(withTitles: dataSource!.notebooks());
+        self.notebookPopUp.addItems(withTitles: notebooks);
     }
 }
 
@@ -105,6 +105,8 @@ protocol WindowControllerDelegate {
     func onAdd();
     func onRemove();
     func onEdit();
+    func onNotebookMenu();
+    func onRefresh();
     
     func onNotebookChanged(oldName: String?, newName: String);
     func onSearch(term: String);

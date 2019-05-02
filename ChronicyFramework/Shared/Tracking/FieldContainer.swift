@@ -12,13 +12,13 @@ public protocol FieldContainer {
 }
 
 extension FieldContainer {
-    public func insertIntoFields(values: [Any?]) throws {
+    public mutating func insertIntoFields(values: [Any?]) throws {
         guard fields.count == values.count else {
             throw InsertionError.wrongElementCount;
         }
         
         for i in 0..<self.fields.count {
-            let field: CustomField = self.fields[i];
+            var field: CustomField = self.fields[i];
             let value: Any? = values[i];
             
             var type: FieldType = FieldType.string;
@@ -30,6 +30,15 @@ extension FieldContainer {
             guard field.isCorrectType(value: value!, type: &type) else {
                 throw InsertionError.wrongTypes;
             }
+            
+            field.value = value;
+            self.fields[i] = field;
+            
+            print("Field");
+        }
+        
+        for field: CustomField in self.fields {
+            Log.info(message: "\(field.name) : \(field.value)");
         }
     }
 }

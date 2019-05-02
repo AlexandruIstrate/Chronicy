@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="OutlineCellView" customModule="Chronicy" customModuleProvider="target"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="OutlineCellView" customModule="ChronicyMacOS" customModuleProvider="target"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="OutlineCellView" customModule="Chronicy" customModuleProvider="target">
+        <customView id="c22-O7-iKe" customClass="OutlineCellView" customModule="ChronicyMacOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -45,8 +45,23 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="PRv-ea-wPK"/>
                 </imageView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-9Z-T89">
+                    <rect key="frame" x="273" y="102" width="37" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="0zZ-Ug-RLz"/>
+                        <constraint firstAttribute="width" secondItem="PdW-9Z-T89" secondAttribute="height" multiplier="1:1" id="TTn-gg-yPl"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="Options" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6XP-WR-Hrv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onOptionsClicked:" target="c22-O7-iKe" id="w1Z-sJ-PGo"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="PdW-9Z-T89" secondAttribute="trailing" constant="16" id="0tm-uA-qMG"/>
                 <constraint firstAttribute="trailing" secondItem="XF4-RM-VyR" secondAttribute="trailing" constant="16" id="10W-N4-RnF"/>
                 <constraint firstAttribute="trailing" secondItem="PQ9-l9-oUT" secondAttribute="trailing" constant="16" id="4dJ-eW-sGf"/>
                 <constraint firstItem="PQ9-l9-oUT" firstAttribute="top" secondItem="XF4-RM-VyR" secondAttribute="bottom" constant="4" id="6Nm-JY-ZED"/>
@@ -54,6 +69,7 @@
                 <constraint firstItem="XF4-RM-VyR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="Eg9-nc-kS0"/>
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="top" secondItem="7V7-EQ-dDN" secondAttribute="bottom" constant="6" id="PvU-yj-WhF"/>
                 <constraint firstItem="XF4-RM-VyR" firstAttribute="top" secondItem="nwI-wJ-Jwa" secondAttribute="bottom" constant="4" id="aSZ-DQ-haO"/>
+                <constraint firstItem="PdW-9Z-T89" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="ddO-8c-VC4"/>
                 <constraint firstItem="nwI-wJ-Jwa" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="k2U-t0-yUR"/>
                 <constraint firstItem="7V7-EQ-dDN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="kyk-0H-omg"/>
                 <constraint firstItem="PQ9-l9-oUT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="lm3-yI-uAz"/>
@@ -76,6 +92,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="Options" width="50" height="50"/>
         <namedColor name="CardBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

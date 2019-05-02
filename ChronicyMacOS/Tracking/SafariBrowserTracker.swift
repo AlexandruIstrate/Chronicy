@@ -52,7 +52,7 @@ extension SafariBrowserModule {
         public var url: URL?;
         
         func onRefreshData() {
-            self.url = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.pageURLData);
+            self.url = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.pageURLData, action: .remove);
             Log.info(message: "URL is \(String(describing: url))");
             
             guard let notebookName: String = DistributedObjectManager.manager.get(for: SharedConstants.DistributedObjectKeys.browserSelectedNotebook, action: .keepUnchanged) else {
@@ -65,27 +65,35 @@ extension SafariBrowserModule {
                 return;
             }
             
-            let notebook: Notebook = Notebook(name: "Main");
-            
-            guard let stack: Stack = notebook.findStack(named: stackName) else {
-                Log.error(message: "Could not find stack named \(stackName)!");
-                return;
-            }
-            
-            guard let url: URL = self.url else {
-                Log.error(message: "URL is nil!");
-                return;
-            }
-            
-            let urlString: String = url.absoluteString;
-            Log.info(message: "URL is \(urlString)");
-            
-            let card: Card = stack.insertNewCard();
-            
-            do {
-                try card.insertIntoFields(values: [urlString]);
-            } catch let e {
-                Log.error(message: "Could not insert into card: \(e)");
+            let notebookManager: NotebookManager = LocalNotebookManager();
+            notebookManager.named(name: notebookName) { (notebook: Notebook?, error: NotebookManagerError?) in
+                guard let notebook: Notebook = notebook else {
+                    Log.error(message: "Could not find notebook named \(notebookName)!");
+                    return;
+                }
+                
+                guard let stack: Stack = notebook.findStack(named: stackName) else {
+                    Log.error(message: "Could not find stack named \(stackName)!");
+                    return;
+                }
+                
+                guard let url: URL = self.url else {
+                    Log.error(message: "URL is nil!");
+                    return;
+                }
+                
+                let urlString: String = url.absoluteString;
+                Log.info(message: "URL is \(urlString)");
+                
+                // TODO: Make a template system
+                var card: Card = stack.insertNewCard();
+                card.name = NSLocalizedString("Visited Webpage", comment: "");
+                
+                do {
+                    try card.insertIntoFields(values: [urlString]);
+                } catch let e {
+                    Log.error(message: "Could not insert into card: \(e)");
+                }
             }
         }
     }

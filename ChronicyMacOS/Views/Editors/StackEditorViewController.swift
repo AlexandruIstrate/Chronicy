@@ -37,12 +37,13 @@ class StackEditorViewController: NSViewController {
     enum Segment: Int {
         case add = 0;
         case remove = 1;
+        case edit = 2;
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
         self.setupTableView();
-        self.updateRemoveButtonState();
+        self.updateOptionButtons();
         
         self.titleTextField.stringValue = self.taskTitle;
     }
@@ -56,6 +57,9 @@ class StackEditorViewController: NSViewController {
             
         case Segment.remove.rawValue:
             onRemove();
+            
+        case Segment.edit.rawValue:
+            onEdit();
             
         default:
             break;
@@ -90,7 +94,6 @@ extension StackEditorViewController: NSTableViewDataSource, NSTableViewDelegate 
             
         case Identifier.typeCell.rawValue:
             let cell: NSComboBoxCell = NSComboBoxCell(textCell: field.type.rawValue);
-            cell.addItems(withObjectValues: self.menuItems);
             return cell;
             
         default:
@@ -99,7 +102,7 @@ extension StackEditorViewController: NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        
+        self.updateOptionButtons();
     }
 }
 
@@ -117,7 +120,7 @@ extension StackEditorViewController {
         self.fields.append(TextField(name: NSLocalizedString("New Field", comment: "")));
         self.reloadData();
         
-        self.updateRemoveButtonState();
+        self.updateOptionButtons();
     }
     
     private func onRemove() {
@@ -130,8 +133,39 @@ extension StackEditorViewController {
         self.reloadData();
     }
     
-    private func updateRemoveButtonState() {
+    private func onEdit() {
+        guard let index: Int = self.selectedRow else {
+            Log.error(message: "Attempt to edit with no row selected!");
+            return;
+        }
+        
+        var field: CustomField = self.fields[index];
+        
+        let editor: StackFieldEditorViewController = StackFieldEditorViewController();
+        editor.name = field.name;
+        editor.types = FieldType.availableTypes.map({ (type: FieldType) -> String in
+            return type.rawValue;
+        });
+        editor.selectedType = field.type.rawValue;
+        
+        editor.callback = {
+            guard let type: FieldType = FieldType(rawValue: editor.selectedType) else {
+                Log.error(message: "Could not convert selected type from editor!");
+                return;
+            }
+            
+            let newField: CustomField = TextField.instantiate(by: type, name: editor.name);
+            
+            self.fields[index] = newField;
+            self.reloadData();
+        }
+        
+        self.present(editor, asPopoverRelativeTo: NSRect.zero, of: self.view, preferredEdge: .maxY, behavior: .transient);
+    }
+    
+    private func updateOptionButtons() {
         // Enable if we have a selection, disable otherwise
         self.tableOptionsControl.setEnabled(self.fieldsTable.selectedRow >= 0, forSegment: Segment.remove.rawValue);
+        self.tableOptionsControl.setEnabled(self.fieldsTable.selectedRow >= 0, forSegment: Segment.edit.rawValue);
     }
 }

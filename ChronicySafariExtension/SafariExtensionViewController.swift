@@ -21,7 +21,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     public var selectedNotebook: ExtensionNotebook? {
         guard let notebookName: String = notebookDropdown.selectedItem?.title else {
-            Log.info(message: "No selected notebook!");
+            Log.info(message: "No notebook selected!");
             return nil;
         }
         
@@ -34,12 +34,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     public var selectedStack: ExtensionStack? {
-        guard let notebookName: String = notebookDropdown.selectedItem?.title else {
-            Log.info(message: "No selected notebook!");
+        guard let stackName: String = stackDropdown.selectedItem?.title else {
+            Log.info(message: "No stack selected!");
             return nil;
         }
         
-        return self.selectedNotebook?.named(name: notebookName);
+        let ret: ExtensionStack? = self.selectedNotebook?.named(name: stackName);
+        return ret;
     }
 
     override func viewDidLoad() {
@@ -50,6 +51,11 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         displayState();
         
         updateApplicationSelectedValues();
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear();
+        loadData();
     }
     
     @IBAction private func onNotebookChanged(_ sender: NSPopUpButton) {
@@ -94,8 +100,8 @@ extension SafariExtensionViewController {
         
         self.stackDropdown.addItems(withTitles: notebook.stacks.filter({ (iter: ExtensionStack) -> Bool in
             // Only use stacks that support our fields
-//            return iter.definition.matches(other: CustomDefinitions.url);
-            return true;
+            return iter.definition.matches(other: CustomDefinitions.url);
+//            return true;
         }).map({ (stack: ExtensionStack) -> String in
             return stack.name;
         }));

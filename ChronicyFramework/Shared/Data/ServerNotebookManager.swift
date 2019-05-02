@@ -15,18 +15,7 @@ public class ServerNotebookManager: NotebookManager {
     
     private var token: String = "";
     
-    public func getInfo(info: NotebookInfo, callback: @escaping NotebookManagerInfoCallback) {
-        self.api.getInfo(token: self.token, info: info) { (response: NotebookInfoResponse?, error: RequestError?) in
-            guard let response: NotebookInfoResponse = response else {
-                callback(nil, .fetchFailure);
-                return;
-            }
-            
-            callback(NotebookInfo(name: response.name, id: response.id, dateCreated: response.dateCreated), nil);
-        }
-    }
-    
-    public func getInfo(callback: @escaping NotebookManagerInfoAllCallback) {
+    public func getInfo(callback: @escaping NotebookManagerInfoCallback) {
         self.api.getInfoForAll(token: self.token) { (response: NotebookInfoAllResponse?, error: RequestError?) in
             guard let response: NotebookInfoAllResponse = response else {
                 callback(nil, .fetchFailure);
@@ -48,5 +37,9 @@ public class ServerNotebookManager: NotebookManager {
             
             callback(notebook, nil);
         }
+    }
+    
+    public func saveNotebook(notebook: Notebook) {
+        
     }
 }

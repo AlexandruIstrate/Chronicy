@@ -15,7 +15,7 @@ class OutlineCentralViewController: NSViewController {
     private var outlineView: OutlineViewController!;
     
     private let notebookManager: NotebookManager = LocalNotebookManager();
-    private var notebook: Notebook = Notebook(name: "Main");
+    private var notebook: Notebook?;
     
     private var notebookNames: [String] = [];
     
@@ -24,30 +24,13 @@ class OutlineCentralViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let card1: Card = Card(title: "Card 1");
-        let card2: Card = Card(title: "Card 2");
-        let card3: Card = Card(title: "Card 3");
-        
-        let stack1: Stack = Stack(name: "Stack");
-        stack1.add(card: card1);
-        stack1.add(card: card2);
-        stack1.add(card: card3);
-        
-        let otherCard1: Card = Card(title: "Card 1");
-        let otherCard2: Card = Card(title: "Card 2");
-        
-        let stack2: Stack = Stack(name: "Stack");
-        stack2.add(card: otherCard1);
-        stack2.add(card: otherCard2);
-        
-        self.notebook.add(stack: stack1);
-        self.notebook.add(stack: stack2);
-        
 //        displayLoadingView();
-        loadNotebookData();
         setupContentView();
         setupTimeline();
         setupToolbarCallbacks();
+        
+        loadNotebookData();
+        broadcastNotebooks();
     }
     
     override func viewWillDisappear() {
@@ -59,6 +42,10 @@ class OutlineCentralViewController: NSViewController {
 
 extension OutlineCentralViewController: OutlineViewDataSource {
     func stackCount(for view: OutlineViewController) -> Int {
+        guard let notebook: Notebook = self.notebook else {
+            return 0;
+        }
+        
         return notebook.stacks.count;
     }
     
@@ -68,7 +55,7 @@ extension OutlineCentralViewController: OutlineViewDataSource {
             fatalError();
         }
         
-        let cardStack: Stack = notebook.stacks[index];
+        let cardStack: Stack = notebook!.stacks[index];
         
         stack.dataSource = self;
         stack.delegate = self;
@@ -80,7 +67,7 @@ extension OutlineCentralViewController: OutlineViewDataSource {
 
 extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStackViewDelegate {
     func cellCount(for stack: OutlineStackView, at index: Int) -> Int {
-        return notebook.stacks[index].cards.count;
+        return notebook!.stacks[index].cards.count;
     }
     
     func cell(for stack: OutlineStackView, at index: Int) -> OutlineCellView {
@@ -92,7 +79,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         cell.editTrigger = .click;
         cell.delegate = self;
         
-        let card: Card = self.notebook.stacks[stack.stackIndex].cards[index];
+        let card: Card = self.notebook!.stacks[stack.stackIndex].cards[index];
         cell.title = card.name;
         cell.date = card.date;
         
@@ -100,14 +87,14 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
     }
     
     func onAdd(stackView: OutlineStackView) {
-        let cardStack: Stack = notebook.stacks[stackView.stackIndex];
+        let cardStack: Stack = notebook!.stacks[stackView.stackIndex];
         cardStack.insertNewCard();
         
         self.reloadData();
     }
     
     func onEdit(stackView: OutlineStackView) {
-        let stack: Stack = notebook.stacks[stackView.stackIndex];
+        let stack: Stack = notebook!.stacks[stackView.stackIndex];
         
         let editor: StackEditorViewController = StackEditorViewController();
         editor.taskTitle = stack.name;
@@ -129,8 +116,8 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
     }
     
     func onDelete(stackView: OutlineStackView) {
-        let cardStack: Stack = notebook.stacks[stackView.stackIndex];
-        self.notebook.remove(stack: cardStack);
+        let cardStack: Stack = notebook!.stacks[stackView.stackIndex];
+        self.notebook!.remove(stack: cardStack);
         
         self.reloadData();
     }
@@ -143,13 +130,13 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let stack: Stack = self.notebook.stacks[stackView.stackIndex];
+        let stack: Stack = self.notebook!.stacks[stackView.stackIndex];
         let card: Card = stack.cards[cellView.cellIndex];
         
         let editor: CardEditorViewController = CardEditorViewController();
         editor.actionTitle = card.name;
         editor.actionDate = card.date;
-        editor.fields = stack.inputTemplate.fields;
+        editor.fields = card.fields;
         
         editor.completion = { (ok: Bool) in
             guard ok else {
@@ -172,7 +159,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             return;
         }
         
-        let stack: Stack = self.notebook.stacks[stackView.stackIndex];
+        let stack: Stack = self.notebook!.stacks[stackView.stackIndex];
         let card: Card = stack.cards[cellView.cellIndex];
         
         stack.remove(card: card);
@@ -185,8 +172,7 @@ extension OutlineCentralViewController: ContentView {
     func reloadData() {
         self.saveData();
         self.outlineView.reloadData();
-        
-        broadcaster.broadcastNotebooks(notebooks: [notebook]);
+        self.broadcastNotebooks();
     }
 }
 
@@ -213,27 +199,41 @@ extension OutlineCentralViewController {
     
     private func setupToolbarCallbacks() {
         WindowController.shared.delegate = self;
+        WindowController.shared.dataSource = self;
     }
     
     private func loadNotebookData() {
-        self.notebookManager.retrieveNotebook(info: NotebookInfo(name: "Test", id: "Test", dateCreated: Date())) { (notebook: Notebook?, error: NotebookManagerError?) in
+        self.notebookManager.getInfo { (info: [NotebookInfo]?, error: NotebookManagerError?) in
+            guard let info: [NotebookInfo] = info else {
+                Log.error(message: "Could not retrieve notebooks info! - \(error!.localizedDescription)");
+                self.presentError(error!);
+                
+                return;
+            }
+            
+            guard !info.isEmpty else {
+                return;
+            }
+            
+            self.notebookNames = info.map({ (iter: NotebookInfo) -> String in
+                return iter.name;
+            });
+            
+            if self.notebook == nil {
+                self.loadNotebook(info: info.first!);
+            }
+        }
+    }
+    
+    private func loadNotebook(info: NotebookInfo) {
+        self.notebookManager.retrieveNotebook(info: info) { (notebook: Notebook?, error: NotebookManagerError?) in
             guard let notebook: Notebook = notebook else {
                 self.presentError(error!);
                 return;
             }
             
             self.notebook = notebook;
-        }
-
-        self.notebookManager.getInfo { (info: [NotebookInfo]?, error: NotebookManagerError?) in
-            guard let info: [NotebookInfo] = info else {
-                self.presentError(error!);
-                return;
-            }
-            
-            self.notebookNames = info.map({ (iter: NotebookInfo) -> String in
-                return iter.name;
-            })
+            self.reloadData();
         }
     }
     
@@ -256,6 +256,10 @@ extension OutlineCentralViewController {
 //            self.presentError(e);
 //        }
     }
+    
+    private func broadcastNotebooks() {
+        broadcaster.broadcastNotebooks(notebooks: [notebook!]);
+    }
 }
 
 extension OutlineCentralViewController: WindowControllerDataSource, WindowControllerDelegate {
@@ -264,13 +268,21 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     }
     
     func onAdd() {
-        self.notebook.insertNewStack();
+        guard let notebook: Notebook = self.notebook else {
+            return;
+        }
+        
+        notebook.insertNewStack();
         self.reloadData();
     }
     
     func onRemove() {
-        let controller: StackEditViewController = StackEditViewController();
-        controller.stacks = self.notebook.stacks.map({ (iter: Stack) -> String in
+        guard let notebook: Notebook = self.notebook else {
+            return;
+        }
+        
+        let controller: StackRemoveViewController = StackRemoveViewController();
+        controller.stacks = notebook.stacks.map({ (iter: Stack) -> String in
             return iter.name;
         })
         controller.callback = { (ok: Bool) in
@@ -279,7 +291,7 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
             }
             
             for name: String in controller.removedStacks {
-                self.notebook.remove(named: name);
+                notebook.remove(named: name);
             }
             
             self.reloadData();
@@ -290,6 +302,14 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     
     func onEdit() {
         
+    }
+    
+    func onNotebookMenu() {
+        
+    }
+    
+    func onRefresh() {
+        self.loadNotebookData();
     }
     
     func onNotebookChanged(oldName: String?, newName: String) {

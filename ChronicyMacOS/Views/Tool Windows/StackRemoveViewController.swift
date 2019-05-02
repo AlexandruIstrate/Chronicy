@@ -8,7 +8,7 @@
 import Cocoa;
 import ChronicyFrameworkMacOS;
 
-class StackEditViewController: NSViewController {
+class StackRemoveViewController: NSViewController {
     
     @IBOutlet private weak var tableView: NSTableView!;
     @IBOutlet private weak var optionsControl: NSSegmentedControl!;
@@ -78,13 +78,13 @@ class StackEditViewController: NSViewController {
     }
 }
 
-extension StackEditViewController: NSTableViewDataSource, NSTableViewDelegate {
+extension StackRemoveViewController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return stacks.count;
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell: NSTableCellView = tableView.makeView(withIdentifier: StackEditViewController.cellIdentifier, owner: self) as? NSTableCellView else {
+        guard let cell: NSTableCellView = tableView.makeView(withIdentifier: StackRemoveViewController.cellIdentifier, owner: self) as? NSTableCellView else {
             Log.error(message: "Could not create cell for StackEditViewController table view!");
             return nil;
         }

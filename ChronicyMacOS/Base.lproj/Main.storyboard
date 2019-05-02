@@ -266,6 +266,22 @@
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="3805EE2C-AE12-490C-ACE8-E5D76EF7E956" label="Refresh" paletteLabel="Refresh" image="Refresh" id="4kX-dl-CKJ">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="50" height="25"/>
+                                    <size key="maxSize" width="50" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="TNU-jA-VJ5">
+                                        <rect key="frame" x="0.0" y="14" width="50" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Refresh" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pE0-mM-x2a">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="onRefresh:" target="jGA-0Y-lOj" id="reR-C9-Arz"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="C778ED55-30FF-4DF3-B426-FD726AB5B138" label="Search" paletteLabel="Search" id="GtR-dl-M8R">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="96" height="22"/>
@@ -291,6 +307,7 @@
                                 <toolbarItem reference="2S8-3S-B7u"/>
                                 <toolbarItem reference="wo7-t2-kAu"/>
                                 <toolbarItem reference="ZNa-Kk-KZ2"/>
+                                <toolbarItem reference="4kX-dl-CKJ"/>
                                 <toolbarItem reference="2S8-3S-B7u"/>
                                 <toolbarItem reference="GtR-dl-M8R"/>
                             </defaultToolbarItems>
@@ -324,6 +341,7 @@
         <image name="Add" width="50" height="50"/>
         <image name="Edit" width="50" height="50"/>
         <image name="Notebook" width="50" height="50"/>
+        <image name="Refresh" width="50" height="50"/>
         <image name="Remove" width="96" height="96"/>
     </resources>
 </document>

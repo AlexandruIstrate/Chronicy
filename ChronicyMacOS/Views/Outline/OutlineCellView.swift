@@ -16,6 +16,19 @@ class OutlineCellView: NSTableCellView {
     @IBOutlet private weak var subtitleLabel: NSTextField!;
     @IBOutlet private weak var colorImageView: NSImageView!;
     
+    private lazy var optionsMenu: NSMenu = {
+        let menu: NSMenu = NSMenu(title: NSLocalizedString("Options", comment: ""));
+        
+        let edit: NSMenuItem = NSMenuItem(title: NSLocalizedString("Edit...", comment: ""), action: #selector(onEdit), keyEquivalent: "");
+        edit.target = self;
+        
+        let delete: NSMenuItem = NSMenuItem(title: NSLocalizedString("Delete", comment: ""), action: #selector(onDelete), keyEquivalent: "");
+        delete.target = self;
+        
+        menu.items = [ edit, delete ];
+        return menu;
+    } ();
+    
     public var cellIndex: Int = 0;
     public weak var parent: OutlineStackView?;
     
@@ -69,6 +82,10 @@ class OutlineCellView: NSTableCellView {
         if self.editTrigger == .rightClick {
             self.onEdit();
         }
+    }
+    
+    @IBAction private func onOptionsClicked(_ sender: NSButton) {
+        optionsMenu.popUp(positioning: optionsMenu.item(at: 0), at: NSEvent.mouseLocation, in: nil);
     }
 }
 

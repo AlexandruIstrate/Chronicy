@@ -10,7 +10,7 @@ import Foundation;
 
 public class Stack {
     public var name: String;
-    public private(set) var cards: [Card] = [];
+    public var cards: [Card] = [];
     
     public private(set) var inputTemplate: CustomFieldInputTemplate = CustomFieldInputTemplate();
     
@@ -42,6 +42,7 @@ public class Stack {
         }
         
         let card: Card = Card(title: NSLocalizedString(name, comment: ""));
+        card.fields = self.inputTemplate.fields;
         self.cards.append(card);
         return card;
     }

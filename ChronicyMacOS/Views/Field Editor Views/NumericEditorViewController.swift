@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class NumericEditorViewController: NSViewController {
+class NumericEditorViewController: EditorViewController {
     
     @IBOutlet private weak var numberField: NSTextField!;
     @IBOutlet private weak var numberFormatter: NumberFormatter!;
