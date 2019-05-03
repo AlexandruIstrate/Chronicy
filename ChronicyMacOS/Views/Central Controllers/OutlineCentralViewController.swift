@@ -255,10 +255,20 @@ extension OutlineCentralViewController {
 //        } catch let e {
 //            self.presentError(e);
 //        }
+        
+        guard let notebook: Notebook = self.notebook else {
+            return;
+        }
+        
+        self.notebookManager.saveNotebook(notebook: notebook);
     }
     
     private func broadcastNotebooks() {
-        broadcaster.broadcastNotebooks(notebooks: [notebook!]);
+        guard let notebook: Notebook = self.notebook else {
+            return;
+        }
+        
+        broadcaster.broadcastNotebooks(notebooks: [notebook]);
     }
 }
 

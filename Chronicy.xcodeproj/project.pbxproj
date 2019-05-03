@@ -11,6 +11,8 @@
 		49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */; };
 		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
 		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
+		A70CF4AC227B336A00DCFFD4 /* NotebookManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF4AA227B336A00DCFFD4 /* NotebookManagerViewController.swift */; };
+		A70CF4AD227B336A00DCFFD4 /* NotebookManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70CF4AB227B336A00DCFFD4 /* NotebookManagerViewController.xib */; };
 		A70D399B22553AD900580FF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399A22553AD900580FF4 /* Color.swift */; };
 		A70D83272264BADF007A33D7 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D83252264BADF007A33D7 /* TextEditorViewController.swift */; };
 		A70D83282264BADF007A33D7 /* TextEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D83262264BADF007A33D7 /* TextEditorViewController.xib */; };
@@ -171,6 +173,8 @@
 		87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A70CF4AA227B336A00DCFFD4 /* NotebookManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManagerViewController.swift; sourceTree = "<group>"; };
+		A70CF4AB227B336A00DCFFD4 /* NotebookManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookManagerViewController.xib; sourceTree = "<group>"; };
 		A70D399A22553AD900580FF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A70D83252264BADF007A33D7 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		A70D83262264BADF007A33D7 /* TextEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditorViewController.xib; sourceTree = "<group>"; };
@@ -416,6 +420,8 @@
 			children = (
 				A7500D71227371E0007B5423 /* StackRemoveViewController.swift */,
 				A7500D72227371E0007B5423 /* StackRemoveViewController.xib */,
+				A70CF4AA227B336A00DCFFD4 /* NotebookManagerViewController.swift */,
+				A70CF4AB227B336A00DCFFD4 /* NotebookManagerViewController.xib */,
 			);
 			path = "Tool Windows";
 			sourceTree = "<group>";
@@ -869,6 +875,7 @@
 				A70D83282264BADF007A33D7 /* TextEditorViewController.xib in Resources */,
 				A71EAE392270FFDB00ED840C /* ActivityCellView.xib in Resources */,
 				A70D832C2264D277007A33D7 /* NumericEditorViewController.xib in Resources */,
+				A70CF4AD227B336A00DCFFD4 /* NotebookManagerViewController.xib in Resources */,
 				A718DF942279032C00990D2D /* StackFieldEditorViewController.xib in Resources */,
 				A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */,
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
@@ -1086,6 +1093,7 @@
 				A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
+				A70CF4AC227B336A00DCFFD4 /* NotebookManagerViewController.swift in Sources */,
 				A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */,
 				A71EAE3E2271032F00ED840C /* NotebooksViewController.swift in Sources */,
 				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
