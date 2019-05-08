@@ -14,7 +14,7 @@ public protocol NotebookManager {
     typealias NotebookManagerNotebookCallback = (Notebook?, NotebookManagerError?) -> ();
     func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback);
     
-    func saveNotebook(notebook: Notebook);
+    func saveNotebook(notebook: Notebook) throws;
 }
 
 extension NotebookManager {

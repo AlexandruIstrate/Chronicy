@@ -23,7 +23,7 @@ open class Module {
         return .low;
     }
     
-    open func triggers() -> [InteractionsManager.Interactable] {
+    open func triggers() -> [ModuleTrigger] {
         return [];
     }
     
@@ -48,12 +48,7 @@ public enum ModulePriority {
     case high;
 }
 
-public protocol KeyInstance {
-    static var instance: AnyObject { get }
-}
-
 open class ModuleTrigger: Equatable {
-    
     public var triggerName: String;
     public var moduleName: String;
     

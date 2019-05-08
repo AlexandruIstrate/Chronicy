@@ -40,7 +40,7 @@ final class CoreDataNotebook: NSManagedObject, CoreDataObject {
     @NSManaged var shelf: CoreDataShelf?;
     
     static func fetch() -> NSFetchRequest<CoreDataNotebook> {
-        fatalError("Not implemented!");
+        return NSFetchRequest<CoreDataNotebook>(entityName: "CoreDataNotebook");
     }
 }
 
@@ -59,7 +59,7 @@ final class CoreDataStack: NSManagedObject, CoreDataObject {
     @NSManaged var notebook: CoreDataNotebook?;
     
     static func fetch() -> NSFetchRequest<CoreDataStack> {
-        fatalError("Not implemented!");
+        return NSFetchRequest<CoreDataStack>(entityName: "CoreDataStack");
     }
 }
 
@@ -85,7 +85,7 @@ final class CoreDataCard: NSManagedObject, CoreDataObject {
     @NSManaged var stack: CoreDataStack?;
     
     static func fetch() -> NSFetchRequest<CoreDataCard> {
-        fatalError("Not implemented!");
+        return NSFetchRequest<CoreDataCard>(entityName: "CoreDataCard");
     }
 }
 
@@ -110,7 +110,7 @@ final class CoreDataCustomField: NSManagedObject, CoreDataObject {
     @NSManaged var card: CoreDataCard?;
     
     static func fetch() -> NSFetchRequest<CoreDataCustomField> {
-        fatalError("Not implemented!");
+        return NSFetchRequest<CoreDataCustomField>(entityName: "CoreDataCustomField");
     }
 }
 

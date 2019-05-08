@@ -18,7 +18,7 @@ public class CoreDataStorage {
     } ();
     
     private lazy var managedObjectModel: NSManagedObjectModel? = {
-        guard let modelURL: URL = Bundle(for: type(of: self)).url(forResource: "Notebooks", withExtension: "momd") else {
+        guard let modelURL: URL = Bundle(for: type(of: self)).url(forResource: "Notebook", withExtension: "momd") else {
             Log.error(message: "Failed retrieving URL for model file!");
             return nil;
         }
@@ -32,7 +32,7 @@ public class CoreDataStorage {
         }
         
         let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model);
-        let url: URL = self.documentsDirectory.appendingPathComponent("Notebooks.sqlite");
+        let url: URL = self.documentsDirectory.appendingPathComponent("Notebook.sqlite");
         
         do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil);
@@ -46,6 +46,7 @@ public class CoreDataStorage {
     
     public lazy var managedObjectContext: NSManagedObjectContext? = {
         guard let coordinator: NSPersistentStoreCoordinator = self.persistentStoreCoordinator else {
+            Log.error(message: "Could not get NSPersistentStoreCoordinator!");
             return nil;
         }
         
@@ -54,4 +55,9 @@ public class CoreDataStorage {
         
         return context;
     } ();
+    
+    public static var defaultContext: NSManagedObjectContext = {
+        let storage: CoreDataStorage = CoreDataStorage();
+        return storage.managedObjectContext!;
+    } ()
 }

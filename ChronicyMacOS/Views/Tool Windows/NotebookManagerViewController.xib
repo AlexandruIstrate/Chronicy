@@ -14,17 +14,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="512" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTD-7b-JJ9">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <rect key="frame" x="16" y="45" width="480" height="194"/>
                     <clipView key="contentView" id="ZmA-DT-e22">
-                        <rect key="frame" x="1" y="0.0" width="478" height="271"/>
+                        <rect key="frame" x="1" y="0.0" width="478" height="193"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Yxh-Co-Sxc" viewBased="YES" id="g5z-Qn-dn2">
-                                <rect key="frame" x="0.0" y="0.0" width="478" height="246"/>
+                                <rect key="frame" x="0.0" y="0.0" width="478" height="168"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -101,7 +101,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="i4F-Ng-r2p">
-                        <rect key="frame" x="1" y="255" width="478" height="16"/>
+                        <rect key="frame" x="1" y="239" width="462" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ifx-vC-nNN">
@@ -113,8 +113,49 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AJ9-Dd-xOs">
+                    <rect key="frame" x="14" y="247" width="108" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Edit Notebooks..." id="h2I-1M-CQM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3J-6M-1Hj">
+                    <rect key="frame" x="344" y="16" width="152" height="21"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qks-cu-qNm">
+                            <rect key="frame" x="-6" y="-7" width="82" height="32"/>
+                            <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hMb-dE-FnR">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PVR-PN-agB">
+                            <rect key="frame" x="76" y="-7" width="82" height="32"/>
+                            <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kq0-61-5je">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            </buttonCell>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-2t-aek">
-                    <rect key="frame" x="0.0" y="-1" width="480" height="23"/>
+                    <rect key="frame" x="16" y="44" width="480" height="23"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="UwE-2y-RCE">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -131,14 +172,17 @@
                 </segmentedControl>
             </subviews>
             <constraints>
-                <constraint firstItem="YTD-7b-JJ9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2fm-Oj-RWy"/>
-                <constraint firstItem="YTD-7b-JJ9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="8pc-nD-Vsx"/>
-                <constraint firstAttribute="bottom" secondItem="YTD-7b-JJ9" secondAttribute="bottom" id="JRI-Rk-mR0"/>
-                <constraint firstItem="aJC-2t-aek" firstAttribute="trailing" secondItem="YTD-7b-JJ9" secondAttribute="trailing" id="SXJ-cW-Zzt"/>
-                <constraint firstItem="aJC-2t-aek" firstAttribute="width" secondItem="YTD-7b-JJ9" secondAttribute="width" id="j4x-WK-QHe"/>
-                <constraint firstItem="aJC-2t-aek" firstAttribute="leading" secondItem="YTD-7b-JJ9" secondAttribute="leading" id="lc0-sp-aff"/>
-                <constraint firstItem="aJC-2t-aek" firstAttribute="bottom" secondItem="YTD-7b-JJ9" secondAttribute="bottom" id="mwT-QS-fsm"/>
-                <constraint firstAttribute="trailing" secondItem="YTD-7b-JJ9" secondAttribute="trailing" id="vTx-OW-buj"/>
+                <constraint firstAttribute="trailing" secondItem="YTD-7b-JJ9" secondAttribute="trailing" constant="16" id="3b4-fH-Pc2"/>
+                <constraint firstAttribute="trailing" secondItem="A3J-6M-1Hj" secondAttribute="trailing" constant="16" id="8zd-gv-3gz"/>
+                <constraint firstItem="A3J-6M-1Hj" firstAttribute="top" secondItem="YTD-7b-JJ9" secondAttribute="bottom" constant="8" id="CmO-7F-D24"/>
+                <constraint firstItem="AJ9-Dd-xOs" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="UNB-wX-LV5"/>
+                <constraint firstAttribute="bottom" secondItem="A3J-6M-1Hj" secondAttribute="bottom" constant="16" id="YGO-RT-Hui"/>
+                <constraint firstItem="YTD-7b-JJ9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="ZIp-DV-heR"/>
+                <constraint firstItem="YTD-7b-JJ9" firstAttribute="top" secondItem="AJ9-Dd-xOs" secondAttribute="bottom" constant="8" id="cLc-j3-Bon"/>
+                <constraint firstItem="aJC-2t-aek" firstAttribute="leading" secondItem="YTD-7b-JJ9" secondAttribute="leading" id="hoC-u5-OVM"/>
+                <constraint firstItem="aJC-2t-aek" firstAttribute="trailing" secondItem="YTD-7b-JJ9" secondAttribute="trailing" id="oRK-GR-VqK"/>
+                <constraint firstItem="aJC-2t-aek" firstAttribute="bottom" secondItem="YTD-7b-JJ9" secondAttribute="bottom" id="sPe-lc-tcC"/>
+                <constraint firstItem="YTD-7b-JJ9" firstAttribute="leading" secondItem="AJ9-Dd-xOs" secondAttribute="leading" id="z8L-BL-4XG"/>
             </constraints>
         </customView>
     </objects>

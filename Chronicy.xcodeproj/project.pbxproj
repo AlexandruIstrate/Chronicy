@@ -89,8 +89,13 @@
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
 		A7AB5AF122747040004EEDDD /* NotebookCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB5AF022747040004EEDDD /* NotebookCollection.swift */; };
+		A7B8981C2280022800BC0196 /* ActionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8981A2280022800BC0196 /* ActionEditViewController.swift */; };
+		A7B8981D2280022800BC0196 /* ActionEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B8981B2280022800BC0196 /* ActionEditViewController.xib */; };
+		A7B898232280043600BC0196 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B898222280043600BC0196 /* Table.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
+		A7C75A1C227F4CE600C61174 /* InteractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C75A1A227F4CE600C61174 /* InteractionsViewController.swift */; };
+		A7C75A1D227F4CE600C61174 /* InteractionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C75A1B227F4CE600C61174 /* InteractionsViewController.xib */; };
 		A7CD73A0225D1AD600C94B23 /* FatSidebar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CD7399225D119E00C94B23 /* FatSidebar.framework */; };
 		A7CD73A2225D1C2000C94B23 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD73A1225D1C2000C94B23 /* Sidebar.swift */; };
 		A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD73A3225D2BFC00C94B23 /* CustomField.swift */; };
@@ -258,8 +263,13 @@
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
 		A7AB5AF022747040004EEDDD /* NotebookCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCollection.swift; sourceTree = "<group>"; };
+		A7B8981A2280022800BC0196 /* ActionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewController.swift; sourceTree = "<group>"; };
+		A7B8981B2280022800BC0196 /* ActionEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionEditViewController.xib; sourceTree = "<group>"; };
+		A7B898222280043600BC0196 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A7C75A1A227F4CE600C61174 /* InteractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsViewController.swift; sourceTree = "<group>"; };
+		A7C75A1B227F4CE600C61174 /* InteractionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InteractionsViewController.xib; sourceTree = "<group>"; };
 		A7CD7392225D119E00C94B23 /* FatSidebar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FatSidebar.xcodeproj; path = FatSidebar/FatSidebar.xcodeproj; sourceTree = "<group>"; };
 		A7CD73A1225D1C2000C94B23 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		A7CD73A3225D2BFC00C94B23 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
@@ -345,6 +355,7 @@
 				A7A88ACE2242B0A600C5A94E /* View.swift */,
 				A70D399A22553AD900580FF4 /* Color.swift */,
 				A7109E302235849400E3EB29 /* ViewLoader.swift */,
+				A7B898222280043600BC0196 /* Table.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -507,6 +518,7 @@
 				A70D83222264BA11007A33D7 /* Field Editor Views */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
+				A7C75A17227F4C9B00C61174 /* Interactions */,
 				A71EAE2D2270AB6C00ED840C /* Activity */,
 				A7A88AE52242C83500C5A94E /* Timeline */,
 				A7A88AEB2242C87E00C5A94E /* Editors */,
@@ -646,6 +658,17 @@
 				A760459622308DA5007F3268 /* Products */,
 				FC6FC963088942473FEF7BD3 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		A7C75A17227F4C9B00C61174 /* Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				A7C75A1A227F4CE600C61174 /* InteractionsViewController.swift */,
+				A7C75A1B227F4CE600C61174 /* InteractionsViewController.xib */,
+				A7B8981A2280022800BC0196 /* ActionEditViewController.swift */,
+				A7B8981B2280022800BC0196 /* ActionEditViewController.xib */,
+			);
+			path = Interactions;
 			sourceTree = "<group>";
 		};
 		A7CD7393225D119E00C94B23 /* Products */ = {
@@ -881,12 +904,14 @@
 				A7A88ADB2242B7BF00C5A94E /* OutlineStackView.xib in Resources */,
 				A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */,
 				A71EAE332270AC2D00ED840C /* ActivityViewController.xib in Resources */,
+				A7C75A1D227F4CE600C61174 /* InteractionsViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
+				A7B8981D2280022800BC0196 /* ActionEditViewController.xib in Resources */,
 				A7500D74227371E0007B5423 /* StackRemoveViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
@@ -1074,6 +1099,8 @@
 				A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
+				A7C75A1C227F4CE600C61174 /* InteractionsViewController.swift in Sources */,
+				A7B898232280043600BC0196 /* Table.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
 				A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */,
 				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
@@ -1085,6 +1112,7 @@
 				A718DF932279032C00990D2D /* StackFieldEditorViewController.swift in Sources */,
 				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
 				A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */,
+				A7B8981C2280022800BC0196 /* ActionEditViewController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,

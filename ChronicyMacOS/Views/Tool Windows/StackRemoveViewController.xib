@@ -69,7 +69,7 @@ DQ
                     <rect key="frame" x="16" y="45" width="480" height="210"/>
                     <clipView key="contentView" id="baf-3V-sIj">
                         <rect key="frame" x="1" y="0.0" width="478" height="209"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="wc8-hg-f09" viewBased="YES" id="8Gz-w0-KHY">
                                 <rect key="frame" x="0.0" y="0.0" width="478" height="184"/>

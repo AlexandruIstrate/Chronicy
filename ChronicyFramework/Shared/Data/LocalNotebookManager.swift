@@ -10,39 +10,10 @@ import CoreData;
 
 public class LocalNotebookManager: NotebookManager {
     
-    private var storage: CoreDataStorage = CoreDataStorage();
-    private var context: NSManagedObjectContext {
-        return self.storage.managedObjectContext!;
-    }
-    
-//    // TODO: Testing only: Remove
-//    private static let notebook: Notebook = {
-//        var ret: Notebook = Notebook(name: "Main");
-//
-//        let card1: Card = Card(title: "Card 1");
-//        let card2: Card = Card(title: "Card 2");
-//        let card3: Card = Card(title: "Card 3");
-//
-//        let stack1: Stack = Stack(name: "Stack 1");
-//        stack1.add(card: card1);
-//        stack1.add(card: card2);
-//        stack1.add(card: card3);
-//
-//        let otherCard1: Card = Card(title: "Card 1");
-//        let otherCard2: Card = Card(title: "Card 2");
-//
-//        let stack2: Stack = Stack(name: "Stack 2");
-//        stack2.add(card: otherCard1);
-//        stack2.add(card: otherCard2);
-//
-//        ret.add(stack: stack1);
-//        ret.add(stack: stack2);
-//
-//        return ret;
-//    } ();
+    private var context: NSManagedObjectContext = CoreDataStorage.defaultContext;
     
     public init() {
-        
+
     }
     
     public func getInfo(callback: @escaping NotebookManagerInfoCallback) {
@@ -71,38 +42,50 @@ public class LocalNotebookManager: NotebookManager {
             return iter.name == info.name;
         }
         
-        guard filtered.count == 1 else {
-            callback(nil, .itemNotFound);
-            return;
-        }
+//        guard filtered.count == 1 else {
+//            callback(nil, .itemNotFound);
+//            return;
+//        }
         
         callback(filtered.first!.notebook, nil);
     }
     
-    public func saveNotebook(notebook: Notebook) {
-        // TODO: Check if this notebook exists already before insertinga new one. If it exists, then use that one
-        
-        guard let item: CoreDataNotebook = NSEntityDescription.insertNewObject(forEntityName: "CoreDataNotebook", into: self.context) as? CoreDataNotebook else {
-            Log.error(message: "Could not create Core Data Notebook");
+    public func saveNotebook(notebook: Notebook) throws {
+        if let existing: CoreDataNotebook = self.getNotebooks()?.first(where: { (iter: CoreDataNotebook) -> Bool in
+            return iter.name == notebook.name;
+        }) {
+            existing.notebook = notebook;
+            try self.saveCoreDataItems();
             return;
         }
-        item.notebook = notebook;
+        
+        if let item: CoreDataNotebook = NSEntityDescription.insertNewObject(forEntityName: "CoreDataNotebook", into: self.context) as? CoreDataNotebook {
+            item.notebook = notebook;
+            try self.saveCoreDataItems();
+            return;
+        }
+        
+        Log.error(message: "Could not save notebook with name \(notebook.name)!");
     }
     
     private func getNotebooks() -> [CoreDataNotebook]? {
-        let fetchRequest: NSFetchRequest<CoreDataNotebook> = CoreDataNotebook.fetch();
+        let fetchRequest: NSFetchRequest<CoreDataNotebook> = CoreDataNotebook.fetchRequest();
         
         do {
-            guard let notebooks: [CoreDataNotebook] = try self.storage.managedObjectContext?.fetch(fetchRequest) else {
-                Log.error(message: "Could not retrieve notebooks!");
-                return nil;
-            }
-            
+            let notebooks: [CoreDataNotebook] = try self.context.fetch(fetchRequest);
             return notebooks;
         } catch let e {
             Log.error(message: "Could not fetch notebooks: \(e.localizedDescription)");
         }
         
         return nil;
+    }
+    
+    private func saveCoreDataItems() throws {
+        guard self.context.hasChanges else {
+            return;
+        }
+        
+        try self.context.save();
     }
 }

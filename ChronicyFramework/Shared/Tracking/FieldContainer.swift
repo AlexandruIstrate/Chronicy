@@ -33,12 +33,6 @@ extension FieldContainer {
             
             field.value = value;
             self.fields[i] = field;
-            
-            print("Field");
-        }
-        
-        for field: CustomField in self.fields {
-            Log.info(message: "\(field.name) : \(field.value)");
         }
     }
 }

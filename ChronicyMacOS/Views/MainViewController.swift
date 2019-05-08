@@ -79,6 +79,11 @@ extension MainViewController {
         }, onUnload: { (page: Page) in
 
         }));
+        self.pageManager.add(page: Page(title: NSLocalizedString("Interactions", comment: ""), icon: NSImage(named: NSImage.Name("Interaction"))!, tint: NSColor(named: NSColor.Name("")), onLoad: { (page: Page) in
+            self.showCenterView(viewController: InteractionsViewController());
+        }, onUnload: { (page: Page) in
+            
+        }));
         self.pageManager.add(page: Page(title: NSLocalizedString("Activity", comment: ""), icon: NSImage(named: NSImage.Name("Activity"))!, tint: NSColor(named: NSColor.Name("")), onLoad: { (page: Page) in
             self.showCenterView(viewController: ActivityViewController());
         }, onUnload: { (page: Page) in

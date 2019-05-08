@@ -2,7 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CoreDataCard" representedClassName="CoreDataCard" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="fields" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataCustomField" inverseName="card" inverseEntity="CoreDataCustomField" syncable="YES"/>
         <relationship name="stack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataStack" inverseName="cards" inverseEntity="CoreDataStack" syncable="YES"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataCardTag" inverseName="card" inverseEntity="CoreDataCardTag" syncable="YES"/>
     </entity>
@@ -11,25 +12,28 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataCard" inverseName="tags" inverseEntity="CoreDataCard" syncable="YES"/>
     </entity>
+    <entity name="CoreDataCustomField" representedClassName="CoreDataCustomField" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataCard" inverseName="fields" inverseEntity="CoreDataCard" syncable="YES"/>
+        <relationship name="stack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataStack" inverseName="inputFields" inverseEntity="CoreDataStack" syncable="YES"/>
+    </entity>
     <entity name="CoreDataNotebook" representedClassName="CoreDataNotebook" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="shelf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataShelf" inverseName="notebooks" inverseEntity="CoreDataShelf" syncable="YES"/>
         <relationship name="stacks" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataStack" inverseName="notebook" inverseEntity="CoreDataStack" syncable="YES"/>
-    </entity>
-    <entity name="CoreDataShelf" representedClassName="CoreDataShelf" syncable="YES">
-        <attribute name="placeholder" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="notebooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataNotebook" inverseName="shelf" inverseEntity="CoreDataNotebook" syncable="YES"/>
     </entity>
     <entity name="CoreDataStack" representedClassName="CoreDataStack" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="cards" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataCard" inverseName="stack" inverseEntity="CoreDataCard" syncable="YES"/>
+        <relationship name="inputFields" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataCustomField" inverseName="stack" inverseEntity="CoreDataCustomField" syncable="YES"/>
         <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataNotebook" inverseName="stacks" inverseEntity="CoreDataNotebook" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CoreDataCard" positionX="-183.03125" positionY="75.75" width="128" height="103"/>
+        <element name="CoreDataCard" positionX="-183.03125" positionY="75.75" width="128" height="120"/>
         <element name="CoreDataCardTag" positionX="70.53125" positionY="1.93359375" width="128" height="90"/>
-        <element name="CoreDataNotebook" positionX="-710.41015625" positionY="58.7109375" width="128" height="90"/>
-        <element name="CoreDataStack" positionX="-452.96875" positionY="147.4296875" width="128" height="88"/>
-        <element name="CoreDataShelf" positionX="-912.3984375" positionY="-98.14453125" width="128" height="73"/>
+        <element name="CoreDataCustomField" positionX="-445.97265625" positionY="-301.3203125" width="128" height="118"/>
+        <element name="CoreDataNotebook" positionX="-710.41015625" positionY="58.7109375" width="128" height="75"/>
+        <element name="CoreDataStack" positionX="-452.96875" positionY="147.4296875" width="128" height="103"/>
     </elements>
 </model>

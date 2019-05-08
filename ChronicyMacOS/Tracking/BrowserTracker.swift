@@ -18,20 +18,13 @@ enum Browser {
 }
 
 class BrowserModule: Module {
-    override func triggers() -> [InteractionsManager.Interactable] {
-        return [ URLRecievedTrigger.instance as! InteractionsManager.Interactable ];
-    }
-    
     func browserName() -> Browser { fatalError("Method browserName is abstract and must be implemented in a subclass of this class."); }
     func browserVersion() -> BrowserVersion { fatalError("Method browserVersion is abstract and must be implemented in a subclass of this class."); }
     
     func launch(/* with: BrowserLaunchParams */) { fatalError("Method launch is abstract and must be implemented in a subclass of this class."); }
 }
 
-class URLRecievedTrigger: ModuleTrigger, KeyInstance {
-    
-    static var instance: AnyObject = URLRecievedTrigger();
-    
+class URLRecievedTrigger: ModuleTrigger {
     override init(triggerName: String, moduleName: String) {
         super.init(triggerName: "URLRecievedTrigger", moduleName: "BrowserModule");
     }

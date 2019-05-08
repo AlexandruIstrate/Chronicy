@@ -106,7 +106,8 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
             }
             
             stack.name = editor.taskTitle;
-            stack.inputTemplate.fields = editor.fields;
+//            stack.inputTemplate.fields = editor.fields;
+            stack.inputTemplate.register(replace: editor.fields);
             
             self.reloadData();
 //            self.timeline.notifyChanged();
@@ -212,6 +213,7 @@ extension OutlineCentralViewController {
             }
             
             guard !info.isEmpty else {
+                self.notebook = Notebook(name: NSLocalizedString("Default", comment: ""));
                 return;
             }
             
@@ -233,7 +235,9 @@ extension OutlineCentralViewController {
             }
             
             self.notebook = notebook;
+            
             self.reloadData();
+            self.loadNotebookData();
         }
     }
     
@@ -244,23 +248,16 @@ extension OutlineCentralViewController {
     }
     
     private func saveData() {
-//        do {
-//            guard (CoreDataStack.stack.managedObjectContext?.hasChanges ?? false) else {
-//                return;
-//            }
-//            
-//            guard ((try CoreDataStack.stack.managedObjectContext?.save()) != nil) else {
-//                throw NSError(domain: "CoreData", code: 99679, userInfo: nil);
-//            }
-//        } catch let e {
-//            self.presentError(e);
-//        }
-        
         guard let notebook: Notebook = self.notebook else {
             return;
         }
         
-        self.notebookManager.saveNotebook(notebook: notebook);
+        do {
+            try self.notebookManager.saveNotebook(notebook: notebook);
+        } catch let e {
+            Log.error(message: "Could not save notebook with name \(notebook.name)");
+            self.presentError(e);
+        }
     }
     
     private func broadcastNotebooks() {
@@ -315,7 +312,10 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     }
     
     func onNotebookMenu() {
-        
+        let vc: NotebookManagerViewController = NotebookManagerViewController();
+        // TODO: Change!!!
+//        vc.notebooks = [self.notebook];
+        self.presentAsSheet(vc);
     }
     
     func onRefresh() {

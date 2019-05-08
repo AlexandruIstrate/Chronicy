@@ -12,7 +12,7 @@ public protocol CustomField {
     var displayName: String { get }
     var value: Any? { get set }
     
-    var type: FieldType { get }
+    var type: FieldType { get set }
 }
 
 extension CustomField {
@@ -59,6 +59,11 @@ public class CustomFieldInputTemplate {
     
     public func register(fields: [CustomField]) {
         self.fields.append(contentsOf: fields);
+    }
+    
+    public func register(replace: [CustomField]) {
+        self.fields.removeAll();
+        self.register(fields: replace);
     }
     
     public func deregister(field: CustomField) {

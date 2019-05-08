@@ -91,8 +91,11 @@ extension SafariBrowserModule {
                 
                 do {
                     try card.insertIntoFields(values: [urlString]);
-                } catch let e {
+                    try notebookManager.saveNotebook(notebook: notebook);
+                } catch let e as InsertionError {
                     Log.error(message: "Could not insert into card: \(e)");
+                } catch let e {
+                    Log.error(message: "Could not save notebook named \(notebook.name): \(e)");
                 }
             }
         }

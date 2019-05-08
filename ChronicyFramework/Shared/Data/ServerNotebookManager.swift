@@ -39,7 +39,7 @@ public class ServerNotebookManager: NotebookManager {
         }
     }
     
-    public func saveNotebook(notebook: Notebook) {
+    public func saveNotebook(notebook: Notebook) throws {
         
     }
 }

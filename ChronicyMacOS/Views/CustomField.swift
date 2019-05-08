@@ -41,7 +41,7 @@ extension CustomField {
 }
 
 extension TextField {
-    public func customView() -> NSView? {
+    public var customView: NSView? {
         let viewController: TextEditorViewController = TextEditorViewController();
         
         if let text: String = self.value as? String {
