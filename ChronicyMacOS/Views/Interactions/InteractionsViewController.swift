@@ -14,6 +14,7 @@ class InteractionsViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!;
     
     private var lastActionView: NSView?;
+    private let actionEditViewController: ActionEditViewController = ActionEditViewController();
     
     private var actionManager: ActionManager = ActionManager.manager;
     
@@ -53,10 +54,9 @@ class InteractionsViewController: NSViewController {
             view.removeFromSuperview();
         }
         
-        let vc: ActionEditViewController = ActionEditViewController();
-        vc.action = action;
+        actionEditViewController.action = action;
         
-        let newView: NSView = vc.view;
+        let newView: NSView = actionEditViewController.view;
         self.view.addSubview(newView);
         
         newView.translatesAutoresizingMaskIntoConstraints = false;

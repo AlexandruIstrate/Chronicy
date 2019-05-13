@@ -19,8 +19,7 @@ class ActionEditViewController: NSViewController {
     @IBOutlet private weak var triggerTypePopUp: NSPopUpButton!
     @IBOutlet private weak var triggerTable: NSTableView!;
     
-    @IBOutlet private weak var addButton: NSButton!;
-    @IBOutlet private weak var removeButton: NSButton!;
+    private var actionViewController: NSViewController?;
     
     public var action: Action?;
     
@@ -41,7 +40,6 @@ class ActionEditViewController: NSViewController {
         self.setupTable();
         self.setupTypesPopUp();
         self.loadTriggersPopUp();
-        self.setupButtons();
         self.displayAction();
         
         self.configure(action: self.action!);
@@ -49,8 +47,8 @@ class ActionEditViewController: NSViewController {
     
     override func viewDidDisappear() {
         action?.name = self.nameField.stringValue;
-//        action?.triggers = 
         action?.enabled = (self.enabledCheckbox.state == .on);
+        // Triggers are directly added to the Action
         
         super.viewDidDisappear();
     }
@@ -61,6 +59,8 @@ class ActionEditViewController: NSViewController {
     }
     
     private func setupTypesPopUp() {
+        self.actionPopUp.removeAllItems();
+        
         addTypeToPopUp(kind: Action.Kind.command);
         addTypeToPopUp(kind: Action.Kind.application);
     }
@@ -100,16 +100,16 @@ class ActionEditViewController: NSViewController {
         self.enabledCheckbox.state = (action.enabled ? .on : .off);
     }
     
-//    @IBAction private func onTriggerOptionsSelected(_ sender: NSSegmentedControl) {
-//        switch sender.selectedSegment {
-//        case TableOptionButton.add.rawValue:
-//            self.onAdd();
-//        case TableOptionButton.remove.rawValue:
-//            self.onRemove();
-//        default:
-//            break;
-//        }
-//    }
+    @IBAction private func onTriggerOptionsSelected(_ sender: NSSegmentedControl) {
+        switch sender.selectedSegment {
+        case TableOptionButton.add.rawValue:
+            self.onAdd();
+        case TableOptionButton.remove.rawValue:
+            self.onRemove();
+        default:
+            break;
+        }
+    }
     
     @objc
     private func onAdd() {
@@ -144,8 +144,8 @@ class ActionEditViewController: NSViewController {
     }
     
     private func configure(action: Action) {
-        let vc: NSViewController = action.viewController;
-        let newView: NSView = vc.view;
+        actionViewController = action.viewController;
+        let newView: NSView = actionViewController!.view;
         self.configureArea.addSubview(newView);
         
         newView.translatesAutoresizingMaskIntoConstraints = false;
@@ -153,11 +153,6 @@ class ActionEditViewController: NSViewController {
         newView.bottomAnchor.constraint(equalTo: self.configureArea.bottomAnchor).isActive = true;
         newView.leadingAnchor.constraint(equalTo: self.configureArea.leadingAnchor).isActive = true;
         newView.trailingAnchor.constraint(equalTo: self.configureArea.trailingAnchor).isActive = true;
-    }
-    
-    private func setupButtons() {
-        self.addButton.action = #selector(onAdd);
-        self.removeButton.action = #selector(onRemove);
     }
     
     private func reloadData() {

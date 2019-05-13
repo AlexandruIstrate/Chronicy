@@ -9,6 +9,7 @@ import Foundation;
 
 public class CommandAction: Action {
     public var command: String = "";
+    public var params: [String] = [];
     public var useSystemPrivileges: Bool = false;
     
     public override func onTrigger() {

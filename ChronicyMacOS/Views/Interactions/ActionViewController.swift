@@ -38,9 +38,13 @@ extension Action {
     var viewController: NSViewController {
         switch self {
         case is CommandAction:
-            return CommandActionViewController();
+            let vc: CommandActionViewController = CommandActionViewController();
+            vc.action = self as? CommandAction;
+            return vc;
         case is ApplicationAction:
-            return ApplicationActionViewController();
+            let vc: ApplicationActionViewController = ApplicationActionViewController();
+            vc.action = self as? ApplicationAction;
+            return vc;
         default:
             return NSViewController();
         }
