@@ -15,7 +15,7 @@ class InteractionsViewController: NSViewController {
     
     private var lastActionView: NSView?;
     
-    private var actionManager: ActionManager = ActionManager();
+    private var actionManager: ActionManager = ActionManager.manager;
     
     enum Identifier: String {
         case nameCell = "NameCell";
@@ -72,10 +72,10 @@ class InteractionsViewController: NSViewController {
         switch sender.selectedSegment {
         case TableOptionButton.add.rawValue:
             self.onAdd();
-            
+
         case TableOptionButton.remove.rawValue:
             self.onRemove();
-            
+
         default:
             break;
         }

@@ -23,6 +23,8 @@ extension CoreDataNotebook {
             let ret: Notebook = Notebook(name: self.name);
             ret.stacks = Array(self.stacks).map({ (iter: CoreDataStack) -> Stack in
                 return iter.stack;
+            }).sorted(by: { (lhs: Stack, rhs: Stack) -> Bool in
+                return lhs.name < rhs.name;
             });
             return ret;
         }

@@ -57,6 +57,10 @@ class MainViewController: NSViewController {
         view.reloadData();
     }
     
+    public func centerViewAs<T>() -> T? where T: NSViewController {
+        return self.centerView as? T;
+    }
+    
 }
 
 extension MainViewController: FatSidebarDelegate {

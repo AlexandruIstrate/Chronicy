@@ -24,12 +24,8 @@ class BrowserModule: Module {
     func launch(/* with: BrowserLaunchParams */) { fatalError("Method launch is abstract and must be implemented in a subclass of this class."); }
 }
 
-class URLRecievedTrigger: ModuleTrigger {
-    override init(triggerName: String, moduleName: String) {
-        super.init(triggerName: "URLRecievedTrigger", moduleName: "BrowserModule");
-    }
-    
-    required init() {
+public class URLRecievedTrigger: ModuleTrigger {
+    public required init() {
         super.init(triggerName: "URLRecievedTrigger", moduleName: "BrowserModule");
     }
 }

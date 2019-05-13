@@ -9,6 +9,7 @@ import Foundation;
 
 public protocol ApplicationLauncher {
     func launch(for bundleID: String) throws;
+    func launch(path: String) throws;
     func launch(defaultApplication: DefaultApplication) throws;
 }
 
@@ -34,6 +35,17 @@ public class ApplicationManager {
                 try self.launcher.launch(for: bundleID);
             } catch let e as ApplicationLauncherError {
                 Log.error(message: "Could not open application \(bundleID): \(e.localizedDescription).");
+                throw e;
+            }
+        }
+    }
+    
+    public func launch(path: String) throws {
+        try queue.sync {
+            do {
+                try self.launcher.launch(path: path);
+            } catch let e as ApplicationLauncherError {
+                Log.error(message: "Could not open application at \(path): \(e.localizedDescription).");
                 throw e;
             }
         }

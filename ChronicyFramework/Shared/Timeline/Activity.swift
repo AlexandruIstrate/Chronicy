@@ -14,8 +14,8 @@ public class Activity {
     
     public init(name: String, comment: String, date: Date) {
         self.name = name;
-        self.date = date;
         self.comment = comment;
+        self.date = date;
     }
 }
 

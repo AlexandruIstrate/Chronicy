@@ -38,6 +38,10 @@ class OutlineCentralViewController: NSViewController {
         super.viewWillDisappear();
     }
     
+    public func notifyFieldsInserted() {
+        loadNotebookData();
+    }
+    
 }
 
 extension OutlineCentralViewController: OutlineViewDataSource {
@@ -220,10 +224,9 @@ extension OutlineCentralViewController {
             self.notebookNames = info.map({ (iter: NotebookInfo) -> String in
                 return iter.name;
             });
+            WindowController.shared.refreshDisplay();
             
-            if self.notebook == nil {
-                self.loadNotebook(info: info.first!);
-            }
+            self.loadNotebook(info: info.first!);
         }
     }
     
@@ -235,9 +238,7 @@ extension OutlineCentralViewController {
             }
             
             self.notebook = notebook;
-            
             self.reloadData();
-            self.loadNotebookData();
         }
     }
     

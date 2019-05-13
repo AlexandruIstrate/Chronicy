@@ -53,7 +53,7 @@ open class ModuleTrigger: Equatable {
     public var moduleName: String;
     
     public typealias TriggerAction = (ModuleTrigger) -> ();
-    public var action: TriggerAction?;
+    private var actions: [TriggerAction] = [];
     
     public init(triggerName: String, moduleName: String) {
         self.triggerName = triggerName;
@@ -65,11 +65,17 @@ open class ModuleTrigger: Equatable {
         self.moduleName = String();
     }
     
+    public func register(action: @escaping TriggerAction) {
+        self.actions.append(action);
+    }
+    
     public static func == (lhs: ModuleTrigger, rhs: ModuleTrigger) -> Bool {
         return lhs.triggerName == rhs.triggerName && lhs.moduleName == rhs.moduleName;
     }
 
     public func trigger() {
-        self.action?(self);
+        for action: TriggerAction in self.actions {
+            action(self);
+        }
     }
 }

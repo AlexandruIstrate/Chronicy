@@ -5,12 +5,55 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="ActivityCellView" customModule="ChronicyMacOS" customModuleProvider="target">
+            <connections>
+                <outlet property="commentLabel" destination="er6-cG-44y" id="vYE-58-ead"/>
+                <outlet property="dateLabel" destination="4mM-79-F64" id="JkV-VT-h0Q"/>
+                <outlet property="titleLabel" destination="288-OR-DZ8" id="q4q-4A-xJf"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+        <customView id="c22-O7-iKe" customClass="ActivityCellView" customModule="ChronicyMacOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="288-OR-DZ8">
+                    <rect key="frame" x="18" y="171" width="364" height="29"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="Nf3-DE-6l8">
+                        <font key="font" metaFont="system" size="24"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mM-79-F64">
+                    <rect key="frame" x="18" y="146" width="364" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Date" id="rJj-OW-XIo">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="er6-cG-44y">
+                    <rect key="frame" x="18" y="121" width="364" height="17"/>
+                    <textFieldCell key="cell" selectable="YES" title="Multiline Comment" id="1eo-jI-bhO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="er6-cG-44y" secondAttribute="trailing" constant="20" id="4Ob-Ic-1nW"/>
+                <constraint firstItem="4mM-79-F64" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Dl7-0L-Vx7"/>
+                <constraint firstAttribute="trailing" secondItem="288-OR-DZ8" secondAttribute="trailing" constant="20" id="Ls4-58-j1l"/>
+                <constraint firstAttribute="trailing" secondItem="4mM-79-F64" secondAttribute="trailing" constant="20" id="RuR-s9-hVV"/>
+                <constraint firstItem="288-OR-DZ8" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="S3u-7O-BZr"/>
+                <constraint firstItem="er6-cG-44y" firstAttribute="top" secondItem="4mM-79-F64" secondAttribute="bottom" constant="8" id="dhO-K3-x4O"/>
+                <constraint firstItem="er6-cG-44y" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="iMj-d3-IFa"/>
+                <constraint firstItem="4mM-79-F64" firstAttribute="top" secondItem="288-OR-DZ8" secondAttribute="bottom" constant="8" id="uBy-oB-cQS"/>
+                <constraint firstItem="288-OR-DZ8" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="zue-B3-BVg"/>
+            </constraints>
         </customView>
     </objects>
 </document>

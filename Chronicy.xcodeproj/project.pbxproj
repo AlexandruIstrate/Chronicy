@@ -11,6 +11,8 @@
 		49364E0DDCBE88C14FD34F08 /* Pods_ChronicyShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE81E5E76E7789EA4D859DA /* Pods_ChronicyShareExtension.framework */; };
 		54380F0070124DBA5B476C74 /* Pods_ChronicySafariExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC6E38C48EC0E414E2C22D3 /* Pods_ChronicySafariExtension.framework */; };
 		A10839D7FE2D7C9DBE4AD043 /* Pods_ChronicyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF3AB9967C69DB5EDF29F9C /* Pods_ChronicyiOS.framework */; };
+		A70C25462284D2C700F30E2C /* ActionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70C25442284D2C700F30E2C /* ActionEditViewController.swift */; };
+		A70C25472284D2C700F30E2C /* ActionEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70C25452284D2C700F30E2C /* ActionEditViewController.xib */; };
 		A70CF4AC227B336A00DCFFD4 /* NotebookManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF4AA227B336A00DCFFD4 /* NotebookManagerViewController.swift */; };
 		A70CF4AD227B336A00DCFFD4 /* NotebookManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70CF4AB227B336A00DCFFD4 /* NotebookManagerViewController.xib */; };
 		A70D399B22553AD900580FF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D399A22553AD900580FF4 /* Color.swift */; };
@@ -49,6 +51,7 @@
 		A75220D12252044500C7A54E /* ChronicyShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A75220C62252044500C7A54E /* ChronicyShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
+		A7741C1622862B1A008300D6 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1522862B1A008300D6 /* ActionViewController.swift */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
@@ -56,6 +59,10 @@
 		A78631F722776D3900F53D4D /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F522776D3900F53D4D /* DistributedObjectManager.swift */; };
 		A78631F922776D6A00F53D4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F822776D6A00F53D4D /* Log.swift */; };
 		A78631FB22776D9D00F53D4D /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631FA22776D9D00F53D4D /* SharedConstants.swift */; };
+		A78BE89D2286E0A9008D9156 /* CommandActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78BE89B2286E0A9008D9156 /* CommandActionViewController.swift */; };
+		A78BE89E2286E0A9008D9156 /* CommandActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78BE89C2286E0A9008D9156 /* CommandActionViewController.xib */; };
+		A78BE8A32286E8BD008D9156 /* ApplicationActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78BE8A12286E8BD008D9156 /* ApplicationActionViewController.swift */; };
+		A78BE8A42286E8BD008D9156 /* ApplicationActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78BE8A22286E8BD008D9156 /* ApplicationActionViewController.xib */; };
 		A78CCC3422776F19007BAE9C /* ExtensionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3022776F19007BAE9C /* ExtensionStack.swift */; };
 		A78CCC3522776F19007BAE9C /* ExtensionNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3322776F19007BAE9C /* ExtensionNotebook.swift */; };
 		A78CCC39227770B1007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC38227770B1007BAE9C /* ExtensionField.swift */; };
@@ -89,8 +96,6 @@
 		A7A88AE92242C87100C5A94E /* TImelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AE72242C87100C5A94E /* TImelineViewController.swift */; };
 		A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A88AE82242C87100C5A94E /* TImelineViewController.xib */; };
 		A7AB5AF122747040004EEDDD /* NotebookCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB5AF022747040004EEDDD /* NotebookCollection.swift */; };
-		A7B8981C2280022800BC0196 /* ActionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8981A2280022800BC0196 /* ActionEditViewController.swift */; };
-		A7B8981D2280022800BC0196 /* ActionEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B8981B2280022800BC0196 /* ActionEditViewController.xib */; };
 		A7B898232280043600BC0196 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B898222280043600BC0196 /* Table.swift */; };
 		A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */; };
 		A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BC2844224BF3D300A1A6DE /* ContentView.swift */; };
@@ -178,6 +183,8 @@
 		87954602E8661CB61C505539 /* Pods-ChronicyMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		8DF35B138D4BECEE2C56FD8A /* Pods-ChronicyiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyiOS.release.xcconfig"; path = "Target Support Files/Pods-ChronicyiOS/Pods-ChronicyiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A343ABFB44DA3BE969839BCB /* Pods-ChronicyMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChronicyMacOS.debug.xcconfig"; path = "Target Support Files/Pods-ChronicyMacOS/Pods-ChronicyMacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A70C25442284D2C700F30E2C /* ActionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewController.swift; sourceTree = "<group>"; };
+		A70C25452284D2C700F30E2C /* ActionEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionEditViewController.xib; sourceTree = "<group>"; };
 		A70CF4AA227B336A00DCFFD4 /* NotebookManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManagerViewController.swift; sourceTree = "<group>"; };
 		A70CF4AB227B336A00DCFFD4 /* NotebookManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookManagerViewController.xib; sourceTree = "<group>"; };
 		A70D399A22553AD900580FF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -222,6 +229,7 @@
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
+		A7741C1522862B1A008300D6 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -230,6 +238,10 @@
 		A78631F822776D6A00F53D4D /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A78631FA22776D9D00F53D4D /* SharedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		A78756D322398E5300EA966E /* Chronicy Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronicy Safari Extension.entitlements"; sourceTree = "<group>"; };
+		A78BE89B2286E0A9008D9156 /* CommandActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandActionViewController.swift; sourceTree = "<group>"; };
+		A78BE89C2286E0A9008D9156 /* CommandActionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommandActionViewController.xib; sourceTree = "<group>"; };
+		A78BE8A12286E8BD008D9156 /* ApplicationActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationActionViewController.swift; sourceTree = "<group>"; };
+		A78BE8A22286E8BD008D9156 /* ApplicationActionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicationActionViewController.xib; sourceTree = "<group>"; };
 		A78CCC3022776F19007BAE9C /* ExtensionStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionStack.swift; sourceTree = "<group>"; };
 		A78CCC3322776F19007BAE9C /* ExtensionNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionNotebook.swift; sourceTree = "<group>"; };
 		A78CCC38227770B1007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
@@ -263,8 +275,6 @@
 		A7A88AE72242C87100C5A94E /* TImelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImelineViewController.swift; sourceTree = "<group>"; };
 		A7A88AE82242C87100C5A94E /* TImelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TImelineViewController.xib; sourceTree = "<group>"; };
 		A7AB5AF022747040004EEDDD /* NotebookCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCollection.swift; sourceTree = "<group>"; };
-		A7B8981A2280022800BC0196 /* ActionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewController.swift; sourceTree = "<group>"; };
-		A7B8981B2280022800BC0196 /* ActionEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionEditViewController.xib; sourceTree = "<group>"; };
 		A7B898222280043600BC0196 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		A7BC2840224BDD8A00A1A6DE /* NotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSender.swift; sourceTree = "<group>"; };
 		A7BC2844224BF3D300A1A6DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -665,8 +675,13 @@
 			children = (
 				A7C75A1A227F4CE600C61174 /* InteractionsViewController.swift */,
 				A7C75A1B227F4CE600C61174 /* InteractionsViewController.xib */,
-				A7B8981A2280022800BC0196 /* ActionEditViewController.swift */,
-				A7B8981B2280022800BC0196 /* ActionEditViewController.xib */,
+				A70C25442284D2C700F30E2C /* ActionEditViewController.swift */,
+				A70C25452284D2C700F30E2C /* ActionEditViewController.xib */,
+				A7741C1522862B1A008300D6 /* ActionViewController.swift */,
+				A78BE89B2286E0A9008D9156 /* CommandActionViewController.swift */,
+				A78BE89C2286E0A9008D9156 /* CommandActionViewController.xib */,
+				A78BE8A12286E8BD008D9156 /* ApplicationActionViewController.swift */,
+				A78BE8A22286E8BD008D9156 /* ApplicationActionViewController.xib */,
 			);
 			path = Interactions;
 			sourceTree = "<group>";
@@ -911,10 +926,12 @@
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
-				A7B8981D2280022800BC0196 /* ActionEditViewController.xib in Resources */,
+				A70C25472284D2C700F30E2C /* ActionEditViewController.xib in Resources */,
 				A7500D74227371E0007B5423 /* StackRemoveViewController.xib in Resources */,
+				A78BE89E2286E0A9008D9156 /* CommandActionViewController.xib in Resources */,
 				A77D5084224CEC2400F7A527 /* Resources in Resources */,
 				A7A88ADA2242B7BF00C5A94E /* OutlineCellView.xib in Resources */,
+				A78BE8A42286E8BD008D9156 /* ApplicationActionViewController.xib in Resources */,
 				A71EAE3F2271032F00ED840C /* NotebooksViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,6 +1114,7 @@
 				A70D399B22553AD900580FF4 /* Color.swift in Sources */,
 				A70E8C872279DD86003FE68C /* EditorViewController.swift in Sources */,
 				A71E06BF22591C5700305EC4 /* AlamofireRequestable.swift in Sources */,
+				A7741C1622862B1A008300D6 /* ActionViewController.swift in Sources */,
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
 				A7C75A1C227F4CE600C61174 /* InteractionsViewController.swift in Sources */,
@@ -1107,23 +1125,25 @@
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
+				A78BE8A32286E8BD008D9156 /* ApplicationActionViewController.swift in Sources */,
 				A7500D73227371E0007B5423 /* StackRemoveViewController.swift in Sources */,
 				A7515F242231ADAD00380978 /* WindowController.swift in Sources */,
 				A718DF932279032C00990D2D /* StackFieldEditorViewController.swift in Sources */,
 				A794AB4D225F0F04004BA2E0 /* CardTag.swift in Sources */,
 				A71EAE372270FFBE00ED840C /* ActivityCellView.swift in Sources */,
-				A7B8981C2280022800BC0196 /* ActionEditViewController.swift in Sources */,
 				A77618012231C8BD0038E815 /* Log.swift in Sources */,
 				A7A88AD92242B7BF00C5A94E /* OutlineCellView.swift in Sources */,
 				A7109E3422358E3800E3EB29 /* ApplicationManager.swift in Sources */,
 				A79EEAB72273B1E200EE354C /* SafariBrowserTracker.swift in Sources */,
 				A7A88ACF2242B0A600C5A94E /* View.swift in Sources */,
+				A70C25462284D2C700F30E2C /* ActionEditViewController.swift in Sources */,
 				A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
 				A70CF4AC227B336A00DCFFD4 /* NotebookManagerViewController.swift in Sources */,
 				A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */,
 				A71EAE3E2271032F00ED840C /* NotebooksViewController.swift in Sources */,
+				A78BE89D2286E0A9008D9156 /* CommandActionViewController.swift in Sources */,
 				A70ED2532249B27200E53AAE /* ViewControllerPresenter.swift in Sources */,
 				A70D83272264BADF007A33D7 /* TextEditorViewController.swift in Sources */,
 				A7CD73A2225D1C2000C94B23 /* Sidebar.swift in Sources */,

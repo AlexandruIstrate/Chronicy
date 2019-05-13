@@ -12,6 +12,11 @@ public class Action: Equatable {
     public var triggers: [ModuleTrigger] = [];
     public var enabled: Bool = false;
     
+    public enum Kind: String {
+        case command = "Command";
+        case application = "Application";
+    }
+    
     public init(name: String) {
         self.name = name;
     }
@@ -26,32 +31,46 @@ public class Action: Equatable {
         self.triggers.append(trigger);
     }
     
-    @discardableResult
-    public func insertNewTrigger() -> ModuleTrigger {
-        let nameRoot: String = "New Trigger";
-        var name: String = nameRoot;
-        var index: Int = 1;
-        
-        while triggers.contains(where: { (iter: ModuleTrigger) -> Bool in
-            iter.triggerName == name;
-        }) {
-            name = "\(nameRoot) (\(index))";
-            index += 1;
-        }
-        
-        let trigger: ModuleTrigger = ModuleTrigger(triggerName: NSLocalizedString(name, comment: ""), moduleName: "Unknown");
-        self.triggers.append(trigger);
-        return trigger;
-    }
+//    @discardableResult
+//    public func insertNewTrigger() -> ModuleTrigger {
+//        let nameRoot: String = "New Trigger";
+//        var name: String = nameRoot;
+//        var index: Int = 1;
+//        
+//        while triggers.contains(where: { (iter: ModuleTrigger) -> Bool in
+//            iter.triggerName == name;
+//        }) {
+//            name = "\(nameRoot) (\(index))";
+//            index += 1;
+//        }
+//        
+//        let trigger: ModuleTrigger = ModuleTrigger(triggerName: NSLocalizedString(name, comment: ""), moduleName: "Unknown");
+//        self.triggers.append(trigger);
+//        return trigger;
+//    }
     
     public func remove(trigger: ModuleTrigger) {
         self.triggers.removeAll { (iter: ModuleTrigger) -> Bool in
             return iter == trigger;
         }
     }
+    
+    public func onTrigger() {
+        
+    }
+    
+    public static func instantiate(kind: Kind, name: String) -> Action {
+        switch kind {
+        case .command:
+            return CommandAction(name: name);
+        case .application:
+            return ApplicationAction(name: name);
+        }
+    }
 }
 
 public class ActionManager {
+    public static var manager: ActionManager = ActionManager();
     public private(set) var actions: [Action] = [];
     
     public init() {
@@ -75,7 +94,7 @@ public class ActionManager {
             index += 1;
         }
         
-        let action: Action = Action(name: NSLocalizedString(name, comment: ""));
+        let action: Action = CommandAction(name: NSLocalizedString(name, comment: ""));
         self.actions.append(action);
         return action;
     }

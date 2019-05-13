@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DistributedObjectManager.manager.retrievalAction = .remove;
         
         ModuleManager.manager.add(module: SafariBrowserModule());
+        TriggerManager.manager.register(register: MacOSTriggerRegister());
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -32,4 +33,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateNow;
     }
     
+    private func registerTriggers() {
+//        TriggerManager.manager
+    }
+    
+}
+
+class MacOSTriggerRegister: TriggerManagerRegister {
+    func triggers() -> [TriggerManager.Kind : ModuleTrigger] {
+        return [.url : URLRecievedTrigger()];
+    }
 }

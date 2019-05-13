@@ -99,6 +99,10 @@ class WindowController: NSWindowController, NSWindowDelegate {
         self.notebookPopUp.removeAllItems();
         self.notebookPopUp.addItems(withTitles: notebooks);
     }
+    
+    public func refreshDisplay() {
+        self.reloadNotebooks();
+    }
 }
 
 protocol WindowControllerDelegate {

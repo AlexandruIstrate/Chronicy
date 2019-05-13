@@ -6,12 +6,19 @@
 //
 
 import Cocoa;
+import ChronicyFrameworkMacOS;
 
 class ActivityViewController: NSViewController {
 
     @IBOutlet private weak var tableView: NSTableView!;
     
+    @IBOutlet private weak var timePopUp: NSPopUpButton!;
+    @IBOutlet private weak var sortCriteriaPopUp: NSPopUpButton!;
+    
+    private var activityManager: ActivityManager = ActivityManager();
+    
     override func viewDidLoad() {
+        self.activityManager.add(activity: Activity(name: "Name", comment: "Comment", date: Date()));
         super.viewDidLoad();
         self.setup();
     }
@@ -20,10 +27,20 @@ class ActivityViewController: NSViewController {
 
 extension ActivityViewController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 0;
+        return activityManager.activities.count;
     }
     
-    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let view: ActivityCellView = ActivityCellView.fromNib() else {
+            return nil;
+        }
+        
+        let activity: Activity = self.activityManager.activities[row];
+        view.titleValue = activity.name;
+        view.commentValue = activity.comment;
+        view.dateValue = activity.date;
+        return view;
+    }
 }
 
 extension ActivityViewController {

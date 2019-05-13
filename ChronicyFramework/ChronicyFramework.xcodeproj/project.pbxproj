@@ -27,10 +27,12 @@
 		A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71900D9225EB8E4003F4CA6 /* CardTag.swift */; };
 		A71EAE352270DB7800ED840C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71EAE342270DB7800ED840C /* Activity.swift */; };
 		A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72204102240227C001E1BD5 /* SharedConstants.swift */; };
+		A73D0114228880100082B3B6 /* TriggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D0113228880100082B3B6 /* TriggerManager.swift */; };
 		A760458C22308D47007F3268 /* ChronicyFrameworkMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A76980E42274F60800281423 /* ExtensionNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76980E32274F60800281423 /* ExtensionNotebook.swift */; };
 		A76980E62274F64900281423 /* ExtensionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76980E52274F64900281423 /* ExtensionStack.swift */; };
 		A7702D1D227636EE00C66ECA /* FieldDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7702D1C227636EE00C66ECA /* FieldDefinition.swift */; };
+		A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1922862D00008300D6 /* ActionTypes.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781383226DDE44006762D1 /* CoreDataStorage.swift */; };
 		A78CCC3722776FAB007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3622776FAB007BAE9C /* ExtensionField.swift */; };
@@ -55,7 +57,6 @@
 		A79E4E852252987300E385CA /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E4E842252987300E385CA /* CustomField.swift */; };
 		A79EEAAE2273B19300EE354C /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAA2273B19200EE354C /* Module.swift */; };
 		A79EEAAF2273B19300EE354C /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAB2273B19300EE354C /* TrackableProperty.swift */; };
-		A79EEAB02273B19300EE354C /* InteractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAC2273B19300EE354C /* InteractionsManager.swift */; };
 		A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAD2273B19300EE354C /* ModuleManager.swift */; };
 		A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB82273B3EE00EE354C /* FieldContainer.swift */; };
 		A7A52A732246E9460086E01F /* Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Notebook.xcdatamodeld */; };
@@ -90,12 +91,14 @@
 		A71900D9225EB8E4003F4CA6 /* CardTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTag.swift; sourceTree = "<group>"; };
 		A71EAE342270DB7800ED840C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		A72204102240227C001E1BD5 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
+		A73D0113228880100082B3B6 /* TriggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerManager.swift; sourceTree = "<group>"; };
 		A760458722308D47007F3268 /* ChronicyFrameworkMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A760458A22308D47007F3268 /* ChronicyFrameworkMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicyFrameworkMacOS.h; sourceTree = "<group>"; };
 		A760458B22308D47007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76980E32274F60800281423 /* ExtensionNotebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotebook.swift; sourceTree = "<group>"; };
 		A76980E52274F64900281423 /* ExtensionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStack.swift; sourceTree = "<group>"; };
 		A7702D1C227636EE00C66ECA /* FieldDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDefinition.swift; sourceTree = "<group>"; };
+		A7741C1922862D00008300D6 /* ActionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTypes.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7781383226DDE44006762D1 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A78CCC3622776FAB007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		A79E4E842252987300E385CA /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		A79EEAAA2273B19200EE354C /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A79EEAAB2273B19300EE354C /* TrackableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
-		A79EEAAC2273B19300EE354C /* InteractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionsManager.swift; sourceTree = "<group>"; };
 		A79EEAAD2273B19300EE354C /* ModuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A79EEAB82273B3EE00EE354C /* FieldContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainer.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
@@ -172,13 +174,14 @@
 			isa = PBXGroup;
 			children = (
 				A79EEAAA2273B19200EE354C /* Module.swift */,
+				A73D0113228880100082B3B6 /* TriggerManager.swift */,
 				A79EEAAD2273B19300EE354C /* ModuleManager.swift */,
 				A79EEAAB2273B19300EE354C /* TrackableProperty.swift */,
-				A79EEAAC2273B19300EE354C /* InteractionsManager.swift */,
 				A79EEAB82273B3EE00EE354C /* FieldContainer.swift */,
 				A7702D1C227636EE00C66ECA /* FieldDefinition.swift */,
 				A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */,
 				A7C75A1E227F67BE00C61174 /* Action.swift */,
+				A7741C1922862D00008300D6 /* ActionTypes.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
 				A7AD5EBC2268FBE9002298F4 /* ServerNotebookManager.swift in Sources */,
+				A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */,
 				A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */,
 				A70FBA8722580520007CE092 /* RequestManager.swift in Sources */,
 				A70CF4F4227CA29A00DCFFD4 /* CoreDataCard+CoreDataProperties.swift in Sources */,
@@ -467,13 +471,13 @@
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A70CF4FB227CA29A00DCFFD4 /* CoreDataStack+CoreDataClass.swift in Sources */,
 				A792BF26225B1D970098DC55 /* DefaultFields.swift in Sources */,
-				A79EEAB02273B19300EE354C /* InteractionsManager.swift in Sources */,
 				A70CF4F6227CA29A00DCFFD4 /* CoreDataNotebook+CoreDataProperties.swift in Sources */,
 				A70CF4FA227CA29A00DCFFD4 /* CoreDataCardTag+CoreDataProperties.swift in Sources */,
 				A79EEAAE2273B19300EE354C /* Module.swift in Sources */,
 				A70CF4F9227CA29A00DCFFD4 /* CoreDataCardTag+CoreDataClass.swift in Sources */,
 				A7B2D429225273840012A9E5 /* KeyStorage.swift in Sources */,
 				A79E4E832252975600E385CA /* Notebook.swift in Sources */,
+				A73D0114228880100082B3B6 /* TriggerManager.swift in Sources */,
 				A70CF4F3227CA29A00DCFFD4 /* CoreDataCard+CoreDataClass.swift in Sources */,
 				A79E4E852252987300E385CA /* CustomField.swift in Sources */,
 				A70CF4FC227CA29A00DCFFD4 /* CoreDataStack+CoreDataProperties.swift in Sources */,

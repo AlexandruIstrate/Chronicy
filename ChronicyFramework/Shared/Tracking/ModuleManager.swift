@@ -43,7 +43,7 @@ public class ModuleManager {
             module.onLoad();
         }
         
-        InteractionsManager.manager.reload();
+//        InteractionsManager.manager.reload();
     }
     
     public func remove(module: Module) {
@@ -54,7 +54,7 @@ public class ModuleManager {
             module.onUnload();
         }
         
-        InteractionsManager.manager.reload();
+//        InteractionsManager.manager.reload();
     }
 }
 

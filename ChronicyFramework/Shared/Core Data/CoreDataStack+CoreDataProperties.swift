@@ -26,6 +26,8 @@ extension CoreDataStack {
             let ret: Stack = Stack(name: self.name);
             ret.cards = Array(self.cards).map({ (iter: CoreDataCard) -> Card in
                 return iter.card;
+            }).sorted(by: { (lhs: Card, rhs: Card) -> Bool in
+                return lhs.date > rhs.date;
             });
             ret.inputTemplate.register(replace: self.inputFields.map({ (iter: CoreDataCustomField) -> CustomField? in
                 return iter.field;
