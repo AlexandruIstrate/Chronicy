@@ -20,6 +20,7 @@ class ActionEditViewController: NSViewController {
     @IBOutlet private weak var triggerTable: NSTableView!;
     
     private var actionViewController: NSViewController?;
+    private var previousView: NSView?;
     
     public var action: Action?;
     
@@ -130,7 +131,7 @@ class ActionEditViewController: NSViewController {
     }
     
     @IBAction private func onActionTypeChanged(_ sender: NSPopUpButton) {
-        guard let kind: Action.Kind = Action.Kind(rawValue: sender.stringValue) else {
+        guard let kind: Action.Kind = Action.Kind(rawValue: sender.selectedItem!.title) else {
             Log.error(message: "The pop up value does not match any compatible value!");
             return;
         }
@@ -140,12 +141,18 @@ class ActionEditViewController: NSViewController {
         newAction.enabled = action!.enabled;
 
         self.action = newAction;
+        self.actionViewController = action?.viewController;
+        
+        self.configure(action: self.action!);
         self.reloadData();
     }
     
     private func configure(action: Action) {
+        previousView?.removeFromSuperview();
+        
         actionViewController = action.viewController;
         let newView: NSView = actionViewController!.view;
+        self.previousView = newView;
         self.configureArea.addSubview(newView);
         
         newView.translatesAutoresizingMaskIntoConstraints = false;

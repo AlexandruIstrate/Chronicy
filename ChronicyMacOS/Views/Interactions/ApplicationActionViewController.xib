@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ApplicationActionViewController" customModule="ChronicyMacOS" customModuleProvider="target">
             <connections>
+                <outlet property="browseButton" destination="6kV-8e-bzC" id="IQj-np-MM0"/>
                 <outlet property="choicePopUp" destination="xu6-Vv-UJ2" id="51Z-VV-7ob"/>
                 <outlet property="pathField" destination="3kM-bc-gN0" id="WfM-O8-4r0"/>
                 <outlet property="selectRadioButton" destination="4vE-BF-CWh" id="mSV-uR-gB3"/>
@@ -30,7 +31,7 @@
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4vE-BF-CWh">
                     <rect key="frame" x="19" y="202" width="443" height="18"/>
-                    <buttonCell key="cell" type="radio" title="Select..." bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="3S5-qq-28z">
+                    <buttonCell key="cell" type="radio" title="Select..." bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="3S5-qq-28z">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

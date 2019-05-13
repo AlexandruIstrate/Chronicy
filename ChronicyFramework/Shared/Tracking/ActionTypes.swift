@@ -15,6 +15,23 @@ public class CommandAction: Action {
     public override func onTrigger() {
         
     }
+    
+    @discardableResult
+    public func insertNewParameter() -> String {
+        let nameRoot: String = "param";
+        var name: String = nameRoot;
+        var index: Int = 1;
+        
+        while params.contains(where: { (iter: String) -> Bool in
+            return iter == name;
+        }) {
+            name = nameRoot + String(index);
+            index += 1;
+        }
+        
+        params.append(name);
+        return name;
+    }
 }
 
 public class ApplicationAction: Action {

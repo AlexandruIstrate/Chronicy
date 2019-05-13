@@ -14,7 +14,7 @@ class CommandActionViewController: ActionViewController<CommandAction> {
     
     @IBOutlet private weak var parametersTable: NSTableView!;
     
-    private static let cellIdentifier: NSUserInterfaceItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "CellValue");
+    private static let cellIdentifier: NSUserInterfaceItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "ValueCell");
     
     enum CellOption: Int {
         case add = 0;
@@ -60,18 +60,7 @@ class CommandActionViewController: ActionViewController<CommandAction> {
     }
     
     private func onAdd() {
-        let nameRoot: String = "param";
-        var name: String = nameRoot;
-        var index: Int = 1;
-        
-        while action!.params.contains(where: { (iter: String) -> Bool in
-            return iter == name;
-        }) {
-            name = nameRoot + String(index);
-            index += 1;
-        }
-        
-        action!.params.append(name);
+        self.action?.insertNewParameter();
         self.reloadData();
     }
     

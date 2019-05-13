@@ -11,6 +11,7 @@ import ChronicyFrameworkMacOS;
 class ApplicationActionViewController: ActionViewController<ApplicationAction> {
     @IBOutlet private weak var choicePopUp: NSPopUpButton!;
     @IBOutlet private weak var pathField: NSTextField!;
+    @IBOutlet private weak var browseButton: NSButton!;
     
     @IBOutlet private weak var selectRadioButton: NSButton!;
     @IBOutlet private weak var typeInPathRadioButton: NSButton!;
@@ -50,6 +51,9 @@ class ApplicationActionViewController: ActionViewController<ApplicationAction> {
         }
         
         self.path = action.path;
+        self.selectRadioButton.state = .on;
+        
+        self.setItemState();
     }
     
     override func onChangeAway() {
@@ -57,11 +61,18 @@ class ApplicationActionViewController: ActionViewController<ApplicationAction> {
     }
     
     @IBAction private func onInputTypeChanged(_ sender: NSButton) {
-        
+        self.setItemState();
     }
     
     @IBAction private func onBrowseClicked(_ sender: NSButton) {
         self.displayFileDialog();
+    }
+    
+    private func setItemState() {
+        choicePopUp.isEnabled = !self.usesExplicitPath;
+        
+        pathField.isEnabled = self.usesExplicitPath;
+        browseButton.isEnabled = self.usesExplicitPath;
     }
     
     private func displayFileDialog() {
@@ -82,7 +93,8 @@ class ApplicationActionViewController: ActionViewController<ApplicationAction> {
     }
     
     private func onOK(url: URL) {
-        self.path = url.absoluteString;
+        self.path = url.path;
+        self.pathField.stringValue = url.path;
     }
     
     private func onCancel() {
