@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ParameterEditViewController" customModule="ChronicyMacOS" customModuleProvider="target">
+            <connections>
+                <outlet property="valueTextField" destination="w3Q-kf-tgp" id="PvC-K6-B5J"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U8c-51-MqX">
+                    <rect key="frame" x="18" y="38" width="38" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Value" id="w1d-yM-Yz3">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w3Q-kf-tgp">
+                    <rect key="frame" x="62" y="35" width="318" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="PLm-p3-qT2">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="w3Q-kf-tgp" firstAttribute="leading" secondItem="U8c-51-MqX" secondAttribute="trailing" constant="8" id="ASB-5F-dNa"/>
+                <constraint firstItem="U8c-51-MqX" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="NIB-d5-skv"/>
+                <constraint firstAttribute="trailing" secondItem="w3Q-kf-tgp" secondAttribute="trailing" constant="20" id="OX7-vk-6CF"/>
+                <constraint firstItem="U8c-51-MqX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="gIY-Yo-rJy"/>
+                <constraint firstItem="w3Q-kf-tgp" firstAttribute="firstBaseline" secondItem="U8c-51-MqX" secondAttribute="firstBaseline" id="s2A-0P-2eQ"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="85"/>
+        </customView>
+    </objects>
+</document>

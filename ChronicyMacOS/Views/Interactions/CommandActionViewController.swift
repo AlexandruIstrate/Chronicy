@@ -27,6 +27,10 @@ class CommandActionViewController: ActionViewController<CommandAction> {
         self.setup();
     }
     
+    override func viewDidDisappear() {
+        super.viewDidDisappear();
+    }
+    
     override func onChangeTo() {
         guard let action: CommandAction = self.action else {
             return;
@@ -77,6 +81,16 @@ class CommandActionViewController: ActionViewController<CommandAction> {
         guard let index: Int = self.parametersTable.selectedRowIndex else {
             return;
         }
+        
+        let value: String = self.action!.params[index];
+        
+        let vc: ParameterEditViewController = ParameterEditViewController();
+        vc.value = value;
+        vc.callback = { (newValue: String) in
+            self.action!.params[index] = newValue;
+            self.reloadData();
+        }
+        self.present(vc, asPopoverRelativeTo: NSRect.zero, of: self.view, preferredEdge: .maxY, behavior: .semitransient);
         
         self.reloadData();
     }

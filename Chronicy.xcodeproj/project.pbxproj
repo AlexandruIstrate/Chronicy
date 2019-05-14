@@ -108,6 +108,8 @@
 		A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* StackEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
 		A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */; };
+		A7F52484228A16FC00D8A14F /* ParameterEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F52482228A16FC00D8A14F /* ParameterEditViewController.swift */; };
+		A7F52485228A16FC00D8A14F /* ParameterEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F52483228A16FC00D8A14F /* ParameterEditViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +289,8 @@
 		A7E4512A224811C200848AF5 /* StackEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardEditorViewController.xib; sourceTree = "<group>"; };
+		A7F52482228A16FC00D8A14F /* ParameterEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEditViewController.swift; sourceTree = "<group>"; };
+		A7F52483228A16FC00D8A14F /* ParameterEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterEditViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -680,6 +684,8 @@
 				A7741C1522862B1A008300D6 /* ActionViewController.swift */,
 				A78BE89B2286E0A9008D9156 /* CommandActionViewController.swift */,
 				A78BE89C2286E0A9008D9156 /* CommandActionViewController.xib */,
+				A7F52482228A16FC00D8A14F /* ParameterEditViewController.swift */,
+				A7F52483228A16FC00D8A14F /* ParameterEditViewController.xib */,
 				A78BE8A12286E8BD008D9156 /* ApplicationActionViewController.swift */,
 				A78BE8A22286E8BD008D9156 /* ApplicationActionViewController.xib */,
 			);
@@ -924,6 +930,7 @@
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
+				A7F52485228A16FC00D8A14F /* ParameterEditViewController.xib in Resources */,
 				A7A88AC522429EF500C5A94E /* OutlineViewController.xib in Resources */,
 				A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */,
 				A70C25472284D2C700F30E2C /* ActionEditViewController.xib in Resources */,
@@ -1123,6 +1130,7 @@
 				A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */,
 				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
+				A7F52484228A16FC00D8A14F /* ParameterEditViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
 				A78BE8A32286E8BD008D9156 /* ApplicationActionViewController.swift in Sources */,

@@ -31,24 +31,6 @@ public class Action: Equatable {
         self.triggers.append(trigger);
     }
     
-//    @discardableResult
-//    public func insertNewTrigger() -> ModuleTrigger {
-//        let nameRoot: String = "New Trigger";
-//        var name: String = nameRoot;
-//        var index: Int = 1;
-//        
-//        while triggers.contains(where: { (iter: ModuleTrigger) -> Bool in
-//            iter.triggerName == name;
-//        }) {
-//            name = "\(nameRoot) (\(index))";
-//            index += 1;
-//        }
-//        
-//        let trigger: ModuleTrigger = ModuleTrigger(triggerName: NSLocalizedString(name, comment: ""), moduleName: "Unknown");
-//        self.triggers.append(trigger);
-//        return trigger;
-//    }
-    
     public func remove(trigger: ModuleTrigger) {
         self.triggers.removeAll { (iter: ModuleTrigger) -> Bool in
             return iter == trigger;

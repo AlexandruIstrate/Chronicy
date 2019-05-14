@@ -43,6 +43,10 @@ class ApplicationActionViewController: ActionViewController<ApplicationAction> {
             }
         }
     }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear();
+    }
 
     override func onChangeTo() {
         guard let action: ApplicationAction = self.action else {

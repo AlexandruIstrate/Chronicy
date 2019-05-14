@@ -50,10 +50,7 @@ class InteractionsViewController: NSViewController {
     }
     
     private func displayEditView(action: Action) {
-        if let view: NSView = self.lastActionView {
-            view.removeFromSuperview();
-        }
-        
+        lastActionView?.removeFromSuperview();
         actionEditViewController.action = action;
         
         let newView: NSView = actionEditViewController.view;
@@ -124,10 +121,16 @@ extension InteractionsViewController: NSTableViewDataSource, NSTableViewDelegate
                 Log.error(message: "Could not create tableview cell for InteractionsViewController!");
                 return nil;
             }
-            view.textField?.stringValue = action.triggers.map({ (iter: ModuleTrigger) -> String in
+            var newValue: String = action.triggers.map({ (iter: ModuleTrigger) -> String in
                 // TODO: Other more logical name
                 return iter.moduleName;
             }).joined(separator: "; ");
+
+            if newValue.isEmpty {
+                newValue = "No Triggers Defined";
+            }
+            
+            view.textField?.stringValue = newValue;
             return view;
             
         case ColumnName.enabled.rawValue:

@@ -39,8 +39,8 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2wG-qY-nGq">
-                    <rect key="frame" x="46" y="73" width="32" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Task" id="0nk-3U-dOV">
+                    <rect key="frame" x="39" y="73" width="39" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Stack" id="0nk-3U-dOV">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
