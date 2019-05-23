@@ -10,22 +10,35 @@ import Foundation;
 
 public class Stack {
     public var name: String;
-    public var cards: [Card] = [];
+    private var internalCards: [Card] = [];
     
     public private(set) var inputTemplate: CustomFieldInputTemplate = CustomFieldInputTemplate();
+    
+    public var cards: [Card] {
+        get {
+            self.sort();
+            return self.internalCards;
+        }
+        set {
+            self.internalCards = newValue;
+            self.sort();
+        }
+    }
     
     public init(name: String) {
         self.name = name;
     }
 
     public func add(card: Card) {
-        self.cards.append(card);
+        self.internalCards.append(card);
+        ActivityManager.manager.add(withTitle: "Added card \(card.name) to stack \(self.name)");
     }
     
     public func remove(card: Card) {
-        self.cards.removeAll { (iter: Card) -> Bool in
+        self.internalCards.removeAll { (iter: Card) -> Bool in
             return iter == card;
         }
+        ActivityManager.manager.add(withTitle: "Remove card \(card.name) from stack \(self.name)");
     }
     
     @discardableResult
@@ -34,7 +47,7 @@ public class Stack {
         var name: String = nameRoot;
         var index: Int = 1;
         
-        while cards.contains(where: { (iter: Card) -> Bool in
+        while internalCards.contains(where: { (iter: Card) -> Bool in
             iter.name == name;
         }) {
             name = "\(nameRoot) (\(index))";
@@ -43,8 +56,12 @@ public class Stack {
         
         let card: Card = Card(title: NSLocalizedString(name, comment: ""));
         card.fields = self.inputTemplate.fields;
-        self.cards.append(card);
+        self.add(card: card);
         return card;
+    }
+    
+    private func sort() {
+        self.internalCards.sort(by: cardSort);
     }
 
 }

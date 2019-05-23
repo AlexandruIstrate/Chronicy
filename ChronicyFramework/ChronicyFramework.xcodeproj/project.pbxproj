@@ -35,6 +35,7 @@
 		A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1922862D00008300D6 /* ActionTypes.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781383226DDE44006762D1 /* CoreDataStorage.swift */; };
+		A783E9AC22908D4C000AEB44 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A783E9AB22908D4C000AEB44 /* Sort.swift */; };
 		A78CCC3722776FAB007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3622776FAB007BAE9C /* ExtensionField.swift */; };
 		A78CCC3B2277722B007BAE9C /* InformationBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */; };
 		A78E6A7422664688006A00C7 /* ChronicyFrameworkiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A78E6A7222664688006A00C7 /* ChronicyFrameworkiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,6 +60,7 @@
 		A79EEAAF2273B19300EE354C /* TrackableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAB2273B19300EE354C /* TrackableProperty.swift */; };
 		A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAD2273B19300EE354C /* ModuleManager.swift */; };
 		A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB82273B3EE00EE354C /* FieldContainer.swift */; };
+		A7A46144228CBD4B0031DDE3 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */; };
 		A7A52A732246E9460086E01F /* Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Notebook.xcdatamodeld */; };
 		A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */; };
 		A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */; };
@@ -101,6 +103,7 @@
 		A7741C1922862D00008300D6 /* ActionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTypes.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7781383226DDE44006762D1 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		A783E9AB22908D4C000AEB44 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		A78CCC3622776FAB007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
 		A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBroadcaster.swift; sourceTree = "<group>"; };
 		A78E6A7022664688006A00C7 /* ChronicyFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicyFrameworkiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +117,7 @@
 		A79EEAAB2273B19300EE354C /* TrackableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackableProperty.swift; sourceTree = "<group>"; };
 		A79EEAAD2273B19300EE354C /* ModuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A79EEAB82273B3EE00EE354C /* FieldContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainer.swift; sourceTree = "<group>"; };
+		A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotebookManager.swift; sourceTree = "<group>"; };
 		A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManager.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 				A792BF25225B1D970098DC55 /* DefaultFields.swift */,
 				A71900D9225EB8E4003F4CA6 /* CardTag.swift */,
 				A71EAE342270DB7800ED840C /* Activity.swift */,
+				A783E9AB22908D4C000AEB44 /* Sort.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				A77617FC2231C3660038E815 /* Log.swift */,
 				A72204102240227C001E1BD5 /* SharedConstants.swift */,
 				A7098C4E224518920026BAFC /* Notification.swift */,
+				A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
 				A7AD5EBC2268FBE9002298F4 /* ServerNotebookManager.swift in Sources */,
 				A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */,
+				A7A46144228CBD4B0031DDE3 /* DictionaryLoader.swift in Sources */,
 				A7AD5EBA2268F1D3002298F4 /* NotebookManager.swift in Sources */,
 				A70FBA8722580520007CE092 /* RequestManager.swift in Sources */,
 				A70CF4F4227CA29A00DCFFD4 /* CoreDataCard+CoreDataProperties.swift in Sources */,
@@ -482,6 +489,7 @@
 				A79E4E852252987300E385CA /* CustomField.swift in Sources */,
 				A70CF4FC227CA29A00DCFFD4 /* CoreDataStack+CoreDataProperties.swift in Sources */,
 				A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */,
+				A783E9AC22908D4C000AEB44 /* Sort.swift in Sources */,
 				A7AD5EBE2268FD37002298F4 /* WebAPI.swift in Sources */,
 				A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */,
 				A78CCC3B2277722B007BAE9C /* InformationBroadcaster.swift in Sources */,

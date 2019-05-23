@@ -14,8 +14,30 @@ public protocol NotebookItem {
 
 public class Notebook {
     public var name: String;
-    public var stacks: [Stack] = [];
-    public var activities: [Activity] = [];
+    private var internalStacks: [Stack] = [];
+    private var internalActivities: [Activity] = [];
+    
+    public var stacks: [Stack] {
+        get {
+            self.sort();
+            return self.internalStacks;
+        }
+        set {
+            self.internalStacks = newValue;
+            self.sort();
+        }
+    }
+    
+    public var activities: [Activity] {
+        get {
+            self.sort();
+            return self.internalActivities;
+        }
+        set {
+            self.internalActivities = newValue;
+            self.sort();
+        }
+    }
     
     public init(name: String) {
         self.name = name;
@@ -23,10 +45,11 @@ public class Notebook {
     
     public func add(stack: Stack) {
         self.stacks.append(stack);
+        ActivityManager.manager.add(withTitle: "Added stack \(stack.name) to notebook \(self.name)");
     }
     
     public func add(activity: Activity) {
-        self.activities.append(activity);
+        self.internalActivities.append(activity);
     }
     
     @discardableResult
@@ -43,26 +66,32 @@ public class Notebook {
         }
         
         let result: Stack = Stack(name: NSLocalizedString(name, comment: ""));
-        self.stacks.append(result);
+        self.add(stack: result);
         return result;
     }
     
     public func remove(stack: Stack) {
-        self.stacks.removeAll { (iter: Stack) -> Bool in
+        self.internalStacks.removeAll { (iter: Stack) -> Bool in
             return iter == stack;
         }
+        ActivityManager.manager.add(withTitle: "Removed stack \(stack.name) from notebook \(self.name)");
     }
     
     public func remove(named: String) {
-        self.stacks.removeAll { (iter: Stack) -> Bool in
+        self.internalStacks.removeAll { (iter: Stack) -> Bool in
+            return iter.name == named;
+        }
+        ActivityManager.manager.add(withTitle: "Removed stack \(named) from notebook \(self.name)");
+    }
+    
+    public func findStack(named: String) -> Stack? {
+        return self.internalStacks.first { (iter: Stack) -> Bool in
             return iter.name == named;
         }
     }
     
-    public func findStack(named: String) -> Stack? {
-        return self.stacks.first { (iter: Stack) -> Bool in
-            return iter.name == named;
-        }
+    private func sort() {
+        self.internalStacks.sort(by: stackSort);
     }
 }
 

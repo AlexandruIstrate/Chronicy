@@ -9,6 +9,7 @@ import Foundation;
 
 public class SharedConstants {
     public static var appGroupSuiteName: String = "extension.ro.internals";
+    public static var defaultApplicationsPlistName: String = "DefaultApplications";
     
     public class DistributedObjectKeys {
         public static var pageURLData: String = NSLocalizedString("currentPageURL", comment: "");

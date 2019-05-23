@@ -15,10 +15,25 @@ class ActivityViewController: NSViewController {
     @IBOutlet private weak var timePopUp: NSPopUpButton!;
     @IBOutlet private weak var sortCriteriaPopUp: NSPopUpButton!;
     
-    private var activityManager: ActivityManager = ActivityManager();
+    private var activityManager: ActivityManager = ActivityManager.manager;
+    
+    enum ColumnName: String {
+        case title = "Title";
+        case comment = "Comment";
+        case date = "Date";
+    }
+    
+    enum CellIdentifier: String {
+        case title = "TitleCell";
+        case comment = "CommentCell";
+        case date = "DateCell";
+        
+        var identifier: NSUserInterfaceItemIdentifier {
+            return NSUserInterfaceItemIdentifier(rawValue: self.rawValue);
+        }
+    }
     
     override func viewDidLoad() {
-        self.activityManager.add(activity: Activity(name: "Name", comment: "Comment", date: Date()));
         super.viewDidLoad();
         self.setup();
     }
@@ -30,16 +45,35 @@ extension ActivityViewController: NSTableViewDataSource, NSTableViewDelegate {
         return activityManager.activities.count;
     }
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let view: ActivityCellView = ActivityCellView.fromNib() else {
-            return nil;
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {        
+        let activity: Activity = self.activityManager.activities[row];
+        
+        switch tableColumn!.title {
+        case ColumnName.title.rawValue:
+            guard let view: NSTableCellView = tableView.makeView(withIdentifier: CellIdentifier.title.identifier, owner: self) as? NSTableCellView else {
+                break;
+            }
+            view.textField?.stringValue = activity.name;
+            return view;
+        case ColumnName.comment.rawValue:
+            guard let view: NSTableCellView = tableView.makeView(withIdentifier: CellIdentifier.title.identifier, owner: self) as? NSTableCellView else {
+                break;
+            }
+            view.textField?.stringValue = activity.comment;
+            return view;
+        case ColumnName.date.rawValue:
+            guard let view: NSTableCellView = tableView.makeView(withIdentifier: CellIdentifier.title.identifier, owner: self) as? NSTableCellView else {
+                break;
+            }
+            let formatter: DateFormatter = DateFormatter();
+            formatter.dateFormat = "MMM d, HH:mm:ss";
+            view.textField?.stringValue = formatter.string(from: activity.date);
+            return view;
+        default:
+            break;
         }
         
-        let activity: Activity = self.activityManager.activities[row];
-        view.titleValue = activity.name;
-        view.commentValue = activity.comment;
-        view.dateValue = activity.date;
-        return view;
+        return nil;
     }
 }
 

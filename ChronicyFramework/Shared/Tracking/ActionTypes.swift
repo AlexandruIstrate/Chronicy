@@ -5,15 +5,37 @@
 //  Created by Alexandru Istrate on 11/05/2019.
 //
 
-import Foundation;
+import Cocoa;
 
 public class CommandAction: Action {
     public var command: String = "";
     public var params: [String] = [];
     public var useSystemPrivileges: Bool = false;
     
+    public var fullCommand: String {
+        return "\(command) \(params.joined(separator: " "))";
+    }
+    
     public override func onTrigger() {
+        let task: Process = Process();
+        task.launchPath = "/bin/sh";
         
+        print(self.fullCommand);
+        
+        let arguments: [String] = ["-c", self.fullCommand];
+        task.arguments = arguments;
+        
+        let pipe: Pipe = Pipe();
+        task.standardOutput = pipe;
+        
+        let handle: FileHandle = pipe.fileHandleForReading;
+        
+        task.launch();
+        
+        let data: Data = handle.readDataToEndOfFile();
+        Log.info(message: "Command output: \(String(data: data, encoding: .utf8) ?? "Nothing")");
+        
+        super.onTrigger();
     }
     
     @discardableResult
@@ -37,11 +59,23 @@ public class CommandAction: Action {
 public class ApplicationAction: Action {
     public var path: String = "";
     
+    public static func defaultApplications(dictionaryLoader: DictionaryLoader) -> [String : String] {
+        return [
+            "Calculator" : "/Applications/Calculator.app",
+            "Mail" : "/Applications/Mail.app",
+            "Notes" : "/Applications/Notes.app"
+        ];
+        
+//        return dictionaryLoader.dictionary();
+    }
+    
     public override func onTrigger() {
         do {
             try ApplicationManager.manager.launch(path: self.path);
         } catch {
             Log.error(message: "Could not launch application at path \(self.path)")
         }
+        
+        super.onTrigger();
     }
 }

@@ -52,7 +52,20 @@ open class ModuleTrigger: Equatable {
     public var triggerName: String;
     public var moduleName: String;
     
-    public typealias TriggerAction = (ModuleTrigger) -> ();
+    public struct TriggerAction: Equatable {
+        public typealias TriggerFunction = (ModuleTrigger) -> ();
+        public var trigger: TriggerFunction?;
+        public let id: String = UUID().uuidString;
+        
+        public init(trigger: @escaping TriggerFunction) {
+            self.trigger = trigger;
+        }
+        
+        public static func == (lhs: ModuleTrigger.TriggerAction, rhs: ModuleTrigger.TriggerAction) -> Bool {
+            return lhs.id == rhs.id;
+        }
+    }
+    
     private var actions: [TriggerAction] = [];
     
     public init(triggerName: String, moduleName: String) {
@@ -65,8 +78,14 @@ open class ModuleTrigger: Equatable {
         self.moduleName = String();
     }
     
-    public func register(action: @escaping TriggerAction) {
+    public func register(action: TriggerAction) {
         self.actions.append(action);
+    }
+    
+    public func deregister(action: TriggerAction) {
+        self.actions.removeAll { (iter: ModuleTrigger.TriggerAction) -> Bool in
+            return iter == action;
+        }
     }
     
     public static func == (lhs: ModuleTrigger, rhs: ModuleTrigger) -> Bool {
@@ -75,7 +94,7 @@ open class ModuleTrigger: Equatable {
 
     public func trigger() {
         for action: TriggerAction in self.actions {
-            action(self);
+            action.trigger?(self);
         }
     }
 }

@@ -24,6 +24,7 @@ public class Card: FieldContainer {
 extension Card: Equatable {
     public static func == (lhs: Card, rhs: Card) -> Bool {
         // TODO: Change
-        return  lhs.name == rhs.name;
+        return  lhs.name == rhs.name &&
+            lhs.date == rhs.date;
     }
 }

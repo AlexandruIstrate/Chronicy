@@ -93,6 +93,8 @@ extension SafariBrowserModule {
                     try card.insertIntoFields(values: [urlString]);
                     try notebookManager.saveNotebook(notebook: notebook);
                     
+                    ActivityManager.manager.add(withTitle: "New page visited from Safari", comment: "\(urlString)");
+                    
                     self.notifyMainView();
                     TriggerManager.manager.raise(kind: .url);
                 } catch let e as InsertionError {

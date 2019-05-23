@@ -9,8 +9,26 @@ import Foundation;
 
 public class Action: Equatable {
     public var name: String;
-    public var triggers: [ModuleTrigger] = [];
+    public private(set) var triggers: [ModuleTrigger] = [];
     public var enabled: Bool = false;
+    
+    public let id: String = UUID().uuidString;
+    
+    public var kind: Kind {
+        switch self {
+        case is CommandAction:
+            return .command;
+        case is ApplicationAction:
+            return .application;
+        default:
+            fatalError("Kind does not exist!");
+        }
+    }
+    
+    public var triggerAction: ModuleTrigger.TriggerAction? {
+        willSet { self.removeTriggerActions(); }
+        didSet { self.updateTriggerActions(); }
+    }
     
     public enum Kind: String {
         case command = "Command";
@@ -19,26 +37,50 @@ public class Action: Equatable {
     
     public init(name: String) {
         self.name = name;
+        triggerAction = ModuleTrigger.TriggerAction(trigger: { (t: ModuleTrigger) in
+            if self.enabled {
+                self.onTrigger();
+            }
+        })
+    }
+    
+    deinit {
+        self.removeTriggerActions();
     }
     
     public static func == (lhs: Action, rhs: Action) -> Bool {
         return lhs.name == rhs.name &&
             lhs.triggers == rhs.triggers &&
-            lhs.enabled == rhs.enabled;
+            lhs.enabled == rhs.enabled &&
+            lhs.id == rhs.id;
     }
     
     public func add(trigger: ModuleTrigger) {
         self.triggers.append(trigger);
+        
+        if let action: ModuleTrigger.TriggerAction = self.triggerAction {
+            trigger.register(action: action);
+        }
+    }
+    
+    public func add(triggers: [ModuleTrigger]) {
+        for iter: ModuleTrigger in triggers {
+            self.add(trigger: iter);
+        }
     }
     
     public func remove(trigger: ModuleTrigger) {
+        if let action: ModuleTrigger.TriggerAction = self.triggerAction {
+            trigger.deregister(action: action);
+        }
+        
         self.triggers.removeAll { (iter: ModuleTrigger) -> Bool in
             return iter == trigger;
         }
     }
     
     public func onTrigger() {
-        
+        ActivityManager.manager.add(withTitle: "Triggered the action named \"\(self.name)\"");
     }
     
     public static func instantiate(kind: Kind, name: String) -> Action {
@@ -47,6 +89,26 @@ public class Action: Equatable {
             return CommandAction(name: name);
         case .application:
             return ApplicationAction(name: name);
+        }
+    }
+    
+    private func removeTriggerActions() {
+        guard let action: ModuleTrigger.TriggerAction = self.triggerAction else {
+            return;
+        }
+        
+        for iter: ModuleTrigger in triggers {
+            iter.deregister(action: action);
+        }
+    }
+    
+    private func updateTriggerActions() {
+        guard let action: ModuleTrigger.TriggerAction = self.triggerAction else {
+            return;
+        }
+        
+        for iter: ModuleTrigger in triggers {
+            iter.register(action: action);
         }
     }
 }
@@ -85,5 +147,16 @@ public class ActionManager {
         self.actions.removeAll { (iter: Action) -> Bool in
             return iter == action;
         }
+    }
+    
+    public func replace(action: Action, with: Action) {
+        guard let index: Int = self.actions.firstIndex(where: { (iter: Action) -> Bool in
+            return iter.id == action.id;
+        }) else {
+            Log.warining(message: "Action with id \(action.id) not found!");
+            return;
+        }
+        
+        self.actions[index] = with;
     }
 }

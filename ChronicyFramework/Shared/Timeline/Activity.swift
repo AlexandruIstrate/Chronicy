@@ -12,7 +12,7 @@ public class Activity {
     public var comment: String;
     public var date: Date;
     
-    public init(name: String, comment: String, date: Date) {
+    public init(name: String, comment: String, date: Date = Date()) {
         self.name = name;
         self.comment = comment;
         self.date = date;
@@ -28,6 +28,7 @@ extension Activity: Equatable {
 }
 
 public class ActivityManager {
+    public static var manager: ActivityManager = ActivityManager();
     public private(set) var activities: [Activity] = [];
     
     public init() {
@@ -36,6 +37,10 @@ public class ActivityManager {
     
     public func add(activity: Activity) {
         self.activities.append(activity);
+    }
+    
+    public func add(withTitle: String, comment: String = "") {
+        self.add(activity: Activity(name: withTitle, comment: comment));
     }
     
     public func remove(activity: Activity) {

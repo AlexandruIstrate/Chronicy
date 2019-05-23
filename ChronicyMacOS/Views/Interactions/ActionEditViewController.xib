@@ -28,7 +28,7 @@
                     <tabViewItems>
                         <tabViewItem label="Options" identifier="" id="C01-Dg-bUl">
                             <view key="view" id="kjr-Oc-QPh">
-                                <rect key="frame" x="10" y="33" width="428" height="438"/>
+                                <rect key="frame" x="10" y="33" width="438" height="438"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nk6-po-jmV">
@@ -48,7 +48,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eIa-aj-29G">
-                                        <rect key="frame" x="61" y="360" width="354" height="25"/>
+                                        <rect key="frame" x="61" y="360" width="364" height="25"/>
                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" id="ohx-Ye-2FF">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -59,14 +59,14 @@
                                         </connections>
                                     </popUpButton>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jCK-6C-Pig">
-                                        <rect key="frame" x="343" y="402" width="71" height="18"/>
+                                        <rect key="frame" x="353" y="402" width="71" height="18"/>
                                         <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1JQ-Yk-NA2">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-Aa-f0Y">
-                                        <rect key="frame" x="63" y="400" width="274" height="22"/>
+                                        <rect key="frame" x="63" y="400" width="284" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="oUg-PU-lff">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -74,9 +74,9 @@
                                         </textFieldCell>
                                     </textField>
                                     <box title="Configure" translatesAutoresizingMaskIntoConstraints="NO" id="X3Y-XO-nVi">
-                                        <rect key="frame" x="17" y="16" width="394" height="327"/>
+                                        <rect key="frame" x="17" y="16" width="404" height="327"/>
                                         <view key="contentView" id="gbY-08-paA">
-                                            <rect key="frame" x="3" y="3" width="388" height="309"/>
+                                            <rect key="frame" x="3" y="3" width="398" height="309"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </box>
@@ -156,7 +156,7 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView id="KAB-r2-418">
+                                                                <tableCellView identifier="TriggerNameCell" id="KAB-r2-418">
                                                                     <rect key="frame" x="1" y="1" width="286" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>

@@ -38,6 +38,7 @@ public class TriggerManager {
     
     public func raise(kind: Kind) {
         self.triggers[kind]?.trigger();
+        ActivityManager.manager.add(withTitle: "Triggering actions for \(kind.rawValue)");
     }
 }
 

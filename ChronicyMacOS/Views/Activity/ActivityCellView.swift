@@ -18,27 +18,21 @@ class ActivityCellView: NSTableCellView {
     public var dateValue: Date?;
     
     private func setup() {
-        guard let titleValue: String = self.titleValue else {
-            Log.warining(message: "Title value not set");
-            return;
+        if let titleValue: String = self.titleValue {
+            self.titleLabel.stringValue = titleValue;
+//            Log.warining(message: "Title value not set");
         }
         
-        self.titleLabel.stringValue = titleValue;
-        
-        guard let commentValue: String = self.commentValue else {
-            Log.warining(message: "Comment value not set");
-            return;
+        if let commentValue: String = self.commentValue {
+            self.commentLabel.stringValue = commentValue;
+//            Log.warining(message: "Comment value not set");
         }
         
-        self.commentLabel.stringValue = commentValue;
-        
-        guard let dateValue: Date = self.dateValue else {
-            Log.warining(message: "Date value not set");
-            return;
+        if let dateValue: Date = self.dateValue {
+            let formatter: DateFormatter = DateFormatter();
+            formatter.dateFormat = "HH";
+            self.dateLabel.stringValue = formatter.string(from: dateValue);
+//            Log.warining(message: "Date value not set");
         }
-        
-        let formatter: DateFormatter = DateFormatter();
-        formatter.dateFormat = "HH";
-        self.dateLabel.stringValue = formatter.string(from: dateValue);
     }
 }

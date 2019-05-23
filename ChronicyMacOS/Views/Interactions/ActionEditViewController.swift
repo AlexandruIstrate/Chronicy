@@ -19,6 +19,9 @@ class ActionEditViewController: NSViewController {
     @IBOutlet private weak var triggerTypePopUp: NSPopUpButton!
     @IBOutlet private weak var triggerTable: NSTableView!;
     
+    public typealias ActionEditViewControllerCallback = (Action) -> ();
+    public var callback: ActionEditViewControllerCallback?;
+    
     private var actionViewController: NSViewController?;
     private var previousView: NSView?;
     
@@ -51,6 +54,7 @@ class ActionEditViewController: NSViewController {
         action?.enabled = (self.enabledCheckbox.state == .on);
         // Triggers are directly added to the Action
         
+        callback?(action!);
         super.viewDidDisappear();
     }
     
@@ -99,6 +103,7 @@ class ActionEditViewController: NSViewController {
         
         self.nameField.stringValue = action.name;
         self.enabledCheckbox.state = (action.enabled ? .on : .off);
+        self.actionPopUp.selectItem(withTitle: action.kind.rawValue);
     }
     
     @IBAction private func onTriggerOptionsSelected(_ sender: NSSegmentedControl) {
@@ -137,7 +142,7 @@ class ActionEditViewController: NSViewController {
         }
 
         let newAction: Action = Action.instantiate(kind: kind, name: action!.name);
-        newAction.triggers = action!.triggers;
+        newAction.add(triggers: action!.triggers);
         newAction.enabled = action!.enabled;
 
         self.action = newAction;

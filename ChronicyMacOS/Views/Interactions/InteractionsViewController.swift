@@ -9,12 +9,11 @@ import Cocoa;
 import ChronicyFrameworkMacOS;
 
 class InteractionsViewController: NSViewController {
-
     @IBOutlet private weak var leftView: NSView!;
     @IBOutlet private weak var tableView: NSTableView!;
     
     private var lastActionView: NSView?;
-    private let actionEditViewController: ActionEditViewController = ActionEditViewController();
+    private var actionEditViewController: ActionEditViewController = ActionEditViewController();
     
     private var actionManager: ActionManager = ActionManager.manager;
     
@@ -51,7 +50,12 @@ class InteractionsViewController: NSViewController {
     
     private func displayEditView(action: Action) {
         lastActionView?.removeFromSuperview();
+        
+        actionEditViewController = ActionEditViewController();
         actionEditViewController.action = action;
+        actionEditViewController.callback = { (newAction: Action) in
+            self.actionManager.replace(action: action, with: newAction);
+        }
         
         let newView: NSView = actionEditViewController.view;
         self.view.addSubview(newView);

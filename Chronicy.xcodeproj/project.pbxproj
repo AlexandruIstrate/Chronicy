@@ -82,6 +82,7 @@
 		A79886782239AB760029A791 /* ExtensionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79886772239AB760029A791 /* ExtensionStateManager.swift */; };
 		A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB22273B1E200EE354C /* BrowserTracker.swift */; };
 		A79EEAB72273B1E200EE354C /* SafariBrowserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB52273B1E200EE354C /* SafariBrowserTracker.swift */; };
+		A7A46146228CBDDF0031DDE3 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A46145228CBDDF0031DDE3 /* DictionaryLoader.swift */; };
 		A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */; };
 		A7A7C2EF224A7ABC000D114E /* OutlineCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */; };
 		A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A88AC222429EF500C5A94E /* OutlineViewController.swift */; };
@@ -263,6 +264,7 @@
 		A79886772239AB760029A791 /* ExtensionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStateManager.swift; sourceTree = "<group>"; };
 		A79EEAB22273B1E200EE354C /* BrowserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserTracker.swift; sourceTree = "<group>"; };
 		A79EEAB52273B1E200EE354C /* SafariBrowserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariBrowserTracker.swift; sourceTree = "<group>"; };
+		A7A46145228CBDDF0031DDE3 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
 		A7A7C2EC224A7ABC000D114E /* OutlineCentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineCentralViewController.swift; sourceTree = "<group>"; };
 		A7A7C2ED224A7ABC000D114E /* OutlineCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutlineCentralViewController.xib; sourceTree = "<group>"; };
 		A7A88AC222429EF500C5A94E /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				A70D399A22553AD900580FF4 /* Color.swift */,
 				A7109E302235849400E3EB29 /* ViewLoader.swift */,
 				A7B898222280043600BC0196 /* Table.swift */,
+				A7A46145228CBDDF0031DDE3 /* DictionaryLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1125,6 +1128,7 @@
 				A7A88AC422429EF500C5A94E /* OutlineViewController.swift in Sources */,
 				A7BC2841224BDD8A00A1A6DE /* NotificationSender.swift in Sources */,
 				A7C75A1C227F4CE600C61174 /* InteractionsViewController.swift in Sources */,
+				A7A46146228CBDDF0031DDE3 /* DictionaryLoader.swift in Sources */,
 				A7B898232280043600BC0196 /* Table.swift in Sources */,
 				A7109E312235849400E3EB29 /* ViewLoader.swift in Sources */,
 				A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */,

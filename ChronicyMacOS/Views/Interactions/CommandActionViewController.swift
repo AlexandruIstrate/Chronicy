@@ -38,11 +38,15 @@ class CommandActionViewController: ActionViewController<CommandAction> {
         
         commandField.stringValue = action.command;
         usePrivilegesCheckbox.state = (action.useSystemPrivileges ? .on : .off);
+        
+        super.onChangeTo();
     }
     
     override func onChangeAway() {
         self.action?.command = commandField.stringValue;
         self.action?.useSystemPrivileges = (self.usePrivilegesCheckbox.state == .on);
+        
+        super.onChangeAway();
     }
     
     private func setup() {

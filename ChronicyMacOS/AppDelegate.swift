@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DistributedObjectManager.manager.keyStorage = UserDefaultsKeyStorage(suiteName: SharedConstants.appGroupSuiteName);
         DistributedObjectManager.manager.retrievalAction = .remove;
         
+        ApplicationManager.manager.launcher = MacOSApplicationLauncher();
+        
         ModuleManager.manager.add(module: SafariBrowserModule());
         TriggerManager.manager.register(register: MacOSTriggerRegister());
     }
