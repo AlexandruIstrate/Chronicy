@@ -83,7 +83,11 @@ extension CustomField {
             return value as? String;
             
         case .number:
-            return String(value as! Float);
+            guard let newValue: Float = value as? Float else {
+                return nil;
+            }
+            
+            return String(newValue);
         }
     }
 }
