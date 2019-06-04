@@ -11,6 +11,8 @@ macOS/xcuserdata/
 Windows/Chronicy/.vs/
 Windows/Chronicy/Chronicy.Service/bin/
 Windows/Chronicy/Chronicy.Service/obj/
+Windows/Chronicy/Chronicy.Excel/bin/
+Windows/Chronicy/Chronicy.Excel/obj/
 
 # Files
 *.xccheckout
