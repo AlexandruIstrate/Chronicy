@@ -8,6 +8,8 @@ macOS/DerivedData/
 macOS/build/
 macOS/xcuserdata/
 
+Windows/Chronicy/.vs/
+
 # Files
 *.xccheckout
 *.pbxuser
