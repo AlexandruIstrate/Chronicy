@@ -4,9 +4,9 @@
 ## XCode
 
 # Folders
-DerivedData/
-build/
-xcuserdata/
+macOS/DerivedData/
+macOS/build/
+macOS/xcuserdata/
 
 # Files
 *.xccheckout
