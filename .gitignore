@@ -9,6 +9,8 @@ macOS/build/
 macOS/xcuserdata/
 
 Windows/Chronicy/.vs/
+Windows/Chronicy/Chronicy.Service/bin/
+Windows/Chronicy/Chronicy.Service/obj/
 
 # Files
 *.xccheckout
