@@ -4,13 +4,20 @@
 ## XCode
 
 # Folders
+#   macOS
 macOS/DerivedData/
 macOS/build/
 macOS/xcuserdata/
 
+#   Windows
 Windows/Chronicy/.vs/
+
+Windows/Chronicy/Chronicy/bin/
+Windows/Chronicy/Chronicy/obj/
+
 Windows/Chronicy/Chronicy.Service/bin/
 Windows/Chronicy/Chronicy.Service/obj/
+
 Windows/Chronicy/Chronicy.Excel/bin/
 Windows/Chronicy/Chronicy.Excel/obj/
 
