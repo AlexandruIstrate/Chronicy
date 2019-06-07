@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Card.cs" />
+    <Compile Include="Data\CustomField.cs" />
+    <Compile Include="Data\Notebook.cs" />
+    <Compile Include="Data\Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
