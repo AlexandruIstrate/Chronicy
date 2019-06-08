@@ -49,6 +49,9 @@
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\LogInformationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\IClient.cs" />
+    <Compile Include="Web\ResponseInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
