@@ -5,13 +5,11 @@ namespace Chronicy.Data
     public class Stack
     {
         public string Name { get; set; }
-        public string Comment { get; set; }
         public List<Card> Cards { get; }
 
-        public Stack(string name, string comment = "")
+        public Stack(string name)
         {
             Name = name;
-            Comment = comment;
             Cards = new List<Card>();
         }
 
