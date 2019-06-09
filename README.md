@@ -8,3 +8,23 @@ Chronicy is the new standard in task management. With the help of Chronicy you c
 Chronicy features a simple interface that gives you a clear overview of what you are working on.
 
 ![Main Window](./Images/MainWindow.png)
+
+## Platform Support
+|   Platform   |    Status    |          Available Components          |
+| ------------ | ------------ | -------------------------------------- |
+| Windows      | WIP          | Windows Service and Office Extensions  |
+| macOS        | Supported    | Desktop app and Safari extension       |
+
+## Technologies Used
+#### Windows
+* C#
+* .NET Framework 4.7.2
+* Newtonsoft JSON
+* NLog
+* NUnit
+
+#### macOS
+* Swift
+* Cocoa
+* CocoaPods
+* Alamofire
