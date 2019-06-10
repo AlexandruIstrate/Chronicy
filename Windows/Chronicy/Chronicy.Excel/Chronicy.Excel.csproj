@@ -156,6 +156,8 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="App\AppExtension.cs" />
+    <Compile Include="App\IExtension.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>

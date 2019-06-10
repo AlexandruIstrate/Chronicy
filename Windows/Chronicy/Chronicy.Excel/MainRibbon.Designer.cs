@@ -37,11 +37,11 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.enableButton = this.Factory.CreateRibbonToggleButton();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
+            this.box1 = this.Factory.CreateRibbonBox();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
-            this.enableButton = this.Factory.CreateRibbonToggleButton();
-            this.box1 = this.Factory.CreateRibbonBox();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.historyGallery = this.Factory.CreateRibbonGallery();
             this.button1 = this.Factory.CreateRibbonButton();
@@ -73,6 +73,25 @@
             this.group1.Label = "Selection";
             this.group1.Name = "group1";
             // 
+            // enableButton
+            // 
+            this.enableButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.enableButton.Label = "Enabled";
+            this.enableButton.Name = "enableButton";
+            this.enableButton.ShowImage = true;
+            this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            // 
+            // box1
+            // 
+            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.notebookDropDown);
+            this.box1.Items.Add(this.stackDropDown);
+            this.box1.Name = "box1";
+            // 
             // notebookDropDown
             // 
             this.notebookDropDown.Label = "Notebook";
@@ -84,24 +103,6 @@
             this.stackDropDown.Label = "Stack";
             this.stackDropDown.Name = "stackDropDown";
             this.stackDropDown.ShowImage = true;
-            // 
-            // enableButton
-            // 
-            this.enableButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.enableButton.Label = "Enabled";
-            this.enableButton.Name = "enableButton";
-            this.enableButton.ShowImage = true;
-            // 
-            // box1
-            // 
-            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box1.Items.Add(this.notebookDropDown);
-            this.box1.Items.Add(this.stackDropDown);
-            this.box1.Name = "box1";
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
             // 
             // group2
             // 
