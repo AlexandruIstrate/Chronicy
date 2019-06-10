@@ -22,6 +22,9 @@ Windows/Chronicy/Chronicy.Service/obj/
 Windows/Chronicy/Chronicy.Excel/bin/
 Windows/Chronicy/Chronicy.Excel/obj/
 
+Windows/Chronicy/Chronicy.Web/bin/
+Windows/Chronicy/Chronicy.Web/obj/
+
 # Files
 *.xccheckout
 *.pbxuser
