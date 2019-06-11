@@ -59,11 +59,13 @@
     <Compile Include="Web\IClient.cs" />
     <Compile Include="Web\Models\Card.cs" />
     <Compile Include="Web\Models\CustomField.cs" />
+    <Compile Include="Web\Models\ErrorResponse.cs" />
+    <Compile Include="Web\Models\ListResponse.cs" />
     <Compile Include="Web\Models\ModelBase.cs" />
     <Compile Include="Web\Models\Notebook.cs" />
     <Compile Include="Web\Models\Stack.cs" />
     <Compile Include="Web\Models\Token.cs" />
-    <Compile Include="Web\ResponseInfo.cs" />
+    <Compile Include="Web\Models\ResponseInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

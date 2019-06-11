@@ -9,6 +9,6 @@ namespace Chronicy.Web.Models
         public string Name { get; set; }
 
         [JsonProperty("cards")]
-        public IEnumerable<Card> Cards { get; set; }
+        public List<Card> Cards { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace Chronicy.Web
 
     public enum ClientMethod
     {
-        Put, Post, Delete, Head, Options, Trace
+        Get, Head, Post, Put, Delete, Connect, Options, Trace, Patch
     }
 }

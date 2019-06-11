@@ -5,10 +5,13 @@ namespace Chronicy.Web.Models
 {
     public class Notebook : ModelBase
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("stacks")]
-        public IEnumerable<Stack> Stacks { get; set; }
+        public List<Stack> Stacks { get; set; }
     }
 }
