@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
+﻿using Chronicy.Service.App;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chronicy.Service
 {
     public partial class Service : ServiceBase
     {
+        // TODO: Better initialization
+        private IService service = new AppService();
+
         public Service()
         {
             InitializeComponent();
@@ -19,10 +15,12 @@ namespace Chronicy.Service
 
         protected override void OnStart(string[] args)
         {
+            service.OnStart();
         }
 
         protected override void OnStop()
         {
+            service.OnStop();
         }
     }
 }
