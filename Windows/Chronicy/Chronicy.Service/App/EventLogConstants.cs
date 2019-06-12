@@ -3,6 +3,6 @@
     public class EventLogConstants
     {
         public const string SourceName = "ChronicyService";
-        public const string LogName = "ChronicyEvents";
+        public const string LogName = "ChronicyEventLog";
     }
 }

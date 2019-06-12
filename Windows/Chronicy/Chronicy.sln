@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicy", "Chronicy\Chroni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicy.Web", "Chronicy.Web\Chronicy.Web.csproj", "{89737434-1D56-4E0C-AD4A-D84D773FB780}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicy.Tests", "Chronicy.Tests\Chronicy.Tests.csproj", "{3E727B9C-EDC6-49C3-8DF2-E5859380216C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{89737434-1D56-4E0C-AD4A-D84D773FB780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89737434-1D56-4E0C-AD4A-D84D773FB780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89737434-1D56-4E0C-AD4A-D84D773FB780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E727B9C-EDC6-49C3-8DF2-E5859380216C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E727B9C-EDC6-49C3-8DF2-E5859380216C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E727B9C-EDC6-49C3-8DF2-E5859380216C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E727B9C-EDC6-49C3-8DF2-E5859380216C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
