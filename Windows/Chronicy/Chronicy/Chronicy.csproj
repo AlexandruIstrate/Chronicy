@@ -52,6 +52,7 @@
     <Compile Include="Data\CustomField.cs" />
     <Compile Include="Data\Notebook.cs" />
     <Compile Include="Data\Stack.cs" />
+    <Compile Include="Data\Storage\IDataSource.cs" />
     <Compile Include="Information\IInformationContext.cs" />
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\LogInformationContext.cs" />

@@ -7,5 +7,11 @@ namespace Chronicy.Communication
     {
         [OperationContract(IsOneWay = true)]
         void Connect();
+
+        [OperationContract(IsOneWay = true)]
+        void SendSelectedNotebook(string notebook);
+
+        [OperationContract(IsOneWay = true)]
+        void SendSelectedStack(string stack);
     }
 }

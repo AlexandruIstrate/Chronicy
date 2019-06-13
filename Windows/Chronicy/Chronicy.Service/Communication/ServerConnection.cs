@@ -4,7 +4,7 @@ using System.ServiceModel;
 
 namespace Chronicy.Service.Communication
 {
-    public class ServiceBootstrapper
+    public class ServerConnection
     {
         public void Start()
         {

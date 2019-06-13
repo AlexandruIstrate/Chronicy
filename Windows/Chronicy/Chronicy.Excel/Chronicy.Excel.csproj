@@ -158,9 +158,12 @@
   -->
   <ItemGroup>
     <Compile Include="App\AppExtension.cs" />
+    <Compile Include="App\EndpointConnectionException.cs" />
     <Compile Include="App\IExtension.cs" />
-    <Compile Include="Communication\ClientBootstrapper.cs" />
+    <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
+    <Compile Include="Information\MessageBoxContext.cs" />
+    <Compile Include="Information\StatusBarContext.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -181,6 +184,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Chronicy.Excel_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -207,6 +211,9 @@
       <Project>{2cde38c6-1f0f-41e2-995f-dcdffb272eca}</Project>
       <Name>Chronicy</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tracking\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

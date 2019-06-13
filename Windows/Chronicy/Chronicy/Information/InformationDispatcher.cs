@@ -7,14 +7,14 @@
 
         public IInformationContext DefaultContext { get; }
 
-        public void Dispatch(string messsage, InformationKind informationKind, IInformationContext context)
+        public void Dispatch(string messsage, IInformationContext context, InformationKind informationKind = InformationKind.Info)
         {
             context.MessageDispatched(messsage, informationKind);
         }
 
         public void Dispatch(string messsage, InformationKind informationKind = InformationKind.Info)
         {
-            Dispatch(messsage, informationKind, DefaultContext);
+            Dispatch(messsage, DefaultContext, informationKind);
         }
     }
 

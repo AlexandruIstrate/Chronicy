@@ -13,12 +13,12 @@ namespace Chronicy.Service.App
             InitializeEventLog();
             InitializeCommunication();
 
-            InformationDispatcher.Default.Dispatch("OnStart", InformationKind.Info, this);
+            InformationDispatcher.Default.Dispatch("OnStart", this);
         }
 
         public override void OnStop()
         {
-            InformationDispatcher.Default.Dispatch("OnStop", InformationKind.Info, this);
+            InformationDispatcher.Default.Dispatch("OnStop", this);
         }
 
         public void MessageDispatched(string message, InformationKind informationKind)
@@ -41,7 +41,7 @@ namespace Chronicy.Service.App
 
         private void InitializeCommunication()
         {
-            ServiceBootstrapper bootstrapper = new ServiceBootstrapper();
+            ServerConnection bootstrapper = new ServerConnection();
             bootstrapper.Start();
         }
 
@@ -60,5 +60,11 @@ namespace Chronicy.Service.App
             }
         }
 
+    }
+
+    internal static class EventLogConstants
+    {
+        public const string SourceName = "ChronicyService";
+        public const string LogName = "ChronicyEventLog";
     }
 }

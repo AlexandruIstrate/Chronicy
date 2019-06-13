@@ -1,24 +1,39 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Excel.Communication;
-using System.Diagnostics;
+using System;
+using System.ServiceModel;
 
 namespace Chronicy.Excel.App
 {
     public class AppExtension : IExtension
     {
-        private IServerService service;
+        // TODO: Maybe use Lazy<T>?
+        private ClientConnection connection;
 
-        public override void OnStart()
+        public IServerService Service { get; set; }
+
+        public override void Connect()
         {
-            Debug.WriteLine("Extension OnStart");
+            try
+            {
+                if (connection == null)
+                {
+                    connection = new ClientConnection();
+                    connection.ConnectionClosed += (() => { Connected = false; });
+                }
 
-            ClientBootstrapper bootstrapper = new ClientBootstrapper();
-            service = bootstrapper.Start(new TrackedClient());
+                Service = connection.Connect(new TrackedClient());
+                Connected = true;
+            }
+            catch (EndpointNotFoundException e)
+            {
+                throw new EndpointConnectionException("Could not connect to the endpoint: " + e.Message);
+            }
         }
 
-        public override void OnShutdown()
+        public override void Sync()
         {
-            Debug.WriteLine("Extension OnShutdown");
+            throw new NotImplementedException();
         }
     }
 }

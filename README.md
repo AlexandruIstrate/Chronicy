@@ -17,9 +17,9 @@ Chronicy features a simple interface that gives you a clear overview of what you
 
 The Microsoft Excel extension
 
-*More Office application extensions coming soon!*
-
 ![Extension Excel](./Images/ExtensionExcel.png)
+
+*More Office application extensions coming soon!*
 
 The Safari browser extension
 

@@ -1,10 +1,11 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace Chronicy.Communication
 {
     public interface IClientCallback
     {
         [OperationContract(IsOneWay = true)]
-        void OnTestInfo(string info);
+        void SendAvailableNotebooks(List<string> notebooks);
     }
 }

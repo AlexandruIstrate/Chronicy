@@ -4,6 +4,7 @@ using HeaderCollection = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Chronicy.Web
 {
+    // TODO: Add synchronous methods as well
     public interface IClient : IDisposable
     {
         Task<Tuple<ResponseInfo, string>> DownloadAsync(string url, HeaderCollection headers = null);

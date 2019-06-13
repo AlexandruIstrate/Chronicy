@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Excel;
 using Chronicy.Excel.App;
 using Microsoft.Office.Tools.Ribbon;
+using System.Diagnostics;
 
 namespace Chronicy.Excel
 {
@@ -19,7 +16,19 @@ namespace Chronicy.Excel
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            extension.OnStart();
+            try
+            {
+                extension.OnStart();
+                extension.Connect();
+            }
+            catch (EndpointConnectionException)
+            {
+                // If we can't connect when we initialize the extension, just ignore for now and let the user try to connect
+                // We should change this in the future to use some kind of passive, start-up display system
+                // However, for now, we just log the failure
+
+                Debug.WriteLine("Could not auto-connect to service!");
+            }
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
