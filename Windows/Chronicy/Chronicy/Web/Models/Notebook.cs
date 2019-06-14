@@ -6,7 +6,7 @@ namespace Chronicy.Web.Models
     public class Notebook : ModelBase
     {
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

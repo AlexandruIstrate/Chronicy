@@ -16,27 +16,27 @@
 
         public string GetNotebooks()
         {
-            return $"{ BaseUrl }/notebooks";
+            return $"{ BaseUrl }/notebook";
         }
 
         public string GetNotebook(string id)
         {
-            return $"{ BaseUrl }/notebooks?id={ id }";
+            return $"{ BaseUrl }/notebook?id={ id }";
         }
 
         public string CreateNotebook()
         {
-            return $"{ BaseUrl }/notebooks/create";
+            return $"{ BaseUrl }/notebook/create";
         }
 
         public string DeleteNotebook(string id)
         {
-            return $"{ BaseUrl }/notebooks/delete?id={ id }";
+            return $"{ BaseUrl }/notebook/delete?id={ id }";
         }
 
         public string UpdateNotebook(string id)
         {
-            return $"{ BaseUrl }/notebooks/update?id={ id }";
+            return $"{ BaseUrl }/notebook/update?id={ id }";
         }
     }
 }

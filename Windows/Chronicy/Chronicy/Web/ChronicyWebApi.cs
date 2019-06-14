@@ -59,12 +59,12 @@ namespace Chronicy.Web
 
         public Task<ErrorResponse> DeleteNotebookAsync(Notebook notebook)
         {
-            return UploadDataAsync<ErrorResponse>(urlBuilder.DeleteNotebook(notebook.Id), string.Empty, ClientMethod.Delete);
+            return UploadDataAsync<ErrorResponse>(urlBuilder.DeleteNotebook(notebook.Id.ToString()), string.Empty, ClientMethod.Delete);
         }
 
         public Task<ErrorResponse> UpdateNotebookAsync(Notebook notebook)
         {
-            return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+            return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
         }
 
         private async Task<T> UploadDataAsync<T>(string url, string data, ClientMethod method) where T : ModelBase
