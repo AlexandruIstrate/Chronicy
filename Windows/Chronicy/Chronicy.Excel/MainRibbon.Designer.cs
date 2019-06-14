@@ -34,18 +34,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl1 = this.Factory.CreateRibbonDropDownItem();
-            Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl2 = this.Factory.CreateRibbonDropDownItem();
             this.tab1 = this.Factory.CreateRibbonTab();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.box1 = this.Factory.CreateRibbonBox();
-            this.group2 = this.Factory.CreateRibbonGroup();
-            this.connectButton = this.Factory.CreateRibbonButton();
-            this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.box1 = this.Factory.CreateRibbonBox();
+            this.showCompatibleCheckBox = this.Factory.CreateRibbonCheckBox();
+            this.connectButton = this.Factory.CreateRibbonButton();
+            this.enableButton = this.Factory.CreateRibbonToggleButton();
+            this.newNotebookButton = this.Factory.CreateRibbonButton();
+            this.newStackButton = this.Factory.CreateRibbonButton();
+            this.viewAllButton = this.Factory.CreateRibbonButton();
             this.trackingMenu = this.Factory.CreateRibbonMenu();
             this.historyGallery = this.Factory.CreateRibbonGallery();
             this.syncButton = this.Factory.CreateRibbonButton();
@@ -53,8 +55,8 @@
             this.tab2.SuspendLayout();
             this.group3.SuspendLayout();
             this.group1.SuspendLayout();
-            this.box1.SuspendLayout();
             this.group2.SuspendLayout();
+            this.box1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -81,15 +83,25 @@
             // group1
             // 
             this.group1.Items.Add(this.box1);
+            this.group1.Items.Add(this.newNotebookButton);
+            this.group1.Items.Add(this.newStackButton);
+            this.group1.Items.Add(this.viewAllButton);
             this.group1.Label = "Selection";
             this.group1.Name = "group1";
             // 
-            // box1
+            // notebookDropDown
             // 
-            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box1.Items.Add(this.notebookDropDown);
-            this.box1.Items.Add(this.stackDropDown);
-            this.box1.Name = "box1";
+            this.notebookDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconNotebook;
+            this.notebookDropDown.Label = "Notebook";
+            this.notebookDropDown.Name = "notebookDropDown";
+            this.notebookDropDown.ShowImage = true;
+            // 
+            // stackDropDown
+            // 
+            this.stackDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconStack;
+            this.stackDropDown.Label = "Stack";
+            this.stackDropDown.Name = "stackDropDown";
+            this.stackDropDown.ShowImage = true;
             // 
             // group2
             // 
@@ -98,6 +110,19 @@
             this.group2.Items.Add(this.syncButton);
             this.group2.Label = "Tools";
             this.group2.Name = "group2";
+            // 
+            // box1
+            // 
+            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.notebookDropDown);
+            this.box1.Items.Add(this.stackDropDown);
+            this.box1.Items.Add(this.showCompatibleCheckBox);
+            this.box1.Name = "box1";
+            // 
+            // showCompatibleCheckBox
+            // 
+            this.showCompatibleCheckBox.Label = "Only Show Compatible";
+            this.showCompatibleCheckBox.Name = "showCompatibleCheckBox";
             // 
             // connectButton
             // 
@@ -117,23 +142,23 @@
             this.enableButton.ShowImage = true;
             this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
             // 
-            // notebookDropDown
+            // newNotebookButton
             // 
-            this.notebookDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconNotebook;
-            ribbonDropDownItemImpl1.Label = "Home";
-            this.notebookDropDown.Items.Add(ribbonDropDownItemImpl1);
-            this.notebookDropDown.Label = "Notebook";
-            this.notebookDropDown.Name = "notebookDropDown";
-            this.notebookDropDown.ShowImage = true;
+            this.newNotebookButton.Label = "New Notebook";
+            this.newNotebookButton.Name = "newNotebookButton";
+            this.newNotebookButton.ShowImage = true;
             // 
-            // stackDropDown
+            // newStackButton
             // 
-            this.stackDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconStack;
-            ribbonDropDownItemImpl2.Label = "Personal Projects";
-            this.stackDropDown.Items.Add(ribbonDropDownItemImpl2);
-            this.stackDropDown.Label = "Stack";
-            this.stackDropDown.Name = "stackDropDown";
-            this.stackDropDown.ShowImage = true;
+            this.newStackButton.Label = "New Stack";
+            this.newStackButton.Name = "newStackButton";
+            this.newStackButton.ShowImage = true;
+            // 
+            // viewAllButton
+            // 
+            this.viewAllButton.Label = "View All";
+            this.viewAllButton.Name = "viewAllButton";
+            this.viewAllButton.ShowImage = true;
             // 
             // trackingMenu
             // 
@@ -176,10 +201,10 @@
             this.group3.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
-            this.box1.ResumeLayout(false);
-            this.box1.PerformLayout();
             this.group2.ResumeLayout(false);
             this.group2.PerformLayout();
+            this.box1.ResumeLayout(false);
+            this.box1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -192,13 +217,17 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonDropDown notebookDropDown;
         internal Microsoft.Office.Tools.Ribbon.RibbonDropDown stackDropDown;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton enableButton;
-        internal Microsoft.Office.Tools.Ribbon.RibbonBox box1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery historyGallery;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton syncButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton connectButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu trackingMenu;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton newNotebookButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton newStackButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton viewAllButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox showCompatibleCheckBox;
     }
 
     partial class ThisRibbonCollection

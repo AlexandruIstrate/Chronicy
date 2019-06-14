@@ -20,6 +20,8 @@ namespace Chronicy.Excel.App
                 {
                     connection = new ClientConnection();
                     connection.ConnectionClosed += (() => { Connected = false; });
+                    connection.ConnectionClosed += (() => { Connected = false; });
+                    connection.ConnectionClosed += (() => { Connected = false; });
                 }
 
                 Service = connection.Connect(new TrackedClient());

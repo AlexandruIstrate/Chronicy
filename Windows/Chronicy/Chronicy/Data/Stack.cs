@@ -5,7 +5,7 @@ namespace Chronicy.Data
     public class Stack
     {
         public string Name { get; set; }
-        public List<Card> Cards { get; }
+        public List<Card> Cards { get; set; }
 
         public Stack(string name)
         {
@@ -16,6 +16,11 @@ namespace Chronicy.Data
         public void Add(Card card)
         {
             Cards.Add(card);
+        }
+
+        public void Add(IEnumerable<Card> cards)
+        {
+            Cards.AddRange(cards);
         }
 
         public void Remove(Card card)

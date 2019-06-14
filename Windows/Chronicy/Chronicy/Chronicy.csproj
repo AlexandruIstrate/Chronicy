@@ -50,6 +50,7 @@
     <Compile Include="Communication\IServerService.cs" />
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\CustomField.cs" />
+    <Compile Include="Data\IConverter.cs" />
     <Compile Include="Data\Notebook.cs" />
     <Compile Include="Data\Stack.cs" />
     <Compile Include="Data\Storage\IDataSource.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="Web\ChronicyWebApi.cs" />
     <Compile Include="Web\ChronicyWebClient.cs" />
     <Compile Include="Web\ClientConstants.cs" />
+    <Compile Include="Web\Converters\CardConverter.cs" />
+    <Compile Include="Web\Converters\CustomFieldConverter.cs" />
+    <Compile Include="Web\Converters\NotebookConverter.cs" />
+    <Compile Include="Web\Converters\StackConverter.cs" />
     <Compile Include="Web\IClient.cs" />
     <Compile Include="Web\Models\Card.cs" />
     <Compile Include="Web\Models\CustomField.cs" />
@@ -76,5 +81,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

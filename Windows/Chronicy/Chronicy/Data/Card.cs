@@ -6,7 +6,7 @@ namespace Chronicy.Data
     {
         public string Name { get; set; }
         public string Comment { get; set; }
-        public List<CustomField> Fields { get; }
+        public List<CustomField> Fields { get; set; }
 
         public Card(string name, string comment = "")
         {
@@ -18,6 +18,11 @@ namespace Chronicy.Data
         public void Add(CustomField field)
         {
             Fields.Add(field);
+        }
+
+        public void Add(IEnumerable<CustomField> fields)
+        {
+            Fields.AddRange(fields);
         }
 
         public void Remove(CustomField field)
