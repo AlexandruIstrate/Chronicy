@@ -23,19 +23,22 @@ The Microsoft Excel extension
 
 The Safari browser extension
 
-![Extension Safari](./Images/ExtensionSafari.png)
+![Extension Safari](./Images/ExtensionSafari.jpg)
 
 The Windows service that collects data sent by extensions
 
 ![Service Windows](./Images/ServiceWindows.png)
 
-The Chronicy web service that allows your stored information to be carried cross-computer and cross-platform
+[comment]: <> (The Chronicy web service that allows your stored information to be carried cross-computer and cross-platform)
 
-![Web](./Images/Web.png)
+[//]: ![Web](./Images/Web.png)
 
 ## Upcoming Features
 
 - [ ] Windows service and Office extensions
+- [ ] Web service
+- [ ] Cross platform communication
+- [ ] Application installer
 
 ## Platform Support
 |   Platform   |    Status    |          Available Components          |

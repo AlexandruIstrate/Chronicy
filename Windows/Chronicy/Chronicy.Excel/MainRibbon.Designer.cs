@@ -39,13 +39,13 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group3 = this.Factory.CreateRibbonGroup();
-            this.connectButton = this.Factory.CreateRibbonButton();
-            this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.connectButton = this.Factory.CreateRibbonButton();
+            this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
-            this.group2 = this.Factory.CreateRibbonGroup();
             this.trackingMenu = this.Factory.CreateRibbonMenu();
             this.historyGallery = this.Factory.CreateRibbonGallery();
             this.syncButton = this.Factory.CreateRibbonButton();
@@ -78,6 +78,27 @@
             this.group3.Label = "Extension";
             this.group3.Name = "group3";
             // 
+            // group1
+            // 
+            this.group1.Items.Add(this.box1);
+            this.group1.Label = "Selection";
+            this.group1.Name = "group1";
+            // 
+            // box1
+            // 
+            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.notebookDropDown);
+            this.box1.Items.Add(this.stackDropDown);
+            this.box1.Name = "box1";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.trackingMenu);
+            this.group2.Items.Add(this.historyGallery);
+            this.group2.Items.Add(this.syncButton);
+            this.group2.Label = "Tools";
+            this.group2.Name = "group2";
+            // 
             // connectButton
             // 
             this.connectButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -96,23 +117,10 @@
             this.enableButton.ShowImage = true;
             this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
             // 
-            // group1
-            // 
-            this.group1.Items.Add(this.box1);
-            this.group1.Label = "Selection";
-            this.group1.Name = "group1";
-            // 
-            // box1
-            // 
-            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box1.Items.Add(this.notebookDropDown);
-            this.box1.Items.Add(this.stackDropDown);
-            this.box1.Name = "box1";
-            // 
             // notebookDropDown
             // 
             this.notebookDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconNotebook;
-            ribbonDropDownItemImpl1.Label = "Work";
+            ribbonDropDownItemImpl1.Label = "Home";
             this.notebookDropDown.Items.Add(ribbonDropDownItemImpl1);
             this.notebookDropDown.Label = "Notebook";
             this.notebookDropDown.Name = "notebookDropDown";
@@ -121,19 +129,11 @@
             // stackDropDown
             // 
             this.stackDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconStack;
-            ribbonDropDownItemImpl2.Label = "Current Project";
+            ribbonDropDownItemImpl2.Label = "Personal Projects";
             this.stackDropDown.Items.Add(ribbonDropDownItemImpl2);
             this.stackDropDown.Label = "Stack";
             this.stackDropDown.Name = "stackDropDown";
             this.stackDropDown.ShowImage = true;
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.trackingMenu);
-            this.group2.Items.Add(this.historyGallery);
-            this.group2.Items.Add(this.syncButton);
-            this.group2.Label = "Tools";
-            this.group2.Name = "group2";
             // 
             // trackingMenu
             // 
