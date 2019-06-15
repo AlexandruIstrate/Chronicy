@@ -53,6 +53,21 @@ namespace Chronicy.Excel
             extension.Enabled = enableButton.Checked;
         }
 
+        private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)
         {
             extension.Sync();

@@ -38,11 +38,11 @@
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.box1 = this.Factory.CreateRibbonBox();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
-            this.group2 = this.Factory.CreateRibbonGroup();
-            this.box1 = this.Factory.CreateRibbonBox();
             this.showCompatibleCheckBox = this.Factory.CreateRibbonCheckBox();
+            this.group2 = this.Factory.CreateRibbonGroup();
             this.connectButton = this.Factory.CreateRibbonButton();
             this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.newNotebookButton = this.Factory.CreateRibbonButton();
@@ -55,8 +55,8 @@
             this.tab2.SuspendLayout();
             this.group3.SuspendLayout();
             this.group1.SuspendLayout();
-            this.group2.SuspendLayout();
             this.box1.SuspendLayout();
+            this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -89,6 +89,14 @@
             this.group1.Label = "Selection";
             this.group1.Name = "group1";
             // 
+            // box1
+            // 
+            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.notebookDropDown);
+            this.box1.Items.Add(this.stackDropDown);
+            this.box1.Items.Add(this.showCompatibleCheckBox);
+            this.box1.Name = "box1";
+            // 
             // notebookDropDown
             // 
             this.notebookDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconNotebook;
@@ -103,6 +111,11 @@
             this.stackDropDown.Name = "stackDropDown";
             this.stackDropDown.ShowImage = true;
             // 
+            // showCompatibleCheckBox
+            // 
+            this.showCompatibleCheckBox.Label = "Only Show Compatible";
+            this.showCompatibleCheckBox.Name = "showCompatibleCheckBox";
+            // 
             // group2
             // 
             this.group2.Items.Add(this.trackingMenu);
@@ -110,19 +123,6 @@
             this.group2.Items.Add(this.syncButton);
             this.group2.Label = "Tools";
             this.group2.Name = "group2";
-            // 
-            // box1
-            // 
-            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box1.Items.Add(this.notebookDropDown);
-            this.box1.Items.Add(this.stackDropDown);
-            this.box1.Items.Add(this.showCompatibleCheckBox);
-            this.box1.Name = "box1";
-            // 
-            // showCompatibleCheckBox
-            // 
-            this.showCompatibleCheckBox.Label = "Only Show Compatible";
-            this.showCompatibleCheckBox.Name = "showCompatibleCheckBox";
             // 
             // connectButton
             // 
@@ -147,18 +147,21 @@
             this.newNotebookButton.Label = "New Notebook";
             this.newNotebookButton.Name = "newNotebookButton";
             this.newNotebookButton.ShowImage = true;
+            this.newNotebookButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnNewNotebookClicked);
             // 
             // newStackButton
             // 
             this.newStackButton.Label = "New Stack";
             this.newStackButton.Name = "newStackButton";
             this.newStackButton.ShowImage = true;
+            this.newStackButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnNewStackClicked);
             // 
             // viewAllButton
             // 
             this.viewAllButton.Label = "View All";
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.ShowImage = true;
+            this.viewAllButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewAllClicked);
             // 
             // trackingMenu
             // 
@@ -201,10 +204,10 @@
             this.group3.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
-            this.group2.ResumeLayout(false);
-            this.group2.PerformLayout();
             this.box1.ResumeLayout(false);
             this.box1.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
             this.ResumeLayout(false);
 
         }

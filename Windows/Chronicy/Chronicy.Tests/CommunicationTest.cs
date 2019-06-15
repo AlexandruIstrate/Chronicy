@@ -3,12 +3,12 @@
 namespace Chronicy.Tests
 {
     [TestFixture]
-    public class SampleTest
+    public class CommunicationTest
     {
         [Test]
-        public void SomeTest()
-        { 
-            Assert.That(2 == 2);
+        public void ClientAndServerCanCommunicate()
+        {
+
         }
     }
 }

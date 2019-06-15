@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
+    [DataContract]
     public class Stack
     {
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public List<Card> Cards { get; set; }
 
         public Stack(string name)

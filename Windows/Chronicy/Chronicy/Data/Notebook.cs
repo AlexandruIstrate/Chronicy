@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
+    [DataContract]
     public class Notebook
     {
+        [DataMember]
         public long Id { get; set; }
+
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public List<Stack> Stacks { get; set; }
 
         public Notebook(string name)

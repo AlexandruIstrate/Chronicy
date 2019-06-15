@@ -1,5 +1,7 @@
 ﻿using Chronicy.Communication;
-using System;
+using Chronicy.Data;
+using Chronicy.Information;
+using Chronicy.Service.Information;
 using System.ServiceModel;
 
 namespace Chronicy.Service.Communication
@@ -7,6 +9,9 @@ namespace Chronicy.Service.Communication
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class TrackingService : IServerService
     {
+        // Test only
+        private EventLogContext context = new EventLogContext();
+
         public IClientCallback Callback { get; set; }
 
         public void Connect()
@@ -14,14 +19,19 @@ namespace Chronicy.Service.Communication
             Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
         }
 
-        public void SendSelectedNotebook(string notebook)
+        public void SendSelectedNotebook(Notebook notebook)
         {
-            throw new NotImplementedException();
+            InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
         }
 
-        public void SendSelectedStack(string stack)
+        public void SendSelectedStack(Stack stack)
         {
-            throw new NotImplementedException();
+            InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
+        }
+
+        public void SendDebugMessage(string message)
+        {
+            InformationDispatcher.Default.Dispatch(message, context);
         }
     }
 }

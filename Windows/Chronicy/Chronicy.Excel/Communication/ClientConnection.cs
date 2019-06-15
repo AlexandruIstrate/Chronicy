@@ -11,10 +11,10 @@ namespace Chronicy.Excel.Communication
         public IServerService Connect(IClientCallback clientCallback)
         {
             InstanceContext context = new InstanceContext(clientCallback);
-            context.Closing += ((sender, args) => 
+            context.Closing += (sender, args) => 
             {
                 ConnectionClosed?.Invoke();
-            });
+            };
 
             DuplexChannelFactory<IServerService> channelFactory = new DuplexChannelFactory<IServerService>(context, new NetNamedPipeBinding(), new EndpointAddress(ConnectionConstants.EndpointFullAddress));
 

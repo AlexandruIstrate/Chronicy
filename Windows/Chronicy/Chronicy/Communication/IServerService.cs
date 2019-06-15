@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using Chronicy.Data;
+using System.ServiceModel;
 
 namespace Chronicy.Communication
 {
@@ -9,9 +10,12 @@ namespace Chronicy.Communication
         void Connect();
 
         [OperationContract(IsOneWay = true)]
-        void SendSelectedNotebook(string notebook);
+        void SendSelectedNotebook(Notebook notebook);
 
         [OperationContract(IsOneWay = true)]
-        void SendSelectedStack(string stack);
+        void SendSelectedStack(Stack stack);
+
+        [OperationContract(IsOneWay = true)]
+        void SendDebugMessage(string message);
     }
 }

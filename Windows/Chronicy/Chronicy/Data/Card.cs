@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
+    [DataContract]
     public class Card
     {
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public string Comment { get; set; }
+
+        [DataMember]
         public List<CustomField> Fields { get; set; }
 
         public Card(string name, string comment = "")
