@@ -162,6 +162,19 @@
     <Compile Include="App\IExtension.cs" />
     <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IFormBehavior.cs" />
+    <Compile Include="Forms\OverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OverviewForm.Designer.cs">
+      <DependentUpon>OverviewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Information\MessageBoxContext.cs" />
     <Compile Include="Information\StatusBarContext.cs" />
     <Compile Include="MainRibbon.cs">
@@ -173,6 +186,13 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tracking\ExcelTracker.cs" />
+    <Compile Include="Tracking\RangeTrackable.cs" />
+    <Compile Include="Tracking\WorkbookTrackable.cs" />
+    <Compile Include="Tracking\WorksheetTrackable.cs" />
+    <Compile Include="User\IUserInteraction.cs" />
+    <Compile Include="User\SelectCellRangeInteraction.cs" />
+    <Compile Include="User\SelectSheetInteraction.cs" />
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,9 +232,7 @@
       <Name>Chronicy</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tracking\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

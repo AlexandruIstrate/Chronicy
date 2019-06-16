@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
+    <Compile Include="Communication\IInformationProvider.cs" />
     <Compile Include="Communication\IServerService.cs" />
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\CustomField.cs" />
@@ -62,10 +63,12 @@
     <Compile Include="Data\Stack.cs" />
     <Compile Include="Data\Storage\IDataSource.cs" />
     <Compile Include="Data\Storage\WebDataSource.cs" />
+    <Compile Include="Data\Tag.cs" />
     <Compile Include="Information\IInformationContext.cs" />
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tracking\ITrackable.cs" />
     <Compile Include="Web\ChronicyUrlBuilder.cs" />
     <Compile Include="Web\ChronicyWebApi.cs" />
     <Compile Include="Web\ChronicyWebClient.cs" />

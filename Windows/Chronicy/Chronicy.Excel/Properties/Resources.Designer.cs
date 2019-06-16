@@ -63,6 +63,16 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconBug {
+            get {
+                object obj = ResourceManager.GetObject("IconBug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconConnect {
             get {
                 object obj = ResourceManager.GetObject("IconConnect", resourceCulture);
@@ -86,6 +96,16 @@ namespace Chronicy.Excel.Properties {
         internal static System.Drawing.Bitmap IconEnable {
             get {
                 object obj = ResourceManager.GetObject("IconEnable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconHelp {
+            get {
+                object obj = ResourceManager.GetObject("IconHelp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -8,5 +8,10 @@ namespace Chronicy.Excel.App
         {
 
         }
+
+        public EndpointConnectionException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
     }
 }

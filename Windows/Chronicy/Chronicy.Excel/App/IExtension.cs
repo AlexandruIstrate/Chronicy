@@ -1,4 +1,6 @@
-﻿namespace Chronicy.Excel.App
+﻿using Chronicy.Excel.Tracking;
+
+namespace Chronicy.Excel.App
 {
     public abstract class IExtension
     {
@@ -15,6 +17,8 @@
             get => connected;
             set { connected = value; ConnectionChanged?.Invoke(Connected); }
         }
+
+        public ExcelTracker Tracker { get; } = new ExcelTracker();
 
         public delegate void StateUpdateHandler(bool enabled);
         public event StateUpdateHandler StateChanged;

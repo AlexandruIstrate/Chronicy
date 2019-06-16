@@ -15,26 +15,45 @@ namespace Chronicy.Data
         [DataMember]
         public List<CustomField> Fields { get; set; }
 
+        [DataMember]
+        public List<Tag> Tags { get; set; }
+
         public Card(string name, string comment = "")
         {
             Name = name;
             Comment = comment;
             Fields = new List<CustomField>();
+            Tags = new List<Tag>();
         }
 
-        public void Add(CustomField field)
+        public void AddField(CustomField field)
         {
             Fields.Add(field);
         }
 
-        public void Add(IEnumerable<CustomField> fields)
+        public void AddFields(IEnumerable<CustomField> fields)
         {
             Fields.AddRange(fields);
         }
 
-        public void Remove(CustomField field)
+        public void RemoveField(CustomField field)
         {
             Fields.Remove(field);
+        }
+
+        public void AddTag(Tag tag)
+        {
+            Tags.Add(tag);
+        }
+
+        public void AddTags(IEnumerable<Tag> tags)
+        {
+            Tags.AddRange(tags);
+        }
+
+        public void RemoveTag(Tag tag)
+        {
+            Tags.Remove(tag);
         }
     }
 }

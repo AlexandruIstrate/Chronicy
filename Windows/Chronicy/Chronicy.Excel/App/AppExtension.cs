@@ -9,7 +9,7 @@ namespace Chronicy.Excel.App
     {
         private ClientConnection connection;
 
-        public IServerService Service { get; set; }
+        public IServerService Service { get; private set; }
 
         public AppExtension()
         {
@@ -26,12 +26,17 @@ namespace Chronicy.Excel.App
             }
             catch (EndpointNotFoundException e)
             {
-                throw new EndpointConnectionException("Could not connect to the endpoint: " + e.Message);
+                throw new EndpointConnectionException("Could not connect to the endpoint", e);
             }
         }
 
         public override void Sync()
         {
+            if (!Connected)
+            {
+                throw new EndpointConnectionException("The endpoint is not connected");
+            }
+
             Service.SendSelectedNotebook(new Notebook("A Test Notebook"));
         }
     }

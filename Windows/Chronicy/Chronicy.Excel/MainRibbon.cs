@@ -1,4 +1,5 @@
-﻿using Chronicy.Excel.App;
+﻿using Chronicy.Communication;
+using Chronicy.Excel.App;
 using Chronicy.Excel.Information;
 using Chronicy.Information;
 using Microsoft.Office.Tools.Ribbon;
@@ -6,8 +7,11 @@ using System;
 
 namespace Chronicy.Excel
 {
-    public partial class MainRibbon
+    public partial class MainRibbon : IInformationProvider
     {
+        private MessageBoxContext messageBoxContext = new MessageBoxContext();
+        public IInformationContext InformationContext => messageBoxContext;
+
         private IExtension extension;
 
         public MainRibbon(IExtension extension) : this()
@@ -17,8 +21,8 @@ namespace Chronicy.Excel
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
-            extension.StateChanged += ((enabled) => { enableButton.Checked = enabled; });
-            extension.ConnectionChanged += ((connected) => { connectButton.Visible = !connected; });
+            extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };
+            extension.ConnectionChanged += (connected) => { connectButton.Visible = !connected; };
 
             extension.OnRibbonLoad();
         }
@@ -38,13 +42,13 @@ namespace Chronicy.Excel
             {
                 InformationDispatcher.Default.Dispatch("Could not connect to the Chronicy service!\n" +
                                                        "Make sure that the service is installed and running.", 
-                                                        new MessageBoxContext(), 
+                                                        InformationContext, 
                                                         InformationKind.Error);
             }
             catch (Exception ex)
             {
                 InformationDispatcher.Default.Dispatch("An unknown error occurred while trying to connect to the service: " + ex.Message,
-                                                        new MessageBoxContext());
+                                                        InformationContext);
             }
         }
 
@@ -70,7 +74,32 @@ namespace Chronicy.Excel
 
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)
         {
-            extension.Sync();
+            try
+            {
+                extension.Sync();
+            }
+            catch (EndpointConnectionException ex)
+            {
+                InformationDispatcher.Default.Dispatch(ex.Message, InformationContext, InformationKind.Error);
+            }
+        }
+
+        private void OnTrackWorkbook(object sender, RibbonControlEventArgs e)
+        {
+            // 1. Submit the current workbook to ExcelTracker
+            extension.Tracker.Track(Globals.ThisAddIn.Application.ThisWorkbook);
+        }
+
+        private void OnTrackSheet(object sender, RibbonControlEventArgs e)
+        {
+            // 1. Ask the user to pick a sheet
+            // 2. Submit the sheet to ExcelTracker
+        }
+
+        private void OnTrackCellRange(object sender, RibbonControlEventArgs e)
+        {
+            // 1. Ask the user to pick a range
+            // 2. Submit the range to ExcelTracker
         }
     }
 }
