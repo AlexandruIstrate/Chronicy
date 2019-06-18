@@ -57,6 +57,8 @@
             this.supportGroup = this.Factory.CreateRibbonGroup();
             this.helpButton = this.Factory.CreateRibbonButton();
             this.reportBugButton = this.Factory.CreateRibbonButton();
+            this.viewGitHubButton = this.Factory.CreateRibbonButton();
+            this.optionsButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -224,6 +226,7 @@
             // 
             this.supportGroup.Items.Add(this.helpButton);
             this.supportGroup.Items.Add(this.reportBugButton);
+            this.supportGroup.Items.Add(this.viewGitHubButton);
             this.supportGroup.Label = "Support";
             this.supportGroup.Name = "supportGroup";
             // 
@@ -234,6 +237,7 @@
             this.helpButton.Label = "Help";
             this.helpButton.Name = "helpButton";
             this.helpButton.ShowImage = true;
+            this.helpButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnHelpClicked);
             // 
             // reportBugButton
             // 
@@ -242,10 +246,30 @@
             this.reportBugButton.Label = "Report a Bug";
             this.reportBugButton.Name = "reportBugButton";
             this.reportBugButton.ShowImage = true;
+            this.reportBugButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnReportBugClicked);
+            // 
+            // viewGitHubButton
+            // 
+            this.viewGitHubButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.viewGitHubButton.Image = global::Chronicy.Excel.Properties.Resources.IconGitHub;
+            this.viewGitHubButton.Label = "View On GitHub";
+            this.viewGitHubButton.Name = "viewGitHubButton";
+            this.viewGitHubButton.ShowImage = true;
+            this.viewGitHubButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewGitHubClicked);
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Label = "Chronicy Options";
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.ShowImage = true;
             // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
+            // 
+            // MainRibbon.OfficeMenu
+            // 
+            this.OfficeMenu.Items.Add(this.optionsButton);
             this.RibbonType = "Microsoft.Excel.Workbook";
             this.Tabs.Add(this.tab1);
             this.Tabs.Add(this.tab2);
@@ -294,6 +318,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup supportGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton helpButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton reportBugButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton optionsButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton viewGitHubButton;
     }
 
     partial class ThisRibbonCollection

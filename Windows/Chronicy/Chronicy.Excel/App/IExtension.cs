@@ -2,7 +2,7 @@
 
 namespace Chronicy.Excel.App
 {
-    public abstract class IExtension
+    public abstract class IExcelExtension
     {
         private bool enabled;
         public bool Enabled
@@ -18,7 +18,7 @@ namespace Chronicy.Excel.App
             set { connected = value; ConnectionChanged?.Invoke(Connected); }
         }
 
-        public ExcelTracker Tracker { get; } = new ExcelTracker();
+        public ExcelTracker Tracker { get; private set; }
 
         public delegate void StateUpdateHandler(bool enabled);
         public event StateUpdateHandler StateChanged;
@@ -26,7 +26,7 @@ namespace Chronicy.Excel.App
         public delegate void ConnectionUpdateHandler(bool connected);
         public event ConnectionUpdateHandler ConnectionChanged;
 
-        public virtual void OnStart() { }
+        public virtual void OnStart() { Tracker = new ExcelTracker(); }
         public virtual void OnShutdown() { }
 
         public virtual void OnRibbonLoad() { }

@@ -1,55 +1,38 @@
-﻿using Interop = Microsoft.Office.Interop.Excel;
-using Tools = Microsoft.Office.Tools.Excel;
+﻿using Microsoft.Office.Interop.Excel;
 
 namespace Chronicy.Excel.Tracking
 {
+    // TODO: Change to something more dynamic
     public class ExcelTracker
     {
-        public WorkbookTrackable WorkbookTracker { get; private set; }
-        public WorksheetTrackable WorksheetTracker { get; private set; }
-        public RangeTrackable CellRangeTracker { get; private set; }
+        public WorkbookTrackable WorkbookTracker { get; }
+        public WorksheetTrackable WorksheetTracker { get; }
+        public RangeTrackable CellRangeTracker { get; }
 
-        public WorkbookTrackable Track(Interop.Workbook workbook)
+        public ExcelTracker()
         {
-            if (WorkbookTracker == null)
-            {
-                WorkbookTracker = new WorkbookTrackable(workbook);
-            }
-            else
-            {
-                WorkbookTracker.TrackedWorkbook = workbook;
-            }
+            WorkbookTracker = new WorkbookTrackable();
+            WorksheetTracker = new WorksheetTrackable();
+            CellRangeTracker = new RangeTrackable();
+        }
 
+        public WorkbookTrackable Track(Workbook workbook)
+        {
+            WorkbookTracker.TrackedWorkbook = workbook;
             WorkbookTracker.Enabled = true;
             return WorkbookTracker;
         }
 
-        public WorksheetTrackable Track(Tools.Worksheet worksheet)
+        public WorksheetTrackable Track(Worksheet worksheet)
         {
-            if (WorksheetTracker == null)
-            {
-                WorksheetTracker = new WorksheetTrackable(worksheet);
-            }
-            else
-            {
-                WorksheetTracker.TrackedSheet = worksheet;
-            }
-
+            WorksheetTracker.TrackedSheet = worksheet;
             WorksheetTracker.Enabled = true;
             return WorksheetTracker;
         }
 
-        public RangeTrackable Track(Interop.Range range)
+        public RangeTrackable Track(Range range)
         {
-            if (CellRangeTracker == null)
-            {
-                CellRangeTracker = new RangeTrackable(range);
-            }
-            else
-            {
-                CellRangeTracker.TrackedRange = range;
-            }
-
+            CellRangeTracker.TrackedRange = range;
             CellRangeTracker.Enabled = true;
             return CellRangeTracker;
         }

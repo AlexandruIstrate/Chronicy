@@ -1,26 +1,39 @@
-﻿using Chronicy.Communication;
-using Chronicy.Excel.App;
+﻿using Chronicy.Excel.App;
 using Chronicy.Excel.Information;
+using Chronicy.Excel.UI;
+using Chronicy.Excel.User;
+using Chronicy.Excel.Utils;
 using Chronicy.Information;
+using Microsoft.Office.Tools;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 
 namespace Chronicy.Excel
 {
-    public partial class MainRibbon : IInformationProvider
+    public partial class MainRibbon
     {
-        private MessageBoxContext messageBoxContext = new MessageBoxContext();
-        public IInformationContext InformationContext => messageBoxContext;
+        private MessageBoxContext informationContext = new MessageBoxContext();
 
-        private IExtension extension;
+        private CustomTaskPane taskPane;
+        private NotebookTaskPane notebookTaskPaneForm;
 
-        public MainRibbon(IExtension extension) : this()
+        private IExcelExtension extension;
+
+        public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
         }
 
+        private void InitializeTaskPane()
+        {
+            notebookTaskPaneForm = new NotebookTaskPane();
+            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(notebookTaskPaneForm, "Notebook");
+        }
+
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
+            InitializeTaskPane();
+
             extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };
             extension.ConnectionChanged += (connected) => { connectButton.Visible = !connected; };
 
@@ -41,14 +54,14 @@ namespace Chronicy.Excel
             catch (EndpointConnectionException)
             {
                 InformationDispatcher.Default.Dispatch("Could not connect to the Chronicy service!\n" +
-                                                       "Make sure that the service is installed and running.", 
-                                                        InformationContext, 
+                                                       "Make sure that the service is installed and running.",
+                                                        informationContext, 
                                                         InformationKind.Error);
             }
             catch (Exception ex)
             {
                 InformationDispatcher.Default.Dispatch("An unknown error occurred while trying to connect to the service: " + ex.Message,
-                                                        InformationContext);
+                                                        informationContext);
             }
         }
 
@@ -59,17 +72,17 @@ namespace Chronicy.Excel
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
         {
-
+            taskPane.Visible = true;
         }
 
         private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
         {
-
+            taskPane.Visible = true;
         }
 
         private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
         {
-
+            taskPane.Visible = true;
         }
 
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)
@@ -80,7 +93,7 @@ namespace Chronicy.Excel
             }
             catch (EndpointConnectionException ex)
             {
-                InformationDispatcher.Default.Dispatch(ex.Message, InformationContext, InformationKind.Error);
+                InformationDispatcher.Default.Dispatch(ex.Message, informationContext, InformationKind.Error);
             }
         }
 
@@ -93,13 +106,35 @@ namespace Chronicy.Excel
         private void OnTrackSheet(object sender, RibbonControlEventArgs e)
         {
             // 1. Ask the user to pick a sheet
-            // 2. Submit the sheet to ExcelTracker
+            SelectSheetAction action = new SelectSheetAction();
+            action.ActionCompleted += (sheet) => { extension.Tracker.Track(sheet); /* 2. Submit the sheet to ExcelTracker */ };
+            action.Run();
         }
 
         private void OnTrackCellRange(object sender, RibbonControlEventArgs e)
         {
             // 1. Ask the user to pick a range
-            // 2. Submit the range to ExcelTracker
+            SelectCellRangeAction action = new SelectCellRangeAction();
+            action.ActionCompleted += (range) => { extension.Tracker.Track(range); /* 2. Submit the range to ExcelTracker */ };
+            action.Run();
+        }
+
+        private void OnHelpClicked(object sender, RibbonControlEventArgs e)
+        {
+            ExternalLink link = new ExternalLink(Properties.Resources.LINK_HELP);
+            link.Open();
+        }
+
+        private void OnReportBugClicked(object sender, RibbonControlEventArgs e)
+        {
+            ExternalLink link = new ExternalLink(Properties.Resources.LINK_SUBMIT_BUG);
+            link.Open();
+        }
+
+        private void OnViewGitHubClicked(object sender, RibbonControlEventArgs e)
+        {
+            ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
+            link.Open();
         }
     }
 }

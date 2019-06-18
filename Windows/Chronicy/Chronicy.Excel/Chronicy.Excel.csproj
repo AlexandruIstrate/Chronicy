@@ -162,19 +162,6 @@
     <Compile Include="App\IExtension.cs" />
     <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
-    <Compile Include="Forms\BaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\IFormBehavior.cs" />
-    <Compile Include="Forms\OverviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\OverviewForm.Designer.cs">
-      <DependentUpon>OverviewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Information\MessageBoxContext.cs" />
     <Compile Include="Information\StatusBarContext.cs" />
     <Compile Include="MainRibbon.cs">
@@ -190,9 +177,17 @@
     <Compile Include="Tracking\RangeTrackable.cs" />
     <Compile Include="Tracking\WorkbookTrackable.cs" />
     <Compile Include="Tracking\WorksheetTrackable.cs" />
-    <Compile Include="User\IUserInteraction.cs" />
-    <Compile Include="User\SelectCellRangeInteraction.cs" />
-    <Compile Include="User\SelectSheetInteraction.cs" />
+    <Compile Include="UI\NotebookTaskPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NotebookTaskPane.Designer.cs">
+      <DependentUpon>NotebookTaskPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\IUserAction.cs" />
+    <Compile Include="User\SelectCellRangeAction.cs" />
+    <Compile Include="User\SelectSheetAction.cs" />
+    <Compile Include="Utils\ExternalLink.cs" />
+    <Compile Include="Utils\RangeUtils.cs" />
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +201,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\NotebookTaskPane.resx">
+      <DependentUpon>NotebookTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Chronicy.Excel_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

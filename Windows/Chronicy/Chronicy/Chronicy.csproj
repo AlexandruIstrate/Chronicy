@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
-    <Compile Include="Communication\IInformationProvider.cs" />
     <Compile Include="Communication\IServerService.cs" />
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\CustomField.cs" />

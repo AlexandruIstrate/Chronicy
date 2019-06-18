@@ -103,6 +103,16 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconGitHub {
+            get {
+                object obj = ResourceManager.GetObject("IconGitHub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconHelp {
             get {
                 object obj = ResourceManager.GetObject("IconHelp", resourceCulture);
@@ -157,6 +167,33 @@ namespace Chronicy.Excel.Properties {
             get {
                 object obj = ResourceManager.GetObject("IconTracking", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/AlexandruIstrate/Chronicy/wiki.
+        /// </summary>
+        internal static string LINK_HELP {
+            get {
+                return ResourceManager.GetString("LINK_HELP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/AlexandruIstrate/Chronicy.
+        /// </summary>
+        internal static string LINK_PROJECT_PAGE {
+            get {
+                return ResourceManager.GetString("LINK_PROJECT_PAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/AlexandruIstrate/Chronicy/issues.
+        /// </summary>
+        internal static string LINK_SUBMIT_BUG {
+            get {
+                return ResourceManager.GetString("LINK_SUBMIT_BUG", resourceCulture);
             }
         }
     }

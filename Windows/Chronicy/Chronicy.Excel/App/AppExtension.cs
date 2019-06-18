@@ -5,7 +5,7 @@ using System.ServiceModel;
 
 namespace Chronicy.Excel.App
 {
-    public class AppExtension : IExtension
+    public class AppExtension : IExcelExtension
     {
         private ClientConnection connection;
 

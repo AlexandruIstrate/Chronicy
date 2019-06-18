@@ -11,7 +11,7 @@ namespace Chronicy.Excel
     {
         // TODO: Better initialization!
         // TODO 2: Single instance of this object per application
-        private IExtension extension = new AppExtension();
+        private IExcelExtension extension = new AppExtension();
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {

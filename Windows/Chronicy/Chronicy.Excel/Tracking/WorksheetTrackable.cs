@@ -1,19 +1,32 @@
 ﻿using Chronicy.Tracking;
-using Microsoft.Office.Tools.Excel;
+using System.Diagnostics;
+using ExcelWorksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace Chronicy.Excel.Tracking
 {
-    public class WorksheetTrackable : ITrackable<Worksheet>
+    public class WorksheetTrackable : ITrackable<ExcelWorksheet>
     {
-        public Worksheet TrackedSheet { get; set; }
+        public ExcelWorksheet TrackedSheet { get; set; }
 
-        public WorksheetTrackable(Worksheet trackedSheet)
+        public WorksheetTrackable(ExcelWorksheet trackedSheet)
         {
             TrackedSheet = trackedSheet;
+            Enabled = true;
 
+            InitializeEvents();
+        }
+
+        public WorksheetTrackable()
+        {
+            Enabled = false;
+            InitializeEvents();
+        }
+
+        private void InitializeEvents()
+        {
             Globals.ThisAddIn.Application.SheetChange += (sheet, range) =>
             {
-                Worksheet worksheet = (Worksheet)sheet;
+                ExcelWorksheet worksheet = (ExcelWorksheet)sheet;
 
                 if (worksheet == TrackedSheet)
                 {

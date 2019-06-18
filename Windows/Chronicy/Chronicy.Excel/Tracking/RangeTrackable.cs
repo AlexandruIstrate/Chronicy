@@ -1,5 +1,7 @@
-﻿using Chronicy.Tracking;
+﻿using Chronicy.Excel.Utils;
+using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
 
 namespace Chronicy.Excel.Tracking
 {
@@ -10,17 +12,30 @@ namespace Chronicy.Excel.Tracking
         public RangeTrackable(Range trackedRange)
         {
             TrackedRange = trackedRange;
+            Enabled = true;
 
-            Globals.ThisAddIn.Application.SheetChange += (sheet, _) =>
+            InitializeEvents();
+        }
+
+        public RangeTrackable()
+        {
+            Enabled = false;
+            InitializeEvents();
+        }
+
+        private void InitializeEvents()
+        {
+            Globals.ThisAddIn.Application.SheetChange += (sheet, range) =>
             {
-                Worksheet worksheet = (Worksheet)sheet;
-                worksheet.Change += (range) =>
+                if (TrackedRange == null)
                 {
-                    if (range == TrackedRange)
-                    {
-                        TriggerUpdate(range);
-                    }
-                };
+                    return;
+                }
+
+                if (TrackedRange.Contains(range))
+                {
+                    TriggerUpdate(range);
+                }
             };
         }
     }
