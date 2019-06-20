@@ -11,5 +11,20 @@ namespace Chronicy.Excel.Utils
 
             return xContains && yContains;
         }
+
+        public static Range Intersection(this Range range, Range other)
+        {
+            return Globals.ThisAddIn.Application.Intersect(range, other);
+        }
+
+        public static bool Intersects(this Range range, Range other)
+        {
+            return (Globals.ThisAddIn.Application.Intersect(range, other) != null);
+        }
+
+        public static string ToAddressString(this Range range)
+        {
+            return range.Address[true, true, XlReferenceStyle.xlA1, false, null];
+        }
     }
 }

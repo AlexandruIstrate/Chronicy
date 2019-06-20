@@ -63,9 +63,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconBug {
+        internal static System.Drawing.Bitmap IconBug32 {
             get {
-                object obj = ResourceManager.GetObject("IconBug", resourceCulture);
+                object obj = ResourceManager.GetObject("IconBug32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconConnect {
+        internal static System.Drawing.Bitmap IconCells32 {
             get {
-                object obj = ResourceManager.GetObject("IconConnect", resourceCulture);
+                object obj = ResourceManager.GetObject("IconCells32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconConnected {
+        internal static System.Drawing.Bitmap IconConnect32 {
             get {
-                object obj = ResourceManager.GetObject("IconConnected", resourceCulture);
+                object obj = ResourceManager.GetObject("IconConnect32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconEnable {
+        internal static System.Drawing.Bitmap IconConnected32 {
             get {
-                object obj = ResourceManager.GetObject("IconEnable", resourceCulture);
+                object obj = ResourceManager.GetObject("IconConnected32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconGitHub {
+        internal static System.Drawing.Bitmap IconEnable32 {
             get {
-                object obj = ResourceManager.GetObject("IconGitHub", resourceCulture);
+                object obj = ResourceManager.GetObject("IconEnable32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconHelp {
+        internal static System.Drawing.Bitmap IconGitHub32 {
             get {
-                object obj = ResourceManager.GetObject("IconHelp", resourceCulture);
+                object obj = ResourceManager.GetObject("IconGitHub32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconHistory {
+        internal static System.Drawing.Bitmap IconHelp32 {
             get {
-                object obj = ResourceManager.GetObject("IconHistory", resourceCulture);
+                object obj = ResourceManager.GetObject("IconHelp32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconNotebook {
+        internal static System.Drawing.Bitmap IconHistory32 {
             get {
-                object obj = ResourceManager.GetObject("IconNotebook", resourceCulture);
+                object obj = ResourceManager.GetObject("IconHistory32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconStack {
+        internal static System.Drawing.Bitmap IconNotebook32 {
             get {
-                object obj = ResourceManager.GetObject("IconStack", resourceCulture);
+                object obj = ResourceManager.GetObject("IconNotebook32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconSync {
+        internal static System.Drawing.Bitmap IconOther32 {
             get {
-                object obj = ResourceManager.GetObject("IconSync", resourceCulture);
+                object obj = ResourceManager.GetObject("IconOther32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,49 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IconTracking {
+        internal static System.Drawing.Bitmap IconSheets32 {
             get {
-                object obj = ResourceManager.GetObject("IconTracking", resourceCulture);
+                object obj = ResourceManager.GetObject("IconSheets32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconStack32 {
+            get {
+                object obj = ResourceManager.GetObject("IconStack32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconSync32 {
+            get {
+                object obj = ResourceManager.GetObject("IconSync32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTracking32 {
+            get {
+                object obj = ResourceManager.GetObject("IconTracking32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconWorkbook32 {
+            get {
+                object obj = ResourceManager.GetObject("IconWorkbook32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

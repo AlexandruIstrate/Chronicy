@@ -1,9 +1,13 @@
 ﻿using Chronicy.Excel.App;
 using Chronicy.Excel.Information;
+using Chronicy.Excel.Tracking;
+using Chronicy.Excel.Tracking.Events;
 using Chronicy.Excel.UI;
 using Chronicy.Excel.User;
 using Chronicy.Excel.Utils;
 using Chronicy.Information;
+using Chronicy.Tracking;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools;
 using Microsoft.Office.Tools.Ribbon;
 using System;
@@ -18,10 +22,38 @@ namespace Chronicy.Excel
         private NotebookTaskPane notebookTaskPaneForm;
 
         private IExcelExtension extension;
+        private ExcelTracker tracker;
 
         public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
+        }
+
+        private void InitializeTrackingMenus()
+        {
+            tracker = new ExcelTracker();
+            tracker.Register<Workbook>(new WorkbookTrackable());
+            tracker.Register<Worksheet>(new WorksheetTrackable());
+            tracker.Register<Range>(new RangeTrackable());
+
+            // Upon clicking the checkbox, the StateUpdated event is triggered, which sets the checkbox to its value again.
+            // This is not the end of the world, however we're wasting a call by creating this call cycle
+
+            workbookEnableCheckBox.Click += (sender, args) => { tracker.Get<Workbook>().Enabled = (sender as RibbonCheckBox).Checked; };
+            sheetEnableCheckBox.Click += (sender, args) => { tracker.Get<Worksheet>().Enabled = (sender as RibbonCheckBox).Checked; };
+            cellsEnableCheckBox.Click += (sender, args) => { tracker.Get<Range>().Enabled = (sender as RibbonCheckBox).Checked; };
+
+            ITrackable workbook = tracker.Get<Workbook>();
+            workbook.StateUpdated += (enabled) => { workbookEnableCheckBox.Checked = enabled; };
+            workbook.TrackedValueUpdated += (value) => { workbookCurrentLabel.Label = "Tracked workbook: " + (value as Workbook).Name; };
+
+            ITrackable sheet = tracker.Get<Worksheet>();
+            sheet.StateUpdated += (enabled) => { sheetEnableCheckBox.Checked = enabled; };
+            sheet.TrackedValueUpdated += (value) => { sheetCurrentLabel.Label = "Tracked sheet: " + (value as Worksheet).Name; };
+
+            ITrackable cells = tracker.Get<Range>();
+            cells.StateUpdated += (enabled) => { cellsEnableCheckBox.Checked = enabled; };
+            cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToAddressString().Replace("$", ""); };
         }
 
         private void InitializeTaskPane()
@@ -32,6 +64,7 @@ namespace Chronicy.Excel
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
+            InitializeTrackingMenus();
             InitializeTaskPane();
 
             extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };
@@ -100,14 +133,24 @@ namespace Chronicy.Excel
         private void OnTrackWorkbook(object sender, RibbonControlEventArgs e)
         {
             // 1. Submit the current workbook to ExcelTracker
-            extension.Tracker.Track(Globals.ThisAddIn.Application.ThisWorkbook);
+            ITrackable trackable = tracker.Get<Workbook>();
+            trackable.ValueUpdated += (value) => extension.Tracking.Post<Workbook>(new TrackingEvent((Workbook)value));
+            trackable.TrackedValue = Globals.ThisAddIn.Application.ActiveWorkbook;
+            trackable.Enabled = true;
         }
 
         private void OnTrackSheet(object sender, RibbonControlEventArgs e)
         {
             // 1. Ask the user to pick a sheet
             SelectSheetAction action = new SelectSheetAction();
-            action.ActionCompleted += (sheet) => { extension.Tracker.Track(sheet); /* 2. Submit the sheet to ExcelTracker */ };
+            action.ActionCompleted += (sheet) => 
+            {
+                /* 2. Submit the sheet to ExcelTracker */
+                ITrackable trackable = tracker.Get<Worksheet>();
+                trackable.ValueUpdated += (value) => extension.Tracking.Post<Worksheet>(new TrackingEvent((Worksheet)value));
+                trackable.TrackedValue = sheet;
+                trackable.Enabled = true;
+            };
             action.Run();
         }
 
@@ -115,7 +158,14 @@ namespace Chronicy.Excel
         {
             // 1. Ask the user to pick a range
             SelectCellRangeAction action = new SelectCellRangeAction();
-            action.ActionCompleted += (range) => { extension.Tracker.Track(range); /* 2. Submit the range to ExcelTracker */ };
+            action.ActionCompleted += (range) => 
+            {
+                /* 2. Submit the range to ExcelTracker */
+                ITrackable trackable = tracker.Get<Range>();
+                trackable.ValueUpdated += (value) => extension.Tracking.Post<Range>(new TrackingEvent((Range)value));
+                trackable.TrackedValue = range;
+                trackable.Enabled = true;
+            };
             action.Run();
         }
 

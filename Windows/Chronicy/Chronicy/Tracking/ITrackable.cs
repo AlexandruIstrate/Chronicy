@@ -1,13 +1,33 @@
-﻿namespace Chronicy.Tracking
+﻿using System;
+
+namespace Chronicy.Tracking
 {
-    public abstract class ITrackable<T>
+    public abstract class ITrackable
     {
-        public bool Enabled { get; set; }
+        private bool enabled;
+        public bool Enabled
+        {
+            get => enabled;
+            set { enabled = value; StateUpdated?.Invoke(value); }
+        }
 
-        public delegate void ValueUpdateHandler(T value);
+        public object trackedValue;
+        public object TrackedValue
+        {
+            get => trackedValue;
+            set { trackedValue = value; TrackedValueUpdated?.Invoke(value); }
+        }
+
+        public abstract Type ValueType { get; }
+
+        public delegate void StateUpdateHandler(bool enabled);
+        public delegate void ValueUpdateHandler(object value);
+
+        public event StateUpdateHandler StateUpdated;
         public event ValueUpdateHandler ValueUpdated;
+        public event ValueUpdateHandler TrackedValueUpdated;
 
-        public void TriggerUpdate(T value)
+        public void TriggerUpdate(object value)
         {
             if (Enabled)
             {

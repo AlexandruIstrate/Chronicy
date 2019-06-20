@@ -173,6 +173,8 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tracking\Events\TrackingEvent.cs" />
+    <Compile Include="Tracking\Events\TrackingSystem.cs" />
     <Compile Include="Tracking\ExcelTracker.cs" />
     <Compile Include="Tracking\RangeTrackable.cs" />
     <Compile Include="Tracking\WorkbookTrackable.cs" />
@@ -230,7 +232,6 @@
       <Name>Chronicy</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

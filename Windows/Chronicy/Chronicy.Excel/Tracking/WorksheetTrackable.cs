@@ -1,16 +1,16 @@
 ﻿using Chronicy.Tracking;
-using System.Diagnostics;
+using System;
 using ExcelWorksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace Chronicy.Excel.Tracking
 {
-    public class WorksheetTrackable : ITrackable<ExcelWorksheet>
+    public class WorksheetTrackable : ITrackable
     {
-        public ExcelWorksheet TrackedSheet { get; set; }
+        public override Type ValueType => typeof(ExcelWorksheet);
 
         public WorksheetTrackable(ExcelWorksheet trackedSheet)
         {
-            TrackedSheet = trackedSheet;
+            TrackedValue = trackedSheet;
             Enabled = true;
 
             InitializeEvents();
@@ -18,7 +18,7 @@ namespace Chronicy.Excel.Tracking
 
         public WorksheetTrackable()
         {
-            Enabled = false;
+            Enabled = true;
             InitializeEvents();
         }
 
@@ -28,7 +28,7 @@ namespace Chronicy.Excel.Tracking
             {
                 ExcelWorksheet worksheet = (ExcelWorksheet)sheet;
 
-                if (worksheet == TrackedSheet)
+                if (worksheet == (TrackedValue as ExcelWorksheet))
                 {
                     TriggerUpdate(worksheet);
                 }

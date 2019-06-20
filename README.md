@@ -48,23 +48,26 @@ The Windows service that collects data sent by extensions
 
 ## Technologies Used
 #### Windows
-* C# 7.2
-* .NET Framework 4.7.2
-* Windows Communication Framework
-* Newtonsoft JSON
-* NLog
-* NUnit
+- C# 7.2
+- .NET Framework 4.7.2
+- Windows Communication Framework
+- Newtonsoft JSON
+- NLog
+- NUnit
 
 #### macOS
-* Swift 5
-* Cocoa
-* CocoaPods
-* Alamofire
-* FatSidebar
+- Swift 5
+- Cocoa
+- CocoaPods
+- Alamofire
+- FatSidebar
+
+## Inspirations
+- 
 
 ## Disclaimer
 I do not own any of the following:
-* The icons used by Chronicy. They are provided by the people on [Icons8.com](https://icons8.com).
-* The main WordArt image used on this page. It is generated using [WordArt.com](https://wordart.com)
+- The icons used by Chronicy. They are provided by the people on [Icons8.com](https://icons8.com).
+- The main WordArt image used on this page. It is generated using [WordArt.com](https://wordart.com)
 
 I state that I do not claim ownership of any of the items listed in the *Disclaimer* section of this document and I don't intend to infringe on their respective owner's copyright grounds.

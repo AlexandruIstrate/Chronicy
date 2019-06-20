@@ -1,6 +1,7 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
+using Microsoft.Office.Interop.Excel;
 using System.ServiceModel;
 
 namespace Chronicy.Excel.App
@@ -15,6 +16,8 @@ namespace Chronicy.Excel.App
         {
             connection = new ClientConnection();
             connection.ConnectionClosed += () => { Connected = false; };
+
+            InitializeTracking();
         }
 
         public override void Connect()
@@ -38,6 +41,13 @@ namespace Chronicy.Excel.App
             }
 
             Service.SendSelectedNotebook(new Notebook("A Test Notebook"));
+        }
+
+        private void InitializeTracking()
+        {
+            Tracking.Register<Workbook>((trackingEvent) => {  });
+            Tracking.Register<Worksheet>((trackingEvent) => {  });
+            Tracking.Register<Range>((trackingEvent) => {  });
         }
     }
 }

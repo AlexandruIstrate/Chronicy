@@ -118,38 +118,50 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="IconBug" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconBug32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconBug32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconConnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconCells32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconCells32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconConnect32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconConnect32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconConnected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconConnected32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconConnected32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconEnable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconEnable32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconEnable32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconGitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconGitHub32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconGitHub32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconHelp32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconHelp32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconHistory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconHistory32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconHistory32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconNotebook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconNotebook32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconNotebook32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconStack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconOther32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconOther32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconSheets32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconSheets32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconStack32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconStack32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconSync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconSync32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconSync32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconTracking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="IconTracking32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconTracking32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconWorkbook32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconWorkbook32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LINK_HELP" xml:space="preserve">
     <value>https://github.com/AlexandruIstrate/Chronicy/wiki</value>

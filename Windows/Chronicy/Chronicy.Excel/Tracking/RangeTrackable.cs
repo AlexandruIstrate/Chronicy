@@ -1,17 +1,17 @@
-﻿using Chronicy.Excel.Utils;
+﻿using System;
+using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
-using System.Diagnostics;
 
 namespace Chronicy.Excel.Tracking
 {
-    public class RangeTrackable : ITrackable<Range>
+    public class RangeTrackable : ITrackable
     {
-        public Range TrackedRange { get; set; }
+        public override Type ValueType => typeof(Range);
 
         public RangeTrackable(Range trackedRange)
         {
-            TrackedRange = trackedRange;
+            TrackedValue = trackedRange;
             Enabled = true;
 
             InitializeEvents();
@@ -19,7 +19,7 @@ namespace Chronicy.Excel.Tracking
 
         public RangeTrackable()
         {
-            Enabled = false;
+            Enabled = true;
             InitializeEvents();
         }
 
@@ -27,14 +27,16 @@ namespace Chronicy.Excel.Tracking
         {
             Globals.ThisAddIn.Application.SheetChange += (sheet, range) =>
             {
-                if (TrackedRange == null)
+                if (TrackedValue == null)
                 {
                     return;
                 }
 
-                if (TrackedRange.Contains(range))
+                Range intersection = (TrackedValue as Range).Intersection(range);
+
+                if (intersection != null)
                 {
-                    TriggerUpdate(range);
+                    TriggerUpdate(intersection);
                 }
             };
         }

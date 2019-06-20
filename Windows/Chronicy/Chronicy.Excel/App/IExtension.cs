@@ -1,4 +1,4 @@
-﻿using Chronicy.Excel.Tracking;
+﻿using Chronicy.Excel.Tracking.Events;
 
 namespace Chronicy.Excel.App
 {
@@ -18,7 +18,7 @@ namespace Chronicy.Excel.App
             set { connected = value; ConnectionChanged?.Invoke(Connected); }
         }
 
-        public ExcelTracker Tracker { get; private set; }
+        public TrackingSystem Tracking { get; } = new TrackingSystem();
 
         public delegate void StateUpdateHandler(bool enabled);
         public event StateUpdateHandler StateChanged;
@@ -26,7 +26,7 @@ namespace Chronicy.Excel.App
         public delegate void ConnectionUpdateHandler(bool connected);
         public event ConnectionUpdateHandler ConnectionChanged;
 
-        public virtual void OnStart() { Tracker = new ExcelTracker(); }
+        public virtual void OnStart() { }
         public virtual void OnShutdown() { }
 
         public virtual void OnRibbonLoad() { }

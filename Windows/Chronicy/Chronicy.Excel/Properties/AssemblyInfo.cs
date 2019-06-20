@@ -7,11 +7,11 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Chronicy.Excel")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Chronicy Excel tracking extension")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Alexandru Istrate")]
 [assembly: AssemblyProduct("Chronicy.Excel")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2019 Alexandru Istrate")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

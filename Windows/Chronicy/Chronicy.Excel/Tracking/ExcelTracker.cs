@@ -1,40 +1,66 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using Chronicy.Tracking;
+using System;
+using System.Collections.Generic;
 
 namespace Chronicy.Excel.Tracking
 {
     // TODO: Change to something more dynamic
     public class ExcelTracker
     {
-        public WorkbookTrackable WorkbookTracker { get; }
-        public WorksheetTrackable WorksheetTracker { get; }
-        public RangeTrackable CellRangeTracker { get; }
+        public List<ITrackable> Trackers { get; }
 
         public ExcelTracker()
         {
-            WorkbookTracker = new WorkbookTrackable();
-            WorksheetTracker = new WorksheetTrackable();
-            CellRangeTracker = new RangeTrackable();
+            Trackers = new List<ITrackable>();
         }
 
-        public WorkbookTrackable Track(Workbook workbook)
+        public void Register<T>(ITrackable trackable)
         {
-            WorkbookTracker.TrackedWorkbook = workbook;
-            WorkbookTracker.Enabled = true;
-            return WorkbookTracker;
+            if (trackable.ValueType != typeof(T))
+            {
+                throw new ArgumentException("The ValueType property of the argument must be the same as the generic type", nameof(trackable));
+            }
+
+            Trackers.Add(trackable);
         }
 
-        public WorksheetTrackable Track(Worksheet worksheet)
+        public ITrackable Get<T>()
         {
-            WorksheetTracker.TrackedSheet = worksheet;
-            WorksheetTracker.Enabled = true;
-            return WorksheetTracker;
+            foreach (ITrackable trackable in Trackers)
+            {
+                if (trackable.ValueType == typeof(T))
+                {
+                    return trackable;
+                }
+            }
+
+            return null;
         }
 
-        public RangeTrackable Track(Range range)
+        public ITrackable GetOrRegister<T>(ITrackable trackable)
         {
-            CellRangeTracker.TrackedRange = range;
-            CellRangeTracker.Enabled = true;
-            return CellRangeTracker;
+            ITrackable result = Get<T>();
+
+            if (result == null)
+            {
+                Register<T>(trackable);
+                result = trackable;
+            }
+
+            return result;
+        }
+
+        public bool HasTrackable<T>()
+        {
+            foreach (ITrackable trackable in Trackers)
+            {
+                if (trackable.ValueType == typeof(T))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
