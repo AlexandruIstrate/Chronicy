@@ -2,6 +2,8 @@
 using Chronicy.Data;
 using Chronicy.Information;
 using Chronicy.Service.Information;
+using Chronicy.Tracking;
+using System;
 using System.ServiceModel;
 
 namespace Chronicy.Service.Communication
@@ -29,9 +31,15 @@ namespace Chronicy.Service.Communication
             InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
         }
 
+        public void SendTrackingData(TrackingData data)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SendDebugMessage(string message)
         {
             InformationDispatcher.Default.Dispatch(message, context);
         }
+
     }
 }

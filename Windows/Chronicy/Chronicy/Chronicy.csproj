@@ -68,6 +68,7 @@
     <Compile Include="Information\DebugLogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tracking\ITrackable.cs" />
+    <Compile Include="Tracking\TrackingData.cs" />
     <Compile Include="Web\ChronicyUrlBuilder.cs" />
     <Compile Include="Web\ChronicyWebApi.cs" />
     <Compile Include="Web\ChronicyWebClient.cs" />
@@ -88,6 +89,8 @@
     <Compile Include="Web\Models\ResponseInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DataClasses.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

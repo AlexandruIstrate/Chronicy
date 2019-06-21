@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using Chronicy.Communication;
 using Chronicy.Data;
@@ -21,13 +20,14 @@ namespace Chronicy.Excel.Communication
                 builder.AppendLine(item.Name);
             }
 
-            InformationDispatcher.Default.Dispatch(builder.ToString());
+            // Debug only
+            InformationDispatcher.Default.Dispatch(builder.ToString(), context);
         }
 
         public void SendDebugMessage(string message)
         {
             // TODO: Dispatch this on a debug context
-            InformationDispatcher.Default.Dispatch(message, context);
+            InformationDispatcher.Default.Dispatch(message, DebugLogContext.Default);
         }
     }
 }

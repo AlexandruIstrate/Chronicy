@@ -32,5 +32,37 @@ namespace Chronicy.Data
         {
             Cards.Remove(card);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Stack))
+            {
+                return false;
+            }
+
+            Stack other = (Stack)obj;
+            return Name == other.Name &&
+                   Cards == other.Cards;
+        }
+
+        public override int GetHashCode()
+        {
+            // As per Jon Skeet's StackOverflow answer
+            // https://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-system-object-gethashcode
+            //
+
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + Name.GetHashCode();
+                hash = hash * 23 + Cards.GetHashCode();
+                return hash;
+            }
+        }
     }
 }

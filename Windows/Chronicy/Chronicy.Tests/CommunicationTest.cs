@@ -1,6 +1,8 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
+using Chronicy.Tracking;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -37,12 +39,12 @@ namespace Chronicy.Tests
     {
         public void SendAvailableNotebooks(List<Notebook> message)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void SendDebugMessage(string message)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
@@ -50,22 +52,27 @@ namespace Chronicy.Tests
     {
         public void Connect()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void SendDebugMessage(string message)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void SendSelectedNotebook(Notebook notebook)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public void SendTrackingData(TrackingData data)
+        {
+            throw new NotImplementedException();
         }
 
         public void SendSelectedStack(Stack stack)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

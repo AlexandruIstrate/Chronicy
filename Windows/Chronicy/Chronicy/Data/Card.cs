@@ -55,5 +55,41 @@ namespace Chronicy.Data
         {
             Tags.Remove(tag);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Card))
+            {
+                return false;
+            }
+
+            Card other = (Card)obj;
+            return Name == other.Name &&
+                   Comment == other.Comment &&
+                   Fields == other.Fields &&
+                   Tags == other.Tags;
+        }
+
+        public override int GetHashCode()
+        {
+            // As per Jon Skeet's StackOverflow answer
+            // https://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-system-object-gethashcode
+            //
+
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + Name.GetHashCode();
+                hash = hash * 23 + Comment.GetHashCode();
+                hash = hash * 23 + Fields.GetHashCode();
+                hash = hash * 23 + Tags.GetHashCode();
+                return hash;
+            }
+        }
     }
 }

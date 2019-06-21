@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data;
+using Chronicy.Tracking;
 using System.ServiceModel;
 
 namespace Chronicy.Communication
@@ -14,6 +15,9 @@ namespace Chronicy.Communication
 
         [OperationContract(IsOneWay = true)]
         void SendSelectedStack(Stack stack);
+
+        [OperationContract(IsOneWay = true)]
+        void SendTrackingData(TrackingData data);
 
         [OperationContract(IsOneWay = true)]
         void SendDebugMessage(string message);

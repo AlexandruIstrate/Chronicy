@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace Chronicy.Excel.Tracking
 {
-    // TODO: Change to something more dynamic
     public class ExcelTracker
     {
         public List<ITrackable> Trackers { get; }

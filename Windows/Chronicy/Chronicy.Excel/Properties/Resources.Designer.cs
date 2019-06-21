@@ -143,6 +143,26 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconNewNotebook32 {
+            get {
+                object obj = ResourceManager.GetObject("IconNewNotebook32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconNewStack32 {
+            get {
+                object obj = ResourceManager.GetObject("IconNewStack32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconNotebook32 {
             get {
                 object obj = ResourceManager.GetObject("IconNotebook32", resourceCulture);
@@ -196,6 +216,16 @@ namespace Chronicy.Excel.Properties {
         internal static System.Drawing.Bitmap IconTracking32 {
             get {
                 object obj = ResourceManager.GetObject("IconTracking32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconViewAll32 {
+            get {
+                object obj = ResourceManager.GetObject("IconViewAll32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
