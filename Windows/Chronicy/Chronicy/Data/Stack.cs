@@ -54,7 +54,6 @@ namespace Chronicy.Data
         {
             // As per Jon Skeet's StackOverflow answer
             // https://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-system-object-gethashcode
-            //
 
             unchecked
             {

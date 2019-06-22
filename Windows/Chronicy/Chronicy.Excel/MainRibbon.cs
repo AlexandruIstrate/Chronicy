@@ -29,6 +29,22 @@ namespace Chronicy.Excel
             this.extension = extension;
         }
 
+        private void SetupActivationCallbacks()
+        {
+            enableButton.Visible = false;
+            selectionGroup.Visible = false;
+            trackingGroup.Visible = false;
+            toolsGroup.Visible = false;
+
+            extension.ConnectionChanged += (enabled) =>
+            {
+                enableButton.Visible = enabled;
+                selectionGroup.Visible = enabled;
+                trackingGroup.Visible = enabled;
+                toolsGroup.Visible = enabled;
+            };
+        }
+
         private void InitializeTrackingMenus()
         {
             tracker = new ExcelTracker();
@@ -65,6 +81,7 @@ namespace Chronicy.Excel
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
+            SetupActivationCallbacks();
             InitializeTaskPane();
 
             extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };

@@ -89,7 +89,6 @@
     <Compile Include="Web\Models\ResponseInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="DataClasses.cd" />
     <None Include="packages.config" />
   </ItemGroup>

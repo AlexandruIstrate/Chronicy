@@ -3,7 +3,7 @@
   <Class Name="Chronicy.Data.Notebook">
     <Position X="0.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAICAAAAAAAAAAAAAAAABAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAICAAAAAAAAAAAAgAAABAQAgAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Notebook.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -13,7 +13,7 @@
   <Class Name="Chronicy.Data.Stack">
     <Position X="4" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAABAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAgAAABAQIAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Stack.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -23,7 +23,7 @@
   <Class Name="Chronicy.Data.Card">
     <Position X="7.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ggAAAAAEACAAAAEAAAAAAAQAAAAAAEAAAAAAAAAAgAA=</HashCode>
+      <HashCode>ggAAAAAEACAAAAEAgAAAAAQAAAAAAMAAAAAAAAAAgAA=</HashCode>
       <FileName>Data\Card.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -34,12 +34,12 @@
   <Class Name="Chronicy.Data.CustomField">
     <Position X="11" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAIAAAQAgAAAAAAA=</HashCode>
       <FileName>Data\CustomField.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chronicy.Data.Tag">
-    <Position X="11" Y="3.25" Width="1.5" />
+    <Position X="11" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Tag.cs</FileName>

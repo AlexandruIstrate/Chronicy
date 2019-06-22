@@ -16,5 +16,36 @@ namespace Chronicy.Data
             Name = name;
             Description = description;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Tag))
+            {
+                return false;
+            }
+
+            Tag other = (Tag)obj;
+            return Name == other.Name &&
+                   Description == other.Description;
+        }
+
+        public override int GetHashCode()
+        {
+            // As per Jon Skeet's StackOverflow answer
+            // https://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-system-object-gethashcode
+
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + Name.GetHashCode();
+                hash = hash * 23 + Description.GetHashCode();
+                return hash;
+            }
+        }
     }
 }

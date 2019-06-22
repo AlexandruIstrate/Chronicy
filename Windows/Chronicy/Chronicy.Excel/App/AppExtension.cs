@@ -1,6 +1,9 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
+using Chronicy.Excel.Information;
+using Chronicy.Excel.Tracking.Events;
+using Chronicy.Information;
 using Microsoft.Office.Interop.Excel;
 using System.ServiceModel;
 
@@ -45,9 +48,14 @@ namespace Chronicy.Excel.App
 
         private void InitializeTracking()
         {
-            Tracking.Register<Workbook>((trackingEvent) => {  });
-            Tracking.Register<Worksheet>((trackingEvent) => {  });
-            Tracking.Register<Range>((trackingEvent) => {  });
+            Tracking.Register<Workbook>(TestCallback);
+            Tracking.Register<Worksheet>(TestCallback);
+            Tracking.Register<Range>(TestCallback);
+        }
+
+        private void TestCallback(TrackingEvent trackingEvent)
+        {
+            InformationDispatcher.Default.Dispatch(trackingEvent.ValueType.FullName, new MessageBoxContext());
         }
     }
 }

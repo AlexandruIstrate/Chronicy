@@ -1,4 +1,7 @@
-﻿using System.ServiceProcess;
+﻿using Chronicy.Information;
+using Chronicy.Service.Information;
+using System;
+using System.ServiceProcess;
 
 namespace Chronicy.Service
 {
@@ -7,7 +10,19 @@ namespace Chronicy.Service
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        public static void Main()
+        {
+            try
+            {
+                Run();
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e.Message, new EventLogContext(), InformationKind.Error);
+            }
+        }
+
+        private static void Run()
         {
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
