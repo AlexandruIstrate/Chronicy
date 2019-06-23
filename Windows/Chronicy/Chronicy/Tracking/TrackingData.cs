@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Chronicy.Data;
+using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Chronicy.Tracking
@@ -7,11 +9,27 @@ namespace Chronicy.Tracking
     public class TrackingData
     {
         [DataMember]
-        public DateTime DateDispatched { get; }
+        public string Name { get; protected set; }
 
-        public TrackingData()
+        [DataMember]
+        public string Comment { get; protected set; }
+
+        [DataMember]
+        public DateTime Date { get; protected set; }
+
+        [DataMember]
+        public List<CustomField> Fields { get; protected set; }
+
+        [DataMember]
+        public List<Tag> Tags { get; protected set; }
+
+        public TrackingData(string name, string comment, List<CustomField> fields, List<Tag> tags)
         {
-            DateDispatched = DateTime.Now;
+            Name = name;
+            Comment = comment;
+            Date = DateTime.Now;
+            Fields = fields;
+            Tags = tags;
         }
     }
 }

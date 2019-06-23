@@ -5,6 +5,7 @@ using Chronicy.Service.Information;
 using Chronicy.Tracking;
 using System;
 using System.ServiceModel;
+using System.Text;
 
 namespace Chronicy.Service.Communication
 {
@@ -33,7 +34,12 @@ namespace Chronicy.Service.Communication
 
         public void SendTrackingData(TrackingData data)
         {
-            throw new NotImplementedException();
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("Date: " + data.Date.ToString());
+            builder.AppendLine("Name: " + data.Name);
+            builder.AppendLine("Comment: " + data.Comment);
+
+            InformationDispatcher.Default.Dispatch(builder.ToString(), context);
         }
 
         public void SendDebugMessage(string message)

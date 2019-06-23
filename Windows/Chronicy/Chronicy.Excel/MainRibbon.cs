@@ -14,13 +14,16 @@ using System;
 
 namespace Chronicy.Excel
 {
+    // TODO: Modularize this more
     public partial class MainRibbon
     {
         private MessageBoxContext informationContext = new MessageBoxContext();
 
+        // UI
         private CustomTaskPane taskPane;
         private NotebookTaskPane notebookTaskPaneForm;
 
+        // Data
         private IExcelExtension extension;
         private ExcelTracker tracker;
 

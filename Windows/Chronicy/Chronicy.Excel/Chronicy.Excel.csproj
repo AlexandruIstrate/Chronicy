@@ -179,6 +179,7 @@
     <Compile Include="Tracking\RangeTrackable.cs" />
     <Compile Include="Tracking\WorkbookTrackable.cs" />
     <Compile Include="Tracking\WorksheetTrackable.cs" />
+    <Compile Include="UI\ControlGroup.cs" />
     <Compile Include="UI\NotebookTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Chronicy.Data
@@ -11,6 +12,9 @@ namespace Chronicy.Data
 
         [DataMember]
         public string Comment { get; set; }
+
+        [DataMember]
+        public DateTime Date { get; set; }
 
         [DataMember]
         public List<CustomField> Fields { get; set; }
@@ -71,6 +75,7 @@ namespace Chronicy.Data
             Card other = (Card)obj;
             return Name == other.Name &&
                    Comment == other.Comment &&
+                   Date == other.Date &&
                    Fields == other.Fields &&
                    Tags == other.Tags;
         }
@@ -85,6 +90,7 @@ namespace Chronicy.Data
                 int hash = 17;
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Comment.GetHashCode();
+                hash = hash * 23 + Date.GetHashCode();
                 hash = hash * 23 + Fields.GetHashCode();
                 hash = hash * 23 + Tags.GetHashCode();
                 return hash;
