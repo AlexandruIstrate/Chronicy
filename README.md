@@ -5,10 +5,17 @@ Chronicy is the new standard in task management. With the help of Chronicy you c
 ![Main Image](./Images/Main.png)
 
 ## How does it work?
-Chronicy features a three component model in order to most efficiently track your activity. The three core parts of Chronicy are:
-* A background service that listens for changes and raises events
-* Extensions that allow third party application to register their progress in the Chronicy system
-* A GUI application that allows you to communicate with the Chronicy system. This is what gives a normal user the possibility to log custom data and configure the application
+Chronicy features a three-component model, in order to most efficiently track your activity. The three core parts of Chronicy are:
+- A background service that listens for changes and raises events
+- Extensions that allow third party application to register their progress in the Chronicy system
+- A GUI application that allows you to communicate with the Chronicy system. This is what gives a normal user the possibility to log custom data and configure the application
+
+## Features
+- Tracking your actions in supported applications via extensions
+- Automatic insertion of daily activities into your application
+- Modern, fluid user interface
+- Safe storage of your data inside a database
+- Low memory footprint
 
 ## User Interface
 Chronicy features a simple interface that gives you a clear overview of what you are working on.
@@ -34,17 +41,18 @@ The Windows service that collects data sent by extensions
 [//]: ![Web](./Images/Web.png)
 
 ## Upcoming Features
-
 - [ ] Windows service and Office extensions
-- [ ] Web service
+- [ ] Website and web service
 - [ ] Cross platform communication
+- [ ] Encrypted storage
 - [ ] Application installer
 
 ## Platform Support
-|   Platform   |    Status    |          Available Components          |
+|   Platform   |    Status    |                Components              |
 | ------------ | ------------ | -------------------------------------- |
 | Windows      | WIP          | Windows Service and Office Extensions  |
 | macOS        | Supported    | Desktop app and Safari extension       |
+| Web          | WIP          | Website and API                        |
 
 ## Technologies Used
 #### Windows

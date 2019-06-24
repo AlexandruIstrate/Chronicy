@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Chronicy.Excel.Tracking.Events
 {
@@ -25,12 +24,12 @@ namespace Chronicy.Excel.Tracking.Events
             {
                 PostedEventHandler handler = eventHandlers[typeof(T)];
                 handler.Invoke(trackingEvent);
+                trackingEvent.Handle();
             }
-            catch (KeyNotFoundException e)
+            catch (KeyNotFoundException)
             {
-                // If we get here, it means we don't have a handler registered for this type
-                // This is fine, however. That's why we can just log the exception and ignore it
-                Debug.WriteLine(e.Message);
+                // If we get here, it means we don't have a handler registered for this type.
+                // This is fine, however.
             }
         }
 

@@ -1,9 +1,10 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Information;
+using Chronicy.Service.Data;
+using Chronicy.Service.Dispatch;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
-using System;
 using System.ServiceModel;
 using System.Text;
 
@@ -12,34 +13,58 @@ namespace Chronicy.Service.Communication
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class TrackingService : IServerService
     {
-        // Test only
+        // Test-only context
         private EventLogContext context = new EventLogContext();
+        private NotebookSelector notebookSelector = new NotebookSelector();
+
+        private DispatcherTimer dispatcher = new DispatcherTimer();
 
         public IClientCallback Callback { get; set; }
+
+        public TrackingService()
+        {
+            dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookSelector.Notebooks); });
+        }
 
         public void Connect()
         {
             Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
+            dispatcher.Start();
         }
 
         public void SendSelectedNotebook(Notebook notebook)
         {
             InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
+
+            notebookSelector.SelectNotebook(notebook);
         }
 
         public void SendSelectedStack(Stack stack)
         {
             InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
+
+            notebookSelector.SelectStack(stack);
         }
 
         public void SendTrackingData(TrackingData data)
         {
+            // DEBUG START
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("Date: " + data.Date.ToString());
             builder.AppendLine("Name: " + data.Name);
             builder.AppendLine("Comment: " + data.Comment);
 
             InformationDispatcher.Default.Dispatch(builder.ToString(), context);
+            // DEBUG END
+
+            Card card = new Card(data.Name, data.Comment)
+            {
+                Date = data.Date,
+                Fields = data.Fields,
+                Tags = data.Tags
+            };
+
+            notebookSelector.AddCard(card);
         }
 
         public void SendDebugMessage(string message)

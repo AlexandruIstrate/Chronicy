@@ -1,10 +1,7 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
-using Chronicy.Excel.Information;
-using Chronicy.Excel.Tracking.Events;
 using Chronicy.Excel.Utils;
-using Chronicy.Information;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;

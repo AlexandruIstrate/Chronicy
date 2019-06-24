@@ -6,17 +6,22 @@ namespace Chronicy.Service.App
 {
     public class AppService : IService
     {
-        private EventLogContext logContext = new EventLogContext();
+        private EventLogContext logContext;
+
+        public AppService()
+        {
+            logContext = new EventLogContext();
+        }
 
         public override void OnStart()
         {
-            InitializeCommunication();
             InformationDispatcher.Default.Dispatch("OnStart", logContext);
+            InitializeCommunication();
         }
 
         public override void OnStop()
         {
-            InformationDispatcher.Default.Dispatch("OnStop", logContext) ;
+            InformationDispatcher.Default.Dispatch("OnStop", logContext);
         }
 
         private void InitializeCommunication()

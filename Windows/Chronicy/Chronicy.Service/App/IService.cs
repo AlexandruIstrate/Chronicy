@@ -1,15 +1,12 @@
-﻿namespace Chronicy.Service.App
+﻿using Chronicy.Data.Storage;
+
+namespace Chronicy.Service.App
 {
     public abstract class IService
     {
-        public virtual void OnStart()
-        {
+        public IDataSource DataSource { get; set; }
 
-        }
-
-        public virtual void OnStop()
-        {
-
-        }
+        public virtual void OnStart() { }
+        public virtual void OnStop() { }
     }
 }
