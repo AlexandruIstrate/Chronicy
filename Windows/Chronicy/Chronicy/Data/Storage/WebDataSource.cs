@@ -1,5 +1,6 @@
 ﻿using Chronicy.Web;
 using Chronicy.Web.Converters;
+using Chronicy.Web.Exceptions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,52 +13,122 @@ namespace Chronicy.Data.Storage
 
         public Notebook CreateNotebook(string name)
         {
-            return converter.ReverseConvert(api.CreateNotebook(name));
+            try
+            {
+                return converter.ReverseConvert(api.CreateNotebook(name));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not create notebook", e);
+            }
         }
 
         public async Task<Notebook> CreateNotebookAsync(string name)
         {
-            return converter.ReverseConvert(await api.CreateNotebookAsync(name));
+            try
+            {
+                return converter.ReverseConvert(await api.CreateNotebookAsync(name));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not create notebook", e);
+            }
         }
 
         public void DeleteNotebook(Notebook notebook)
         {
-            api.DeleteNotebook(notebook.Id.ToString());
+            try
+            {
+                api.DeleteNotebook(notebook.Id.ToString());
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not delete notebook", e);
+            }
         }
 
         public async Task DeleteNotebookAsync(Notebook notebook)
         {
-            await api.DeleteNotebookAsync(notebook.Id.ToString());
+            try
+            {
+                await api.DeleteNotebookAsync(notebook.Id.ToString());
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not delete notebook", e);
+            }
         }
 
         public Notebook GetNotebook(long id)
         {
-            return converter.ReverseConvert(api.GetNotebook(id.ToString()));
+            try
+            {
+                return converter.ReverseConvert(api.GetNotebook(id.ToString()));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not get notebook", e);
+            }
         }
 
         public async Task<Notebook> GetNotebookAsync(long id)
         {
-            return converter.ReverseConvert(await api.GetNotebookAsync(id.ToString()));
+            try
+            {
+                return converter.ReverseConvert(await api.GetNotebookAsync(id.ToString()));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not get notebook", e);
+            }
         }
 
         public IEnumerable<Notebook> GetNotebooks()
         {
-            return api.GetNotebooks().List.ConvertAll(item => converter.ReverseConvert(item));
+            try
+            {
+                return api.GetNotebooks().List.ConvertAll(item => converter.ReverseConvert(item));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not get notebooks", e);
+            }
         }
 
         public async Task<IEnumerable<Notebook>> GetNotebooksAsync()
         {
-            return (await api.GetNotebooksAsync()).List.ConvertAll(input => converter.ReverseConvert(input));
+            try
+            {
+                return (await api.GetNotebooksAsync()).List.ConvertAll(input => converter.ReverseConvert(input));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not get notebooks", e);
+            }
         }
 
         public void UpdateNotebook(Notebook notebook)
         {
-            api.UpdateNotebook(converter.Convert(notebook));
+            try
+            {
+                api.UpdateNotebook(converter.Convert(notebook));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not update notebook", e);
+            }
         }
 
         public async Task UpdateNotebookAsync(Notebook notebook)
         {
-            await api.UpdateNotebookAsync(converter.Convert(notebook));
+            try
+            {
+                await api.UpdateNotebookAsync(converter.Convert(notebook));
+            }
+            catch (WebApiException e)
+            {
+                throw new DataSourceException("Could not update notebook", e);
+            }
         }
     }
 }

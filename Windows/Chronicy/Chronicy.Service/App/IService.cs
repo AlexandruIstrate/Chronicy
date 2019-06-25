@@ -7,6 +7,8 @@ namespace Chronicy.Service.App
         public IDataSource DataSource { get; set; }
 
         public virtual void OnStart() { }
+        public virtual void OnPause() { }
+        public virtual void OnContinue() { }
         public virtual void OnStop() { }
     }
 }

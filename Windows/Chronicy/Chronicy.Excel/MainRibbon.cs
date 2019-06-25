@@ -3,12 +3,12 @@ using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Tracking.Events;
 using Chronicy.Excel.UI;
+using Chronicy.Excel.UI.Pane;
 using Chronicy.Excel.User;
 using Chronicy.Excel.Utils;
 using Chronicy.Information;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Tools;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 
@@ -20,8 +20,8 @@ namespace Chronicy.Excel
         private MessageBoxContext informationContext = new MessageBoxContext();
 
         // UI
-        private CustomTaskPane taskPane;
-        private NotebookTaskPane notebookTaskPaneForm;
+        private TaskPane<EditTaskPane> editTaskPane;
+        private TaskPane<NotebookTaskPane> notebookTaskPane;
 
         // Data
         private IExcelExtension extension;
@@ -56,7 +56,7 @@ namespace Chronicy.Excel
             tracker.Register<Range>(new RangeTrackable());
 
             // Upon clicking the checkbox, the StateUpdated event is triggered, which sets the checkbox to its value again.
-            // This is not the end of the world, however we're wasting a call by creating this call cycle
+            // This is not the end of the world, however we're wasting a call by creating this cycle
 
             workbookEnableCheckBox.Click += (sender, args) => { tracker.Get<Workbook>().Enabled = (sender as RibbonCheckBox).Checked; };
             sheetEnableCheckBox.Click += (sender, args) => { tracker.Get<Worksheet>().Enabled = (sender as RibbonCheckBox).Checked; };
@@ -75,17 +75,17 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToAddressString().Replace("$", ""); };
         }
 
-        private void InitializeTaskPane()
+        private void InitializeTaskPanes()
         {
-            notebookTaskPaneForm = new NotebookTaskPane();
-            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(notebookTaskPaneForm, "Notebook");
+            editTaskPane = new TaskPane<EditTaskPane>("Edit Item", new EditTaskPane());
+            notebookTaskPane = new TaskPane<NotebookTaskPane>("Notebook", new NotebookTaskPane());
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
-            InitializeTaskPane();
+            InitializeTaskPanes();
 
             extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };
             extension.ConnectionChanged += (connected) => { connectButton.Visible = !connected; };
@@ -125,17 +125,17 @@ namespace Chronicy.Excel
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
         {
-            taskPane.Visible = true;
+            editTaskPane.Visible = true;
         }
 
         private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
         {
-            taskPane.Visible = true;
+            editTaskPane.Visible = true;
         }
 
         private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
         {
-            taskPane.Visible = true;
+            notebookTaskPane.Visible = true;
         }
 
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)

@@ -180,6 +180,15 @@
     <Compile Include="Tracking\WorkbookTrackable.cs" />
     <Compile Include="Tracking\WorksheetTrackable.cs" />
     <Compile Include="UI\ControlGroup.cs" />
+    <Compile Include="UI\Pane\ITaskPaneFactory.cs" />
+    <Compile Include="UI\Pane\TaskPane.cs" />
+    <Compile Include="UI\Pane\TaskPaneFactory.cs" />
+    <Compile Include="UI\EditTaskPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EditTaskPane.Designer.cs">
+      <DependentUpon>EditTaskPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NotebookTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -204,6 +213,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\EditTaskPane.resx">
+      <DependentUpon>EditTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\NotebookTaskPane.resx">
       <DependentUpon>NotebookTaskPane.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,13 +1,14 @@
-﻿using Chronicy.Web.Models;
+﻿using Chronicy.Web.Exceptions;
+using Chronicy.Web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web
 {
-    // TODO: Add synchronous methods as well
     public class ChronicyWebApi : IDisposable
     {
         private IClient webClient;
@@ -29,84 +30,216 @@ namespace Chronicy.Web
 
         public Token Authenticate(string username, string password)
         {
-            JObject body = new JObject
+            try
             {
-                { "username", username },
-                { "password", password }
-            };
+                JObject body = new JObject
+                {
+                    { "username", username },
+                    { "password", password }
+                };
 
-            return UploadData<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+                return UploadData<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetToken(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetToken(), e);
+            }
         }
 
         public Task<Token> AuthenticateAsync(string username, string password)
         {
-            JObject body = new JObject
+            try
             {
-                { "username", username },
-                { "password", password }
-            };
+                JObject body = new JObject
+                {
+                    { "username", username },
+                    { "password", password }
+                };
 
-            return UploadDataAsync<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+                return UploadDataAsync<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetToken(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetToken(), e);
+            }
         }
 
         public ListResponse<Notebook> GetNotebooks()
         {
-            return DownloadData<ListResponse<Notebook>>(urlBuilder.GetNotebooks());
+            try
+            {
+                return DownloadData<ListResponse<Notebook>>(urlBuilder.GetNotebooks());
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetNotebooks(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetNotebooks(), e);
+            }
         }
 
         public Task<ListResponse<Notebook>> GetNotebooksAsync()
         {
-            return DownloadDataAsync<ListResponse<Notebook>>(urlBuilder.GetNotebooks());
+            try
+            {
+                return DownloadDataAsync<ListResponse<Notebook>>(urlBuilder.GetNotebooks());
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetNotebooks(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetNotebooks(), e);
+            }
         }
 
         public Notebook GetNotebook(string id)
         {
-            return DownloadData<Notebook>(urlBuilder.GetNotebook(id));
+            try
+            {
+                return DownloadData<Notebook>(urlBuilder.GetNotebook(id));
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetNotebook(id), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetNotebook(id), e);
+            }
         }
 
         public Task<Notebook> GetNotebookAsync(string id)
         {
-            return DownloadDataAsync<Notebook>(urlBuilder.GetNotebook(id));
+            try
+            {
+                return DownloadDataAsync<Notebook>(urlBuilder.GetNotebook(id));
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.GetNotebook(id), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.GetNotebook(id), e);
+            }
         }
 
         public Notebook CreateNotebook(string name)
         {
-            JObject body = new JObject
+            try
             {
-                { "name", name }
-            };
+                JObject body = new JObject
+                {
+                    { "name", name }
+                };
 
-            return UploadData<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                return UploadData<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.CreateNotebook(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.CreateNotebook(), e);
+            }
         }
 
         public Task<Notebook> CreateNotebookAsync(string name)
         {
-            JObject body = new JObject
+            try
             {
-                { "name", name }
-            };
+                JObject body = new JObject
+                {
+                    { "name", name }
+                };
 
-            return UploadDataAsync<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                return UploadDataAsync<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.CreateNotebook(), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.CreateNotebook(), e);
+            }
         }
 
         public ErrorResponse DeleteNotebook(string id)
         {
-            return UploadData<ErrorResponse>(urlBuilder.DeleteNotebook(id), string.Empty, ClientMethod.Delete);
+            try
+            {
+                return UploadData<ErrorResponse>(urlBuilder.DeleteNotebook(id), string.Empty, ClientMethod.Delete);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.DeleteNotebook(id), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.DeleteNotebook(id), e);
+            }
         }
 
         public Task<ErrorResponse> DeleteNotebookAsync(string id)
         {
-            return UploadDataAsync<ErrorResponse>(urlBuilder.DeleteNotebook(id), string.Empty, ClientMethod.Delete);
+            try
+            {
+                return UploadDataAsync<ErrorResponse>(urlBuilder.DeleteNotebook(id), string.Empty, ClientMethod.Delete);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.DeleteNotebook(id), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.DeleteNotebook(id), e);
+            }
         }
 
         public ErrorResponse UpdateNotebook(Notebook notebook)
         {
-            return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+            try
+            {
+                return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+            }
         }
 
         public Task<ErrorResponse> UpdateNotebookAsync(Notebook notebook)
         {
-            return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+            try
+            {
+                return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+            }
+            catch (Exception e)
+            {
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+            }
         }
 
         private T UploadData<T>(string url, string data, ClientMethod method) where T : ModelBase

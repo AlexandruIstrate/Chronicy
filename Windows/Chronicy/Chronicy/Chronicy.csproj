@@ -60,6 +60,7 @@
     <Compile Include="Data\IConverter.cs" />
     <Compile Include="Data\Notebook.cs" />
     <Compile Include="Data\Stack.cs" />
+    <Compile Include="Data\Storage\DataSourceException.cs" />
     <Compile Include="Data\Storage\IDataSource.cs" />
     <Compile Include="Data\Storage\WebDataSource.cs" />
     <Compile Include="Data\Tag.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Web\Converters\CustomFieldConverter.cs" />
     <Compile Include="Web\Converters\NotebookConverter.cs" />
     <Compile Include="Web\Converters\StackConverter.cs" />
+    <Compile Include="Web\Exceptions\WebApiConnectionException.cs" />
+    <Compile Include="Web\Exceptions\WebApiException.cs" />
     <Compile Include="Web\IClient.cs" />
     <Compile Include="Web\Models\Card.cs" />
     <Compile Include="Web\Models\CustomField.cs" />
