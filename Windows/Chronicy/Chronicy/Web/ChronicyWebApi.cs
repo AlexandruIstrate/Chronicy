@@ -214,15 +214,15 @@ namespace Chronicy.Web
         {
             try
             {
-                return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+                return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
             }
             catch (HttpRequestException e)
             {
-                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id), e);
             }
             catch (Exception e)
             {
-                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id), e);
             }
         }
 
@@ -230,15 +230,15 @@ namespace Chronicy.Web
         {
             try
             {
-                return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id.ToString()), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+                return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
             }
             catch (HttpRequestException e)
             {
-                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id), e);
             }
             catch (Exception e)
             {
-                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id.ToString()), e);
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id), e);
             }
         }
 

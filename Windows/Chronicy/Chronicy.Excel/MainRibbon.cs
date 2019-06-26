@@ -1,4 +1,5 @@
-﻿using Chronicy.Excel.App;
+﻿using Chronicy.Data;
+using Chronicy.Excel.App;
 using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Tracking.Events;
@@ -20,7 +21,7 @@ namespace Chronicy.Excel
         private MessageBoxContext informationContext = new MessageBoxContext();
 
         // UI
-        private TaskPane<EditTaskPane> editTaskPane;
+        private TaskPane<EditNotebookTaskPane> editTaskPane;
         private TaskPane<NotebookTaskPane> notebookTaskPane;
 
         // Data
@@ -77,7 +78,7 @@ namespace Chronicy.Excel
 
         private void InitializeTaskPanes()
         {
-            editTaskPane = new TaskPane<EditTaskPane>("Edit Item", new EditTaskPane());
+            editTaskPane = new TaskPane<EditNotebookTaskPane>("Edit Item", new EditNotebookTaskPane());
             notebookTaskPane = new TaskPane<NotebookTaskPane>("Notebook", new NotebookTaskPane());
         }
 
@@ -125,6 +126,8 @@ namespace Chronicy.Excel
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
         {
+            editTaskPane.Control.EditedNotebook = new Notebook(string.Empty);
+            editTaskPane.Control.Confirmed += (s, args) => { /* Save the edited notebook */ };
             editTaskPane.Visible = true;
         }
 

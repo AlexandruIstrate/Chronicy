@@ -1,4 +1,5 @@
-﻿using Chronicy.Excel.Tracking.Events;
+﻿using Chronicy.Excel.History;
+using Chronicy.Excel.Tracking.Events;
 
 namespace Chronicy.Excel.App
 {
@@ -19,11 +20,12 @@ namespace Chronicy.Excel.App
         }
 
         public TrackingSystem Tracking { get; } = new TrackingSystem();
+        public HistoryManager History { get; } = new HistoryManager();
 
         public delegate void StateUpdateHandler(bool enabled);
-        public event StateUpdateHandler StateChanged;
-
         public delegate void ConnectionUpdateHandler(bool connected);
+
+        public event StateUpdateHandler StateChanged;
         public event ConnectionUpdateHandler ConnectionChanged;
 
         public virtual void OnStart() { }

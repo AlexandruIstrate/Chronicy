@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Chronicy.Service
 {
     [RunInstaller(true)]
-    public partial class ProjectInstaller : System.Configuration.Install.Installer
+    public partial class ProjectInstaller : global::System.Configuration.Install.Installer
     {
         public ProjectInstaller()
         {

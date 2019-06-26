@@ -1,6 +1,6 @@
 ﻿using Chronicy.Data.Storage;
 
-namespace Chronicy.Service.App
+namespace Chronicy.Service.System
 {
     public abstract class IService
     {

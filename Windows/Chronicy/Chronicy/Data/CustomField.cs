@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
@@ -19,6 +20,11 @@ namespace Chronicy.Data
             Name = name;
             Type = type;
             Value = value;
+        }
+
+        public Type GetSystemType()
+        {
+            return FieldTypeToSystemType(Type);
         }
 
         public override bool Equals(object obj)
@@ -52,6 +58,19 @@ namespace Chronicy.Data
                 hash = hash * 23 + Value.GetHashCode();
                 return hash;
             }
+        }
+
+        public static Type FieldTypeToSystemType(FieldType type)
+        {
+            switch (type)
+            {
+                case FieldType.Number:
+                    return typeof(float);
+                case FieldType.String:
+                    return typeof(string);
+            }
+
+            return typeof(object);
         }
     }
 

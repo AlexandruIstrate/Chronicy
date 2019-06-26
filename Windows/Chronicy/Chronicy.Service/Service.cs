@@ -1,4 +1,4 @@
-﻿using Chronicy.Service.App;
+﻿using Chronicy.Service.System;
 using System.ServiceProcess;
 
 namespace Chronicy.Service

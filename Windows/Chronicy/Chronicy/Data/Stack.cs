@@ -10,11 +10,15 @@ namespace Chronicy.Data
         public string Name { get; set; }
 
         [DataMember]
+        public List<CustomField> Fields { get; set; }
+
+        [DataMember]
         public List<Card> Cards { get; set; }
 
         public Stack(string name)
         {
             Name = name;
+            Fields = new List<CustomField>();
             Cards = new List<Card>();
         }
 
