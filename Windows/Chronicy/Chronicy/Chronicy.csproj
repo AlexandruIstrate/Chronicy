@@ -68,6 +68,9 @@
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\DataSetConverter.cs" />
+    <Compile Include="Sql\ProcedureRunner.cs" />
+    <Compile Include="Sql\SqlDataSource.cs" />
     <Compile Include="Tracking\ITrackable.cs" />
     <Compile Include="Tracking\TrackingData.cs" />
     <Compile Include="Tracking\TrackingDataBuilder.cs" />

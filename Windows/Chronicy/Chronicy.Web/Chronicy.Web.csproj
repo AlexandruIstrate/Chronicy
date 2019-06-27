@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Auth\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

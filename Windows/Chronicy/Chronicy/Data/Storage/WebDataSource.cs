@@ -59,11 +59,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public Notebook GetNotebook(long id)
+        public Notebook GetNotebook(string id)
         {
             try
             {
-                return converter.ReverseConvert(api.GetNotebook(id.ToString()));
+                return converter.ReverseConvert(api.GetNotebook(id));
             }
             catch (WebApiException e)
             {
@@ -71,11 +71,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<Notebook> GetNotebookAsync(long id)
+        public async Task<Notebook> GetNotebookAsync(string id)
         {
             try
             {
-                return converter.ReverseConvert(await api.GetNotebookAsync(id.ToString()));
+                return converter.ReverseConvert(await api.GetNotebookAsync(id));
             }
             catch (WebApiException e)
             {

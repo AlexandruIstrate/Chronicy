@@ -5,8 +5,8 @@ namespace Chronicy.Data.Storage
 {
     public interface IDataSource
     {
-        Notebook GetNotebook(long id);
-        Task<Notebook> GetNotebookAsync(long id);
+        Notebook GetNotebook(string id);
+        Task<Notebook> GetNotebookAsync(string id);
         IEnumerable<Notebook> GetNotebooks();
         Task<IEnumerable<Notebook>> GetNotebooksAsync();
 
