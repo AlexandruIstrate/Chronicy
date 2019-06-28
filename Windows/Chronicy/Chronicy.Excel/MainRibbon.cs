@@ -20,11 +20,6 @@ namespace Chronicy.Excel
     {
         private MessageBoxContext informationContext = new MessageBoxContext();
 
-        // UI
-        private TaskPane<EditNotebookTaskPane> editTaskPane;
-        private TaskPane<NotebookTaskPane> notebookTaskPane;
-
-        // Data
         private IExcelExtension extension;
         private ExcelTracker tracker;
 
@@ -73,22 +68,25 @@ namespace Chronicy.Excel
 
             ITrackable cells = tracker.Get<Range>();
             cells.StateUpdated += (enabled) => { cellsEnableCheckBox.Checked = enabled; };
-            cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToAddressString().Replace("$", ""); };
+            cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
-        private void InitializeTaskPanes()
+        private void InitializeHistoryMenu()
         {
-            editTaskPane = new TaskPane<EditNotebookTaskPane>("Edit Item", new EditNotebookTaskPane());
-            notebookTaskPane = new TaskPane<NotebookTaskPane>("Notebook", new NotebookTaskPane());
+            // Set up the historyMenu to load history items when something new appears
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
-            InitializeTaskPanes();
+            InitializeHistoryMenu();
 
-            extension.StateChanged += (enabled) => { enableButton.Checked = enabled; };
+            extension.StateChanged += (enabled) => 
+            {
+                enableButton.Checked = enabled;
+                enableButton.Label = enableButton.Checked ? "Enabled" : "Disabled";
+            };
             extension.ConnectionChanged += (connected) => { connectButton.Visible = !connected; };
 
             extension.OnRibbonLoad();
@@ -126,19 +124,30 @@ namespace Chronicy.Excel
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
         {
-            editTaskPane.Control.EditedNotebook = new Notebook(string.Empty);
-            editTaskPane.Control.Confirmed += (s, args) => { /* Save the edited notebook */ };
-            editTaskPane.Visible = true;
+            EditNotebookTaskPane control = new EditNotebookTaskPane();
+            control.EditedNotebook = new Notebook(string.Empty);
+            control.Confirmed += (s, args) => { /* Save the edited notebook */ };
+
+            TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("Edit Notebook", control);
+            taskPane.Visible = true;
         }
 
         private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
         {
-            editTaskPane.Visible = true;
+            EditStackTaskPane control = new EditStackTaskPane();
+            control.EditedStack = new Stack(string.Empty);
+            control.Confirmed += (s, args) => { /* Save the edited stack */ };
+
+            TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("Edit Stack", control);
+            taskPane.Visible = true;
         }
 
         private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
         {
-            notebookTaskPane.Visible = true;
+            NotebooksTaskPane control = new NotebooksTaskPane();
+
+            TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
+            taskPane.Visible = true;
         }
 
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)

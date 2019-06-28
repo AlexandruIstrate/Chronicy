@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
 {
+    // TODO: Make generic so that it supports any type
     public interface IDataSource
     {
         Notebook GetNotebook(string id);

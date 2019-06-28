@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Chronicy.Tests
+namespace Chronicy.Tests.Communication
 {
     [TestFixture]
     public class CommunicationTest

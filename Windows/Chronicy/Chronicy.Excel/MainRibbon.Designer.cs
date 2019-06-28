@@ -65,11 +65,11 @@
             this.cellsCurrentLabel = this.Factory.CreateRibbonButton();
             this.otherMenu = this.Factory.CreateRibbonMenu();
             this.timeWorkedCheckBox = this.Factory.CreateRibbonCheckBox();
-            this.historyGallery = this.Factory.CreateRibbonGallery();
             this.syncButton = this.Factory.CreateRibbonButton();
             this.helpButton = this.Factory.CreateRibbonButton();
             this.reportBugButton = this.Factory.CreateRibbonButton();
             this.viewGitHubButton = this.Factory.CreateRibbonButton();
+            this.historyMenu = this.Factory.CreateRibbonMenu();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -150,7 +150,7 @@
             // 
             // toolsGroup
             // 
-            this.toolsGroup.Items.Add(this.historyGallery);
+            this.toolsGroup.Items.Add(this.historyMenu);
             this.toolsGroup.Items.Add(this.syncButton);
             this.toolsGroup.Label = "Tools";
             this.toolsGroup.Name = "toolsGroup";
@@ -182,7 +182,7 @@
             // 
             this.enableButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.enableButton.Image = global::Chronicy.Excel.Properties.Resources.IconEnable32;
-            this.enableButton.Label = "Enabled";
+            this.enableButton.Label = "Disabled";
             this.enableButton.Name = "enableButton";
             this.enableButton.ShowImage = true;
             this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
@@ -315,14 +315,6 @@
             this.timeWorkedCheckBox.Label = "Time Worked";
             this.timeWorkedCheckBox.Name = "timeWorkedCheckBox";
             // 
-            // historyGallery
-            // 
-            this.historyGallery.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.historyGallery.Image = global::Chronicy.Excel.Properties.Resources.IconHistory32;
-            this.historyGallery.Label = "History";
-            this.historyGallery.Name = "historyGallery";
-            this.historyGallery.ShowImage = true;
-            // 
             // syncButton
             // 
             this.syncButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -358,6 +350,16 @@
             this.viewGitHubButton.Name = "viewGitHubButton";
             this.viewGitHubButton.ShowImage = true;
             this.viewGitHubButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewGitHubClicked);
+            // 
+            // historyMenu
+            // 
+            this.historyMenu.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.historyMenu.Dynamic = true;
+            this.historyMenu.Image = global::Chronicy.Excel.Properties.Resources.IconHistory32;
+            this.historyMenu.ItemSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.historyMenu.Label = "History";
+            this.historyMenu.Name = "historyMenu";
+            this.historyMenu.ShowImage = true;
             // 
             // MainRibbon
             // 
@@ -400,7 +402,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonDropDown stackDropDown;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton enableButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup toolsGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGallery historyGallery;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton syncButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup extensionGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton connectButton;
@@ -429,6 +430,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox cellsEnableCheckBox;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton sheetCurrentLabel;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton cellsCurrentLabel;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu historyMenu;
     }
 
     partial class ThisRibbonCollection

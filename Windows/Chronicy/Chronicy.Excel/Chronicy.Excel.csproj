@@ -166,6 +166,7 @@
     <Compile Include="History\HistoryItem.cs" />
     <Compile Include="History\HistoryRecord.cs" />
     <Compile Include="History\IHistoryProvider.cs" />
+    <Compile Include="History\NotebookHistoryProvider.cs" />
     <Compile Include="Information\MessageBoxContext.cs" />
     <Compile Include="Information\StatusBarContext.cs" />
     <Compile Include="MainRibbon.cs">
@@ -205,11 +206,11 @@
     <Compile Include="UI\EditNotebookTaskPane.Designer.cs">
       <DependentUpon>EditNotebookTaskPane.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NotebookTaskPane.cs">
+    <Compile Include="UI\NotebooksTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\NotebookTaskPane.Designer.cs">
-      <DependentUpon>NotebookTaskPane.cs</DependentUpon>
+    <Compile Include="UI\NotebooksTaskPane.Designer.cs">
+      <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
     </Compile>
     <Compile Include="User\IUserAction.cs" />
     <Compile Include="User\SelectCellRangeAction.cs" />
@@ -238,8 +239,8 @@
     <EmbeddedResource Include="UI\EditTaskPane.resx">
       <DependentUpon>EditTaskPane.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NotebookTaskPane.resx">
-      <DependentUpon>NotebookTaskPane.cs</DependentUpon>
+    <EmbeddedResource Include="UI\NotebooksTaskPane.resx">
+      <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Chronicy.Excel_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

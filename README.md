@@ -54,7 +54,7 @@ The Windows service that collects data sent by extensions
 | macOS        | Supported    | Desktop app and Safari extension       |
 | Web          | WIP          | Website and API                        |
 
-## Technologies Used
+## The Technologies That Power Chronicy
 #### Windows
 - C# 7.2
 - .NET Framework 4.7.2

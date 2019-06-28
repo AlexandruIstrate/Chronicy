@@ -1,6 +1,7 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
+using Chronicy.Excel.History;
 using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
@@ -21,6 +22,7 @@ namespace Chronicy.Excel.App
             connection.ConnectionClosed += () => { Connected = false; };
 
             InitializeTracking();
+            InitializeHistory();
         }
 
         public override void Connect()
@@ -107,7 +109,7 @@ namespace Chronicy.Excel.App
             Tracking.Register<Range>((trackingEvent) =>
             {
                 Range range = (Range)trackingEvent.Value;
-                string rangeString = range.ToAddressString().Replace("$", "");  // TODO: Make it so that we don't need to do the replace thing
+                string rangeString = range.ToDisplayAddressString();
 
                 TrackingDataBuilder builder = new TrackingDataBuilder();
                 builder.Name = "Range Updated";
@@ -129,9 +131,14 @@ namespace Chronicy.Excel.App
                 };
 
                 builder.Tags = tags;
-
+                                                           
                 Service.SendTrackingData(builder.Create());
             });
+        }
+
+        private void InitializeHistory()
+        {
+            //History.Register(new NotebookHistoryProvider(DataSource));
         }
     }
 }

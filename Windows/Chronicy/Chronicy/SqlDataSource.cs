@@ -9,11 +9,13 @@ namespace Chronicy.Sql
     public class SqlDataSource : IDataSource
     {
         private ProcedureRunner runner;
+        private DataSetConverter converter;
 
         public SqlDataSource()
         {
             // TODO: SqlConnection
             runner = new ProcedureRunner(null);
+            converter = new DataSetConverter();
         }
 
         public Notebook CreateNotebook(string name)

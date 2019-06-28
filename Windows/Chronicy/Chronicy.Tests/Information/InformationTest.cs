@@ -1,7 +1,7 @@
 ﻿using Chronicy.Information;
 using NUnit.Framework;
 
-namespace Chronicy.Tests
+namespace Chronicy.Tests.Information
 {
     [TestFixture]
     public class InformationTest

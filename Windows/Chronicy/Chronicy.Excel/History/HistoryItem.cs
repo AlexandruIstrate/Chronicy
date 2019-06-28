@@ -6,6 +6,7 @@ namespace Chronicy.Excel.History
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Category { get; set; }
         public DateTime Date { get; set; }
     }
 }

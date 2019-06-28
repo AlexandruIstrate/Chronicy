@@ -56,6 +56,7 @@
     <Compile Include="Communication\IClientCallback.cs" />
     <Compile Include="Communication\IServerService.cs" />
     <Compile Include="Data\Card.cs" />
+    <Compile Include="Data\ConversionException.cs" />
     <Compile Include="Data\CustomField.cs" />
     <Compile Include="Data\IConverter.cs" />
     <Compile Include="Data\Notebook.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql\DataSetConverter.cs" />
     <Compile Include="Sql\ProcedureRunner.cs" />
     <Compile Include="Sql\SqlDataSource.cs" />
     <Compile Include="Tracking\ITrackable.cs" />

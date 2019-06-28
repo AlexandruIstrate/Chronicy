@@ -12,5 +12,10 @@ namespace Chronicy.Excel.History
             Name = name;
             Items = new List<HistoryItem>();
         }
+
+        public void Add(HistoryItem historyItem)
+        {
+            Items.Add(historyItem);
+        }
     }
 }

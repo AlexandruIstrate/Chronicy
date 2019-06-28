@@ -1,6 +1,6 @@
 ﻿namespace Chronicy.Excel.UI
 {
-    partial class NotebookTaskPane
+    partial class NotebooksTaskPane
     {
         /// <summary> 
         /// Required designer variable.
@@ -81,7 +81,7 @@
             this.comboBox1.Size = new System.Drawing.Size(234, 21);
             this.comboBox1.TabIndex = 2;
             // 
-            // NotebookTaskPane
+            // NotebooksTaskPane
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,8 +89,9 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
-            this.Name = "NotebookTaskPane";
+            this.Name = "NotebooksTaskPane";
             this.Size = new System.Drawing.Size(300, 600);
+            this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

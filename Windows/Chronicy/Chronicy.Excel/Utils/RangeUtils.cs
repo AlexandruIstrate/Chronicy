@@ -26,5 +26,10 @@ namespace Chronicy.Excel.Utils
         {
             return range.Address[true, true, XlReferenceStyle.xlA1, false, null];
         }
+
+        public static string ToDisplayAddressString(this Range range)
+        {
+            return range.Address[true, true, XlReferenceStyle.xlA1, false, null].Replace("$", "");
+        }
     }
 }

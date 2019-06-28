@@ -2,7 +2,7 @@
 using Chronicy.Web.Converters;
 using NUnit.Framework;
 
-namespace Chronicy.Tests
+namespace Chronicy.Tests.Data
 {
     [TestFixture]
     public class ConversionTest

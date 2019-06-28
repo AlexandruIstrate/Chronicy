@@ -19,9 +19,15 @@ namespace Chronicy.Web.Converters
 
         public Data.CustomField ReverseConvert(Models.CustomField value)
         {
-            Enum.TryParse(value.Type, out FieldType fieldType);
-            // TODO: Handle exceptions!
-            return new Data.CustomField(value.Name, fieldType, ConvertStringToFieldValue(value.Value, fieldType));
+            try
+            {
+                Enum.TryParse(value.Type, out FieldType fieldType);
+                return new Data.CustomField(value.Name, fieldType, ConvertStringToFieldValue(value.Value, fieldType));
+            }
+            catch (Exception e)
+            {
+                throw new ConversionException("Could not convert the given argument", e);
+            }
         }
 
         private object ConvertStringToFieldValue(string fieldValueString, FieldType fieldType)
