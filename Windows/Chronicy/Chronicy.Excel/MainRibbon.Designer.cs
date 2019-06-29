@@ -65,11 +65,11 @@
             this.cellsCurrentLabel = this.Factory.CreateRibbonButton();
             this.otherMenu = this.Factory.CreateRibbonMenu();
             this.timeWorkedCheckBox = this.Factory.CreateRibbonCheckBox();
+            this.historyMenu = this.Factory.CreateRibbonMenu();
             this.syncButton = this.Factory.CreateRibbonButton();
             this.helpButton = this.Factory.CreateRibbonButton();
             this.reportBugButton = this.Factory.CreateRibbonButton();
             this.viewGitHubButton = this.Factory.CreateRibbonButton();
-            this.historyMenu = this.Factory.CreateRibbonMenu();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -315,6 +315,17 @@
             this.timeWorkedCheckBox.Label = "Time Worked";
             this.timeWorkedCheckBox.Name = "timeWorkedCheckBox";
             // 
+            // historyMenu
+            // 
+            this.historyMenu.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.historyMenu.Dynamic = true;
+            this.historyMenu.Image = global::Chronicy.Excel.Properties.Resources.IconHistory32;
+            this.historyMenu.ItemSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.historyMenu.Label = "History";
+            this.historyMenu.Name = "historyMenu";
+            this.historyMenu.ShowImage = true;
+            this.historyMenu.ItemsLoading += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnHistoryMenuLoad);
+            // 
             // syncButton
             // 
             this.syncButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -350,16 +361,6 @@
             this.viewGitHubButton.Name = "viewGitHubButton";
             this.viewGitHubButton.ShowImage = true;
             this.viewGitHubButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewGitHubClicked);
-            // 
-            // historyMenu
-            // 
-            this.historyMenu.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.historyMenu.Dynamic = true;
-            this.historyMenu.Image = global::Chronicy.Excel.Properties.Resources.IconHistory32;
-            this.historyMenu.ItemSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.historyMenu.Label = "History";
-            this.historyMenu.Name = "historyMenu";
-            this.historyMenu.ShowImage = true;
             // 
             // MainRibbon
             // 

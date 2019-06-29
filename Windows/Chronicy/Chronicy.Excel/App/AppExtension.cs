@@ -1,12 +1,12 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
-using Chronicy.Excel.History;
 using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace Chronicy.Excel.App
 {
@@ -35,7 +35,7 @@ namespace Chronicy.Excel.App
             catch (EndpointNotFoundException e)
             {
                 throw new EndpointConnectionException("Could not connect to the endpoint", e);
-            }
+            } 
         }
 
         public override void Sync()

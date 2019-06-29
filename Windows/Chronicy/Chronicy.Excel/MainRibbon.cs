@@ -1,5 +1,6 @@
 ﻿using Chronicy.Data;
 using Chronicy.Excel.App;
+using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Tracking.Events;
@@ -12,6 +13,8 @@ using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
+using System.Collections.Generic;
+using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
 {
@@ -74,6 +77,10 @@ namespace Chronicy.Excel
         private void InitializeHistoryMenu()
         {
             // Set up the historyMenu to load history items when something new appears
+            //RibbonButton button = Factory.CreateRibbonButton();
+            //button.Label = "Added from code";
+
+            //historyMenu.Items.Add(button);
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
@@ -148,6 +155,30 @@ namespace Chronicy.Excel
 
             TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
             taskPane.Visible = true;
+        }
+
+        private async void OnHistoryMenuLoad(object sender, RibbonControlEventArgs e)
+        {
+            historyMenu.Items.Clear();
+
+            CategoryRecord record = await extension.History.GetItemsByCategoryAsync();
+
+            foreach (string key in record.Keys)
+            {
+                // TODO: Use a label instead of a button
+                RibbonButton categoryLabel = Factory.CreateRibbonButton();
+                categoryLabel.Label = key;
+                categoryLabel.Enabled = false;
+
+                IEnumerable<HistoryItem> items = record[key];
+
+                foreach (HistoryItem item in items)
+                {
+                    RibbonButton historyItem = Factory.CreateRibbonButton();
+                    historyItem.Label = item.Title;
+                    historyItem.Description = item.Description;
+                }
+            }
         }
 
         private void OnSyncClicked(object sender, RibbonControlEventArgs e)

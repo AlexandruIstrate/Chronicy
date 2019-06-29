@@ -8,7 +8,8 @@ namespace Chronicy.Service.Dispatch
     public class DispatcherTimer : IDispatcher
     {
         private Timer timer;
-        
+        private object actionsLock;
+
         public List<Action> Actions { get; }
 
         public DispatcherTimer(double interval = 3 * 1000)
@@ -19,11 +20,15 @@ namespace Chronicy.Service.Dispatch
                 AutoReset = true
             };
             timer.Elapsed += OnTimerElapsed;
+
+            actionsLock = new object();
+
+            Actions = new List<Action>();
         }
 
         public void Submit(Action action)
         {
-            lock (Actions)
+            lock (actionsLock)
             {
                 Actions.Add(action);
             }
@@ -31,7 +36,7 @@ namespace Chronicy.Service.Dispatch
 
         public void Remove(Action action)
         {
-            lock (Actions)
+            lock (actionsLock)
             {
                 Actions.Remove(action);
             }
@@ -49,7 +54,7 @@ namespace Chronicy.Service.Dispatch
 
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            lock (Actions)
+            lock (actionsLock)
             {
                 foreach (Action action in Actions)
                 {

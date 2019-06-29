@@ -5,6 +5,7 @@ using Chronicy.Service.Data;
 using Chronicy.Service.Dispatch;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
+using Chronicy.Utils;
 using System.ServiceModel;
 using System.Text;
 
@@ -13,7 +14,6 @@ namespace Chronicy.Service.Communication
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class TrackingService : IServerService
     {
-        // Test-only context
         private EventLogContext context = new EventLogContext();
         private NotebookSelector notebookSelector = new NotebookSelector();
 
@@ -21,29 +21,29 @@ namespace Chronicy.Service.Communication
 
         public IClientCallback Callback { get; set; }
 
-        public TrackingService()
-        {
-            dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookSelector.Notebooks); });
-        }
-
         public void Connect()
         {
             Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
-            dispatcher.Start();
+
+            ExceptionUtils.HandleExceptions(() =>
+            {
+                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookSelector.Notebooks); });
+                dispatcher.Start();
+            }, context);
         }
 
         public void SendSelectedNotebook(Notebook notebook)
         {
             InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
 
-            notebookSelector.SelectNotebook(notebook);
+            ExceptionUtils.HandleExceptions(() => notebookSelector.SelectNotebook(notebook), context);
         }
 
         public void SendSelectedStack(Stack stack)
         {
             InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
 
-            notebookSelector.SelectStack(stack);
+            ExceptionUtils.HandleExceptions(() => notebookSelector.SelectStack(stack), context);
         }
 
         public void SendTrackingData(TrackingData data)
@@ -64,7 +64,7 @@ namespace Chronicy.Service.Communication
                 Tags = data.Tags
             };
 
-            notebookSelector.AddCard(card);
+            ExceptionUtils.HandleExceptions(() => notebookSelector.AddCard(card), context);
         }
 
         public void SendDebugMessage(string message)

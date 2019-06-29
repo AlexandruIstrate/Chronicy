@@ -1,15 +1,20 @@
-﻿using Chronicy.Service.System;
+﻿using Chronicy.Service.Information;
+using Chronicy.Service.System;
+using Chronicy.Utils;
 using System.ServiceProcess;
 
 namespace Chronicy.Service
 {
     public partial class Service : ServiceBase
     {
-        // TODO: Better initialization
-        private IService service = new AppService();
+        private EventLogContext context;
+        private IService service;
 
         public Service()
         {
+            context = new EventLogContext();
+            service = new AppService();
+
             InitializeComponent();
         }
 
@@ -18,7 +23,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.StartPending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            service.OnStart();
+            ExceptionUtils.HandleExceptions(() => service.OnStart(), context);
 
             status = Status.Running;
             Status.SetServiceStatus(ServiceHandle, ref status);
@@ -29,7 +34,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.PausePending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            service.OnPause();
+            ExceptionUtils.HandleExceptions(() => service.OnPause(), context);
 
             status = Status.Paused;
             Status.SetServiceStatus(ServiceHandle, ref status);
@@ -40,7 +45,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.ContinuePending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            service.OnContinue();
+            ExceptionUtils.HandleExceptions(() => service.OnContinue(), context);
         }
 
         protected override void OnStop()
@@ -48,7 +53,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.StopPending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            service.OnStop();
+            ExceptionUtils.HandleExceptions(() => service.OnStop(), context);
 
             status = Status.Stopped;
             Status.SetServiceStatus(ServiceHandle, ref status);

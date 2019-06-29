@@ -1,4 +1,6 @@
-﻿namespace Chronicy.Information
+﻿using System;
+
+namespace Chronicy.Information
 {
     public class InformationDispatcher
     {
@@ -15,6 +17,16 @@
         public void Dispatch(string messsage, InformationKind informationKind = InformationKind.Info)
         {
             Dispatch(messsage, DefaultContext, informationKind);
+        }
+
+        public void Dispatch(Exception e, IInformationContext context)
+        {
+            Dispatch(e.Message, context, InformationKind.Error);
+        }
+
+        public void Dispatch(Exception e)
+        {
+            Dispatch(e.Message, DefaultContext, InformationKind.Error);
         }
     }
 

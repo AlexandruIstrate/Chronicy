@@ -74,6 +74,7 @@
     <Compile Include="Tracking\ITrackable.cs" />
     <Compile Include="Tracking\TrackingData.cs" />
     <Compile Include="Tracking\TrackingDataBuilder.cs" />
+    <Compile Include="Utils\ExceptionUtils.cs" />
     <Compile Include="Web\ChronicyUrlBuilder.cs" />
     <Compile Include="Web\ChronicyWebApi.cs" />
     <Compile Include="Web\ChronicyWebClient.cs" />

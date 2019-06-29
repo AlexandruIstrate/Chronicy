@@ -1,15 +1,9 @@
 ## Common Files
 .DS_Store
 
-## XCode
+## Visual Studio ##
 
 # Folders
-#   macOS
-macOS/DerivedData/
-macOS/build/
-macOS/xcuserdata/
-
-#   Windows
 Windows/Chronicy/.vs/
 Windows/Chronicy/packages/
 
@@ -27,6 +21,16 @@ Windows/Chronicy/Chronicy.Web/obj/
 
 Windows/Chronicy/Chronicy.Tests/bin/
 Windows/Chronicy/Chronicy.Tests/obj/
+
+# Files
+*.user
+
+## XCode ##
+
+# Folders
+macOS/DerivedData/
+macOS/build/
+macOS/xcuserdata/
 
 # Files
 *.xccheckout
