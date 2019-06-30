@@ -23,7 +23,7 @@ namespace Chronicy.Sql
             GC.SuppressFinalize(this);
         }
 
-        public DataSet RunScalar(string name, List<SqlParameter> parameters)
+        public DataSet RunScalar(string name, List<SqlParameter> parameters = null)
         {
             try
             {
@@ -34,7 +34,11 @@ namespace Chronicy.Sql
                     command.Connection = Connection;
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = name;
-                    command.Parameters.AddRange(parameters.ToArray());
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray()); 
+                    }
 
                     DataSet dataSet = new DataSet();
 
@@ -56,7 +60,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<DataSet> RunScalarAsync(string name, List<SqlParameter> parameters)
+        public Task<DataSet> RunScalarAsync(string name, List<SqlParameter> parameters = null)
         {
             return Task.Run(() =>
             {
@@ -64,7 +68,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public int RunNonQuery(string name, List<SqlParameter> parameters)
+        public int RunNonQuery(string name, List<SqlParameter> parameters = null)
         {
             try
             {
@@ -75,7 +79,12 @@ namespace Chronicy.Sql
                     command.Connection = Connection;
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = name;
-                    command.Parameters.AddRange(parameters.ToArray());
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
                     return command.ExecuteNonQuery();
                 }
             }
@@ -89,7 +98,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<int> RunNonQueryAsync(string name, List<SqlParameter> parameters)
+        public Task<int> RunNonQueryAsync(string name, List<SqlParameter> parameters = null)
         {
             return Task.Run(() =>
             {
