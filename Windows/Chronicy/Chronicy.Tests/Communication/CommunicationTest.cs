@@ -46,6 +46,11 @@ namespace Chronicy.Tests.Communication
         {
             throw new NotImplementedException();
         }
+
+        public void SendErrorMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class Server : IServerService

@@ -12,14 +12,21 @@ using System.Text;
 namespace Chronicy.Service.Communication
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
-    public class TrackingService : IServerService
+    public class TrackingService : IServerService, IInformationContext
     {
-        private EventLogContext context = new EventLogContext();
-        private NotebookSelector notebookSelector = new NotebookSelector();
+        private IInformationContext context;
+        private NotebookManager notebookManager;
 
-        private DispatcherTimer dispatcher = new DispatcherTimer();
+        private DispatcherTimer dispatcher;
 
         public IClientCallback Callback { get; set; }
+
+        public TrackingService()
+        {
+            context = AgregateContext.Of(new EventLogContext(), this);
+            notebookManager = new NotebookManager();
+            dispatcher = new DispatcherTimer();
+        }
 
         public void Connect()
         {
@@ -27,7 +34,7 @@ namespace Chronicy.Service.Communication
 
             ExceptionUtils.HandleExceptions(() =>
             {
-                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookSelector.Notebooks); });
+                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.Notebooks); });
                 dispatcher.Start();
             }, context);
         }
@@ -36,14 +43,14 @@ namespace Chronicy.Service.Communication
         {
             InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
 
-            ExceptionUtils.HandleExceptions(() => notebookSelector.SelectNotebook(notebook), context);
+            ExceptionUtils.HandleExceptions(() => notebookManager.SelectNotebook(notebook), context);
         }
 
         public void SendSelectedStack(Stack stack)
         {
             InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
 
-            ExceptionUtils.HandleExceptions(() => notebookSelector.SelectStack(stack), context);
+            ExceptionUtils.HandleExceptions(() => notebookManager.SelectStack(stack), context);
         }
 
         public void SendTrackingData(TrackingData data)
@@ -64,7 +71,7 @@ namespace Chronicy.Service.Communication
                 Tags = data.Tags
             };
 
-            ExceptionUtils.HandleExceptions(() => notebookSelector.AddCard(card), context);
+            ExceptionUtils.HandleExceptions(() => notebookManager.AddCard(card), context);
         }
 
         public void SendDebugMessage(string message)
@@ -72,5 +79,21 @@ namespace Chronicy.Service.Communication
             InformationDispatcher.Default.Dispatch(message, context);
         }
 
+        public void MessageDispatched(string message, InformationKind informationKind)
+        {
+            switch (informationKind)
+            {
+                case InformationKind.Info:
+                    //Callback?.SendDebugMessage(message);
+                    break;
+
+                case InformationKind.Warning:
+                    break;
+
+                case InformationKind.Error:
+                    Callback?.SendErrorMessage(message);
+                    break;
+            }
+        }
     }
 }

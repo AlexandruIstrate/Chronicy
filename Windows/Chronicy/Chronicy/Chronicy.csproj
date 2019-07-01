@@ -65,6 +65,7 @@
     <Compile Include="Data\Storage\IDataSource.cs" />
     <Compile Include="Data\Storage\WebDataSource.cs" />
     <Compile Include="Data\Tag.cs" />
+    <Compile Include="Information\AgregateContext.cs" />
     <Compile Include="Information\IInformationContext.cs" />
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />

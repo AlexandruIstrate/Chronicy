@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Service.Data
 {
-    public class NotebookSelector
+    public class NotebookManager
     {
         private IDataSource dataSource;
 
@@ -15,7 +15,7 @@ namespace Chronicy.Service.Data
         public Notebook SelectedNotebook { get; private set; }
         public Stack SelectedStack { get; private set; }
 
-        public NotebookSelector()
+        public NotebookManager()
         {
             dataSource = new WebDataSource();
         }

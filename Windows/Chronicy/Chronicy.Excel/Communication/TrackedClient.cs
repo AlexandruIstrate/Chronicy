@@ -26,8 +26,12 @@ namespace Chronicy.Excel.Communication
 
         public void SendDebugMessage(string message)
         {
-            // TODO: Dispatch this on a debug context
             InformationDispatcher.Default.Dispatch(message, DebugLogContext.Default);
+        }
+
+        public void SendErrorMessage(string message)
+        {
+            InformationDispatcher.Default.Dispatch("The service encountered an error!\n" + message, context, InformationKind.Error);
         }
     }
 }
