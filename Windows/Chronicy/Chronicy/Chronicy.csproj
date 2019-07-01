@@ -58,6 +58,7 @@
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\ConversionException.cs" />
     <Compile Include="Data\CustomField.cs" />
+    <Compile Include="Data\FieldTemplate.cs" />
     <Compile Include="Data\IConverter.cs" />
     <Compile Include="Data\Notebook.cs" />
     <Compile Include="Data\Stack.cs" />

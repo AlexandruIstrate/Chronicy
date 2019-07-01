@@ -1,6 +1,4 @@
 ﻿using System;
-using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
 using Chronicy.Excel.App;
 using Microsoft.Office.Tools.Ribbon;
 using Chronicy.Information;

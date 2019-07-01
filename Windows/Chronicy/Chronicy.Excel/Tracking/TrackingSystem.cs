@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Chronicy.Information;
+using System;
 using System.Collections.Generic;
 
-namespace Chronicy.Excel.Tracking.Events
+namespace Chronicy.Excel.Tracking
 {
     public class TrackingSystem
     {
@@ -18,6 +19,11 @@ namespace Chronicy.Excel.Tracking.Events
 
         public void Post<T>(TrackingEvent trackingEvent)
         {
+            if (trackingEvent.ValueType != typeof(T))
+            {
+                throw new ArgumentException("The posted type must match the event type", nameof(trackingEvent));
+            }
+
             recordedEvents.Add(trackingEvent);
 
             try
@@ -30,6 +36,7 @@ namespace Chronicy.Excel.Tracking.Events
             {
                 // If we get here, it means we don't have a handler registered for this type.
                 // This is fine, however.
+                InformationDispatcher.Default.Dispatch($"No registered handler for the event with type { trackingEvent.ValueType.Name }", DebugLogContext.Default, InformationKind.Warning);
             }
         }
 
@@ -40,7 +47,7 @@ namespace Chronicy.Excel.Tracking.Events
 
         public void DiscardConsumedEvents()
         {
-            recordedEvents.RemoveAll((item) => { return item.Handled; });
+            recordedEvents.RemoveAll((item) => item.Handled);
         }
     }
 }

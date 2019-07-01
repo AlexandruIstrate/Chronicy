@@ -1,10 +1,11 @@
 ﻿using Chronicy.Data;
 using Chronicy.Excel.App;
+using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
-using Chronicy.Excel.Tracking.Events;
 using Chronicy.Excel.UI;
+using Chronicy.Excel.UI.Display;
 using Chronicy.Excel.UI.Pane;
 using Chronicy.Excel.User;
 using Chronicy.Excel.Utils;
@@ -14,6 +15,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
@@ -26,25 +28,29 @@ namespace Chronicy.Excel
         private IExcelExtension extension;
         private ExcelTracker tracker;
 
+        private IDisplayView<Notebook> availableNotebooks;
+        private IDisplayView<Stack> availableStacks;
+
         public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
+
+            availableNotebooks = new DataDisplayView<Notebook>(null);
+            availableStacks = new DataDisplayView<Stack>(null);
+        }
+
+        private void SetGroupState(bool enabled)
+        {
+            enableButton.Visible = enabled;
+            selectionGroup.Visible = enabled;
+            trackingGroup.Visible = enabled;
+            toolsGroup.Visible = enabled;
         }
 
         private void SetupActivationCallbacks()
         {
-            enableButton.Visible = false;
-            selectionGroup.Visible = false;
-            trackingGroup.Visible = false;
-            toolsGroup.Visible = false;
-
-            extension.ConnectionChanged += (enabled) =>
-            {
-                enableButton.Visible = enabled;
-                selectionGroup.Visible = enabled;
-                trackingGroup.Visible = enabled;
-                toolsGroup.Visible = enabled;
-            };
+            SetGroupState(false);
+            extension.ConnectionChanged += (enabled) => SetGroupState(enabled);
         }
 
         private void InitializeTrackingMenus()
@@ -74,20 +80,45 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
-        private void InitializeHistoryMenu()
+        private void InitializeSelectionSection()
         {
-            // Set up the historyMenu to load history items when something new appears
-            //RibbonButton button = Factory.CreateRibbonButton();
-            //button.Label = "Added from code";
+            // Reload the data if we check the box
+            showCompatibleCheckBox.Click += async (sender, args) => { await LoadAvailableItems(); };
 
-            //historyMenu.Items.Add(button);
+            extension.Tracking.Register<List<Notebook>>((dispatchedEvent) => { List<Notebook> notebooks = (List<Notebook>) dispatchedEvent.Value; });
+        }
+
+        private async Task LoadAvailableItems()
+        {
+            notebookDropDown.Items.Clear();
+            stackDropDown.Items.Clear();
+
+            IEnumerable<Notebook> notebooks = await availableNotebooks.GetDisplayItemsAsync();
+            IEnumerable<Stack> stacks = showCompatibleCheckBox.Checked ? await availableStacks.GetFilteredDisplayItemsAsync((stack) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(stack.Fields))) :
+                                                                         await availableStacks.GetDisplayItemsAsync();
+
+            foreach (Notebook notebook in notebooks)
+            {
+                RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
+                dropDownItem.Label = notebook.Name;
+
+                notebookDropDown.Items.Add(dropDownItem);
+            }
+
+            foreach (Stack stack in stacks)
+            {
+                RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
+                dropDownItem.Label = stack.Name;
+
+                stackDropDown.Items.Add(dropDownItem);
+            }
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
-            InitializeHistoryMenu();
+            InitializeSelectionSection();
 
             extension.StateChanged += (enabled) => 
             {
@@ -197,7 +228,7 @@ namespace Chronicy.Excel
         {
             // 1. Submit the current workbook to ExcelTracker
             ITrackable trackable = tracker.Get<Workbook>();
-            trackable.ValueUpdated += (value) => extension.Tracking.Post<Workbook>(new TrackingEvent((Workbook)value));
+            trackable.ValueUpdated += (value) => extension.Tracking.Post<Workbook>(TrackingEvent.Create((Workbook)value));
             trackable.TrackedValue = Globals.ThisAddIn.Application.ActiveWorkbook;
             trackable.Enabled = true;
         }
@@ -210,7 +241,7 @@ namespace Chronicy.Excel
             {
                 /* 2. Submit the sheet to ExcelTracker */
                 ITrackable trackable = tracker.Get<Worksheet>();
-                trackable.ValueUpdated += (value) => extension.Tracking.Post<Worksheet>(new TrackingEvent((Worksheet)value));
+                trackable.ValueUpdated += (value) => extension.Tracking.Post<Worksheet>(TrackingEvent.Create((Worksheet)value));
                 trackable.TrackedValue = sheet;
                 trackable.Enabled = true;
             };
@@ -225,7 +256,7 @@ namespace Chronicy.Excel
             {
                 /* 2. Submit the range to ExcelTracker */
                 ITrackable trackable = tracker.Get<Range>();
-                trackable.ValueUpdated += (value) => extension.Tracking.Post<Range>(new TrackingEvent((Range)value));
+                trackable.ValueUpdated += (value) => extension.Tracking.Post<Range>(TrackingEvent.Create((Range)value));
                 trackable.TrackedValue = range;
                 trackable.Enabled = true;
             };

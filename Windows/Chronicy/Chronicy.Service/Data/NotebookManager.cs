@@ -7,10 +7,10 @@ namespace Chronicy.Service.Data
 {
     public class NotebookManager
     {
-        private IDataSource dataSource;
+        private IDataSource<Notebook> dataSource;
 
         // TODO: Maybe fetch at an interval?
-        public List<Notebook> Notebooks => new List<Notebook>(dataSource.GetNotebooks());
+        public List<Notebook> Notebooks => new List<Notebook>(dataSource.GetAll());
 
         public Notebook SelectedNotebook { get; private set; }
         public Stack SelectedStack { get; private set; }
@@ -23,41 +23,41 @@ namespace Chronicy.Service.Data
         public void AddNotebook(Notebook notebook)
         {
             // TODO: Provide a method that lets us upload a new notebook so that we can skip the ID transfer
-            Notebook created = dataSource.CreateNotebook(notebook.Name);
+            Notebook created = dataSource.Create(notebook.Name);
             notebook.Id = created.Id;
-            dataSource.UpdateNotebook(notebook);
+            dataSource.Update(notebook);
         }
 
         public async Task AddNotebookAsync(Notebook notebook)
         {
             // TODO: Provide a method that lets us upload a new notebook so that we can skip the ID transfer
-            Notebook created = await dataSource.CreateNotebookAsync(notebook.Name);
+            Notebook created = await dataSource.CreateAsync(notebook.Name);
             notebook.Id = created.Id;
-            await dataSource.UpdateNotebookAsync(notebook);
+            await dataSource.UpdateAsync(notebook);
         }
 
         public void AddStack(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            dataSource.UpdateNotebook(SelectedNotebook);
+            dataSource.Update(SelectedNotebook);
         }
 
         public async Task AddStackAsync(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            await dataSource.UpdateNotebookAsync(SelectedNotebook);
+            await dataSource.UpdateAsync(SelectedNotebook);
         }
 
         public void AddCard(Card card)
         {
             SelectedStack.Add(card);
-            dataSource.UpdateNotebook(SelectedNotebook);
+            dataSource.Update(SelectedNotebook);
         }
 
         public async Task AddCardAsync(Card card)
         {
             SelectedStack.Add(card);
-            await dataSource.UpdateNotebookAsync(SelectedNotebook);
+            await dataSource.UpdateAsync(SelectedNotebook);
         }
 
         public void SelectNotebook(string name)
@@ -94,7 +94,7 @@ namespace Chronicy.Service.Data
 
         public void SelectStack(Stack stack)
         {
-            SelectedStack = SelectedNotebook.Stacks.Find((item) => item== stack);
+            SelectedStack = SelectedNotebook.Stacks.Find((item) => item == stack);
 
             if (SelectedStack == null)
             {

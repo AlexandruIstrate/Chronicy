@@ -37,20 +37,17 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.tab2 = this.Factory.CreateRibbonTab();
             this.extensionGroup = this.Factory.CreateRibbonGroup();
+            this.connectButton = this.Factory.CreateRibbonButton();
+            this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.selectionGroup = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
             this.showCompatibleCheckBox = this.Factory.CreateRibbonCheckBox();
-            this.trackingGroup = this.Factory.CreateRibbonGroup();
-            this.toolsGroup = this.Factory.CreateRibbonGroup();
-            this.supportGroup = this.Factory.CreateRibbonGroup();
-            this.optionsButton = this.Factory.CreateRibbonButton();
-            this.connectButton = this.Factory.CreateRibbonButton();
-            this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.newNotebookButton = this.Factory.CreateRibbonButton();
             this.newStackButton = this.Factory.CreateRibbonButton();
             this.viewAllButton = this.Factory.CreateRibbonButton();
+            this.trackingGroup = this.Factory.CreateRibbonGroup();
             this.workbookMenu = this.Factory.CreateRibbonMenu();
             this.workbookEnableCheckBox = this.Factory.CreateRibbonCheckBox();
             this.trackWorkbookButton = this.Factory.CreateRibbonButton();
@@ -65,11 +62,14 @@
             this.cellsCurrentLabel = this.Factory.CreateRibbonButton();
             this.otherMenu = this.Factory.CreateRibbonMenu();
             this.timeWorkedCheckBox = this.Factory.CreateRibbonCheckBox();
+            this.toolsGroup = this.Factory.CreateRibbonGroup();
             this.historyMenu = this.Factory.CreateRibbonMenu();
             this.syncButton = this.Factory.CreateRibbonButton();
+            this.supportGroup = this.Factory.CreateRibbonGroup();
             this.helpButton = this.Factory.CreateRibbonButton();
             this.reportBugButton = this.Factory.CreateRibbonButton();
             this.viewGitHubButton = this.Factory.CreateRibbonButton();
+            this.optionsButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -102,6 +102,24 @@
             this.extensionGroup.Items.Add(this.enableButton);
             this.extensionGroup.Label = "Extension";
             this.extensionGroup.Name = "extensionGroup";
+            // 
+            // connectButton
+            // 
+            this.connectButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.connectButton.Image = global::Chronicy.Excel.Properties.Resources.IconConnect32;
+            this.connectButton.Label = "Connect";
+            this.connectButton.Name = "connectButton";
+            this.connectButton.ShowImage = true;
+            this.connectButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnConnectClicked);
+            // 
+            // enableButton
+            // 
+            this.enableButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.enableButton.Image = global::Chronicy.Excel.Properties.Resources.IconEnable32;
+            this.enableButton.Label = "Disabled";
+            this.enableButton.Name = "enableButton";
+            this.enableButton.ShowImage = true;
+            this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
             // 
             // selectionGroup
             // 
@@ -139,54 +157,6 @@
             this.showCompatibleCheckBox.Label = "Only Show Compatible";
             this.showCompatibleCheckBox.Name = "showCompatibleCheckBox";
             // 
-            // trackingGroup
-            // 
-            this.trackingGroup.Items.Add(this.workbookMenu);
-            this.trackingGroup.Items.Add(this.sheetMenu);
-            this.trackingGroup.Items.Add(this.cellsMenu);
-            this.trackingGroup.Items.Add(this.otherMenu);
-            this.trackingGroup.Label = "Tracking";
-            this.trackingGroup.Name = "trackingGroup";
-            // 
-            // toolsGroup
-            // 
-            this.toolsGroup.Items.Add(this.historyMenu);
-            this.toolsGroup.Items.Add(this.syncButton);
-            this.toolsGroup.Label = "Tools";
-            this.toolsGroup.Name = "toolsGroup";
-            // 
-            // supportGroup
-            // 
-            this.supportGroup.Items.Add(this.helpButton);
-            this.supportGroup.Items.Add(this.reportBugButton);
-            this.supportGroup.Items.Add(this.viewGitHubButton);
-            this.supportGroup.Label = "Support";
-            this.supportGroup.Name = "supportGroup";
-            // 
-            // optionsButton
-            // 
-            this.optionsButton.Label = "Chronicy Options";
-            this.optionsButton.Name = "optionsButton";
-            this.optionsButton.ShowImage = true;
-            // 
-            // connectButton
-            // 
-            this.connectButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.connectButton.Image = global::Chronicy.Excel.Properties.Resources.IconConnect32;
-            this.connectButton.Label = "Connect";
-            this.connectButton.Name = "connectButton";
-            this.connectButton.ShowImage = true;
-            this.connectButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnConnectClicked);
-            // 
-            // enableButton
-            // 
-            this.enableButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.enableButton.Image = global::Chronicy.Excel.Properties.Resources.IconEnable32;
-            this.enableButton.Label = "Disabled";
-            this.enableButton.Name = "enableButton";
-            this.enableButton.ShowImage = true;
-            this.enableButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnEnableToggled);
-            // 
             // newNotebookButton
             // 
             this.newNotebookButton.Image = global::Chronicy.Excel.Properties.Resources.IconNewNotebook32;
@@ -210,6 +180,15 @@
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.ShowImage = true;
             this.viewAllButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewAllClicked);
+            // 
+            // trackingGroup
+            // 
+            this.trackingGroup.Items.Add(this.workbookMenu);
+            this.trackingGroup.Items.Add(this.sheetMenu);
+            this.trackingGroup.Items.Add(this.cellsMenu);
+            this.trackingGroup.Items.Add(this.otherMenu);
+            this.trackingGroup.Label = "Tracking";
+            this.trackingGroup.Name = "trackingGroup";
             // 
             // workbookMenu
             // 
@@ -315,6 +294,13 @@
             this.timeWorkedCheckBox.Label = "Time Worked";
             this.timeWorkedCheckBox.Name = "timeWorkedCheckBox";
             // 
+            // toolsGroup
+            // 
+            this.toolsGroup.Items.Add(this.historyMenu);
+            this.toolsGroup.Items.Add(this.syncButton);
+            this.toolsGroup.Label = "Tools";
+            this.toolsGroup.Name = "toolsGroup";
+            // 
             // historyMenu
             // 
             this.historyMenu.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -334,6 +320,14 @@
             this.syncButton.Name = "syncButton";
             this.syncButton.ShowImage = true;
             this.syncButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnSyncClicked);
+            // 
+            // supportGroup
+            // 
+            this.supportGroup.Items.Add(this.helpButton);
+            this.supportGroup.Items.Add(this.reportBugButton);
+            this.supportGroup.Items.Add(this.viewGitHubButton);
+            this.supportGroup.Label = "Support";
+            this.supportGroup.Name = "supportGroup";
             // 
             // helpButton
             // 
@@ -361,6 +355,12 @@
             this.viewGitHubButton.Name = "viewGitHubButton";
             this.viewGitHubButton.ShowImage = true;
             this.viewGitHubButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnViewGitHubClicked);
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Label = "Chronicy Options";
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.ShowImage = true;
             // 
             // MainRibbon
             // 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chronicy.Excel.Tracking.Events
+namespace Chronicy.Excel.Tracking
 {
     public class TrackingEvent
     {
@@ -11,16 +11,21 @@ namespace Chronicy.Excel.Tracking.Events
 
         public bool Handled { get; private set; }
 
-        public TrackingEvent(object value)
+        private TrackingEvent(object value, Type type)
         {
             Value = value;
-            ValueType = value.GetType();
+            ValueType = type;
             TriggerDate = DateTime.Now;
         }
 
         public void Handle()
         {
             Handled = true;
+        }
+
+        public static TrackingEvent Create<T>(T value)
+        {
+            return new TrackingEvent(value, typeof(T));
         }
     }
 }

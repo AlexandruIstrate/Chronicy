@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Information;
@@ -11,26 +10,27 @@ namespace Chronicy.Excel.Communication
     {
         private IInformationContext context = new MessageBoxContext();
 
+        public delegate void NotebooksRecievedHandler(List<Notebook> notebooks);
+        public delegate void MessageRecievedHandler(string message);
+
+        public event NotebooksRecievedHandler NotebooksRecieved;
+        public event MessageRecievedHandler DebugMessageRecieved;
+        public event MessageRecievedHandler ErrorMessageRecieved;
+
         public void SendAvailableNotebooks(List<Notebook> notebooks)
         {
-            StringBuilder builder = new StringBuilder();
-
-            foreach (Notebook item in notebooks)
-            {
-                builder.AppendLine(item.Name);
-            }
-
-            // Debug only
-            InformationDispatcher.Default.Dispatch(builder.ToString(), context);
+            NotebooksRecieved?.Invoke(notebooks);
         }
 
         public void SendDebugMessage(string message)
         {
+            DebugMessageRecieved?.Invoke(message);
             InformationDispatcher.Default.Dispatch(message, DebugLogContext.Default);
         }
 
         public void SendErrorMessage(string message)
         {
+            ErrorMessageRecieved?.Invoke(message);
             InformationDispatcher.Default.Dispatch("The service encountered an error!\n" + message, context, InformationKind.Error);
         }
     }
