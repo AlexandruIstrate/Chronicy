@@ -1,12 +1,12 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Communication;
+using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.ServiceModel;
-using System.Threading.Tasks;
 
 namespace Chronicy.Excel.App
 {
@@ -19,7 +19,7 @@ namespace Chronicy.Excel.App
         public AppExtension()
         {
             connection = new ClientConnection();
-            connection.ConnectionClosed += () => { Connected = false; };
+            connection.ConnectionClosed += (sender, args) => { Connected = false; };
 
             InitializeTracking();
             InitializeHistory();
@@ -29,7 +29,12 @@ namespace Chronicy.Excel.App
         {
             try
             {
-                Service = connection.Connect(new TrackedClient());
+                TrackedClient client = new TrackedClient();
+                // TODO: We should find a better way of dispatching these. The tracking system is meant for tracking data and
+                // not for communicating between parts of the application
+                client.NotebooksRecieved += (notebooks) => { Tracking.Post<List<Notebook>>(TrackingEvent.Create(notebooks)); };
+
+                Service = connection.Connect(client);
                 Connected = true;
             }
             catch (EndpointNotFoundException e)

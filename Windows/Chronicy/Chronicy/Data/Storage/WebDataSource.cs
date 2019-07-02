@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
 {
-    public class WebDataSource : IDataSource
+    public class WebDataSource : IDataSource<Notebook>
     {
         private ChronicyWebApi api = new ChronicyWebApi();
         private NotebookConverter converter = new NotebookConverter();
 
-        public Notebook CreateNotebook(string name)
+        public Notebook Create(string name)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<Notebook> CreateNotebookAsync(string name)
+        public async Task<Notebook> CreateAsync(string name)
         {
             try
             {
@@ -35,11 +35,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public void DeleteNotebook(Notebook notebook)
+        public void Delete(Notebook item)
         {
             try
             {
-                api.DeleteNotebook(notebook.Id.ToString());
+                api.DeleteNotebook(item.Id.ToString());
             }
             catch (WebApiException e)
             {
@@ -47,11 +47,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task DeleteNotebookAsync(Notebook notebook)
+        public async Task DeleteAsync(Notebook item)
         {
             try
             {
-                await api.DeleteNotebookAsync(notebook.Id.ToString());
+                await api.DeleteNotebookAsync(item.Id.ToString());
             }
             catch (WebApiException e)
             {
@@ -59,7 +59,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public Notebook GetNotebook(string id)
+        public Notebook Get(string id)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<Notebook> GetNotebookAsync(string id)
+        public async Task<Notebook> GetAsync(string id)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public IEnumerable<Notebook> GetNotebooks()
+        public IEnumerable<Notebook> GetAll()
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<IEnumerable<Notebook>> GetNotebooksAsync()
+        public async Task<IEnumerable<Notebook>> GetAllAsync()
         {
             try
             {
@@ -107,11 +107,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public void UpdateNotebook(Notebook notebook)
+        public void Update(Notebook item)
         {
             try
             {
-                api.UpdateNotebook(converter.Convert(notebook));
+                api.UpdateNotebook(converter.Convert(item));
             }
             catch (WebApiException e)
             {
@@ -119,11 +119,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task UpdateNotebookAsync(Notebook notebook)
+        public async Task UpdateAsync(Notebook item)
         {
             try
             {
-                await api.UpdateNotebookAsync(converter.Convert(notebook));
+                await api.UpdateNotebookAsync(converter.Convert(item));
             }
             catch (WebApiException e)
             {

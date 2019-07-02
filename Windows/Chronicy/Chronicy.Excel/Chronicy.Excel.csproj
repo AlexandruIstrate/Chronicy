@@ -162,6 +162,7 @@
     <Compile Include="App\IExcelExtension.cs" />
     <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
+    <Compile Include="Data\FieldTemplates.cs" />
     <Compile Include="History\HistoryManager.cs" />
     <Compile Include="History\HistoryItem.cs" />
     <Compile Include="History\HistoryRecord.cs" />
@@ -178,13 +179,15 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tracking\Events\TrackingEvent.cs" />
-    <Compile Include="Tracking\Events\TrackingSystem.cs" />
+    <Compile Include="Tracking\TrackingEvent.cs" />
+    <Compile Include="Tracking\TrackingSystem.cs" />
     <Compile Include="Tracking\ExcelTracker.cs" />
     <Compile Include="Tracking\RangeTrackable.cs" />
     <Compile Include="Tracking\WorkbookTrackable.cs" />
     <Compile Include="Tracking\WorksheetTrackable.cs" />
     <Compile Include="UI\ControlGroup.cs" />
+    <Compile Include="UI\Display\DataDisplayView.cs" />
+    <Compile Include="UI\Display\IDisplayView.cs" />
     <Compile Include="UI\EditStackTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,5 +1,5 @@
 ﻿using Chronicy.Excel.History;
-using Chronicy.Excel.Tracking.Events;
+using Chronicy.Excel.Tracking;
 
 namespace Chronicy.Excel.App
 {

@@ -20,9 +20,9 @@ namespace Chronicy.Excel.Information
                     return MessageBoxIcon.Warning;
                 case InformationKind.Error:
                     return MessageBoxIcon.Error;
-                default:
-                    return MessageBoxIcon.Information;
             }
+
+            return MessageBoxIcon.Information;
         }
     }
 }

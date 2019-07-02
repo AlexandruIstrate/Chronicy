@@ -8,7 +8,7 @@ using Chronicy.Data.Storage;
 
 namespace Chronicy.Sql
 {
-    public class SqlDataSource : IDataSource
+    public class SqlDataSource : IDataSource<Notebook>
     {
         private ProcedureRunner runner;
 
@@ -17,7 +17,7 @@ namespace Chronicy.Sql
             runner = new ProcedureRunner(connection);
         }
 
-        public Notebook CreateNotebook(string name)
+        public Notebook Create(string name)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public async Task<Notebook> CreateNotebookAsync(string name)
+        public async Task<Notebook> CreateAsync(string name)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public void DeleteNotebook(Notebook notebook)
+        public void Delete(Notebook notebook)
         {
             runner.RunNonQuery(Procedures.DeleteNotebook, new List<SqlParameter>
             {
@@ -71,7 +71,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public Task DeleteNotebookAsync(Notebook notebook)
+        public Task DeleteAsync(Notebook notebook)
         {
             return runner.RunNonQueryAsync(Procedures.DeleteNotebook, new List<SqlParameter>
             {
@@ -79,7 +79,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public Notebook GetNotebook(string id)
+        public Notebook Get(string id)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public async Task<Notebook> GetNotebookAsync(string id)
+        public async Task<Notebook> GetAsync(string id)
         {
             try
             {
@@ -125,7 +125,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public IEnumerable<Notebook> GetNotebooks()
+        public IEnumerable<Notebook> GetAll()
         {
             try
             {
@@ -147,7 +147,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public async Task<IEnumerable<Notebook>> GetNotebooksAsync()
+        public async Task<IEnumerable<Notebook>> GetAllAsync()
         {
             try
             {
@@ -169,7 +169,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public void UpdateNotebook(Notebook notebook)
+        public void Update(Notebook notebook)
         {
             runner.RunNonQuery(Procedures.UpdateNotebook, new List<SqlParameter>
             {
@@ -177,7 +177,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public Task UpdateNotebookAsync(Notebook notebook)
+        public Task UpdateAsync(Notebook notebook)
         {
             return runner.RunNonQueryAsync(Procedures.UpdateNotebook, new List<SqlParameter>
             {

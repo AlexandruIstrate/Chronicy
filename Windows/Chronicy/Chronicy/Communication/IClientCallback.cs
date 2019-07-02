@@ -11,5 +11,8 @@ namespace Chronicy.Communication
 
         [OperationContract(IsOneWay = true)]
         void SendDebugMessage(string message);
+
+        [OperationContract(IsOneWay = true)]
+        void SendErrorMessage(string message);
     }
 }

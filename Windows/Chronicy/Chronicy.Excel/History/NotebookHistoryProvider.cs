@@ -8,9 +8,9 @@ namespace Chronicy.Excel.History
 {
     public class NotebookHistoryProvider : IHistoryProvider
     {
-        public IDataSource DataSource { get; set; }
+        public IDataSource<Notebook> DataSource { get; set; }
 
-        public NotebookHistoryProvider(IDataSource dataSource)
+        public NotebookHistoryProvider(IDataSource<Notebook> dataSource)
         {
             DataSource = dataSource;
         }
@@ -47,7 +47,7 @@ namespace Chronicy.Excel.History
 
         private HistoryRecord GetFiltered(Func<DateTime, bool> filter = null)
         {
-            List<Notebook> notebooks = new List<Notebook>(DataSource.GetNotebooks());
+            List<Notebook> notebooks = new List<Notebook>(DataSource.GetAll());
 
             List<HistoryItem> historyItems = new List<HistoryItem>();
 
@@ -86,7 +86,7 @@ namespace Chronicy.Excel.History
 
         private async Task<HistoryRecord> GetFilteredAsync(Func<DateTime, bool> filter = null)
         {
-            List<Notebook> notebooks = new List<Notebook>(await DataSource.GetNotebooksAsync());
+            List<Notebook> notebooks = new List<Notebook>(await DataSource.GetAllAsync());
 
             List<HistoryItem> historyItems = new List<HistoryItem>();
 

@@ -3,20 +3,19 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
 {
-    // TODO: Make generic so that it supports any type
-    public interface IDataSource
+    public interface IDataSource<T>
     {
-        Notebook GetNotebook(string id);
-        Task<Notebook> GetNotebookAsync(string id);
-        IEnumerable<Notebook> GetNotebooks();
-        Task<IEnumerable<Notebook>> GetNotebooksAsync();
+        T Get(string id);
+        Task<T> GetAsync(string id);
+        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        Notebook CreateNotebook(string name);
-        Task<Notebook> CreateNotebookAsync(string name);
-        void DeleteNotebook(Notebook notebook);
-        Task DeleteNotebookAsync(Notebook notebook);
+        T Create(string name);
+        Task<T> CreateAsync(string name);
+        void Delete(T item);
+        Task DeleteAsync(T item);
 
-        void UpdateNotebook(Notebook notebook);
-        Task UpdateNotebookAsync(Notebook notebook);
+        void Update(T item);
+        Task UpdateAsync(T item);
     }
 }

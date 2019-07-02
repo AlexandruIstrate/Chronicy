@@ -58,6 +58,7 @@
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\ConversionException.cs" />
     <Compile Include="Data\CustomField.cs" />
+    <Compile Include="Data\FieldTemplate.cs" />
     <Compile Include="Data\IConverter.cs" />
     <Compile Include="Data\Notebook.cs" />
     <Compile Include="Data\Stack.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Data\Storage\IDataSource.cs" />
     <Compile Include="Data\Storage\WebDataSource.cs" />
     <Compile Include="Data\Tag.cs" />
+    <Compile Include="Information\AgregateContext.cs" />
     <Compile Include="Information\IInformationContext.cs" />
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />

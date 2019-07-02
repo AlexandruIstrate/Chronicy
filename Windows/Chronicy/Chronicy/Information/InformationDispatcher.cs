@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Chronicy.Information
 {
@@ -19,9 +20,27 @@ namespace Chronicy.Information
             Dispatch(messsage, DefaultContext, informationKind);
         }
 
-        public void Dispatch(Exception e, IInformationContext context)
+        public void Dispatch(Exception e, IInformationContext context, ExceptionDispatch exceptionDispatch = ExceptionDispatch.Message)
         {
-            Dispatch(e.Message, context, InformationKind.Error);
+            StringBuilder builder = new StringBuilder();
+
+            switch (exceptionDispatch)
+            {
+                case ExceptionDispatch.Message:
+                    builder.Append(e.Message);
+                    break;
+
+                case ExceptionDispatch.Trace:
+                    builder.Append(e.StackTrace);
+                    break;
+
+                case ExceptionDispatch.Full:
+                    builder.AppendLine(e.Message);
+                    builder.Append(e.StackTrace);
+                    break;
+            }
+
+            Dispatch(builder.ToString(), context, InformationKind.Error);
         }
 
         public void Dispatch(Exception e)
@@ -35,5 +54,10 @@ namespace Chronicy.Information
         Info,
         Warning,
         Error
+    }
+
+    public enum ExceptionDispatch
+    {
+        Message, Trace, Full
     }
 }
