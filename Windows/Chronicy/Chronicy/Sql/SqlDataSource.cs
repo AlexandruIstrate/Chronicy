@@ -12,17 +12,19 @@ namespace Chronicy.Sql
     {
         private ProcedureRunner runner;
 
-        public SqlDataSource()
+        public SqlDataSource(SqlConnection connection)
         {
-            // TODO: SqlConnection
-            runner = new ProcedureRunner(null);
+            runner = new ProcedureRunner(connection);
         }
 
         public Notebook CreateNotebook(string name)
         {
             try
             {
-                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter> { new SqlParameter("name", name) });
+                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter>
+                {
+                    new SqlParameter(nameof(name), name)
+                });
                 DataTable dataTable = dataSet.Tables[0];
 
                 DataRow row = dataTable.Rows[0];
@@ -42,7 +44,10 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter> { new SqlParameter("name", name) });
+                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter>
+                {
+                    new SqlParameter(nameof(name), name)
+                });
                 DataTable dataTable = dataSet.Tables[0];
 
                 DataRow row = dataTable.Rows[0];
@@ -60,19 +65,28 @@ namespace Chronicy.Sql
 
         public void DeleteNotebook(Notebook notebook)
         {
-            runner.RunNonQuery(Procedures.DeleteNotebook, new List<SqlParameter> { new SqlParameter("notebook", notebook) });
+            runner.RunNonQuery(Procedures.DeleteNotebook, new List<SqlParameter>
+            {
+                new SqlParameter(nameof(notebook), notebook)
+            });
         }
 
         public Task DeleteNotebookAsync(Notebook notebook)
         {
-            return runner.RunNonQueryAsync(Procedures.DeleteNotebook, new List<SqlParameter> { new SqlParameter("notebook", notebook) });
+            return runner.RunNonQueryAsync(Procedures.DeleteNotebook, new List<SqlParameter>
+            {
+                new SqlParameter(nameof(notebook), notebook)
+            });
         }
 
         public Notebook GetNotebook(string id)
         {
             try
             {
-                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter> { new SqlParameter("id", id) });
+                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter>
+                {
+                    new SqlParameter(nameof(id), id)
+                });
                 DataTable dataTable = dataSet.Tables[0];
 
                 DataRow row = dataTable.Rows[0];
@@ -92,7 +106,10 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter> { new SqlParameter("id", id) });
+                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter>
+                {
+                    new SqlParameter(nameof(id), id)
+                });
                 DataTable dataTable = dataSet.Tables[0];
 
                 DataRow row = dataTable.Rows[0];
@@ -154,12 +171,18 @@ namespace Chronicy.Sql
 
         public void UpdateNotebook(Notebook notebook)
         {
-            runner.RunNonQuery(Procedures.UpdateNotebook, new List<SqlParameter> { new SqlParameter("notebook", notebook) });
+            runner.RunNonQuery(Procedures.UpdateNotebook, new List<SqlParameter>
+            {
+                new SqlParameter(nameof(notebook), notebook)
+            });
         }
 
         public Task UpdateNotebookAsync(Notebook notebook)
         {
-            return runner.RunNonQueryAsync(Procedures.UpdateNotebook, new List<SqlParameter> { new SqlParameter("notebook", notebook) });
+            return runner.RunNonQueryAsync(Procedures.UpdateNotebook, new List<SqlParameter>
+            {
+                new SqlParameter(nameof(notebook), notebook)
+            });
         }
     }
 }

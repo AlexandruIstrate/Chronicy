@@ -4,7 +4,7 @@ Chronicy is the new standard in task management. With the help of Chronicy you c
 
 ![Main Image](./Images/Main.png)
 
-## How does it work?
+## How Does it Work?
 Chronicy features a three-component model, in order to most efficiently track your activity. The three core parts of Chronicy are:
 - A background service that listens for changes and raises events
 - Extensions that allow third party application to register their progress in the Chronicy system
@@ -70,7 +70,7 @@ The Windows service that collects data sent by extensions
 - Alamofire
 - FatSidebar
 
-## Things that inspired Chronicy
+## Things That Inspired Chronicy
 - [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) - This has been the main point of inspiration for the stack based, board-like workflow
 - [SpotifyAPI-NET](https://github.com/JohnnyCrazy/SpotifyAPI-NET) - Chronicy uses a modified implementation of the client-side API
 
