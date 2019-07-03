@@ -17,22 +17,15 @@ namespace Chronicy.Sql
             runner = new ProcedureRunner(connection);
         }
 
-        public Notebook Create(string name)
+        public void Create(Notebook item)
         {
             try
             {
-                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter>
+                runner.RunNonQuery(Procedures.CreateNotebook, new List<SqlParameter>
                 {
-                    new SqlParameter(nameof(name), name)
+                    new SqlParameter(nameof(item.Name), item.Name),
+                    new SqlParameter(nameof(item.Stacks), item.Stacks)
                 });
-                DataTable dataTable = dataSet.Tables[0];
-
-                DataRow row = dataTable.Rows[0];
-
-                // TODO: Fill with data from the row
-                Notebook notebook = new Notebook(string.Empty);
-
-                return notebook;
             }
             catch (IndexOutOfRangeException)
             {
@@ -40,22 +33,15 @@ namespace Chronicy.Sql
             }
         }
 
-        public async Task<Notebook> CreateAsync(string name)
+        public Task CreateAsync(Notebook item)
         {
             try
             {
-                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter>
+                return runner.RunNonQueryAsync(Procedures.CreateNotebook, new List<SqlParameter>
                 {
-                    new SqlParameter(nameof(name), name)
+                    new SqlParameter(nameof(item.Name), item.Name),
+                    new SqlParameter(nameof(item.Stacks), item.Stacks)
                 });
-                DataTable dataTable = dataSet.Tables[0];
-
-                DataRow row = dataTable.Rows[0];
-
-                // TODO: Fill with data from the row
-                Notebook notebook = new Notebook(string.Empty);
-
-                return notebook;
             }
             catch (IndexOutOfRangeException)
             {
@@ -63,19 +49,19 @@ namespace Chronicy.Sql
             }
         }
 
-        public void Delete(Notebook notebook)
+        public void Delete(string id)
         {
             runner.RunNonQuery(Procedures.DeleteNotebook, new List<SqlParameter>
             {
-                new SqlParameter(nameof(notebook), notebook)
+                new SqlParameter(nameof(id), id)
             });
         }
 
-        public Task DeleteAsync(Notebook notebook)
+        public Task DeleteAsync(string id)
         {
             return runner.RunNonQueryAsync(Procedures.DeleteNotebook, new List<SqlParameter>
             {
-                new SqlParameter(nameof(notebook), notebook)
+                new SqlParameter(nameof(id), id)
             });
         }
 

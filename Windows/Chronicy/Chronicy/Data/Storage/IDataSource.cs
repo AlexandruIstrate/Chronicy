@@ -10,10 +10,10 @@ namespace Chronicy.Data.Storage
         IEnumerable<T> GetAll();
         Task<IEnumerable<T>> GetAllAsync();
 
-        T Create(string name);
-        Task<T> CreateAsync(string name);
-        void Delete(T item);
-        Task DeleteAsync(T item);
+        void Create(T item);
+        Task CreateAsync(T item);
+        void Delete(string id);
+        Task DeleteAsync(string id);
 
         void Update(T item);
         Task UpdateAsync(T item);

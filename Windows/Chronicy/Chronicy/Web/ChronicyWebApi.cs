@@ -136,16 +136,16 @@ namespace Chronicy.Web
             }
         }
 
-        public Notebook CreateNotebook(string name)
+        public void CreateNotebook(Notebook notebook)
         {
             try
             {
                 JObject body = new JObject
                 {
-                    { "name", name }
+                    { "notebook", JsonConvert.SerializeObject(notebook) }
                 };
 
-                return UploadData<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                UploadData<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {
@@ -157,16 +157,16 @@ namespace Chronicy.Web
             }
         }
 
-        public Task<Notebook> CreateNotebookAsync(string name)
+        public Task CreateNotebookAsync(Notebook notebook)
         {
             try
             {
                 JObject body = new JObject
                 {
-                    { "name", name }
+                    { "notebook", JsonConvert.SerializeObject(notebook) },
                 };
 
-                return UploadDataAsync<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                return UploadDataAsync<ErrorResponse>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {

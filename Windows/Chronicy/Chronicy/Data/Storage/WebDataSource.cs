@@ -11,11 +11,11 @@ namespace Chronicy.Data.Storage
         private ChronicyWebApi api = new ChronicyWebApi();
         private NotebookConverter converter = new NotebookConverter();
 
-        public Notebook Create(string name)
+        public void Create(Notebook item)
         {
             try
             {
-                return converter.ReverseConvert(api.CreateNotebook(name));
+                api.CreateNotebook(converter.Convert(item));
             }
             catch (WebApiException e)
             {
@@ -23,11 +23,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<Notebook> CreateAsync(string name)
+        public Task CreateAsync(Notebook item)
         {
             try
             {
-                return converter.ReverseConvert(await api.CreateNotebookAsync(name));
+                return api.CreateNotebookAsync(converter.Convert(item));
             }
             catch (WebApiException e)
             {
@@ -35,11 +35,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public void Delete(Notebook item)
+        public void Delete(string id)
         {
             try
             {
-                api.DeleteNotebook(item.Id.ToString());
+                api.DeleteNotebook(id);
             }
             catch (WebApiException e)
             {
@@ -47,11 +47,11 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task DeleteAsync(Notebook item)
+        public async Task DeleteAsync(string id)
         {
             try
             {
-                await api.DeleteNotebookAsync(item.Id.ToString());
+                await api.DeleteNotebookAsync(id);
             }
             catch (WebApiException e)
             {
