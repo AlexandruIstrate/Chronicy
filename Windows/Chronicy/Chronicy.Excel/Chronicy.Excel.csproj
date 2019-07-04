@@ -188,6 +188,7 @@
     <Compile Include="UI\ControlGroup.cs" />
     <Compile Include="UI\Display\DataDisplayView.cs" />
     <Compile Include="UI\Display\IDisplayView.cs" />
+    <Compile Include="UI\Display\ItemDisplayView.cs" />
     <Compile Include="UI\EditStackTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>

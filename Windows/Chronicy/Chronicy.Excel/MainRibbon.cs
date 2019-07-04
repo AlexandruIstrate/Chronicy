@@ -28,15 +28,15 @@ namespace Chronicy.Excel
         private IExcelExtension extension;
         private ExcelTracker tracker;
 
-        private IDisplayView<Notebook> availableNotebooks;
-        private IDisplayView<Stack> availableStacks;
+        private ItemDisplayView<Notebook> availableNotebooks;
+        private ItemDisplayView<Stack> availableStacks;
 
         public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
 
-            availableNotebooks = new DataDisplayView<Notebook>(null);
-            availableStacks = new DataDisplayView<Stack>(null);
+            availableNotebooks = new ItemDisplayView<Notebook>();
+            availableStacks = new ItemDisplayView<Stack>();
         }
 
         private void SetGroupState(bool enabled)
@@ -80,12 +80,27 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
+        // TODO: Clean this up
         private void InitializeSelectionSection()
         {
+            extension.Tracking.Register<List<Notebook>>((dispatchedEvent) => { availableNotebooks.Items = (List<Notebook>) dispatchedEvent.Value; });
+
             // Reload the data if we check the box
             showCompatibleCheckBox.Click += async (sender, args) => { await LoadAvailableItems(); };
 
-            extension.Tracking.Register<List<Notebook>>((dispatchedEvent) => { List<Notebook> notebooks = (List<Notebook>) dispatchedEvent.Value; });
+            notebookDropDown.SelectionChanged += (sender, args) =>
+            {
+                Notebook selected = availableNotebooks.Items.Find((item) => item.Name == notebookDropDown.SelectedItem.Label);
+
+                // TODO: Handle this
+                if (selected == null)
+                {
+                    availableStacks.Items = new List<Stack>();
+                    throw new Exception();
+                }
+
+                availableStacks.Items = selected.Stacks;
+            };
         }
 
         private async Task LoadAvailableItems()
