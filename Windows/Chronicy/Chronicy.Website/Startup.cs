@@ -1,16 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using Chronicy.Website.Identity;
+using Chronicy.Website.Services;
 using Chronicy.Website.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +44,7 @@ namespace Chronicy.Website
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
             services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
             services.AddTransient<SqlConnection>(e => new SqlConnection("Fill in"));
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -91,7 +89,7 @@ namespace Chronicy.Website
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler(WebsitePaths.Error);
                 app.UseHsts();
             }
 

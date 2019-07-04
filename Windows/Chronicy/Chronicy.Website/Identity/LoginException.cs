@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chronicy.Website.Pages.Account
+namespace Chronicy.Website.Areas.Identity.Pages.Account
 {
     public class LoginException : Exception
     {

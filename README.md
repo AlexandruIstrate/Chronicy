@@ -73,7 +73,7 @@ The Windows service that collects data sent by extensions
 ## Things That Inspired Chronicy
 - [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) - This has been the main point of inspiration for the stack based, board-like workflow
 - [SpotifyAPI-NET](https://github.com/JohnnyCrazy/SpotifyAPI-NET) - Chronicy uses a modified implementation of the client-side API
-- [AspNetCore.Docs](https://github.com/aspnet/AspNetCore.Docs) - The Chronicy website uses a view controller-based CRUD implementation similar to the one defined by Microsoft in their AspNetCore documentation sample code
+- [AspNetCore.Docs](https://github.com/aspnet/AspNetCore.Docs) - The Chronicy website uses a view controller-based CRUD implementation similar to the one defined by Microsoft in their AspNetCore documentation sample code. Also, the user authentication system is based on Microsoft's ASP.NET Identity examples.
 
 ## Disclaimer
 I do not own any of the following:

@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Chronicy.Data;
 using Chronicy.Data.Storage;
 using Chronicy.Sql;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Chronicy.Website.Pages.Notebooks
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private IDataSource<Notebook> dataSource;

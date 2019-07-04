@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
-namespace Chronicy.Website.Pages.Account
+namespace Chronicy.Website.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ChronicyUser> signInManager;
         private readonly UserManager<ChronicyUser> userManager;
+        private readonly ILogger<RegisterModel> logger;
         private readonly IEmailSender emailSender;
-        //private readonly ILogger<RegistryModel>
 
         [BindProperty]
         public InputData Input { get; set; }
@@ -46,9 +47,15 @@ namespace Chronicy.Website.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public RegisterModel()
+        public RegisterModel(UserManager<ChronicyUser> userManager,
+                             SignInManager<ChronicyUser> signInManager,
+                             ILogger<RegisterModel> logger,
+                             IEmailSender emailSender)
         {
-
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.logger = logger;
+            this.emailSender = emailSender;
         }
 
         public void OnGet(string returnUrl = null)
@@ -74,6 +81,8 @@ namespace Chronicy.Website.Pages.Account
                     throw new RegistrationException(Input.Username, "Could not create database entry");
                 }
             }
+
+            logger.LogInformation("User created a new account with password.");
 
             string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
             string callbackUrl = Url.Page(

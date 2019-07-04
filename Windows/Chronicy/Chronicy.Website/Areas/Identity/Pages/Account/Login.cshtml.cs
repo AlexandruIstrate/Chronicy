@@ -8,13 +8,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
-namespace Chronicy.Website.Pages.Account
+namespace Chronicy.Website.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ChronicyUser> signInManager;
+        private readonly ILogger<LoginModel> logger;
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -23,9 +25,11 @@ namespace Chronicy.Website.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; private set; }
 
-        public LoginModel()
+        public LoginModel(SignInManager<ChronicyUser> signInManager,
+                          ILogger<LoginModel> logger)
         {
-
+            this.signInManager = signInManager;
+            this.logger = logger;
         }
 
         // TODO: Support either username or password
@@ -73,16 +77,19 @@ namespace Chronicy.Website.Pages.Account
 
             if (result.Succeeded)
             {
+                logger.LogInformation("User logged in.");
                 return LocalRedirect(returnUrl);
             }
 
             if (result.RequiresTwoFactor)
             {
+                logger.LogInformation("User login requires two-factor authentication.");
                 return RedirectToPage(WebsitePaths.LoginTwoFactor, new { ReturnUrl = returnUrl, RememberMe = Input.Remember });
             }
 
             if (result.IsLockedOut)
             {
+                logger.LogWarning("User account locked out.");
                 return RedirectToPage(WebsitePaths.Lockout);
             }
 
