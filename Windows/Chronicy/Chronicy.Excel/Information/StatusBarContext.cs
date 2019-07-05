@@ -1,5 +1,6 @@
 ﻿using Chronicy.Information;
 using Microsoft.Office.Interop.Excel;
+using System;
 using System.Timers;
 
 namespace Chronicy.Excel.Information
@@ -29,6 +30,11 @@ namespace Chronicy.Excel.Information
         public void MessageDispatched(string message, InformationKind informationKind)
         {
             application.StatusBar = message;
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            application.StatusBar = exception.Message;
         }
 
         public void Save()

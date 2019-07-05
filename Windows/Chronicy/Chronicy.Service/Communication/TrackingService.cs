@@ -6,6 +6,7 @@ using Chronicy.Service.Dispatch;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
 using Chronicy.Utils;
+using System;
 using System.ServiceModel;
 using System.Text;
 
@@ -24,8 +25,12 @@ namespace Chronicy.Service.Communication
         public TrackingService()
         {
             context = AgregateContext.Of(new EventLogContext(), this);
-            notebookManager = new NotebookManager();
-            dispatcher = new DispatcherTimer();
+
+            ExceptionUtils.HandleExceptions(() =>
+            {
+                notebookManager = new NotebookManager();
+                dispatcher = new DispatcherTimer();
+            }, context);
         }
 
         public void Connect()
@@ -94,6 +99,11 @@ namespace Chronicy.Service.Communication
                     Callback?.SendErrorMessage(message);
                     break;
             }
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            Callback?.SendErrorMessage(exception.Message);
         }
     }
 }

@@ -26,4 +26,19 @@ namespace Chronicy.Web.Converters
             };
         }
     }
+
+    public static class StackConverterExtensions
+    {
+        public static Models.Stack ToWebStack(this Data.Stack stack)
+        {
+            StackConverter converter = new StackConverter();
+            return converter.Convert(stack);
+        }
+
+        public static Data.Stack ToDataStack(this Models.Stack stack)
+        {
+            StackConverter converter = new StackConverter();
+            return converter.ReverseConvert(stack);
+        }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using System;
+using NLog;
 using NLog.Config;
 using NLog.Targets;
 
@@ -17,6 +18,11 @@ namespace Chronicy.Information
         public void MessageDispatched(string message, InformationKind informationKind)
         {
             LogManager.GetCurrentClassLogger().Log(InformationKindToLogLevel(informationKind), message);
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            LogManager.GetCurrentClassLogger().Fatal(exception);
         }
 
         private void InitializeNLog()
@@ -42,6 +48,8 @@ namespace Chronicy.Information
                     return LogLevel.Warn;
                 case InformationKind.Error:
                     return LogLevel.Error;
+                case InformationKind.Debug:
+                    return LogLevel.Debug;
             }
 
             return LogLevel.Info;

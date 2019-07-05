@@ -17,23 +17,17 @@ namespace Chronicy.Service.Data
 
         public NotebookManager()
         {
-            dataSource = new WebDataSource();
+            dataSource = new LocalDataSource();
         }
 
         public void AddNotebook(Notebook notebook)
         {
-            // TODO: Provide a method that lets us upload a new notebook so that we can skip the ID transfer
-            Notebook created = dataSource.Create(notebook.Name);
-            notebook.Id = created.Id;
-            dataSource.Update(notebook);
+            dataSource.Create(notebook);
         }
 
-        public async Task AddNotebookAsync(Notebook notebook)
+        public Task AddNotebookAsync(Notebook notebook)
         {
-            // TODO: Provide a method that lets us upload a new notebook so that we can skip the ID transfer
-            Notebook created = await dataSource.CreateAsync(notebook.Name);
-            notebook.Id = created.Id;
-            await dataSource.UpdateAsync(notebook);
+            return dataSource.CreateAsync(notebook);
         }
 
         public void AddStack(Stack stack)

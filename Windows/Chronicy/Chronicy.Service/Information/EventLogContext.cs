@@ -1,5 +1,7 @@
 ﻿using Chronicy.Information;
+using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace Chronicy.Service.Information
 {
@@ -23,6 +25,22 @@ namespace Chronicy.Service.Information
         public void MessageDispatched(string message, InformationKind informationKind)
         {
             eventLog.WriteEntry(message, InformationKindToEventLogEntry(informationKind));
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine(exception.Message);
+            builder.AppendLine(exception.StackTrace);
+
+            if (exception.InnerException != null)
+            {
+                builder.AppendLine("Caused by");
+                builder.AppendLine(exception.InnerException.Message);
+                builder.AppendLine(exception.InnerException.StackTrace);
+            }
+
+            eventLog.WriteEntry(builder.ToString(), EventLogEntryType.Error);
         }
 
         private EventLogEntryType InformationKindToEventLogEntry(InformationKind information)

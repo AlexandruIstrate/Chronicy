@@ -55,4 +55,19 @@ namespace Chronicy.Web.Converters
             throw new ArgumentException("The value is not convertible to a supported type", nameof(fieldValueString));
         }
     }
+
+    public static class CustomFieldConverterExtensions
+    {
+        public static Models.CustomField ToWebCustomField(this Data.CustomField customField)
+        {
+            CustomFieldConverter converter = new CustomFieldConverter();
+            return converter.Convert(customField);
+        }
+
+        public static Data.CustomField ToDataCustomField(this Models.CustomField customField)
+        {
+            CustomFieldConverter converter = new CustomFieldConverter();
+            return converter.ReverseConvert(customField);
+        }
+    }
 }
