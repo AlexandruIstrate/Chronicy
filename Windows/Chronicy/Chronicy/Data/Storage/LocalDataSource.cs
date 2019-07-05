@@ -38,13 +38,15 @@ namespace Chronicy.Data.Storage
 
         public void Create(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Add(item);
         }
 
         public Task CreateAsync(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Add(item);
 
             return Task.CompletedTask;
@@ -52,20 +54,23 @@ namespace Chronicy.Data.Storage
 
         public void Delete(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Remove(Get(id));
         }
 
         public async Task DeleteAsync(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Remove(await GetAsync(id));
         }
 
         public Notebook Get(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.SystemId == id));
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
+            List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.Uuid == id));
 
             if (notebooks.Count < 1)
             {
@@ -77,8 +82,9 @@ namespace Chronicy.Data.Storage
 
         public async Task<Notebook> GetAsync(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.SystemId == id));
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
+            List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.Uuid == id));
 
             if (notebooks.Count < 1)
             {
@@ -90,7 +96,8 @@ namespace Chronicy.Data.Storage
 
         public IEnumerable<Notebook> GetAll()
         {
-            return database.Context.Set<Notebook>();
+            //return database.Context.Set<Notebook>();
+            return database.Context.Notebooks;
         }
 
         public Task<IEnumerable<Notebook>> GetAllAsync()

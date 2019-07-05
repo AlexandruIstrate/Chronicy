@@ -9,15 +9,22 @@ namespace Chronicy.Service.Data
     {
         private IDataSource<Notebook> dataSource;
 
-        // TODO: Maybe fetch at an interval?
-        public List<Notebook> Notebooks => new List<Notebook>(dataSource.GetAll());
-
         public Notebook SelectedNotebook { get; private set; }
         public Stack SelectedStack { get; private set; }
 
         public NotebookManager()
         {
             dataSource = new LocalDataSource();
+        }
+
+        public List<Notebook> GetNotebooks()
+        {
+            return new List<Notebook>(dataSource.GetAll());
+        }
+
+        public async Task<List<Notebook>> GetNotebooksAsync()
+        {
+            return new List<Notebook>(await dataSource.GetAllAsync());
         }
 
         public void AddNotebook(Notebook notebook)
@@ -56,7 +63,7 @@ namespace Chronicy.Service.Data
 
         public void SelectNotebook(string name)
         {
-            SelectedNotebook = Notebooks.Find((item) => item.Name == name);
+            SelectedNotebook = GetNotebooks().Find((item) => item.Name == name);
             SelectedStack = null;   // Invalidate the stack
 
             if (SelectedNotebook == null)
@@ -67,7 +74,7 @@ namespace Chronicy.Service.Data
 
         public void SelectNotebook(Notebook notebook)
         {
-            SelectedNotebook = Notebooks.Find((item) => item == notebook);
+            SelectedNotebook = GetNotebooks().Find((item) => item == notebook);
             SelectedStack = null;   // Invalidate the stack
 
             if (SelectedNotebook == null)

@@ -6,6 +6,9 @@ namespace Chronicy.Data
     [DataContract]
     public class Stack
     {
+        [IgnoreDataMember]
+        public int ID { get; set; }
+
         [DataMember]
         public string Name { get; set; }
 

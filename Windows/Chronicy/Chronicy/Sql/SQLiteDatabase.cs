@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chronicy.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -166,6 +167,8 @@ namespace Chronicy.Sql
 
     public class SQLiteDatabaseContext : DbContext
     {
+        public DbSet<Notebook> Notebooks { get; set; }
+
         public SQLiteDatabaseContext(SQLiteConnection connection = null) 
             : base(connection ?? CreateConnection(), contextOwnsConnection: true)
         {
@@ -174,12 +177,11 @@ namespace Chronicy.Sql
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            base.OnModelCreating(modelBuilder);
         }
 
         internal static SQLiteConnection CreateConnection()
         {
-            string savePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string savePath = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "Chronicy.sqlite";
 
             string dataSource = Path.Combine(savePath, fileName);
@@ -191,6 +193,14 @@ namespace Chronicy.Sql
             };
 
             return new SQLiteConnection(builder.ConnectionString);
+        }
+    }
+
+    public class SQLiteInitializer : DropCreateDatabaseIfModelChanges<SQLiteDatabaseContext>
+    {
+        protected override void Seed(SQLiteDatabaseContext context)
+        {
+            context.Notebooks.Add(new Notebook("Test"));
         }
     }
 }

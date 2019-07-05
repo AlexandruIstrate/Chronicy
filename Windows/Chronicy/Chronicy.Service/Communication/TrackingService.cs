@@ -39,7 +39,7 @@ namespace Chronicy.Service.Communication
 
             ExceptionUtils.HandleExceptions(() =>
             {
-                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.Notebooks); });
+                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
                 dispatcher.Start();
             }, context);
         }

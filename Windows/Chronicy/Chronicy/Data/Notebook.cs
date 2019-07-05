@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
     [DataContract]
-    [Table("Notebook")]
     public class Notebook
     {
-        [DataMember]
-        public string SystemId { get; set; }
+        [IgnoreDataMember]
+        public int ID { get; set; }
 
         [DataMember]
-        [Column("Name", TypeName = "VARCHAR")]
+        public string Uuid { get; set; }
+
+        [DataMember]
         public string Name { get; set; }
 
         [DataMember]
@@ -21,6 +21,12 @@ namespace Chronicy.Data
         public Notebook(string name)
         {
             Name = name;
+            Stacks = new List<Stack>();
+        }
+
+        public Notebook()
+        {
+            Name = string.Empty;
             Stacks = new List<Stack>();
         }
 
@@ -47,7 +53,7 @@ namespace Chronicy.Data
             }
 
             Notebook other = (Notebook)obj;
-            return SystemId == other.SystemId &&
+            return Uuid == other.Uuid &&
                    Name == other.Name &&
                    Stacks == other.Stacks;
         }
@@ -60,7 +66,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + SystemId.GetHashCode();
+                hash = hash * 23 + Uuid.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Stacks.GetHashCode();
                 return hash;
