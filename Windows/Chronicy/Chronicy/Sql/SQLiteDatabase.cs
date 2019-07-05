@@ -1,13 +1,8 @@
-﻿using Chronicy.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Core.Common;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Data.SQLite.EF6;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -20,28 +15,9 @@ namespace Chronicy.Sql
         /// </summary>
         public SQLiteConnection Connection { get; set; }
 
-        /// <summary>
-        /// Represents the context used for mapping entities
-        /// </summary>
-        public SQLiteDatabaseContext Context { get; set; }
-
-        /// <summary>
-        /// Creates a database with a <see cref="SQLiteDatabaseContext"/> using the specified <see cref="SQLiteConnection"/>
-        /// </summary>
-        /// <param name="connection">The connection to use</param>
-        public SQLiteDatabase(SQLiteConnection connection)
+        public SQLiteDatabase(SQLiteConnection connection = null)
         {
-            Context = new SQLiteDatabaseContext(connection);
-            Connection = connection ?? throw new ArgumentNullException(nameof(connection));
-        }
-
-        /// <summary>
-        /// Creates a database by automatically creating a <see cref="SQLiteConnection"/> and a <see cref="SQLiteDatabaseContext"/>
-        /// </summary>
-        public SQLiteDatabase()
-        {
-            Context = new SQLiteDatabaseContext();
-            Connection = (SQLiteConnection)Context.Database.Connection;
+            Connection = connection ?? CreateConnection();
         }
 
         public void Dispose()
@@ -150,36 +126,8 @@ namespace Chronicy.Sql
         }
 
         private const string NotSupportedMessage = "SQLite does not support stored procedures";
-    }
 
-    public class SQLiteConfiguration : DbConfiguration
-    {
-        private const string SQLiteNamespace = "System.Data.SQLite";
-        private const string EntityFrameworkNamespace = "System.Data.SQLite.EF6";
-
-        public SQLiteConfiguration()
-        {
-            SetProviderFactory(SQLiteNamespace, SQLiteFactory.Instance);
-            SetProviderFactory(EntityFrameworkNamespace, SQLiteProviderFactory.Instance);
-            SetProviderServices(SQLiteNamespace, (DbProviderServices) SQLiteProviderFactory.Instance.GetService(typeof(DbProviderServices)));
-        }
-    }
-
-    public class SQLiteDatabaseContext : DbContext
-    {
-        public DbSet<Notebook> Notebooks { get; set; }
-
-        public SQLiteDatabaseContext(SQLiteConnection connection = null) 
-            : base(connection ?? CreateConnection(), contextOwnsConnection: true)
-        {
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-
-        internal static SQLiteConnection CreateConnection()
+        private SQLiteConnection CreateConnection()
         {
             string savePath = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "Chronicy.sqlite";
@@ -193,14 +141,6 @@ namespace Chronicy.Sql
             };
 
             return new SQLiteConnection(builder.ConnectionString);
-        }
-    }
-
-    public class SQLiteInitializer : DropCreateDatabaseIfModelChanges<SQLiteDatabaseContext>
-    {
-        protected override void Seed(SQLiteDatabaseContext context)
-        {
-            context.Notebooks.Add(new Notebook("Test"));
         }
     }
 }
