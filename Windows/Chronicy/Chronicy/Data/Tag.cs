@@ -20,6 +20,12 @@ namespace Chronicy.Data
             Description = description;
         }
 
+        public Tag()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

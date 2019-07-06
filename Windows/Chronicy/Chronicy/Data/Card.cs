@@ -33,6 +33,14 @@ namespace Chronicy.Data
             Tags = new List<Tag>();
         }
 
+        public Card()
+        {
+            Name = string.Empty;
+            Comment = string.Empty;
+            Fields = new List<CustomField>();
+            Tags = new List<Tag>();
+        }
+
         public void AddField(CustomField field)
         {
             Fields.Add(field);

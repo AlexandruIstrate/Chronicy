@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace Chronicy.Data
@@ -16,6 +17,7 @@ namespace Chronicy.Data
         public FieldType Type { get; set; }
 
         [DataMember]
+        [NotMapped] // Testing only
         public object Value { get; set; }
 
         public CustomField(string name, FieldType type, object value = null)
@@ -23,6 +25,13 @@ namespace Chronicy.Data
             Name = name;
             Type = type;
             Value = value;
+        }
+
+        public CustomField()
+        {
+            Name = string.Empty;
+            Type = FieldType.String;
+            Value = null;
         }
 
         public Type GetSystemType()

@@ -1,16 +1,19 @@
 ﻿using Chronicy.Data;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Common;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Data.SQLite.EF6;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Chronicy.Sql
 {
-    public class SqliteDatabase : ISqlDatabase
+    public class SQLiteDatabase : ISqlDatabase
     {
         /// <summary>
         /// Represents the connection that is used for queries
@@ -26,19 +29,19 @@ namespace Chronicy.Sql
         /// Creates a database with a <see cref="SQLiteDatabaseContext"/> using the specified <see cref="SQLiteConnection"/>
         /// </summary>
         /// <param name="connection">The connection to use</param>
-        public SqliteDatabase(SQLiteConnection connection)
+        public SQLiteDatabase(SQLiteConnection connection)
         {
-            Connection = connection ?? throw new ArgumentNullException(nameof(connection));
             Context = new SQLiteDatabaseContext(connection);
+            Connection = connection ?? throw new ArgumentNullException(nameof(connection));
         }
 
         /// <summary>
         /// Creates a database by automatically creating a <see cref="SQLiteConnection"/> and a <see cref="SQLiteDatabaseContext"/>
         /// </summary>
-        public SqliteDatabase()
+        public SQLiteDatabase()
         {
             Context = new SQLiteDatabaseContext();
-            Connection = (SQLiteConnection)Context.Database.GetDbConnection();
+            Connection = (SQLiteConnection)Context.Database.Connection;
         }
 
         public void Dispose()
@@ -70,7 +73,7 @@ namespace Chronicy.Sql
                     }
 
                     return dataSet;
-                }
+                }                
             }
             catch (Exception)
             {
@@ -149,22 +152,31 @@ namespace Chronicy.Sql
         private const string NotSupportedMessage = "SQLite does not support stored procedures";
     }
 
+    public class SQLiteConfiguration : DbConfiguration
+    {
+        private const string SQLiteNamespace = "System.Data.SQLite";
+        private const string EntityFrameworkNamespace = "System.Data.SQLite.EF6";
+
+        public SQLiteConfiguration()
+        {
+            SetProviderFactory(SQLiteNamespace, SQLiteFactory.Instance);
+            SetProviderFactory(EntityFrameworkNamespace, SQLiteProviderFactory.Instance);
+            SetProviderServices(SQLiteNamespace, (DbProviderServices) SQLiteProviderFactory.Instance.GetService(typeof(DbProviderServices)));
+        }
+    }
+
     public class SQLiteDatabaseContext : DbContext
     {
-        private SQLiteConnection connection;
-
         public DbSet<Notebook> Notebooks { get; set; }
 
-        public SQLiteDatabaseContext(SQLiteConnection connection = null)
+        public SQLiteDatabaseContext(SQLiteConnection connection = null) 
+            : base(connection ?? CreateConnection(), contextOwnsConnection: true)
         {
-            this.connection = connection ?? CreateConnection();
-            Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlite(connection);
-            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         internal static SQLiteConnection CreateConnection()
@@ -176,10 +188,19 @@ namespace Chronicy.Sql
 
             SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder()
             {
-                DataSource = dataSource
+                DataSource = dataSource,
+                ForeignKeys = true
             };
 
             return new SQLiteConnection(builder.ConnectionString);
+        }
+    }
+
+    public class SQLiteInitializer : DropCreateDatabaseIfModelChanges<SQLiteDatabaseContext>
+    {
+        protected override void Seed(SQLiteDatabaseContext context)
+        {
+            context.Notebooks.Add(new Notebook("Test"));
         }
     }
 }

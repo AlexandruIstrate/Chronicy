@@ -1,27 +1,18 @@
-﻿using Chronicy.Information;
-using Chronicy.Sql;
-using Microsoft.EntityFrameworkCore;
+﻿using Chronicy.Sql;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
 {
     public class LocalDataSource : IDataSource<Notebook>, IDisposable
     {
-        private SqliteDatabase database;
+        private SQLiteDatabase database;
 
         public LocalDataSource()
         {
-            database = new SqliteDatabase();
-
-            database.Context.Set<Notebook>().Add(new Notebook($"Added from code at { DateTime.Now.ToString() }"));
-            database.Context.SaveChanges();
-
-            foreach (Notebook item in database.Context.Set<Notebook>())
-            {
-                InformationDispatcher.Default.Dispatch(item.Name);
-            }
+            database = new SQLiteDatabase();
         }
 
         ~LocalDataSource()
@@ -47,15 +38,15 @@ namespace Chronicy.Data.Storage
 
         public void Create(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Add(item);
         }
 
         public Task CreateAsync(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Add(item);
 
             return Task.CompletedTask;
@@ -63,22 +54,22 @@ namespace Chronicy.Data.Storage
 
         public void Delete(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Remove(Get(id));
         }
 
         public async Task DeleteAsync(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             existing.Remove(await GetAsync(id));
         }
 
         public Notebook Get(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.Uuid == id));
 
             if (notebooks.Count < 1)
@@ -91,8 +82,8 @@ namespace Chronicy.Data.Storage
 
         public async Task<Notebook> GetAsync(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            //DbSet<Notebook> existing = database.Context.Notebooks;
+            //DbSet<Notebook> existing = database.Context.Set<Notebook>();
+            DbSet<Notebook> existing = database.Context.Notebooks;
             List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.Uuid == id));
 
             if (notebooks.Count < 1)
@@ -105,8 +96,8 @@ namespace Chronicy.Data.Storage
 
         public IEnumerable<Notebook> GetAll()
         {
-            return database.Context.Set<Notebook>();
-            //return database.Context.Notebooks;
+            //return database.Context.Set<Notebook>();
+            return database.Context.Notebooks;
         }
 
         public Task<IEnumerable<Notebook>> GetAllAsync()

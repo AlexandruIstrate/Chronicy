@@ -25,6 +25,13 @@ namespace Chronicy.Data
             Cards = new List<Card>();
         }
 
+        public Stack()
+        {
+            Name = string.Empty;
+            Fields = new List<CustomField>();
+            Cards = new List<Card>();
+        }
+
         public void Add(Card card)
         {
             Cards.Add(card);
