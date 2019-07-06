@@ -70,6 +70,10 @@ The Windows service that collects data sent by extensions
 - Alamofire
 - FatSidebar
 
+#### Web
+- .NET Core 2.2
+- ASP.NET Core
+
 ## Things That Inspired Chronicy
 - [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) - This has been the main point of inspiration for the stack based, board-like workflow
 - [SpotifyAPI-NET](https://github.com/JohnnyCrazy/SpotifyAPI-NET) - Chronicy uses a modified implementation of the client-side API
