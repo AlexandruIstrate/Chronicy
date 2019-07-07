@@ -163,6 +163,7 @@
     <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
     <Compile Include="Data\FieldTemplates.cs" />
+    <Compile Include="Data\ServiceDataSource.cs" />
     <Compile Include="History\HistoryManager.cs" />
     <Compile Include="History\HistoryItem.cs" />
     <Compile Include="History\HistoryRecord.cs" />
@@ -246,6 +247,7 @@
     <EmbeddedResource Include="UI\NotebooksTaskPane.resx">
       <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Chronicy.Excel_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

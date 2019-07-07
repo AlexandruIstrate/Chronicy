@@ -1,4 +1,5 @@
-﻿using Chronicy.Information;
+﻿using System;
+using Chronicy.Information;
 using NUnit.Framework;
 
 namespace Chronicy.Tests.Information
@@ -34,6 +35,11 @@ namespace Chronicy.Tests.Information
         {
             LastMessage = message;
             LastInformationKind = informationKind;
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            throw new NotImplementedException();
         }
     }
 }

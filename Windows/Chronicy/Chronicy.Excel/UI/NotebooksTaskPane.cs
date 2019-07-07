@@ -27,7 +27,34 @@ namespace Chronicy.Excel.UI
 
         private void LoadData()
         {
-            
+            notebookComboBox.Items.Clear();
+
+            foreach (Notebook notebook in notebooks)
+            {
+                notebookComboBox.Items.Add(notebook.Name);
+            }
+
+            if (notebooks.Count > 0)
+            {
+                notebookComboBox.SelectedIndex = 0;
+            }
+
+            notebookComboBox.SelectedIndexChanged += (sender, args) =>
+            {
+                stackComboBox.Items.Clear();
+
+                Notebook selected = notebooks[notebookComboBox.SelectedIndex];
+
+                foreach (Stack stack in selected.Stacks)
+                {
+                    stackComboBox.Items.Add(stack.Name);
+                }
+
+                if (selected.Stacks.Count > 0)
+                {
+                    stackComboBox.SelectedIndex = 0;
+                }
+            };
         }
 
         private void OnLoad(object sender, EventArgs e)

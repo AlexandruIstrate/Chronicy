@@ -5,6 +5,9 @@ namespace Chronicy.Data
     [DataContract]
     public class Tag
     {
+        [IgnoreDataMember]
+        public int ID { get; set; }
+
         [DataMember]
         public string Name { get; set; }
 
@@ -15,6 +18,12 @@ namespace Chronicy.Data
         {
             Name = name;
             Description = description;
+        }
+
+        public Tag()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
         }
 
         public override bool Equals(object obj)

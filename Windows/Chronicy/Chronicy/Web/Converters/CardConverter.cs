@@ -28,4 +28,19 @@ namespace Chronicy.Web.Converters
             };
         }
     }
+
+    public static class CardConverterExtensions
+    {
+        public static Models.Card ToWebCard(this Data.Card card)
+        {
+            CardConverter converter = new CardConverter();
+            return converter.Convert(card);
+        }
+
+        public static Data.Card ToDataCard(this Models.Card card)
+        {
+            CardConverter converter = new CardConverter();
+            return converter.ReverseConvert(card);
+        }
+    }
 }

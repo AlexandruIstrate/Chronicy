@@ -7,6 +7,9 @@ namespace Chronicy.Data
     [DataContract]
     public class Card
     {
+        [IgnoreDataMember]
+        public int ID { get; set; }
+
         [DataMember]
         public string Name { get; set; }
 
@@ -26,6 +29,14 @@ namespace Chronicy.Data
         {
             Name = name;
             Comment = comment;
+            Fields = new List<CustomField>();
+            Tags = new List<Tag>();
+        }
+
+        public Card()
+        {
+            Name = string.Empty;
+            Comment = string.Empty;
             Fields = new List<CustomField>();
             Tags = new List<Tag>();
         }

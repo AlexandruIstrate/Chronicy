@@ -43,7 +43,6 @@
             this.box1 = this.Factory.CreateRibbonBox();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
-            this.showCompatibleCheckBox = this.Factory.CreateRibbonCheckBox();
             this.newNotebookButton = this.Factory.CreateRibbonButton();
             this.newStackButton = this.Factory.CreateRibbonButton();
             this.viewAllButton = this.Factory.CreateRibbonButton();
@@ -70,6 +69,7 @@
             this.reportBugButton = this.Factory.CreateRibbonButton();
             this.viewGitHubButton = this.Factory.CreateRibbonButton();
             this.optionsButton = this.Factory.CreateRibbonButton();
+            this.dataSoruceDropDown = this.Factory.CreateRibbonDropDown();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -133,9 +133,9 @@
             // box1
             // 
             this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.dataSoruceDropDown);
             this.box1.Items.Add(this.notebookDropDown);
             this.box1.Items.Add(this.stackDropDown);
-            this.box1.Items.Add(this.showCompatibleCheckBox);
             this.box1.Name = "box1";
             // 
             // notebookDropDown
@@ -151,11 +151,6 @@
             this.stackDropDown.Label = "Stack";
             this.stackDropDown.Name = "stackDropDown";
             this.stackDropDown.ShowImage = true;
-            // 
-            // showCompatibleCheckBox
-            // 
-            this.showCompatibleCheckBox.Label = "Only Show Compatible";
-            this.showCompatibleCheckBox.Name = "showCompatibleCheckBox";
             // 
             // newNotebookButton
             // 
@@ -362,6 +357,12 @@
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.ShowImage = true;
             // 
+            // dataSoruceDropDown
+            // 
+            this.dataSoruceDropDown.Label = "Data Source";
+            this.dataSoruceDropDown.Name = "dataSoruceDropDown";
+            this.dataSoruceDropDown.SelectionChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnDataSourceChanged);
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -410,7 +411,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton newNotebookButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton newStackButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton viewAllButton;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox showCompatibleCheckBox;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton trackWorkbookButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton trackSheetButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton trackCellButton;
@@ -432,6 +432,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton sheetCurrentLabel;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton cellsCurrentLabel;
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu historyMenu;
+        internal Microsoft.Office.Tools.Ribbon.RibbonDropDown dataSoruceDropDown;
     }
 
     partial class ThisRibbonCollection

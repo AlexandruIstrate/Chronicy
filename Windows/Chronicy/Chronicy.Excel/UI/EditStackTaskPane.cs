@@ -43,10 +43,10 @@ namespace Chronicy.Excel.UI
             }
 
             nameTextBox.Text = stack.Name;
-            fieldsDataGrid.DataSource = CreateDataSet();
+            fieldsDataGrid.DataSource = CreateDataSet(stack);
         }
 
-        private DataSet CreateDataSet()
+        private DataSet CreateDataSet(Stack stack)
         {
             DataSet dataSet = new DataSet();
 

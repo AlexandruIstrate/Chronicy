@@ -45,13 +45,8 @@ namespace Chronicy.Tests
         [Test]
         public void CanCreateNotebook()
         {
-            string name = "TestNotebook";
-
-            Notebook notebook = null;
-
-            Assert.DoesNotThrow(() => { notebook = webApi.CreateNotebook(name); }, "The client API must handle the request successfully!");
-            Assert.IsNotNull(notebook, "The notebook returned must not be null!");
-            Assert.AreEqual(notebook.Name, name, "The name of the returned notebook must be the same as the value passed in to the API!");
+            Notebook notebook = new Notebook();
+            Assert.DoesNotThrow(() => { webApi.CreateNotebook(notebook); }, "The client API must handle the request successfully!");
         }
 
         [Test]

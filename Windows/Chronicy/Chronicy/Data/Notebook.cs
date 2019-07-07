@@ -6,8 +6,11 @@ namespace Chronicy.Data
     [DataContract]
     public class Notebook
     {
+        [IgnoreDataMember]
+        public int ID { get; set; }
+
         [DataMember]
-        public string Id { get; set; }
+        public string Uuid { get; set; }
 
         [DataMember]
         public string Name { get; set; }
@@ -18,6 +21,12 @@ namespace Chronicy.Data
         public Notebook(string name)
         {
             Name = name;
+            Stacks = new List<Stack>();
+        }
+
+        public Notebook()
+        {
+            Name = string.Empty;
             Stacks = new List<Stack>();
         }
 
@@ -44,7 +53,7 @@ namespace Chronicy.Data
             }
 
             Notebook other = (Notebook)obj;
-            return Id == other.Id &&
+            return Uuid == other.Uuid &&
                    Name == other.Name &&
                    Stacks == other.Stacks;
         }
@@ -57,7 +66,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + Id.GetHashCode();
+                hash = hash * 23 + Uuid.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Stacks.GetHashCode();
                 return hash;

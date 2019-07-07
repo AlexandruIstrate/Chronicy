@@ -8,50 +8,42 @@ using Chronicy.Data.Storage;
 
 namespace Chronicy.Sql
 {
-    public class SqlDataSource : IDataSource<Notebook>
+    public class SqlDataSource : IDataSource<Notebook>, IDisposable
     {
-        private ProcedureRunner runner;
+        private ISqlDatabase database;
 
         public SqlDataSource(SqlConnection connection)
         {
-            runner = new ProcedureRunner(connection);
+            database = new SqlServerDatabase(connection);
+        }
+
+        public void Dispose()
+        {
+            database.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public void Create(Notebook item)
         {
-            try
+            database.RunNonQueryProcedure(SqlProcedures.CreateNotebook, new List<SqlParameter>
             {
-                runner.RunNonQuery(Procedures.CreateNotebook, new List<SqlParameter>
-                {
-                    new SqlParameter(nameof(item.Name), item.Name),
-                    new SqlParameter(nameof(item.Stacks), item.Stacks)
-                });
-            }
-            catch (IndexOutOfRangeException)
-            {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
-            }
+                new SqlParameter(nameof(item.Name), item.Name),
+                new SqlParameter(nameof(item.Stacks), item.Stacks)
+            });
         }
 
         public Task CreateAsync(Notebook item)
         {
-            try
+            return database.RunNonQueryProcedureAsync(SqlProcedures.CreateNotebook, new List<SqlParameter>
             {
-                return runner.RunNonQueryAsync(Procedures.CreateNotebook, new List<SqlParameter>
-                {
-                    new SqlParameter(nameof(item.Name), item.Name),
-                    new SqlParameter(nameof(item.Stacks), item.Stacks)
-                });
-            }
-            catch (IndexOutOfRangeException)
-            {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
-            }
+                new SqlParameter(nameof(item.Name), item.Name),
+                new SqlParameter(nameof(item.Stacks), item.Stacks)
+            });
         }
 
         public void Delete(string id)
         {
-            runner.RunNonQuery(Procedures.DeleteNotebook, new List<SqlParameter>
+            database.RunNonQueryProcedure(SqlProcedures.DeleteNotebook, new List<SqlParameter>
             {
                 new SqlParameter(nameof(id), id)
             });
@@ -59,7 +51,7 @@ namespace Chronicy.Sql
 
         public Task DeleteAsync(string id)
         {
-            return runner.RunNonQueryAsync(Procedures.DeleteNotebook, new List<SqlParameter>
+            return database.RunNonQueryProcedureAsync(SqlProcedures.DeleteNotebook, new List<SqlParameter>
             {
                 new SqlParameter(nameof(id), id)
             });
@@ -69,7 +61,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = runner.RunScalar(Procedures.CreateNotebook, new List<SqlParameter>
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.CreateNotebook, new List<SqlParameter>
                 {
                     new SqlParameter(nameof(id), id)
                 });
@@ -92,7 +84,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await runner.RunScalarAsync(Procedures.CreateNotebook, new List<SqlParameter>
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.CreateNotebook, new List<SqlParameter>
                 {
                     new SqlParameter(nameof(id), id)
                 });
@@ -115,7 +107,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = runner.RunScalar(Procedures.GetNotebooks);
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.GetNotebooks);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<Notebook> result = new List<Notebook>();
@@ -137,7 +129,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await runner.RunScalarAsync(Procedures.GetNotebooks);
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.GetNotebooks);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<Notebook> result = new List<Notebook>();
@@ -157,7 +149,7 @@ namespace Chronicy.Sql
 
         public void Update(Notebook notebook)
         {
-            runner.RunNonQuery(Procedures.UpdateNotebook, new List<SqlParameter>
+            database.RunNonQueryProcedure(SqlProcedures.UpdateNotebook, new List<SqlParameter>
             {
                 new SqlParameter(nameof(notebook), notebook)
             });
@@ -165,7 +157,7 @@ namespace Chronicy.Sql
 
         public Task UpdateAsync(Notebook notebook)
         {
-            return runner.RunNonQueryAsync(Procedures.UpdateNotebook, new List<SqlParameter>
+            return database.RunNonQueryProcedureAsync(SqlProcedures.UpdateNotebook, new List<SqlParameter>
             {
                 new SqlParameter(nameof(notebook), notebook)
             });

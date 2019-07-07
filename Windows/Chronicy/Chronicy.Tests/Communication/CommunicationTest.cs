@@ -79,5 +79,30 @@ namespace Chronicy.Tests.Communication
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Notebook> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Notebook Get(string uuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(Notebook notebook)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Notebook notebook)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(string uuid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

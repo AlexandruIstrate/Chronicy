@@ -1,6 +1,6 @@
 ﻿namespace Chronicy.Sql
 {
-    public static class Procedures
+    public static class SqlProcedures
     {
         public const string AuthenticateForToken = "AuthenticateForToken";
 

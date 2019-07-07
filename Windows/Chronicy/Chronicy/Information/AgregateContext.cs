@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Chronicy.Information
 {
@@ -16,6 +17,14 @@ namespace Chronicy.Information
             foreach (IInformationContext context in Contexts)
             {
                 InformationDispatcher.Default.Dispatch(message, context, informationKind);
+            }
+        }
+
+        public void ExceptionDispatched(Exception exception)
+        {
+            foreach (IInformationContext context in Contexts)
+            {
+                InformationDispatcher.Default.Dispatch(exception, context);
             }
         }
 

@@ -13,7 +13,7 @@ namespace Chronicy.Web.Converters
         {
             return new Models.Notebook
             {
-                Id = value.Id,
+                Id = value.Uuid,
                 Name = value.Name,
                 Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.Convert(input))
             };
@@ -23,9 +23,24 @@ namespace Chronicy.Web.Converters
         {
             return new Data.Notebook(value.Name)
             {
-                Id = value.Id,
+                Uuid = value.Id,
                 Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.ReverseConvert(input))
             };
+        }
+    }
+
+    public static class NotebookConverterExtensions
+    {
+        public static Models.Notebook ToWebNotebook(this Data.Notebook notebook)
+        {
+            NotebookConverter converter = new NotebookConverter();
+            return converter.Convert(notebook);
+        }
+
+        public static Data.Notebook ToDataNotebook(this Models.Notebook notebook)
+        {
+            NotebookConverter converter = new NotebookConverter();
+            return converter.ReverseConvert(notebook);
         }
     }
 }

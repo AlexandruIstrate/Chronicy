@@ -6,6 +6,9 @@ namespace Chronicy.Data
     [DataContract]
     public class Stack
     {
+        [IgnoreDataMember]
+        public int ID { get; set; }
+
         [DataMember]
         public string Name { get; set; }
 
@@ -18,6 +21,13 @@ namespace Chronicy.Data
         public Stack(string name)
         {
             Name = name;
+            Fields = new List<CustomField>();
+            Cards = new List<Card>();
+        }
+
+        public Stack()
+        {
+            Name = string.Empty;
             Fields = new List<CustomField>();
             Cards = new List<Card>();
         }

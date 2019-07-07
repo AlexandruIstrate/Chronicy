@@ -8,7 +8,7 @@ namespace Chronicy.Information
         // TODO: Maybe change?
         public static InformationDispatcher Default = new InformationDispatcher();
 
-        public IInformationContext DefaultContext { get; }
+        public IInformationContext DefaultContext { get; } = DebugLogContext.Default;
 
         public void Dispatch(string messsage, IInformationContext context, InformationKind informationKind = InformationKind.Info)
         {
@@ -17,35 +17,17 @@ namespace Chronicy.Information
 
         public void Dispatch(string messsage, InformationKind informationKind = InformationKind.Info)
         {
-            Dispatch(messsage, DefaultContext, informationKind);
+            DefaultContext.MessageDispatched(messsage, informationKind);
         }
 
-        public void Dispatch(Exception e, IInformationContext context, ExceptionDispatch exceptionDispatch = ExceptionDispatch.Message)
+        public void Dispatch(Exception e, IInformationContext context)
         {
-            StringBuilder builder = new StringBuilder();
-
-            switch (exceptionDispatch)
-            {
-                case ExceptionDispatch.Message:
-                    builder.Append(e.Message);
-                    break;
-
-                case ExceptionDispatch.Trace:
-                    builder.Append(e.StackTrace);
-                    break;
-
-                case ExceptionDispatch.Full:
-                    builder.AppendLine(e.Message);
-                    builder.Append(e.StackTrace);
-                    break;
-            }
-
-            Dispatch(builder.ToString(), context, InformationKind.Error);
+            context.ExceptionDispatched(e);
         }
 
         public void Dispatch(Exception e)
         {
-            Dispatch(e.Message, DefaultContext, InformationKind.Error);
+            DefaultContext.ExceptionDispatched(e);
         }
     }
 
@@ -53,11 +35,7 @@ namespace Chronicy.Information
     {
         Info,
         Warning,
-        Error
-    }
-
-    public enum ExceptionDispatch
-    {
-        Message, Trace, Full
+        Error,
+        Debug
     }
 }
