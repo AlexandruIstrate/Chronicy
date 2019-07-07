@@ -1,64 +1,74 @@
-﻿using Chronicy.Data;
-using Chronicy.Data.Storage;
+﻿using Chronicy.Data.Storage;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Chronicy.Service.Data
+namespace Chronicy.Data.Managers
 {
     public class NotebookManager
     {
-        private IDataSource<Notebook> dataSource;
+        public IDataSource<Notebook> DataSource { get; set; }
 
         public Notebook SelectedNotebook { get; private set; }
         public Stack SelectedStack { get; private set; }
 
-        public NotebookManager()
+        public event EventHandler NotebooksChanged;
+
+        public NotebookManager(IDataSource<Notebook> dataSource)
         {
-            dataSource = new LocalDataSource();
+            DataSource = dataSource;
         }
 
         public List<Notebook> GetNotebooks()
         {
-            return new List<Notebook>(dataSource.GetAll());
+            return new List<Notebook>(DataSource.GetAll());
         }
 
         public async Task<List<Notebook>> GetNotebooksAsync()
         {
-            return new List<Notebook>(await dataSource.GetAllAsync());
+            return new List<Notebook>(await DataSource.GetAllAsync());
         }
 
         public void AddNotebook(Notebook notebook)
         {
-            dataSource.Create(notebook);
+            DataSource.Create(notebook);
+            OnNotebooksChanged();
         }
 
-        public Task AddNotebookAsync(Notebook notebook)
+        public async Task AddNotebookAsync(Notebook notebook)
         {
-            return dataSource.CreateAsync(notebook);
+            await DataSource.CreateAsync(notebook);
+            OnNotebooksChanged();
         }
 
         public void AddStack(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            dataSource.Update(SelectedNotebook);
+            OnNotebooksChanged();
         }
 
         public async Task AddStackAsync(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            await dataSource.UpdateAsync(SelectedNotebook);
+            await DataSource.UpdateAsync(SelectedNotebook);
+
+            OnNotebooksChanged();
         }
 
         public void AddCard(Card card)
         {
             SelectedStack.Add(card);
-            dataSource.Update(SelectedNotebook);
+            DataSource.Update(SelectedNotebook);
+
+            OnNotebooksChanged();
         }
 
         public async Task AddCardAsync(Card card)
         {
             SelectedStack.Add(card);
-            await dataSource.UpdateAsync(SelectedNotebook);
+            await DataSource.UpdateAsync(SelectedNotebook);
+
+            OnNotebooksChanged();
         }
 
         public void SelectNotebook(string name)
@@ -101,6 +111,11 @@ namespace Chronicy.Service.Data
             {
                 throw new ItemNotFoundException(stack.Name);
             }
+        }
+
+        private void OnNotebooksChanged()
+        {
+            NotebooksChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

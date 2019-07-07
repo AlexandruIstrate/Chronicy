@@ -20,6 +20,8 @@ namespace Chronicy.Excel.UI.Pane
 
             ITaskPaneFactory factory = new TaskPaneFactory();
             Pane = factory.Create(title, Control);
+
+            control.VisibleChanged += (sender, args) => Visible = control.Visible;
         }
     }
 }

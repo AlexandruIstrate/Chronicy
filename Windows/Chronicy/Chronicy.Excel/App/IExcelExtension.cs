@@ -1,5 +1,8 @@
-﻿using Chronicy.Excel.History;
+﻿using Chronicy.Data;
+using Chronicy.Data.Managers;
+using Chronicy.Excel.History;
 using Chronicy.Excel.Tracking;
+using System.Collections.Generic;
 
 namespace Chronicy.Excel.App
 {
@@ -19,14 +22,17 @@ namespace Chronicy.Excel.App
             set { connected = value; ConnectionChanged?.Invoke(Connected); }
         }
 
-        public TrackingSystem Tracking { get; } = new TrackingSystem();
-        public HistoryManager History { get; } = new HistoryManager();
+        public abstract TrackingSystem Tracking { get; }
+        public abstract NotebookManager Notebooks { get; }
+        public abstract HistoryManager History { get; }
 
         public delegate void StateUpdateHandler(bool enabled);
         public delegate void ConnectionUpdateHandler(bool connected);
+        public delegate void AvailableNotebooksHandler(IEnumerable<Notebook> notebooks);
 
         public event StateUpdateHandler StateChanged;
         public event ConnectionUpdateHandler ConnectionChanged;
+        public event AvailableNotebooksHandler NotebooksUpdated;
 
         public virtual void OnStart() { }
         public virtual void OnShutdown() { }
@@ -36,5 +42,10 @@ namespace Chronicy.Excel.App
 
         public abstract void Connect();
         public abstract void Sync();
+
+        protected void OnNotebooksUpdated(IEnumerable<Notebook> notebooks = null)
+        {
+            NotebooksUpdated?.Invoke(notebooks ?? Notebooks.GetNotebooks());
+        }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using Chronicy.Data;
 using Chronicy.Excel.App;
-using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.UI;
-using Chronicy.Excel.UI.Display;
 using Chronicy.Excel.UI.Pane;
 using Chronicy.Excel.User;
 using Chronicy.Excel.Utils;
@@ -15,7 +13,6 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
@@ -28,15 +25,9 @@ namespace Chronicy.Excel
         private IExcelExtension extension;
         private ExcelTracker tracker;
 
-        private ItemDisplayView<Notebook> availableNotebooks;
-        private ItemDisplayView<Stack> availableStacks;
-
         public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
-
-            availableNotebooks = new ItemDisplayView<Notebook>();
-            availableStacks = new ItemDisplayView<Stack>();
         }
 
         private void SetGroupState(bool enabled)
@@ -80,51 +71,52 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
-        // TODO: Clean this up
-        private void InitializeSelectionSection()
+        private void InitializeNotebooks()
         {
-            extension.Tracking.Register<List<Notebook>>((dispatchedEvent) => { availableNotebooks.Items = (List<Notebook>) dispatchedEvent.Value; });
-
-            // Reload the data if we check the box
-            showCompatibleCheckBox.Click += async (sender, args) => { await LoadAvailableItems(); };
+            extension.NotebooksUpdated += (notebooks) => LoadNotebooks(new List<Notebook>(notebooks));
 
             notebookDropDown.SelectionChanged += (sender, args) =>
             {
-                Notebook selected = availableNotebooks.Items.Find((item) => item.Name == notebookDropDown.SelectedItem.Label);
+                extension.Notebooks.SelectNotebook(notebookDropDown.SelectedItem.Label);
+                LoadStacks();
+            };
 
-                // TODO: Handle this
-                if (selected == null)
-                {
-                    availableStacks.Items = new List<Stack>();
-                    throw new Exception();
-                }
-
-                availableStacks.Items = selected.Stacks;
+            stackDropDown.SelectionChanged += (sender, args) =>
+            {
+                extension.Notebooks.SelectStack(stackDropDown.SelectedItem.Label);
             };
         }
 
-        private async Task LoadAvailableItems()
+        private void LoadNotebooks(List<Notebook> items = null)
         {
+            List<Notebook> notebooks = items ?? extension.Notebooks.GetNotebooks();
             notebookDropDown.Items.Clear();
-            stackDropDown.Items.Clear();
-
-            IEnumerable<Notebook> notebooks = await availableNotebooks.GetDisplayItemsAsync();
-            IEnumerable<Stack> stacks = showCompatibleCheckBox.Checked ? await availableStacks.GetFilteredDisplayItemsAsync((stack) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(stack.Fields))) :
-                                                                         await availableStacks.GetDisplayItemsAsync();
 
             foreach (Notebook notebook in notebooks)
             {
                 RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
                 dropDownItem.Label = notebook.Name;
-
                 notebookDropDown.Items.Add(dropDownItem);
             }
+
+            Notebook selected = extension.Notebooks.SelectedNotebook;
+
+            if (selected != null)
+            {
+                notebookDropDown.SelectedItemIndex = notebooks.IndexOf(selected);
+                InformationDispatcher.Default.Dispatch($"Selected: { notebookDropDown.SelectedItemIndex } - { selected.Name }");
+            }
+        }
+
+        private void LoadStacks()
+        {
+            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
+            stackDropDown.Items.Clear();
 
             foreach (Stack stack in stacks)
             {
                 RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
                 dropDownItem.Label = stack.Name;
-
                 stackDropDown.Items.Add(dropDownItem);
             }
         }
@@ -133,7 +125,7 @@ namespace Chronicy.Excel
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
-            InitializeSelectionSection();
+            InitializeNotebooks();
 
             extension.StateChanged += (enabled) => 
             {
@@ -155,6 +147,7 @@ namespace Chronicy.Excel
             try
             {
                 extension.Connect();
+                LoadNotebooks();
             }
             catch (EndpointConnectionException)
             {
@@ -179,7 +172,10 @@ namespace Chronicy.Excel
         {
             EditNotebookTaskPane control = new EditNotebookTaskPane();
             control.EditedNotebook = new Notebook(string.Empty);
-            control.Confirmed += (s, args) => { /* Save the edited notebook */ };
+            control.Confirmed += (s, args) =>
+            {
+                extension.Notebooks.AddNotebook(control.EditedNotebook);
+            };
 
             TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("Edit Notebook", control);
             taskPane.Visible = true;
@@ -189,7 +185,10 @@ namespace Chronicy.Excel
         {
             EditStackTaskPane control = new EditStackTaskPane();
             control.EditedStack = new Stack(string.Empty);
-            control.Confirmed += (s, args) => { /* Save the edited stack */ };
+            control.Confirmed += (s, args) =>
+            {
+                extension.Notebooks.AddStack(control.EditedStack);
+            };
 
             TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("Edit Stack", control);
             taskPane.Visible = true;
@@ -198,6 +197,7 @@ namespace Chronicy.Excel
         private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
         {
             NotebooksTaskPane control = new NotebooksTaskPane();
+            control.Notebooks = extension.Notebooks.GetNotebooks();
 
             TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
             taskPane.Visible = true;
@@ -232,6 +232,7 @@ namespace Chronicy.Excel
             try
             {
                 extension.Sync();
+                LoadNotebooks();
             }
             catch (EndpointConnectionException ex)
             {
@@ -294,6 +295,11 @@ namespace Chronicy.Excel
         {
             ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
             link.Open();
+        }
+
+        private void OnDataSourceChanged(object sender, RibbonControlEventArgs e)
+        {
+
         }
     }
 }

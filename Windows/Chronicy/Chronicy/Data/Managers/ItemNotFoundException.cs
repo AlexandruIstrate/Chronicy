@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chronicy.Service.Data
+namespace Chronicy.Data.Managers
 {
     public class ItemNotFoundException : Exception
     {

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.notebookComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.stackComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -48,17 +48,17 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Notebook";
             // 
-            // comboBox1
+            // notebookComboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.notebookComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(63, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(234, 21);
-            this.comboBox1.TabIndex = 2;
+            this.notebookComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.notebookComboBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.notebookComboBox.FormattingEnabled = true;
+            this.notebookComboBox.Location = new System.Drawing.Point(63, 27);
+            this.notebookComboBox.Name = "notebookComboBox";
+            this.notebookComboBox.Size = new System.Drawing.Size(234, 21);
+            this.notebookComboBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -69,17 +69,17 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Stack";
             // 
-            // comboBox2
+            // stackComboBox
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.stackComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(63, 55);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(234, 21);
-            this.comboBox2.TabIndex = 5;
+            this.stackComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stackComboBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.stackComboBox.FormattingEnabled = true;
+            this.stackComboBox.Location = new System.Drawing.Point(63, 55);
+            this.stackComboBox.Name = "stackComboBox";
+            this.stackComboBox.Size = new System.Drawing.Size(234, 21);
+            this.stackComboBox.TabIndex = 5;
             // 
             // dataGridView1
             // 
@@ -107,10 +107,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.stackComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.notebookComboBox);
             this.Name = "NotebooksTaskPane";
             this.Size = new System.Drawing.Size(300, 600);
             this.Load += new System.EventHandler(this.OnLoad);
@@ -122,9 +122,9 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox notebookComboBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox stackComboBox;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
     }

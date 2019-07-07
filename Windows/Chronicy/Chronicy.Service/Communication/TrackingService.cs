@@ -1,12 +1,14 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
+using Chronicy.Data.Managers;
+using Chronicy.Data.Storage;
 using Chronicy.Information;
-using Chronicy.Service.Data;
 using Chronicy.Service.Dispatch;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
 using Chronicy.Utils;
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text;
 
@@ -16,6 +18,8 @@ namespace Chronicy.Service.Communication
     public class TrackingService : IServerService, IInformationContext
     {
         private IInformationContext context;
+
+        private IDataSource<Notebook> dataSource;
         private NotebookManager notebookManager;
 
         private DispatcherTimer dispatcher;
@@ -26,16 +30,20 @@ namespace Chronicy.Service.Communication
         {
             context = AgregateContext.Of(new EventLogContext(), this);
 
+            // TODO: Use settings for this IDataSource
+            dataSource = new LocalDataSource();
+
             ExceptionUtils.HandleExceptions(() =>
             {
-                notebookManager = new NotebookManager();
-                dispatcher = new DispatcherTimer();
+                notebookManager = new NotebookManager(dataSource);
+                dispatcher = new DispatcherTimer(60 * 1000);
             }, context);
         }
 
         public void Connect()
         {
             Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
+            Callback.SendAvailableNotebooks(notebookManager.GetNotebooks());
 
             ExceptionUtils.HandleExceptions(() =>
             {
@@ -104,6 +112,31 @@ namespace Chronicy.Service.Communication
         public void ExceptionDispatched(Exception exception)
         {
             Callback?.SendErrorMessage(exception.Message);
+        }
+
+        public IEnumerable<Notebook> GetAll()
+        {
+            return dataSource.GetAll();
+        }
+
+        public Notebook Get(string uuid)
+        {
+            return dataSource.Get(uuid);
+        }
+
+        public void Create(Notebook notebook)
+        {
+            dataSource.Create(notebook);
+        }
+
+        public void Update(Notebook notebook)
+        {
+            dataSource.Update(notebook);
+        }
+
+        public void Delete(string uuid)
+        {
+            dataSource.Delete(uuid);
         }
     }
 }

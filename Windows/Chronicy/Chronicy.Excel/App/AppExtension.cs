@@ -1,6 +1,9 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
+using Chronicy.Data.Managers;
 using Chronicy.Excel.Communication;
+using Chronicy.Excel.Data;
+using Chronicy.Excel.History;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
@@ -16,11 +19,24 @@ namespace Chronicy.Excel.App
 
         public IServerService Service { get; private set; }
 
+        private TrackingSystem tracking;
+        private NotebookManager notebooks;
+        private HistoryManager history;
+
+        public override TrackingSystem Tracking => tracking;
+        public override NotebookManager Notebooks => notebooks;
+        public override HistoryManager History => history;
+
         public AppExtension()
         {
             connection = new ClientConnection();
             connection.ConnectionClosed += (sender, args) => { Connected = false; };
 
+            tracking = new TrackingSystem();
+            notebooks = new NotebookManager(null);
+            history = new HistoryManager();
+
+            InitializeNotebooks();
             InitializeTracking();
             InitializeHistory();
         }
@@ -30,12 +46,12 @@ namespace Chronicy.Excel.App
             try
             {
                 TrackedClient client = new TrackedClient();
-                // TODO: We should find a better way of dispatching these. The tracking system is meant for tracking data and
-                // not for communicating between parts of the application
-                client.NotebooksRecieved += (notebooks) => { Tracking.Post<List<Notebook>>(TrackingEvent.Create(notebooks)); };
+                client.NotebooksRecieved += (notebooks) => OnNotebooksUpdated(notebooks);
 
                 Service = connection.Connect(client);
                 Connected = true;
+
+                notebooks.DataSource = new ServiceDataSource(Service);
             }
             catch (EndpointNotFoundException e)
             {
@@ -53,9 +69,14 @@ namespace Chronicy.Excel.App
             Service.SendSelectedNotebook(new Notebook("A Test Notebook"));
         }
 
+        private void InitializeNotebooks()
+        {
+            notebooks.NotebooksChanged += (sender, args) => OnNotebooksUpdated();
+        }
+
         private void InitializeTracking()
         {
-            Tracking.Register<Workbook>((trackingEvent) =>
+            tracking.Register<Workbook>((trackingEvent) =>
             {
                 Workbook workbook = (Workbook)trackingEvent.Value;
 
@@ -83,7 +104,7 @@ namespace Chronicy.Excel.App
                 Service.SendTrackingData(builder.Create());
             });
 
-            Tracking.Register<Worksheet>((trackingEvent) =>
+            tracking.Register<Worksheet>((trackingEvent) =>
             {
                 Worksheet worksheet = (Worksheet)trackingEvent.Value;
 
@@ -111,7 +132,7 @@ namespace Chronicy.Excel.App
                 Service.SendTrackingData(builder.Create());
             });
 
-            Tracking.Register<Range>((trackingEvent) =>
+            tracking.Register<Range>((trackingEvent) =>
             {
                 Range range = (Range)trackingEvent.Value;
                 string rangeString = range.ToDisplayAddressString();

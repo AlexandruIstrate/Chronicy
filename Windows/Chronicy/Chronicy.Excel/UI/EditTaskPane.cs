@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Tools;
+using System;
 using System.Windows.Forms;
 
 namespace Chronicy.Excel.UI
@@ -24,12 +25,16 @@ namespace Chronicy.Excel.UI
         private void OnOkClicked(object sender, EventArgs e)
         {
             OnOk();
+
+            Visible = false;
             Confirmed?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnCancelClicked(object sender, EventArgs e)
         {
             OnCancel();
+
+            Visible = false;
             Canceled?.Invoke(this, EventArgs.Empty);
         }
     }
