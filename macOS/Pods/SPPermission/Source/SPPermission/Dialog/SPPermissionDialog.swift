@@ -23,7 +23,7 @@ import UIKit
 
 extension SPPermission {
     
-    public struct Dialog {
+    public enum Dialog {
         
         public static func request(with permissions: [SPPermissionType], on viewController: UIViewController, delegate: SPPermissionDialogDelegate? = nil, dataSource: SPPermissionDialogDataSource? = nil) {
             if permissions.isEmpty {  return }
@@ -38,8 +38,6 @@ extension SPPermission {
                 controller.present(on: viewController)
             }
         }
-        
-        private init() {}
     }
 }
 
@@ -67,6 +65,7 @@ extension SPPermission {
     @objc optional func deniedSubtitle(for permission: SPPermissionType) -> String?
     @objc optional var cancelTitle: String { get }
     @objc optional var settingsTitle: String { get }
+    @objc optional var startTransitionYoffset: CGFloat { get }
 }
 
 @objc public protocol SPPermissionDialogColorSource: class {
@@ -81,4 +80,7 @@ extension SPPermission {
     @objc optional var iconLightColor: UIColor { get }
     @objc optional var iconMediumColor: UIColor { get }
     @objc optional var iconDarkColor: UIColor { get }
+    
+    @objc optional var closeIconBackgroundColor: UIColor { get }
+    @objc optional var closeIconColor: UIColor { get }
 }

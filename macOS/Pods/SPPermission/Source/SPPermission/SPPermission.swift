@@ -31,7 +31,7 @@ import MediaPlayer
 import HealthKit
 import CoreMotion
 
-public struct SPPermission {
+public enum SPPermission {
     
     public static func isAllowed(_ permission: SPPermissionType) -> Bool {
         let manager = self.getManagerForPermission(permission)
@@ -43,7 +43,7 @@ public struct SPPermission {
         return manager.isDenied
     }
     
-    public static func request(_ permission: SPPermissionType, with complectionHandler: @escaping ()->()) {
+    public static func request(_ permission: SPPermissionType, with сompletionHandler: @escaping ()->()) {
         let manager = self.getManagerForPermission(permission)
         if let usageDescriptionKey = permission.usageDescriptionKey {
             guard let _ = Bundle.main.object(forInfoDictionaryKey: usageDescriptionKey) else {
@@ -51,21 +51,19 @@ public struct SPPermission {
                 return
             }
         }
-        manager.request(withComlectionHandler: {
-            complectionHandler()
+        manager.request(withCompletionHandler: {
+            сompletionHandler()
         })
     }
-    
-    private init() {}
 }
 
-fileprivate protocol SPPermissionInterface {
+protocol SPPermissionInterface {
     
     var isAuthorized: Bool { get }
     
     var isDenied: Bool { get }
     
-    func request(withComlectionHandler complectionHandler: @escaping ()->()?)
+    func request(withCompletionHandler сompletionHandler: @escaping ()->()?)
 }
 
 extension SPPermission {
@@ -73,365 +71,81 @@ extension SPPermission {
     fileprivate static func getManagerForPermission(_ permission: SPPermissionType) -> SPPermissionInterface {
         switch permission {
         case .camera:
-            return SPCameraPermission()
+            #if SPPERMISSION_CAMERA
+                return SPCameraPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .photoLibrary:
-            return SPPhotoLibraryPermission()
+            #if SPPERMISSION_PHOTOLIBRARY
+                return SPPhotoLibraryPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .notification:
-            return SPNotificationPermission()
+            #if SPPERMISSION_NOTIFICATION
+                return SPNotificationPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .microphone:
-            return SPMicrophonePermission()
+            #if SPPERMISSION_MICROPHONE
+                return SPMicrophonePermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .calendar:
-            return SPCalendarPermission()
+            #if SPPERMISSION_CALENDAR
+                return SPCalendarPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .contacts:
-            return SPContactsPermission()
+            #if SPPERMISSION_CONTACTS
+                return SPContactsPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .reminders:
-            return SPRemindersPermission()
+            #if SPPERMISSION_REMINDERS
+                return SPRemindersPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .speech:
-            return SPSpeechPermission()
+            #if SPPERMISSION_SPEECH
+                return SPSpeechPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .locationWhenInUse:
-           return SPLocationPermission(type: SPLocationPermission.SPLocationType.WhenInUse)
+            #if SPPERMISSION_LOCATION
+                return SPLocationPermission(type: SPLocationPermission.SPLocationType.WhenInUse)
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .locationAlwaysAndWhenInUse:
-            return SPLocationPermission(type: SPLocationPermission.SPLocationType.AlwaysAndWhenInUse)
+            #if SPPERMISSION_LOCATION
+                return SPLocationPermission(type: SPLocationPermission.SPLocationType.AlwaysAndWhenInUse)
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .motion:
-            return SPMotionPermission()
+            #if SPPERMISSION_MOTION
+                return SPMotionPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         case .mediaLibrary:
-            return SPMediaLibraryPermission()
-        }
-    }
-}
-
-extension SPPermission {
-    
-    fileprivate struct SPCameraPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.authorized
-        }
-        
-        var isDenied: Bool {
-            return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: {
-                finished in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
+            #if SPPERMISSION_MEDIALIBRARY
+                return SPMediaLibraryPermission()
+            #else
+                fatalError(self.error(for: permission))
+            #endif
         }
     }
     
-    fileprivate struct SPNotificationPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            guard let authorizationStatus = fetchAuthorizationStatus() else { return false }
-            return authorizationStatus == .authorized
-        }
-        
-        var isDenied: Bool {
-            guard let authorizationStatus = fetchAuthorizationStatus() else { return false }
-            return authorizationStatus == .denied
-        }
-        
-        private func fetchAuthorizationStatus() -> UNAuthorizationStatus? {
-            var notificationSettings: UNNotificationSettings?
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            DispatchQueue.global().async {
-                UNUserNotificationCenter.current().getNotificationSettings { setttings in
-                    notificationSettings = setttings
-                    semaphore.signal()
-                }
-            }
-            
-            semaphore.wait()
-            return notificationSettings?.authorizationStatus
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            if #available(iOS 10.0, *) {
-                let center = UNUserNotificationCenter.current()
-                center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-                    DispatchQueue.main.async {
-                        complectionHandler()
-                    }
-                }
-            } else {
-                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-            
-            UIApplication.shared.registerForRemoteNotifications()
-        }
+    fileprivate static func error(for permission: SPPermissionType) -> String {
+        return "SPPermission - \(permission.name) not import. See Readme: https://github.com/ivanvorobei/SPPermission"
     }
-    
-    fileprivate struct SPPhotoLibraryPermission: SPPermissionInterface {
-
-        var isAuthorized: Bool {
-            return PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized
-        }
-        
-        var isDenied: Bool {
-            return PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            PHPhotoLibrary.requestAuthorization({
-                finished in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPMicrophonePermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return AVAudioSession.sharedInstance().recordPermission == .granted
-        }
-        
-        var isDenied: Bool {
-            return AVAudioSession.sharedInstance().recordPermission == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            AVAudioSession.sharedInstance().requestRecordPermission {
-                granted in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-        }
-    }
-    
-    
-    fileprivate struct SPCalendarPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.event) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.event, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPContactsPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            if #available(iOS 9.0, *) {
-                return CNContactStore.authorizationStatus(for: .contacts) == .authorized
-            } else {
-                return ABAddressBookGetAuthorizationStatus() == .authorized
-            }
-        }
-        
-        var isDenied: Bool {
-            if #available(iOS 9.0, *) {
-                return CNContactStore.authorizationStatus(for: .contacts) == .denied
-            } else {
-                return ABAddressBookGetAuthorizationStatus() == .denied
-            }
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            if #available(iOS 9.0, *) {
-                let store = CNContactStore()
-                store.requestAccess(for: .contacts, completionHandler: { (granted, error) in
-                    DispatchQueue.main.async {
-                        complectionHandler()
-                    }
-                })
-            } else {
-                let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-                ABAddressBookRequestAccessWithCompletion(addressBookRef) {
-                    (granted: Bool, error: CFError?) in
-                    DispatchQueue.main.async() {
-                        complectionHandler()
-                    }
-                }
-            }
-        }
-    }
-    
-    fileprivate struct SPRemindersPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPBluetoothPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .authorized
-        }
-        
-        var isDenied: Bool {
-            return EKEventStore.authorizationStatus(for: EKEntityType.reminder) == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let eventStore = EKEventStore()
-            eventStore.requestAccess(to: EKEntityType.reminder, completion: {
-                (accessGranted: Bool, error: Error?) in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            })
-        }
-    }
-    
-    fileprivate struct SPSpeechPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return SFSpeechRecognizer.authorizationStatus() == .authorized
-        }
-        
-        var isDenied: Bool {
-            return SFSpeechRecognizer.authorizationStatus() == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            SFSpeechRecognizer.requestAuthorization { status in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-        }
-    }
-    
-    fileprivate struct SPMediaLibraryPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            return MPMediaLibrary.authorizationStatus() == .authorized
-        }
-        
-        var isDenied: Bool {
-            return MPMediaLibrary.authorizationStatus() == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            MPMediaLibrary.requestAuthorization() { status in
-                DispatchQueue.main.async {
-                    complectionHandler()
-                }
-            }
-        }
-    }
-    
-    fileprivate struct SPLocationPermission: SPPermissionInterface {
-        
-        var type: SPLocationType
-        
-        enum SPLocationType {
-            case WhenInUse
-            case AlwaysAndWhenInUse
-        }
-        
-        init(type: SPLocationType) {
-            self.type = type
-        }
-        
-        var isAuthorized: Bool {
-            
-            let status = CLLocationManager.authorizationStatus()
-            
-            if status == .authorizedAlways {
-                return true
-            } else {
-                return status == .authorizedWhenInUse
-            }
-        }
-        
-        var isDenied: Bool {
-            return CLLocationManager.authorizationStatus() == .denied
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            
-            switch self.type {
-            case .AlwaysAndWhenInUse:
-                if SPPermissionAlwaysAuthorizationLocationHandler.shared == nil {
-                    SPPermissionAlwaysAuthorizationLocationHandler.shared = SPPermissionAlwaysAuthorizationLocationHandler()
-                }
-                
-                SPPermissionAlwaysAuthorizationLocationHandler.shared!.requestPermission { (authorized) in
-                    DispatchQueue.main.async {
-                        complectionHandler()
-                        SPPermissionAlwaysAuthorizationLocationHandler.shared = nil
-                    }
-                }
-                break
-            case .WhenInUse:
-                if SPPermissionWhenInUseAuthorizationLocationHandler.shared == nil {
-                    SPPermissionWhenInUseAuthorizationLocationHandler.shared = SPPermissionWhenInUseAuthorizationLocationHandler()
-                }
-                
-                SPPermissionWhenInUseAuthorizationLocationHandler.shared!.requestPermission { (authorized) in
-                    DispatchQueue.main.async {
-                        complectionHandler()
-                        SPPermissionWhenInUseAuthorizationLocationHandler.shared = nil
-                    }
-                }
-                break
-            }
-        }
-    }
-    
-    private struct SPMotionPermission: SPPermissionInterface {
-        
-        var isAuthorized: Bool {
-            if #available(iOS 11.0, *) {
-                return CMMotionActivityManager.authorizationStatus() == .authorized
-            }
-            return false
-        }
-        
-        var isDenied: Bool {
-            if #available(iOS 11.0, *) {
-                return CMMotionActivityManager.authorizationStatus() == .denied
-            }
-            return false
-        }
-        
-        func request(withComlectionHandler complectionHandler: @escaping ()->()?) {
-            let manager = CMMotionActivityManager()
-            let today = Date()
-            
-            manager.queryActivityStarting(from: today, to: today, to: OperationQueue.main, withHandler: { (activities: [CMMotionActivity]?, error: Error?) -> () in
-                complectionHandler()
-                manager.stopActivityUpdates()
-            })
-        }
-    }
-
 }

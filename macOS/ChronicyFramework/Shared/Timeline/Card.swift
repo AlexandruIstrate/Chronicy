@@ -9,13 +9,15 @@ import Foundation;
 
 public class Card: FieldContainer {
     public var name: String;
+    public var comment: String;
     public var date: Date;
     
     public var fields: [CustomField] = [];
     public var tags: [CardTag] = [];
     
-    public init(title: String, date: Date = Date()) {
+    public init(title: String, comment: String = "", date: Date = Date()) {
         self.name = title;
+        self.comment = comment;
         self.date = date;
     }
     

@@ -4,7 +4,9 @@ PODS:
   - Cards (1.4.0):
     - Player (= 0.13.0)
   - Player (0.13.0)
-  - SPPermission (3.0.5)
+  - SPPermission (4.0.5):
+    - SPPermission/Core (= 4.0.5)
+  - SPPermission/Core (4.0.5)
 
 DEPENDENCIES:
   - Alamofire
@@ -25,8 +27,8 @@ SPEC CHECKSUMS:
   BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
   Cards: 45ae6bd0eca7b5e8016d3b6cb30b60b04753f68f
   Player: 968d8d07d923bcdd6f7e4091c9e306eb44a5f7a4
-  SPPermission: 6a6fcd3f5625dcb13c24de0d43fbfc4114f49532
+  SPPermission: ef54994522bdf471ce1fe6aea267bf471a9de701
 
 PODFILE CHECKSUM: 02da3c173b530c631129caacf9328dd3cdf7d9e1
 
-COCOAPODS: 1.7.0.beta.3
+COCOAPODS: 1.7.3
