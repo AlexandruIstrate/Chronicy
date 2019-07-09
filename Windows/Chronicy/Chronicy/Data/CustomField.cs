@@ -7,7 +7,7 @@ namespace Chronicy.Data
     [DataContract]
     public class CustomField
     {
-        [IgnoreDataMember]
+        [DataMember]
         public int ID { get; set; }
 
         [DataMember]

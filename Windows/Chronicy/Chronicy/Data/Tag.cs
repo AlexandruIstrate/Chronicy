@@ -5,7 +5,7 @@ namespace Chronicy.Data
     [DataContract]
     public class Tag
     {
-        [IgnoreDataMember]
+        [DataMember]
         public int ID { get; set; }
 
         [DataMember]

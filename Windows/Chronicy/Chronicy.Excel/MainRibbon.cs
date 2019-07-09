@@ -13,6 +13,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
@@ -73,7 +74,10 @@ namespace Chronicy.Excel
 
         private void InitializeNotebooks()
         {
-            extension.NotebooksUpdated += (notebooks) => LoadNotebooks(new List<Notebook>(notebooks));
+            extension.NotebooksUpdated += (notebooks) =>
+            {
+                LoadNotebooks(new List<Notebook>(notebooks));
+            };
 
             notebookDropDown.SelectionChanged += (sender, args) =>
             {
@@ -99,18 +103,27 @@ namespace Chronicy.Excel
                 notebookDropDown.Items.Add(dropDownItem);
             }
 
+            // Try to reselect the already selected notebook
             Notebook selected = extension.Notebooks.SelectedNotebook;
 
             if (selected != null)
             {
-                notebookDropDown.SelectedItemIndex = notebooks.IndexOf(selected);
-                InformationDispatcher.Default.Dispatch($"Selected: { notebookDropDown.SelectedItemIndex } - { selected.Name }");
+                Notebook found = notebooks.Find((item) => item.Uuid == selected.Uuid);
+                notebookDropDown.SelectedItemIndex = notebooks.IndexOf(found);
+
+                return;
+            }
+
+            // Otherwise, select the first item if we have any notebooks
+            if (notebooks.Count > 0)
+            {
+                extension.Notebooks.SelectNotebook(notebooks[0]);
             }
         }
 
         private void LoadStacks()
         {
-            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
+            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks.ToList();
             stackDropDown.Items.Clear();
 
             foreach (Stack stack in stacks)
@@ -118,6 +131,21 @@ namespace Chronicy.Excel
                 RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
                 dropDownItem.Label = stack.Name;
                 stackDropDown.Items.Add(dropDownItem);
+            }
+
+            // Try to reselect the already selected stack
+            Stack selected = extension.Notebooks.SelectedStack;
+
+            if (selected != null)
+            {
+                stackDropDown.SelectedItemIndex = stacks.IndexOf(selected);
+                return;
+            }
+
+            // Otherwise, select the first item if we have any stacks
+            if (stacks.Count > 0)
+            {
+                extension.Notebooks.SelectStack(stacks[0]);
             }
         }
 
@@ -147,7 +175,9 @@ namespace Chronicy.Excel
             try
             {
                 extension.Connect();
+
                 LoadNotebooks();
+                LoadStacks();
             }
             catch (EndpointConnectionException)
             {
@@ -166,6 +196,11 @@ namespace Chronicy.Excel
         private void OnEnableToggled(object sender, RibbonControlEventArgs e)
         {
             extension.Enabled = enableButton.Checked;
+        }
+
+        private void OnDataSourceChanged(object sender, RibbonControlEventArgs e)
+        {
+
         }
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
@@ -232,7 +267,9 @@ namespace Chronicy.Excel
             try
             {
                 extension.Sync();
+
                 LoadNotebooks();
+                LoadStacks();
             }
             catch (EndpointConnectionException ex)
             {
@@ -295,11 +332,6 @@ namespace Chronicy.Excel
         {
             ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
             link.Open();
-        }
-
-        private void OnDataSourceChanged(object sender, RibbonControlEventArgs e)
-        {
-
         }
     }
 }

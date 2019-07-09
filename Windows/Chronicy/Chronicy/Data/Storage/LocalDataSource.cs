@@ -71,6 +71,9 @@ namespace Chronicy.Data.Storage
 
         public Notebook Get(string id)
         {
+            // Make sure any pending changes are saved
+            Save();
+
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
             List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.Uuid == id));
 
@@ -84,6 +87,9 @@ namespace Chronicy.Data.Storage
 
         public async Task<Notebook> GetAsync(string id)
         {
+            // Make sure any pending changes are saved
+            await SaveAsync();
+
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
             List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.Uuid == id));
 
@@ -97,25 +103,52 @@ namespace Chronicy.Data.Storage
 
         public IEnumerable<Notebook> GetAll()
         {
+            // Make sure any pending changes are saved
+            Save();
             return database.Context.Set<Notebook>();
         }
 
-        public Task<IEnumerable<Notebook>> GetAllAsync()
+        public async Task<IEnumerable<Notebook>> GetAllAsync()
         {
-            return Task.Run(() =>
-            {
-                return GetAll();
-            });
+            // Make sure any pending changes are saved
+            await SaveAsync();
+            return GetAll();
         }
 
         public void Update(Notebook item)
         {
-            Save();
+            try
+            {
+                SQLiteDatabaseContext context = database.Context;
+
+                Notebook entity = context.Find<Notebook>(item.ID);
+                entity.Stacks = item.Stacks;
+
+                //context.Entry(entity).CurrentValues.SetValues(item);
+                //context.Entry(entity.Stacks).CurrentValues.SetValues(item.Stacks);
+
+                InformationDispatcher.Default.Dispatch("Item: " + item.ToString());
+                InformationDispatcher.Default.Dispatch("Entity: " + entity.ToString());
+
+                Save();
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e);
+            }
         }
 
         public async Task UpdateAsync(Notebook item)
         {
-            await SaveAsync();
+            try
+            {
+                //database.Context.Notebooks.Update(item);
+                await SaveAsync();
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e);
+            }
         }
 
         public void Save()

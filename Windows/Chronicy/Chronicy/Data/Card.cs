@@ -7,7 +7,7 @@ namespace Chronicy.Data
     [DataContract]
     public class Card
     {
-        [IgnoreDataMember]
+        [DataMember]
         public int ID { get; set; }
 
         [DataMember]

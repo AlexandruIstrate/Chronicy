@@ -1,5 +1,6 @@
 ﻿using Chronicy.Data;
 using System;
+using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
@@ -15,7 +16,7 @@ namespace Chronicy.Web.Converters
             {
                 Id = value.Uuid,
                 Name = value.Name,
-                Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.Convert(input))
+                Stacks = value.Stacks.ToList().ConvertAll(input => stackConverter.Value.Convert(input))
             };
         }
 

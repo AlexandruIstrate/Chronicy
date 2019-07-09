@@ -30,13 +30,13 @@ namespace Chronicy.Service.Communication
         {
             context = AgregateContext.Of(new EventLogContext(), this);
 
-            // TODO: Use settings for this IDataSource
+            // TODO: Use settings for selecting this IDataSource
             dataSource = new LocalDataSource();
 
             ExceptionUtils.HandleExceptions(() =>
             {
                 notebookManager = new NotebookManager(dataSource);
-                dispatcher = new DispatcherTimer(60 * 1000);
+                dispatcher = new DispatcherTimer(20 * 1000);
             }, context);
         }
 
@@ -50,6 +50,11 @@ namespace Chronicy.Service.Communication
                 dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
                 dispatcher.Start();
             }, context);
+        }
+
+        public void SendSelectedDataSource(DataSourceType dataSource)
+        {
+            notebookManager.DataSource = DataSourceFactory.Create(dataSource);
         }
 
         public void SendSelectedNotebook(Notebook notebook)

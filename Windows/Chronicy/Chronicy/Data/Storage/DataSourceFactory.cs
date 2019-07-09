@@ -1,8 +1,8 @@
 ﻿namespace Chronicy.Data.Storage
 {
-    class DataSourceFactory
+    public class DataSourceFactory
     {
-        public IDataSource<Notebook> Create(DataSourceType sourceType)
+        public static IDataSource<Notebook> Create(DataSourceType sourceType)
         {
             switch (sourceType)
             {

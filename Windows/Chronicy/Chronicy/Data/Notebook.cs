@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Chronicy.Data
 {
     [DataContract]
     public class Notebook
     {
-        [IgnoreDataMember]
+        [DataMember]
         public int ID { get; set; }
 
         [DataMember]
@@ -20,12 +22,14 @@ namespace Chronicy.Data
 
         public Notebook(string name)
         {
+            Uuid = Guid.NewGuid().ToString();
             Name = name;
             Stacks = new List<Stack>();
         }
 
         public Notebook()
         {
+            Uuid = Guid.NewGuid().ToString();
             Name = string.Empty;
             Stacks = new List<Stack>();
         }
@@ -37,12 +41,28 @@ namespace Chronicy.Data
 
         public void Add(IEnumerable<Stack> stacks)
         {
-            Stacks.AddRange(stacks);
+            foreach (Stack stack in stacks)
+            {
+                Stacks.Add(stack);
+            }
+
+            //Stacks.AddRange(stacks);
         }
 
         public void Remove(Stack stack)
         {
             Stacks.Remove(stack);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(nameof(Notebook)).Append(" {");
+            builder.Append("Uuid = ").Append(Uuid).Append(", ");
+            builder.Append("Name = ").Append(Name).Append(", ");
+            builder.Append("Stacks = ").Append(string.Join(", ", Stacks.ConvertAll((item) => item.ToString())));
+            builder.Append(" }");
+            return builder.ToString();
         }
 
         public override bool Equals(object obj)

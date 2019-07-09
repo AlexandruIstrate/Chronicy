@@ -1,5 +1,6 @@
 ﻿using Chronicy.Data;
 using System;
+using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
@@ -15,7 +16,7 @@ namespace Chronicy.Web.Converters
             {
                 Name = value.Name,
                 Comment = value.Comment,
-                Fields = value.Fields.ConvertAll(input => fieldConverter.Value.Convert(input))
+                Fields = value.Fields.ToList().ConvertAll(input => fieldConverter.Value.Convert(input))
             };
         }
 

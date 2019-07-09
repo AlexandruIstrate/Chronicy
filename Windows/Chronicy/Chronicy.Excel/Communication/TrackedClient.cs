@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ServiceModel;
 using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Excel.Information;
@@ -6,6 +7,7 @@ using Chronicy.Information;
 
 namespace Chronicy.Excel.Communication
 {
+    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class TrackedClient : IClientCallback
     {
         private IInformationContext context = new MessageBoxContext();

@@ -1,6 +1,8 @@
 ﻿using Chronicy.Data.Storage;
+using Chronicy.Information;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Managers
@@ -13,6 +15,8 @@ namespace Chronicy.Data.Managers
         public Stack SelectedStack { get; private set; }
 
         public event EventHandler NotebooksChanged;
+        public event EventHandler NotebookSelectionChanged;
+        public event EventHandler StackSelectionChanged;
 
         public NotebookManager(IDataSource<Notebook> dataSource)
         {
@@ -44,6 +48,8 @@ namespace Chronicy.Data.Managers
         public void AddStack(Stack stack)
         {
             SelectedNotebook.Add(stack);
+            DataSource.Update(SelectedNotebook);
+
             OnNotebooksChanged();
         }
 
@@ -80,42 +86,60 @@ namespace Chronicy.Data.Managers
             {
                 throw new ItemNotFoundException(name);
             }
+
+            OnNotebookSelectionChanged();
         }
 
         public void SelectNotebook(Notebook notebook)
         {
-            SelectedNotebook = GetNotebooks().Find((item) => item == notebook);
+            SelectedNotebook = GetNotebooks().Find((item) => item.Uuid == notebook.Uuid);
             SelectedStack = null;   // Invalidate the stack
 
             if (SelectedNotebook == null)
             {
                 throw new ItemNotFoundException(notebook.Name);
             }
+
+            OnNotebookSelectionChanged();
         }
 
         public void SelectStack(string name)
         {
-            SelectedStack = SelectedNotebook.Stacks.Find((item) => item.Name == name);
+            SelectedStack = SelectedNotebook.Stacks.ToList().Find((item) => item.Name == name);
 
             if (SelectedStack == null)
             {
                 throw new ItemNotFoundException(name);
             }
+
+            OnStackSelectionChanged();
         }
 
         public void SelectStack(Stack stack)
         {
-            SelectedStack = SelectedNotebook.Stacks.Find((item) => item == stack);
+            SelectedStack = SelectedNotebook.Stacks.ToList().Find((item) => item == stack);
 
             if (SelectedStack == null)
             {
                 throw new ItemNotFoundException(stack.Name);
             }
+
+            OnStackSelectionChanged();
         }
 
         private void OnNotebooksChanged()
         {
             NotebooksChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnNotebookSelectionChanged()
+        {
+            NotebookSelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnStackSelectionChanged()
+        {
+            StackSelectionChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

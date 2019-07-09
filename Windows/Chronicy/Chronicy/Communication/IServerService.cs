@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data;
+using Chronicy.Data.Storage;
 using Chronicy.Tracking;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -35,6 +36,9 @@ namespace Chronicy.Communication
         #endregion
 
         #region Selected Items
+
+        [OperationContract(IsOneWay = true)]
+        void SendSelectedDataSource(DataSourceType dataSource);
 
         [OperationContract(IsOneWay = true)]
         void SendSelectedNotebook(Notebook notebook);

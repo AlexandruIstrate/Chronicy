@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Chronicy.Data
 {
     [DataContract]
     public class Stack
     {
-        [IgnoreDataMember]
+        [DataMember]
         public int ID { get; set; }
 
         [DataMember]
         public string Name { get; set; }
 
         [DataMember]
-        public List<CustomField> Fields { get; set; }
+        public ICollection<CustomField> Fields { get; set; }
 
         [DataMember]
         public List<Card> Cards { get; set; }
@@ -45,6 +46,15 @@ namespace Chronicy.Data
         public void Remove(Card card)
         {
             Cards.Remove(card);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(nameof(Stack)).Append(" {");
+            builder.Append("Name = ").Append(Name);
+            builder.Append(" }");
+            return builder.ToString();
         }
 
         public override bool Equals(object obj)

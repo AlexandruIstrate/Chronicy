@@ -1,5 +1,6 @@
 ﻿using Chronicy.Data;
 using System;
+using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
@@ -14,7 +15,7 @@ namespace Chronicy.Web.Converters
             return new Models.Stack
             {
                 Name = value.Name,
-                Cards = value.Cards.ConvertAll(input => cardConverter.Value.Convert(input))
+                Cards = value.Cards.ToList().ConvertAll(input => cardConverter.Value.Convert(input))
             };
         }
 

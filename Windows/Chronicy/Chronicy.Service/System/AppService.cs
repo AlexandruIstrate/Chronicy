@@ -15,13 +15,13 @@ namespace Chronicy.Service.System
 
         public override void OnStart()
         {
-            InformationDispatcher.Default.Dispatch("OnStart", logContext);
+            InformationDispatcher.Default.Dispatch("Service started", logContext);
             InitializeCommunication();
         }
 
         public override void OnStop()
         {
-            InformationDispatcher.Default.Dispatch("OnStop", logContext);
+            InformationDispatcher.Default.Dispatch("Service stopped", logContext);
         }
 
         private void InitializeCommunication()
