@@ -13,7 +13,6 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
@@ -96,6 +95,11 @@ namespace Chronicy.Excel
             List<Notebook> notebooks = items ?? extension.Notebooks.GetNotebooks();
             notebookDropDown.Items.Clear();
 
+            if (notebooks.Count < 1)
+            {
+                return;
+            }
+
             foreach (Notebook notebook in notebooks)
             {
                 RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
@@ -114,17 +118,19 @@ namespace Chronicy.Excel
                 return;
             }
 
-            // Otherwise, select the first item if we have any notebooks
-            if (notebooks.Count > 0)
-            {
-                extension.Notebooks.SelectNotebook(notebooks[0]);
-            }
+            // Otherwise, select the first item
+            extension.Notebooks.SelectNotebook(notebooks[0]);
         }
 
         private void LoadStacks()
         {
-            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks.ToList();
+            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
             stackDropDown.Items.Clear();
+
+            if (stacks.Count < 1)
+            {
+                return;
+            }
 
             foreach (Stack stack in stacks)
             {
@@ -142,11 +148,8 @@ namespace Chronicy.Excel
                 return;
             }
 
-            // Otherwise, select the first item if we have any stacks
-            if (stacks.Count > 0)
-            {
-                extension.Notebooks.SelectStack(stacks[0]);
-            }
+            // Otherwise, select the first item
+            extension.Notebooks.SelectStack(stacks[0]);
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
@@ -210,6 +213,9 @@ namespace Chronicy.Excel
             control.Confirmed += (s, args) =>
             {
                 extension.Notebooks.AddNotebook(control.EditedNotebook);
+
+                LoadNotebooks();
+                LoadStacks();
             };
 
             TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("Edit Notebook", control);
@@ -223,6 +229,7 @@ namespace Chronicy.Excel
             control.Confirmed += (s, args) =>
             {
                 extension.Notebooks.AddStack(control.EditedStack);
+                LoadStacks();
             };
 
             TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("Edit Stack", control);

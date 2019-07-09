@@ -1,5 +1,4 @@
 ﻿using Chronicy.Data.Storage;
-using Chronicy.Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;

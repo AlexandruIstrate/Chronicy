@@ -66,7 +66,8 @@ namespace Chronicy.Excel.App
                 throw new EndpointConnectionException("The endpoint is not connected");
             }
 
-            Service.SendSelectedNotebook(new Notebook("A Test Notebook"));
+            Service.SendSelectedNotebook(Notebooks.SelectedNotebook);
+            Service.SendSelectedStack(Notebooks.SelectedStack);
         }
 
         private void InitializeNotebooks()

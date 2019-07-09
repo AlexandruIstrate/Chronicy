@@ -1,5 +1,6 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
+using Chronicy.Data.Storage;
 using Chronicy.Tracking;
 using NUnit.Framework;
 using System;
@@ -101,6 +102,11 @@ namespace Chronicy.Tests.Communication
         }
 
         public void Delete(string uuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendSelectedDataSource(DataSourceType dataSource)
         {
             throw new NotImplementedException();
         }

@@ -18,7 +18,7 @@ namespace Chronicy.Data
         public string Name { get; set; }
 
         [DataMember]
-        public List<Stack> Stacks { get; set; }
+        public virtual List<Stack> Stacks { get; set; }
 
         public Notebook(string name)
         {

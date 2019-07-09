@@ -154,6 +154,7 @@ namespace Chronicy.Sql
         private SQLiteConnection connection;
 
         public DbSet<Notebook> Notebooks { get; set; }
+        public DbSet<Stack> Stacks { get; set; }
 
         public SQLiteDatabaseContext(SQLiteConnection connection = null)
         {

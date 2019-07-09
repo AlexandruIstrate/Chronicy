@@ -1,8 +1,10 @@
 ﻿using Chronicy.Information;
 using Chronicy.Sql;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
@@ -105,7 +107,15 @@ namespace Chronicy.Data.Storage
         {
             // Make sure any pending changes are saved
             Save();
-            return database.Context.Set<Notebook>();
+
+            DbSet<Notebook> notebooks = database.Context.Set<Notebook>();
+
+            foreach (Notebook notebook in notebooks)
+            {
+                database.Context.Entry(notebook).Collection(n => n.Stacks).Load();
+            }
+
+            return notebooks;
         }
 
         public async Task<IEnumerable<Notebook>> GetAllAsync()
@@ -120,17 +130,14 @@ namespace Chronicy.Data.Storage
             try
             {
                 SQLiteDatabaseContext context = database.Context;
+                Notebook existing = context.Notebooks.Find(item.ID);
 
-                Notebook entity = context.Find<Notebook>(item.ID);
-                entity.Stacks = item.Stacks;
+                foreach (Stack stack in item.Stacks)
+                {
+                    existing.Stacks.Add(stack);
+                }
 
-                //context.Entry(entity).CurrentValues.SetValues(item);
-                //context.Entry(entity.Stacks).CurrentValues.SetValues(item.Stacks);
-
-                InformationDispatcher.Default.Dispatch("Item: " + item.ToString());
-                InformationDispatcher.Default.Dispatch("Entity: " + entity.ToString());
-
-                Save();
+                context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -142,8 +149,15 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                //database.Context.Notebooks.Update(item);
-                await SaveAsync();
+                SQLiteDatabaseContext context = database.Context;
+                Notebook existing = await context.Notebooks.FindAsync(item.ID);
+
+                foreach (Stack stack in item.Stacks)
+                {
+                    existing.Stacks.Add(stack);
+                }
+
+                await context.SaveChangesAsync();
             }
             catch (Exception e)
             {
