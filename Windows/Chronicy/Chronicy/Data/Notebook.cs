@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -18,7 +19,7 @@ namespace Chronicy.Data
         public string Name { get; set; }
 
         [DataMember]
-        public virtual List<Stack> Stacks { get; set; }
+        public List<Stack> Stacks { get; set; }
 
         public Notebook(string name)
         {
@@ -67,15 +68,21 @@ namespace Chronicy.Data
 
         public override bool Equals(object obj)
         {
+            if (obj == null)
+            {
+                return false;
+            }
+
             if (!(obj is Notebook))
             {
                 return false;
             }
 
             Notebook other = (Notebook)obj;
+
             return Uuid == other.Uuid &&
                    Name == other.Name &&
-                   Stacks == other.Stacks;
+                   Stacks.SequenceEqual(other.Stacks);
         }
 
         public override int GetHashCode()

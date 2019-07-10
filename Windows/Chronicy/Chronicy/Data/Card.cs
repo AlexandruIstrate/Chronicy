@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Chronicy.Data
@@ -84,11 +85,18 @@ namespace Chronicy.Data
             }
 
             Card other = (Card)obj;
+
+            bool n = Name == other.Name;
+            bool c = Comment == other.Comment;
+            bool d = Date == other.Date;
+            bool f = Fields.SequenceEqual(other.Fields);
+            bool t = Tags.SequenceEqual(other.Tags);
+
             return Name == other.Name &&
                    Comment == other.Comment &&
                    Date == other.Date &&
-                   Fields == other.Fields &&
-                   Tags == other.Tags;
+                   Fields.SequenceEqual(other.Fields) &&
+                   Tags.SequenceEqual(other.Tags);
         }
 
         public override int GetHashCode()

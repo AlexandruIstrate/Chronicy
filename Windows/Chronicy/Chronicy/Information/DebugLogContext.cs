@@ -8,7 +8,7 @@ namespace Chronicy.Information
     // TODO: Singleton pattern is bad. Try using factories in the future.
     public class DebugLogContext : IInformationContext
     {
-        public static DebugLogContext Default { get; } = new DebugLogContext();
+        public static DebugLogContext Current { get; } = new DebugLogContext();
 
         private DebugLogContext()
         {

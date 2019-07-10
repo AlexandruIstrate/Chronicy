@@ -8,7 +8,7 @@ namespace Chronicy.Information
         // TODO: Maybe change?
         public static InformationDispatcher Default = new InformationDispatcher();
 
-        public IInformationContext DefaultContext { get; } = DebugLogContext.Default;
+        public IInformationContext DefaultContext { get; } = DebugLogContext.Current;
 
         public void Dispatch(string messsage, IInformationContext context, InformationKind informationKind = InformationKind.Info)
         {

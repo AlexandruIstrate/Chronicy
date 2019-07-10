@@ -24,7 +24,7 @@ namespace Chronicy.Excel
                 // We should change this in the future to use some kind of passive, start-up display system
                 // However, for now, we just log the failure
 
-                InformationDispatcher.Default.Dispatch("Could not auto-connect to service!", DebugLogContext.Default, InformationKind.Error);
+                InformationDispatcher.Default.Dispatch("Could not auto-connect to service!", DebugLogContext.Current, InformationKind.Error);
             }
         }
 

@@ -10,7 +10,7 @@ namespace Chronicy.Service.System
 
         public AppService()
         {
-            logContext = new EventLogContext();
+            logContext = EventLogContext.Current;
         }
 
         public override void OnStart()

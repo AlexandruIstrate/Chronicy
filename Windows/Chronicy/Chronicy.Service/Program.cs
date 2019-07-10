@@ -18,7 +18,7 @@ namespace Chronicy.Service
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e.Message, new EventLogContext(), InformationKind.Error);
+                InformationDispatcher.Default.Dispatch(e.Message, EventLogContext.Current, InformationKind.Error);
             }
         }
 

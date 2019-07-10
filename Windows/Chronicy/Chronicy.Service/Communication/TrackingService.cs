@@ -28,7 +28,7 @@ namespace Chronicy.Service.Communication
 
         public TrackingService()
         {
-            context = AgregateContext.Of(new EventLogContext(), this);
+            context = AgregateContext.Of(EventLogContext.Current, this);
 
             // TODO: Use settings for selecting this IDataSource
             dataSource = new LocalDataSource();

@@ -52,9 +52,10 @@ namespace Chronicy.Data
             }
 
             CustomField other = (CustomField)obj;
+
             return Name == other.Name &&
                    Type == other.Type &&
-                   Value == other.Value;
+                   object.Equals(Value, other.Value);
         }
 
         public override int GetHashCode()

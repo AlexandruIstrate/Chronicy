@@ -9,6 +9,8 @@ namespace Chronicy.Service.Information
     {
         private EventLog eventLog;
 
+        public static EventLogContext Current { get; } = new EventLogContext();
+
         public EventLogContext()
         {
             eventLog = new EventLog();

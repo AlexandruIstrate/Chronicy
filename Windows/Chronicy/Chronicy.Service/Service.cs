@@ -12,7 +12,7 @@ namespace Chronicy.Service
 
         public Service()
         {
-            context = new EventLogContext();
+            context = EventLogContext.Current;
             service = new AppService();
 
             InitializeComponent();

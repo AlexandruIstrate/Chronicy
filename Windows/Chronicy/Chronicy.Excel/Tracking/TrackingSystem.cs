@@ -36,7 +36,7 @@ namespace Chronicy.Excel.Tracking
             {
                 // If we get here, it means we don't have a handler registered for this type.
                 // This is fine, however.
-                InformationDispatcher.Default.Dispatch($"No registered handler for the event with type { trackingEvent.ValueType.Name }", DebugLogContext.Default, InformationKind.Warning);
+                InformationDispatcher.Default.Dispatch($"No registered handler for the event with type { trackingEvent.ValueType.Name }", DebugLogContext.Current, InformationKind.Warning);
             }
         }
 

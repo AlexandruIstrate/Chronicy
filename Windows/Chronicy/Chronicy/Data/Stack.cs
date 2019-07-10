@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -71,7 +72,7 @@ namespace Chronicy.Data
 
             Stack other = (Stack)obj;
             return Name == other.Name &&
-                   Cards == other.Cards;
+                   Cards.SequenceEqual(other.Cards);
         }
 
         public override int GetHashCode()

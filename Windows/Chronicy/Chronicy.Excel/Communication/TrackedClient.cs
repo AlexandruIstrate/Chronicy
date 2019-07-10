@@ -27,7 +27,7 @@ namespace Chronicy.Excel.Communication
         public void SendDebugMessage(string message)
         {
             DebugMessageRecieved?.Invoke(message);
-            InformationDispatcher.Default.Dispatch(message, DebugLogContext.Default);
+            InformationDispatcher.Default.Dispatch(message, DebugLogContext.Current);
         }
 
         public void SendErrorMessage(string message)
