@@ -69,6 +69,25 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="dyb-bq-wZa"/>
+                                        <menuItem title="Data Source" id="wwX-wX-54W">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Data Source" id="hbU-pe-A9c">
+                                                <items>
+                                                    <menuItem title="Local" id="UAe-AI-her">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="onLocalSourceSelected:" target="Voe-Tx-rLC" id="y2T-zl-ctF"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Web" id="w52-8o-vHq">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="onWebSourceSelected:" target="Voe-Tx-rLC" id="0PX-4c-Zdm"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem title="Notebook" id="d5w-pb-WN6">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Notebook" id="fFJ-bb-Kdi">
@@ -160,7 +179,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ChronicyMacOS" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ChronicyMacOS" customModuleProvider="target">
+                    <connections>
+                        <outlet property="localSourceMenu" destination="UAe-AI-her" id="bev-Y4-mxz"/>
+                        <outlet property="webSourceMenu" destination="w52-8o-vHq" id="dVl-l9-Q3B"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CardEditorViewController" customModule="ChronicyMacOS" customModuleProvider="target">
             <connections>
                 <outlet property="colorWell" destination="Hh4-oH-q9s" id="eyl-1O-zqg"/>
+                <outlet property="commentTextView" destination="aCD-oJ-V7d" id="gH8-jj-HSB"/>
                 <outlet property="configureView" destination="q5a-Gh-kVe" id="K24-7q-HxL"/>
                 <outlet property="datePicker" destination="DS8-xZ-t2k" id="lpy-RR-tTT"/>
                 <outlet property="fieldsTable" destination="JCc-dC-edw" id="Srn-Nm-gO4"/>

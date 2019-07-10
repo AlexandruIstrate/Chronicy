@@ -11,6 +11,9 @@ import ChronicyFrameworkMacOS;
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    @IBOutlet private weak var localSourceMenu: NSMenuItem!;
+    @IBOutlet private weak var webSourceMenu: NSMenuItem!;
+    
     func applicationWillFinishLaunching(_ notification: Notification) {
         Log.target = ConsoleLogTarget();
         
@@ -39,6 +42,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        TriggerManager.manager
     }
     
+    @IBAction private func onLocalSourceSelected(_ sender: NSMenuItem) {
+        DataSourceManager.manager.sourceType = .local;
+        webSourceMenu.state = .off;
+    }
+    
+    @IBAction private func onWebSourceSelected(_ sender: NSMenuItem) {
+        DataSourceManager.manager.sourceType = .web;
+        localSourceMenu.state = .off;
+    }
 }
 
 class MacOSTriggerRegister: TriggerManagerRegister {
