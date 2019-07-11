@@ -35,6 +35,8 @@
 		A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1922862D00008300D6 /* ActionTypes.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781383226DDE44006762D1 /* CoreDataStorage.swift */; };
+		A77F26CE22D66F0F002ECAF1 /* NotebookManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */; };
+		A77F26D022D678A6002ECAF1 /* DataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F26CF22D678A6002ECAF1 /* DataSourceManager.swift */; };
 		A783E9AC22908D4C000AEB44 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A783E9AB22908D4C000AEB44 /* Sort.swift */; };
 		A78CCC3722776FAB007BAE9C /* ExtensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3622776FAB007BAE9C /* ExtensionField.swift */; };
 		A78CCC3B2277722B007BAE9C /* InformationBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */; };
@@ -102,6 +104,8 @@
 		A7741C1922862D00008300D6 /* ActionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTypes.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7781383226DDE44006762D1 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManagerFactory.swift; sourceTree = "<group>"; };
+		A77F26CF22D678A6002ECAF1 /* DataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceManager.swift; sourceTree = "<group>"; };
 		A783E9AB22908D4C000AEB44 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		A78CCC3622776FAB007BAE9C /* ExtensionField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionField.swift; sourceTree = "<group>"; };
 		A78CCC3A2277722B007BAE9C /* InformationBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBroadcaster.swift; sourceTree = "<group>"; };
@@ -321,6 +325,8 @@
 				A7AD5EB92268F1D3002298F4 /* NotebookManager.swift */,
 				A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */,
 				A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */,
+				A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */,
+				A77F26CF22D678A6002ECAF1 /* DataSourceManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				A79E4E812252966700E385CA /* Card.swift in Sources */,
 				A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */,
 				A71EAE352270DB7800ED840C /* Activity.swift in Sources */,
+				A77F26CE22D66F0F002ECAF1 /* NotebookManagerFactory.swift in Sources */,
 				A70CF4F8227CA29A00DCFFD4 /* CoreDataCustomField+CoreDataProperties.swift in Sources */,
 				A71900DA225EB8E4003F4CA6 /* CardTag.swift in Sources */,
 				A72204112240227C001E1BD5 /* SharedConstants.swift in Sources */,
@@ -473,6 +480,7 @@
 				A70C2971226A4DB700966F50 /* WebAPIRequest.swift in Sources */,
 				A76980E42274F60800281423 /* ExtensionNotebook.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
+				A77F26D022D678A6002ECAF1 /* DataSourceManager.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,
 				A70CF4FB227CA29A00DCFFD4 /* CoreDataStack+CoreDataClass.swift in Sources */,
 				A792BF26225B1D970098DC55 /* DefaultFields.swift in Sources */,

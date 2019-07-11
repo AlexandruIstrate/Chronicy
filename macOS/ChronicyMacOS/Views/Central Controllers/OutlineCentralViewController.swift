@@ -14,7 +14,7 @@ class OutlineCentralViewController: NSViewController {
 
     private var outlineView: OutlineViewController!;
     
-    private let notebookManager: NotebookManager = LocalNotebookManager();
+    private var notebookManager: NotebookManager = LocalNotebookManager();
     private var notebook: Notebook?;
     
     private var notebookNames: [String] = [];
@@ -28,6 +28,8 @@ class OutlineCentralViewController: NSViewController {
         setupContentView();
         setupTimeline();
         setupToolbarCallbacks();
+        
+        DataSourceManager.manager.subscribe(item: self);
         
         loadNotebookData();
         broadcastNotebooks();
@@ -85,6 +87,7 @@ extension OutlineCentralViewController: OutlineStackViewDataSource, OutlineStack
         
         let card: Card = self.notebook!.stacks[stack.stackIndex].cards[index];
         cell.title = card.name;
+        cell.subtitle = card.comment;
         cell.date = card.date;
         
         return cell;
@@ -141,6 +144,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
         let editor: CardEditorViewController = CardEditorViewController();
         editor.actionTitle = card.name;
         editor.actionDate = card.date;
+        editor.actionComment = card.comment;
         editor.fields = card.fields;
         
         editor.completion = { (ok: Bool) in
@@ -150,6 +154,7 @@ extension OutlineCentralViewController: OutlineCellViewDelegate {
             
             card.name = editor.actionTitle;
             card.date = editor.actionDate;
+            card.comment = editor.actionComment;
             card.fields = editor.fields;
             
             self.reloadData();
@@ -333,5 +338,11 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     
     func enabledItems() -> [Bool] {
         return [];
+    }
+}
+
+extension OutlineCentralViewController : SourceChangedDelegate {
+    func changed(type: NotebookManagerType) {
+        notebookManager = NotebookManagerFactory.create(type: type);
     }
 }

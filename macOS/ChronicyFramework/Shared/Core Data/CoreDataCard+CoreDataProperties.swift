@@ -16,6 +16,7 @@ extension CoreDataCard {
         return NSFetchRequest<CoreDataCard>(entityName: "CoreDataCard");
     }
 
+    @NSManaged public var comment: String;
     @NSManaged public var date: NSDate;
     @NSManaged public var name: String;
     @NSManaged public var stack: CoreDataStack?
@@ -24,7 +25,7 @@ extension CoreDataCard {
     
     var card: Card {
         get {
-            let ret: Card = Card(title: self.name, date: self.date as Date);
+            let ret: Card = Card(title: self.name, comment: self.comment, date: self.date as Date);
             ret.fields = Array(self.fields).map({ (iter: CoreDataCustomField) -> CustomField? in
                 return iter.field;
             }).filter({ (iter: CustomField?) -> Bool in
@@ -37,6 +38,7 @@ extension CoreDataCard {
         set {
             self.date = newValue.date as NSDate;
             self.name = newValue.name;
+            self.comment = newValue.comment;
             
             for field: CustomField in newValue.fields {
                 guard let f: CoreDataCustomField = field.field(insert: CoreDataStorage.defaultContext) else {
@@ -90,6 +92,7 @@ extension Card {
         let c: CoreDataCard? = NSEntityDescription.insertNewObject(forEntityName: "CoreDataCard", into: into) as? CoreDataCard;
         c?.date = self.date as NSDate;
         c?.name = self.name;
+        c?.comment = self.comment;
         
         for field: CustomField in self.fields {
             guard let f: CoreDataCustomField = field.field(insert: CoreDataStorage.defaultContext) else {

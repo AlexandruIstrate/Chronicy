@@ -12,6 +12,7 @@ class CardEditorViewController: NSViewController {
     
     @IBOutlet private weak var titleField: NSTextField!;
     @IBOutlet private weak var datePicker: NSDatePicker!;
+    @IBOutlet private var commentTextView: NSTextView!;
     
     @IBOutlet private weak var fieldsTable: NSTableView!;
     @IBOutlet private weak var configureView: NSView!;
@@ -21,6 +22,7 @@ class CardEditorViewController: NSViewController {
     
     public var actionTitle: String = String();
     public var actionDate: Date = Date();
+    public var actionComment: String = String();
     public var fields: [CustomField] = [];
     
     public var actionColor: NSColor = NSColor.white { didSet { self.colorWell.color = self.actionColor; } }
@@ -90,11 +92,13 @@ extension CardEditorViewController {
     
     private func setupDisplayValues() {
         self.titleField.stringValue = self.actionTitle;
+        self.commentTextView.string = self.actionComment;
         self.datePicker.dateValue = self.actionDate;
     }
     
     private func setupReturnValues() {
         self.actionTitle = self.titleField.stringValue;
+        self.actionComment = self.commentTextView.string;
         self.actionDate = self.datePicker.dateValue;
     }
     

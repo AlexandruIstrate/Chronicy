@@ -10,10 +10,12 @@ import CoreGraphics;
 
 public struct CardTag: Equatable {
     public var title: String;
+    public var description: String?;
     public var color: CGColor;
     
-    public init(title: String, color: CGColor) {
+    public init(title: String, description: String? = nil, color: CGColor) {
         self.title = title;
+        self.description = description;
         self.color = color;
     }
 }
