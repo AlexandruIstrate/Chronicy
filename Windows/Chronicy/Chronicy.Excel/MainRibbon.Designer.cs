@@ -41,6 +41,7 @@
             this.enableButton = this.Factory.CreateRibbonToggleButton();
             this.selectionGroup = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
+            this.dataSoruceDropDown = this.Factory.CreateRibbonDropDown();
             this.notebookDropDown = this.Factory.CreateRibbonDropDown();
             this.stackDropDown = this.Factory.CreateRibbonDropDown();
             this.newNotebookButton = this.Factory.CreateRibbonButton();
@@ -69,7 +70,7 @@
             this.reportBugButton = this.Factory.CreateRibbonButton();
             this.viewGitHubButton = this.Factory.CreateRibbonButton();
             this.optionsButton = this.Factory.CreateRibbonButton();
-            this.dataSoruceDropDown = this.Factory.CreateRibbonDropDown();
+            this.loginButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.extensionGroup.SuspendLayout();
@@ -137,6 +138,14 @@
             this.box1.Items.Add(this.notebookDropDown);
             this.box1.Items.Add(this.stackDropDown);
             this.box1.Name = "box1";
+            // 
+            // dataSoruceDropDown
+            // 
+            this.dataSoruceDropDown.Image = global::Chronicy.Excel.Properties.Resources.IconDataSource32;
+            this.dataSoruceDropDown.Label = "Data Source";
+            this.dataSoruceDropDown.Name = "dataSoruceDropDown";
+            this.dataSoruceDropDown.ShowImage = true;
+            this.dataSoruceDropDown.SelectionChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnDataSourceChanged);
             // 
             // notebookDropDown
             // 
@@ -293,6 +302,7 @@
             // 
             this.toolsGroup.Items.Add(this.historyMenu);
             this.toolsGroup.Items.Add(this.syncButton);
+            this.toolsGroup.Items.Add(this.loginButton);
             this.toolsGroup.Label = "Tools";
             this.toolsGroup.Name = "toolsGroup";
             // 
@@ -357,11 +367,13 @@
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.ShowImage = true;
             // 
-            // dataSoruceDropDown
+            // loginButton
             // 
-            this.dataSoruceDropDown.Label = "Data Source";
-            this.dataSoruceDropDown.Name = "dataSoruceDropDown";
-            this.dataSoruceDropDown.SelectionChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnDataSourceChanged);
+            this.loginButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.loginButton.Label = "Login";
+            this.loginButton.Name = "loginButton";
+            this.loginButton.ShowImage = true;
+            this.loginButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnLoginClicked);
             // 
             // MainRibbon
             // 
@@ -433,6 +445,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton cellsCurrentLabel;
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu historyMenu;
         internal Microsoft.Office.Tools.Ribbon.RibbonDropDown dataSoruceDropDown;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton loginButton;
     }
 
     partial class ThisRibbonCollection

@@ -1,4 +1,5 @@
-﻿using Chronicy.Communication;
+﻿using Chronicy.Auth;
+using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Data.Managers;
 using Chronicy.Data.Storage;
@@ -25,6 +26,7 @@ namespace Chronicy.Service.Communication
         private DispatcherTimer dispatcher;
 
         public IClientCallback Callback { get; set; }
+        public IUserSystem UserSystem { get; set; }
 
         public TrackingService()
         {
@@ -50,6 +52,11 @@ namespace Chronicy.Service.Communication
                 dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
                 dispatcher.Start();
             }, context);
+        }
+
+        public void Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
         }
 
         public void SendSelectedDataSource(DataSourceType dataSource)

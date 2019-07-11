@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data;
+using Chronicy.Data.Storage;
 using Chronicy.Excel.App;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
@@ -71,6 +72,21 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
+        private void InitializeDataSources()
+        {
+            dataSoruceDropDown.SelectionChanged += (sender, args) =>
+            {
+                bool success = Enum.TryParse(dataSoruceDropDown.SelectedItem.Label, out DataSourceType type);
+
+                if (!success)
+                {
+                    throw new ArgumentException("The selected value does not match any available data sources");
+                }
+
+                extension.SelectDataSource(type);
+            };
+        }
+
         private void InitializeNotebooks()
         {
             extension.NotebooksUpdated += (notebooks) =>
@@ -88,6 +104,18 @@ namespace Chronicy.Excel
             {
                 extension.Notebooks.SelectStack(stackDropDown.SelectedItem.Label);
             };
+        }
+
+        private void LoadDataSources()
+        {
+            DataSourceType[] sources = { DataSourceType.Local, DataSourceType.Web };
+
+            foreach (DataSourceType source in sources)
+            {
+                RibbonDropDownItem ribbonDropDown = Factory.CreateRibbonDropDownItem();
+                ribbonDropDown.Label = source.ToString();
+                dataSoruceDropDown.Items.Add(ribbonDropDown);
+            }
         }
 
         private void LoadNotebooks(List<Notebook> items = null)
@@ -156,6 +184,7 @@ namespace Chronicy.Excel
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
+            InitializeDataSources();
             InitializeNotebooks();
 
             extension.StateChanged += (enabled) => 
@@ -179,6 +208,7 @@ namespace Chronicy.Excel
             {
                 extension.Connect();
 
+                LoadDataSources();
                 LoadNotebooks();
                 LoadStacks();
             }
@@ -203,7 +233,8 @@ namespace Chronicy.Excel
 
         private void OnDataSourceChanged(object sender, RibbonControlEventArgs e)
         {
-
+            // TODO: Support dynamic data sources
+            
         }
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
@@ -339,6 +370,11 @@ namespace Chronicy.Excel
         {
             ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
             link.Open();
+        }
+
+        private void OnLoginClicked(object sender, RibbonControlEventArgs e)
+        {
+
         }
     }
 }

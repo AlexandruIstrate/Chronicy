@@ -1,11 +1,10 @@
-﻿using Chronicy.Data;
-using Chronicy.Data.Storage;
+﻿using Chronicy.Auth;
 
 namespace Chronicy.Service.System
 {
     public abstract class IService
     {
-        public IDataSource<Notebook> DataSource { get; set; }
+        public IUserSystem UserSystem { get; }
 
         public virtual void OnStart() { }
         public virtual void OnPause() { }

@@ -1,5 +1,6 @@
 ﻿using Chronicy.Data;
 using Chronicy.Data.Managers;
+using Chronicy.Data.Storage;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Tracking;
 using System.Collections.Generic;
@@ -42,6 +43,10 @@ namespace Chronicy.Excel.App
 
         public abstract void Connect();
         public abstract void Sync();
+
+        public abstract void SelectDataSource(DataSourceType dataSource);
+        public abstract void SelectNotebook(Notebook notebook);
+        public abstract void SelectStack(Stack stack);
 
         protected void OnNotebooksUpdated(IEnumerable<Notebook> notebooks = null)
         {

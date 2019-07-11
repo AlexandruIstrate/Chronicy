@@ -16,6 +16,13 @@ namespace Chronicy.Communication
 
         #endregion
 
+        #region User
+
+        [OperationContract(IsOneWay = true)]
+        void Authenticate(string username, string password);
+
+        #endregion
+
         #region CRUD Operations
 
         [OperationContract(IsOneWay = false)]

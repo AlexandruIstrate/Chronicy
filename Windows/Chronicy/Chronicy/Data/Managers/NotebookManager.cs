@@ -1,5 +1,4 @@
 ﻿using Chronicy.Data.Storage;
-using Chronicy.Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,8 +117,6 @@ namespace Chronicy.Data.Managers
         public void SelectStack(Stack stack)
         {
             SelectedStack = SelectedNotebook.Stacks.Find((item) => item.Name == stack.Name);
-
-            InformationDispatcher.Default.Dispatch(SelectedNotebook.ToString());
 
             if (SelectedStack == null)
             {

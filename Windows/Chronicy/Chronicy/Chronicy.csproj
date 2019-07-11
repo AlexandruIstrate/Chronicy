@@ -173,6 +173,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\IUserSystem.cs" />
+    <Compile Include="Auth\User.cs" />
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
     <Compile Include="Communication\IServerService.cs" />

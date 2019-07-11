@@ -61,6 +61,11 @@ namespace Chronicy.Tests.Communication
             throw new NotImplementedException();
         }
 
+        public void Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SendDebugMessage(string message)
         {
             throw new NotImplementedException();

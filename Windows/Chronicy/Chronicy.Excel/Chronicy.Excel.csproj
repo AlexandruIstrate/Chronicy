@@ -202,6 +202,12 @@
     <Compile Include="UI\EditTaskPane.Designer.cs">
       <DependentUpon>EditTaskPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LoginTaskPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LoginTaskPane.Designer.cs">
+      <DependentUpon>LoginTaskPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pane\ITaskPaneFactory.cs" />
     <Compile Include="UI\Pane\TaskPane.cs" />
     <Compile Include="UI\Pane\TaskPaneFactory.cs" />
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditTaskPane.resx">
       <DependentUpon>EditTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginTaskPane.resx">
+      <DependentUpon>LoginTaskPane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NotebooksTaskPane.resx">
       <DependentUpon>NotebooksTaskPane.cs</DependentUpon>

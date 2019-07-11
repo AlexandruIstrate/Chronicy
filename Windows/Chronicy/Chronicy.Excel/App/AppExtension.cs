@@ -1,6 +1,7 @@
 ﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Data.Managers;
+using Chronicy.Data.Storage;
 using Chronicy.Excel.Communication;
 using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
@@ -68,6 +69,21 @@ namespace Chronicy.Excel.App
 
             Service.SendSelectedNotebook(Notebooks.SelectedNotebook);
             Service.SendSelectedStack(Notebooks.SelectedStack);
+        }
+
+        public override void SelectDataSource(DataSourceType dataSource)
+        {
+            Service.SendSelectedDataSource(dataSource);
+        }
+
+        public override void SelectNotebook(Notebook notebook)
+        {
+            Service.SendSelectedNotebook(notebook);
+        }
+
+        public override void SelectStack(Stack stack)
+        {
+            Service.SendSelectedStack(stack);
         }
 
         private void InitializeNotebooks()
