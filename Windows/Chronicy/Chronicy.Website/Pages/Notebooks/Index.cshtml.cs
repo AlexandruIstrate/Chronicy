@@ -11,7 +11,7 @@ namespace Chronicy.Website.Pages.Notebooks
     [Authorize]
     public class IndexModel : PageModel
     {
-        private IDataSource<Notebook> dataSource;
+        private readonly IDataSource<Notebook> dataSource;
 
         public List<Notebook> Items { get; set; }
 
@@ -23,15 +23,16 @@ namespace Chronicy.Website.Pages.Notebooks
 
         public async Task OnGetAsync()
         {
-            //Items = new List<Notebook>(await dataSource.GetAllAsync());
-            Items = new List<Notebook>
-            {
-                new Notebook("Notebok 1"),
-                new Notebook("Notebok 2"),
-                new Notebook("Notebok 3"),
-                new Notebook("Notebok 4"),
-                new Notebook("Notebok 5")
-            };
+            Items = new List<Notebook>(await dataSource.GetAllAsync());
+
+            //Items = new List<Notebook>
+            //{
+            //    new Notebook("Notebok 1"),
+            //    new Notebook("Notebok 2"),
+            //    new Notebook("Notebok 3"),
+            //    new Notebook("Notebok 4"),
+            //    new Notebook("Notebok 5")
+            //};
         }
     }
 }

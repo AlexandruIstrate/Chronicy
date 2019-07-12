@@ -5,6 +5,7 @@ using Chronicy.Web.Auth;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
@@ -13,12 +14,12 @@ namespace Chronicy.Web.Controllers
     [ApiController]
     public class NotebookController : ControllerBase
     {
-        private IDataSource dataSource;
+        private IDataSource<Notebook> dataSource;
         private TokenManager tokenManager;
 
-        public NotebookController()
+        public NotebookController(SqlConnection connection)
         {
-            dataSource = new SqlDataSource();
+            dataSource = new SqlDataSource(connection);
             tokenManager = new TokenManager();
         }
 
@@ -26,7 +27,7 @@ namespace Chronicy.Web.Controllers
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Notebook>>> GetNotebooks()
         {
-            return new List<Notebook>(await dataSource.GetNotebooksAsync());
+            return new List<Notebook>(await dataSource.GetAllAsync());
         }
 
         // GET api/notebook?id=5
@@ -38,28 +39,29 @@ namespace Chronicy.Web.Controllers
                 throw new ArgumentNullException(nameof(id));
             }
 
-            return await dataSource.GetNotebookAsync(id);
+            return await dataSource.GetAsync(id);
         }
 
         // POST api/notebook/create
         [HttpPost("create")]
-        public async Task<ActionResult<Notebook>> CreateNotebook()
+        public async Task CreateNotebook()
         {
-            return await dataSource.CreateNotebookAsync("Name");
+            // TODO: Notebook from body
+            await dataSource.CreateAsync(null);
         }
 
         // DELETE api/notebook/delete?id=5
         [HttpDelete("delete")]
         public async Task DeleteNotebook(string id)
         {
-            await dataSource.DeleteNotebookAsync(await dataSource.GetNotebookAsync(id));
+            await dataSource.DeleteAsync(id);
         }
 
         // PUT api/notebook/update
         [HttpPut("update")]
         public async Task UpdateNotebook([FromBody] Notebook notebook)
         {
-            await dataSource.UpdateNotebookAsync(notebook);
+            await dataSource.UpdateAsync(notebook);
         }
     }
 }

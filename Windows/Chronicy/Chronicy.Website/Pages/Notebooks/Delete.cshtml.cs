@@ -1,17 +1,17 @@
-using System.Threading.Tasks;
 using Chronicy.Data;
 using Chronicy.Data.Storage;
 using Chronicy.Sql;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace Chronicy.Website.Pages.Notebooks
 {
     [Authorize]
     public class DeleteModel : PageModel
     {
-        private IDataSource<Notebook> dataSource;
+        private readonly IDataSource<Notebook> dataSource;
 
         [BindProperty]
         public Notebook EditedNotebook { get; set; }

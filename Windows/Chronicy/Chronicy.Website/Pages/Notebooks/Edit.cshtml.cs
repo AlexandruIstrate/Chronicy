@@ -54,7 +54,7 @@ namespace Chronicy.Website.Pages.Notebooks
             }
             catch (DataSourceException)
             {
-                if (!(await NotebookExistsAsync(EditedNotebook.Id)))
+                if (!(await NotebookExistsAsync(EditedNotebook.Uuid)))
                 {
                     return NotFound();
                 }

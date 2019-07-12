@@ -8,19 +8,19 @@ namespace Chronicy.Web.Auth
 {
     public class UserStatusManager
     {
-        private ProcedureRunner procedureRunner;
+        private SqlServerDatabase database;
 
         public UserStatusManager()
         {
             // TODO: SqlConnection
-            procedureRunner = new ProcedureRunner(null);
+            database = new SqlServerDatabase(null);
         }
 
         public IEnumerable<UserInfo> GetInfo()
         {
             try
             {
-                DataSet dataSet = procedureRunner.RunScalar(Procedures.GetUserInfoAll, null);
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.GetUserInfoAll, null);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<UserInfo> result = new List<UserInfo>();
@@ -42,7 +42,7 @@ namespace Chronicy.Web.Auth
         {
             try
             {
-                DataSet dataSet = await procedureRunner.RunScalarAsync(Procedures.GetUserInfoAll, null);
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.GetUserInfoAll, null);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<UserInfo> result = new List<UserInfo>();
@@ -64,7 +64,7 @@ namespace Chronicy.Web.Auth
         {
             try
             {
-                DataSet dataSet = procedureRunner.RunScalar(Procedures.GetUserInfoAll, null);
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.GetUserInfoAll, null);
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
@@ -83,7 +83,7 @@ namespace Chronicy.Web.Auth
         {
             try
             {
-                DataSet dataSet = await procedureRunner.RunScalarAsync(Procedures.GetUserInfoAll, null);
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.GetUserInfoAll, null);
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 

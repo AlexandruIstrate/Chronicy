@@ -9,18 +9,18 @@ namespace Chronicy.Web.Auth
 {
     public class UserAuth
     {
-        private ProcedureRunner procedureRunner;
+        private SqlServerDatabase database;
 
         public UserAuth(SqlConnection connection)
         {
-            procedureRunner = new ProcedureRunner(connection);
+            database = new SqlServerDatabase(connection);
         }
 
         public string Authenticate(string username, SecureString password)
         {
             try
             {
-                DataSet dataSet = procedureRunner.RunScalar(Procedures.AuthenticateForToken, new List<SqlParameter>
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.AuthenticateForToken, new List<SqlParameter>
                 {
                     new SqlParameter(nameof(username), username),
                     new SqlParameter(nameof(password), password.ToString())
