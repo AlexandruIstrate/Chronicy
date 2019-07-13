@@ -1,11 +1,9 @@
 ﻿using Chronicy.Data;
-using Chronicy.Data.Storage;
-using Chronicy.Sql;
+using Chronicy.Web.Api;
 using Chronicy.Web.Auth;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
@@ -14,20 +12,20 @@ namespace Chronicy.Web.Controllers
     [ApiController]
     public class NotebookController : ControllerBase
     {
-        private IDataSource<Notebook> dataSource;
-        private TokenManager tokenManager;
+        private readonly INotebook notebooks;
+        private readonly TokenManager tokenManager;
 
-        public NotebookController(SqlConnection connection)
+        public NotebookController(INotebook notebooks, TokenManager tokenManager)
         {
-            dataSource = new SqlDataSource(connection);
-            tokenManager = new TokenManager();
+            this.notebooks = notebooks;
+            this.tokenManager = tokenManager;
         }
 
         // GET api/notebook/all
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Notebook>>> GetNotebooks()
         {
-            return new List<Notebook>(await dataSource.GetAllAsync());
+            return new List<Notebook>(await notebooks.GetAllAsync());
         }
 
         // GET api/notebook?id=5
@@ -39,7 +37,7 @@ namespace Chronicy.Web.Controllers
                 throw new ArgumentNullException(nameof(id));
             }
 
-            return await dataSource.GetAsync(id);
+            return await notebooks.GetAsync(id);
         }
 
         // POST api/notebook/create
@@ -47,21 +45,21 @@ namespace Chronicy.Web.Controllers
         public async Task CreateNotebook()
         {
             // TODO: Notebook from body
-            await dataSource.CreateAsync(null);
+            await notebooks.CreateAsync(null);
         }
 
         // DELETE api/notebook/delete?id=5
         [HttpDelete("delete")]
         public async Task DeleteNotebook(string id)
         {
-            await dataSource.DeleteAsync(id);
+            await notebooks.DeleteAsync(id);
         }
 
         // PUT api/notebook/update
         [HttpPut("update")]
         public async Task UpdateNotebook([FromBody] Notebook notebook)
         {
-            await dataSource.UpdateAsync(notebook);
+            await notebooks.UpdateAsync(notebook);
         }
     }
 }

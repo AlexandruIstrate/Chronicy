@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Chronicy.Sql;
+using Chronicy.Web.Api;
+using Chronicy.Web.Models;
+using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
@@ -10,22 +12,22 @@ namespace Chronicy.Web.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        // POST api/auth
-        [HttpGet]
-        public async Task<ActionResult<string>> GetToken()
+        private readonly IAuthentication authentication;
+
+        public AuthController(SqlServerDatabase database)
         {
-            // TODO: Retrieve username and password from body
-            IHeaderDictionary headers = HttpContext.Request.Headers;
-            Dictionary<string, string[]> items = new Dictionary<string, string[]>();
+            authentication = new AuthenticationApi(database);
+        }
 
-            foreach (KeyValuePair<string, StringValues> header in headers)
-            {
-                items.Add(header.Key, header.Value.ToArray());
-            }
+        // POST api/auth
+        [HttpPost]
+        public async Task<ActionResult<Token>> AuthenticateAsync([FromHeader] string authorization)
+        {
+            AuthorizationHeaderDecoder decoder = new AuthorizationHeaderDecoder(authorization);
+            Tuple<string, string> usernamePassword = decoder.Decode();
 
-            return items.ToString();
-
-            //return string.Empty;
+            Token token = await authentication.AuthenticateAsync(usernamePassword.Item1, usernamePassword.Item2);
+            return token;
         }
     }
 }

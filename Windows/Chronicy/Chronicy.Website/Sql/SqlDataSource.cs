@@ -17,11 +17,6 @@ namespace Chronicy.Sql
             database = new SqlServerDatabase(connection);
         }
 
-        public SqlDataSource(SqlServerDatabase database)
-        {
-            this.database = database;
-        }
-
         public void Dispose()
         {
             database.Dispose();

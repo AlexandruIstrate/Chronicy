@@ -42,7 +42,7 @@ namespace Chronicy.Website
 
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
-            services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
+            //services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
             services.AddTransient<SqlConnection>(e => new SqlConnection("Fill in"));
             services.AddTransient<IEmailSender, EmailSender>();
 

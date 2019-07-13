@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Chronicy.Sql;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronicyAPI.Controllers
@@ -9,24 +10,32 @@ namespace ChronicyAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly SqlServerDatabase database;
+
+        public ValuesController(SqlServerDatabase database)
+        {
+            this.database = database;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<string> Get()
         {
             try
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "chronicydb";
-                builder.UserID = "sa";
-                builder.Password = "sa";
+                int affected = database.RunNonQueryProcedure("dbo.UserCreate", new List<SqlParameter>
+                {
+                    new SqlParameter("@username", "test3"),
+                    new SqlParameter("@email", "test@test3.com"),
+                    new SqlParameter("@phone", "911"),
+                    new SqlParameter("@password", "test123")
+                });
 
-                //SqlConnection connection = new SqlConnection();
-
-                return builder.ToString();
+                return "Rows affected: " + affected.ToString();
             }
             catch (Exception e)
             {
-                return e.StackTrace;
+                return e.ToString();
             }
         }
 
