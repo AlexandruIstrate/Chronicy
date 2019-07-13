@@ -1,5 +1,4 @@
-﻿using Chronicy.Sql;
-using Chronicy.Web.Api;
+﻿using Chronicy.Web.Api;
 using Chronicy.Web.Models;
 using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +13,9 @@ namespace Chronicy.Web.Controllers
     {
         private readonly IAuthentication authentication;
 
-        public AuthController(SqlServerDatabase database)
+        public AuthController(IAuthentication authentication)
         {
-            authentication = new AuthenticationApi(database);
+            this.authentication = authentication;
         }
 
         // POST api/auth

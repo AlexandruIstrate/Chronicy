@@ -1,6 +1,5 @@
 ﻿using Chronicy.Sql;
 using Chronicy.Web.Api;
-using Chronicy.Web.Auth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +25,7 @@ namespace Chronicy.Web
             SqlServerDatabase database = new SqlServerDatabase(CreateConnection());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<SqlConnection>(e => CreateConnection());  // TODO: Remove
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
             services.AddTransient<ITokenManager>(e => new TokenManager(database));

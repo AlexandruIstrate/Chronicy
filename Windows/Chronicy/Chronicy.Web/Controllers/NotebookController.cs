@@ -1,6 +1,5 @@
 ﻿using Chronicy.Data;
 using Chronicy.Web.Api;
-using Chronicy.Web.Auth;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
