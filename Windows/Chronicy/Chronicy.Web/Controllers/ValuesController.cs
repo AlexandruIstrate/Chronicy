@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronicyAPI.Controllers
@@ -9,9 +11,23 @@ namespace ChronicyAPI.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "chronicydb";
+                builder.UserID = "sa";
+                builder.Password = "sa";
+
+                //SqlConnection connection = new SqlConnection();
+
+                return builder.ToString();
+            }
+            catch (Exception e)
+            {
+                return e.StackTrace;
+            }
         }
 
         // GET api/values/5
