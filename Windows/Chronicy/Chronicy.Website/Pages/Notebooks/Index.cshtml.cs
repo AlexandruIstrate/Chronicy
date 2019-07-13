@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Chronicy.Data;
 using Chronicy.Data.Storage;
@@ -15,10 +16,9 @@ namespace Chronicy.Website.Pages.Notebooks
 
         public List<Notebook> Items { get; set; }
 
-        public IndexModel()
+        public IndexModel(SqlConnection connection)
         {
-            // TODO: SqlConnection
-            dataSource = new SqlDataSource(null);
+            dataSource = new SqlDataSource(connection);
         }
 
         public async Task OnGetAsync()

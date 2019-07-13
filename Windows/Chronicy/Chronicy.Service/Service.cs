@@ -23,7 +23,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.StartPending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            ExceptionUtils.HandleExceptions(() => service.OnStart(), context);
+            ExceptionUtils.LogExceptions(() => service.OnStart(), context);
 
             status = Status.Running;
             Status.SetServiceStatus(ServiceHandle, ref status);
@@ -34,7 +34,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.PausePending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            ExceptionUtils.HandleExceptions(() => service.OnPause(), context);
+            ExceptionUtils.LogExceptions(() => service.OnPause(), context);
 
             status = Status.Paused;
             Status.SetServiceStatus(ServiceHandle, ref status);
@@ -45,7 +45,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.ContinuePending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            ExceptionUtils.HandleExceptions(() => service.OnContinue(), context);
+            ExceptionUtils.LogExceptions(() => service.OnContinue(), context);
         }
 
         protected override void OnStop()
@@ -53,7 +53,7 @@ namespace Chronicy.Service
             ServiceStatus status = Status.StopPending;
             Status.SetServiceStatus(ServiceHandle, ref status);
 
-            ExceptionUtils.HandleExceptions(() => service.OnStop(), context);
+            ExceptionUtils.LogExceptions(() => service.OnStop(), context);
 
             status = Status.Stopped;
             Status.SetServiceStatus(ServiceHandle, ref status);

@@ -183,6 +183,9 @@
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
     <Compile Include="Communication\IServerService.cs" />
+    <Compile Include="Data\Actions\ActionManager.cs" />
+    <Compile Include="Data\Actions\DelegateAction.cs" />
+    <Compile Include="Data\Actions\ITriggerAction.cs" />
     <Compile Include="Data\Card.cs" />
     <Compile Include="Data\ConversionException.cs" />
     <Compile Include="Data\CustomField.cs" />

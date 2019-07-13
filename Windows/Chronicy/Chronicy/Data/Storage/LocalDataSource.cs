@@ -1,17 +1,15 @@
 ﻿using Chronicy.Information;
 using Chronicy.Sql;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
 {
     public class LocalDataSource : IDataSource<Notebook>, IDisposable
     {
-        private SqliteDatabase database;
+        private readonly SqliteDatabase database;
 
         public LocalDataSource()
         {
@@ -27,7 +25,7 @@ namespace Chronicy.Data.Storage
         {
             if (disposing)
             {
-                // No-Op
+                // Clean up unmanaged resources
             }
 
             database.Dispose();
@@ -41,34 +39,62 @@ namespace Chronicy.Data.Storage
 
         public void Create(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            existing.Add(item);
+            try
+            {
+                DbSet<Notebook> existing = database.Context.Set<Notebook>();
+                existing.Add(item);
 
-            Save();
+                Save();
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not create notebook", e);
+            }
         }
 
         public async Task CreateAsync(Notebook item)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            existing.Add(item);
-            
-            await SaveAsync();
+            try
+            {
+                DbSet<Notebook> existing = database.Context.Set<Notebook>();
+                existing.Add(item);
+
+                await SaveAsync();
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not create notebook", e);
+            }
         }
 
         public void Delete(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            existing.Remove(Get(id));
+            try
+            {
+                DbSet<Notebook> existing = database.Context.Set<Notebook>();
+                existing.Remove(Get(id));
 
-            Save();
+                Save();
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not delete notebook", e);
+            }
         }
 
         public async Task DeleteAsync(string id)
         {
-            DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            existing.Remove(await GetAsync(id));
+            try
+            {
+                DbSet<Notebook> existing = database.Context.Set<Notebook>();
+                existing.Remove(await GetAsync(id));
 
-            await SaveAsync();
+                await SaveAsync();
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not delete notebook", e);
+            }
         }
 
         public Notebook Get(string id)
@@ -106,23 +132,37 @@ namespace Chronicy.Data.Storage
         public IEnumerable<Notebook> GetAll()
         {
             // Make sure any pending changes are saved
-            Save();
-
-            DbSet<Notebook> notebooks = database.Context.Set<Notebook>();
-
-            foreach (Notebook notebook in notebooks)
+            try
             {
-                database.Context.Entry(notebook).Collection(n => n.Stacks).Load();
-            }
+                Save();
 
-            return notebooks;
+                DbSet<Notebook> notebooks = database.Context.Set<Notebook>();
+
+                foreach (Notebook notebook in notebooks)
+                {
+                    database.Context.Entry(notebook).Collection(n => n.Stacks).Load();
+                }
+
+                return notebooks;
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get notebooks", e);
+            }
         }
 
         public async Task<IEnumerable<Notebook>> GetAllAsync()
         {
-            // Make sure any pending changes are saved
-            await SaveAsync();
-            return GetAll();
+            try
+            {
+                // Make sure any pending changes are saved
+                await SaveAsync();
+                return GetAll();
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get notebooks", e);
+            }
         }
 
         public void Update(Notebook item)
@@ -134,6 +174,13 @@ namespace Chronicy.Data.Storage
 
                 foreach (Stack stack in item.Stacks)
                 {
+                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+
+                    if (exists)
+                    {
+                        continue;
+                    }
+
                     existing.Stacks.Add(stack);
                 }
 
@@ -141,7 +188,8 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);
+                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
+                throw new DataSourceException("Could not update notebook", e);
             }
         }
 
@@ -154,6 +202,13 @@ namespace Chronicy.Data.Storage
 
                 foreach (Stack stack in item.Stacks)
                 {
+                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+
+                    if (exists)
+                    {
+                        continue;
+                    }
+
                     existing.Stacks.Add(stack);
                 }
 
@@ -161,7 +216,8 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);
+                InformationDispatcher.Default.Dispatch(e); // TODO: Remove
+                throw new DataSourceException("Could not update notebook", e);
             }
         }
 

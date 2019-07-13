@@ -32,7 +32,7 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
             this.logger = logger;
         }
 
-        // TODO: Support either username or password
+        // TODO: Support either username or email
         public class InputModel
         {
             [Required]

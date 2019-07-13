@@ -72,37 +72,12 @@ namespace Chronicy.Excel
             cells.TrackedValueUpdated += (value) => { cellsCurrentLabel.Label = "Tracked range: " + (value as Range).ToDisplayAddressString(); };
         }
 
-        private void InitializeDataSources()
-        {
-            dataSoruceDropDown.SelectionChanged += (sender, args) =>
-            {
-                bool success = Enum.TryParse(dataSoruceDropDown.SelectedItem.Label, out DataSourceType type);
-
-                if (!success)
-                {
-                    throw new ArgumentException("The selected value does not match any available data sources");
-                }
-
-                extension.SelectDataSource(type);
-            };
-        }
-
         private void InitializeNotebooks()
         {
             extension.NotebooksUpdated += (notebooks) =>
             {
                 LoadNotebooks(new List<Notebook>(notebooks));
-            };
-
-            notebookDropDown.SelectionChanged += (sender, args) =>
-            {
-                extension.Notebooks.SelectNotebook(notebookDropDown.SelectedItem.Label);
                 LoadStacks();
-            };
-
-            stackDropDown.SelectionChanged += (sender, args) =>
-            {
-                extension.Notebooks.SelectStack(stackDropDown.SelectedItem.Label);
             };
         }
 
@@ -114,7 +89,7 @@ namespace Chronicy.Excel
             {
                 RibbonDropDownItem ribbonDropDown = Factory.CreateRibbonDropDownItem();
                 ribbonDropDown.Label = source.ToString();
-                dataSoruceDropDown.Items.Add(ribbonDropDown);
+                dataSourceDropDown.Items.Add(ribbonDropDown);
             }
         }
 
@@ -138,16 +113,15 @@ namespace Chronicy.Excel
             // Try to reselect the already selected notebook
             Notebook selected = extension.Notebooks.SelectedNotebook;
 
-            if (selected != null)
+            // Otherwise, use the first item
+            if (selected == null)
             {
-                Notebook found = notebooks.Find((item) => item.Uuid == selected.Uuid);
-                notebookDropDown.SelectedItemIndex = notebooks.IndexOf(found);
-
-                return;
+                selected = notebooks[0];
+                extension.Notebooks.SelectNotebook(selected);
             }
 
-            // Otherwise, select the first item
-            extension.Notebooks.SelectNotebook(notebooks[0]);
+            Notebook found = notebooks.Find((item) => item.Uuid == selected.Uuid);
+            notebookDropDown.SelectedItemIndex = notebooks.IndexOf(found);
         }
 
         private void LoadStacks()
@@ -170,31 +144,48 @@ namespace Chronicy.Excel
             // Try to reselect the already selected stack
             Stack selected = extension.Notebooks.SelectedStack;
 
-            if (selected != null)
+            // Otherwise, select the first item
+            if (selected == null)
             {
-                stackDropDown.SelectedItemIndex = stacks.IndexOf(selected);
-                return;
+                selected = stacks[0];
+                extension.Notebooks.SelectStack(selected);
             }
 
-            // Otherwise, select the first item
-            extension.Notebooks.SelectStack(stacks[0]);
+            Stack found = stacks.Find((item) => item.Name == selected.Name);
+            stackDropDown.SelectedItemIndex = stacks.IndexOf(selected);
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
             SetupActivationCallbacks();
-            InitializeDataSources();
             InitializeNotebooks();
 
             extension.StateChanged += (enabled) => 
             {
                 enableButton.Checked = enabled;
-                enableButton.Label = enableButton.Checked ? "Enabled" : "Disabled";
+                enableButton.Label = enabled ? "Enabled" : "Disabled";
             };
             extension.ConnectionChanged += (connected) => { connectButton.Visible = !connected; };
 
             extension.OnRibbonLoad();
+
+            try
+            {
+                extension.Connect();
+
+                LoadDataSources();
+                LoadNotebooks();
+                LoadStacks();
+            }
+            catch (EndpointConnectionException)
+            {
+                // If we can't connect when we initialize the extension, just ignore for now and let the user try to connect
+                // We should change this in the future to use some kind of passive, start-up display system
+                // However, for now, we just log the failure
+
+                InformationDispatcher.Default.Dispatch("Could not auto-connect to service!", DebugLogContext.Current, InformationKind.Error);
+            }
         }
 
         private void OnRibbonClose(object sender, EventArgs e)
@@ -234,7 +225,26 @@ namespace Chronicy.Excel
         private void OnDataSourceChanged(object sender, RibbonControlEventArgs e)
         {
             // TODO: Support dynamic data sources
-            
+
+            bool success = Enum.TryParse(dataSourceDropDown.SelectedItem.Label, out DataSourceType type);
+
+            if (!success)
+            {
+                throw new ArgumentException("The selected value does not match any available data sources");
+            }
+
+            extension.SelectDataSource(type);
+        }
+
+        private void OnNotebookChanged(object sender, RibbonControlEventArgs e)
+        {
+            extension.Notebooks.SelectNotebook(notebookDropDown.SelectedItem.Label);
+            LoadStacks();
+        }
+
+        private void OnStackChanged(object sender, RibbonControlEventArgs e)
+        {
+            extension.Notebooks.SelectStack(stackDropDown.SelectedItem.Label);
         }
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
@@ -374,7 +384,10 @@ namespace Chronicy.Excel
 
         private void OnLoginClicked(object sender, RibbonControlEventArgs e)
         {
+            LoginTaskPane control = new LoginTaskPane();
 
+            TaskPane<LoginTaskPane> taskPane = new TaskPane<LoginTaskPane>("Chronicy Login", control);
+            taskPane.Visible = true;
         }
     }
 }

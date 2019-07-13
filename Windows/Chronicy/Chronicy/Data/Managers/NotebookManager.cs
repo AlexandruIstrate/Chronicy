@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data.Storage;
+using Chronicy.Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,16 @@ namespace Chronicy.Data.Managers
 {
     public class NotebookManager
     {
-        public IDataSource<Notebook> DataSource { get; set; }
+        public IDataSource<Notebook> dataSource;
+        public IDataSource<Notebook> DataSource
+        {
+            get => dataSource;
+            set
+            {
+                DataSourceChanged?.Invoke(this, EventArgs.Empty);
+                dataSource = value;
+            }
+        }
 
         public Notebook SelectedNotebook { get; private set; }
         public Stack SelectedStack { get; private set; }
@@ -17,37 +27,39 @@ namespace Chronicy.Data.Managers
         public event EventHandler NotebookSelectionChanged;
         public event EventHandler StackSelectionChanged;
 
+        public event EventHandler DataSourceChanged;
+
         public NotebookManager(IDataSource<Notebook> dataSource)
         {
-            DataSource = dataSource;
+            this.dataSource = dataSource;
         }
 
         public List<Notebook> GetNotebooks()
         {
-            return new List<Notebook>(DataSource.GetAll());
+            return new List<Notebook>(dataSource.GetAll());
         }
 
         public async Task<List<Notebook>> GetNotebooksAsync()
         {
-            return new List<Notebook>(await DataSource.GetAllAsync());
+            return new List<Notebook>(await dataSource.GetAllAsync());
         }
 
         public void AddNotebook(Notebook notebook)
         {
-            DataSource.Create(notebook);
+            dataSource.Create(notebook);
             OnNotebooksChanged();
         }
 
         public async Task AddNotebookAsync(Notebook notebook)
         {
-            await DataSource.CreateAsync(notebook);
+            await dataSource.CreateAsync(notebook);
             OnNotebooksChanged();
         }
 
         public void AddStack(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            DataSource.Update(SelectedNotebook);
+            dataSource.Update(SelectedNotebook);
 
             OnNotebooksChanged();
         }
@@ -55,7 +67,7 @@ namespace Chronicy.Data.Managers
         public async Task AddStackAsync(Stack stack)
         {
             SelectedNotebook.Add(stack);
-            await DataSource.UpdateAsync(SelectedNotebook);
+            await dataSource.UpdateAsync(SelectedNotebook);
 
             OnNotebooksChanged();
         }
@@ -63,7 +75,7 @@ namespace Chronicy.Data.Managers
         public void AddCard(Card card)
         {
             SelectedStack.Add(card);
-            DataSource.Update(SelectedNotebook);
+            dataSource.Update(SelectedNotebook);
 
             OnNotebooksChanged();
         }
@@ -71,7 +83,7 @@ namespace Chronicy.Data.Managers
         public async Task AddCardAsync(Card card)
         {
             SelectedStack.Add(card);
-            await DataSource.UpdateAsync(SelectedNotebook);
+            await dataSource.UpdateAsync(SelectedNotebook);
 
             OnNotebooksChanged();
         }

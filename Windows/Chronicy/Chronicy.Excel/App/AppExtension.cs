@@ -9,6 +9,7 @@ using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Utils;
 using Chronicy.Tracking;
 using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -16,13 +17,15 @@ namespace Chronicy.Excel.App
 {
     public class AppExtension : IExcelExtension
     {
-        private ClientConnection connection;
+        private readonly ClientConnection connection;
 
         public IServerService Service { get; private set; }
 
-        private TrackingSystem tracking;
-        private NotebookManager notebooks;
-        private HistoryManager history;
+        private NotebookHistoryProvider historyProvider;
+
+        private readonly TrackingSystem tracking;
+        private readonly NotebookManager notebooks;
+        private readonly HistoryManager history;
 
         public override TrackingSystem Tracking => tracking;
         public override NotebookManager Notebooks => notebooks;
@@ -32,6 +35,8 @@ namespace Chronicy.Excel.App
         {
             connection = new ClientConnection();
             connection.ConnectionClosed += (sender, args) => { Connected = false; };
+
+            historyProvider = new NotebookHistoryProvider(null);
 
             tracking = new TrackingSystem();
             notebooks = new NotebookManager(null);
@@ -56,8 +61,12 @@ namespace Chronicy.Excel.App
             }
             catch (EndpointNotFoundException e)
             {
-                throw new EndpointConnectionException("Could not connect to the endpoint", e);
-            } 
+                throw new EndpointConnectionException("The remote endpoint could not be found or reached", e);
+            }
+            catch (Exception e)
+            {
+                throw new EndpointConnectionException("An unknown error occurred while connecting", e);
+            }
         }
 
         public override void Sync()
@@ -97,9 +106,11 @@ namespace Chronicy.Excel.App
             {
                 Workbook workbook = (Workbook)trackingEvent.Value;
 
-                TrackingDataBuilder builder = new TrackingDataBuilder();
-                builder.Name = "Workbook Updated";
-                builder.Comment = $"The data in the workbook { workbook.Name } changed";
+                TrackingDataBuilder builder = new TrackingDataBuilder
+                {
+                    Name = "Workbook Updated",
+                    Comment = $"The data in the workbook { workbook.Name } changed"
+                };
 
                 List<CustomField> fields = new List<CustomField>
                 {
@@ -125,9 +136,11 @@ namespace Chronicy.Excel.App
             {
                 Worksheet worksheet = (Worksheet)trackingEvent.Value;
 
-                TrackingDataBuilder builder = new TrackingDataBuilder();
-                builder.Name = "Worksheet Updated";
-                builder.Comment = $"The data in the worksheet { worksheet.Name } changed";
+                TrackingDataBuilder builder = new TrackingDataBuilder
+                {
+                    Name = "Worksheet Updated",
+                    Comment = $"The data in the worksheet { worksheet.Name } changed"
+                };
 
                 List<CustomField> fields = new List<CustomField>
                 {
@@ -154,9 +167,11 @@ namespace Chronicy.Excel.App
                 Range range = (Range)trackingEvent.Value;
                 string rangeString = range.ToDisplayAddressString();
 
-                TrackingDataBuilder builder = new TrackingDataBuilder();
-                builder.Name = "Range Updated";
-                builder.Comment = $"The data in the range { rangeString } changed";
+                TrackingDataBuilder builder = new TrackingDataBuilder
+                {
+                    Name = "Range Updated",
+                    Comment = $"The data in the range { rangeString } changed"
+                };
 
                 List<CustomField> fields = new List<CustomField>
                 {
@@ -181,7 +196,8 @@ namespace Chronicy.Excel.App
 
         private void InitializeHistory()
         {
-            //History.Register(new NotebookHistoryProvider(DataSource));
+            History.Register(historyProvider);
+            Notebooks.DataSourceChanged += (sender, args) => historyProvider.DataSource = Notebooks.DataSource;
         }
     }
 }

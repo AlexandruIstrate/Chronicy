@@ -15,10 +15,10 @@ using System.Text;
 
 namespace Chronicy.Service.Communication
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public class TrackingService : IServerService, IInformationContext
     {
-        private IInformationContext context;
+        private readonly IInformationContext context;
 
         private IDataSource<Notebook> dataSource;
         private NotebookManager notebookManager;
@@ -32,11 +32,10 @@ namespace Chronicy.Service.Communication
         {
             context = AgregateContext.Of(EventLogContext.Current, this);
 
-            // TODO: Use settings for selecting this IDataSource
-            dataSource = new LocalDataSource();
-
-            ExceptionUtils.HandleExceptions(() =>
+            ExceptionUtils.LogExceptions(() =>
             {
+                // TODO: Use settings for selecting this IDataSource
+                dataSource = new LocalDataSource();
                 notebookManager = new NotebookManager(dataSource);
                 dispatcher = new DispatcherTimer(20 * 1000);
             }, context);
@@ -47,7 +46,7 @@ namespace Chronicy.Service.Communication
             Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
             Callback.SendAvailableNotebooks(notebookManager.GetNotebooks());
 
-            ExceptionUtils.HandleExceptions(() =>
+            ExceptionUtils.LogExceptions(() =>
             {
                 dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
                 dispatcher.Start();
@@ -68,14 +67,14 @@ namespace Chronicy.Service.Communication
         {
             InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
 
-            ExceptionUtils.HandleExceptions(() => notebookManager.SelectNotebook(notebook), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.SelectNotebook(notebook), context);
         }
 
         public void SendSelectedStack(Stack stack)
         {
             InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
 
-            ExceptionUtils.HandleExceptions(() => notebookManager.SelectStack(stack), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.SelectStack(stack), context);
         }
 
         public void SendTrackingData(TrackingData data)
@@ -96,7 +95,7 @@ namespace Chronicy.Service.Communication
                 Tags = data.Tags
             };
 
-            ExceptionUtils.HandleExceptions(() => notebookManager.AddCard(card), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.AddCard(card), context);
         }
 
         public void SendDebugMessage(string message)
