@@ -37,7 +37,7 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -71,8 +71,16 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
                 returnUrl = Url.Content("~/");
             }
 
-            ChronicyUser user = new ChronicyUser { UserName = Input.Username, Email = Input.Email };
-            IdentityResult result = await userManager.CreateAsync(user, Input.Password);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            //ChronicyUser user = new ChronicyUser { UserName = Input.Username, Email = Input.Email };
+            //IdentityResult result = await userManager.CreateAsync(user, Input.Password);
+
+            ChronicyUser user = new ChronicyUser { UserName = "Test", Email = "test@gmail.com" };
+            IdentityResult result = await userManager.CreateAsync(user, "thisisatestpassword");
 
             if (!result.Succeeded)
             {

@@ -25,7 +25,7 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.Role.Create, new List<SqlParameter>
                 {
-                    new SqlParameter("@name", role.Name)
+                    new SqlParameter(Parameters.Name, role.Name)
                 });
 
                 return IdentityResult.Success;
@@ -42,7 +42,7 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.Role.Delete, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id)
+                    new SqlParameter(Parameters.RoleID, role.Id)
                 });
 
                 return IdentityResult.Success;
@@ -64,7 +64,7 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Role.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", roleId)
+                    new SqlParameter(Parameters.RoleID, roleId)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
@@ -72,8 +72,8 @@ namespace Chronicy.Website.Stores
 
                 ChronicyRole role = new ChronicyRole
                 {
-                    Id = dataRow["idrole"].ToString(),
-                    Name = (string)dataRow["name"]
+                    Id = Convert.ToInt32(dataRow[Columns.RoleID]),
+                    Name = (string)dataRow[Columns.Name]
                 };
 
                 return role;
@@ -91,7 +91,7 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Role.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@name", normalizedRoleName)
+                    new SqlParameter(Parameters.Name, normalizedRoleName)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
@@ -99,8 +99,8 @@ namespace Chronicy.Website.Stores
 
                 ChronicyRole role = new ChronicyRole
                 {
-                    Id = dataRow["idrole"].ToString(),
-                    Name = (string)dataRow["name"]
+                    Id = Convert.ToInt32(dataRow[Columns.RoleID]),
+                    Name = (string)dataRow[Columns.Name]
                 };
 
                 return role;
@@ -118,13 +118,13 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Role.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id)
+                    new SqlParameter(Parameters.RoleID, role.Id)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return (string)dataRow["name"];
+                return (string)dataRow[Columns.Name];
             }
             catch (Exception)
             {
@@ -139,13 +139,13 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Role.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@name", role.Name)
+                    new SqlParameter(Parameters.Name, role.Name)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return dataRow["idrole"].ToString();
+                return dataRow[Columns.RoleID].ToString();
             }
             catch (Exception)
             {
@@ -160,13 +160,13 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Role.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id)
+                    new SqlParameter(Parameters.RoleID, role.Id)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return (string)dataRow["name"];
+                return (string)dataRow[Columns.Name];
             }
             catch (Exception)
             {
@@ -181,8 +181,8 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.Role.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id),
-                    new SqlParameter("@name", normalizedName)
+                    new SqlParameter(Parameters.RoleID, role.Id),
+                    new SqlParameter(Parameters.Name, normalizedName)
                 });
             }
             catch (Exception)
@@ -198,8 +198,8 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.Role.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id),
-                    new SqlParameter("@name", roleName)
+                    new SqlParameter(Parameters.RoleID, role.Id),
+                    new SqlParameter(Parameters.Name, roleName)
                 });
             }
             catch (Exception)
@@ -215,8 +215,8 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.Role.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@idrole", role.Id),
-                    new SqlParameter("@name", role.Name)
+                    new SqlParameter(Parameters.RoleID, role.Id),
+                    new SqlParameter(Parameters.Name, role.Name)
                 });
 
                 return IdentityResult.Success;
@@ -226,5 +226,17 @@ namespace Chronicy.Website.Stores
                 return IdentityResult.Failed();
             }
         }
+    }
+
+    public static class Parameters
+    {
+        public const string RoleID  = "@iduser";
+        public const string Name    = "@username";
+    }
+
+    public static class Columns
+    {
+        public const string RoleID  = "@iduser";
+        public const string Name    = "@username";
     }
 }

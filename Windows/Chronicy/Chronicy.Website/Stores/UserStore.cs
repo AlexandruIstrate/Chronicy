@@ -25,10 +25,13 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Create, new List<SqlParameter>
                 {
-                    new SqlParameter("@username", user.UserName),
-                    new SqlParameter("@email", user.Email),
-                    new SqlParameter("@phone", user.PhoneNumber),
-                    new SqlParameter("@password", user.PasswordHash)
+                    new SqlParameter(Parameters.UserID, user.Id),
+                    new SqlParameter(Parameters.UserName, user.UserName),
+                    new SqlParameter(Parameters.NormalizedUserName, user.NormalizedUserName),
+                    new SqlParameter(Parameters.Email, user.Email),
+                    new SqlParameter(Parameters.NormalizedEmail, user.NormalizedEmail),
+                    new SqlParameter(Parameters.Phone, user.PhoneNumber),
+                    new SqlParameter(Parameters.Password, user.PasswordHash)
                 });
 
                 return IdentityResult.Success;
@@ -45,7 +48,7 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Delete, new List<SqlParameter>
                 {
-                    new SqlParameter("@iduser", user.Id)
+                    new SqlParameter(Parameters.UserID, user.Id)
                 });
 
                 return IdentityResult.Success;
@@ -67,21 +70,15 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@iduser", userId)
+                    new SqlParameter(Parameters.UserID, userId)
                 });
 
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                ChronicyUser user = new ChronicyUser
-                {
-                    Id = dataRow["iduser"].ToString(),
-                    UserName = (string)dataRow["username"],
-                    Email = (string)dataRow["email"],
-                    PhoneNumber = (string)dataRow["phone"]
-                };
-
-                return user;
+                return GetUserFromDataSet(dataSet);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return null;
             }
             catch (Exception)
             {
@@ -96,21 +93,15 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@username", normalizedUserName)
+                    new SqlParameter(Parameters.NormalizedUserName, normalizedUserName)
                 });
 
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                ChronicyUser user = new ChronicyUser
-                {
-                    Id = dataRow["userid"].ToString(),
-                    UserName = (string)dataRow["username"],
-                    Email = (string)dataRow["email"],
-                    PhoneNumber = (string)dataRow["phone"]
-                };
-
-                return user;
+                return GetUserFromDataSet(dataSet);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return null;
             }
             catch (Exception)
             {
@@ -119,9 +110,31 @@ namespace Chronicy.Website.Stores
             }
         }
 
-        public Task<string> GetNormalizedUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public async Task<string> GetNormalizedUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.UserID, user.Id)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                string username = (string)dataRow[Columns.NormalizedUserName];
+                return username.ToUpper();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return null;
+            }
+            catch (Exception)
+            {
+                // TODO: Handle
+                throw;
+            }
         }
 
         public async Task<string> GetUserIdAsync(ChronicyUser user, CancellationToken cancellationToken)
@@ -130,13 +143,18 @@ namespace Chronicy.Website.Stores
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
                 {
-                    new SqlParameter("@username", user.UserName)
+                    new SqlParameter(Parameters.UserName, user.UserName)
                 });
 
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return (string)dataRow["userid"];
+                return (string)dataRow[Columns.UserID];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return null;
             }
             catch (Exception)
             {
@@ -145,9 +163,30 @@ namespace Chronicy.Website.Stores
             }
         }
 
-        public Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public async Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.UserID, user.Id)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                return (string)dataRow[Columns.UserName];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return null;
+            }
+            catch (Exception)
+            {
+                // TODO: Handle
+                throw;
+            }
         }
 
         public async Task SetNormalizedUserNameAsync(ChronicyUser user, string normalizedName, CancellationToken cancellationToken)
@@ -156,11 +195,8 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@iduser", user.Id),
-                    new SqlParameter("@username", user.UserName),
-                    new SqlParameter("@email", user.Email),
-                    new SqlParameter("@phone", user.PhoneNumber),
-                    new SqlParameter("@password", user.PasswordHash)
+                    new SqlParameter(Parameters.UserID, user.Id),
+                    new SqlParameter(Parameters.NormalizedUserName, user.NormalizedUserName),
                 });
             }
             catch (Exception)
@@ -176,11 +212,8 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@iduser", user.Id),
-                    new SqlParameter("@username", user.UserName),
-                    new SqlParameter("@email", user.Email),
-                    new SqlParameter("@phone", user.PhoneNumber),
-                    new SqlParameter("@password", user.PasswordHash)
+                    new SqlParameter(Parameters.UserID, user.Id),
+                    new SqlParameter(Parameters.UserName, user.UserName),
                 });
             }
             catch (Exception)
@@ -196,11 +229,13 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
                 {
-                    new SqlParameter("@iduser", user.Id),
-                    new SqlParameter("@username", user.UserName),
-                    new SqlParameter("@email", user.Email),
-                    new SqlParameter("@phone", user.PhoneNumber),
-                    new SqlParameter("@password", user.PasswordHash)
+                    new SqlParameter(Parameters.UserID, user.Id),
+                    new SqlParameter(Parameters.UserName, user.UserName),
+                    new SqlParameter(Parameters.NormalizedUserName, user.NormalizedUserName),
+                    new SqlParameter(Parameters.Email, user.Email),
+                    new SqlParameter(Parameters.NormalizedEmail, user.NormalizedEmail),
+                    new SqlParameter(Parameters.Phone, user.PhoneNumber),
+                    new SqlParameter(Parameters.Password, user.PasswordHash)
                 });
 
                 return IdentityResult.Success;
@@ -209,6 +244,47 @@ namespace Chronicy.Website.Stores
             {
                 return IdentityResult.Failed();
             }
+        }
+
+        private ChronicyUser GetUserFromDataSet(DataSet dataSet)
+        {
+            DataTable dataTable = dataSet.Tables[0];
+            DataRow dataRow = dataTable.Rows[0];
+
+            ChronicyUser user = new ChronicyUser
+            {
+                Id                  = Convert.ToInt32(dataRow[Columns.UserID]),
+                UserName            = (string)dataRow[Columns.UserName],
+                NormalizedUserName  = (string)dataRow[Columns.NormalizedUserName],
+                Email               = (string)dataRow[Columns.Email],
+                NormalizedEmail     = (string)dataRow[Columns.NormalizedEmail],
+                PhoneNumber         = (string)dataRow[Columns.Phone],
+                PasswordHash        = (string)dataRow[Columns.Password]
+            };
+
+            return user;
+        }
+
+        public static class Parameters
+        {
+            public const string UserID              = "@iduser";
+            public const string UserName            = "@username";
+            public const string NormalizedUserName  = "@n_username";
+            public const string Email               = "@email";
+            public const string NormalizedEmail     = "@n_email";
+            public const string Phone               = "@phone";
+            public const string Password            = "@password";
+        }
+
+        public static class Columns
+        {
+            public const string UserID              = "iduser";
+            public const string UserName            = "username";
+            public const string NormalizedUserName  = "n_username";
+            public const string Email               = "email";
+            public const string NormalizedEmail     = "n_email";
+            public const string Phone               = "phone";
+            public const string Password            = "password";
         }
     }
 }
