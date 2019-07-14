@@ -19,7 +19,7 @@ namespace Chronicy.Website.Pages.Notebooks
         public DeleteModel()
         {
             // TODO: SqlConnection
-            dataSource = new SqlDataSource(null);
+            //dataSource = new SqlDataSource(null);
         }
 
         public async Task<IActionResult> OnGetAsync(string id)

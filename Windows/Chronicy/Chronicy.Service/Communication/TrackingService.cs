@@ -1,5 +1,4 @@
-﻿using Chronicy.Auth;
-using Chronicy.Communication;
+﻿using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Data.Managers;
 using Chronicy.Data.Storage;
@@ -26,7 +25,6 @@ namespace Chronicy.Service.Communication
         private DispatcherTimer dispatcher;
 
         public IClientCallback Callback { get; set; }
-        public IUserSystem UserSystem { get; set; }
 
         public TrackingService()
         {

@@ -21,9 +21,11 @@ Windows/Chronicy/Chronicy.Excel/obj/
 
 Windows/Chronicy/Chronicy.Web/bin/
 Windows/Chronicy/Chronicy.Web/obj/
+Windows/Chronicy/Chronicy.Web/appsettings.Database.json
 
 Windows/Chronicy/Chronicy.Website/bin/
 Windows/Chronicy/Chronicy.Website/obj/
+Windows/Chronicy/Chronicy.Website/appsettings.Database.json
 
 Windows/Chronicy/Chronicy.Tests/bin/
 Windows/Chronicy/Chronicy.Tests/obj/

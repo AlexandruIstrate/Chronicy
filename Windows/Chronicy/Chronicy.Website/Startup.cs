@@ -1,5 +1,6 @@
 using System;
-using System.Data.SqlClient;
+using System.IO;
+using Chronicy.Sql;
 using Chronicy.Website.Identity;
 using Chronicy.Website.Services;
 using Chronicy.Website.Stores;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -16,9 +18,14 @@ namespace Chronicy.Website
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+
+        public Startup()
         {
-            Configuration = configuration;
+            Configuration = CreateConfiguration();
         }
 
         public IConfiguration Configuration { get; }
@@ -38,12 +45,15 @@ namespace Chronicy.Website
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddDefaultUI(UIFramework.Bootstrap4);
+
+            // Add database
+            services.AddTransient<ISqlDatabase>(e => new SqlServerDatabase(SqlConnectionFactory.Create(Configuration)));
 
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
-            //services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
-            services.AddTransient<SqlConnection>(e => new SqlConnection("Fill in"));
+            services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.Configure<IdentityOptions>(options =>
@@ -100,6 +110,17 @@ namespace Chronicy.Website
             app.UseAuthentication();
 
             app.UseMvc();
+        }
+
+        private IConfiguration CreateConfiguration()
+        {
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            builder.AddJsonFile($"appsettings.{ Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production" }.json", optional: true);
+            builder.AddJsonFile("appsettings.Database.json", optional: true);
+            builder.AddEnvironmentVariables();
+            return builder.Build();
         }
     }
 }

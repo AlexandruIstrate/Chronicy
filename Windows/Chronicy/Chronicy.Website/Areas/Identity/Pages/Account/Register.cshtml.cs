@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -78,8 +79,9 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
                 foreach (IdentityError error in result.Errors)
                 {
                     ModelState.AddModelError(error.Code, error.Description);
-                    throw new RegistrationException(Input.Username, "Could not create database entry");
                 }
+
+                return Page();
             }
 
             logger.LogInformation("User created a new account with password.");

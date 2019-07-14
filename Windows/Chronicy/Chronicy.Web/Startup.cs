@@ -5,16 +5,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data.SqlClient;
-using System.Reflection;
+using System;
+using System.IO;
 
 namespace Chronicy.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+
+        public Startup()
         {
-            Configuration = configuration;
+            Configuration = CreateConfiguration();
         }
 
         public IConfiguration Configuration { get; }
@@ -22,13 +27,13 @@ namespace Chronicy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            SqlServerDatabase database = new SqlServerDatabase(CreateConnection());
+            SqlServerDatabase database = new SqlServerDatabase(SqlConnectionFactory.Create(Configuration));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddTransient<SqlConnection>(e => CreateConnection());  // TODO: Remove
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
             services.AddTransient<ITokenManager>(e => new TokenManager(database));
+            services.AddTransient(e => database);  // TODO: Remove
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,14 +52,15 @@ namespace Chronicy.Web
             app.UseMvc();
         }
 
-        private SqlConnection CreateConnection()
+        private IConfiguration CreateConfiguration()
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
-            {
-                ApplicationName = Assembly.GetExecutingAssembly().GetName().Name
-            };
-
-            return new SqlConnection(builder.ToString());
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            builder.AddJsonFile($"appsettings.{ Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production" }.json", optional: true);
+            builder.AddJsonFile("appsettings.Database.json", optional: true);
+            builder.AddEnvironmentVariables();
+            return builder.Build();
         }
     }
 }
