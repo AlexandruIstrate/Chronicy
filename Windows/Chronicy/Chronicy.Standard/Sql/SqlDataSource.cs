@@ -17,7 +17,7 @@ namespace Chronicy.Sql
             database = new SqlServerDatabase(connection);
         }
 
-        public SqlDataSource(SqlServerDatabase database)
+        public SqlDataSource(ISqlDatabase database)
         {
             this.database = database;
         }
@@ -46,7 +46,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             database.RunNonQueryProcedure(SqlProcedures.Notebook.Delete, new List<SqlParameter>
             {
@@ -54,7 +54,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(int id)
         {
             return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Delete, new List<SqlParameter>
             {
@@ -62,7 +62,7 @@ namespace Chronicy.Sql
             });
         }
 
-        public Notebook Get(string id)
+        public Notebook Get(int id)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public async Task<Notebook> GetAsync(string id)
+        public async Task<Notebook> GetAsync(int id)
         {
             try
             {

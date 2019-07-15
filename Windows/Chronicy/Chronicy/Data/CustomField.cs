@@ -53,7 +53,8 @@ namespace Chronicy.Data
 
             CustomField other = (CustomField)obj;
 
-            return Name == other.Name &&
+            return ID == other.ID &&
+                   Name == other.Name &&
                    Type == other.Type &&
                    object.Equals(Value, other.Value);
         }
@@ -66,6 +67,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
+                hash = hash * 23 + ID.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Type.GetHashCode();
                 hash = hash * 23 + Value.GetHashCode();

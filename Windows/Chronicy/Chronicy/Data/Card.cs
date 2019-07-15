@@ -85,14 +85,8 @@ namespace Chronicy.Data
             }
 
             Card other = (Card)obj;
-
-            bool n = Name == other.Name;
-            bool c = Comment == other.Comment;
-            bool d = Date == other.Date;
-            bool f = Fields.SequenceEqual(other.Fields);
-            bool t = Tags.SequenceEqual(other.Tags);
-
-            return Name == other.Name &&
+            return ID == other.ID &&
+                   Name == other.Name &&
                    Comment == other.Comment &&
                    Date == other.Date &&
                    Fields.SequenceEqual(other.Fields) &&
@@ -107,6 +101,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
+                hash = hash * 23 + ID.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Comment.GetHashCode();
                 hash = hash * 23 + Date.GetHashCode();

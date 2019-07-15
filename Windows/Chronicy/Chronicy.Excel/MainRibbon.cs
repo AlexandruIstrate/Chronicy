@@ -96,6 +96,8 @@ namespace Chronicy.Excel
         private void LoadNotebooks(List<Notebook> items = null)
         {
             List<Notebook> notebooks = items ?? extension.Notebooks.GetNotebooks();
+
+            RibbonUI.InvalidateControl(notebookDropDown.Id);
             notebookDropDown.Items.Clear();
 
             if (notebooks.Count < 1)
@@ -120,13 +122,23 @@ namespace Chronicy.Excel
                 extension.Notebooks.SelectNotebook(selected);
             }
 
-            Notebook found = notebooks.Find((item) => item.Uuid == selected.Uuid);
-            notebookDropDown.SelectedItemIndex = notebooks.IndexOf(found);
+            extension.SelectNotebook(selected);
+
+            int index = notebooks.FindIndex((item) => item.ID == selected.ID);
+            notebookDropDown.SelectedItemIndex = index;
         }
 
         private void LoadStacks()
         {
+            if (extension.Notebooks.SelectedNotebook == null)
+            {
+                // We don't have any notebooks
+                return;
+            }
+
             List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
+
+            RibbonUI.InvalidateControl(stackDropDown.Id);
             stackDropDown.Items.Clear();
 
             if (stacks.Count < 1)
@@ -151,8 +163,10 @@ namespace Chronicy.Excel
                 extension.Notebooks.SelectStack(selected);
             }
 
-            Stack found = stacks.Find((item) => item.Name == selected.Name);
-            stackDropDown.SelectedItemIndex = stacks.IndexOf(selected);
+            extension.SelectStack(selected);
+
+            int index = stacks.FindIndex((item) => item.Name == selected.Name);
+            stackDropDown.SelectedItemIndex = index;
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)

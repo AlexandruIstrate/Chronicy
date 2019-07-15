@@ -35,7 +35,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public Notebook Get(string id)
+        public Notebook Get(int id)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task<Notebook> GetAsync(string id)
+        public async Task<Notebook> GetAsync(int id)
         {
             try
             {

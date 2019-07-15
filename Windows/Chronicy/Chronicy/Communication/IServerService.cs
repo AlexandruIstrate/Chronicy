@@ -29,7 +29,7 @@ namespace Chronicy.Communication
         IEnumerable<Notebook> GetAll();
 
         [OperationContract(IsOneWay = false)]
-        Notebook Get(string uuid);
+        Notebook Get(int id);
 
         [OperationContract(IsOneWay = false)]
         void Create(Notebook notebook);
@@ -38,7 +38,7 @@ namespace Chronicy.Communication
         void Update(Notebook notebook);
 
         [OperationContract(IsOneWay = false)]
-        void Delete(string uuid);
+        void Delete(int id);
 
         #endregion
 

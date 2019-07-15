@@ -67,7 +67,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
             try
             {
@@ -97,13 +97,13 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public Notebook Get(string id)
+        public Notebook Get(int id)
         {
             // Make sure any pending changes are saved
             Save();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.Uuid == id));
+            List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.ID == id));
 
             if (notebooks.Count < 1)
             {
@@ -113,13 +113,13 @@ namespace Chronicy.Data.Storage
             return notebooks[0];
         }
 
-        public async Task<Notebook> GetAsync(string id)
+        public async Task<Notebook> GetAsync(int id)
         {
             // Make sure any pending changes are saved
             await SaveAsync();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.Uuid == id));
+            List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.ID == id));
 
             if (notebooks.Count < 1)
             {

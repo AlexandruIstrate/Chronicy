@@ -19,7 +19,7 @@
             return $"{ BaseUrl }/notebook";
         }
 
-        public string GetNotebook(string id)
+        public string GetNotebook(int id)
         {
             return $"{ BaseUrl }/notebook?id={ id }";
         }
@@ -29,12 +29,12 @@
             return $"{ BaseUrl }/notebook/create";
         }
 
-        public string DeleteNotebook(string id)
+        public string DeleteNotebook(int id)
         {
             return $"{ BaseUrl }/notebook/delete?id={ id }";
         }
 
-        public string UpdateNotebook(string id)
+        public string UpdateNotebook(int id)
         {
             return $"{ BaseUrl }/notebook/update?id={ id }";
         }

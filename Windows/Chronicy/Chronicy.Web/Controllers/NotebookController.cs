@@ -29,14 +29,14 @@ namespace Chronicy.Web.Controllers
 
         // GET api/notebook?id=5
         [HttpGet]
-        public async Task<ActionResult<Notebook>> GetNotebook(string id)
+        public async Task<ActionResult<Notebook>> GetNotebook(int? id)
         {
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
 
-            return await notebooks.GetAsync(id);
+            return await notebooks.GetAsync(id.Value);
         }
 
         // POST api/notebook/create
@@ -49,15 +49,25 @@ namespace Chronicy.Web.Controllers
 
         // DELETE api/notebook/delete?id=5
         [HttpDelete("delete")]
-        public async Task DeleteNotebook(string id)
+        public async Task DeleteNotebook(int? id)
         {
-            await notebooks.DeleteAsync(id);
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            await notebooks.DeleteAsync(id.Value);
         }
 
         // PUT api/notebook/update
         [HttpPut("update")]
         public async Task UpdateNotebook([FromBody] Notebook notebook)
         {
+            if (notebook == null)
+            {
+                throw new ArgumentNullException(nameof(notebook));
+            }
+
             await notebooks.UpdateAsync(notebook);
         }
     }

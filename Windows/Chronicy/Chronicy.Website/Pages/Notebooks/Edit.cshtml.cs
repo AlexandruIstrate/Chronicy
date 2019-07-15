@@ -22,7 +22,7 @@ namespace Chronicy.Website.Pages.Notebooks
             //dataSource = new SqlDataSource(null);
         }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -30,7 +30,7 @@ namespace Chronicy.Website.Pages.Notebooks
             }
 
             // Get Notebook from database
-            EditedNotebook = await dataSource.GetAsync(id);
+            EditedNotebook = await dataSource.GetAsync(id.Value);
 
             if (EditedNotebook == null)
             {
@@ -54,7 +54,7 @@ namespace Chronicy.Website.Pages.Notebooks
             }
             catch (DataSourceException)
             {
-                if (!(await NotebookExistsAsync(EditedNotebook.Uuid)))
+                if (!(await NotebookExistsAsync(EditedNotebook.ID)))
                 {
                     return NotFound();
                 }
@@ -65,7 +65,7 @@ namespace Chronicy.Website.Pages.Notebooks
             return RedirectToPage("./Index");
         }
 
-        private async Task<bool> NotebookExistsAsync(string id)
+        private async Task<bool> NotebookExistsAsync(int id)
         {
             return (await dataSource.GetAsync(id) != null);
         }

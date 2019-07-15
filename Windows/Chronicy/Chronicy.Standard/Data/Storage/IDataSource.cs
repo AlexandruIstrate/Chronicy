@@ -5,15 +5,15 @@ namespace Chronicy.Data.Storage
 {
     public interface IDataSource<T>
     {
-        T Get(string id);
-        Task<T> GetAsync(string id);
+        T Get(int id);
+        Task<T> GetAsync(int id);
         IEnumerable<T> GetAll();
         Task<IEnumerable<T>> GetAllAsync();
 
         void Create(T item);
         Task CreateAsync(T item);
-        void Delete(string id);
-        Task DeleteAsync(string id);
+        void Delete(int id);
+        Task DeleteAsync(int id);
 
         void Update(T item);
         Task UpdateAsync(T item);

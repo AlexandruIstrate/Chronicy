@@ -91,7 +91,7 @@ namespace Chronicy.Tests.Communication
             throw new NotImplementedException();
         }
 
-        public Notebook Get(string uuid)
+        public Notebook Get(int id)
         {
             throw new NotImplementedException();
         }
@@ -106,7 +106,7 @@ namespace Chronicy.Tests.Communication
             throw new NotImplementedException();
         }
 
-        public void Delete(string uuid)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

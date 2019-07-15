@@ -21,19 +21,14 @@ namespace Chronicy.Website.Pages.Notebooks
             //dataSource = new SqlDataSource(null);
         }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            EditedNotebook = await dataSource.GetAsync(id);
-
-            if (id == null)
-            {
-                return NotFound();
-            }
+            EditedNotebook = await dataSource.GetAsync(id.Value);
 
             return Page();
         }

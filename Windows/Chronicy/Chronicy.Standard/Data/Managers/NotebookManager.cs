@@ -2,6 +2,7 @@
 using Chronicy.Information;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -103,7 +104,7 @@ namespace Chronicy.Data.Managers
 
         public void SelectNotebook(Notebook notebook)
         {
-            SelectedNotebook = GetNotebooks().Find((item) => item.Uuid == notebook.Uuid);
+            SelectedNotebook = GetNotebooks().Find((item) => item.ID == notebook.ID);
             SelectedStack = null;   // Invalidate the stack
 
             if (SelectedNotebook == null)

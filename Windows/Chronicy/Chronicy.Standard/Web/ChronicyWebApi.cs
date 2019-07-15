@@ -104,7 +104,7 @@ namespace Chronicy.Web
             }
         }
 
-        public Notebook GetNotebook(string id)
+        public Notebook GetNotebook(int id)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace Chronicy.Web
             }
         }
 
-        public Task<Notebook> GetNotebookAsync(string id)
+        public Task<Notebook> GetNotebookAsync(int id)
         {
             try
             {
@@ -178,7 +178,7 @@ namespace Chronicy.Web
             }
         }
 
-        public ErrorResponse DeleteNotebook(string id)
+        public ErrorResponse DeleteNotebook(int id)
         {
             try
             {
@@ -194,7 +194,7 @@ namespace Chronicy.Web
             }
         }
 
-        public Task<ErrorResponse> DeleteNotebookAsync(string id)
+        public Task<ErrorResponse> DeleteNotebookAsync(int id)
         {
             try
             {

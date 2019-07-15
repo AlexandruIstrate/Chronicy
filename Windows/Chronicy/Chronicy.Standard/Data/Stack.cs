@@ -49,15 +49,6 @@ namespace Chronicy.Data
             Cards.Remove(card);
         }
 
-        public override string ToString()
-        {
-            StringBuilder builder = new StringBuilder();
-            builder.Append(nameof(Stack)).Append(" {");
-            builder.Append("Name = ").Append(Name);
-            builder.Append(" }");
-            return builder.ToString();
-        }
-
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -71,7 +62,8 @@ namespace Chronicy.Data
             }
 
             Stack other = (Stack)obj;
-            return Name == other.Name &&
+            return ID == other.ID &&
+                   Name == other.Name &&
                    Cards.SequenceEqual(other.Cards);
         }
 
@@ -83,6 +75,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
+                hash = hash * 23 + ID.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Cards.GetHashCode();
                 return hash;

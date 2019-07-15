@@ -39,7 +39,8 @@ namespace Chronicy.Data
             }
 
             Tag other = (Tag)obj;
-            return Name == other.Name &&
+            return ID == other.ID &&
+                   Name == other.Name &&
                    Description == other.Description;
         }
 
@@ -51,6 +52,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
+                hash = hash * 23 + ID.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Description.GetHashCode();
                 return hash;

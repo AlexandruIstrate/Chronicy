@@ -34,7 +34,7 @@ namespace Chronicy.Tests
         [Test]
         public void CanGetNotebook()
         {
-            string id = "ID Here";
+            int id = 0;
 
             Notebook notebook = null;
 
@@ -52,7 +52,7 @@ namespace Chronicy.Tests
         [Test]
         public void CanDeleteNotebook()
         {
-            string id = "ID Here";
+            int id = 0;
 
             ErrorResponse response = null;
 

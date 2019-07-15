@@ -128,9 +128,9 @@ namespace Chronicy.Service.Communication
             return dataSource.GetAll();
         }
 
-        public Notebook Get(string uuid)
+        public Notebook Get(int id)
         {
-            return dataSource.Get(uuid);
+            return dataSource.Get(id);
         }
 
         public void Create(Notebook notebook)
@@ -143,9 +143,9 @@ namespace Chronicy.Service.Communication
             dataSource.Update(notebook);
         }
 
-        public void Delete(string uuid)
+        public void Delete(int id)
         {
-            dataSource.Delete(uuid);
+            dataSource.Delete(id);
         }
     }
 }

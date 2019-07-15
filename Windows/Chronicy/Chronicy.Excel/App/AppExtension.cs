@@ -76,8 +76,8 @@ namespace Chronicy.Excel.App
                 throw new EndpointConnectionException("The endpoint is not connected");
             }
 
-            Service.SendSelectedNotebook(Notebooks.SelectedNotebook);
-            Service.SendSelectedStack(Notebooks.SelectedStack);
+            SelectNotebook(Notebooks.SelectedNotebook);
+            SelectStack(Notebooks.SelectedStack);
         }
 
         public override void SelectDataSource(DataSourceType dataSource)

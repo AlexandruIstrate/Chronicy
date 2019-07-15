@@ -16,44 +16,38 @@ namespace Chronicy.Website.Pages.Notebooks
         [BindProperty]
         public Notebook EditedNotebook { get; set; }
 
-        public DeleteModel()
+        public DeleteModel(ISqlDatabase database)
         {
-            // TODO: SqlConnection
-            //dataSource = new SqlDataSource(null);
+            dataSource = new SqlDataSource(database);
         }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            EditedNotebook = await dataSource.GetAsync(id);
-
-            if (id == null)
-            {
-                return NotFound();
-            }
+            EditedNotebook = await dataSource.GetAsync(id.Value);
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            EditedNotebook = await dataSource.GetAsync(id);
+            EditedNotebook = await dataSource.GetAsync(id.Value);
 
             if (EditedNotebook == null)
             {
                 return NotFound();
             }
 
-            await dataSource.DeleteAsync(id);
+            await dataSource.DeleteAsync(id.Value);
 
             return RedirectToPage("./Index");
         }

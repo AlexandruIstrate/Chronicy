@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace Chronicy.Data
 {
@@ -13,9 +12,6 @@ namespace Chronicy.Data
         public int ID { get; set; }
 
         [DataMember]
-        public string Uuid { get; set; }
-
-        [DataMember]
         public string Name { get; set; }
 
         [DataMember]
@@ -23,14 +19,12 @@ namespace Chronicy.Data
 
         public Notebook(string name)
         {
-            Uuid = Guid.NewGuid().ToString();
             Name = name;
             Stacks = new List<Stack>();
         }
 
         public Notebook()
         {
-            Uuid = Guid.NewGuid().ToString();
             Name = string.Empty;
             Stacks = new List<Stack>();
         }
@@ -55,17 +49,6 @@ namespace Chronicy.Data
             Stacks.Remove(stack);
         }
 
-        public override string ToString()
-        {
-            StringBuilder builder = new StringBuilder();
-            builder.Append(nameof(Notebook)).Append(" {");
-            builder.Append("Uuid = ").Append(Uuid).Append(", ");
-            builder.Append("Name = ").Append(Name).Append(", ");
-            builder.Append("Stacks = ").Append(string.Join(", ", Stacks.ConvertAll((item) => item.ToString())));
-            builder.Append(" }");
-            return builder.ToString();
-        }
-
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -80,7 +63,7 @@ namespace Chronicy.Data
 
             Notebook other = (Notebook)obj;
 
-            return Uuid == other.Uuid &&
+            return ID == other.ID &&
                    Name == other.Name &&
                    Stacks.SequenceEqual(other.Stacks);
         }
@@ -93,7 +76,7 @@ namespace Chronicy.Data
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + Uuid.GetHashCode();
+                hash = hash * 23 + ID.GetHashCode();
                 hash = hash * 23 + Name.GetHashCode();
                 hash = hash * 23 + Stacks.GetHashCode();
                 return hash;

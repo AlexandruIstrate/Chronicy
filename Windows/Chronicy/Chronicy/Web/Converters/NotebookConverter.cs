@@ -14,7 +14,7 @@ namespace Chronicy.Web.Converters
         {
             return new Models.Notebook
             {
-                Id = value.Uuid,
+                Id = value.ID,
                 Name = value.Name,
                 Stacks = value.Stacks.ToList().ConvertAll(input => stackConverter.Value.Convert(input))
             };
@@ -24,7 +24,7 @@ namespace Chronicy.Web.Converters
         {
             return new Data.Notebook(value.Name)
             {
-                Uuid = value.Id,
+                ID = value.Id,
                 Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.ReverseConvert(input))
             };
         }

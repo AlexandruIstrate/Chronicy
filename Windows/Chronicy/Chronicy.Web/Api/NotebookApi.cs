@@ -24,22 +24,22 @@ namespace Chronicy.Web.Api
             return dataSource.CreateAsync(notebook);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             dataSource.Delete(id);
         }
 
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(int id)
         {
             return dataSource.DeleteAsync(id);
         }
 
-        public Notebook Get(string id)
+        public Notebook Get(int id)
         {
             return dataSource.Get(id);
         }
 
-        public Task<Notebook> GetAsync(string id)
+        public Task<Notebook> GetAsync(int id)
         {
             return dataSource.GetAsync(id);
         }

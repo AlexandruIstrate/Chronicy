@@ -26,22 +26,22 @@ namespace Chronicy.Excel.Data
             throw new NotSupportedException(NotSupportedMessage);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             service.Delete(id);
         }
 
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(int id)
         {
             throw new NotSupportedException(NotSupportedMessage);
         }
 
-        public Notebook Get(string id)
+        public Notebook Get(int id)
         {
             return service.Get(id);
         }
 
-        public Task<Notebook> GetAsync(string id)
+        public Task<Notebook> GetAsync(int id)
         {
             throw new NotSupportedException(NotSupportedMessage);
         }

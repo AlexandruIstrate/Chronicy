@@ -11,8 +11,8 @@ namespace Chronicy.Web.Api
         IEnumerable<Notebook> GetAll();
         Task<IEnumerable<Notebook>> GetAllAsync();
 
-        Notebook Get(string id);
-        Task<Notebook> GetAsync(string id);
+        Notebook Get(int id);
+        Task<Notebook> GetAsync(int id);
 
         void Create(Notebook notebook);
         Task CreateAsync(Notebook notebook);
@@ -20,7 +20,7 @@ namespace Chronicy.Web.Api
         void Update(Notebook notebook);
         Task UpdateAsync(Notebook notebook);
 
-        void Delete(string id);
-        Task DeleteAsync(string id);
+        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
