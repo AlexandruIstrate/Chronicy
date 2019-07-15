@@ -26,7 +26,8 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                return null;
+                //return null;
+                return new ChronicyUser();
             }
             catch (Exception)
             {
@@ -35,102 +36,37 @@ namespace Chronicy.Website.Stores
             }
         }
 
-        public async Task<string> GetEmailAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public Task<string> GetEmailAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            try
-            {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id)
-                });
-
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                string email = (string)dataRow[Columns.Email];
-                return email;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                // The user does not exist
-                return null;
-            }
-            catch (Exception)
-            {
-                // TODO: Handle
-                throw;
-            }
+            return Task.FromResult(user.Email);
         }
 
         public Task<bool> GetEmailConfirmedAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.EmailConfirmed);
         }
 
-        public async Task<string> GetNormalizedEmailAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public Task<string> GetNormalizedEmailAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            try
-            {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id)
-                });
-
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                string email = (string)dataRow[Columns.NormalizedEmail];
-                return email;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                // The user does not exist
-                return null;
-            }
-            catch (Exception)
-            {
-                // TODO: Handle
-                throw;
-            }
+            return Task.FromResult(user.NormalizedEmail);
         }
 
-        public async Task SetEmailAsync(ChronicyUser user, string email, CancellationToken cancellationToken)
+        public Task SetEmailAsync(ChronicyUser user, string email, CancellationToken cancellationToken)
         {
-            try
-            {
-                await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id),
-                    new SqlParameter(Parameters.Email, email)
-                });
-            }
-            catch (Exception)
-            {
-                // Handle
-                throw;
-            }
+            user.Email = email;
+            return Task.CompletedTask;
         }
 
         public Task SetEmailConfirmedAsync(ChronicyUser user, bool confirmed, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            user.EmailConfirmed = confirmed;
+            return Task.CompletedTask;
         }
 
-        public async Task SetNormalizedEmailAsync(ChronicyUser user, string normalizedEmail, CancellationToken cancellationToken)
+        public Task SetNormalizedEmailAsync(ChronicyUser user, string normalizedEmail, CancellationToken cancellationToken)
         {
-            try
-            {
-                await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id),
-                    new SqlParameter(Parameters.NormalizedEmail, normalizedEmail)
-                });
-            }
-            catch (Exception)
-            {
-                // Handle
-                throw;
-            }
+            user.NormalizedEmail = normalizedEmail;
+            return Task.CompletedTask;
         }
     }
 }

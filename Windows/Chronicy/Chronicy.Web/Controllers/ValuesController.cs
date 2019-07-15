@@ -26,13 +26,7 @@ namespace ChronicyAPI.Controllers
         {
             try
             {
-                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter("@username", "%"),
-                    new SqlParameter("@email", "%"),
-                    new SqlParameter("@phone", "%")
-                });
-
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.Read, new List<SqlParameter> { });
                 DataTable dataTable = dataSet.Tables[0];
 
                 StringBuilder stringBuilder = new StringBuilder();

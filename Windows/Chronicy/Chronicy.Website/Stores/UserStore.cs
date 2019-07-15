@@ -25,7 +25,6 @@ namespace Chronicy.Website.Stores
             {
                 await database.RunNonQueryProcedureAsync(SqlProcedures.User.Create, new List<SqlParameter>
                 {
-                    new SqlParameter(Parameters.UserID, user.Id),
                     new SqlParameter(Parameters.UserName, user.UserName),
                     new SqlParameter(Parameters.NormalizedUserName, user.NormalizedUserName),
                     new SqlParameter(Parameters.Email, user.Email),
@@ -78,7 +77,9 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                return null;
+                //return null;
+
+                return new ChronicyUser();
             }
             catch (Exception)
             {
@@ -101,7 +102,9 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                return null;
+                //return null;
+
+                return new ChronicyUser();
             }
             catch (Exception)
             {
@@ -110,117 +113,31 @@ namespace Chronicy.Website.Stores
             }
         }
 
-        public async Task<string> GetNormalizedUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public Task<string> GetNormalizedUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            try
-            {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id)
-                });
-
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                string username = (string)dataRow[Columns.NormalizedUserName];
-                return username.ToUpper();
-            }
-            catch (IndexOutOfRangeException)
-            {
-                // The user does not exist
-                return null;
-            }
-            catch (Exception)
-            {
-                // TODO: Handle
-                throw;
-            }
+            return Task.FromResult(user.NormalizedUserName);
         }
 
-        public async Task<string> GetUserIdAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public Task<string> GetUserIdAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            try
-            {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserName, user.UserName)
-                });
-
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                return (string)dataRow[Columns.UserID];
-            }
-            catch (IndexOutOfRangeException)
-            {
-                // The user does not exist
-                return null;
-            }
-            catch (Exception)
-            {
-                // TODO: Handle
-                throw;
-            }
+            return Task.FromResult(user.Id.ToString());
         }
 
-        public async Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            try
-            {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id)
-                });
-
-                DataTable dataTable = dataSet.Tables[0];
-                DataRow dataRow = dataTable.Rows[0];
-
-                return (string)dataRow[Columns.UserName];
-            }
-            catch (IndexOutOfRangeException)
-            {
-                // The user does not exist
-                return null;
-            }
-            catch (Exception)
-            {
-                // TODO: Handle
-                throw;
-            }
+            return Task.FromResult(user.UserName);
         }
 
-        public async Task SetNormalizedUserNameAsync(ChronicyUser user, string normalizedName, CancellationToken cancellationToken)
+        public Task SetNormalizedUserNameAsync(ChronicyUser user, string normalizedName, CancellationToken cancellationToken)
         {
-            try
-            {
-                await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id),
-                    new SqlParameter(Parameters.NormalizedUserName, user.NormalizedUserName),
-                });
-            }
-            catch (Exception)
-            {
-                // Handle
-                throw;
-            }
+            user.NormalizedUserName = normalizedName;
+            return Task.CompletedTask;
         }
 
-        public async Task SetUserNameAsync(ChronicyUser user, string userName, CancellationToken cancellationToken)
+        public Task SetUserNameAsync(ChronicyUser user, string userName, CancellationToken cancellationToken)
         {
-            try
-            {
-                await database.RunNonQueryProcedureAsync(SqlProcedures.User.Update, new List<SqlParameter>
-                {
-                    new SqlParameter(Parameters.UserID, user.Id),
-                    new SqlParameter(Parameters.UserName, user.UserName),
-                });
-            }
-            catch (Exception)
-            {
-                // Handle
-                throw;
-            }
+            user.UserName = userName;
+            return Task.CompletedTask;
         }
 
         public async Task<IdentityResult> UpdateAsync(ChronicyUser user, CancellationToken cancellationToken)

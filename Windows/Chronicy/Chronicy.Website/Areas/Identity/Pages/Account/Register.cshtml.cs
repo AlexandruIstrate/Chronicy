@@ -76,11 +76,8 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            //ChronicyUser user = new ChronicyUser { UserName = Input.Username, Email = Input.Email };
-            //IdentityResult result = await userManager.CreateAsync(user, Input.Password);
-
-            ChronicyUser user = new ChronicyUser { UserName = "Test", Email = "test@gmail.com" };
-            IdentityResult result = await userManager.CreateAsync(user, "thisisatestpassword");
+            ChronicyUser user = new ChronicyUser { UserName = Input.Username, Email = Input.Email };
+            IdentityResult result = await userManager.CreateAsync(user, Input.Password);
 
             if (!result.Succeeded)
             {
