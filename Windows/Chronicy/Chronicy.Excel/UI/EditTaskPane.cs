@@ -14,13 +14,8 @@ namespace Chronicy.Excel.UI
             InitializeComponent();
         }
 
-        public virtual void OnOk()
-        {
-        }
-
-        public virtual void OnCancel()
-        {
-        }
+        public virtual void OnOk() { }
+        public virtual void OnCancel() { }
 
         private void OnOkClicked(object sender, EventArgs e)
         {

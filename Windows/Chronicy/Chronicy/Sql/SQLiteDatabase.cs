@@ -155,6 +155,9 @@ namespace Chronicy.Sql
 
         public DbSet<Notebook> Notebooks { get; set; }
         public DbSet<Stack> Stacks { get; set; }
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<CustomField> Fields { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         public SQLiteDatabaseContext(SQLiteConnection connection = null)
         {

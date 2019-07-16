@@ -11,6 +11,7 @@ namespace Chronicy.Web.Converters
         {
             return new Models.CustomField
             {
+                ID = value.ID,
                 Name = value.Name,
                 Type = value.Type.ToString(),
                 Value = value.Value.ToString()
@@ -22,7 +23,13 @@ namespace Chronicy.Web.Converters
             try
             {
                 Enum.TryParse(value.Type, out FieldType fieldType);
-                return new Data.CustomField(value.Name, fieldType, ConvertStringToFieldValue(value.Value, fieldType));
+                return new Data.CustomField
+                {
+                    ID = value.ID,
+                    Name = value.Name,
+                    Type = fieldType,
+                    Value = ConvertStringToFieldValue(value.Value, fieldType)
+                };
             }
             catch (Exception e)
             {

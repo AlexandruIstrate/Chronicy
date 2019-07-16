@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Chronicy.Web.Models
 {
-    public class Notebook : ModelBase
+    public class Tag : ModelBase
     {
         [JsonProperty("id")]
         public int ID { get; set; }
@@ -11,7 +10,7 @@ namespace Chronicy.Web.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("stacks")]
-        public List<Stack> Stacks { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

@@ -16,7 +16,7 @@
 
         public string GetNotebooks()
         {
-            return $"{ BaseUrl }/notebook";
+            return $"{ BaseUrl }/notebook/all";
         }
 
         public string GetNotebook(int id)

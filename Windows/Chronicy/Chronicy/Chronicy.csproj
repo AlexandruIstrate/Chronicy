@@ -222,6 +222,7 @@
     <Compile Include="Web\Converters\CustomFieldConverter.cs" />
     <Compile Include="Web\Converters\NotebookConverter.cs" />
     <Compile Include="Web\Converters\StackConverter.cs" />
+    <Compile Include="Web\Converters\TagConverter.cs" />
     <Compile Include="Web\Exceptions\WebApiConnectionException.cs" />
     <Compile Include="Web\Exceptions\WebApiException.cs" />
     <Compile Include="Web\IClient.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Web\Models\ModelBase.cs" />
     <Compile Include="Web\Models\Notebook.cs" />
     <Compile Include="Web\Models\Stack.cs" />
+    <Compile Include="Web\Models\Tag.cs" />
     <Compile Include="Web\Models\Token.cs" />
     <Compile Include="Web\Models\ResponseInfo.cs" />
   </ItemGroup>

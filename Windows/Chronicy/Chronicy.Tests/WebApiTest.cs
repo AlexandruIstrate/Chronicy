@@ -8,7 +8,7 @@ namespace Chronicy.Tests
     [TestFixture]
     public class WebApiTest
     {
-        private ChronicyWebApi webApi = new ChronicyWebApi();
+        private ChronicyWebApi webApi = new ChronicyWebApi("");
 
         [Test]
         public void CanAuthenticate()

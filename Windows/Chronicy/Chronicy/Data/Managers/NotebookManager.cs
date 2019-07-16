@@ -117,7 +117,7 @@ namespace Chronicy.Data.Managers
 
         public void SelectStack(string name)
         {
-            SelectedStack = SelectedNotebook.Stacks.ToList().Find((item) => item.Name == name);
+            SelectedStack = SelectedNotebook.Stacks.Find((item) => item.Name == name);
 
             if (SelectedStack == null)
             {
@@ -137,6 +137,12 @@ namespace Chronicy.Data.Managers
             }
 
             OnStackSelectionChanged();
+        }
+
+        public void ClearSelection()
+        {
+            SelectedNotebook = null;
+            SelectedStack = null;
         }
 
         private void OnNotebooksChanged()

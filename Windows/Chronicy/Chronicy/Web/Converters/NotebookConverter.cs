@@ -1,6 +1,5 @@
 ﻿using Chronicy.Data;
 using System;
-using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
@@ -14,9 +13,9 @@ namespace Chronicy.Web.Converters
         {
             return new Models.Notebook
             {
-                Id = value.ID,
+                ID = value.ID,
                 Name = value.Name,
-                Stacks = value.Stacks.ToList().ConvertAll(input => stackConverter.Value.Convert(input))
+                Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.Convert(input))
             };
         }
 
@@ -24,7 +23,7 @@ namespace Chronicy.Web.Converters
         {
             return new Data.Notebook(value.Name)
             {
-                ID = value.Id,
+                ID = value.ID,
                 Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.ReverseConvert(input))
             };
         }

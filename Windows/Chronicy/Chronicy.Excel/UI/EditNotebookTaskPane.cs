@@ -41,6 +41,13 @@ namespace Chronicy.Excel.UI
             }
 
             nameTextBox.Name = notebook.Name;
+
+            stacksListView.Items.Clear();
+
+            foreach (Stack stack in notebook.Stacks)
+            {
+                stacksListView.Items.Add(stack.Name);
+            }
         }
 
         private void OnLoad(object sender, EventArgs e)

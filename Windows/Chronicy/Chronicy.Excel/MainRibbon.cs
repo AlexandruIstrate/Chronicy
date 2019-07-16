@@ -18,7 +18,6 @@ using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Coll
 
 namespace Chronicy.Excel
 {
-    // TODO: Modularize this more
     public partial class MainRibbon
     {
         private MessageBoxContext informationContext = new MessageBoxContext();
@@ -79,6 +78,9 @@ namespace Chronicy.Excel
                 LoadNotebooks(new List<Notebook>(notebooks));
                 LoadStacks();
             };
+
+            extension.Notebooks.NotebookSelectionChanged += (sender, args) => extension.SelectNotebook(extension.Notebooks.SelectedNotebook);
+            extension.Notebooks.StackSelectionChanged += (sender, args) => extension.SelectStack(extension.Notebooks.SelectedStack);
         }
 
         private void LoadDataSources()
@@ -247,7 +249,11 @@ namespace Chronicy.Excel
                 throw new ArgumentException("The selected value does not match any available data sources");
             }
 
+            extension.Notebooks.ClearSelection();
             extension.SelectDataSource(type);
+
+            LoadNotebooks();
+            LoadStacks();
         }
 
         private void OnNotebookChanged(object sender, RibbonControlEventArgs e)

@@ -16,10 +16,10 @@ namespace Chronicy.Web
 
         public string AccessToken { get; set; }
 
-        public ChronicyWebApi()
+        public ChronicyWebApi(string apiUrl)
         {
             webClient = new ChronicyWebClient();
-            urlBuilder = new ChronicyUrlBuilder("URL Here");
+            urlBuilder = new ChronicyUrlBuilder(apiUrl);
         }
 
         public void Dispose()
@@ -214,15 +214,15 @@ namespace Chronicy.Web
         {
             try
             {
-                return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+                return UploadData<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.ID), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
             }
             catch (HttpRequestException e)
             {
-                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id), e);
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.ID), e);
             }
             catch (Exception e)
             {
-                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id), e);
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.ID), e);
             }
         }
 
@@ -230,15 +230,15 @@ namespace Chronicy.Web
         {
             try
             {
-                return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.Id), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
+                return UploadDataAsync<ErrorResponse>(urlBuilder.UpdateNotebook(notebook.ID), JsonConvert.SerializeObject(notebook), ClientMethod.Put);
             }
             catch (HttpRequestException e)
             {
-                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.Id), e);
+                throw new WebApiConnectionException(urlBuilder.UpdateNotebook(notebook.ID), e);
             }
             catch (Exception e)
             {
-                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.Id), e);
+                throw new WebApiException(urlBuilder.UpdateNotebook(notebook.ID), e);
             }
         }
 

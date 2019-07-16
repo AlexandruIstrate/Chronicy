@@ -6,6 +6,7 @@ namespace Chronicy.Web.Converters
 {
     public class StackConverter : IConverter<Data.Stack, Web.Models.Stack>
     {
+        private Lazy<CustomFieldConverter> fieldConverter = new Lazy<CustomFieldConverter>();
         private Lazy<CardConverter> cardConverter = new Lazy<CardConverter>();
 
         public bool CanReverseConvert => true;
@@ -14,8 +15,10 @@ namespace Chronicy.Web.Converters
         {
             return new Models.Stack
             {
+                ID = value.ID,
                 Name = value.Name,
-                Cards = value.Cards.ToList().ConvertAll(input => cardConverter.Value.Convert(input))
+                Fields = value.Fields.ConvertAll((input) => fieldConverter.Value.Convert(input)),
+                Cards = value.Cards.ConvertAll(input => cardConverter.Value.Convert(input))
             };
         }
 
@@ -23,6 +26,8 @@ namespace Chronicy.Web.Converters
         {
             return new Data.Stack(value.Name)
             {
+                ID = value.ID,
+                Fields = value.Fields.ConvertAll(input => fieldConverter.Value.ReverseConvert(input)),
                 Cards = value.Cards.ConvertAll(input => cardConverter.Value.ReverseConvert(input))
             };
         }

@@ -32,9 +32,9 @@
             this.notebookComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.stackComboBox = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fieldsGridView = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +59,8 @@
             this.notebookComboBox.Name = "notebookComboBox";
             this.notebookComboBox.Size = new System.Drawing.Size(234, 21);
             this.notebookComboBox.TabIndex = 2;
+            this.notebookComboBox.SelectedIndexChanged += new System.EventHandler(this.OnNotebookChanged);
+            this.notebookComboBox.SelectionChangeCommitted += new System.EventHandler(this.OnNotebookChangeCommited);
             // 
             // label2
             // 
@@ -80,17 +82,19 @@
             this.stackComboBox.Name = "stackComboBox";
             this.stackComboBox.Size = new System.Drawing.Size(234, 21);
             this.stackComboBox.TabIndex = 5;
+            this.stackComboBox.SelectedIndexChanged += new System.EventHandler(this.OnStackChanged);
             // 
-            // dataGridView1
+            // fieldsGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.fieldsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(291, 499);
-            this.dataGridView1.TabIndex = 6;
+            this.fieldsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.fieldsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.fieldsGridView.Location = new System.Drawing.Point(6, 98);
+            this.fieldsGridView.Name = "fieldsGridView";
+            this.fieldsGridView.Size = new System.Drawing.Size(291, 435);
+            this.fieldsGridView.TabIndex = 6;
             // 
             // label3
             // 
@@ -106,15 +110,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.fieldsGridView);
             this.Controls.Add(this.stackComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.notebookComboBox);
             this.Name = "NotebooksTaskPane";
-            this.Size = new System.Drawing.Size(300, 600);
             this.Load += new System.EventHandler(this.OnLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Controls.SetChildIndex(this.notebookComboBox, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.stackComboBox, 0);
+            this.Controls.SetChildIndex(this.fieldsGridView, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.fieldsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,7 +134,7 @@
         private System.Windows.Forms.ComboBox notebookComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox stackComboBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView fieldsGridView;
         private System.Windows.Forms.Label label3;
     }
 }

@@ -18,7 +18,9 @@ namespace Chronicy.Web
 
         public ChronicyWebClient(Encoding encoding = null)
         {
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             client = new HttpClient();
+
             Encoding = encoding ?? Encoding.UTF8;
         }
 

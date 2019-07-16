@@ -131,9 +131,9 @@ namespace Chronicy.Data.Storage
 
         public IEnumerable<Notebook> GetAll()
         {
-            // Make sure any pending changes are saved
             try
             {
+                // Make sure any pending changes are saved
                 Save();
 
                 DbSet<Notebook> notebooks = database.Context.Set<Notebook>();
@@ -174,7 +174,7 @@ namespace Chronicy.Data.Storage
 
                 foreach (Stack stack in item.Stacks)
                 {
-                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+                    bool exists = existing.Stacks.Exists((iter) => iter.Name == stack.Name);
 
                     if (exists)
                     {
@@ -202,7 +202,7 @@ namespace Chronicy.Data.Storage
 
                 foreach (Stack stack in item.Stacks)
                 {
-                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+                    bool exists = existing.Stacks.Exists((iter) => iter.Name == stack.Name);
 
                     if (exists)
                     {
