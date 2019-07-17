@@ -8,6 +8,8 @@
             public const string Read = "dbo.UserRead";
             public const string Update = "dbo.UserUpdate";
             public const string Delete = "dbo.UserDelete";
+
+            public const string AuthenticateForToken = "dbo.UserAuthCheck";
         }
 
         public static class Role
@@ -25,7 +27,5 @@
             public const string Update = "UpdateNotebook";
             public const string Delete = "DeleteNotebook";
         }
-
-        public const string AuthenticateForToken = "AuthenticateForToken";
     }
 }

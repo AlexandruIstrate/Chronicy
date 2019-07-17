@@ -12,9 +12,28 @@ namespace Chronicy.Website.Stores
 {
     public partial class UserStore : IUserPasswordStore<ChronicyUser>
     {
-        public Task<string> GetPasswordHashAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public async Task<string> GetPasswordHashAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            return Task.FromResult(user.PasswordHash);
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.UserID, user.Id)
+                });
+
+                ChronicyUser databaseUser = GetUserFromDataSet(dataSet);
+                return databaseUser.PasswordHash;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return user.PasswordHash;
+            }
+            catch (Exception)
+            {
+                // TODO: Handle
+                throw;
+            }
         }
 
         public Task<bool> HasPasswordAsync(ChronicyUser user, CancellationToken cancellationToken)

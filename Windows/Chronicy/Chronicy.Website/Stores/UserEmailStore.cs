@@ -26,8 +26,7 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                //return null;
-                return new ChronicyUser();
+                return new ChronicyUser { NormalizedEmail = normalizedEmail };
             }
             catch (Exception)
             {

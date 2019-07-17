@@ -12,9 +12,9 @@ namespace Chronicy.Web.Controllers
     public class NotebookController : ControllerBase
     {
         private readonly INotebook notebooks;
-        private readonly TokenManager tokenManager;
+        private readonly ITokenManager tokenManager;
 
-        public NotebookController(INotebook notebooks, TokenManager tokenManager)
+        public NotebookController(INotebook notebooks, ITokenManager tokenManager)
         {
             this.notebooks = notebooks;
             this.tokenManager = tokenManager;
@@ -24,7 +24,55 @@ namespace Chronicy.Web.Controllers
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Notebook>>> GetNotebooks()
         {
-            return new List<Notebook>(await notebooks.GetAllAsync());
+            // TODO!!!: Make a wrapper with a root node named "Items"
+
+            return new List<Notebook> {
+                new Notebook
+                {
+                    Name = "Notebook1",
+                    Stacks = new List<Stack>
+                    {
+                        new Stack
+                        {
+                            Name = "Stack1",
+                            Fields = new List<CustomField>
+                            {
+                                new CustomField { Name = "Field1", Type = FieldType.String },
+                                new CustomField { Name = "Field2", Type = FieldType.Number }
+                            },
+                            Cards = new List<Card>
+                            {
+                                new Card
+                                {
+                                    Name = "Card1",
+                                    Comment = "Comment1",
+                                    Fields = new List<CustomField>
+                                    {
+                                        new CustomField { Name = "Field1", Type = FieldType.String, Value = "Hello, world!" },
+                                        new CustomField { Name = "Field2", Type = FieldType.Number, Value = 1776 }
+                                    },
+                                    Tags = new List<Tag>
+                                    {
+                                        new Tag { Name = "Tag1", Description = "Description1" }
+                                    }
+                                }
+                            }
+                        },
+                        new Stack
+                        {
+                            Name = "Stack2",
+                            Fields = new List<CustomField>
+                            {
+                                new CustomField { Name = "Field2", Type = FieldType.Number },
+                                new CustomField { Name = "Field3", Type = FieldType.Number },
+                                new CustomField { Name = "Field5", Type = FieldType.String }
+                            }
+                        }
+                    }
+                }
+            };
+
+            //return new List<Notebook>(await notebooks.GetAllAsync());
         }
 
         // GET api/notebook?id=5

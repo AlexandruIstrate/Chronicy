@@ -1,11 +1,12 @@
-﻿using Chronicy.Web.Exceptions;
+﻿using Chronicy.Data.Encoders;
+using Chronicy.Web.Exceptions;
 using Chronicy.Web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using HeaderCollection = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Chronicy.Web
 {
@@ -14,12 +15,15 @@ namespace Chronicy.Web
         private IClient webClient;
         private ChronicyUrlBuilder urlBuilder;
 
-        public string AccessToken { get; set; }
+        private IEncoder encoder;
+
+        public Token AccessToken { get; set; }
 
         public ChronicyWebApi(string apiUrl)
         {
             webClient = new ChronicyWebClient();
             urlBuilder = new ChronicyUrlBuilder(apiUrl);
+            encoder = new Base64Encoder();
         }
 
         public void Dispose()
@@ -32,13 +36,14 @@ namespace Chronicy.Web
         {
             try
             {
-                JObject body = new JObject
+                HeaderCollection headers = new HeaderCollection
                 {
-                    { "username", username },
-                    { "password", password }
+                    { "Authorization", $"Basic { encoder.Encode($"{ username }:{ password }") }" },
+                    { "Content-Type", "application/json" }
                 };
 
-                return UploadData<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+                AccessToken = UploadData<Token>(urlBuilder.GetToken(), string.Empty, ClientMethod.Post, headers);
+                return AccessToken;
             }
             catch (HttpRequestException e)
             {
@@ -50,17 +55,18 @@ namespace Chronicy.Web
             }
         }
 
-        public Task<Token> AuthenticateAsync(string username, string password)
+        public async Task<Token> AuthenticateAsync(string username, string password)
         {
             try
             {
-                JObject body = new JObject
+                HeaderCollection headers = new HeaderCollection
                 {
-                    { "username", username },
-                    { "password", password }
+                    { "Authorization", $"Basic { encoder.Encode($"{ username }:{ password }") }" },
+                    { "Content-Type", "application/json" }
                 };
 
-                return UploadDataAsync<Token>(urlBuilder.GetToken(), body.ToString(Formatting.None), ClientMethod.Post);
+                AccessToken = await UploadDataAsync<Token>(urlBuilder.GetToken(), string.Empty, ClientMethod.Post, headers);
+                return AccessToken;
             }
             catch (HttpRequestException e)
             {
@@ -242,60 +248,48 @@ namespace Chronicy.Web
             }
         }
 
-        private T UploadData<T>(string url, string data, ClientMethod method) where T : ModelBase
+        private T UploadData<T>(string url, string data, ClientMethod method, HeaderCollection headers = null) where T : ModelBase
         {
-            // TODO: Create header name constants (or use existing .NET Framework ones)
-            Dictionary<string, string> headers = new Dictionary<string, string>
-            {
-                { "Authorization", AccessToken },
-                { "Content-Type", "application/json" }
-            };
-
-            Tuple<ResponseInfo, T> response = webClient.UploadJson<T>(url, data, method, headers);
+            Tuple<ResponseInfo, T> response = webClient.UploadJson<T>(url, data, method, headers ?? DefaultHeaders);
             response.Item2.SetResponseInfo(response.Item1);
             return response.Item2;
         }
 
-        private async Task<T> UploadDataAsync<T>(string url, string data, ClientMethod method) where T : ModelBase
+        private async Task<T> UploadDataAsync<T>(string url, string data, ClientMethod method, HeaderCollection headers = null) where T : ModelBase
         {
-            // TODO: Create header name constants (or use existing .NET Framework ones)
-            Dictionary<string, string> headers = new Dictionary<string, string>
-            {
-                { "Authorization", AccessToken },
-                { "Content-Type", "application/json" }
-            };
-
-            Tuple<ResponseInfo, T> response = await webClient.UploadJsonAsync<T>(url, data, method, headers).ConfigureAwait(false);
+            Tuple<ResponseInfo, T> response = await webClient.UploadJsonAsync<T>(url, data, method, headers ?? DefaultHeaders).ConfigureAwait(false);
             response.Item2.SetResponseInfo(response.Item1);
             return response.Item2;
         }
 
-        private T DownloadData<T>(string url) where T : ModelBase
+        private T DownloadData<T>(string url, HeaderCollection headers = null) where T : ModelBase
         {
-            Tuple<ResponseInfo, T> response = DownloadDataAlt<T>(url);
+            Tuple<ResponseInfo, T> response = DownloadDataAlt<T>(url, headers ?? DefaultHeaders);
             response.Item2.SetResponseInfo(response.Item1);
             return response.Item2;
         }
 
-        private async Task<T> DownloadDataAsync<T>(string url) where T : ModelBase
+        private async Task<T> DownloadDataAsync<T>(string url, HeaderCollection headers = null) where T : ModelBase
         {
-            Tuple<ResponseInfo, T> response = await DownloadDataAltAsync<T>(url).ConfigureAwait(false);
+            Tuple<ResponseInfo, T> response = await DownloadDataAltAsync<T>(url, headers ?? DefaultHeaders).ConfigureAwait(false);
             response.Item2.SetResponseInfo(response.Item1);
             return response.Item2;
         }
 
-        private Tuple<ResponseInfo, T> DownloadDataAlt<T>(string url)
+        private Tuple<ResponseInfo, T> DownloadDataAlt<T>(string url, HeaderCollection headers)
         {
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("Authorization", AccessToken);
             return webClient.DownloadJson<T>(url, headers);
         }
 
-        private Task<Tuple<ResponseInfo, T>> DownloadDataAltAsync<T>(string url)
+        private Task<Tuple<ResponseInfo, T>> DownloadDataAltAsync<T>(string url, HeaderCollection headers)
         {
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("Authorization", AccessToken);
             return webClient.DownloadJsonAsync<T>(url, headers);
         }
+
+        public HeaderCollection DefaultHeaders => new HeaderCollection
+        {
+            { "Authorization", AccessToken.AccessToken },
+            { "Content-Type", "application/json" }
+        };
     }
 }

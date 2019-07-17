@@ -77,9 +77,7 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                //return null;
-
-                return new ChronicyUser();
+                return new ChronicyUser { Id = Convert.ToInt32(userId) };
             }
             catch (Exception)
             {
@@ -102,9 +100,7 @@ namespace Chronicy.Website.Stores
             catch (IndexOutOfRangeException)
             {
                 // The user does not exist
-                //return null;
-
-                return new ChronicyUser();
+                return new ChronicyUser { NormalizedUserName = normalizedUserName };
             }
             catch (Exception)
             {
@@ -118,14 +114,52 @@ namespace Chronicy.Website.Stores
             return Task.FromResult(user.NormalizedUserName);
         }
 
-        public Task<string> GetUserIdAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public async Task<string> GetUserIdAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            return Task.FromResult(user.Id.ToString());
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.UserID, user.Id)
+                });
+
+                ChronicyUser databaseUser = GetUserFromDataSet(dataSet);
+                return databaseUser.Id.ToString();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return user.Id.ToString();
+            }
+            catch (Exception)
+            {
+                // TODO: Handle
+                throw;
+            }
         }
 
-        public Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
+        public async Task<string> GetUserNameAsync(ChronicyUser user, CancellationToken cancellationToken)
         {
-            return Task.FromResult(user.UserName);
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.Read, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.UserID, user.Id)
+                });
+
+                ChronicyUser databaseUser = GetUserFromDataSet(dataSet);
+                return databaseUser.UserName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                // The user does not exist
+                return user.UserName;
+            }
+            catch (Exception)
+            {
+                // TODO: Handle
+                throw;
+            }
         }
 
         public Task SetNormalizedUserNameAsync(ChronicyUser user, string normalizedName, CancellationToken cancellationToken)
@@ -168,18 +202,16 @@ namespace Chronicy.Website.Stores
             DataTable dataTable = dataSet.Tables[0];
             DataRow dataRow = dataTable.Rows[0];
 
-            ChronicyUser user = new ChronicyUser
+            return new ChronicyUser
             {
                 Id                  = Convert.ToInt32(dataRow[Columns.UserID]),
                 UserName            = (string)dataRow[Columns.UserName],
                 NormalizedUserName  = (string)dataRow[Columns.NormalizedUserName],
                 Email               = (string)dataRow[Columns.Email],
                 NormalizedEmail     = (string)dataRow[Columns.NormalizedEmail],
-                PhoneNumber         = (string)dataRow[Columns.Phone],
+                PhoneNumber         = dataRow[Columns.Phone].ToString(),    // TODO: Temporary
                 PasswordHash        = (string)dataRow[Columns.Password]
             };
-
-            return user;
         }
 
         public static class Parameters
@@ -201,7 +233,7 @@ namespace Chronicy.Website.Stores
             public const string Email               = "email";
             public const string NormalizedEmail     = "n_email";
             public const string Phone               = "phone";
-            public const string Password            = "password";
+            public const string Password            = "passwordHash";
         }
     }
 }

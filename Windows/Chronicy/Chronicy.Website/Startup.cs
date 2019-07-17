@@ -43,7 +43,10 @@ namespace Chronicy.Website
             // Add identity types
             services.AddIdentity<ChronicyUser, ChronicyRole>(config =>
             {
-                config.SignIn.RequireConfirmedEmail = true;
+                //config.SignIn.RequireConfirmedEmail = true;
+
+                // Debug only
+                config.SignIn.RequireConfirmedEmail = false;
             })
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
@@ -73,7 +76,7 @@ namespace Chronicy.Website
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 1;
-                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequiredUniqueChars = 1;
 
                 // Lockout settings
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
