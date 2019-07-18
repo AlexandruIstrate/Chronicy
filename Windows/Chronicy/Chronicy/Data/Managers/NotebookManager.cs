@@ -1,9 +1,6 @@
 ﻿using Chronicy.Data.Storage;
-using Chronicy.Information;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Managers
@@ -16,8 +13,8 @@ namespace Chronicy.Data.Managers
             get => dataSource;
             set
             {
-                DataSourceChanged?.Invoke(this, EventArgs.Empty);
                 dataSource = value;
+                DataSourceChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -143,6 +140,16 @@ namespace Chronicy.Data.Managers
         {
             SelectedNotebook = null;
             SelectedStack = null;
+        }
+
+        public void UpdateNotebook(Notebook notebook)
+        {
+            dataSource.Update(notebook);
+        }
+
+        public Task UpdateNotebookAsync(Notebook notebook)
+        {
+            return dataSource.UpdateAsync(notebook);
         }
 
         private void OnNotebooksChanged()

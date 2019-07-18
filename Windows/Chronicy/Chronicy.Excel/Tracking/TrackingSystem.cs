@@ -11,10 +11,13 @@ namespace Chronicy.Excel.Tracking
 
         public delegate void PostedEventHandler(TrackingEvent trackingEvent);
 
+        public bool Enabled { get; set; }
+
         public TrackingSystem()
         {
             recordedEvents = new List<TrackingEvent>();
             eventHandlers = new Dictionary<Type, PostedEventHandler>();
+            Enabled = true;
         }
 
         public void Post<T>(TrackingEvent trackingEvent)
@@ -25,6 +28,11 @@ namespace Chronicy.Excel.Tracking
             }
 
             recordedEvents.Add(trackingEvent);
+
+            if (!Enabled)
+            {
+                return;
+            }
 
             try
             {

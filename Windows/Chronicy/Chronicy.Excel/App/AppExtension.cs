@@ -1,4 +1,5 @@
-﻿using Chronicy.Communication;
+﻿using Chronicy.Authentication;
+using Chronicy.Communication;
 using Chronicy.Data;
 using Chronicy.Data.Managers;
 using Chronicy.Data.Storage;
@@ -26,10 +27,12 @@ namespace Chronicy.Excel.App
         private readonly TrackingSystem tracking;
         private readonly NotebookManager notebooks;
         private readonly HistoryManager history;
+        private readonly CredentialsManager credentialsManager;
 
         public override TrackingSystem Tracking => tracking;
         public override NotebookManager Notebooks => notebooks;
         public override HistoryManager History => history;
+        public override ICredentialsManager CredentialsManager => credentialsManager;
 
         public AppExtension()
         {
@@ -41,6 +44,7 @@ namespace Chronicy.Excel.App
             tracking = new TrackingSystem();
             notebooks = new NotebookManager(null);
             history = new HistoryManager();
+            credentialsManager = new CredentialsManager(null); // TODO: WebApi
 
             InitializeNotebooks();
             InitializeTracking();
@@ -196,8 +200,8 @@ namespace Chronicy.Excel.App
 
         private void InitializeHistory()
         {
-            History.Register(historyProvider);
             Notebooks.DataSourceChanged += (sender, args) => historyProvider.DataSource = Notebooks.DataSource;
+            History.Register(historyProvider);
         }
     }
 }

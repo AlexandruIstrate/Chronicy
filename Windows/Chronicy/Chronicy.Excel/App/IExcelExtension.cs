@@ -1,4 +1,5 @@
-﻿using Chronicy.Data;
+﻿using Chronicy.Authentication;
+using Chronicy.Data;
 using Chronicy.Data.Managers;
 using Chronicy.Data.Storage;
 using Chronicy.Excel.History;
@@ -23,9 +24,11 @@ namespace Chronicy.Excel.App
             set { connected = value; ConnectionChanged?.Invoke(Connected); }
         }
 
+        // Change these to abstract types
         public abstract TrackingSystem Tracking { get; }
         public abstract NotebookManager Notebooks { get; }
         public abstract HistoryManager History { get; }
+        public abstract ICredentialsManager CredentialsManager { get; }
 
         public delegate void StateUpdateHandler(bool enabled);
         public delegate void ConnectionUpdateHandler(bool connected);

@@ -3,6 +3,7 @@ using Chronicy.Sql;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
@@ -141,6 +142,11 @@ namespace Chronicy.Data.Storage
                 foreach (Notebook notebook in notebooks)
                 {
                     database.Context.Entry(notebook).Collection(n => n.Stacks).Load();
+
+                    foreach (Stack stack in notebook.Stacks)
+                    {
+                        database.Context.Entry(stack).Collection(s => s.Fields).Load();
+                    }
                 }
 
                 return notebooks;
@@ -165,6 +171,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
+        // TODO: Clean this up and use an algorithm that is scalable for child items
         public void Update(Notebook item)
         {
             try
@@ -172,16 +179,29 @@ namespace Chronicy.Data.Storage
                 SQLiteDatabaseContext context = database.Context;
                 Notebook existing = context.Notebooks.Find(item.ID);
 
+                // TODO: Change this
                 foreach (Stack stack in item.Stacks)
                 {
                     bool exists = existing.Stacks.Exists((iter) => iter.Name == stack.Name);
 
-                    if (exists)
+                    if (!exists)
                     {
-                        continue;
+                        existing.Stacks.Add(stack);
                     }
 
-                    existing.Stacks.Add(stack);
+                    Stack inserted = context.Stacks.Find((iter) => iter.Name == stack.Name).First();
+
+                    foreach (CustomField field in stack.Fields)
+                    {
+                        bool fieldExists = inserted.Fields.Exists((iter) => iter.Name == field.Name);
+
+                        if (fieldExists)
+                        {
+                            continue;
+                        }
+
+                        inserted.Fields.Add(field);
+                    }
                 }
 
                 context.SaveChanges();
@@ -193,6 +213,7 @@ namespace Chronicy.Data.Storage
             }
         }
 
+        // TODO: Clean this up and use an algorithm that is scalable for child items
         public async Task UpdateAsync(Notebook item)
         {
             try
@@ -200,16 +221,22 @@ namespace Chronicy.Data.Storage
                 SQLiteDatabaseContext context = database.Context;
                 Notebook existing = await context.Notebooks.FindAsync(item.ID);
 
+                // TODO: Change this
                 foreach (Stack stack in item.Stacks)
                 {
                     bool exists = existing.Stacks.Exists((iter) => iter.Name == stack.Name);
 
-                    if (exists)
+                    if (!exists)
                     {
-                        continue;
+                        existing.Stacks.Add(stack);
                     }
 
-                    existing.Stacks.Add(stack);
+                    Stack inserted = context.Stacks.Find((iter) => iter.Name == stack.Name).First();
+
+                    foreach (CustomField field in stack.Fields)
+                    {
+                        inserted.Fields.Add(field);
+                    }
                 }
 
                 await context.SaveChangesAsync();

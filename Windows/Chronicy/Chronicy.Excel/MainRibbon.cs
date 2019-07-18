@@ -1,6 +1,7 @@
 ﻿using Chronicy.Data;
 using Chronicy.Data.Storage;
 using Chronicy.Excel.App;
+using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
 using Chronicy.Excel.Tracking;
@@ -40,8 +41,11 @@ namespace Chronicy.Excel
 
         private void SetupActivationCallbacks()
         {
+            extension.ConnectionChanged += (connected) => SetGroupState(connected);
+            extension.StateChanged += (enabled) => extension.Tracking.Enabled = enabled;
+
             SetGroupState(false);
-            extension.ConnectionChanged += (enabled) => SetGroupState(enabled);
+            extension.Enabled = false;
         }
 
         private void InitializeTrackingMenus()
@@ -139,6 +143,7 @@ namespace Chronicy.Excel
             }
 
             List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
+                                    //.FindAll((item) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(item.Fields)));
 
             RibbonUI.InvalidateControl(stackDropDown.Id);
             stackDropDown.Items.Clear();
@@ -301,16 +306,23 @@ namespace Chronicy.Excel
         {
             NotebooksTaskPane control = new NotebooksTaskPane();
             control.Notebooks = extension.Notebooks.GetNotebooks();
+            control.Confirmed += (s, args) =>
+            {
+                foreach (Notebook notebook in control.Notebooks)
+                {
+                    extension.Notebooks.UpdateNotebook(notebook);
+                }
+            };
 
             TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
             taskPane.Visible = true;
         }
 
-        private async void OnHistoryMenuLoad(object sender, RibbonControlEventArgs e)
+        private void OnHistoryMenuLoad(object sender, RibbonControlEventArgs e)
         {
             historyMenu.Items.Clear();
 
-            CategoryRecord record = await extension.History.GetItemsByCategoryAsync();
+            CategoryRecord record = extension.History.GetItemsByCategory();
 
             foreach (string key in record.Keys)
             {
@@ -384,6 +396,14 @@ namespace Chronicy.Excel
             action.Run();
         }
 
+        private void OnLoginClicked(object sender, RibbonControlEventArgs e)
+        {
+            LoginTaskPane control = new LoginTaskPane(extension.CredentialsManager);
+
+            TaskPane<LoginTaskPane> taskPane = new TaskPane<LoginTaskPane>("Chronicy Login", control);
+            taskPane.Visible = true;
+        }
+
         private void OnHelpClicked(object sender, RibbonControlEventArgs e)
         {
             ExternalLink link = new ExternalLink(Properties.Resources.LINK_HELP);
@@ -400,14 +420,6 @@ namespace Chronicy.Excel
         {
             ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
             link.Open();
-        }
-
-        private void OnLoginClicked(object sender, RibbonControlEventArgs e)
-        {
-            LoginTaskPane control = new LoginTaskPane();
-
-            TaskPane<LoginTaskPane> taskPane = new TaskPane<LoginTaskPane>("Chronicy Login", control);
-            taskPane.Visible = true;
         }
     }
 }

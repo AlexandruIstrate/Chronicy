@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Chronicy.Data.Actions
+namespace Chronicy.Data.Automation
 {
     public class DelegateAction : ITriggerAction
     {
