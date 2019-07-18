@@ -70,7 +70,7 @@ namespace Chronicy.Excel.History
                         historyItems.Add(new HistoryItem
                         {
                             Title = "New Card Added",
-                            Description = $"A new card was added in the stack { stack.Name }",
+                            Description = $"Card \"{ card.Name }\" was added to the stack \"{ stack.Name }\"",
                             Category = notebook.Name,
                             Date = card.Date
                         });

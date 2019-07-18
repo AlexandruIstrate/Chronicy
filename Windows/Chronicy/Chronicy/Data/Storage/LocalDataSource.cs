@@ -145,6 +145,7 @@ namespace Chronicy.Data.Storage
 
                     foreach (Stack stack in notebook.Stacks)
                     {
+                        database.Context.Entry(stack).Collection(c => c.Cards).Load();
                         database.Context.Entry(stack).Collection(s => s.Fields).Load();
                     }
                 }

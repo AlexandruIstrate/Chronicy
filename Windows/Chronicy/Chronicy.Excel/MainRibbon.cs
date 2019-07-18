@@ -4,6 +4,7 @@ using Chronicy.Excel.App;
 using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
 using Chronicy.Excel.Information;
+using Chronicy.Excel.Properties;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.UI;
 using Chronicy.Excel.UI.Pane;
@@ -142,8 +143,8 @@ namespace Chronicy.Excel
                 return;
             }
 
-            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks;
-                                    //.FindAll((item) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(item.Fields)));
+            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks
+                                    .FindAll((item) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(item.Fields)));
 
             RibbonUI.InvalidateControl(stackDropDown.Id);
             stackDropDown.Items.Clear();
@@ -328,16 +329,19 @@ namespace Chronicy.Excel
             {
                 // TODO: Use a label instead of a button
                 RibbonButton categoryLabel = Factory.CreateRibbonButton();
-                categoryLabel.Label = key;
+                categoryLabel.Description = key;
                 categoryLabel.Enabled = false;
+                historyMenu.Items.Add(categoryLabel);
 
                 IEnumerable<HistoryItem> items = record[key];
 
                 foreach (HistoryItem item in items)
                 {
                     RibbonButton historyItem = Factory.CreateRibbonButton();
+                    historyItem.Image = Resources.IconHistoryItem32;
                     historyItem.Label = item.Title;
                     historyItem.Description = item.Description;
+                    historyMenu.Items.Add(historyItem);
                 }
             }
         }
