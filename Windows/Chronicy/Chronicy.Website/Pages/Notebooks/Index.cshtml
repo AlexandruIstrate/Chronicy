@@ -11,7 +11,6 @@
 </p>
 
 <table class="table">
-
     <thead>
         <tr>
             <th>
@@ -28,10 +27,10 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Stacks)
+                @item.Stacks
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>

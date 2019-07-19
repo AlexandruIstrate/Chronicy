@@ -10,6 +10,7 @@
             public const string Delete = "dbo.UserDelete";
 
             public const string AuthenticateForToken = "dbo.UserAuthCheck";
+            public const string CheckToken = "dbo.UserTokenCheck";
         }
 
         public static class Role

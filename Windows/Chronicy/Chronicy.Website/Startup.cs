@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Chronicy.Sql;
+using Chronicy.Standard.Data.Activity;
 using Chronicy.Website.Identity;
 using Chronicy.Website.Services;
 using Chronicy.Website.Stores;
@@ -53,6 +54,9 @@ namespace Chronicy.Website
 
             // Add database
             services.AddTransient<ISqlDatabase>(e => new SqlServerDatabase(SqlConnectionFactory.Create(Configuration)));
+
+            // Add automation services
+            services.AddTransient<IActivityManager, ActivityManager>();
 
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();

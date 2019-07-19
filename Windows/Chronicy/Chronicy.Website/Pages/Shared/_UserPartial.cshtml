@@ -4,29 +4,22 @@
 @inject SignInManager<ChronicyUser> SignInManager
 @inject UserManager<ChronicyUser> UserManager
 
-    <ul class="navbar-nav">
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity"
-                   asp-page="/Account/Manage/Index"
-                   title="Manage">Hello@User.Identity.Name!</a>
-            </li>
-            <li class="nav-item">
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
-                      asp-route-returnUrl="@Url.Page("/", new { area = "" })"
-                      method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                </form>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Data/Notebooks/Index">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </li>
-        }
-    </ul>
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a asp-page="/Notebooks/Index" class="nav-link text-dark"
+               title="Notebooks">Notebooks</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Insights
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a asp-page="/Data/History" class="dropdown-item">History</a>
+                <a asp-page="/Data/Automation" class="dropdown-item">Automation</a>
+                <a asp-page="/Data/Statistics" class="dropdown-item">Statistics</a>
+            </div>
+        </li>
+    }
+</ul>

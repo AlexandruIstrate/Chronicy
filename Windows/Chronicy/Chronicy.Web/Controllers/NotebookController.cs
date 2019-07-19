@@ -1,7 +1,7 @@
-﻿using Chronicy.Data;
-using Chronicy.Web.Api;
+﻿using Chronicy.Web.Api;
+using Chronicy.Web.Converters;
+using Chronicy.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,101 +22,90 @@ namespace Chronicy.Web.Controllers
 
         // GET api/notebook/all
         [HttpGet("all")]
-        public async Task<ActionResult<IEnumerable<Notebook>>> GetNotebooks()
+        public async Task<ActionResult<ListResponse<Notebook>>> GetNotebooksAsync([FromHeader] string authorization)
         {
-            // TODO!!!: Make a wrapper with a root node named "Items"
+            if (!CheckToken(authorization))
+            {
+                return ErrorResponse.Failure<ListResponse<Notebook>>(1, "Invalid token");
+            }
 
-            return new List<Notebook> {
-                new Notebook
-                {
-                    Name = "Notebook1",
-                    Stacks = new List<Stack>
-                    {
-                        new Stack
-                        {
-                            Name = "Stack1",
-                            Fields = new List<CustomField>
-                            {
-                                new CustomField { Name = "Field1", Type = FieldType.String },
-                                new CustomField { Name = "Field2", Type = FieldType.Number }
-                            },
-                            Cards = new List<Card>
-                            {
-                                new Card
-                                {
-                                    Name = "Card1",
-                                    Comment = "Comment1",
-                                    Fields = new List<CustomField>
-                                    {
-                                        new CustomField { Name = "Field1", Type = FieldType.String, Value = "Hello, world!" },
-                                        new CustomField { Name = "Field2", Type = FieldType.Number, Value = 1776 }
-                                    },
-                                    Tags = new List<Tag>
-                                    {
-                                        new Tag { Name = "Tag1", Description = "Description1" }
-                                    }
-                                }
-                            }
-                        },
-                        new Stack
-                        {
-                            Name = "Stack2",
-                            Fields = new List<CustomField>
-                            {
-                                new CustomField { Name = "Field2", Type = FieldType.Number },
-                                new CustomField { Name = "Field3", Type = FieldType.Number },
-                                new CustomField { Name = "Field5", Type = FieldType.String }
-                            }
-                        }
-                    }
-                }
-            };
-
-            //return new List<Notebook>(await notebooks.GetAllAsync());
+            List<Data.Notebook> list = new List<Data.Notebook>(await notebooks.GetAllAsync());
+            return new ListResponse<Notebook> { List = list.ConvertAll((item) => item.ToWebNotebook()) };
         }
 
         // GET api/notebook?id=5
         [HttpGet]
-        public async Task<ActionResult<Notebook>> GetNotebook(int? id)
+        public async Task<ActionResult<Notebook>> GetNotebookAsync([FromHeader] string authorization, [FromQuery] int? id)
         {
-            if (id == null)
+            if (!CheckToken(authorization))
             {
-                throw new ArgumentNullException(nameof(id));
+                return ErrorResponse.Failure<Notebook>(1, "Invalid token");
             }
 
-            return await notebooks.GetAsync(id.Value);
+            if (id == null)
+            {
+                return ErrorResponse.Failure<Notebook>(1, $"Parameter { nameof(id) } is missing");
+            }
+
+            return (await notebooks.GetAsync(id.Value)).ToWebNotebook();
         }
 
         // POST api/notebook/create
         [HttpPost("create")]
-        public async Task CreateNotebook()
+        public async Task<ActionResult<ErrorResponse>> CreateNotebookAsync([FromHeader] string authorization, [FromBody] Notebook notebook)
         {
+            if (!CheckToken(authorization))
+            {
+                return ErrorResponse.Failure(1, "Invalid token");
+            }
+
             // TODO: Notebook from body
-            await notebooks.CreateAsync(null);
+            await notebooks.CreateAsync(notebook.ToDataNotebook());
+
+            return ErrorResponse.Success();
         }
 
         // DELETE api/notebook/delete?id=5
         [HttpDelete("delete")]
-        public async Task DeleteNotebook(int? id)
+        public async Task<ActionResult<ModelBase>> DeleteNotebookAsync([FromHeader] string authorization, [FromQuery] int? id)
         {
+            if (!CheckToken(authorization))
+            {
+                return ErrorResponse.Failure(1, "Invalid token");
+            }
+
             if (id == null)
             {
-                throw new ArgumentNullException(nameof(id));
+                return ErrorResponse.Failure(1, $"Parameter { nameof(id) } is missing");
             }
 
             await notebooks.DeleteAsync(id.Value);
+
+            return ErrorResponse.Success();
         }
 
         // PUT api/notebook/update
         [HttpPut("update")]
-        public async Task UpdateNotebook([FromBody] Notebook notebook)
+        public async Task<ActionResult<ErrorResponse>> UpdateNotebookAsync([FromHeader] string authorization, [FromBody] Notebook notebook)
         {
-            if (notebook == null)
+            if (!CheckToken(authorization))
             {
-                throw new ArgumentNullException(nameof(notebook));
+                return ErrorResponse.Failure(1, "Invalid token");
             }
 
-            await notebooks.UpdateAsync(notebook);
+            if (notebook == null)
+            {
+                return ErrorResponse.Failure(1, $"The request body does not contain a valid Notebook");
+            }
+
+            await notebooks.UpdateAsync(notebook.ToDataNotebook());
+
+            return ErrorResponse.Success();
+        }
+
+        private bool CheckToken(string token)
+        {
+            return tokenManager.GetTokenStatus(token) == TokenStatus.Valid;
         }
     }
 }

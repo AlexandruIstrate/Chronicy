@@ -16,10 +16,9 @@ namespace Chronicy.Website.Pages.Notebooks
         [BindProperty]
         public Notebook EditedNotebook { get; set; }
 
-        public EditModel()
+        public EditModel(ISqlDatabase database)
         {
-            // TODO: SqlConnection
-            //dataSource = new SqlDataSource(null);
+            dataSource = new SqlDataSource(database);
         }
 
         public async Task<IActionResult> OnGetAsync(int? id)

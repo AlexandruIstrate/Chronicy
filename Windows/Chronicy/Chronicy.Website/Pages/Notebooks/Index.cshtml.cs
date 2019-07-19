@@ -16,23 +16,23 @@ namespace Chronicy.Website.Pages.Notebooks
 
         public List<Notebook> Items { get; set; }
 
-        public IndexModel(SqlConnection connection)
+        public IndexModel(ISqlDatabase database)
         {
-            dataSource = new SqlDataSource(connection);
+            dataSource = new SqlDataSource(database);
         }
 
         public async Task OnGetAsync()
         {
-            Items = new List<Notebook>(await dataSource.GetAllAsync());
+            //Items = new List<Notebook>(await dataSource.GetAllAsync());
 
-            //Items = new List<Notebook>
-            //{
-            //    new Notebook("Notebok 1"),
-            //    new Notebook("Notebok 2"),
-            //    new Notebook("Notebok 3"),
-            //    new Notebook("Notebok 4"),
-            //    new Notebook("Notebok 5")
-            //};
+            Items = new List<Notebook>
+            {
+                new Notebook("Notebok 1"),
+                new Notebook("Notebok 2"),
+                new Notebook("Notebok 3"),
+                new Notebook("Notebok 4"),
+                new Notebook("Notebok 5")
+            };
         }
     }
 }

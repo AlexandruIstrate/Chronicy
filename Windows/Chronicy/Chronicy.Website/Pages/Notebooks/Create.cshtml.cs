@@ -16,15 +16,14 @@ namespace Chronicy.Website.Pages.Notebooks
         [BindProperty]
         public Notebook EditedNotebook { get; set; }
 
-        public CreateModel()
+        public CreateModel(ISqlDatabase database)
         {
-            // TODO: SqlConnection
-            //dataSource = new SqlDataSource(null);
+            dataSource = new SqlDataSource(database);
         }
 
         public IActionResult OnGetAsync()
         {
-            EditedNotebook = new Notebook("Name");
+            EditedNotebook = new Notebook("New Notebook");
             return Page();
         }
 

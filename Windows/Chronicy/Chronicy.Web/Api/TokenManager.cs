@@ -1,5 +1,8 @@
 ﻿using Chronicy.Sql;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Api
@@ -15,22 +18,137 @@ namespace Chronicy.Web.Api
 
         public TokenStatus GetTokenStatus(string token)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.CheckToken, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Token, token)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                bool valid = (bool)dataRow[Columns.IsValid];
+                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
+
+                if (valid)
+                {
+                    return TokenStatus.Valid;
+                }
+
+                if (expirationDate < DateTime.Now)
+                {
+                    return TokenStatus.Expired;
+                }
+
+                return TokenStatus.Invalid;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<TokenStatus> GetTokenStatusAsync(string token)
+        public async Task<TokenStatus> GetTokenStatusAsync(string token)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.CheckToken, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Token, token)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                bool valid = (bool)dataRow[Columns.IsValid];
+                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
+
+                if (valid)
+                {
+                    return TokenStatus.Valid;
+                }
+
+                if (expirationDate < DateTime.Now)
+                {
+                    return TokenStatus.Expired;
+                }
+
+                return TokenStatus.Invalid;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public DateTime GetExpirationDate(string token)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.CheckToken, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Token, token)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
+                return expirationDate;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<DateTime> GetExpirationDateAsync(string token)
+        public async Task<DateTime> GetExpirationDateAsync(string token)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.CheckToken, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Token, token)
+                });
+
+                DataTable dataTable = dataSet.Tables[0];
+                DataRow dataRow = dataTable.Rows[0];
+
+                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
+                return expirationDate;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private class Parameters
+        {
+            public const string Token = "@token";
+        }
+
+        private class Columns
+        {
+            public const string IsValid = "isAuth";
+            public const string ExpirationDate = "expDateTime";
         }
     }
 }

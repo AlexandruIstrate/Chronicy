@@ -2,3 +2,39 @@
 @model Chronicy.Website.Pages.Data.HistoryModel
 @{
 }
+
+@using Chronicy.Standard.Data.Activity;
+
+<div class="mx-auto" style="padding: 10px">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Items[0].Date)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Items[0].Component)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Items[0].Message)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ActivityItem item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        @item.Component
+                    </td>
+                    <td>
+                        @item.Message
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
