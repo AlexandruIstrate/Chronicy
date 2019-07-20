@@ -7,15 +7,15 @@
 
 import Foundation;
 
-struct AuthRequest: Codable {
-    var username: String;
-    var password: String;
-    
-    init(from: AuthenticationInfo) {
-        self.username = from.username;
-        self.password = from.password;
-    }
-}
+//struct AuthRequest: Codable {
+//    var username: String;
+//    var password: String;
+//    
+//    init(from: AuthenticationInfo) {
+//        self.username = from.username;
+//        self.password = from.password;
+//    }
+//}
 
 protocol AuthenticatedRequest {
     var token: String { get set }
