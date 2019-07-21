@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Chronicy.Website.Pages.Data
 {
     [Authorize]
     public class HistoryModel : PageModel
     {
-        private IActivityManager activityManager;
+        private readonly IActivityManager activityManager;
 
         [BindProperty]
         public List<ActivityItem> Items { get; set; }
@@ -19,9 +20,9 @@ namespace Chronicy.Website.Pages.Data
             this.activityManager = activityManager;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            Items = new List<ActivityItem>(activityManager.GetActivityItems());
+            Items = new List<ActivityItem>(await activityManager.GetAllAsync());
         }
     }
 }

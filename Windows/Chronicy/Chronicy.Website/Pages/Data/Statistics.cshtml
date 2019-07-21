@@ -2,3 +2,16 @@
 @model Chronicy.Website.Pages.Data.StatisticsModel
 @{
 }
+
+@using Chronicy.Standard.Data.Statistics
+
+    <div class="container">
+        <div class="row">
+            @foreach (StatisticsItem item in Model.Items)
+	        {
+                <div class="col">
+                    1 of 3
+                </div>
+	        }
+        </div>
+    </div>

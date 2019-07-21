@@ -1,8 +1,6 @@
-﻿using Chronicy.Information;
-using Chronicy.Web;
+﻿using Chronicy.Web;
 using Chronicy.Web.Converters;
 using Chronicy.Web.Exceptions;
-using Chronicy.Web.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,7 +8,7 @@ namespace Chronicy.Data.Storage
 {
     public class WebDataSource : IDataSource<Notebook>
     {
-        private readonly ChronicyWebApi api = new ChronicyWebApi("https://192.168.100.5/api");
+        private readonly ChronicyWebApi api = ChronicyWebApi.Shared;
         private readonly NotebookConverter converter = new NotebookConverter();
 
         public void Create(Notebook item)

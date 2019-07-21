@@ -7,8 +7,8 @@ namespace Chronicy.Service
 {
     public partial class Service : ServiceBase
     {
-        private EventLogContext context;
-        private IService service;
+        private readonly EventLogContext context;
+        private readonly IService service;
 
         public Service()
         {

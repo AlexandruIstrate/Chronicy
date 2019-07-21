@@ -1,16 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Chronicy.Standard.Data.Statistics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Chronicy.Website.Pages.Data
 {
+    [Authorize]
     public class StatisticsModel : PageModel
     {
-        public void OnGet()
+        private readonly IStatisticsManager statisticsManager;
+
+        public List<StatisticsItem> Items { get; set; }
+
+        public StatisticsModel(IStatisticsManager statisticsManager)
         {
+            this.statisticsManager = statisticsManager;
+        }
+
+        public async Task OnGetAsync()
+        {
+            Items = new List<StatisticsItem>(await statisticsManager.GetAllAsync());
         }
     }
 }

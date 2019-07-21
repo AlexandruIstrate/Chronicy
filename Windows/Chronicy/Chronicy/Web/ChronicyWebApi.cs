@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data.Encoders;
+using Chronicy.Utils;
 using Chronicy.Web.Exceptions;
 using Chronicy.Web.Models;
 using Newtonsoft.Json;
@@ -12,10 +13,10 @@ namespace Chronicy.Web
 {
     public class ChronicyWebApi : IDisposable
     {
-        private IClient webClient;
-        private ChronicyUrlBuilder urlBuilder;
+        private readonly IClient webClient;
+        private readonly ChronicyUrlBuilder urlBuilder;
 
-        private IEncoder encoder;
+        private readonly IEncoder encoder;
 
         public Token AccessToken { get; set; }
 
@@ -291,5 +292,9 @@ namespace Chronicy.Web
             { "Authorization", AccessToken.AccessToken },
             { "Content-Type", "application/json" }
         };
+
+        // TODO: We should get rid of this static field and find a better way of 
+        // accessing the API from multiple places in the application
+        public static ChronicyWebApi Shared = new ChronicyWebApi(Settings.WebServiceAddress);
     }
 }

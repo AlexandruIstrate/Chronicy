@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using Chronicy.Sql;
 using Chronicy.Standard.Data.Activity;
+using Chronicy.Standard.Data.Automation;
+using Chronicy.Standard.Data.Statistics;
 using Chronicy.Website.Identity;
 using Chronicy.Website.Services;
 using Chronicy.Website.Stores;
@@ -57,6 +59,8 @@ namespace Chronicy.Website
 
             // Add automation services
             services.AddTransient<IActivityManager, ActivityManager>();
+            services.AddTransient<IAutomationManager, AutomationManager>();
+            services.AddTransient<IStatisticsManager, StatisticsManager>();
 
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
