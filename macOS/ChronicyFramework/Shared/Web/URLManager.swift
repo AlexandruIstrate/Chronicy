@@ -9,29 +9,39 @@ import Foundation;
 
 public class URLManager {
     
-    public private(set) var urlDictionary: [URLKey : URL] = [:];
+    private var baseURL: String;
     
-    public var urls: [URL] {
-        let result: [URL] = Array<URL>(self.urlDictionary.values);
-        return result;
+    public init(baseURL: String) {
+        self.baseURL = baseURL;
     }
     
-    public func set(key: URLKey, url: URL) {
-        self.urlDictionary[key] = url;
+    public func getToken() -> String
+    {
+        return "\(baseURL)/auth";
     }
     
-    public func get(key: URLKey) -> URL? {
-        return self.urlDictionary[key];
+    public func getNotebooks() -> String
+    {
+        return "\(baseURL)/notebook/all";
     }
     
-    public subscript(key: URLKey) -> URL {
-        return self.urlDictionary[key]!;
+    public func getNotebook(id: Int) -> String
+    {
+        return "\(baseURL)/notebook?id=\(id)";
     }
-}
-
-public enum URLKey {
-    case auth;
-    case infoNotebook;
-    case infoAllNotebooks;
-    case notebook;
+    
+    public func createNotebook() -> String
+    {
+        return "\(baseURL)/notebook/create";
+    }
+    
+    public func deleteNotebook(id: Int) -> String
+    {
+        return "\(baseURL)/notebook/delete?id=\(id)";
+    }
+    
+    public func updateNotebook(id: Int) -> String
+    {
+        return "\(baseURL)/notebook/update?id=\(id)";
+    }
 }
