@@ -313,6 +313,8 @@ namespace Chronicy.Excel
                 {
                     extension.Notebooks.UpdateNotebook(notebook);
                 }
+
+                LoadStacks();
             };
 
             TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
@@ -327,7 +329,6 @@ namespace Chronicy.Excel
 
             foreach (string key in record.Keys)
             {
-                // TODO: Use a label instead of a button
                 RibbonButton categoryLabel = Factory.CreateRibbonButton();
                 categoryLabel.Description = key;
                 categoryLabel.Enabled = false;

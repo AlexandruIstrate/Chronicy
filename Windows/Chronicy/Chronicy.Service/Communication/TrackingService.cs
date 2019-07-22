@@ -15,6 +15,7 @@ using System.Text;
 
 namespace Chronicy.Service.Communication
 {
+    //[ErrorHandlingServiceBehavior]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public class TrackingService : IServerService, IInformationContext
     {
@@ -46,8 +47,8 @@ namespace Chronicy.Service.Communication
                 Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
                 Callback.SendAvailableNotebooks(notebookManager.GetNotebooks());
 
-                dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
-                dispatcher.Start();
+                //dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
+                //dispatcher.Start();
             }, context);
         }
 

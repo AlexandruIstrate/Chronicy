@@ -17,7 +17,7 @@ namespace Chronicy.Excel.UI
         public List<Notebook> Notebooks
         {
             get => notebooks;
-            set { notebooks = value ?? throw new ArgumentNullException(nameof(notebooks)); LoadData(); }
+            set { notebooks = value ?? throw new ArgumentNullException(nameof(Notebooks)); LoadData(); }
         }
 
         public Notebook SelectedNotebook
@@ -170,7 +170,7 @@ namespace Chronicy.Excel.UI
             foreach (Stack stack in notebook.Stacks)
             {
                 DataTable dataTable = new DataTable(stack.Name);
-                dataTable.Columns.AddRange(CreateDataColumns<CustomField>(ignoredColumns: new string[] { "ID", "Value" }));
+                dataTable.Columns.AddRange(DataUtils.CreateDataColumns<CustomField>(ignoredColumns: new string[] { "ID", "Value" }));
 
                 foreach (CustomField field in stack.Fields)
                 {
@@ -184,32 +184,6 @@ namespace Chronicy.Excel.UI
             }
 
             return dataSet;
-        }
-
-        private DataColumn[] CreateDataColumns<T>(params string[] ignoredColumns)
-        {
-            Type type = typeof(T);
-
-            List<DataColumn> columns = new List<DataColumn>();
-
-            foreach (PropertyInfo property in type.GetProperties())
-            {
-                if (ignoredColumns.ToList().Contains(property.Name))
-                {
-                    // Skip ignored columns
-                    continue;
-                }
-
-                if (property.PropertyType.IsCollection())
-                {
-                    // Skip child collections
-                    continue;
-                }
-
-                columns.Add(new DataColumn { ColumnName = property.Name, DataType = property.PropertyType });
-            }
-
-            return columns.ToArray();
         }
     }
 }
