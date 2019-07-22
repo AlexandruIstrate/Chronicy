@@ -18,6 +18,10 @@ namespace Chronicy.Data
 
         public bool Matches(FieldTemplate other)
         {
+            if (other.Fields.Count < Fields.Count)
+            {
+                return false;
+            }
             foreach (CustomField field in Fields)
             {
                 if (!other.Fields.Exists((iter) => iter.Type == field.Type))

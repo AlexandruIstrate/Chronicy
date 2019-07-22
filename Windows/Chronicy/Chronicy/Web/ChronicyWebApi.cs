@@ -3,9 +3,9 @@ using Chronicy.Utils;
 using Chronicy.Web.Exceptions;
 using Chronicy.Web.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using HeaderCollection = System.Collections.Generic.Dictionary<string, string>;
 
@@ -15,14 +15,13 @@ namespace Chronicy.Web
     {
         private readonly IClient webClient;
         private readonly ChronicyUrlBuilder urlBuilder;
-
         private readonly IEncoder encoder;
 
         public Token AccessToken { get; set; }
 
         public ChronicyWebApi(string apiUrl)
         {
-            webClient = new ChronicyWebClient();
+            webClient = new ChronicyWebClient(Encoding.UTF8, JsonContentType);
             urlBuilder = new ChronicyUrlBuilder(apiUrl);
             encoder = new Base64Encoder();
         }
@@ -39,8 +38,7 @@ namespace Chronicy.Web
             {
                 HeaderCollection headers = new HeaderCollection
                 {
-                    { "Authorization", $"Basic { encoder.Encode($"{ username }:{ password }") }" },
-                    { "Content-Type", "application/json" }
+                    { AuthorizationHeader, $"Basic { encoder.Encode($"{ username }:{ password }") }" }
                 };
 
                 AccessToken = UploadData<Token>(urlBuilder.GetToken(), string.Empty, ClientMethod.Post, headers);
@@ -62,8 +60,7 @@ namespace Chronicy.Web
             {
                 HeaderCollection headers = new HeaderCollection
                 {
-                    { "Authorization", $"Basic { encoder.Encode($"{ username }:{ password }") }" },
-                    { "Content-Type", "application/json" }
+                    { AuthorizationHeader, $"Basic { encoder.Encode($"{ username }:{ password }") }" }
                 };
 
                 AccessToken = await UploadDataAsync<Token>(urlBuilder.GetToken(), string.Empty, ClientMethod.Post, headers);
@@ -147,12 +144,8 @@ namespace Chronicy.Web
         {
             try
             {
-                JObject body = new JObject
-                {
-                    { "notebook", JsonConvert.SerializeObject(notebook) }
-                };
-
-                UploadData<Notebook>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                string body = JsonConvert.SerializeObject(notebook);
+                UploadData<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {
@@ -168,12 +161,8 @@ namespace Chronicy.Web
         {
             try
             {
-                JObject body = new JObject
-                {
-                    { "notebook", JsonConvert.SerializeObject(notebook) },
-                };
-
-                return UploadDataAsync<ErrorResponse>(urlBuilder.CreateNotebook(), body.ToString(Formatting.None), ClientMethod.Post);
+                string body = JsonConvert.SerializeObject(notebook);
+                return UploadDataAsync<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {
@@ -289,12 +278,14 @@ namespace Chronicy.Web
 
         public HeaderCollection DefaultHeaders => new HeaderCollection
         {
-            { "Authorization", AccessToken.AccessToken },
-            { "Content-Type", "application/json" }
+            { AuthorizationHeader, AccessToken.AccessToken }
         };
 
         // TODO: We should get rid of this static field and find a better way of 
         // accessing the API from multiple places in the application
         public static ChronicyWebApi Shared = new ChronicyWebApi(Settings.WebServiceAddress);
+
+        public const string AuthorizationHeader = "Authorization";
+        public const string JsonContentType = "application/json";
     }
 }

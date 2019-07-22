@@ -1,4 +1,5 @@
-﻿using Chronicy.Web.Api;
+﻿using Chronicy.Information;
+using Chronicy.Web.Api;
 using Chronicy.Web.Converters;
 using Chronicy.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class NotebookController : ControllerBase
@@ -24,6 +26,11 @@ namespace Chronicy.Web.Controllers
         [HttpGet("all")]
         public async Task<ActionResult<ListResponse<Notebook>>> GetNotebooksAsync([FromHeader] string authorization)
         {
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure<ListResponse<Notebook>>(1, "Missing token");
+            }
+
             if (!CheckToken(authorization))
             {
                 return ErrorResponse.Failure<ListResponse<Notebook>>(1, "Invalid token");
@@ -37,6 +44,11 @@ namespace Chronicy.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<Notebook>> GetNotebookAsync([FromHeader] string authorization, [FromQuery] int? id)
         {
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure<Notebook>(1, "Missing token");
+            }
+
             if (!CheckToken(authorization))
             {
                 return ErrorResponse.Failure<Notebook>(1, "Invalid token");
@@ -54,14 +66,17 @@ namespace Chronicy.Web.Controllers
         [HttpPost("create")]
         public async Task<ActionResult<ErrorResponse>> CreateNotebookAsync([FromHeader] string authorization, [FromBody] Notebook notebook)
         {
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure(1, "Missing token");
+            }
+
             if (!CheckToken(authorization))
             {
                 return ErrorResponse.Failure(1, "Invalid token");
             }
 
-            // TODO: Notebook from body
             await notebooks.CreateAsync(notebook.ToDataNotebook());
-
             return ErrorResponse.Success();
         }
 
@@ -69,6 +84,11 @@ namespace Chronicy.Web.Controllers
         [HttpDelete("delete")]
         public async Task<ActionResult<ModelBase>> DeleteNotebookAsync([FromHeader] string authorization, [FromQuery] int? id)
         {
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure(1, "Missing token");
+            }
+
             if (!CheckToken(authorization))
             {
                 return ErrorResponse.Failure(1, "Invalid token");
@@ -80,7 +100,6 @@ namespace Chronicy.Web.Controllers
             }
 
             await notebooks.DeleteAsync(id.Value);
-
             return ErrorResponse.Success();
         }
 
@@ -88,6 +107,11 @@ namespace Chronicy.Web.Controllers
         [HttpPut("update")]
         public async Task<ActionResult<ErrorResponse>> UpdateNotebookAsync([FromHeader] string authorization, [FromBody] Notebook notebook)
         {
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure(1, "Missing token");
+            }
+
             if (!CheckToken(authorization))
             {
                 return ErrorResponse.Failure(1, "Invalid token");
@@ -99,7 +123,6 @@ namespace Chronicy.Web.Controllers
             }
 
             await notebooks.UpdateAsync(notebook.ToDataNotebook());
-
             return ErrorResponse.Success();
         }
 

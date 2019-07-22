@@ -13,13 +13,18 @@ namespace Chronicy.Web
     {
         private HttpClient client;
 
-        public Encoding Encoding { get; set; }
         public JsonSerializerSettings JsonSettings { get; set; }
 
-        public ChronicyWebClient(Encoding encoding = null)
+        public Encoding Encoding { get; set; }
+        public string ContentType { get; set; } // TODO: Find a way of setting this per request
+
+        public ChronicyWebClient(Encoding encoding = null, string contentType = null)
         {
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             client = new HttpClient();
+
             Encoding = encoding ?? Encoding.UTF8;
+            ContentType = contentType;
         }
 
         public void Dispose()
@@ -122,7 +127,7 @@ namespace Chronicy.Web
             }
 
             HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url);
-            message.Content = new StringContent(body, Encoding);
+            message.Content = new StringContent(body, Encoding, ContentType);
 
             using (HttpResponseMessage response = Task.Run(() => client.SendAsync(message)).Result)
             {
@@ -142,7 +147,7 @@ namespace Chronicy.Web
             }
 
             HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url);
-            message.Content = new StringContent(body, Encoding);
+            message.Content = new StringContent(body, Encoding, ContentType);
 
             using (HttpResponseMessage response = await client.SendAsync(message))
             {

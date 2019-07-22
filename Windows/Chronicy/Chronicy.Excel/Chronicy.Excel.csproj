@@ -226,10 +226,8 @@
     <Compile Include="User\IUserAction.cs" />
     <Compile Include="User\SelectCellRangeAction.cs" />
     <Compile Include="User\SelectSheetAction.cs" />
-    <Compile Include="Utils\DataUtils.cs" />
     <Compile Include="Utils\ExternalLink.cs" />
     <Compile Include="Utils\RangeUtils.cs" />
-    <Compile Include="Utils\TypeUtils.cs" />
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </EmbeddedResource>

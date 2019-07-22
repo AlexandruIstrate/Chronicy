@@ -1,13 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
 
-namespace Chronicy.Excel.Utils
+namespace Chronicy.Utils
 {
     public static class DataUtils
     {
+        public static T ValueOrDefault<T>(T value) where T : class, new()
+        {
+            return (value ?? new T());
+        }
+
         public static DataColumn[] CreateDataColumns<T>(params string[] ignoredColumns)
         {
             Type type = typeof(T);

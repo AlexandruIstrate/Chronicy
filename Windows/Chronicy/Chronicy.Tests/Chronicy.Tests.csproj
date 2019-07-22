@@ -54,7 +54,7 @@
     <Compile Include="Data\SerializationTest.cs" />
     <Compile Include="Information\InformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebApiTest.cs" />
+    <Compile Include="Web\WebApiTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

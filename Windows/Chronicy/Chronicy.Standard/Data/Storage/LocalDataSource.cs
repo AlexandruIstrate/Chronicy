@@ -3,6 +3,7 @@ using Chronicy.Sql;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Storage
@@ -44,7 +45,7 @@ namespace Chronicy.Data.Storage
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
                 existing.Add(item);
 
-                Save();
+                database.Context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -59,7 +60,7 @@ namespace Chronicy.Data.Storage
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
                 existing.Add(item);
 
-                await SaveAsync();
+                await database.Context.SaveChangesAsync();
             }
             catch (Exception e)
             {
@@ -74,7 +75,7 @@ namespace Chronicy.Data.Storage
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
                 existing.Remove(Get(id));
 
-                Save();
+                database.Context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -89,7 +90,7 @@ namespace Chronicy.Data.Storage
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
                 existing.Remove(await GetAsync(id));
 
-                await SaveAsync();
+                await database.Context.SaveChangesAsync();
             }
             catch (Exception e)
             {
@@ -100,7 +101,7 @@ namespace Chronicy.Data.Storage
         public Notebook Get(int id)
         {
             // Make sure any pending changes are saved
-            Save();
+            database.Context.SaveChanges();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
             List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.ID == id));
@@ -116,7 +117,7 @@ namespace Chronicy.Data.Storage
         public async Task<Notebook> GetAsync(int id)
         {
             // Make sure any pending changes are saved
-            await SaveAsync();
+            await database.Context.SaveChangesAsync();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
             List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.ID == id));
@@ -131,16 +132,22 @@ namespace Chronicy.Data.Storage
 
         public IEnumerable<Notebook> GetAll()
         {
-            // Make sure any pending changes are saved
             try
             {
-                Save();
+                // Make sure any pending changes are saved
+                database.Context.SaveChanges();
 
-                DbSet<Notebook> notebooks = database.Context.Set<Notebook>();
+                DbSet<Notebook> notebooks = database.Context.Notebooks;
 
                 foreach (Notebook notebook in notebooks)
                 {
                     database.Context.Entry(notebook).Collection(n => n.Stacks).Load();
+
+                    foreach (Stack stack in notebook.Stacks)
+                    {
+                        database.Context.Entry(stack).Collection(c => c.Cards).Load();
+                        database.Context.Entry(stack).Collection(s => s.Fields).Load();
+                    }
                 }
 
                 return notebooks;
@@ -156,7 +163,7 @@ namespace Chronicy.Data.Storage
             try
             {
                 // Make sure any pending changes are saved
-                await SaveAsync();
+                await database.Context.SaveChangesAsync();
                 return GetAll();
             }
             catch (Exception e)
@@ -165,23 +172,54 @@ namespace Chronicy.Data.Storage
             }
         }
 
+        // TODO: Clean this up and use an algorithm that is scalable for child items
         public void Update(Notebook item)
         {
             try
             {
                 SQLiteDatabaseContext context = database.Context;
-                Notebook existing = context.Notebooks.Find(item.ID);
+                context.SaveChanges();
 
+                Notebook existingNotebook = context.Notebooks
+                    .Where(n => n.ID == item.ID)
+                    .Include(n => n.Stacks)
+                    .SingleOrDefault();
+
+                if (existingNotebook == null)
+                {
+                    throw new Exception($"The notebook with ID { item.ID } could not be found");
+                }
+
+                context.Entry(existingNotebook).CurrentValues.SetValues(item);
+
+                // Delete children
+                foreach (Stack existingStack in existingNotebook.Stacks)
+                {
+                    if (!item.Stacks.Any(s => s.ID == existingStack.ID))
+                    {
+                        context.Stacks.Remove(existingStack);
+                    }
+                }
+
+                // Update and insert children
                 foreach (Stack stack in item.Stacks)
                 {
-                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+                    Stack existingStack = existingNotebook.Stacks
+                        .Where(s => s.ID == stack.ID && s.ID != default)
+                        .SingleOrDefault();
 
-                    if (exists)
+                    if (existingStack == null)
                     {
-                        continue;
+                        // Insert child
+                        existingNotebook.Stacks.Add(stack);
+                    }
+                    else
+                    {
+                        // Update child
+                        context.Entry(existingStack).CurrentValues.SetValues(stack);
                     }
 
-                    existing.Stacks.Add(stack);
+                    UpdateStack(stack);
                 }
 
                 context.SaveChanges();
@@ -193,42 +231,173 @@ namespace Chronicy.Data.Storage
             }
         }
 
+        // TODO: Clean this up and use an algorithm that is scalable for child items
         public async Task UpdateAsync(Notebook item)
         {
             try
             {
                 SQLiteDatabaseContext context = database.Context;
-                Notebook existing = await context.Notebooks.FindAsync(item.ID);
+                context.SaveChanges();
 
+                Notebook existingNotebook = context.Notebooks
+                    .Where(n => n.ID == item.ID)
+                    .Include(n => n.Stacks)
+                    .SingleOrDefault();
+
+                if (existingNotebook == null)
+                {
+                    throw new Exception($"The notebook with ID { item.ID } could not be found");
+                }
+
+                context.Entry(existingNotebook).CurrentValues.SetValues(item);
+
+                // Delete children
+                foreach (Stack existingStack in existingNotebook.Stacks)
+                {
+                    if (!item.Stacks.Any(s => s.ID == existingStack.ID))
+                    {
+                        context.Stacks.Remove(existingStack);
+                    }
+                }
+
+                // Update and insert children
                 foreach (Stack stack in item.Stacks)
                 {
-                    bool exists = existing.Stacks.Exists((iter) => iter.ID == stack.ID);
+                    Stack existingStack = existingNotebook.Stacks
+                        .Where(s => s.ID == stack.ID && s.ID != default)
+                        .SingleOrDefault();
 
-                    if (exists)
+                    if (existingStack == null)
                     {
-                        continue;
+                        // Insert child
+                        existingNotebook.Stacks.Add(stack);
+                    }
+                    else
+                    {
+                        // Update child
+                        context.Entry(existingStack).CurrentValues.SetValues(stack);
                     }
 
-                    existing.Stacks.Add(stack);
+                    await UpdateStackAsync(stack);
                 }
 
                 await context.SaveChangesAsync();
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e); // TODO: Remove
+                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update notebook", e);
             }
         }
 
-        public void Save()
+        private void UpdateStack(Stack item)
         {
-            database.Context.SaveChanges();
+            try
+            {
+                SQLiteDatabaseContext context = database.Context;
+
+                Stack existingStack = context.Stacks
+                    .Where(s => s.ID == item.ID)
+                    .Include(s => s.Fields)
+                    .SingleOrDefault();
+
+                if (existingStack == null)
+                {
+                    return;
+                }
+
+                context.Entry(existingStack).CurrentValues.SetValues(item);
+
+                // Delete children
+                foreach (CustomField existingField in existingStack.Fields)
+                {
+                    if (!item.Fields.Any(f => f.ID == existingField.ID))
+                    {
+                        context.Fields.Remove(existingField);
+                    }
+                }
+
+                // Update and insert children
+                foreach (CustomField field in item.Fields)
+                {
+                    CustomField existingField = existingStack.Fields
+                        .Where(f => f.ID == field.ID && f.ID != default)
+                        .SingleOrDefault();
+
+                    if (existingField == null)
+                    {
+                        // Insert child
+                        existingStack.Fields.Add(field);
+                    }
+                    else
+                    {
+                        // Update child
+                        context.Entry(existingField).CurrentValues.SetValues(field);
+                    }
+                }
+
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
+                throw new DataSourceException("Could not update stack", e);
+            }
         }
 
-        public Task<int> SaveAsync()
+        private async Task UpdateStackAsync(Stack item)
         {
-            return database.Context.SaveChangesAsync();
+            try
+            {
+                SQLiteDatabaseContext context = database.Context;
+
+                Stack existingStack = context.Stacks
+                    .Where(s => s.ID == item.ID)
+                    .Include(s => s.Fields)
+                    .SingleOrDefault();
+
+                if (existingStack == null)
+                {
+                    return;
+                }
+
+                context.Entry(existingStack).CurrentValues.SetValues(item);
+
+                // Delete children
+                foreach (CustomField existingField in existingStack.Fields)
+                {
+                    if (!item.Fields.Any(f => f.ID == existingField.ID))
+                    {
+                        context.Fields.Remove(existingField);
+                    }
+                }
+
+                // Update and insert children
+                foreach (CustomField field in item.Fields)
+                {
+                    CustomField existingField = existingStack.Fields
+                        .Where(f => f.ID == field.ID && f.ID != default)
+                        .SingleOrDefault();
+
+                    if (existingField == null)
+                    {
+                        // Insert child
+                        existingStack.Fields.Add(field);
+                    }
+                    else
+                    {
+                        // Update child
+                        context.Entry(existingField).CurrentValues.SetValues(field);
+                    }
+                }
+
+                await context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
+                throw new DataSourceException("Could not update stack", e);
+            }
         }
     }
 }

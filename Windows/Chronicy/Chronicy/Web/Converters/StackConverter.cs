@@ -1,13 +1,13 @@
 ﻿using Chronicy.Data;
+using Chronicy.Utils;
 using System;
-using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
     public class StackConverter : IConverter<Data.Stack, Web.Models.Stack>
     {
-        private Lazy<CustomFieldConverter> fieldConverter = new Lazy<CustomFieldConverter>();
-        private Lazy<CardConverter> cardConverter = new Lazy<CardConverter>();
+        private readonly Lazy<CustomFieldConverter> fieldConverter = new Lazy<CustomFieldConverter>();
+        private readonly Lazy<CardConverter> cardConverter = new Lazy<CardConverter>();
 
         public bool CanReverseConvert => true;
 
@@ -17,8 +17,8 @@ namespace Chronicy.Web.Converters
             {
                 ID = value.ID,
                 Name = value.Name,
-                Fields = value.Fields.ConvertAll((input) => fieldConverter.Value.Convert(input)),
-                Cards = value.Cards.ConvertAll(input => cardConverter.Value.Convert(input))
+                Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll((input) => fieldConverter.Value.Convert(input)),
+                Cards = DataUtils.ValueOrDefault(value.Cards).ConvertAll(input => cardConverter.Value.Convert(input))
             };
         }
 
@@ -27,8 +27,8 @@ namespace Chronicy.Web.Converters
             return new Data.Stack(value.Name)
             {
                 ID = value.ID,
-                Fields = value.Fields.ConvertAll(input => fieldConverter.Value.ReverseConvert(input)),
-                Cards = value.Cards.ConvertAll(input => cardConverter.Value.ReverseConvert(input))
+                Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll(input => fieldConverter.Value.ReverseConvert(input)),
+                Cards = DataUtils.ValueOrDefault(value.Cards).ConvertAll(input => cardConverter.Value.ReverseConvert(input))
             };
         }
     }

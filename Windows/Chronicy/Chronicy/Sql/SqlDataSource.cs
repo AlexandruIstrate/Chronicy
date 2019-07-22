@@ -17,7 +17,7 @@ namespace Chronicy.Sql
             database = new SqlServerDatabase(connection);
         }
 
-        public SqlDataSource(SqlServerDatabase database)
+        public SqlDataSource(ISqlDatabase database)
         {
             this.database = database;
         }
@@ -30,7 +30,7 @@ namespace Chronicy.Sql
 
         public void Create(Notebook item)
         {
-            database.RunNonQueryProcedure(SqlProcedures.CreateNotebook, new List<SqlParameter>
+            database.RunNonQueryProcedure(SqlProcedures.Notebook.Create, new List<SqlParameter>
             {
                 new SqlParameter(nameof(item.Name), item.Name),
                 new SqlParameter(nameof(item.Stacks), item.Stacks)
@@ -39,7 +39,7 @@ namespace Chronicy.Sql
 
         public Task CreateAsync(Notebook item)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.CreateNotebook, new List<SqlParameter>
+            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Create, new List<SqlParameter>
             {
                 new SqlParameter(nameof(item.Name), item.Name),
                 new SqlParameter(nameof(item.Stacks), item.Stacks)
@@ -48,7 +48,7 @@ namespace Chronicy.Sql
 
         public void Delete(int id)
         {
-            database.RunNonQueryProcedure(SqlProcedures.DeleteNotebook, new List<SqlParameter>
+            database.RunNonQueryProcedure(SqlProcedures.Notebook.Delete, new List<SqlParameter>
             {
                 new SqlParameter(nameof(id), id)
             });
@@ -56,7 +56,7 @@ namespace Chronicy.Sql
 
         public Task DeleteAsync(int id)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.DeleteNotebook, new List<SqlParameter>
+            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Delete, new List<SqlParameter>
             {
                 new SqlParameter(nameof(id), id)
             });
@@ -66,7 +66,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.CreateNotebook, new List<SqlParameter>
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.Create, new List<SqlParameter>
                 {
                     new SqlParameter(nameof(id), id)
                 });
@@ -89,7 +89,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.CreateNotebook, new List<SqlParameter>
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.Create, new List<SqlParameter>
                 {
                     new SqlParameter(nameof(id), id)
                 });
@@ -112,7 +112,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.GetNotebooks);
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.Read);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<Notebook> result = new List<Notebook>();
@@ -134,7 +134,7 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.GetNotebooks);
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.Read);
                 DataTable dataTable = dataSet.Tables[0];
 
                 List<Notebook> result = new List<Notebook>();
@@ -154,7 +154,7 @@ namespace Chronicy.Sql
 
         public void Update(Notebook notebook)
         {
-            database.RunNonQueryProcedure(SqlProcedures.UpdateNotebook, new List<SqlParameter>
+            database.RunNonQueryProcedure(SqlProcedures.Notebook.Update, new List<SqlParameter>
             {
                 new SqlParameter(nameof(notebook), notebook)
             });
@@ -162,7 +162,7 @@ namespace Chronicy.Sql
 
         public Task UpdateAsync(Notebook notebook)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.UpdateNotebook, new List<SqlParameter>
+            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Update, new List<SqlParameter>
             {
                 new SqlParameter(nameof(notebook), notebook)
             });

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace Chronicy.Excel.Utils
+namespace Chronicy.Utils
 {
     public static class TypeUtils
     {

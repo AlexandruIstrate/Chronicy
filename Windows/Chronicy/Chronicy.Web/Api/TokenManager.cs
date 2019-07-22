@@ -18,6 +18,11 @@ namespace Chronicy.Web.Api
 
         public TokenStatus GetTokenStatus(string token)
         {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
             try
             {
                 DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.CheckToken, new List<SqlParameter>
@@ -29,12 +34,13 @@ namespace Chronicy.Web.Api
                 DataRow dataRow = dataTable.Rows[0];
 
                 bool valid = (bool)dataRow[Columns.IsValid];
-                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
 
                 if (valid)
                 {
                     return TokenStatus.Valid;
                 }
+
+                DateTimeOffset expirationDate = (DateTimeOffset)dataRow[Columns.ExpirationDate];
 
                 if (expirationDate < DateTime.Now)
                 {
@@ -55,6 +61,11 @@ namespace Chronicy.Web.Api
 
         public async Task<TokenStatus> GetTokenStatusAsync(string token)
         {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
             try
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.CheckToken, new List<SqlParameter>
@@ -92,6 +103,11 @@ namespace Chronicy.Web.Api
 
         public DateTime GetExpirationDate(string token)
         {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
             try
             {
                 DataSet dataSet = database.RunScalarProcedure(SqlProcedures.User.CheckToken, new List<SqlParameter>
@@ -117,6 +133,11 @@ namespace Chronicy.Web.Api
 
         public async Task<DateTime> GetExpirationDateAsync(string token)
         {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
             try
             {
                 DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.User.CheckToken, new List<SqlParameter>

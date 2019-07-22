@@ -15,7 +15,7 @@ namespace Chronicy.Data
         public string Name { get; set; }
 
         [DataMember]
-        public ICollection<CustomField> Fields { get; set; }
+        public List<CustomField> Fields { get; set; }
 
         [DataMember]
         public List<Card> Cards { get; set; }

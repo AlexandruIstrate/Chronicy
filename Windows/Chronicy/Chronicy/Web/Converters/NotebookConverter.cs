@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data;
+using Chronicy.Utils;
 using System;
 
 namespace Chronicy.Web.Converters
@@ -15,7 +16,7 @@ namespace Chronicy.Web.Converters
             {
                 ID = value.ID,
                 Name = value.Name,
-                Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.Convert(input))
+                Stacks = DataUtils.ValueOrDefault(value.Stacks).ConvertAll(input => stackConverter.Value.Convert(input))
             };
         }
 
@@ -24,7 +25,7 @@ namespace Chronicy.Web.Converters
             return new Data.Notebook(value.Name)
             {
                 ID = value.ID,
-                Stacks = value.Stacks.ConvertAll(input => stackConverter.Value.ReverseConvert(input))
+                Stacks = DataUtils.ValueOrDefault(value.Stacks).ConvertAll(input => stackConverter.Value.ReverseConvert(input))
             };
         }
     }

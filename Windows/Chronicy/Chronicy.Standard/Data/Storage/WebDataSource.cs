@@ -8,8 +8,8 @@ namespace Chronicy.Data.Storage
 {
     public class WebDataSource : IDataSource<Notebook>
     {
-        private ChronicyWebApi api = new ChronicyWebApi();
-        private NotebookConverter converter = new NotebookConverter();
+        private readonly ChronicyWebApi api = ChronicyWebApi.Shared;
+        private readonly NotebookConverter converter = new NotebookConverter();
 
         public void Create(Notebook item)
         {

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 
@@ -28,7 +29,6 @@ namespace Chronicy.Web
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
             services.AddTransient<ITokenManager>(e => new TokenManager(database));
-            services.AddTransient(e => database);  // TODO: Remove
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

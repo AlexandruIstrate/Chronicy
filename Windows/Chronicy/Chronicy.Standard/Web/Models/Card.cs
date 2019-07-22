@@ -5,6 +5,9 @@ namespace Chronicy.Web.Models
 {
     public class Card : ModelBase
     {
+        [JsonProperty("id")]
+        public int ID { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -13,5 +16,8 @@ namespace Chronicy.Web.Models
 
         [JsonProperty("fields")]
         public List<CustomField> Fields { get; set; }
+
+        [JsonProperty("tags")]
+        public List<Tag> Tags { get; set; }
     }
 }

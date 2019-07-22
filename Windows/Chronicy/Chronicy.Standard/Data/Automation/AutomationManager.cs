@@ -16,19 +16,14 @@ namespace Chronicy.Standard.Data.Automation
 
         public void Create(AutomationAction item)
         {
-            if (Actions.Count < 1)
-            {
-                List<int> indices = Actions.ConvertAll((iter) => iter.ID);
-                indices.Sort();
-                item.ID = indices.Last();
-            }
-
+            item.ID = GetNextID();
             Actions.Add(item);
         }
 
         public Task CreateAsync(AutomationAction item)
         {
-            return Task.Run(() => Create(item));
+            Create(item);
+            return Task.CompletedTask;
         }
 
         public void Delete(int id)
@@ -38,7 +33,8 @@ namespace Chronicy.Standard.Data.Automation
 
         public Task DeleteAsync(int id)
         {
-            return Task.Run(() => Delete(id));
+            Delete(id);
+            return Task.CompletedTask;
         }
 
         public AutomationAction Get(int id)
@@ -48,7 +44,7 @@ namespace Chronicy.Standard.Data.Automation
 
         public Task<AutomationAction> GetAsync(int id)
         {
-            return Task.Run(() => Get(id));
+            return Task.FromResult(Get(id));
         }
 
         public IEnumerable<AutomationAction> GetAll()
@@ -70,6 +66,21 @@ namespace Chronicy.Standard.Data.Automation
         public Task UpdateAsync(AutomationAction item)
         {
             return Task.Run(() => Update(item));
+        }
+
+        private int GetNextID()
+        {
+            List<int> ids = Actions.ConvertAll((action) => action.ID);
+
+            if (ids.Count < 1)
+            {
+                return 1;
+            }
+
+            ids.Sort();
+
+            int lastId = ids.Last();
+            return lastId + 1;
         }
     }
 }

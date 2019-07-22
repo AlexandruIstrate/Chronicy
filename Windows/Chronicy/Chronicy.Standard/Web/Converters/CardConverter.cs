@@ -1,12 +1,13 @@
 ﻿using Chronicy.Data;
+using Chronicy.Utils;
 using System;
-using System.Linq;
 
 namespace Chronicy.Web.Converters
 {
     public class CardConverter : IConverter<Data.Card, Web.Models.Card>
     {
-        private Lazy<CustomFieldConverter> fieldConverter = new Lazy<CustomFieldConverter>();
+        private readonly Lazy<CustomFieldConverter> fieldConverter = new Lazy<CustomFieldConverter>();
+        private readonly Lazy<TagConverter> tagConverter = new Lazy<TagConverter>();
 
         public bool CanReverseConvert => true;
 
@@ -14,9 +15,11 @@ namespace Chronicy.Web.Converters
         {
             return new Models.Card
             {
+                ID = value.ID,
                 Name = value.Name,
                 Comment = value.Comment,
-                Fields = value.Fields.ToList().ConvertAll(input => fieldConverter.Value.Convert(input))
+                Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll(input => fieldConverter.Value.Convert(input)),
+                Tags = DataUtils.ValueOrDefault(value.Tags).ConvertAll((input) => tagConverter.Value.Convert(input))
             };
         }
 
@@ -24,8 +27,10 @@ namespace Chronicy.Web.Converters
         {
             return new Data.Card(value.Name)
             {
+                ID = value.ID,
                 Comment = value.Comment,
-                Fields = value.Fields.ConvertAll(input => fieldConverter.Value.ReverseConvert(input))
+                Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll(input => fieldConverter.Value.ReverseConvert(input)),
+                Tags = DataUtils.ValueOrDefault(value.Tags).ConvertAll((input) => tagConverter.Value.ReverseConvert(input))
             };
         }
     }
