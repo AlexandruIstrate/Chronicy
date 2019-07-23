@@ -213,6 +213,16 @@ namespace Chronicy.Excel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconSettings32 {
+            get {
+                object obj = ResourceManager.GetObject("IconSettings32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconSheets32 {
             get {
                 object obj = ResourceManager.GetObject("IconSheets32", resourceCulture);

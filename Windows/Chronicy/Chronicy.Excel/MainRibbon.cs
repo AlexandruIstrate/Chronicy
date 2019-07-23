@@ -255,6 +255,9 @@ namespace Chronicy.Excel
                 throw new ArgumentException("The selected value does not match any available data sources");
             }
 
+            notebookDropDown.Items.Clear();
+            stackDropDown.Items.Clear();
+
             extension.Notebooks.ClearSelection();
             extension.SelectDataSource(type);
 
@@ -411,20 +414,28 @@ namespace Chronicy.Excel
 
         private void OnHelpClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Properties.Resources.LINK_HELP);
+            ExternalLink link = new ExternalLink(Resources.LINK_HELP);
             link.Open();
         }
 
         private void OnReportBugClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Properties.Resources.LINK_SUBMIT_BUG);
+            ExternalLink link = new ExternalLink(Resources.LINK_SUBMIT_BUG);
             link.Open();
         }
 
         private void OnViewGitHubClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Properties.Resources.LINK_PROJECT_PAGE);
+            ExternalLink link = new ExternalLink(Resources.LINK_PROJECT_PAGE);
             link.Open();
+        }
+
+        private void OnOptionsClicked(object sender, RibbonControlEventArgs e)
+        {
+            
+
+            SettingsForm form = new SettingsForm();
+            form.ShowDialog();
         }
     }
 }

@@ -19,12 +19,8 @@ namespace Chronicy.Service.Communication
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public class TrackingService : IServerService, IInformationContext
     {
-        private readonly IInformationContext context;
-
-        private IDataSource<Notebook> dataSource;
+        private IInformationContext context;
         private NotebookManager notebookManager;
-
-        private DispatcherTimer dispatcher;
 
         public IClientCallback Callback { get; set; }
 
@@ -34,9 +30,7 @@ namespace Chronicy.Service.Communication
 
             ExceptionUtils.LogExceptions(() =>
             {
-                dataSource = new LocalDataSource();
-                notebookManager = new NotebookManager(dataSource);
-                dispatcher = new DispatcherTimer(20 * 1000);
+                notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local));
             }, context);
         }
 
@@ -46,10 +40,12 @@ namespace Chronicy.Service.Communication
             {
                 Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
                 Callback.SendAvailableNotebooks(notebookManager.GetNotebooks());
-
-                //dispatcher.Submit(() => { Callback.SendAvailableNotebooks(notebookManager.GetNotebooks()); });
-                //dispatcher.Start();
             }, context);
+        }
+
+        public void SendUrl(string url)
+        {
+            ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Url = url, context);
         }
 
         public void Authenticate(string username, string password)
@@ -124,27 +120,27 @@ namespace Chronicy.Service.Communication
 
         public IEnumerable<Notebook> GetAll()
         {
-            return dataSource.GetAll();
+            return notebookManager.dataSource.GetAll();
         }
 
         public Notebook Get(int id)
         {
-            return dataSource.Get(id);
+            return notebookManager.dataSource.Get(id);
         }
 
         public void Create(Notebook notebook)
         {
-            ExceptionUtils.LogExceptions(() => dataSource.Create(notebook), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Create(notebook), context);
         }
 
         public void Update(Notebook notebook)
         {
-            ExceptionUtils.LogExceptions(() => dataSource.Update(notebook), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Update(notebook), context);
         }
 
         public void Delete(int id)
         {
-            ExceptionUtils.LogExceptions(() => dataSource.Delete(id), context);
+            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Delete(id), context);
         }
     }
 }

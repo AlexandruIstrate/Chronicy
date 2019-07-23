@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new global::System.ServiceProcess.ServiceProcessInstaller();
-            this.serviceInstaller1 = new global::System.ServiceProcess.ServiceInstaller();
+            this.serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
+            this.serviceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // serviceProcessInstaller
             // 
-            this.serviceProcessInstaller1.Account = global::System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.serviceProcessInstaller.Password = null;
+            this.serviceProcessInstaller.Username = null;
             // 
-            // serviceInstaller1
+            // serviceInstaller
             // 
-            this.serviceInstaller1.Description = "Chronicy service for gathering productivity data from supported extensions";
-            this.serviceInstaller1.DisplayName = "Chronicy Tracking Service";
-            this.serviceInstaller1.ServiceName = "Chronicy.Service";
-            this.serviceInstaller1.StartType = global::System.ServiceProcess.ServiceStartMode.Automatic;
+            this.serviceInstaller.Description = "Gathers productivity data from supported extensions";
+            this.serviceInstaller.DisplayName = "Chronicy Tracking Service";
+            this.serviceInstaller.ServiceName = "Chronicy.Service";
+            this.serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
-            this.Installers.AddRange(new global::System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
-            this.serviceInstaller1});
+            this.Installers.AddRange(new System.Configuration.Install.Installer[] {
+            this.serviceProcessInstaller,
+            this.serviceInstaller});
 
         }
 
         #endregion
 
-        private global::System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
-        private global::System.ServiceProcess.ServiceInstaller serviceInstaller1;
+        private global::System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller;
+        private global::System.ServiceProcess.ServiceInstaller serviceInstaller;
     }
 }

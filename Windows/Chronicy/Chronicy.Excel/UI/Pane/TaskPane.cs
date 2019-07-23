@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Tools;
+using System;
 using System.Windows.Forms;
 
 namespace Chronicy.Excel.UI.Pane
@@ -11,7 +12,7 @@ namespace Chronicy.Excel.UI.Pane
         public bool Visible
         {
             get => Pane.Visible;
-            set => Pane.Visible = value;
+            set => SetVisible(value);
         }
 
         public TaskPane(string title, T control)
@@ -22,6 +23,18 @@ namespace Chronicy.Excel.UI.Pane
             Pane = factory.Create(title, Control);
 
             control.VisibleChanged += (sender, args) => Visible = control.Visible;
+        }
+
+        private void SetVisible(bool state)
+        {
+            try
+            {
+                Pane.Visible = state;
+            }
+            catch (ObjectDisposedException)
+            {
+                throw;
+            }
         }
     }
 }

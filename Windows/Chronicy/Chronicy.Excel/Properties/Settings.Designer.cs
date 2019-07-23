@@ -34,5 +34,62 @@ namespace Chronicy.Excel.Properties {
                 this["ShowRibbonBranding"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoConnect {
+            get {
+                return ((bool)(this["AutoConnect"]));
+            }
+            set {
+                this["AutoConnect"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultWebServiceAddress {
+            get {
+                return ((string)(this["DefaultWebServiceAddress"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WebServiceAddress {
+            get {
+                return ((string)(this["WebServiceAddress"]));
+            }
+            set {
+                this["WebServiceAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EncryptedUsername {
+            get {
+                return ((string)(this["EncryptedUsername"]));
+            }
+            set {
+                this["EncryptedUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EncryptedPassword {
+            get {
+                return ((string)(this["EncryptedPassword"]));
+            }
+            set {
+                this["EncryptedPassword"] = value;
+            }
+        }
     }
 }

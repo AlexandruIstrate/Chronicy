@@ -115,5 +115,10 @@ namespace Chronicy.Tests.Communication
         {
             throw new NotImplementedException();
         }
+
+        public void SendUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

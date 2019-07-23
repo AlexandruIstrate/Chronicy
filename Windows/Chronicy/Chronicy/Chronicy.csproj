@@ -171,6 +171,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -223,7 +224,7 @@
     <Compile Include="Tracking\TrackingDataBuilder.cs" />
     <Compile Include="Utils\DataUtils.cs" />
     <Compile Include="Utils\ExceptionUtils.cs" />
-    <Compile Include="Utils\Settings.cs" />
+    <Compile Include="Utils\ProtectedDataStorage.cs" />
     <Compile Include="Utils\TypeUtils.cs" />
     <Compile Include="Web\ChronicyUrlBuilder.cs" />
     <Compile Include="Web\ChronicyWebApi.cs" />

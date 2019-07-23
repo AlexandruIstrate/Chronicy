@@ -223,6 +223,12 @@
     <Compile Include="UI\NotebooksTaskPane.Designer.cs">
       <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\IUserAction.cs" />
     <Compile Include="User\SelectCellRangeAction.cs" />
     <Compile Include="User\SelectSheetAction.cs" />
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NotebooksTaskPane.resx">
       <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Chronicy.Excel_TemporaryKey.pfx" />

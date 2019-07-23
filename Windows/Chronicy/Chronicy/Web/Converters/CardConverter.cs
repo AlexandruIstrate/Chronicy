@@ -18,6 +18,7 @@ namespace Chronicy.Web.Converters
                 ID = value.ID,
                 Name = value.Name,
                 Comment = value.Comment,
+                Date = value.Date,
                 Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll(input => fieldConverter.Value.Convert(input)),
                 Tags = DataUtils.ValueOrDefault(value.Tags).ConvertAll((input) => tagConverter.Value.Convert(input))
             };
@@ -25,10 +26,12 @@ namespace Chronicy.Web.Converters
 
         public Data.Card ReverseConvert(Models.Card value)
         {
-            return new Data.Card(value.Name)
+            return new Data.Card()
             {
                 ID = value.ID,
+                Name = value.Name,
                 Comment = value.Comment,
+                Date = value.Date,
                 Fields = DataUtils.ValueOrDefault(value.Fields).ConvertAll(input => fieldConverter.Value.ReverseConvert(input)),
                 Tags = DataUtils.ValueOrDefault(value.Tags).ConvertAll((input) => tagConverter.Value.ReverseConvert(input))
             };

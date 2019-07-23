@@ -1,23 +1,20 @@
-﻿using Chronicy.Web;
-using Chronicy.Web.Models;
+﻿using Chronicy.Communication;
 using System;
 
 namespace Chronicy.Authentication
 {
     public class CredentialsManager : ICredentialsManager
     {
-        public ChronicyWebApi WebApi { get; set; }
+        public IServerService Service { get; set; }
 
-        public Token ApiToken => WebApi.AccessToken;
-
-        public CredentialsManager(ChronicyWebApi api)
+        public CredentialsManager(IServerService service)
         {
-            WebApi = api;
+            Service = service;
         }
 
         public void Signin(string username, string password)
         {
-            WebApi.Authenticate(username, password);
+            Service.Authenticate(username, password);
         }
 
         public void Signout()

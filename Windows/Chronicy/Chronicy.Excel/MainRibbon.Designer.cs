@@ -374,9 +374,11 @@
             // 
             // optionsButton
             // 
+            this.optionsButton.Image = global::Chronicy.Excel.Properties.Resources.IconSettings32;
             this.optionsButton.Label = "Chronicy Options";
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.ShowImage = true;
+            this.optionsButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.OnOptionsClicked);
             // 
             // MainRibbon
             // 

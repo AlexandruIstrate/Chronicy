@@ -24,7 +24,7 @@ Chronicy features a simple interface that gives you a clear overview of what you
 
 The Microsoft Excel extension
 
-![Extension Excel](./Images/ExtensionExcel.png)
+![Extension Excel](./Images/ExtensionExcel.jpg)
 
 *More Office application extensions coming soon!*
 
@@ -41,7 +41,7 @@ The Windows service that collects data sent by extensions
 [//]: ![Web](./Images/Web.png)
 
 ## Upcoming Features
-- [ ] Windows service and Office extensions
+- [x] Windows service and Office extensions
 - [ ] Website and web service
 - [ ] Cross platform communication
 - [ ] Encrypted storage
@@ -50,18 +50,20 @@ The Windows service that collects data sent by extensions
 ## Platform Support
 |   Platform   |    Status    |                Components              |
 | ------------ | ------------ | -------------------------------------- |
-| Windows      | WIP          | Windows Service and Office Extensions  |
+| Windows      | Supported    | Windows Service and Office Extensions  |
 | macOS        | Supported    | Desktop app and Safari extension       |
 | Web          | WIP          | Website and API                        |
 
 ## The Technologies That Power Chronicy
 #### Windows
-- C# 7.2
+- C# 7.3
 - .NET Framework 4.7.2
 - Windows Communication Framework
 - Newtonsoft JSON
 - NLog
 - NUnit
+- SQLite
+- Entity Framework Core (Local storage only)
 
 #### macOS
 - Swift 5
@@ -71,8 +73,12 @@ The Windows service that collects data sent by extensions
 - FatSidebar
 
 #### Web
+- C# 7.3
 - .NET Core 2.2
 - ASP.NET Core
+- Microsoft SQL Server
+- Newtonsoft JSON
+- NLog
 
 ## Things That Inspired Chronicy
 - [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) - This has been the main point of inspiration for the stack based, board-like workflow

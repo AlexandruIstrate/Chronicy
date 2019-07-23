@@ -6,9 +6,12 @@ using Chronicy.Data.Storage;
 using Chronicy.Excel.Communication;
 using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
+using Chronicy.Excel.Properties;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Utils;
+using Chronicy.Information;
 using Chronicy.Tracking;
+using Chronicy.Utils;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -44,7 +47,7 @@ namespace Chronicy.Excel.App
             tracking = new TrackingSystem();
             notebooks = new NotebookManager(null);
             history = new HistoryManager();
-            credentialsManager = new CredentialsManager(null); // TODO: WebApi
+            credentialsManager = new CredentialsManager(null);
 
             InitializeNotebooks();
             InitializeTracking();
@@ -62,6 +65,10 @@ namespace Chronicy.Excel.App
                 Connected = true;
 
                 notebooks.DataSource = new ServiceDataSource(Service);
+                credentialsManager.Service = Service;
+
+                Service.SendUrl(Settings.Default.WebServiceAddress);
+                AutoConnect();
             }
             catch (EndpointNotFoundException e)
             {
@@ -102,6 +109,26 @@ namespace Chronicy.Excel.App
         private void InitializeNotebooks()
         {
             notebooks.NotebooksChanged += (sender, args) => OnNotebooksUpdated();
+        }
+
+        private void AutoConnect()
+        {
+            if (!Settings.Default.AutoConnect)
+            {
+                return;
+            }
+
+            try
+            {
+                string username = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedUsername);
+                string password = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedPassword);
+
+                Service.Authenticate(username, password);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, DebugLogContext.Current);
+            }
         }
 
         private void InitializeTracking()
