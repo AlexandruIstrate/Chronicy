@@ -77,12 +77,13 @@ namespace Chronicy.Web.Api
                 DataRow dataRow = dataTable.Rows[0];
 
                 bool valid = (bool)dataRow[Columns.IsValid];
-                DateTime expirationDate = (DateTime)dataRow[Columns.ExpirationDate];
 
                 if (valid)
                 {
                     return TokenStatus.Valid;
                 }
+
+                DateTimeOffset expirationDate = (DateTimeOffset)dataRow[Columns.ExpirationDate];
 
                 if (expirationDate < DateTime.Now)
                 {

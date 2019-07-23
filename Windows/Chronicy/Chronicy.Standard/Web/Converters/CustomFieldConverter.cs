@@ -9,13 +9,19 @@ namespace Chronicy.Web.Converters
 
         public Models.CustomField Convert(Data.CustomField value)
         {
-            return new Models.CustomField
+            Models.CustomField field = new Models.CustomField
             {
                 ID = value.ID,
                 Name = value.Name,
                 Type = value.Type.ToString(),
-                Value = value.Value.ToString()
             };
+
+            if (value.Value != null)
+            {
+                field.Value = value.Value.ToString(); 
+            }
+
+            return field;
         }
 
         public Data.CustomField ReverseConvert(Models.CustomField value)
@@ -23,13 +29,19 @@ namespace Chronicy.Web.Converters
             try
             {
                 Enum.TryParse(value.Type, out FieldType fieldType);
-                return new Data.CustomField
+                Data.CustomField field = new Data.CustomField
                 {
                     ID = value.ID,
                     Name = value.Name,
                     Type = fieldType,
-                    Value = ConvertStringToFieldValue(value.Value, fieldType)
                 };
+
+                if (value.Value != null)
+                {
+                    field.Value = ConvertStringToFieldValue(value.Value, fieldType); 
+                }
+
+                return field;
             }
             catch (Exception e)
             {

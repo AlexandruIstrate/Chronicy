@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace Chronicy.Data
 {
@@ -6,12 +7,15 @@ namespace Chronicy.Data
     public class Tag
     {
         [DataMember]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
         [DataMember]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [DataMember]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
         public Tag(string name, string description = "")

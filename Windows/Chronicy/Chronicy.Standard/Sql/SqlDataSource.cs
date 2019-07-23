@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using Chronicy.Data;
 using Chronicy.Data.Storage;
+using Newtonsoft.Json;
 
 namespace Chronicy.Sql
 {
+    // TODO: Figure out whether it's better to use Data notebooks or Web notebooks
     public class SqlDataSource : IDataSource<Notebook>, IDisposable
     {
         private ISqlDatabase database;
@@ -30,20 +33,40 @@ namespace Chronicy.Sql
 
         public void Create(Notebook item)
         {
-            database.RunNonQueryProcedure(SqlProcedures.Notebook.Create, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(item.Name), item.Name),
-                new SqlParameter(nameof(item.Stacks), item.Stacks)
-            });
+                database.RunNonQueryProcedure(SqlProcedures.Notebook.CreateGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Json, JsonConvert.SerializeObject(item))
+                });
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException("Could not serialize Notebook", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not create Notebook", e);
+            }
         }
 
-        public Task CreateAsync(Notebook item)
+        public async Task CreateAsync(Notebook item)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Create, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(item.Name), item.Name),
-                new SqlParameter(nameof(item.Stacks), item.Stacks)
-            });
+                await database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.CreateGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.Json, JsonConvert.SerializeObject(item))
+                });
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException("Could not serialize Notebook", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not create Notebook", e);
+            }
         }
 
         public void Delete(int id)
@@ -66,22 +89,35 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.Create, new List<SqlParameter>
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.ReadGraph, new List<SqlParameter>
                 {
-                    new SqlParameter(nameof(id), id)
+                    new SqlParameter(Parameters.ID, id)
                 });
-                DataTable dataTable = dataSet.Tables[0];
 
+                DataTable dataTable = dataSet.Tables[0];
                 DataRow row = dataTable.Rows[0];
 
-                // TODO: Fill with data from the row
-                Notebook notebook = new Notebook(string.Empty);
+                string json = (string)row[Columns.Json];
 
-                return notebook;
+                // The database returns a JSON array with one element
+                IEnumerable<Notebook> notebookArray = JsonConvert.DeserializeObject<IEnumerable<Notebook>>(json);
+                return notebookArray.First();
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException e)
             {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
+                throw new DataSourceException($"The Notebook with ID { id } does not exist", e);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new DataSourceException($"The Notebook with ID { id } does not exist", e);
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get Notebook", e);
             }
         }
 
@@ -89,22 +125,35 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.Create, new List<SqlParameter>
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.ReadGraph, new List<SqlParameter>
                 {
-                    new SqlParameter(nameof(id), id)
+                    new SqlParameter(Parameters.ID, id)
                 });
-                DataTable dataTable = dataSet.Tables[0];
 
+                DataTable dataTable = dataSet.Tables[0];
                 DataRow row = dataTable.Rows[0];
 
-                // TODO: Fill with data from the row
-                Notebook notebook = new Notebook(string.Empty);
+                string json = (string)row[Columns.Json];
 
-                return notebook;
+                // The database returns a JSON array with one element
+                IEnumerable<Notebook> notebookArray = JsonConvert.DeserializeObject<IEnumerable<Notebook>>(json);
+                return notebookArray.First();
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException e)
             {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
+                throw new DataSourceException($"The Notebook with ID { id } does not exist", e);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new DataSourceException($"The Notebook with ID { id } does not exist", e);
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get Notebook", e);
             }
         }
 
@@ -112,21 +161,29 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.Read);
+                DataSet dataSet = database.RunScalarProcedure(SqlProcedures.Notebook.ReadGraph);
                 DataTable dataTable = dataSet.Tables[0];
 
-                List<Notebook> result = new List<Notebook>();
+                List<Notebook> notebooks = new List<Notebook>();
 
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    // Get the data from row and put it into the new notebook object
+                    string json = (string)row[Columns.Json];
+
+                    // The database returns a JSON array with one element
+                    IEnumerable<Notebook> notebookArray = JsonConvert.DeserializeObject<IEnumerable<Notebook>>(json);
+                    notebooks.Add(notebookArray.First());
                 }
 
-                return result;
+                return notebooks;
             }
-            catch (IndexOutOfRangeException)
+            catch (JsonException e)
             {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get Notebook", e);
             }
         }
 
@@ -134,21 +191,29 @@ namespace Chronicy.Sql
         {
             try
             {
-                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.Read);
+                DataSet dataSet = await database.RunScalarProcedureAsync(SqlProcedures.Notebook.ReadGraph);
                 DataTable dataTable = dataSet.Tables[0];
 
-                List<Notebook> result = new List<Notebook>();
+                List<Notebook> notebooks = new List<Notebook>();
 
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    // Get the data from row and put it into the new notebook object
+                    string json = (string)row[Columns.Json];
+
+                    // The database returns a JSON array with one element
+                    IEnumerable<Notebook> notebookArray = JsonConvert.DeserializeObject<IEnumerable<Notebook>>(json);
+                    notebooks.Add(notebookArray.First());
                 }
 
-                return result;
+                return notebooks;
             }
-            catch (IndexOutOfRangeException)
+            catch (JsonException e)
             {
-                throw new DataSourceException("The DataSource does not contain any DataTables");
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not get Notebook", e);
             }
         }
 
@@ -166,6 +231,17 @@ namespace Chronicy.Sql
             {
                 new SqlParameter(nameof(notebook), notebook)
             });
+        }
+
+        public static class Parameters
+        {
+            public static string ID = "@idnotebook";
+            public static string Json = "@json";
+        }
+
+        public static class Columns
+        {
+            public static string Json = "nbjson";
         }
     }
 }

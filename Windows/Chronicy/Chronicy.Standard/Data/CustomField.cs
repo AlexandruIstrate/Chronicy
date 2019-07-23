@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -8,16 +9,20 @@ namespace Chronicy.Data
     public class CustomField
     {
         [DataMember]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
         [DataMember]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [DataMember]
+        [JsonProperty("type")]
         public FieldType Type { get; set; }
 
         [DataMember]
         [NotMapped] // Testing only
+        [JsonProperty("value")]
         public object Value { get; set; }
 
         public CustomField(string name, FieldType type, object value = null)

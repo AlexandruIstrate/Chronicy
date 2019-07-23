@@ -1,14 +1,16 @@
-﻿using Chronicy.Information;
-using Chronicy.Web.Api;
+﻿using Chronicy.Web.Api;
 using Chronicy.Web.Converters;
 using Chronicy.Web.Models;
+using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
-    [Produces("application/json")]
+    [Produces(MediaTypeNames.Application.Json)]
     [Route("api/[controller]")]
     [ApiController]
     public class NotebookController : ControllerBase
@@ -28,16 +30,23 @@ namespace Chronicy.Web.Controllers
         {
             if (authorization == null)
             {
-                return ErrorResponse.Failure<ListResponse<Notebook>>(1, "Missing token");
+                return ErrorResponse.Failure<ListResponse<Notebook>>(ErrorCodes.MissingToken, "Missing token");
             }
 
-            if (!CheckToken(authorization))
+            try
             {
-                return ErrorResponse.Failure<ListResponse<Notebook>>(1, "Invalid token");
-            }
+                if (!await CheckTokenAsync(authorization))
+                {
+                    return ErrorResponse.Failure<ListResponse<Notebook>>(ErrorCodes.InvalidToken, "Invalid or expired token");
+                }
 
-            List<Data.Notebook> list = new List<Data.Notebook>(await notebooks.GetAllAsync());
-            return new ListResponse<Notebook> { List = list.ConvertAll((item) => item.ToWebNotebook()) };
+                List<Data.Notebook> list = new List<Data.Notebook>(await notebooks.GetAllAsync());
+                return new ListResponse<Notebook> { List = list.ConvertAll((item) => item.ToWebNotebook()) };
+            }
+            catch (Exception e)
+            {
+                return ErrorResponse.Failure<ListResponse<Notebook>>(ErrorCodes.GeneralFailure, e.Message);
+            }
         }
 
         // GET api/notebook?id=5
@@ -46,20 +55,27 @@ namespace Chronicy.Web.Controllers
         {
             if (authorization == null)
             {
-                return ErrorResponse.Failure<Notebook>(1, "Missing token");
+                return ErrorResponse.Failure<Notebook>(ErrorCodes.MissingToken, "Missing token");
             }
 
-            if (!CheckToken(authorization))
+            try
             {
-                return ErrorResponse.Failure<Notebook>(1, "Invalid token");
-            }
+                if (!await CheckTokenAsync(authorization))
+                {
+                    return ErrorResponse.Failure<Notebook>(ErrorCodes.InvalidToken, "Invalid or expired token");
+                }
 
-            if (id == null)
+                if (id == null)
+                {
+                    return ErrorResponse.Failure<Notebook>(ErrorCodes.MissingParameter, $"Parameter { nameof(id) } is missing");
+                }
+
+                return (await notebooks.GetAsync(id.Value)).ToWebNotebook();
+            }
+            catch (Exception e)
             {
-                return ErrorResponse.Failure<Notebook>(1, $"Parameter { nameof(id) } is missing");
+                return ErrorResponse.Failure<Notebook>(ErrorCodes.GeneralFailure, e.Message);
             }
-
-            return (await notebooks.GetAsync(id.Value)).ToWebNotebook();
         }
 
         // POST api/notebook/create
@@ -68,15 +84,23 @@ namespace Chronicy.Web.Controllers
         {
             if (authorization == null)
             {
-                return ErrorResponse.Failure(1, "Missing token");
+                return ErrorResponse.Failure(ErrorCodes.MissingToken, "Missing token");
             }
 
-            if (!CheckToken(authorization))
+            try
             {
-                return ErrorResponse.Failure(1, "Invalid token");
+                if (!await CheckTokenAsync(authorization))
+                {
+                    return ErrorResponse.Failure(ErrorCodes.InvalidToken, "Invalid or expired token");
+                }
+
+                await notebooks.CreateAsync(notebook.ToDataNotebook());
+            }
+            catch (Exception e)
+            {
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
             }
 
-            await notebooks.CreateAsync(notebook.ToDataNotebook());
             return ErrorResponse.Success();
         }
 
@@ -86,20 +110,28 @@ namespace Chronicy.Web.Controllers
         {
             if (authorization == null)
             {
-                return ErrorResponse.Failure(1, "Missing token");
+                return ErrorResponse.Failure(ErrorCodes.MissingToken, "Missing token");
             }
 
-            if (!CheckToken(authorization))
+            try
             {
-                return ErrorResponse.Failure(1, "Invalid token");
-            }
+                if (!await CheckTokenAsync(authorization))
+                {
+                    return ErrorResponse.Failure(ErrorCodes.InvalidToken, "Invalid or expired token");
+                }
 
-            if (id == null)
+                if (id == null)
+                {
+                    return ErrorResponse.Failure(ErrorCodes.MissingParameter, $"Parameter { nameof(id) } is missing");
+                }
+
+                await notebooks.DeleteAsync(id.Value);
+            }
+            catch (Exception e)
             {
-                return ErrorResponse.Failure(1, $"Parameter { nameof(id) } is missing");
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
             }
 
-            await notebooks.DeleteAsync(id.Value);
             return ErrorResponse.Success();
         }
 
@@ -109,26 +141,34 @@ namespace Chronicy.Web.Controllers
         {
             if (authorization == null)
             {
-                return ErrorResponse.Failure(1, "Missing token");
+                return ErrorResponse.Failure(ErrorCodes.MissingToken, "Missing token");
             }
 
-            if (!CheckToken(authorization))
+            try
             {
-                return ErrorResponse.Failure(1, "Invalid token");
-            }
+                if (!await CheckTokenAsync(authorization))
+                {
+                    return ErrorResponse.Failure(ErrorCodes.InvalidToken, "Invalid or expired token");
+                }
 
-            if (notebook == null)
+                if (notebook == null)
+                {
+                    return ErrorResponse.Failure(ErrorCodes.InvalidBody, $"The request body does not contain a valid Notebook");
+                }
+
+                await notebooks.UpdateAsync(notebook.ToDataNotebook());
+            }
+            catch (Exception e)
             {
-                return ErrorResponse.Failure(1, $"The request body does not contain a valid Notebook");
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
             }
 
-            await notebooks.UpdateAsync(notebook.ToDataNotebook());
             return ErrorResponse.Success();
         }
 
-        private bool CheckToken(string token)
+        private async Task<bool> CheckTokenAsync(string token)
         {
-            return tokenManager.GetTokenStatus(token) == TokenStatus.Valid;
+            return (await tokenManager.GetTokenStatusAsync(token)) == TokenStatus.Valid;
         }
     }
 }

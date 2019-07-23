@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace Chronicy.Data
 {
@@ -9,15 +9,19 @@ namespace Chronicy.Data
     public class Stack
     {
         [DataMember]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
         [DataMember]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [DataMember]
+        [JsonProperty("fields")]
         public List<CustomField> Fields { get; set; }
 
         [DataMember]
+        [JsonProperty("cards")]
         public List<Card> Cards { get; set; }
 
         public Stack(string name)

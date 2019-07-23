@@ -16,7 +16,7 @@ namespace Chronicy.Web.Models
         public bool HasError => ErrorCode != 0;
 
         public WebHeaderCollection Headers => responseInfo?.Headers;
-        public HttpStatusCode StatusCode => responseInfo?.StatusCode ?? HttpStatusCode.NotFound;
+        public HttpStatusCode StatusCode => responseInfo?.StatusCode ?? HttpStatusCode.OK;
 
         public string Header(string key) => responseInfo?.Headers?.Get(key);
 

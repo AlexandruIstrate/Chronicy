@@ -23,9 +23,10 @@ namespace Chronicy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             SqlServerDatabase database = new SqlServerDatabase(SqlConnectionFactory.Create(Configuration));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
             services.AddTransient<ITokenManager>(e => new TokenManager(database));

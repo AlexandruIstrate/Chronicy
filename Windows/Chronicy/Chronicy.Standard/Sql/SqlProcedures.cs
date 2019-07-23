@@ -27,6 +27,9 @@
             public const string Read = "GetNotebook";
             public const string Update = "UpdateNotebook";
             public const string Delete = "DeleteNotebook";
+
+            public const string CreateGraph = "dbo.NGraphCreate";
+            public const string ReadGraph = "dbo.NGraphRead";
         }
     }
 }

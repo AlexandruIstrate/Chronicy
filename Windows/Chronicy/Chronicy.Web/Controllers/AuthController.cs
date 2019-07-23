@@ -3,11 +3,12 @@ using Chronicy.Web.Models;
 using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
-    [Produces("application/json")]
+    [Produces(MediaTypeNames.Application.Json)]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

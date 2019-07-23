@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Chronicy.Web.Models
@@ -13,6 +14,9 @@ namespace Chronicy.Web.Models
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
+
+        [JsonProperty("date")]
+        public DateTime Date { get; set; }
 
         [JsonProperty("fields")]
         public List<CustomField> Fields { get; set; }

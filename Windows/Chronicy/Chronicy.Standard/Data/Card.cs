@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,21 +10,27 @@ namespace Chronicy.Data
     public class Card
     {
         [DataMember]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
         [DataMember]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [DataMember]
+        [JsonProperty("comment")]
         public string Comment { get; set; }
 
         [DataMember]
+        [JsonProperty("date")]
         public DateTime Date { get; set; }
 
         [DataMember]
+        [JsonProperty("fields")]
         public List<CustomField> Fields { get; set; }
 
         [DataMember]
+        [JsonProperty("tags")]
         public List<Tag> Tags { get; set; }
 
         public Card(string name, string comment = "")

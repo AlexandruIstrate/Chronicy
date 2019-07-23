@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,12 +10,15 @@ namespace Chronicy.Data
     public class Notebook
     {
         [DataMember]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
         [DataMember]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [DataMember]
+        [JsonProperty("stacks")]
         public List<Stack> Stacks { get; set; }
 
         public Notebook(string name)
