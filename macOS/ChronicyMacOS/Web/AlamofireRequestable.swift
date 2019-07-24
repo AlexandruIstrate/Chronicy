@@ -73,7 +73,7 @@ class AlamofireRequestable: Requestable {
             case .failure(let error):
                 onError(RequestError(errorCode: 3, message: error.localizedDescription));
             case .success:
-                onCompletion(response.data);
+                onCompletion(response.data!);
                 break;
             }
         }

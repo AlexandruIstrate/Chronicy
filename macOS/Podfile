@@ -9,6 +9,7 @@ target 'ChronicyMacOS' do
 
   # Pods for ChronicyMacOS
   pod 'Alamofire'
+  pod 'KeychainSwift'
 end
 
 target 'ChronicySafariExtension' do

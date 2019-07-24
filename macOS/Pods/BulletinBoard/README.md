@@ -151,7 +151,7 @@ You can customize both color and fonts. You need to change these before you pres
 ~~~swift
 let greenColor = UIColor(red: 0.294, green: 0.85, blue: 0.392, alpha: 1)
 page.appearance.actionButtonColor = greenColor
-page.appearance.alternativeButtonColor = greenColor
+page.appearance.alternativeButtonTitleColor = greenColor
 page.appearance.actionButtonTitleColor = .white
 ~~~
 
@@ -242,7 +242,7 @@ This creates the following interaction:
 
 By default, the content behind the card is covered with a semi-opaque view (known as the `.dimming` style).
 
-You can customize the background view by changing the `backgroundViewStyle` property of the manager before calling `prepare()`.
+You can customize the background view by changing the `backgroundViewStyle` property of the manager before calling `showBulletin()`.
 
 **Example**:
 
@@ -268,8 +268,6 @@ By default, a close button will be displayed when the item can be dismissed. If 
 ## Creating Custom Items
 
 To create custom bulletin items, create a class that implements the `BLTNItem` protocol. It is usually easier to subclass `BLTNPageItem` and implement one of the hook methods to provide your custom views to display with standard elements.
-
-See the [Creating a Custom Item](guides/Creating%20a%20Custom%20Item.md) guide to learn more.
 
 ## Internals
 

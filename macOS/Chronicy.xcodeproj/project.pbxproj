@@ -51,10 +51,14 @@
 		A75220D12252044500C7A54E /* ChronicyShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A75220C62252044500C7A54E /* ChronicyShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A760459922308DA5007F3268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A760459822308DA5007F3268 /* AppDelegate.swift */; };
 		A76045A222308DA6007F3268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76045A022308DA6007F3268 /* Main.storyboard */; };
+		A7661B1922E88D1C00F3A78B /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7661B1822E88D1C00F3A78B /* PreferencesWindowController.swift */; };
 		A7741C1622862B1A008300D6 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1522862B1A008300D6 /* ActionViewController.swift */; };
+		A776034122E8C46600D9EC15 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A776034022E8C46600D9EC15 /* Defaults.plist */; };
 		A77617FA2231C1450038E815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77617F92231C1450038E815 /* Assets.xcassets */; };
 		A77618012231C8BD0038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77618002231C8BD0038E815 /* Log.swift */; };
 		A77D5084224CEC2400F7A527 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = A77D5083224CEC2400F7A527 /* Resources */; };
+		A77D963A22E8DE36003C3C97 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77D963922E8DE36003C3C97 /* KeychainStorage.swift */; };
+		A77D963D22E8E7B4003C3C97 /* PreferencesServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77D963C22E8E7B4003C3C97 /* PreferencesServicesViewController.swift */; };
 		A78631F622776D3900F53D4D /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F422776D3900F53D4D /* KeyStorage.swift */; };
 		A78631F722776D3900F53D4D /* DistributedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F522776D3900F53D4D /* DistributedObjectManager.swift */; };
 		A78631F922776D6A00F53D4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78631F822776D6A00F53D4D /* Log.swift */; };
@@ -109,6 +113,7 @@
 		A7E4512C224811C200848AF5 /* StackEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512A224811C200848AF5 /* StackEditorViewController.xib */; };
 		A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */; };
 		A7E4513022481BB200848AF5 /* CardEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */; };
+		A7E6B48922E884E9000D7928 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E6B48822E884E9000D7928 /* PreferencesViewController.swift */; };
 		A7F52484228A16FC00D8A14F /* ParameterEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F52482228A16FC00D8A14F /* ParameterEditViewController.swift */; };
 		A7F52485228A16FC00D8A14F /* ParameterEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F52483228A16FC00D8A14F /* ParameterEditViewController.xib */; };
 /* End PBXBuildFile section */
@@ -232,10 +237,14 @@
 		A76045A122308DA6007F3268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76045A322308DA6007F3268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChronicyMacOS.entitlements; sourceTree = "<group>"; };
+		A7661B1822E88D1C00F3A78B /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		A7741C1522862B1A008300D6 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		A776034022E8C46600D9EC15 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		A77617F92231C1450038E815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77618002231C8BD0038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A77D5083224CEC2400F7A527 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		A77D963922E8DE36003C3C97 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		A77D963C22E8E7B4003C3C97 /* PreferencesServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesServicesViewController.swift; sourceTree = "<group>"; };
 		A78631F422776D3900F53D4D /* KeyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		A78631F522776D3900F53D4D /* DistributedObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedObjectManager.swift; sourceTree = "<group>"; };
 		A78631F822776D6A00F53D4D /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -291,6 +300,7 @@
 		A7E4512A224811C200848AF5 /* StackEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackEditorViewController.xib; sourceTree = "<group>"; };
 		A7E4512D22481BB200848AF5 /* CardEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewController.swift; sourceTree = "<group>"; };
 		A7E4512E22481BB200848AF5 /* CardEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardEditorViewController.xib; sourceTree = "<group>"; };
+		A7E6B48822E884E9000D7928 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A7F52482228A16FC00D8A14F /* ParameterEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEditViewController.swift; sourceTree = "<group>"; };
 		A7F52483228A16FC00D8A14F /* ParameterEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterEditViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -401,6 +411,7 @@
 			children = (
 				A7515F222231ADAD00380978 /* WindowController.swift */,
 				A70ED2522249B27200E53AAE /* ViewControllerPresenter.swift */,
+				A7661B1822E88D1C00F3A78B /* PreferencesWindowController.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -488,6 +499,7 @@
 		A760459722308DA5007F3268 /* ChronicyMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				A77D963622E8DE15003C3C97 /* Data */,
 				A794AB4B225F0EF2004BA2E0 /* Model */,
 				A7109E3222358E0700E3EB29 /* Application */,
 				A7109E21223567FF00E3EB29 /* Tracking */,
@@ -509,6 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				A76045A322308DA6007F3268 /* Info.plist */,
+				A776034022E8C46600D9EC15 /* Defaults.plist */,
 				A76045A422308DA6007F3268 /* ChronicyMacOS.entitlements */,
 			);
 			name = "Supporting Files";
@@ -527,11 +540,13 @@
 			children = (
 				A7A88ADC2242C44300C5A94E /* MainViewController.swift */,
 				A7A88ADD2242C44300C5A94E /* MainViewController.xib */,
+				A7E6B48822E884E9000D7928 /* PreferencesViewController.swift */,
 				A7CD73A1225D1C2000C94B23 /* Sidebar.swift */,
 				A7CD73A3225D2BFC00C94B23 /* CustomField.swift */,
 				A794AB49225F08E0004BA2E0 /* PageManager.swift */,
 				A71EAE3C2271032F00ED840C /* NotebooksViewController.swift */,
 				A71EAE3D2271032F00ED840C /* NotebooksViewController.xib */,
+				A77D963B22E8E790003C3C97 /* Preferences */,
 				A70D83222264BA11007A33D7 /* Field Editor Views */,
 				A7A7C2EB224A7A1E000D114E /* Central Controllers */,
 				A7A88AE42242C80900C5A94E /* Outline */,
@@ -543,6 +558,22 @@
 				A7109E2F2235845D00E3EB29 /* Utils */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A77D963622E8DE15003C3C97 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A77D963922E8DE36003C3C97 /* KeychainStorage.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A77D963B22E8E790003C3C97 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				A77D963C22E8E7B4003C3C97 /* PreferencesServicesViewController.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		A78631F122776C8900F53D4D /* Dependencies */ = {
@@ -931,6 +962,7 @@
 				A7C75A1D227F4CE600C61174 /* InteractionsViewController.xib in Resources */,
 				A7A88AEA2242C87100C5A94E /* TImelineViewController.xib in Resources */,
 				A7A88ADF2242C44300C5A94E /* MainViewController.xib in Resources */,
+				A776034122E8C46600D9EC15 /* Defaults.plist in Resources */,
 				A77617FA2231C1450038E815 /* Assets.xcassets in Resources */,
 				A76045A222308DA6007F3268 /* Main.storyboard in Resources */,
 				A7F52485228A16FC00D8A14F /* ParameterEditViewController.xib in Resources */,
@@ -1118,6 +1150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E6B48922E884E9000D7928 /* PreferencesViewController.swift in Sources */,
 				A7E4512F22481BB200848AF5 /* CardEditorViewController.swift in Sources */,
 				A70D832B2264D277007A33D7 /* NumericEditorViewController.swift in Sources */,
 				A7BC2845224BF3D300A1A6DE /* ContentView.swift in Sources */,
@@ -1134,6 +1167,8 @@
 				A794AB4A225F08E0004BA2E0 /* PageManager.swift in Sources */,
 				A7E4512B224811C200848AF5 /* StackEditorViewController.swift in Sources */,
 				A7A88ADE2242C44300C5A94E /* MainViewController.swift in Sources */,
+				A77D963D22E8E7B4003C3C97 /* PreferencesServicesViewController.swift in Sources */,
+				A77D963A22E8DE36003C3C97 /* KeychainStorage.swift in Sources */,
 				A7F52484228A16FC00D8A14F /* ParameterEditViewController.swift in Sources */,
 				A7A88AD82242B7BF00C5A94E /* OutlineStackView.swift in Sources */,
 				A7CD73A4225D2BFC00C94B23 /* CustomField.swift in Sources */,
@@ -1151,6 +1186,7 @@
 				A70C25462284D2C700F30E2C /* ActionEditViewController.swift in Sources */,
 				A79EEAB62273B1E200EE354C /* BrowserTracker.swift in Sources */,
 				A760459922308DA5007F3268 /* AppDelegate.swift in Sources */,
+				A7661B1922E88D1C00F3A78B /* PreferencesWindowController.swift in Sources */,
 				A7A7C2EE224A7ABC000D114E /* OutlineCentralViewController.swift in Sources */,
 				A70CF4AC227B336A00DCFFD4 /* NotebookManagerViewController.swift in Sources */,
 				A71EAE322270AC2D00ED840C /* ActivityViewController.swift in Sources */,

@@ -33,6 +33,7 @@
 		A76980E62274F64900281423 /* ExtensionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76980E52274F64900281423 /* ExtensionStack.swift */; };
 		A7702D1D227636EE00C66ECA /* FieldDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7702D1C227636EE00C66ECA /* FieldDefinition.swift */; };
 		A7741C1A22862D00008300D6 /* ActionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7741C1922862D00008300D6 /* ActionTypes.swift */; };
+		A776034722E8D10600D9EC15 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776034622E8D10600D9EC15 /* SecureStorage.swift */; };
 		A77617FD2231C3660038E815 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77617FC2231C3660038E815 /* Log.swift */; };
 		A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7781383226DDE44006762D1 /* CoreDataStorage.swift */; };
 		A77F26CE22D66F0F002ECAF1 /* NotebookManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */; };
@@ -62,6 +63,7 @@
 		A79EEAB12273B19300EE354C /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAAD2273B19300EE354C /* ModuleManager.swift */; };
 		A79EEAB92273B3EE00EE354C /* FieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EEAB82273B3EE00EE354C /* FieldContainer.swift */; };
 		A7A0BBEC22DF8C98003586DB /* AuthenticationHeaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A0BBEB22DF8C98003586DB /* AuthenticationHeaderBuilder.swift */; };
+		A7A4247422E7CB940057FD65 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A4247322E7CB940057FD65 /* Settings.swift */; };
 		A7A46144228CBD4B0031DDE3 /* DictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */; };
 		A7A52A732246E9460086E01F /* Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7A52A712246E9460086E01F /* Notebook.xcdatamodeld */; };
 		A7AB6AB4226D2DA0002F61CB /* LocalNotebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */; };
@@ -103,6 +105,7 @@
 		A76980E52274F64900281423 /* ExtensionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStack.swift; sourceTree = "<group>"; };
 		A7702D1C227636EE00C66ECA /* FieldDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDefinition.swift; sourceTree = "<group>"; };
 		A7741C1922862D00008300D6 /* ActionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTypes.swift; sourceTree = "<group>"; };
+		A776034622E8D10600D9EC15 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		A77617FC2231C3660038E815 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7781383226DDE44006762D1 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookManagerFactory.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		A79EEAAD2273B19300EE354C /* ModuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		A79EEAB82273B3EE00EE354C /* FieldContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainer.swift; sourceTree = "<group>"; };
 		A7A0BBEB22DF8C98003586DB /* AuthenticationHeaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHeaderBuilder.swift; sourceTree = "<group>"; };
+		A7A4247322E7CB940057FD65 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryLoader.swift; sourceTree = "<group>"; };
 		A7A52A722246E9460086E01F /* Timeline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timeline.xcdatamodel; sourceTree = "<group>"; };
 		A7AB6AB3226D2DA0002F61CB /* LocalNotebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotebookManager.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				A7098C4E224518920026BAFC /* Notification.swift */,
 				A7A46143228CBD4B0031DDE3 /* DictionaryLoader.swift */,
 				A7A0BBEB22DF8C98003586DB /* AuthenticationHeaderBuilder.swift */,
+				A7A4247322E7CB940057FD65 /* Settings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				A7AD5EBB2268FBE9002298F4 /* ServerNotebookManager.swift */,
 				A77F26CD22D66F0F002ECAF1 /* NotebookManagerFactory.swift */,
 				A77F26CF22D678A6002ECAF1 /* DataSourceManager.swift */,
+				A776034622E8D10600D9EC15 /* SecureStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -461,6 +467,7 @@
 				A7781384226DDE44006762D1 /* CoreDataStorage.swift in Sources */,
 				A7C75A1F227F67BE00C61174 /* Action.swift in Sources */,
 				A7109E2E22357D9700E3EB29 /* ApplicationManager.swift in Sources */,
+				A7A4247422E7CB940057FD65 /* Settings.swift in Sources */,
 				A70CF4F7227CA29A00DCFFD4 /* CoreDataCustomField+CoreDataClass.swift in Sources */,
 				A70C2973226A728900966F50 /* URLManager.swift in Sources */,
 				A70CF4F5227CA29A00DCFFD4 /* CoreDataNotebook+CoreDataClass.swift in Sources */,
@@ -482,6 +489,7 @@
 				A7B2D42B2252738B0012A9E5 /* DistributedObjectManager.swift in Sources */,
 				A70C2971226A4DB700966F50 /* WebAPIRequest.swift in Sources */,
 				A76980E42274F60800281423 /* ExtensionNotebook.swift in Sources */,
+				A776034722E8D10600D9EC15 /* SecureStorage.swift in Sources */,
 				A7098C4F224518920026BAFC /* Notification.swift in Sources */,
 				A77F26D022D678A6002ECAF1 /* DataSourceManager.swift in Sources */,
 				A77617FD2231C3660038E815 /* Log.swift in Sources */,

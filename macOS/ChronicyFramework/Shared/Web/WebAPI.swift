@@ -12,7 +12,7 @@ public class WebAPI {
 //    private var requestManager: RequestManager = RequestManager();
     
     private var requestable: Requestable?;
-    private var urlManager: URLManager = URLManager(baseURL: "https://192.168.100.5/api");
+    private var urlManager: URLManager = URLManager(baseURL: Settings.webServiceURL);
     
     private var token: String?;
     
@@ -55,11 +55,11 @@ public class WebAPI {
     
     public typealias CreateNotebookCallback = (Error?) -> ()
     public func createNotebook(notebook: Notebook, callback: @escaping CreateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.createNotebook(), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
-            
-        }, onError: { (error: RequestError) in
-            
-        })
+//        requestable?.uploadJSON(url: urlManager.createNotebook(), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
+//            
+//        }, onError: { (error: RequestError) in
+//            
+//        })
     }
     
     public typealias DeleteNotebookCallback = (Error?) -> ()
@@ -73,11 +73,11 @@ public class WebAPI {
     
     public typealias UpdateNotebookCallback = (Error?) -> ()
     public func updateNotebook(notebook: Notebook, id: Int, callback: @escaping UpdateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
-            
-        }, onError: { (error: RequestError) in
-            
-        })
+//        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
+//
+//        }, onError: { (error: RequestError) in
+//
+//        })
     }
     
     private lazy var defaultHeaders: Headers = {
