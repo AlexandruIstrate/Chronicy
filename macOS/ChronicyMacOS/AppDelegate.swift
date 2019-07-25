@@ -25,6 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         ModuleManager.manager.add(module: SafariBrowserModule());
         TriggerManager.manager.register(register: MacOSTriggerRegister());
+        
+        // TODO: Change this
+        WebAPI.shared.requestable = AlamofireRequestable();
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
