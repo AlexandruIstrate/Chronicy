@@ -14,7 +14,7 @@ public class NotebookConverter: Converter<Notebook, NotebookModel> {
     
     public override func convert(item: Notebook) -> NotebookModel {
         let result: NotebookModel = NotebookModel();
-//        result.id = item.id;
+        result.id = item.id;
         result.name = item.name;
         result.stacks = item.stacks.map({ (iter: Stack) -> StackModel in
             return stackConverter.convert(item: iter);
@@ -24,7 +24,7 @@ public class NotebookConverter: Converter<Notebook, NotebookModel> {
     
     public override func reverseConvert(item: NotebookModel) -> Notebook {
         let result: Notebook = Notebook(name: item.name);
-//        result.id = item.id;
+        result.id = item.id;
         result.stacks = item.stacks.map({ (iter: StackModel) -> Stack in
             return stackConverter.reverseConvert(item: iter);
         });

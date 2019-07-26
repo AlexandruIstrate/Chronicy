@@ -43,14 +43,14 @@ public class ServerNotebookManager: NotebookManager {
             }
             
             let info: [NotebookInfo] = notebooks.map({ (iter: Notebook) -> NotebookInfo in
-                return NotebookInfo(name: iter.name, id: /* iter.id */ "", dateCreated: Date());
+                return NotebookInfo(name: iter.name, id: String(iter.id), dateCreated: Date());
             })
             callback(info, nil);
         }
     }
     
     public func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback) {
-        self.api.getNotebook(id: /* info.id */ 0) { (notebook: Notebook?, error: Error?) in
+        self.api.getNotebook(id: Int(info.id)!) { (notebook: Notebook?, error: Error?) in
             guard error == nil else {
                 callback(nil, .fetchFailure);
                 return;

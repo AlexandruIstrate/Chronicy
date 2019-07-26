@@ -22,8 +22,16 @@ class AlamofireRequestable: Requestable {
         }
     }
     
-    func uploadData(url: String, headers: Headers?, data: Data, onCompletion: @escaping RequestUploadCallback, onError: @escaping RequestErrorCallback) {
-        Alamofire.upload(data, to: url).responseData { (response: DataResponse<Data>) in
+    func uploadData(url: String, data: Data, headers: Headers?, requestMethod: RequestMethod? = .post, onCompletion: @escaping RequestUploadCallback, onError: @escaping RequestErrorCallback) {
+        guard let requestURL: URL = URL(string: url) else {
+            onError(RequestError(errorCode: 1, message: "The URL is not valid"));
+            return;
+        }
+        
+        var request: URLRequest = URLRequest(url: requestURL);
+        request.httpMethod = requestMethod!.rawValue;
+        
+        Alamofire.request(request).responseData { (response: DataResponse<Data>) in
             switch response.result {
             case .failure(let error):
                 onError(RequestError(errorCode: 3, message: error.localizedDescription));
@@ -49,14 +57,14 @@ class AlamofireRequestable: Requestable {
         }
     }
     
-    func uploadJSON<T>(url: String, headers: Headers?, object: T, onCompletion: @escaping RequestJSONUploadCallback, onError: @escaping RequestErrorCallback) where T : Decodable, T : Encodable {
+    func uploadJSON<T>(url: String, object: T, headers: Headers?, requestMethod: RequestMethod? = .post, onCompletion: @escaping RequestJSONUploadCallback, onError: @escaping RequestErrorCallback) where T : Decodable, T : Encodable {
         guard let requestURL: URL = URL(string: url) else {
             onError(RequestError(errorCode: 1, message: "The URL is not valid"));
             return;
         }
         
         var request: URLRequest = URLRequest(url: requestURL);
-        request.httpMethod = "POST";
+        request.httpMethod = requestMethod!.rawValue;
         request.setValue("application/json", forHTTPHeaderField: "Content-Type");
         
         if let headers: Headers = headers {

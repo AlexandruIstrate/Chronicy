@@ -20,7 +20,7 @@ public class CustomFieldConverter: Converter<CustomField, CustomFieldModel> {
     }
     
     public override func reverseConvert(item: CustomFieldModel) -> CustomField {
-        guard let type: FieldType = FieldType(rawValue: item.type) else {
+        guard let type: FieldType = FieldType(rawValue: item.type.lowercased()) else { // TODO: Lowercasing is a temporary fix
             fatalError("The field type is not a supported value");
         }
         

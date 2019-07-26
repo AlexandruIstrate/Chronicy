@@ -47,12 +47,14 @@ public class AuthenticationHeaderBuilder {
         guard let key: String = key else {
             throw AuthenticationHeaderBuilderError.missingProperty(name: "key");
         }
+//
+//        guard let encoded: String = encode(str: key) else {
+//            throw AuthenticationHeaderBuilderError.encodeFailed;
+//        }
+//
+//        return encoded;
         
-        guard let encoded: String = encode(str: key) else {
-            throw AuthenticationHeaderBuilderError.encodeFailed;
-        }
-        
-        return "\(authType.rawValue) \(encoded)"
+        return key;
     }
     
     private func encode(str: String) -> String? {

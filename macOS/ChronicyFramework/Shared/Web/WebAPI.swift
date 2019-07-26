@@ -25,7 +25,7 @@ public class WebAPI {
         var headers: Headers = [:];
         headers["Authorization"] = try! builder.build();
         
-        requestable?.uploadJSON(url: urlManager.getToken(), headers: headers, object: EmptyRequestBody(), onCompletion: { (data: Data) in
+        requestable?.uploadJSON(url: urlManager.getToken(), object: EmptyRequestBody(), headers: headers, requestMethod: .post, onCompletion: { (data: Data) in
             guard let token: Token = self.decodeJson(data: data) else {
                 callback(nil, nil); // TODO: Error
                 return;
@@ -41,6 +41,9 @@ public class WebAPI {
     public typealias GetNotebooksCallback = ([Notebook]?, Error?) -> ()
     public func getNotebooks(callback: @escaping GetNotebooksCallback) {
         requestable?.downloadJSON(url: urlManager.getNotebooks(), headers: defaultHeaders, onCompletion: { (response: Data) in
+            let json: String? = String(bytes: response, encoding: .utf8);
+            print(json ?? "No JSON response");
+            
             guard let list: ListResponse<NotebookModel> = self.decodeJson(data: response) else {
                 callback(nil, nil); // TODO: Error
                 return;
@@ -49,6 +52,7 @@ public class WebAPI {
             let notebooks: [Notebook] = list.list.map({ (model: NotebookModel) -> Notebook in
                 return model.notebook;
             });
+            
             callback(notebooks, nil);
         }, onError: { (error: RequestError) in
             callback(nil, error.error!);
@@ -71,28 +75,28 @@ public class WebAPI {
     
     public typealias CreateNotebookCallback = (Error?) -> ()
     public func createNotebook(notebook: Notebook, callback: @escaping CreateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.createNotebook(), headers: defaultHeaders, object: notebook.webModel, onCompletion: { (data: Data) in
-            
+        requestable?.uploadJSON(url: urlManager.createNotebook(), object: notebook.webModel, headers: defaultHeaders, requestMethod: .post, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
-            
+            callback(error.error!);
         });
     }
     
     public typealias DeleteNotebookCallback = (Error?) -> ()
     public func deleteNotebook(id: Int, callback: @escaping DeleteNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), headers: defaultHeaders, object: EmptyRequestBody(), onCompletion: { (data: Data) in
-            
+        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), object: EmptyRequestBody(), headers: defaultHeaders, requestMethod: .delete, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
-            
+            callback(error.error!);
         });
     }
     
     public typealias UpdateNotebookCallback = (Error?) -> ()
     public func updateNotebook(notebook: Notebook, id: Int, callback: @escaping UpdateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), headers: defaultHeaders, object: notebook.webModel, onCompletion: { (data: Data) in
-
+        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), object: notebook.webModel, headers: defaultHeaders, requestMethod: .put, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
-
+            callback(error.error!);
         });
     }
     
@@ -102,7 +106,17 @@ public class WebAPI {
         
         let decoder: JSONDecoder = JSONDecoder();
         decoder.dateDecodingStrategy = .formatted(dateFormatter);
-        return try? decoder.decode(T.self, from: data);
+        
+        do {
+            return try decoder.decode(T.self, from: data);
+        } catch (let e) {
+            print(e);
+            
+            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
+            print(json);
+            
+            return nil;
+        }
     }
     
     private lazy var defaultHeaders: Headers = {

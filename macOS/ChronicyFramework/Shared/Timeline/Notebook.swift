@@ -13,6 +13,8 @@ public protocol NotebookItem {
 }
 
 public class Notebook {
+    public var id: Int = 0;
+    
     public var name: String;
     private var internalStacks: [Stack] = [];
     private var internalActivities: [Activity] = [];
