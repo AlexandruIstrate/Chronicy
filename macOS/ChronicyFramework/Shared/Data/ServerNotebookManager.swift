@@ -65,8 +65,24 @@ public class ServerNotebookManager: NotebookManager {
         }
     }
     
+    public func retrieveAllNotebooks(callback: @escaping NotebookManagerNotebooksCallback) {
+        self.api.getNotebooks { (notebooks: [Notebook]?, error: Error?) in
+            guard error == nil else {
+                callback(nil, .fetchFailure);
+                return;
+            }
+            
+            guard let notebooks: [Notebook] = notebooks else {
+                callback(nil, .itemNotFound);
+                return;
+            }
+            
+            callback(notebooks, nil);
+        }
+    }
+    
     public func saveNotebook(notebook: Notebook) throws {
-        self.api.updateNotebook(notebook: notebook, id: /* notebook.id */ 0) { (error: Error?) in
+        self.api.updateNotebook(notebook: notebook, id: notebook.id) { (error: Error?) in
             guard error == nil else {
                 Log.error(message: "Could not save notebook with name \(notebook.name)");
                 return;

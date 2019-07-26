@@ -34,7 +34,7 @@ public class WebAPI {
             self.token = token;
             callback(nil, token);
         }, onError: { (error: RequestError) in
-            callback(error.error!, nil);
+            callback(error.error, nil);
         });
     }
     

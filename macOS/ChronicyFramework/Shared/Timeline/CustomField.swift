@@ -36,8 +36,8 @@ extension CustomField {
 }
 
 public enum FieldType: String {
-    case string;
-    case number;
+    case string = "String";
+    case number = "Number";
     // TODO: Add more
     
     public static var availableTypes: [FieldType] = {

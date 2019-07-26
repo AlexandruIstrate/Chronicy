@@ -72,7 +72,12 @@ class AlamofireRequestable: Requestable {
         }
         
         do {
+            let formatter: DateFormatter = DateFormatter();
+            formatter.dateFormat = Token.dateFormat;
+            
             let encoder: JSONEncoder = JSONEncoder();
+            encoder.dateEncodingStrategy = .formatted(formatter);
+            
             let data: Data = try encoder.encode(object);
             request.httpBody = data;
         } catch {

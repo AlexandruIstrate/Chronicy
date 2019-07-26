@@ -17,7 +17,7 @@ class OutlineCentralViewController: NSViewController {
     private var notebookManager: NotebookManager = LocalNotebookManager();
     private var notebook: Notebook?;
     
-    private var notebookNames: [String] = [];
+    private var notebookNames: [NotebookInfo] = [];
     
     private let broadcaster: InformationBroadcaster = InformationBroadcaster();
     
@@ -226,9 +226,7 @@ extension OutlineCentralViewController {
                 return;
             }
             
-            self.notebookNames = info.map({ (iter: NotebookInfo) -> String in
-                return iter.name;
-            });
+            self.notebookNames = info;
             WindowController.shared.refreshDisplay();
             
             self.loadNotebook(info: info.first!);
@@ -267,17 +265,25 @@ extension OutlineCentralViewController {
     }
     
     private func broadcastNotebooks() {
-        guard let notebook: Notebook = self.notebook else {
-            return;
+        notebookManager.retrieveAllNotebooks { (notebooks: [Notebook]?, error: NotebookManagerError?) in
+            guard error == nil else {
+                return;
+            }
+            
+            guard let notebooks: [Notebook] = notebooks else {
+                return;
+            }
+            
+            self.broadcaster.broadcastNotebooks(notebooks: notebooks);
         }
-        
-        broadcaster.broadcastNotebooks(notebooks: [notebook]);
     }
 }
 
 extension OutlineCentralViewController: WindowControllerDataSource, WindowControllerDelegate {
     func notebooks() -> [String] {
-        return self.notebookNames;
+        return self.notebookNames.map({ (info: NotebookInfo) -> String in
+            return info.name;
+        });
     }
     
     func onAdd() {
@@ -326,10 +332,21 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     
     func onRefresh() {
         self.loadNotebookData();
+        self.broadcastNotebooks();
     }
     
     func onNotebookChanged(oldName: String?, newName: String) {
+        let info: NotebookInfo? = notebookNames.first { (iter: NotebookInfo) -> Bool in
+            return iter.name == newName;
+        }
         
+        guard let notebookInfo: NotebookInfo = info else {
+            Log.error(message: "Could not find notebook with name \(newName)");
+            return;
+        }
+        
+        self.loadNotebook(info: notebookInfo);
+        self.broadcastNotebooks();
     }
     
     func onSearch(term: String) {
