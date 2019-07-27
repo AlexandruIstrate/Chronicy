@@ -45,7 +45,7 @@ namespace Chronicy.Web.Controllers
             }
             catch (Exception e)
             {
-                return ErrorResponse.Failure<ListResponse<Notebook>>(ErrorCodes.GeneralFailure, e.Message);
+                return ErrorResponse.Failure<ListResponse<Notebook>>(ErrorCodes.GeneralFailure, e);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Chronicy.Web.Controllers
             }
             catch (Exception e)
             {
-                return ErrorResponse.Failure<Notebook>(ErrorCodes.GeneralFailure, e.Message);
+                return ErrorResponse.Failure<Notebook>(ErrorCodes.GeneralFailure, e);
             }
         }
 
@@ -98,7 +98,7 @@ namespace Chronicy.Web.Controllers
             }
             catch (Exception e)
             {
-                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e);
             }
 
             return ErrorResponse.Success();
@@ -129,7 +129,7 @@ namespace Chronicy.Web.Controllers
             }
             catch (Exception e)
             {
-                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e);
             }
 
             return ErrorResponse.Success();
@@ -160,7 +160,7 @@ namespace Chronicy.Web.Controllers
             }
             catch (Exception e)
             {
-                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e.Message);
+                return ErrorResponse.Failure(ErrorCodes.GeneralFailure, e);
             }
 
             return ErrorResponse.Success();

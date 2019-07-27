@@ -40,7 +40,14 @@ namespace Chronicy.Web.Api
                     return TokenStatus.Valid;
                 }
 
-                DateTimeOffset expirationDate = (DateTimeOffset)dataRow[Columns.ExpirationDate];
+                object expiration = dataRow[Columns.ExpirationDate];
+
+                if (expiration is DBNull)
+                {
+                    return TokenStatus.Invalid;
+                }
+
+                DateTimeOffset expirationDate = (DateTimeOffset)expiration;
 
                 if (expirationDate < DateTime.Now)
                 {
@@ -83,7 +90,14 @@ namespace Chronicy.Web.Api
                     return TokenStatus.Valid;
                 }
 
-                DateTimeOffset expirationDate = (DateTimeOffset)dataRow[Columns.ExpirationDate];
+                object expiration = dataRow[Columns.ExpirationDate];
+
+                if (expiration is DBNull)
+                {
+                    return TokenStatus.Invalid;
+                }
+
+                DateTimeOffset expirationDate = (DateTimeOffset)expiration;
 
                 if (expirationDate < DateTime.Now)
                 {

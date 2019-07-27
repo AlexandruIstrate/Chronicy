@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Chronicy.Website.Pages.Data
+namespace Chronicy.Website.Pages.Data.Automation
 {
     [Authorize]
-    public class AutomationModel : PageModel
+    public class IndexModel : PageModel
     {
         private readonly IAutomationManager automationManager;
 
         public List<AutomationAction> Items { get; set; }
 
-        public AutomationModel(IAutomationManager automationManager)
+        public IndexModel(IAutomationManager automationManager)
         {
             this.automationManager = automationManager;
         }

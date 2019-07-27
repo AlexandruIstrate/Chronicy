@@ -1,0 +1,27 @@
+﻿@page
+@model Chronicy.Website.Pages.Data.Automation.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Action</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EditedAction.Name)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EditedAction.Action)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EditedAction.Triggers)
+        </dt>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.EditedAction.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

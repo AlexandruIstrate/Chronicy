@@ -1,29 +1,27 @@
-using Chronicy.Data;
-using Chronicy.Data.Storage;
-using Chronicy.Sql;
+using Chronicy.Standard.Data.Automation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
-namespace Chronicy.Website.Pages.Notebooks
+namespace Chronicy.Website.Pages.Data.Automation
 {
     [Authorize]
     public class CreateModel : PageModel
     {
-        private readonly IDataSource<Notebook> dataSource;
+        private readonly IAutomationManager automationManager;
 
         [BindProperty]
-        public Notebook EditedNotebook { get; set; }
+        public AutomationAction EditedAction { get; set; }
 
-        public CreateModel(ISqlDatabase database)
+        public CreateModel(IAutomationManager automationManager)
         {
-            dataSource = new SqlDataSource(database);
+            this.automationManager = automationManager;
         }
 
-        public IActionResult OnGetAsync()
+        public IActionResult OnGet()
         {
-            EditedNotebook = new Notebook("New Notebook");
+            EditedAction = new AutomationAction(null); // TODO: Change
             return Page();
         }
 
@@ -34,7 +32,7 @@ namespace Chronicy.Website.Pages.Notebooks
                 return Page();
             }
 
-            await dataSource.CreateAsync(EditedNotebook);
+            await automationManager.CreateAsync(EditedAction);
 
             return RedirectToPage("./Index");
         }
