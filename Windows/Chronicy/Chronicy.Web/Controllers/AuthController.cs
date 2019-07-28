@@ -24,11 +24,23 @@ namespace Chronicy.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Token>> AuthenticateAsync([FromHeader] string authorization)
         {
-            AuthorizationHeaderDecoder decoder = new AuthorizationHeaderDecoder(authorization);
-            Tuple<string, string> usernamePassword = decoder.Decode();
+            if (authorization == null)
+            {
+                return ErrorResponse.Failure<Token>(ErrorCodes.MissingCredentials, "Missing username or password");
+            }
 
-            Token token = await authentication.AuthenticateAsync(usernamePassword.Item1, usernamePassword.Item2);
-            return token;
+            try
+            {
+                AuthorizationHeaderDecoder decoder = new AuthorizationHeaderDecoder(authorization);
+                Tuple<string, string> usernamePassword = decoder.Decode();
+
+                Token token = await authentication.AuthenticateAsync(usernamePassword.Item1, usernamePassword.Item2);
+                return token;
+            }
+            catch (Exception e)
+            {
+                return ErrorResponse.Failure<Token>(ErrorCodes.GeneralFailure, e.Message);
+            }
         }
     }
 }

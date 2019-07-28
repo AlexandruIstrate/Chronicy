@@ -22,8 +22,16 @@ class AlamofireRequestable: Requestable {
         }
     }
     
-    func uploadData(url: String, headers: Headers?, data: Data, onCompletion: @escaping RequestUploadCallback, onError: @escaping RequestErrorCallback) {
-        Alamofire.upload(data, to: url).responseData { (response: DataResponse<Data>) in
+    func uploadData(url: String, data: Data, headers: Headers?, requestMethod: RequestMethod? = .post, onCompletion: @escaping RequestUploadCallback, onError: @escaping RequestErrorCallback) {
+        guard let requestURL: URL = URL(string: url) else {
+            onError(RequestError(errorCode: 1, message: "The URL is not valid"));
+            return;
+        }
+        
+        var request: URLRequest = URLRequest(url: requestURL);
+        request.httpMethod = requestMethod!.rawValue;
+        
+        Alamofire.request(request).responseData { (response: DataResponse<Data>) in
             switch response.result {
             case .failure(let error):
                 onError(RequestError(errorCode: 3, message: error.localizedDescription));
@@ -49,18 +57,27 @@ class AlamofireRequestable: Requestable {
         }
     }
     
-    func uploadJSON<T>(url: String, headers: Headers?, object: T, onCompletion: @escaping RequestJSONUploadCallback, onError: @escaping RequestErrorCallback) where T : Decodable, T : Encodable {
+    func uploadJSON<T>(url: String, object: T, headers: Headers?, requestMethod: RequestMethod? = .post, onCompletion: @escaping RequestJSONUploadCallback, onError: @escaping RequestErrorCallback) where T : Decodable, T : Encodable {
         guard let requestURL: URL = URL(string: url) else {
             onError(RequestError(errorCode: 1, message: "The URL is not valid"));
             return;
         }
         
         var request: URLRequest = URLRequest(url: requestURL);
-        request.httpMethod = "POST";
+        request.httpMethod = requestMethod!.rawValue;
         request.setValue("application/json", forHTTPHeaderField: "Content-Type");
         
+        if let headers: Headers = headers {
+            request.allHTTPHeaderFields = headers;
+        }
+        
         do {
+            let formatter: DateFormatter = DateFormatter();
+            formatter.dateFormat = Token.dateFormat;
+            
             let encoder: JSONEncoder = JSONEncoder();
+            encoder.dateEncodingStrategy = .formatted(formatter);
+            
             let data: Data = try encoder.encode(object);
             request.httpBody = data;
         } catch {
@@ -73,31 +90,8 @@ class AlamofireRequestable: Requestable {
             case .failure(let error):
                 onError(RequestError(errorCode: 3, message: error.localizedDescription));
             case .success:
-                onCompletion(response.data);
-                break;
+                onCompletion(response.data!);
             }
         }
     }
-    
-//    func request(with json: String, url: URL, type: RequestType, onCompletion: @escaping RequestCompletionCallback, onError: @escaping RequestErrorCallback) {
-//        var method: HTTPMethod = .get;
-//
-//        if let userMethod: HTTPMethod = HTTPMethod(rawValue: type.rawValue.uppercased()) {
-//            method = userMethod;
-//        } else {
-//            Log.error(message: "Could not determine HTTPMethod for AlamofireRequestable! Defaulting to GET.");
-//        }
-//
-//        Alamofire.request(url, method: method)
-//            .validate()
-//            .responseJSON { (response: DataResponse<Any>) in
-//                switch response.result {
-//                case .success(let value):
-//                    print(value);
-//
-//                case .failure(let error):
-//                    onError(.generalFailure(reason: error.localizedDescription));
-//                }
-//            }
-//    }
 }

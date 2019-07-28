@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <action selector="onPreferencesClicked:" target="Voe-Tx-rLC" id="hRF-VI-rIU"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -188,7 +192,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-226"/>
+            <point key="canvasLocation" x="-27" y="-308"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -351,6 +355,218 @@
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="9rU-3U-wAk">
+            <objects>
+                <windowController storyboardIdentifier="PreferencesWindow" id="hux-F4-idg" customClass="PreferencesWindowController" customModule="ChronicyMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hQX-RF-Yx7">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="166" y="362" width="825" height="490"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <connections>
+                            <outlet property="delegate" destination="hux-F4-idg" id="WkW-hV-0uS"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="wRh-KZ-On9" kind="relationship" relationship="window.shadowedContentViewController" id="JZq-tR-bun"/>
+                    </connections>
+                </windowController>
+                <customObject id="sMT-22-fsP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102.5" y="175"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="MyS-E8-dg7">
+            <objects>
+                <tabViewController storyboardIdentifier="PreferencesController" selectedTabViewItemIndex="0" tabStyle="toolbar" id="wRh-KZ-On9" customClass="PreferencesViewController" customModule="ChronicyMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="uxO-2u-0dr"/>
+                        <tabViewItem identifier="" id="dQU-vz-pbC"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="zaX-ij-VSI">
+                        <rect key="frame" x="0.0" y="0.0" width="639" height="411"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="wRh-KZ-On9" id="gjR-gv-MiV"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="zaX-ij-VSI" id="2Kn-go-VE6"/>
+                        <segue destination="uqz-qx-iTI" kind="relationship" relationship="tabItems" id="JAZ-76-Rbe"/>
+                        <segue destination="JQt-6e-rkw" kind="relationship" relationship="tabItems" id="aj6-vi-AZQ"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="elO-OB-q4R" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953.5" y="617.5"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="xh3-tY-rf4">
+            <objects>
+                <customObject id="a9w-RV-FJe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="General" id="uqz-qx-iTI" sceneMemberID="viewController">
+                    <view key="view" id="WHx-rr-c6m">
+                        <rect key="frame" x="0.0" y="0.0" width="591" height="401"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aen-D7-sKq">
+                                <rect key="frame" x="18" y="364" width="555" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Cards" id="4cr-Yz-KXP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFP-z5-Rzw">
+                                <rect key="frame" x="38" y="338" width="515" height="18"/>
+                                <buttonCell key="cell" type="check" title="Group by tag" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kdb-vE-snL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="vQl-kN-pI6" name="value" keyPath="values.groupByTags" id="da4-Kg-jkW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OFP-z5-Rzw" secondAttribute="trailing" constant="40" id="0nC-pS-A39"/>
+                            <constraint firstItem="aen-D7-sKq" firstAttribute="top" secondItem="WHx-rr-c6m" secondAttribute="top" constant="20" id="9J7-X8-5OS"/>
+                            <constraint firstAttribute="trailing" secondItem="aen-D7-sKq" secondAttribute="trailing" constant="20" id="PGm-21-j5z"/>
+                            <constraint firstItem="OFP-z5-Rzw" firstAttribute="leading" secondItem="WHx-rr-c6m" secondAttribute="leading" constant="40" id="d29-QC-dne"/>
+                            <constraint firstItem="OFP-z5-Rzw" firstAttribute="top" secondItem="aen-D7-sKq" secondAttribute="bottom" constant="10" id="ipr-5V-hUc"/>
+                            <constraint firstItem="aen-D7-sKq" firstAttribute="leading" secondItem="WHx-rr-c6m" secondAttribute="leading" constant="20" id="mGp-co-N9E"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <userDefaultsController id="vQl-kN-pI6"/>
+            </objects>
+            <point key="canvasLocation" x="2818" y="68"/>
+        </scene>
+        <!--Services-->
+        <scene sceneID="YI9-CS-vtC">
+            <objects>
+                <customObject id="pnH-Dd-ALk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Services" id="JQt-6e-rkw" customClass="PreferencesServicesViewController" customModule="ChronicyMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kBq-w6-wGd">
+                        <rect key="frame" x="0.0" y="0.0" width="591" height="394"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mLw-2j-5hQ">
+                                <rect key="frame" x="18" y="355" width="105" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Service address:" id="Xst-Il-Vrm">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-yE-HIG">
+                                <rect key="frame" x="129" y="352" width="442" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="sbt-US-no8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="gZp-Ug-Uts" name="value" keyPath="values.webServiceURL" id="FPR-HM-zWm"/>
+                                </connections>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ehx-aO-sae">
+                                <rect key="frame" x="18" y="291" width="555" height="18"/>
+                                <buttonCell key="cell" type="check" title="Auto sign-in" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jue-Y8-vot">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="gZp-Ug-Uts" name="value" keyPath="values.autoSignin" id="DAa-Ho-022"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mhX-5x-52c">
+                                <rect key="frame" x="53" y="260" width="70" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Username:" id="Acz-U1-z7s">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="exR-ru-B4I">
+                                <rect key="frame" x="129" y="257" width="442" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Uzr-ss-1hZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="gZp-Ug-Uts" name="enabled" keyPath="values.autoSignin" id="Qgl-I1-q6C"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e1u-hC-KRn">
+                                <rect key="frame" x="57" y="228" width="66" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Password:" id="J6V-mG-zL0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-Fh-GFZ">
+                                <rect key="frame" x="470" y="316" width="111" height="32"/>
+                                <buttonCell key="cell" type="push" title="Use Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Eb3-2P-xOE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onUseDefaultClicked:" target="JQt-6e-rkw" id="EFo-7f-0P5"/>
+                                </connections>
+                            </button>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HXN-gV-cng">
+                                <rect key="frame" x="129" y="225" width="442" height="22"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="9xs-Io-SgG">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                                <connections>
+                                    <binding destination="gZp-Ug-Uts" name="enabled" keyPath="values.autoSignin" id="gsT-bX-Z3m"/>
+                                </connections>
+                            </secureTextField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Xwu-yE-HIG" firstAttribute="firstBaseline" secondItem="mLw-2j-5hQ" secondAttribute="firstBaseline" id="5Nr-X6-BL6"/>
+                            <constraint firstItem="exR-ru-B4I" firstAttribute="leading" secondItem="Xwu-yE-HIG" secondAttribute="leading" id="5ZB-R4-One"/>
+                            <constraint firstItem="mhX-5x-52c" firstAttribute="top" secondItem="Ehx-aO-sae" secondAttribute="bottom" constant="16" id="6jU-a8-I6K"/>
+                            <constraint firstItem="mLw-2j-5hQ" firstAttribute="leading" secondItem="kBq-w6-wGd" secondAttribute="leading" constant="20" id="7u9-7q-J9F"/>
+                            <constraint firstItem="HXN-gV-cng" firstAttribute="firstBaseline" secondItem="e1u-hC-KRn" secondAttribute="firstBaseline" id="ARt-D0-Nbn"/>
+                            <constraint firstItem="exR-ru-B4I" firstAttribute="firstBaseline" secondItem="mhX-5x-52c" secondAttribute="firstBaseline" id="BGh-qq-KeH"/>
+                            <constraint firstAttribute="trailing" secondItem="HXN-gV-cng" secondAttribute="trailing" constant="20" id="ERF-ms-twc"/>
+                            <constraint firstItem="exR-ru-B4I" firstAttribute="leading" secondItem="mhX-5x-52c" secondAttribute="trailing" constant="8" id="Ket-UV-fwE"/>
+                            <constraint firstItem="Ehx-aO-sae" firstAttribute="leading" secondItem="kBq-w6-wGd" secondAttribute="leading" constant="20" id="O3e-A6-WHC"/>
+                            <constraint firstItem="Xwu-yE-HIG" firstAttribute="top" secondItem="kBq-w6-wGd" secondAttribute="top" constant="20" id="Sxu-tn-E7k"/>
+                            <constraint firstItem="HXN-gV-cng" firstAttribute="leading" secondItem="exR-ru-B4I" secondAttribute="leading" id="T0F-iY-83K"/>
+                            <constraint firstItem="Xwu-yE-HIG" firstAttribute="leading" secondItem="mLw-2j-5hQ" secondAttribute="trailing" constant="8" id="XMm-Rs-EMe"/>
+                            <constraint firstAttribute="trailing" secondItem="Ehx-aO-sae" secondAttribute="trailing" constant="20" id="YLZ-el-evH"/>
+                            <constraint firstItem="HXN-gV-cng" firstAttribute="top" secondItem="exR-ru-B4I" secondAttribute="bottom" constant="10" id="aHZ-Tw-7S4"/>
+                            <constraint firstAttribute="trailing" secondItem="Xwu-yE-HIG" secondAttribute="trailing" constant="20" id="fkh-FY-x9B"/>
+                            <constraint firstItem="Ehx-aO-sae" firstAttribute="top" secondItem="zcN-Fh-GFZ" secondAttribute="bottom" constant="16" id="mTB-9a-hUc"/>
+                            <constraint firstAttribute="trailing" secondItem="zcN-Fh-GFZ" secondAttribute="trailing" constant="16" id="qQ1-Ea-v3Y"/>
+                            <constraint firstItem="zcN-Fh-GFZ" firstAttribute="top" secondItem="Xwu-yE-HIG" secondAttribute="bottom" constant="8" id="qkz-QK-dm0"/>
+                            <constraint firstAttribute="trailing" secondItem="exR-ru-B4I" secondAttribute="trailing" constant="20" id="tGO-rQ-h5K"/>
+                            <constraint firstItem="HXN-gV-cng" firstAttribute="leading" secondItem="e1u-hC-KRn" secondAttribute="trailing" constant="8" id="z4Q-wx-A7U"/>
+                            <constraint firstItem="e1u-hC-KRn" firstAttribute="trailing" secondItem="mhX-5x-52c" secondAttribute="trailing" id="z7a-Rl-1lp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="HXN-gV-cng" id="WrK-ci-aNK"/>
+                        <outlet property="usernameTextField" destination="exR-ru-B4I" id="qIy-D4-wd3"/>
+                    </connections>
+                </viewController>
+                <userDefaultsController representsSharedInstance="YES" id="gZp-Ug-Uts"/>
+            </objects>
+            <point key="canvasLocation" x="2817.5" y="584"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">

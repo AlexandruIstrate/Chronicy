@@ -1,22 +1,32 @@
 ﻿@page
-@model Chronicy.Website.Pages.Notebooks.EditModel
+@model Chronicy.Website.Pages.Data.Automation.EditModel
 @{
     ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
 
-<h4>Notebook</h4>
+<h4>Action</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="EditedNotebook.ID" />
+            <input type="hidden" asp-for="EditedAction.ID" />
             <div class="form-group">
-                <label asp-for="EditedNotebook.Name" class="control-label"></label>
-                <input asp-for="EditedNotebook.Name" class="form-control" />
-                <span asp-validation-for="EditedNotebook.Name" class="text-danger"></span>
+                <label asp-for="EditedAction.Name" class="control-label"></label>
+                <input asp-for="EditedAction.Name" class="form-control" />
+                <span asp-validation-for="EditedAction.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditedAction.Action" class="control-label"></label>
+                <input asp-for="EditedAction.Action" class="form-control" />
+                <span asp-validation-for="EditedAction.Action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditedAction.Triggers" class="control-label"></label>
+                <input asp-for="EditedAction.Triggers" class="form-control" />
+                <span asp-validation-for="EditedAction.Triggers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

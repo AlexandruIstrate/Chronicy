@@ -64,7 +64,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
     
     @IBAction private func onNotebookChanged(_ sender: NSPopUpButton) {
-        let newValue: String = sender.stringValue;
+        let newValue: String = sender.selectedItem!.title;
         delegate?.onNotebookChanged(oldName: self.currentNotebookName, newName: newValue);
         self.currentNotebookName = newValue;
     }

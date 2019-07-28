@@ -93,8 +93,9 @@ extension DistributedObjectManager {
         } catch let e as KeyStorageError {
             Log.error(message: "An error occurred while retrieving object for key \(key): \(e.localizedDescription)");
             return nil;
-        } catch {
+        } catch let e {
             Log.error(message: "An unknown occurred while retrieving object for key \(key).");
+            print(e);
             return nil;
         }
     }

@@ -11,7 +11,7 @@ namespace Chronicy.Website.Pages.Notebooks
     [Authorize]
     public class CreateModel : PageModel
     {
-        private IDataSource<Notebook> dataSource;
+        private readonly IDataSource<Notebook> dataSource;
 
         [BindProperty]
         public Notebook EditedNotebook { get; set; }

@@ -5,7 +5,7 @@ namespace Chronicy.Standard.Data.Automation
 {
     public class Trigger : ITrigger
     {
-        private Dictionary<Type, Action<ITrigger>> actions;
+        private readonly Dictionary<Type, Action<ITrigger>> actions;
 
         public Trigger()
         {
@@ -19,14 +19,14 @@ namespace Chronicy.Standard.Data.Automation
 
         public void SetTriggerAction<T>(Action<ITrigger> action) where T : class
         {
-            actions[typeof(T)] = action;
+            actions[typeof(T)] = action ?? throw new ArgumentNullException(nameof(action));
         }
 
         public void Fire()
         {
             foreach (Action<ITrigger> action in actions.Values)
             {
-                action?.Invoke(this);
+                action.Invoke(this);
             }
         }
     }

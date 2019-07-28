@@ -1,24 +1,23 @@
-using Chronicy.Data;
 using Chronicy.Data.Storage;
-using Chronicy.Sql;
+using Chronicy.Standard.Data.Automation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
-namespace Chronicy.Website.Pages.Notebooks
+namespace Chronicy.Website.Pages.Data.Automation
 {
     [Authorize]
     public class EditModel : PageModel
     {
-        private IDataSource<Notebook> dataSource;
+        private readonly IAutomationManager automationManager;
 
         [BindProperty]
-        public Notebook EditedNotebook { get; set; }
+        public AutomationAction EditedAction { get; set; }
 
-        public EditModel(ISqlDatabase database)
+        public EditModel(IAutomationManager automationManager)
         {
-            dataSource = new SqlDataSource(database);
+            this.automationManager = automationManager;
         }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -29,9 +28,9 @@ namespace Chronicy.Website.Pages.Notebooks
             }
 
             // Get Notebook from database
-            EditedNotebook = await dataSource.GetAsync(id.Value);
+            EditedAction = await automationManager.GetAsync(id.Value);
 
-            if (EditedNotebook == null)
+            if (EditedAction == null)
             {
                 return NotFound();
             }
@@ -49,11 +48,11 @@ namespace Chronicy.Website.Pages.Notebooks
             try
             {
                 // Save Notebook to database
-                await dataSource.UpdateAsync(EditedNotebook);
+                await automationManager.UpdateAsync(EditedAction);
             }
             catch (DataSourceException)
             {
-                if (!(await NotebookExistsAsync(EditedNotebook.ID)))
+                if (!(await ActionExistsAsync(EditedAction.ID)))
                 {
                     return NotFound();
                 }
@@ -64,9 +63,9 @@ namespace Chronicy.Website.Pages.Notebooks
             return RedirectToPage("./Index");
         }
 
-        private async Task<bool> NotebookExistsAsync(int id)
+        private async Task<bool> ActionExistsAsync(int id)
         {
-            return (await dataSource.GetAsync(id) != null);
+            return (await automationManager.GetAsync(id) != null);
         }
     }
 }

@@ -42,12 +42,20 @@ public class LocalNotebookManager: NotebookManager {
             return iter.name == info.name;
         }
         
-//        guard filtered.count == 1 else {
-//            callback(nil, .itemNotFound);
-//            return;
-//        }
-        
         callback(filtered.first!.notebook, nil);
+    }
+    
+    public func retrieveAllNotebooks(callback: @escaping NotebookManagerNotebooksCallback) {
+        guard let notebooks: [CoreDataNotebook] = self.getNotebooks() else {
+            Log.error(message: "Could not retrieve notebooks!");
+            callback(nil, .fetchFailure);
+            return;
+        }
+
+        let transformed: [Notebook] = notebooks.map { (iter: CoreDataNotebook) -> Notebook in
+            return iter.notebook;
+        }
+        callback(transformed, nil);
     }
     
     public func saveNotebook(notebook: Notebook) throws {

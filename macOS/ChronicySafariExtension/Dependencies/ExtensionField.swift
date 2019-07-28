@@ -13,6 +13,6 @@ public struct ExtensionField: Equatable, Codable {
 }
 
 public enum FieldType: String, Codable, Equatable {
-    case string;
-    case number;
+    case string = "String";
+    case number = "Number";
 }

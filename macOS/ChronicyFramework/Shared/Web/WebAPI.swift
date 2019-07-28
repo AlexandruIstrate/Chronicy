@@ -8,15 +8,14 @@
 import Foundation;
 
 public class WebAPI {
+    public static let shared: WebAPI = WebAPI();
     
-//    private var requestManager: RequestManager = RequestManager();
+    public var requestable: Requestable?;
+    private var urlManager: URLManager = URLManager(baseURL: Settings.webServiceURL);
     
-    private var requestable: Requestable?;
-    private var urlManager: URLManager = URLManager(baseURL: "https://192.168.100.5/api");
+    private var token: Token?;
     
-    private var token: String?;
-    
-    public typealias AuthenticateCallback = (Error?) -> ()
+    public typealias AuthenticateCallback = (Error?, Token?) -> ()
     public func authenticate(username: String, password: String, callback: @escaping AuthenticateCallback) {
         let builder: AuthenticationHeaderBuilder = AuthenticationHeaderBuilder();
         builder.username = username;
@@ -26,18 +25,35 @@ public class WebAPI {
         var headers: Headers = [:];
         headers["Authorization"] = try! builder.build();
         
-        requestable?.downloadJSON(url: urlManager.getToken(), headers: headers, onCompletion: { (response: Codable) in
-            callback(nil);
+        requestable?.uploadJSON(url: urlManager.getToken(), object: EmptyRequestBody(), headers: headers, requestMethod: .post, onCompletion: { (data: Data) in
+            guard let token: Token = self.decodeJson(data: data) else {
+                callback(nil, nil); // TODO: Error
+                return;
+            }
+            
+            self.token = token;
+            callback(nil, token);
         }, onError: { (error: RequestError) in
-            callback(error.error!);
+            callback(error.error, nil);
         });
     }
     
     public typealias GetNotebooksCallback = ([Notebook]?, Error?) -> ()
     public func getNotebooks(callback: @escaping GetNotebooksCallback) {
         requestable?.downloadJSON(url: urlManager.getNotebooks(), headers: defaultHeaders, onCompletion: { (response: Data) in
-            let decoder: JSONDecoder = JSONDecoder();
-            //decoder.decode(ListResponse<Notebook>.self, from: response);
+            let json: String? = String(bytes: response, encoding: .utf8);
+            print(json ?? "No JSON response");
+            
+            guard let list: ListResponse<NotebookModel> = self.decodeJson(data: response) else {
+                callback(nil, nil); // TODO: Error
+                return;
+            }
+            
+            let notebooks: [Notebook] = list.list.map({ (model: NotebookModel) -> Notebook in
+                return model.notebook;
+            });
+            
+            callback(notebooks, nil);
         }, onError: { (error: RequestError) in
             callback(nil, error.error!);
         });
@@ -46,8 +62,12 @@ public class WebAPI {
     public typealias GetNotebookCallback = (Notebook?, Error?) -> ()
     public func getNotebook(id: Int, callback: @escaping GetNotebookCallback) {
         requestable?.downloadJSON(url: urlManager.getNotebook(id: id), headers: defaultHeaders, onCompletion: { (response: Data) in
-            let decoder: JSONDecoder = JSONDecoder();
-            //decoder.decode(Notebook.self, from: response);
+            guard let notebook: NotebookModel = self.decodeJson(data: response) else {
+                callback(nil, nil);
+                return;
+            }
+            
+            callback(notebook.notebook, nil);
         }, onError: { (error: RequestError) in
             callback(nil, error.error!);
         });
@@ -55,29 +75,48 @@ public class WebAPI {
     
     public typealias CreateNotebookCallback = (Error?) -> ()
     public func createNotebook(notebook: Notebook, callback: @escaping CreateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.createNotebook(), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
-            
+        requestable?.uploadJSON(url: urlManager.createNotebook(), object: notebook.webModel, headers: defaultHeaders, requestMethod: .post, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
-            
-        })
+            callback(error.error!);
+        });
     }
     
     public typealias DeleteNotebookCallback = (Error?) -> ()
     public func deleteNotebook(id: Int, callback: @escaping DeleteNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), headers: defaultHeaders, object: EmptyRequestBody(), onCompletion: { (data: Data) in
-            
+        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), object: EmptyRequestBody(), headers: defaultHeaders, requestMethod: .delete, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
-            
-        })
+            callback(error.error!);
+        });
     }
     
     public typealias UpdateNotebookCallback = (Error?) -> ()
     public func updateNotebook(notebook: Notebook, id: Int, callback: @escaping UpdateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), headers: defaultHeaders, object: notebook, onCompletion: { (data: Data) in
-            
+        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), object: notebook.webModel, headers: defaultHeaders, requestMethod: .put, onCompletion: { (data: Data) in
+            callback(nil);
         }, onError: { (error: RequestError) in
+            callback(error.error!);
+        });
+    }
+    
+    private func decodeJson<T>(data: Data) -> T? where T : Codable {
+        let dateFormatter: DateFormatter = DateFormatter();
+        dateFormatter.dateFormat = Token.dateFormat;    // Just use token for the ModelBase implementation
+        
+        let decoder: JSONDecoder = JSONDecoder();
+        decoder.dateDecodingStrategy = .formatted(dateFormatter);
+        
+        do {
+            return try decoder.decode(T.self, from: data);
+        } catch (let e) {
+            print(e);
             
-        })
+            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
+            print(json);
+            
+            return nil;
+        }
     }
     
     private lazy var defaultHeaders: Headers = {
@@ -89,7 +128,8 @@ public class WebAPI {
     } ();
     
     private func buildTokenHeader() -> String {
-        guard let token: String = token else {
+        guard let token: String = token?.accessToken else {
+            Log.error(message: "No token present");
             return "";
         }
         
@@ -99,99 +139,7 @@ public class WebAPI {
         return try! builder.build();
     }
     
-//    public typealias WebAPIAuthCallback = (AuthResponse?, RequestError?) -> ();
-//    public func authenticate(auth: AuthenticationInfo, callback: @escaping WebAPIAuthCallback) {
-//        do {
-//            let request: AuthRequest = AuthRequest(from: auth);
-//            try requestManager.post(with: request, url: urlManager[.auth], onCompletion: { (data: Data?) in
-//                guard let data: Data = data else {
-//                    callback(nil, RequestError.invalidResponse);
-//                    return;
-//                }
-//
-//                self.decodeResponse(data: data, callback: callback);
-//            }, onError: { (error: RequestError) in
-//                callback(nil, error);
-//            });
-//        } catch {
-//            callback(nil, RequestError.generalFailure(reason: "The request could not be made!"));
-//        }
-//    }
-//
-//    public typealias WebAPIInfoCallback = (NotebookInfoResponse?, RequestError?) -> ();
-//    public func getInfo(token: String, info: NotebookInfo, callback: @escaping WebAPIInfoCallback) {
-//        do {
-//            let request: NotebookInfoRequest = NotebookInfoRequest(token: token, id: info.id);
-//            try requestManager.post(with: request, url: urlManager[.infoNotebook], onCompletion: { (data: Data?) in
-//                guard let data: Data = data else {
-//                    callback(nil, RequestError.invalidResponse);
-//                    return;
-//                }
-//
-//                self.decodeResponse(data: data, callback: callback);
-//            }, onError: { (error: RequestError) in
-//                callback(nil, error);
-//            })
-//        } catch {
-//            callback(nil, RequestError.generalFailure(reason: "The request could not be made!"));
-//        }
-//    }
-//
-//    public typealias WebAPIInfoAllCallback = (NotebookInfoAllResponse?, RequestError?) -> ();
-//    public func getInfoForAll(token: String, callback: @escaping WebAPIInfoAllCallback) {
-//        do {
-//            let request: NotebookInfoAllRequest = NotebookInfoAllRequest(token: token);
-//            try requestManager.post(with: request, url: urlManager[.infoAllNotebooks], onCompletion: { (data: Data?) in
-//                guard let data: Data = data else {
-//                    callback(nil, RequestError.invalidResponse);
-//                    return;
-//                }
-//
-//                self.decodeResponse(data: data, callback: callback);
-//            }, onError: { (error: RequestError) in
-//                callback(nil, error);
-//            });
-//        } catch {
-//            callback(nil, RequestError.generalFailure(reason: "The request could not be made!"));
-//        }
-//    }
-//
-//    public typealias WebAPINotebookCallback = (Notebook?, RequestError?) -> ();
-//    public func getNotebook(token: String, info: NotebookInfo, callback: @escaping WebAPINotebookCallback) {
-//        do {
-//            let request: NotebookRequest = NotebookRequest(token: token, id: info.id);
-//            try requestManager.post(with: request, url: urlManager[.notebook], onCompletion: { (data: Data?) in
-//                guard let data: Data = data else {
-//                    callback(nil, RequestError.invalidResponse);
-//                    return;
-//                }
-//
-//                // TODO: Make it work
-////                self.decodeResponse(data: data, callback: callback);
-//            }, onError: { (error: RequestError) in
-//                callback(nil, error);
-//            });
-//        } catch {
-//            callback(nil, RequestError.generalFailure(reason: "The request could not be made!"));
-//        }
-//    }
-//
-//    private func decodeResponse<T: Codable>(data: Data, callback: (T?, RequestError?) -> ()) {
-//        let decoder: JSONDecoder = JSONDecoder();
-//
-//        guard let response: T = try? decoder.decode(T.self, from: data) else {
-//            callback(nil, RequestError.invalidResponse);
-//            return;
-//        }
-//
-//        callback(response, nil);
-//    }
-    
     public struct EmptyRequestBody : Codable {
         
-    }
-    
-    public struct ListResponse<T> : Codable where T : Codable {
-        public var items: [T];
     }
 }
