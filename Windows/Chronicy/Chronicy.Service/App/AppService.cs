@@ -2,7 +2,7 @@
 using Chronicy.Service.Communication;
 using Chronicy.Service.Information;
 
-namespace Chronicy.Service.System
+namespace Chronicy.Service.App
 {
     public class AppService : IService
     {

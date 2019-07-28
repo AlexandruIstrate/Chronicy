@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="System\AppService.cs" />
+    <Compile Include="App\AppService.cs" />
     <Compile Include="ServiceStatus.cs" />
     <Compile Include="Communication\ServerConnection.cs" />
     <Compile Include="Communication\TrackingService.cs" />
@@ -73,7 +73,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\IService.cs" />
+    <Compile Include="App\IService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

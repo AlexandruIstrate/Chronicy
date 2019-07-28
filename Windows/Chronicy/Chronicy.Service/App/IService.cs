@@ -1,4 +1,4 @@
-﻿namespace Chronicy.Service.System
+﻿namespace Chronicy.Service.App
 {
     public abstract class IService
     {
