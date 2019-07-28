@@ -171,7 +171,7 @@ namespace Chronicy.Excel.UI
             foreach (Stack stack in notebook.Stacks)
             {
                 DataTable dataTable = new DataTable(stack.Name);
-                dataTable.Columns.AddRange(DataUtils.CreateDataColumns<CustomField>(ignoredColumns: new string[] { "ID", "Value" }));
+                dataTable.Columns.AddRange(DataUtils.CreateDataColumns<CustomField>(ignoredColumns: new string[] { "ID", "Value", "SerializedValue" }));
 
                 foreach (CustomField field in stack.Fields)
                 {

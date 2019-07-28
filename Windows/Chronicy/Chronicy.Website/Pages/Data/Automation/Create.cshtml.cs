@@ -21,7 +21,7 @@ namespace Chronicy.Website.Pages.Data.Automation
 
         public IActionResult OnGet()
         {
-            EditedAction = new AutomationAction(null); // TODO: Change
+            EditedAction = new AutomationAction();
             return Page();
         }
 

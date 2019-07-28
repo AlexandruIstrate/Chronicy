@@ -21,11 +21,6 @@ namespace Chronicy.Website
 {
     public class Startup
     {
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
-
         public Startup()
         {
             Configuration = CreateConfiguration();

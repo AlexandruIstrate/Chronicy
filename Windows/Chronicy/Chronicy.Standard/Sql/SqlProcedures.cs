@@ -30,6 +30,8 @@
 
             public const string CreateGraph = "dbo.NGraphCreate";
             public const string ReadGraph = "dbo.NGraphRead";
+            public const string UpdateGraph = "dbo.NGraphUpdate";
+            public const string DeleteGraph = "dbo.NGraphDelete ";
         }
     }
 }

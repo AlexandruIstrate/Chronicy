@@ -42,10 +42,10 @@ The Windows service that collects data sent by extensions
 
 ## Upcoming Features
 - [x] Windows service and Office extensions
-- [ ] Website and web service
-- [ ] Cross platform communication
+- [] Website and web service
+- [x] Cross platform communication
 - [ ] Encrypted storage
-- [ ] Application installer
+- [ ] Application installers
 
 ## Platform Support
 |   Platform   |    Status    |                Components              |

@@ -18,6 +18,12 @@ namespace Chronicy.Standard.Data.Automation
             Triggers = new List<ITrigger>();
         }
 
+        public AutomationAction()
+        {
+            Action = null;
+            Triggers = new List<ITrigger>();
+        }
+
         public void RegisterTrigger(ITrigger trigger)
         {
             trigger.SetTriggerAction<AutomationAction>((item) =>

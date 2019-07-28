@@ -71,18 +71,32 @@ namespace Chronicy.Sql
 
         public void Delete(int id)
         {
-            database.RunNonQueryProcedure(SqlProcedures.Notebook.Delete, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(id), id)
-            });
+                database.RunNonQueryProcedure(SqlProcedures.Notebook.DeleteGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.ID, id)
+                });
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not delete Notebook", e);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Delete, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(id), id)
-            });
+                await database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.DeleteGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.ID, id)
+                });
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not delete Notebook", e);
+            }
         }
 
         public Notebook Get(int id)
@@ -219,18 +233,42 @@ namespace Chronicy.Sql
 
         public void Update(Notebook notebook)
         {
-            database.RunNonQueryProcedure(SqlProcedures.Notebook.Update, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(notebook), notebook)
-            });
+                database.RunNonQueryProcedure(SqlProcedures.Notebook.UpdateGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.ID, notebook.ID),
+                    new SqlParameter(Parameters.Json, JsonConvert.SerializeObject(notebook))
+                });
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not update Notebook", e);
+            }
         }
 
-        public Task UpdateAsync(Notebook notebook)
+        public async Task UpdateAsync(Notebook notebook)
         {
-            return database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.Update, new List<SqlParameter>
+            try
             {
-                new SqlParameter(nameof(notebook), notebook)
-            });
+                await database.RunNonQueryProcedureAsync(SqlProcedures.Notebook.UpdateGraph, new List<SqlParameter>
+                {
+                    new SqlParameter(Parameters.ID, notebook.ID),
+                    new SqlParameter(Parameters.Json, JsonConvert.SerializeObject(notebook))
+                });
+            }
+            catch (JsonException e)
+            {
+                throw new DataSourceException($"Could not deserialize Notebook JSON", e);
+            }
+            catch (Exception e)
+            {
+                throw new DataSourceException("Could not update Notebook", e);
+            }
         }
 
         public static class Parameters
