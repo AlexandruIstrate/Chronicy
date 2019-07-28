@@ -40,10 +40,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(3, 539);
+            this.panel1.Location = new System.Drawing.Point(3, 553);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.panel1.Size = new System.Drawing.Size(294, 60);
+            this.panel1.Size = new System.Drawing.Size(294, 46);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -52,7 +52,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(132, 20);
+            this.button1.Location = new System.Drawing.Point(132, 6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 27);
             this.button1.TabIndex = 0;
@@ -66,7 +66,7 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(212, 20);
+            this.button2.Location = new System.Drawing.Point(212, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(74, 27);
             this.button2.TabIndex = 5;

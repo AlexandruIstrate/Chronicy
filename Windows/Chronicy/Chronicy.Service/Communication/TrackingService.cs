@@ -60,13 +60,11 @@ namespace Chronicy.Service.Communication
 
         public void SendSelectedNotebook(Notebook notebook)
         {
-            InformationDispatcher.Default.Dispatch("Notebook: " + notebook.Name, context);
             ExceptionUtils.LogExceptions(() => notebookManager.SelectNotebook(notebook), context);
         }
 
         public void SendSelectedStack(Stack stack)
         {
-            InformationDispatcher.Default.Dispatch("Stack: " + stack.Name, context);
             ExceptionUtils.LogExceptions(() => notebookManager.SelectStack(stack), context);
         }
 

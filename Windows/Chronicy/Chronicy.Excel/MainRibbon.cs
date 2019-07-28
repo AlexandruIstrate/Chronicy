@@ -12,10 +12,13 @@ using Chronicy.Excel.User;
 using Chronicy.Excel.Utils;
 using Chronicy.Information;
 using Chronicy.Tracking;
+using Humanizer;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
@@ -143,8 +146,7 @@ namespace Chronicy.Excel
                 return;
             }
 
-            List<Stack> stacks = extension.Notebooks.SelectedNotebook.Stacks
-                                    .FindAll((item) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(item.Fields)));
+            List<Stack> stacks = GetFilteredStacks(extension.Notebooks.SelectedNotebook.Stacks);
 
             RibbonUI.InvalidateControl(stackDropDown.Id);
             stackDropDown.Items.Clear();
@@ -282,27 +284,49 @@ namespace Chronicy.Excel
             control.EditedNotebook = new Notebook(string.Empty);
             control.Confirmed += (s, args) =>
             {
+                // TODO: Move this validation inside the DataSource
+                List<Notebook> existing = extension.Notebooks.GetNotebooks().ToList();
+
+                if (existing.Exists(item => item.Name == control.EditedNotebook.Name))
+                {
+                    InformationDispatcher.Default.Dispatch("A Notebook with this name already exists!", informationContext, InformationKind.Error);
+                    args.KeepOpen = true;
+
+                    return;
+                }
+
                 extension.Notebooks.AddNotebook(control.EditedNotebook);
 
                 LoadNotebooks();
                 LoadStacks();
             };
 
-            TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("Edit Notebook", control);
+            TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("New Notebook", control);
             taskPane.Visible = true;
         }
 
         private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
         {
             EditStackTaskPane control = new EditStackTaskPane();
-            control.EditedStack = new Stack(string.Empty);
+            control.EditedStack = new Stack();
             control.Confirmed += (s, args) =>
             {
+                // TODO: Move this validation inside the DataSource
+                List<Stack> existing = extension.Notebooks.SelectedNotebook.Stacks;
+
+                if (existing.Exists(item => item.Name == control.EditedStack.Name))
+                {
+                    InformationDispatcher.Default.Dispatch("A Stack with this name already exists!", informationContext, InformationKind.Error);
+                    args.KeepOpen = true;
+
+                    return;
+                }
+
                 extension.Notebooks.AddStack(control.EditedStack);
                 LoadStacks();
             };
 
-            TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("Edit Stack", control);
+            TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("New Stack", control);
             taskPane.Visible = true;
         }
 
@@ -343,7 +367,7 @@ namespace Chronicy.Excel
                 {
                     RibbonButton historyItem = Factory.CreateRibbonButton();
                     historyItem.Image = Resources.IconHistoryItem32;
-                    historyItem.Label = item.Title;
+                    historyItem.Label = item.Title + " - " + item.Date.Humanize(utcDate: false);
                     historyItem.Description = item.Description;
                     historyMenu.Items.Add(historyItem);
                 }
@@ -367,7 +391,9 @@ namespace Chronicy.Excel
 
         private void OnTrackWorkbook(object sender, RibbonControlEventArgs e)
         {
-            // 1. Submit the current workbook to ExcelTracker
+            if (!ShowMissingItemsWarning()) return;
+
+            // 1. Submit the current workbook to the TrackingSystem
             ITrackable trackable = tracker.Get<Workbook>();
             trackable.ValueUpdated += (value) => extension.Tracking.Post<Workbook>(TrackingEvent.Create((Workbook)value));
             trackable.TrackedValue = Globals.ThisAddIn.Application.ActiveWorkbook;
@@ -376,11 +402,15 @@ namespace Chronicy.Excel
 
         private void OnTrackSheet(object sender, RibbonControlEventArgs e)
         {
+            if (!ShowMissingItemsWarning()) return;
+
             // 1. Ask the user to pick a sheet
             SelectSheetAction action = new SelectSheetAction();
             action.ActionCompleted += (sheet) => 
             {
-                /* 2. Submit the sheet to ExcelTracker */
+                if (!ShowMissingItemsWarning()) return;
+
+                /* 2. Submit the sheet to the TrackingSystem */
                 ITrackable trackable = tracker.Get<Worksheet>();
                 trackable.ValueUpdated += (value) => extension.Tracking.Post<Worksheet>(TrackingEvent.Create((Worksheet)value));
                 trackable.TrackedValue = sheet;
@@ -391,11 +421,15 @@ namespace Chronicy.Excel
 
         private void OnTrackCellRange(object sender, RibbonControlEventArgs e)
         {
+            if (!ShowMissingItemsWarning()) return;
+
             // 1. Ask the user to pick a range
             SelectCellRangeAction action = new SelectCellRangeAction();
             action.ActionCompleted += (range) => 
             {
-                /* 2. Submit the range to ExcelTracker */
+                if (!ShowMissingItemsWarning()) return;
+
+                /* 2. Submit the range to the TrackingSystem */
                 ITrackable trackable = tracker.Get<Range>();
                 trackable.ValueUpdated += (value) => extension.Tracking.Post<Range>(TrackingEvent.Create((Range)value));
                 trackable.TrackedValue = range;
@@ -432,10 +466,48 @@ namespace Chronicy.Excel
 
         private void OnOptionsClicked(object sender, RibbonControlEventArgs e)
         {
-            
-
             SettingsForm form = new SettingsForm();
             form.ShowDialog();
+        }
+
+        private List<Stack> GetFilteredStacks(List<Stack> unfiltered)
+        {
+            return unfiltered.FindAll((item) => FieldTemplates.ExtensionDefault.Matches(new FieldTemplate(item.Fields)));
+        }
+
+        private bool CheckCanInsertTrackingData()
+        {
+            Notebook notebook = extension.Notebooks.SelectedNotebook;
+            Stack stack = extension.Notebooks.SelectedStack;
+
+            if (notebook == null)
+            {
+                return false;
+            }
+
+            if (stack == null)
+            {
+                return false;
+            }
+
+            if (!stack.IsCompatible(FieldTemplates.ExtensionDefault))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ShowMissingItemsWarning()
+        {
+            if (CheckCanInsertTrackingData())
+            {
+                return true;
+            }
+
+            InformationDispatcher.Default.Dispatch("There is no suitable item for recording tracking data.\n" +
+                                                   "Please make sure to have a Notebook and a Stack.", informationContext, InformationKind.Error);
+            return false;
         }
     }
 }

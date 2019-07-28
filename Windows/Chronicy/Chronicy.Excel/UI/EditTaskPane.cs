@@ -6,8 +6,10 @@ namespace Chronicy.Excel.UI
 {
     public partial class EditTaskPane : UserControl
     {
-        public event EventHandler Confirmed;
-        public event EventHandler Canceled;
+        public delegate void TaskPaneCallback(object sender, TaskPaneArgs args);
+
+        public event TaskPaneCallback Confirmed;
+        public event TaskPaneCallback Canceled;
 
         public EditTaskPane()
         {
@@ -20,17 +22,24 @@ namespace Chronicy.Excel.UI
         private void OnOkClicked(object sender, EventArgs e)
         {
             OnOk();
+            TaskPaneArgs args = new TaskPaneArgs();
 
-            Visible = false;
-            Confirmed?.Invoke(this, EventArgs.Empty);
+            Confirmed?.Invoke(this, args);
+            Visible = args.KeepOpen;
         }
 
         private void OnCancelClicked(object sender, EventArgs e)
         {
             OnCancel();
+            TaskPaneArgs args = new TaskPaneArgs();
 
-            Visible = false;
-            Canceled?.Invoke(this, EventArgs.Empty);
+            Canceled?.Invoke(this, args);
+            Visible = args.KeepOpen;
         }
+    }
+
+    public class TaskPaneArgs : EventArgs
+    {
+        public bool KeepOpen { get; set; }
     }
 }

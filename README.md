@@ -42,7 +42,7 @@ The Windows service that collects data sent by extensions
 
 ## Upcoming Features
 - [x] Windows service and Office extensions
-- [] Website and web service
+- [x] Website and web service
 - [x] Cross platform communication
 - [ ] Encrypted storage
 - [ ] Application installers
@@ -52,33 +52,34 @@ The Windows service that collects data sent by extensions
 | ------------ | ------------ | -------------------------------------- |
 | Windows      | Supported    | Windows Service and Office Extensions  |
 | macOS        | Supported    | Desktop app and Safari extension       |
-| Web          | WIP          | Website and API                        |
+| Web          | Supported    | Website and API                        |
 
 ## The Technologies That Power Chronicy
 #### Windows
-- C# 7.3
-- .NET Framework 4.7.2
-- Windows Communication Framework
-- Newtonsoft JSON
-- NLog
-- NUnit
-- SQLite
-- Entity Framework Core (Local storage only)
+- [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/)
+- [Windows Communication Foundation](https://docs.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf)
+- [Newtonsoft JSON](https://github.com/JamesNK/Newtonsoft.Json)
+- [NLog](https://github.com/NLog/NLog)
+- [NUnit](https://github.com/nunit/nunit)
+- [SQLite](https://github.com/praeclarum/sqlite-net)
+- [Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore) (Local storage only)
+- [Humanizer](https://github.com/Humanizr/Humanizer)
 
 #### macOS
-- Swift 5
-- Cocoa
-- CocoaPods
-- Alamofire
-- FatSidebar
+- [Swift 5](https://swift.org/)
+- [Cocoa](https://en.wikipedia.org/wiki/Cocoa_(API))
+- [CocoaPods](https://github.com/CocoaPods/CocoaPods)
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [FatSidebar](https://github.com/CleanCocoa/FatSidebar)
 
 #### Web
-- C# 7.3
-- .NET Core 2.2
-- ASP.NET Core
-- Microsoft SQL Server
-- Newtonsoft JSON
-- NLog
+- [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
+- [.NET Core 2.2](https://dotnet.microsoft.com/)
+- [ASP.NET Core](https://github.com/aspnet/AspNetCore)
+- [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2017)
+- [Newtonsoft JSON](https://github.com/JamesNK/Newtonsoft.Json)
+- [NLog](https://github.com/NLog/NLog)
 
 ## Things That Inspired Chronicy
 - [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) - This has been the main point of inspiration for the stack based, board-like workflow

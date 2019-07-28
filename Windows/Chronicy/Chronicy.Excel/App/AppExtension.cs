@@ -87,6 +87,13 @@ namespace Chronicy.Excel.App
                 throw new EndpointConnectionException("The endpoint is not connected");
             }
 
+            if (Notebooks.SelectedNotebook == null ||
+                Notebooks.SelectedStack == null)
+            {
+                Notebooks.ClearSelection();
+                return;
+            }
+
             SelectNotebook(Notebooks.SelectedNotebook);
             SelectStack(Notebooks.SelectedStack);
         }

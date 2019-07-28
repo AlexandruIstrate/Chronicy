@@ -72,7 +72,7 @@ namespace Chronicy.Data.Managers
 
         public void AddCard(Card card)
         {
-            SelectedStack.Add(card);
+            SelectedStack.Cards.Add(card);
             dataSource.Update(SelectedNotebook);
 
             OnNotebooksChanged();
@@ -80,7 +80,7 @@ namespace Chronicy.Data.Managers
 
         public async Task AddCardAsync(Card card)
         {
-            SelectedStack.Add(card);
+            SelectedStack.Cards.Add(card);
             await dataSource.UpdateAsync(SelectedNotebook);
 
             OnNotebooksChanged();
