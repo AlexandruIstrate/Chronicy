@@ -17,12 +17,12 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using CategoryRecord = System.Collections.Generic.Dictionary<string, System.Collections.Generic.IList<Chronicy.Excel.History.HistoryItem>>;
 
 namespace Chronicy.Excel
 {
+    // TODO: Modularize and clean up
     public partial class MainRibbon
     {
         private MessageBoxContext informationContext = new MessageBoxContext();
@@ -105,78 +105,92 @@ namespace Chronicy.Excel
 
         private void LoadNotebooks(List<Notebook> items = null)
         {
-            List<Notebook> notebooks = items ?? extension.Notebooks.GetNotebooks();
-
-            RibbonUI.InvalidateControl(notebookDropDown.Id);
-            notebookDropDown.Items.Clear();
-
-            if (notebooks.Count < 1)
+            try
             {
-                return;
-            }
+                List<Notebook> notebooks = items ?? extension.Notebooks.GetNotebooks();
 
-            foreach (Notebook notebook in notebooks)
+                RibbonUI.InvalidateControl(notebookDropDown.Id);
+                notebookDropDown.Items.Clear();
+
+                if (notebooks.Count < 1)
+                {
+                    return;
+                }
+
+                foreach (Notebook notebook in notebooks)
+                {
+                    RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
+                    dropDownItem.Label = notebook.Name;
+                    notebookDropDown.Items.Add(dropDownItem);
+                }
+
+                // Try to reselect the already selected notebook
+                Notebook selected = extension.Notebooks.SelectedNotebook;
+
+                // Otherwise, use the first item
+                if (selected == null)
+                {
+                    selected = notebooks[0];
+                    extension.Notebooks.SelectNotebook(selected);
+                }
+
+                extension.SelectNotebook(selected);
+
+                int index = notebooks.FindIndex((item) => item.ID == selected.ID);
+                notebookDropDown.SelectedItemIndex = index;
+            }
+            catch (Exception e)
             {
-                RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
-                dropDownItem.Label = notebook.Name;
-                notebookDropDown.Items.Add(dropDownItem);
+                InformationDispatcher.Default.Dispatch(e, informationContext);
             }
-
-            // Try to reselect the already selected notebook
-            Notebook selected = extension.Notebooks.SelectedNotebook;
-
-            // Otherwise, use the first item
-            if (selected == null)
-            {
-                selected = notebooks[0];
-                extension.Notebooks.SelectNotebook(selected);
-            }
-
-            extension.SelectNotebook(selected);
-
-            int index = notebooks.FindIndex((item) => item.ID == selected.ID);
-            notebookDropDown.SelectedItemIndex = index;
         }
 
         private void LoadStacks()
         {
-            if (extension.Notebooks.SelectedNotebook == null)
+            try
             {
-                // We don't have any notebooks
-                return;
+                if (extension.Notebooks.SelectedNotebook == null)
+                {
+                    // We don't have any notebooks
+                    return;
+                }
+
+                List<Stack> stacks = GetFilteredStacks(extension.Notebooks.SelectedNotebook.Stacks);
+
+                RibbonUI.InvalidateControl(stackDropDown.Id);
+                stackDropDown.Items.Clear();
+
+                if (stacks.Count < 1)
+                {
+                    return;
+                }
+
+                foreach (Stack stack in stacks)
+                {
+                    RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
+                    dropDownItem.Label = stack.Name;
+                    stackDropDown.Items.Add(dropDownItem);
+                }
+
+                // Try to reselect the already selected stack
+                Stack selected = extension.Notebooks.SelectedStack;
+
+                // Otherwise, select the first item
+                if (selected == null)
+                {
+                    selected = stacks[0];
+                    extension.Notebooks.SelectStack(selected);
+                }
+
+                extension.SelectStack(selected);
+
+                int index = stacks.FindIndex((item) => item.Name == selected.Name);
+                stackDropDown.SelectedItemIndex = index;
             }
-
-            List<Stack> stacks = GetFilteredStacks(extension.Notebooks.SelectedNotebook.Stacks);
-
-            RibbonUI.InvalidateControl(stackDropDown.Id);
-            stackDropDown.Items.Clear();
-
-            if (stacks.Count < 1)
+            catch (Exception e)
             {
-                return;
+                InformationDispatcher.Default.Dispatch(e, informationContext);
             }
-
-            foreach (Stack stack in stacks)
-            {
-                RibbonDropDownItem dropDownItem = Factory.CreateRibbonDropDownItem();
-                dropDownItem.Label = stack.Name;
-                stackDropDown.Items.Add(dropDownItem);
-            }
-
-            // Try to reselect the already selected stack
-            Stack selected = extension.Notebooks.SelectedStack;
-
-            // Otherwise, select the first item
-            if (selected == null)
-            {
-                selected = stacks[0];
-                extension.Notebooks.SelectStack(selected);
-            }
-
-            extension.SelectStack(selected);
-
-            int index = stacks.FindIndex((item) => item.Name == selected.Name);
-            stackDropDown.SelectedItemIndex = index;
         }
 
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
@@ -280,97 +294,125 @@ namespace Chronicy.Excel
 
         private void OnNewNotebookClicked(object sender, RibbonControlEventArgs e)
         {
-            EditNotebookTaskPane control = new EditNotebookTaskPane();
-            control.EditedNotebook = new Notebook(string.Empty);
-            control.Confirmed += (s, args) =>
+            try
             {
+                EditNotebookTaskPane control = new EditNotebookTaskPane();
+                control.EditedNotebook = new Notebook(string.Empty);
+                control.Confirmed += (s, args) =>
+                {
                 // TODO: Move this validation inside the DataSource
                 List<Notebook> existing = extension.Notebooks.GetNotebooks().ToList();
 
-                if (existing.Exists(item => item.Name == control.EditedNotebook.Name))
-                {
-                    InformationDispatcher.Default.Dispatch("A Notebook with this name already exists!", informationContext, InformationKind.Error);
-                    args.KeepOpen = true;
+                    if (existing.Exists(item => item.Name == control.EditedNotebook.Name))
+                    {
+                        InformationDispatcher.Default.Dispatch("A Notebook with this name already exists!", informationContext, InformationKind.Error);
+                        args.KeepOpen = true;
 
-                    return;
-                }
+                        return;
+                    }
 
-                extension.Notebooks.AddNotebook(control.EditedNotebook);
+                    extension.Notebooks.AddNotebook(control.EditedNotebook);
 
-                LoadNotebooks();
-                LoadStacks();
-            };
+                    LoadNotebooks();
+                    LoadStacks();
+                };
 
-            TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("New Notebook", control);
-            taskPane.Visible = true;
+                TaskPane<EditNotebookTaskPane> taskPane = new TaskPane<EditNotebookTaskPane>("New Notebook", control);
+                taskPane.Visible = true;
+            }
+            catch (Exception exception)
+            {
+                InformationDispatcher.Default.Dispatch(exception, informationContext);
+            }
         }
 
         private void OnNewStackClicked(object sender, RibbonControlEventArgs e)
         {
-            EditStackTaskPane control = new EditStackTaskPane();
-            control.EditedStack = new Stack();
-            control.Confirmed += (s, args) =>
+            try
             {
+                EditStackTaskPane control = new EditStackTaskPane();
+                control.EditedStack = new Stack();
+                control.Confirmed += (s, args) =>
+                {
                 // TODO: Move this validation inside the DataSource
                 List<Stack> existing = extension.Notebooks.SelectedNotebook.Stacks;
 
-                if (existing.Exists(item => item.Name == control.EditedStack.Name))
-                {
-                    InformationDispatcher.Default.Dispatch("A Stack with this name already exists!", informationContext, InformationKind.Error);
-                    args.KeepOpen = true;
+                    if (existing.Exists(item => item.Name == control.EditedStack.Name))
+                    {
+                        InformationDispatcher.Default.Dispatch("A Stack with this name already exists!", informationContext, InformationKind.Error);
+                        args.KeepOpen = true;
 
-                    return;
-                }
+                        return;
+                    }
 
-                extension.Notebooks.AddStack(control.EditedStack);
-                LoadStacks();
-            };
+                    extension.Notebooks.AddStack(control.EditedStack);
+                    LoadStacks();
+                };
 
-            TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("New Stack", control);
-            taskPane.Visible = true;
+                TaskPane<EditStackTaskPane> taskPane = new TaskPane<EditStackTaskPane>("New Stack", control);
+                taskPane.Visible = true;
+            }
+            catch (Exception exception)
+            {
+                InformationDispatcher.Default.Dispatch(exception, informationContext);
+            }
         }
 
         private void OnViewAllClicked(object sender, RibbonControlEventArgs e)
         {
-            NotebooksTaskPane control = new NotebooksTaskPane();
-            control.Notebooks = extension.Notebooks.GetNotebooks();
-            control.Confirmed += (s, args) =>
+            try
             {
-                foreach (Notebook notebook in control.Notebooks)
+                NotebooksTaskPane control = new NotebooksTaskPane();
+                control.Notebooks = extension.Notebooks.GetNotebooks();
+                control.Confirmed += (s, args) =>
                 {
-                    extension.Notebooks.UpdateNotebook(notebook);
-                }
+                    foreach (Notebook notebook in control.Notebooks)
+                    {
+                        extension.Notebooks.UpdateNotebook(notebook);
+                    }
 
-                LoadStacks();
-            };
+                    LoadStacks();
+                };
 
-            TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
-            taskPane.Visible = true;
+                TaskPane<NotebooksTaskPane> taskPane = new TaskPane<NotebooksTaskPane>("Notebooks", control);
+                taskPane.Visible = true;
+            }
+            catch (Exception exception)
+            {
+                InformationDispatcher.Default.Dispatch(exception, informationContext);
+            }
         }
 
         private void OnHistoryMenuLoad(object sender, RibbonControlEventArgs e)
         {
-            historyMenu.Items.Clear();
-
-            CategoryRecord record = extension.History.GetItemsByCategory();
-
-            foreach (string key in record.Keys)
+            try
             {
-                RibbonButton categoryLabel = Factory.CreateRibbonButton();
-                categoryLabel.Description = key;
-                categoryLabel.Enabled = false;
-                historyMenu.Items.Add(categoryLabel);
+                historyMenu.Items.Clear();
 
-                IEnumerable<HistoryItem> items = record[key];
+                CategoryRecord record = extension.History.GetItemsByCategory();
 
-                foreach (HistoryItem item in items)
+                foreach (string key in record.Keys)
                 {
-                    RibbonButton historyItem = Factory.CreateRibbonButton();
-                    historyItem.Image = Resources.IconHistoryItem32;
-                    historyItem.Label = item.Title + " - " + item.Date.Humanize(utcDate: false);
-                    historyItem.Description = item.Description;
-                    historyMenu.Items.Add(historyItem);
+                    RibbonButton categoryLabel = Factory.CreateRibbonButton();
+                    categoryLabel.Description = key;
+                    categoryLabel.Enabled = false;
+                    historyMenu.Items.Add(categoryLabel);
+
+                    IEnumerable<HistoryItem> items = record[key];
+
+                    foreach (HistoryItem item in items)
+                    {
+                        RibbonButton historyItem = Factory.CreateRibbonButton();
+                        historyItem.Image = Resources.IconHistoryItem32;
+                        historyItem.Label = item.Title + " - " + item.Date.Humanize(utcDate: false);
+                        historyItem.Description = item.Description;
+                        historyMenu.Items.Add(historyItem);
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                InformationDispatcher.Default.Dispatch(exception, informationContext);
             }
         }
 
@@ -383,7 +425,7 @@ namespace Chronicy.Excel
                 LoadNotebooks();
                 LoadStacks();
             }
-            catch (EndpointConnectionException ex)
+            catch (Exception ex)
             {
                 InformationDispatcher.Default.Dispatch(ex.Message, informationContext, InformationKind.Error);
             }

@@ -1,6 +1,7 @@
 ﻿using Chronicy.Web;
 using Chronicy.Web.Converters;
 using Chronicy.Web.Exceptions;
+using Chronicy.Web.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,7 +16,12 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                api.CreateNotebook(converter.Convert(item));
+                ErrorResponse response = api.CreateNotebook(converter.Convert(item));
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {
@@ -23,11 +29,16 @@ namespace Chronicy.Data.Storage
             }
         }
 
-        public Task CreateAsync(Notebook item)
+        public async Task CreateAsync(Notebook item)
         {
             try
             {
-                return api.CreateNotebookAsync(converter.Convert(item));
+                ErrorResponse response = await api.CreateNotebookAsync(converter.Convert(item));
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {
@@ -39,7 +50,12 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                api.DeleteNotebook(id);
+                ErrorResponse response = api.DeleteNotebook(id);
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {
@@ -51,7 +67,12 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                await api.DeleteNotebookAsync(id);
+                ErrorResponse response = await api.DeleteNotebookAsync(id);
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {
@@ -63,7 +84,14 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                return converter.ReverseConvert(api.GetNotebook(id));
+                Web.Models.Notebook response = api.GetNotebook(id);
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
+
+                return converter.ReverseConvert(response);
             }
             catch (WebApiException e)
             {
@@ -75,7 +103,14 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                return converter.ReverseConvert(await api.GetNotebookAsync(id));
+                Web.Models.Notebook response = await api.GetNotebookAsync(id);
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
+
+                return converter.ReverseConvert(response);
             }
             catch (WebApiException e)
             {
@@ -87,7 +122,19 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                return api.GetNotebooks().List.ConvertAll(item => converter.ReverseConvert(item));
+                ListResponse<Web.Models.Notebook> response = api.GetNotebooks();
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
+
+                if (response.List == null)
+                {
+                    throw new DataSourceException("The API did not return any data");
+                }
+
+                return response.List.ConvertAll(item => converter.ReverseConvert(item));
             }
             catch (WebApiException e)
             {
@@ -99,7 +146,19 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                return (await api.GetNotebooksAsync()).List.ConvertAll(input => converter.ReverseConvert(input));
+                ListResponse<Web.Models.Notebook> response = await api.GetNotebooksAsync();
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
+
+                if (response.List == null)
+                {
+                    throw new DataSourceException("The API did not return any data");
+                }
+
+                return response.List.ConvertAll(item => converter.ReverseConvert(item));
             }
             catch (WebApiException e)
             {
@@ -111,7 +170,12 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                api.UpdateNotebook(converter.Convert(item));
+                ErrorResponse response = api.UpdateNotebook(converter.Convert(item));
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {
@@ -123,7 +187,12 @@ namespace Chronicy.Data.Storage
         {
             try
             {
-                await api.UpdateNotebookAsync(converter.Convert(item));
+                ErrorResponse response = await api.UpdateNotebookAsync(converter.Convert(item));
+
+                if (response.HasError)
+                {
+                    throw new DataSourceException("The API returned an error");
+                }
             }
             catch (WebApiException e)
             {

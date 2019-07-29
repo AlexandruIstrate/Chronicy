@@ -6,6 +6,7 @@ using Chronicy.Data.Storage;
 using Chronicy.Excel.Communication;
 using Chronicy.Excel.Data;
 using Chronicy.Excel.History;
+using Chronicy.Excel.Information;
 using Chronicy.Excel.Properties;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.Utils;
@@ -16,6 +17,7 @@ using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace Chronicy.Excel.App
 {
@@ -125,17 +127,33 @@ namespace Chronicy.Excel.App
                 return;
             }
 
+            Task.Run(() => Authenticate())
+                .ContinueWith(task => PresentAuthenticationState(CredentialsManager.State));
+        }
+
+        private void Authenticate()
+        {
             try
             {
                 string username = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedUsername);
                 string password = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedPassword);
 
-                Service.Authenticate(username, password);
+                CredentialsManager.Signin(username, password);
             }
-            catch (Exception e)
+            catch (AuthenticationException e)
             {
                 InformationDispatcher.Default.Dispatch(e, DebugLogContext.Current);
             }
+        }
+
+        private void PresentAuthenticationState(AuthenticationState state)
+        {
+            if (state != AuthenticationState.Errored)
+            {
+                return;
+            }
+
+            InformationDispatcher.Default.Dispatch("Could not authenticate to web service", new MessageBoxContext(), InformationKind.Error);
         }
 
         private void InitializeTracking()

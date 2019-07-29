@@ -3,11 +3,11 @@ using Chronicy.Data;
 using Chronicy.Data.Managers;
 using Chronicy.Data.Storage;
 using Chronicy.Information;
-using Chronicy.Service.Dispatch;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
 using Chronicy.Utils;
 using Chronicy.Web;
+using Chronicy.Web.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -28,10 +28,7 @@ namespace Chronicy.Service.Communication
         {
             context = AgregateContext.Of(EventLogContext.Current, this);
 
-            ExceptionUtils.LogExceptions(() =>
-            {
-                notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local));
-            }, context);
+            ExceptionUtils.LogExceptions(() => notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local)), context);
         }
 
         public void Connect()
@@ -48,9 +45,24 @@ namespace Chronicy.Service.Communication
             ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Url = url, context);
         }
 
-        public void Authenticate(string username, string password)
+        public DataResult Authenticate(string username, string password)
         {
-            ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Authenticate(username, password), context);
+            try
+            {
+                Web.Models.Token response = ChronicyWebApi.Shared.Authenticate(username, password);
+
+                if (response.HasError)
+                {
+                    return DataResult.Failure(response.ErrorMessage);
+                }
+            }
+            catch (WebApiException e)
+            {
+                InformationDispatcher.Default.Dispatch(e, DebugLogContext.Current);
+                return DataResult.Failure("Could not authenticate");
+            }
+
+            return DataResult.Success();
         }
 
         public void SendSelectedDataSource(DataSourceType dataSource)
@@ -70,15 +82,6 @@ namespace Chronicy.Service.Communication
 
         public void SendTrackingData(TrackingData data)
         {
-            // DEBUG START
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Date: " + data.Date.ToString());
-            builder.AppendLine("Name: " + data.Name);
-            builder.AppendLine("Comment: " + data.Comment);
-
-            InformationDispatcher.Default.Dispatch(builder.ToString(), context);
-            // DEBUG END
-
             Card card = new Card(data.Name, data.Comment)
             {
                 Date = data.Date,
@@ -116,29 +119,70 @@ namespace Chronicy.Service.Communication
             Callback?.SendErrorMessage(exception.Message);
         }
 
-        public IEnumerable<Notebook> GetAll()
+        public DataResult<IEnumerable<Notebook>> GetAll()
         {
-            return notebookManager.dataSource.GetAll();
+            try
+            {
+                return new DataResult<IEnumerable<Notebook>>(notebookManager.dataSource.GetAll());
+            }
+            catch (DataSourceException e)
+            {
+                return new DataResult<IEnumerable<Notebook>>(e.Message);
+            }
         }
 
-        public Notebook Get(int id)
+        public DataResult<Notebook> Get(int id)
         {
-            return notebookManager.dataSource.Get(id);
+            try
+            {
+                return new DataResult<Notebook>(notebookManager.dataSource.Get(id));
+            }
+            catch (DataSourceException e)
+            {
+                return new DataResult<Notebook>(e.Message);
+            }
         }
 
-        public void Create(Notebook notebook)
+        public DataResult Create(Notebook notebook)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Create(notebook), context);
+            try
+            {
+                notebookManager.dataSource.Create(notebook);
+            }
+            catch (DataSourceException e)
+            {
+                DataResult.Failure(e.Message);
+            }
+
+            return DataResult.Success();
         }
 
-        public void Update(Notebook notebook)
+        public DataResult Update(Notebook notebook)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Update(notebook), context);
+            try
+            {
+                notebookManager.dataSource.Update(notebook);
+            }
+            catch (DataSourceException e)
+            {
+                return DataResult.Failure(e.Message);
+            }
+
+            return DataResult.Success();
         }
 
-        public void Delete(int id)
+        public DataResult Delete(int id)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.dataSource.Delete(id), context);
+            try
+            {
+                notebookManager.dataSource.Delete(id);
+            }
+            catch (DataSourceException e)
+            {
+                return DataResult.Failure(e.Message);
+            }
+
+            return DataResult.Success();
         }
     }
 }

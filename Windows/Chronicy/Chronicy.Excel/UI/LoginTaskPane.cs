@@ -17,11 +17,19 @@ namespace Chronicy.Excel.UI
         private void OnLoginClicked(object sender, EventArgs e)
         {
             CredentialsManager.Signin(usernameTextBox.Text, passwordtextBox.Text);
+
+            if (CredentialsManager.State == AuthenticationState.Errored)
+            {
+                errorLabel.Text = "Could not connect to web service";
+                return;
+            }
+
+            Visible = false;
         }
 
         private void OnCancel(object sender, EventArgs e)
         {
-
+            Visible = false;
         }
     }
 }

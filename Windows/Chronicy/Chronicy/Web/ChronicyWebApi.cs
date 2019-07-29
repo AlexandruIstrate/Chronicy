@@ -145,12 +145,12 @@ namespace Chronicy.Web
             }
         }
 
-        public void CreateNotebook(Notebook notebook)
+        public ErrorResponse CreateNotebook(Notebook notebook)
         {
             try
             {
                 string body = JsonConvert.SerializeObject(notebook);
-                UploadData<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
+                return UploadData<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {
@@ -162,7 +162,7 @@ namespace Chronicy.Web
             }
         }
 
-        public Task CreateNotebookAsync(Notebook notebook)
+        public Task<ErrorResponse> CreateNotebookAsync(Notebook notebook)
         {
             try
             {

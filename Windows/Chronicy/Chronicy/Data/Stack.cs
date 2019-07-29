@@ -41,7 +41,7 @@ namespace Chronicy.Data
         public bool IsCompatible(FieldTemplate template)
         {
             FieldTemplate current = new FieldTemplate(Fields);
-            return current.Matches(template);
+            return template.Matches(current);
         }
 
         public override bool Equals(object obj)

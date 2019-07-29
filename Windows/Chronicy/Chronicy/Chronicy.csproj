@@ -182,9 +182,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\AuthenticationException.cs" />
     <Compile Include="Authentication\CredentialsManager.cs" />
     <Compile Include="Authentication\ICredentialsManager.cs" />
     <Compile Include="Communication\ConnectionConstants.cs" />
+    <Compile Include="Communication\DataResult.cs" />
     <Compile Include="Communication\ErrorHandlingServiceBehaviorAttribute.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
     <Compile Include="Communication\IServerService.cs" />

@@ -56,12 +56,32 @@ namespace Chronicy.Tests.Communication
 
     internal class Server : IServerService
     {
+        public DataResult Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Connect()
         {
             throw new NotImplementedException();
         }
 
-        public void Authenticate(string username, string password)
+        public DataResult Create(Notebook notebook)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResult<Notebook> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResult<IEnumerable<Notebook>> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -71,12 +91,12 @@ namespace Chronicy.Tests.Communication
             throw new NotImplementedException();
         }
 
-        public void SendSelectedNotebook(Notebook notebook)
+        public void SendSelectedDataSource(DataSourceType dataSource)
         {
             throw new NotImplementedException();
         }
 
-        public void SendTrackingData(TrackingData data)
+        public void SendSelectedNotebook(Notebook notebook)
         {
             throw new NotImplementedException();
         }
@@ -86,37 +106,17 @@ namespace Chronicy.Tests.Communication
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Notebook> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Notebook Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Create(Notebook notebook)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Notebook notebook)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SendSelectedDataSource(DataSourceType dataSource)
+        public void SendTrackingData(TrackingData data)
         {
             throw new NotImplementedException();
         }
 
         public void SendUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResult Update(Notebook notebook)
         {
             throw new NotImplementedException();
         }

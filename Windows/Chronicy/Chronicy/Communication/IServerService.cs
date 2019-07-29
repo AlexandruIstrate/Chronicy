@@ -1,7 +1,9 @@
 ﻿using Chronicy.Data;
 using Chronicy.Data.Storage;
 using Chronicy.Tracking;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 
 namespace Chronicy.Communication
@@ -15,24 +17,24 @@ namespace Chronicy.Communication
         [OperationContract(IsOneWay = true)]
         void SendUrl(string url);
 
-        [OperationContract(IsOneWay = true)]
-        void Authenticate(string username, string password);
+        [OperationContract(IsOneWay = false)]
+        DataResult Authenticate(string username, string password);
 
 
         [OperationContract(IsOneWay = false)]
-        IEnumerable<Notebook> GetAll();
+        DataResult<IEnumerable<Notebook>> GetAll();
 
         [OperationContract(IsOneWay = false)]
-        Notebook Get(int id);
+        DataResult<Notebook> Get(int id);
 
         [OperationContract(IsOneWay = false)]
-        void Create(Notebook notebook);
+        DataResult Create(Notebook notebook);
 
         [OperationContract(IsOneWay = false)]
-        void Update(Notebook notebook);
+        DataResult Update(Notebook notebook);
 
         [OperationContract(IsOneWay = false)]
-        void Delete(int id);
+        DataResult Delete(int id);
 
 
         [OperationContract(IsOneWay = true)]

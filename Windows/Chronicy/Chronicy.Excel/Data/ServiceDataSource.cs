@@ -9,7 +9,7 @@ namespace Chronicy.Excel.Data
 {
     public class ServiceDataSource : IDataSource<Notebook>
     {
-        private IServerService service;
+        private readonly IServerService service;
 
         public ServiceDataSource(IServerService service)
         {
@@ -18,7 +18,7 @@ namespace Chronicy.Excel.Data
 
         public void Create(Notebook item)
         {
-            service.Create(item);
+            EnsureNoErrors(service.Create(item));
         }
 
         public Task CreateAsync(Notebook item)
@@ -28,7 +28,7 @@ namespace Chronicy.Excel.Data
 
         public void Delete(int id)
         {
-            service.Delete(id);
+            EnsureNoErrors(service.Delete(id));
         }
 
         public Task DeleteAsync(int id)
@@ -38,7 +38,7 @@ namespace Chronicy.Excel.Data
 
         public Notebook Get(int id)
         {
-            return service.Get(id);
+            return EnsureNoErrors(service.Get(id));
         }
 
         public Task<Notebook> GetAsync(int id)
@@ -48,7 +48,7 @@ namespace Chronicy.Excel.Data
 
         public IEnumerable<Notebook> GetAll()
         {
-            return service.GetAll();
+            return EnsureNoErrors(service.GetAll());
         }
 
         public Task<IEnumerable<Notebook>> GetAllAsync()
@@ -58,12 +58,30 @@ namespace Chronicy.Excel.Data
 
         public void Update(Notebook item)
         {
-            service.Update(item);
+            EnsureNoErrors(service.Update(item));
         }
 
         public Task UpdateAsync(Notebook item)
         {
             throw new NotSupportedException(NotSupportedMessage);
+        }
+
+        private void EnsureNoErrors(DataResult result)
+        {
+            if (result.HasError)
+            {
+                throw new DataSourceException(result.ErrorMessage);
+            }
+        }
+
+        private T EnsureNoErrors<T>(DataResult<T> result)
+        {
+            if (result.HasError)
+            {
+                throw new DataSourceException(result.ErrorMessage);
+            }
+
+            return result.Value;
         }
 
         private const string NotSupportedMessage = "The service does not support async operations";
