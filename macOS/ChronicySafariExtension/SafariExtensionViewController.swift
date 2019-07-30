@@ -42,9 +42,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         let ret: ExtensionStack? = self.selectedNotebook?.named(name: stackName);
         return ret;
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad();
+    
+    private var lastNotebook: ExtensionNotebook?;
+    private var lastStack: ExtensionStack?;
+    
+    override func viewDidAppear() {
+        super.viewDidAppear();
         
         loadData();
         displayData();
@@ -53,17 +56,14 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         updateApplicationSelectedValues();
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear();
-        loadData();
-    }
-    
     @IBAction private func onNotebookChanged(_ sender: NSPopUpButton) {
+        lastNotebook = selectedNotebook;
         updateApplicationSelectedValues();
         self.displayStacks();
     }
     
     @IBAction private func onStackChanged(_ sender: NSPopUpButton) {
+        lastStack = selectedStack;
         updateApplicationSelectedValues();
     }
     
@@ -87,7 +87,11 @@ extension SafariExtensionViewController {
         
         self.notebookDropdown.addItems(withTitles: NotebookCollection.collection.notebooks.map({ (iter: ExtensionNotebook) -> String in
             return iter.name;
-        }))
+        }));
+        
+        if let selected: ExtensionNotebook = lastNotebook {
+            self.notebookDropdown.selectItem(withTitle: selected.name);
+        }
     }
     
     private func displayStacks() {
@@ -105,6 +109,10 @@ extension SafariExtensionViewController {
         }).map({ (stack: ExtensionStack) -> String in
             return stack.name;
         }));
+        
+        if let selected: ExtensionStack = lastStack {
+            self.stackDropdown.selectItem(withTitle: selected.name);
+        }
     }
     
     private func displayState() {

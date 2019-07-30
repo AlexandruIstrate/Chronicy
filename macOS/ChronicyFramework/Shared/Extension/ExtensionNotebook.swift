@@ -17,8 +17,8 @@ public struct ExtensionNotebook: Equatable, Codable {
     }
     
     public func named(name: String) -> ExtensionStack? {
-        return self.stacks.filter({ (stack: ExtensionStack) -> Bool in
+        return self.stacks.first(where: { (stack: ExtensionStack) -> Bool in
             return stack.name == name;
-        }).first;
+        });
     }
 }

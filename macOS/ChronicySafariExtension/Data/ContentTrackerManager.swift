@@ -39,7 +39,7 @@ class ContentTrackerManager {
             tracker.sendData(data: data);
         }
     }
-    
+        
     public subscript(trackerType: ContentTrackerType) -> ContentTracker? {
         get { return self.trackers[trackerType]; }
         set { self.trackers[trackerType] = newValue; }

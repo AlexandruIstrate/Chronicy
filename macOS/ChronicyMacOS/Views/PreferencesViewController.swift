@@ -7,6 +7,7 @@
 
 import Foundation;
 import Cocoa;
+import ChronicyFrameworkMacOS;
 
 public class PreferencesViewController : NSTabViewController {
     
@@ -16,5 +17,10 @@ public class PreferencesViewController : NSTabViewController {
         }
         
         PreferencesWindowController.shared?.window?.title = tabViewItem.label;
+    }
+    
+    public override func viewWillDisappear() {
+        WebAPI.shared.url = Settings.webServiceURL;
+        super.viewWillDisappear();
     }
 }

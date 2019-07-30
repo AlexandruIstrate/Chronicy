@@ -8,6 +8,9 @@
 import Foundation;
 
 public protocol NotebookManager {
+    typealias NotebookManagerSetupCallback = (NotebookManagerError?) -> ();
+    func setup(callback: @escaping NotebookManagerSetupCallback);
+    
     typealias NotebookManagerInfoCallback = ([NotebookInfo]?, NotebookManagerError?) -> ();
     func getInfo(callback: @escaping NotebookManagerInfoCallback);
     
@@ -17,7 +20,8 @@ public protocol NotebookManager {
     typealias NotebookManagerNotebooksCallback = ([Notebook]?, NotebookManagerError?) -> ();
     func retrieveAllNotebooks(callback: @escaping NotebookManagerNotebooksCallback);
     
-    func saveNotebook(notebook: Notebook) throws;
+    typealias NotebookManagerSaveCallback = (NotebookManagerError?) -> ();
+    func saveNotebook(notebook: Notebook, callback: @escaping NotebookManagerSaveCallback);
 }
 
 extension NotebookManager {
@@ -63,4 +67,6 @@ public struct NotebookInfo {
 public enum NotebookManagerError: Error {
     case fetchFailure;
     case itemNotFound;
+    case saveFailure;
+    case authenticationFailure;
 }

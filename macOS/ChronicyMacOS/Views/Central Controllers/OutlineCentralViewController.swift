@@ -256,17 +256,25 @@ extension OutlineCentralViewController {
             return;
         }
         
-        do {
-            try self.notebookManager.saveNotebook(notebook: notebook);
-        } catch let e {
-            Log.error(message: "Could not save notebook with name \(notebook.name)");
-            self.presentError(e);
+//        do {
+//            try self.notebookManager.saveNotebook(notebook: notebook);
+//        } catch let e {
+//            Log.error(message: "Could not save notebook with name \(notebook.name)");
+//            self.presentError(e);
+//        }
+        
+        self.notebookManager.saveNotebook(notebook: notebook) { (error: NotebookManagerError?) in
+            if let error: NotebookManagerError = error {
+                self.presentError(error);
+                return;
+            }
         }
     }
     
     private func broadcastNotebooks() {
         notebookManager.retrieveAllNotebooks { (notebooks: [Notebook]?, error: NotebookManagerError?) in
             guard error == nil else {
+                self.presentError(error!);
                 return;
             }
             
@@ -361,5 +369,14 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
 extension OutlineCentralViewController : SourceChangedDelegate {
     func changed(type: NotebookManagerType) {
         notebookManager = NotebookManagerFactory.create(type: type);
+        notebookManager.setup { (error: NotebookManagerError?) in
+            if let error: NotebookManagerError = error {
+                self.presentError(error);
+                return;
+            }
+            
+            self.loadNotebookData();
+            self.broadcastNotebooks();
+        }
     }
 }

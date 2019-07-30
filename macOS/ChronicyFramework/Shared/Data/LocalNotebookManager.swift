@@ -16,6 +16,10 @@ public class LocalNotebookManager: NotebookManager {
 
     }
     
+    public func setup(callback: @escaping NotebookManagerSetupCallback) {
+        callback(nil);
+    }
+    
     public func getInfo(callback: @escaping NotebookManagerInfoCallback) {
         guard let notebooks: [CoreDataNotebook] = self.getNotebooks() else {
             Log.error(message: "Could not retrieve notebooks!");
@@ -58,22 +62,34 @@ public class LocalNotebookManager: NotebookManager {
         callback(transformed, nil);
     }
     
-    public func saveNotebook(notebook: Notebook) throws {
+    public func saveNotebook(notebook: Notebook, callback: @escaping NotebookManagerSaveCallback) {
         if let existing: CoreDataNotebook = self.getNotebooks()?.first(where: { (iter: CoreDataNotebook) -> Bool in
             return iter.name == notebook.name;
         }) {
             existing.notebook = notebook;
-            try self.saveCoreDataItems();
+            
+            do {
+                try self.saveCoreDataItems();
+            } catch {
+                callback(NotebookManagerError.saveFailure);
+                Log.error(message: "Could not save notebook with name \(notebook.name)!");
+            }
+            
             return;
         }
         
         if let item: CoreDataNotebook = NSEntityDescription.insertNewObject(forEntityName: "CoreDataNotebook", into: self.context) as? CoreDataNotebook {
             item.notebook = notebook;
-            try self.saveCoreDataItems();
+            
+            do {
+                try self.saveCoreDataItems();
+            } catch {
+                callback(NotebookManagerError.saveFailure);
+                Log.error(message: "Could not save notebook with name \(notebook.name)!");
+            }
+            
             return;
         }
-        
-        Log.error(message: "Could not save notebook with name \(notebook.name)!");
     }
     
     private func getNotebooks() -> [CoreDataNotebook]? {

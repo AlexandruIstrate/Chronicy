@@ -91,12 +91,18 @@ extension SafariBrowserModule {
                 
                 do {
                     try card.insertIntoFields(values: [urlString]);
-                    try notebookManager.saveNotebook(notebook: notebook);
-                    
-                    ActivityManager.manager.add(withTitle: "New page visited from Safari", comment: "\(urlString)");
-                    
-                    self.notifyMainView();
-                    TriggerManager.manager.raise(kind: .url);
+//                    try notebookManager.saveNotebook(notebook: notebook);
+                    notebookManager.saveNotebook(notebook: notebook, callback: { (error: NotebookManagerError?) in
+                        if let error: NotebookManagerError = error {
+                            Log.error(message: "Could not write save to notebook: \(error)");
+                            return;
+                        }
+                        
+                        ActivityManager.manager.add(withTitle: "New page visited from Safari", comment: "\(urlString)");
+                        
+                        self.notifyMainView();
+                        TriggerManager.manager.raise(kind: .url);
+                    });
                 } catch let e as InsertionError {
                     Log.error(message: "Could not insert into card: \(e)");
                 } catch let e {

@@ -16,6 +16,6 @@ public protocol ModelBase: Codable {
 
 extension ModelBase {
     public static var dateFormat: String {
-        return "yyyy-MM-dd'T'HH:mm:ss";
+        return "yyyy-MM-dd'T'HH:mm:ssZ";
     }
 }

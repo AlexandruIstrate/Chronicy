@@ -1,11 +1,12 @@
 ﻿using Chronicy.Sql;
+using Chronicy.Standard.Data;
 using Chronicy.Web.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 
@@ -13,9 +14,14 @@ namespace Chronicy.Web
 {
     public class Startup
     {
+        private SqlServerDatabase database;
+
         public Startup()
         {
             Configuration = CreateConfiguration();
+
+            ConfigureDatabase();
+            ConfigureJson();
         }
 
         public IConfiguration Configuration { get; }
@@ -23,9 +29,13 @@ namespace Chronicy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            SqlServerDatabase database = new SqlServerDatabase(SqlConnectionFactory.Create(Configuration));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                    .AddJsonOptions(options =>
+                    {
+                        JsonSerializerSettings settings = options.SerializerSettings;
+                        settings.DateFormatString = JsonDefaultSettings.DateFormatString;
+                        settings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                    });
 
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
@@ -33,7 +43,7 @@ namespace Chronicy.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -44,8 +54,15 @@ namespace Chronicy.Web
                 app.UseHsts();
             }
 
+            applicationLifetime.ApplicationStopping.Register(OnShutdown);
+
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private void OnShutdown()
+        {
+            database.Dispose();
         }
 
         private IConfiguration CreateConfiguration()
@@ -57,6 +74,16 @@ namespace Chronicy.Web
             builder.AddJsonFile("appsettings.Database.json", optional: true);
             builder.AddEnvironmentVariables();
             return builder.Build();
+        }
+
+        private void ConfigureJson()
+        {
+            JsonConvert.DefaultSettings = () => JsonDefaultSettings.SerializerSettings;
+        }
+
+        private void ConfigureDatabase()
+        {
+            database = new SqlServerDatabase(SqlConnectionFactory.Create(Configuration));
         }
     }
 }

@@ -11,27 +11,24 @@ public class ServerNotebookManager: NotebookManager {
     
     private var api: WebAPI = WebAPI.shared;
     
-    // TODO: Change
-    public init() {
-        authenticate();
-    }
-    
-    public func authenticate() {
-        api.authenticate(username: Settings.username, password: Settings.password) { (error: Error?, token: Token?) in
+    public func setup(callback: @escaping NotebookManagerSetupCallback) {
+        api.authenticate(username: Settings.username, password: Settings.password) { (error: APIError?, token: Token?) in
             guard error == nil else {
-                print(error ?? "Could not authenticate");   // TODO: Handle
+                callback(NotebookManagerError.authenticationFailure);
                 return;
             }
             
             guard let token: Token = token else {
-                Log.error(message: "Could not authenticate");
+                callback(NotebookManagerError.authenticationFailure);
                 return;
             }
+            
+            callback(nil);
         };
     }
     
     public func getInfo(callback: @escaping NotebookManagerInfoCallback) {
-        self.api.getNotebooks { (notebooks: [Notebook]?, error: Error?) in
+        self.api.getNotebooks { (notebooks: [Notebook]?, error: APIError?) in
             guard error == nil else {
                 callback(nil, .fetchFailure);
                 return;
@@ -50,7 +47,7 @@ public class ServerNotebookManager: NotebookManager {
     }
     
     public func retrieveNotebook(info: NotebookInfo, callback: @escaping NotebookManagerNotebookCallback) {
-        self.api.getNotebook(id: Int(info.id)!) { (notebook: Notebook?, error: Error?) in
+        self.api.getNotebook(id: Int(info.id)!) { (notebook: Notebook?, error: APIError?) in
             guard error == nil else {
                 callback(nil, .fetchFailure);
                 return;
@@ -66,7 +63,7 @@ public class ServerNotebookManager: NotebookManager {
     }
     
     public func retrieveAllNotebooks(callback: @escaping NotebookManagerNotebooksCallback) {
-        self.api.getNotebooks { (notebooks: [Notebook]?, error: Error?) in
+        self.api.getNotebooks { (notebooks: [Notebook]?, error: APIError?) in
             guard error == nil else {
                 callback(nil, .fetchFailure);
                 return;
@@ -81,10 +78,11 @@ public class ServerNotebookManager: NotebookManager {
         }
     }
     
-    public func saveNotebook(notebook: Notebook) throws {
-        self.api.updateNotebook(notebook: notebook, id: notebook.id) { (error: Error?) in
+    public func saveNotebook(notebook: Notebook, callback: @escaping NotebookManagerSaveCallback) {
+        self.api.updateNotebook(notebook: notebook, id: notebook.id) { (error: APIError?) in
             guard error == nil else {
                 Log.error(message: "Could not save notebook with name \(notebook.name)");
+                callback(NotebookManagerError.saveFailure);
                 return;
             }
         }

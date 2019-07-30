@@ -9,7 +9,7 @@ import Foundation;
 
 public class URLManager {
     
-    private var baseURL: String;
+    public var baseURL: String;
     
     public init(baseURL: String) {
         self.baseURL = baseURL;
