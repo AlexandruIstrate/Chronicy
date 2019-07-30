@@ -58,12 +58,39 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
+        public async Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
         {
-            return Task.Run(() =>
+            try
             {
-                return RunScalarString(query, parameters);
-            });
+                await Connection.OpenAsync();
+
+                using (SqlCommand command = new SqlCommand(query, Connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
+                    DataSet dataSet = new DataSet();
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataSet);
+                    }
+
+                    return dataSet;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
 
         public int RunNonQueryString(string query, List<SqlParameter> parameters = null)
@@ -94,12 +121,32 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
+        public async Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
         {
-            return Task.Run(() =>
+            try
             {
-                return RunNonQueryString(query, parameters);
-            });
+                await Connection.OpenAsync();
+
+                using (SqlCommand command = new SqlCommand(query, Connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
+                    return await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
 
         public DataSet RunScalarProcedure(string procedureName, List<SqlParameter> parameters = null)
@@ -139,12 +186,41 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public async Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
-            return Task.Run(() =>
+            try
             {
-                return RunScalarProcedure(procedureName, parameters);
-            });
+                await Connection.OpenAsync();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = Connection;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = procedureName;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
+                    DataSet dataSet = new DataSet();
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                    {
+                        dataAdapter.Fill(dataSet);
+                    }
+
+                    return dataSet;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
 
         public int RunNonQueryProcedure(string procedureName, List<SqlParameter> parameters = null)
@@ -177,12 +253,34 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public async Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
-            return Task.Run(() =>
+            try
             {
-                return RunNonQueryProcedure(procedureName, parameters);
-            });
+                await Connection.OpenAsync();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = Connection;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = procedureName;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
+                    return await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
     }
 }

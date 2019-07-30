@@ -33,14 +33,11 @@ namespace Chronicy.Web.Api
                     throw new Exception("Invalid username or password");
                 }
 
-                string token = GetUserToken(username);
-
-                return new Token { AccessToken = token };
+                return GetUserToken(username);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                // TODO: Change this to a JSON error respose
-                throw new Exception("Could not authenticate", e);
+                throw;
             }
         }
 
@@ -56,14 +53,11 @@ namespace Chronicy.Web.Api
                     throw new Exception("Invalid username or password");
                 }
 
-                string token = await GetUserTokenAsync(username);
-
-                return new Token { AccessToken = token };
+                return await GetUserTokenAsync(username);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                // TODO: Change this to a JSON error respose
-                throw new Exception("Could not authenticate", e);
+                throw;
             }
         }
 
@@ -83,7 +77,7 @@ namespace Chronicy.Web.Api
             }
             catch (IndexOutOfRangeException)
             {
-                throw;
+                throw new Exception($"The user { username } could not be found");
             }
             catch (Exception)
             {
@@ -107,7 +101,7 @@ namespace Chronicy.Web.Api
             }
             catch (IndexOutOfRangeException)
             {
-                throw;
+                throw new Exception($"The user { username } could not be found");
             }
             catch (Exception)
             {
@@ -115,7 +109,7 @@ namespace Chronicy.Web.Api
             }
         }
 
-        public string GetUserToken(string username)
+        public Token GetUserToken(string username)
         {
             try
             {
@@ -127,11 +121,14 @@ namespace Chronicy.Web.Api
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return (string)dataRow[Columns.Token];
+                string token = (string)dataRow[Columns.Token];
+                DateTimeOffset timeOffset = (DateTimeOffset)dataRow[Columns.ExpirationDate];
+
+                return new Token { AccessToken = token, ExpirationDate = timeOffset.LocalDateTime };
             }
             catch (IndexOutOfRangeException)
             {
-                throw;
+                throw new Exception($"The user { username } could not be found");
             }
             catch (Exception)
             {
@@ -139,7 +136,7 @@ namespace Chronicy.Web.Api
             }
         }
 
-        public async Task<string> GetUserTokenAsync(string username)
+        public async Task<Token> GetUserTokenAsync(string username)
         {
             try
             {
@@ -151,11 +148,14 @@ namespace Chronicy.Web.Api
                 DataTable dataTable = dataSet.Tables[0];
                 DataRow dataRow = dataTable.Rows[0];
 
-                return (string)dataRow[Columns.Token];
+                string token = (string)dataRow[Columns.Token];
+                DateTimeOffset timeOffset = (DateTimeOffset)dataRow[Columns.ExpirationDate];
+
+                return new Token { AccessToken = token, ExpirationDate = timeOffset.LocalDateTime };
             }
             catch (IndexOutOfRangeException)
             {
-                throw;
+                throw new Exception($"The user { username } could not be found");
             }
             catch (Exception)
             {
@@ -179,6 +179,7 @@ namespace Chronicy.Web.Api
         {
             public const string PasswordHash = "passwordHash";
             public const string Token = "token";
+            public const string ExpirationDate = "expDateTime";
         }
     }
 }
