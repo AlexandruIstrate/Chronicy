@@ -31,7 +31,7 @@ namespace Chronicy.Web.Models
 
         public static T Failure<T>(int errorCode, Exception exception) where T : ModelBase, new()
         {
-            return new T { ErrorCode = errorCode, ErrorMessage = exception.Message };
+            return new T { ErrorCode = errorCode, ErrorMessage = exception.ToString() };
         }
     }
 }

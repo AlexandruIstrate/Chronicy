@@ -64,7 +64,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
+        public async Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunScalarString(query, parameters));
         }
@@ -101,7 +101,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
+        public async Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunNonQueryString(query, parameters));
         }
@@ -147,7 +147,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public async Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunScalarProcedure(procedureName, parameters));
         }
@@ -186,7 +186,7 @@ namespace Chronicy.Sql
             }
         }
 
-        public Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public async Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunNonQueryProcedure(procedureName, parameters));
         }
