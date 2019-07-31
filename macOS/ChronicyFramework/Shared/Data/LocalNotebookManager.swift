@@ -75,6 +75,7 @@ public class LocalNotebookManager: NotebookManager {
                 Log.error(message: "Could not save notebook with name \(notebook.name)!");
             }
             
+            callback(nil);
             return;
         }
         
@@ -88,6 +89,7 @@ public class LocalNotebookManager: NotebookManager {
                 Log.error(message: "Could not save notebook with name \(notebook.name)!");
             }
             
+            callback(nil);
             return;
         }
     }

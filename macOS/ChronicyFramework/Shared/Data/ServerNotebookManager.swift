@@ -85,6 +85,8 @@ public class ServerNotebookManager: NotebookManager {
                 callback(NotebookManagerError.saveFailure);
                 return;
             }
+            
+            callback(nil);
         }
     }
 }
