@@ -103,6 +103,14 @@ class WindowController: NSWindowController, NSWindowDelegate {
     public func refreshDisplay() {
         self.reloadNotebooks();
     }
+    
+    public func selectNotebook(name: String) {
+        guard notebookPopUp.itemTitles.contains(name) else {
+            return;
+        }
+        
+        notebookPopUp.selectItem(withTitle: name);
+    }
 }
 
 protocol WindowControllerDelegate {

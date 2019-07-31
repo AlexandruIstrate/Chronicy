@@ -22,7 +22,8 @@ class OutlineCentralViewController: NSViewController {
     private let broadcaster: InformationBroadcaster = InformationBroadcaster();
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        notebookManager = NotebookManagerFactory.create(type: DataSourceManager.manager.sourceType);
         
 //        displayLoadingView();
         setupContentView();
@@ -182,6 +183,7 @@ extension OutlineCentralViewController: ContentView {
     func reloadData() {
         self.saveData();
         self.outlineView.reloadData();
+        
         self.broadcastNotebooks();
     }
 }

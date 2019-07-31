@@ -89,9 +89,15 @@ extension SafariExtensionViewController {
             return iter.name;
         }));
         
-        if let selected: ExtensionNotebook = lastNotebook {
-            self.notebookDropdown.selectItem(withTitle: selected.name);
+        guard let selected: ExtensionNotebook = lastNotebook else {
+            return;
         }
+        
+        guard notebookDropdown.itemTitles.contains(selected.name) else {
+            return;
+        }
+        
+        self.notebookDropdown.selectItem(withTitle: selected.name);
     }
     
     private func displayStacks() {
@@ -110,9 +116,15 @@ extension SafariExtensionViewController {
             return stack.name;
         }));
         
-        if let selected: ExtensionStack = lastStack {
-            self.stackDropdown.selectItem(withTitle: selected.name);
+        guard let selected: ExtensionStack = lastStack else {
+            return;
         }
+        
+        guard stackDropdown.itemTitles.contains(selected.name) else {
+            return;
+        }
+        
+        self.stackDropdown.selectItem(withTitle: selected.name);
     }
     
     private func displayState() {
