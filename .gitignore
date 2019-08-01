@@ -39,7 +39,9 @@ Windows/Chronicy/Chronicy.Tests/obj/
 macOS/DerivedData/
 macOS/build/
 macOS/xcuserdata/
+macOS/Chronicy.xcodeproj/xcuserdata/
 macOS/Chronicy.xcworkspace/xcuserdata/
+macOS/ChronicyFramework/ChronicyFramework.xcodeproj/xcuserdata/
 
 # Files
 *.xccheckout
