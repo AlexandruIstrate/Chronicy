@@ -45,9 +45,14 @@ public class WebAPI {
     
     public typealias GetNotebooksCallback = ([Notebook]?, APIError?) -> ()
     public func getNotebooks(callback: @escaping GetNotebooksCallback) {
-        requestable?.downloadJSON(url: urlManager.getNotebooks(), headers: defaultHeaders, onCompletion: { (response: Data) in
-            let json: String? = String(bytes: response, encoding: .utf8);
-            print(json ?? "No JSON response");
+        guard let headers: Headers = buildDefaultHeaders() else {
+            callback(nil, .authenticationFailure);
+            return;
+        }
+        
+        requestable?.downloadJSON(url: urlManager.getNotebooks(), headers: headers, onCompletion: { (response: Data) in
+//            let json: String? = String(bytes: response, encoding: .utf8);
+//            print(json ?? "No JSON response");
             
             guard let list: ListResponse<NotebookModel> = self.decodeJson(data: response) else {
                 callback(nil, APIError.readAllFailure); // TODO: Error
@@ -66,7 +71,12 @@ public class WebAPI {
     
     public typealias GetNotebookCallback = (Notebook?, APIError?) -> ()
     public func getNotebook(id: Int, callback: @escaping GetNotebookCallback) {
-        requestable?.downloadJSON(url: urlManager.getNotebook(id: id), headers: defaultHeaders, onCompletion: { (response: Data) in
+        guard let headers: Headers = buildDefaultHeaders() else {
+            callback(nil, .authenticationFailure);
+            return;
+        }
+        
+        requestable?.downloadJSON(url: urlManager.getNotebook(id: id), headers: headers, onCompletion: { (response: Data) in
             guard let notebook: NotebookModel = self.decodeJson(data: response) else {
                 callback(nil, APIError.readFailure);
                 return;
@@ -80,7 +90,12 @@ public class WebAPI {
     
     public typealias CreateNotebookCallback = (APIError?) -> ()
     public func createNotebook(notebook: Notebook, callback: @escaping CreateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.createNotebook(), object: notebook.webModel, headers: defaultHeaders, requestMethod: .post, onCompletion: { (data: Data) in
+        guard let headers: Headers = buildDefaultHeaders() else {
+            callback(.authenticationFailure);
+            return;
+        }
+        
+        requestable?.uploadJSON(url: urlManager.createNotebook(), object: notebook.webModel, headers: headers, requestMethod: .post, onCompletion: { (data: Data) in
             callback(nil);
         }, onError: { (error: RequestError) in
             callback(APIError.createFailure);
@@ -89,7 +104,12 @@ public class WebAPI {
     
     public typealias DeleteNotebookCallback = (APIError?) -> ()
     public func deleteNotebook(id: Int, callback: @escaping DeleteNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), object: EmptyRequestBody(), headers: defaultHeaders, requestMethod: .delete, onCompletion: { (data: Data) in
+        guard let headers: Headers = buildDefaultHeaders() else {
+            callback(.authenticationFailure);
+            return;
+        }
+        
+        requestable?.uploadJSON(url: urlManager.deleteNotebook(id: id), object: EmptyRequestBody(), headers: headers, requestMethod: .delete, onCompletion: { (data: Data) in
             callback(nil);
         }, onError: { (error: RequestError) in
             callback(APIError.deleteFailure);
@@ -98,7 +118,12 @@ public class WebAPI {
     
     public typealias UpdateNotebookCallback = (APIError?) -> ()
     public func updateNotebook(notebook: Notebook, id: Int, callback: @escaping UpdateNotebookCallback) {
-        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), object: notebook.webModel, headers: defaultHeaders, requestMethod: .put, onCompletion: { (data: Data) in
+        guard let headers: Headers = buildDefaultHeaders() else {
+            callback(.authenticationFailure);
+            return;
+        }
+        
+        requestable?.uploadJSON(url: urlManager.updateNotebook(id: id), object: notebook.webModel, headers: headers, requestMethod: .put, onCompletion: { (data: Data) in
             callback(nil);
         }, onError: { (error: RequestError) in
             callback(APIError.updateFailure);
@@ -117,31 +142,35 @@ public class WebAPI {
         } catch (let e) {
             print(e);
             
-            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
+//            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
 //            print(json);
             
             return nil;
         }
     }
     
-    private var defaultHeaders: Headers {
+    private func buildDefaultHeaders() -> Headers? {
+        guard let token: String = self.buildTokenHeader() else {
+            return nil;
+        }
+        
         var headers: Headers = [:];
-        headers["Authorization"] = self.buildTokenHeader();
+        headers["Authorization"] = token;
         headers["ContentType"] = "application/json";
         
         return headers;
     };
     
-    private func buildTokenHeader() -> String {
+    private func buildTokenHeader() -> String? {
         guard let token: String = token?.accessToken else {
             Log.error(message: "No token present");
-            return "";
+            return nil;
         }
         
         let builder: AuthenticationHeaderBuilder = AuthenticationHeaderBuilder();
         builder.key = token;
         builder.authType = .token;
-        return try! builder.build();
+        return try? builder.build();
     }
     
     public struct EmptyRequestBody : Codable {

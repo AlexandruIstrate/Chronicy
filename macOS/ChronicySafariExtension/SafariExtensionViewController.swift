@@ -68,6 +68,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     @IBAction private func onTrackingChanged(_ sender: NSButton) {
+        updateApplicationSelectedValues();
         ExtensionStateManager.manager.state = ((sender.state == .on) ? .enabled : .disabled);
     }
 }
@@ -89,15 +90,7 @@ extension SafariExtensionViewController {
             return iter.name;
         }));
         
-        guard let selected: ExtensionNotebook = lastNotebook else {
-            return;
-        }
-        
-        guard notebookDropdown.itemTitles.contains(selected.name) else {
-            return;
-        }
-        
-        self.notebookDropdown.selectItem(withTitle: selected.name);
+        ensureNotebookSelected();
     }
     
     private func displayStacks() {
@@ -116,15 +109,7 @@ extension SafariExtensionViewController {
             return stack.name;
         }));
         
-        guard let selected: ExtensionStack = lastStack else {
-            return;
-        }
-        
-        guard stackDropdown.itemTitles.contains(selected.name) else {
-            return;
-        }
-        
-        self.stackDropdown.selectItem(withTitle: selected.name);
+        ensureStackSelected();
     }
     
     private func displayState() {
@@ -143,5 +128,33 @@ extension SafariExtensionViewController {
         
         ContentTrackerManager.manager.sendData(data: notebook.name, trackerType: .notebook);
         ContentTrackerManager.manager.sendData(data: stack.name, trackerType: .stack);
+    }
+    
+    private func ensureNotebookSelected() {
+        if let selected: ExtensionNotebook = lastNotebook {
+            if notebookDropdown.itemTitles.contains(selected.name) {
+                self.notebookDropdown.selectItem(withTitle: selected.name);
+                return;
+            }
+        }
+        
+        if notebookDropdown.itemArray.count > 0 {
+            let first: String = self.notebookDropdown.itemTitles.first!;
+            self.notebookDropdown.selectItem(withTitle: first);
+        }
+    }
+    
+    private func ensureStackSelected() {
+        if let selected: ExtensionStack = lastStack {
+            if stackDropdown.itemTitles.contains(selected.name) {
+                self.stackDropdown.selectItem(withTitle: selected.name);
+                return;
+            }
+        }
+        
+        if stackDropdown.itemArray.count > 0 {
+            let first: String = self.stackDropdown.itemTitles.first!;
+            self.stackDropdown.selectItem(withTitle: first);
+        }
     }
 }

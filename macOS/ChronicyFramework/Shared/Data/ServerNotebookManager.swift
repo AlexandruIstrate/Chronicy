@@ -14,12 +14,17 @@ public class ServerNotebookManager: NotebookManager {
     public func setup(callback: @escaping NotebookManagerSetupCallback) {
         api.authenticate(username: Settings.username, password: Settings.password) { (error: APIError?, token: Token?) in
             guard error == nil else {
-                callback(NotebookManagerError.authenticationFailure);
+                callback(.authenticationFailure);
                 return;
             }
             
             guard let token: Token = token else {
-                callback(NotebookManagerError.authenticationFailure);
+                callback(.authenticationFailure);
+                return;
+            }
+            
+            guard !token.accessToken.isEmpty else {
+                callback(.authenticationFailure);
                 return;
             }
             

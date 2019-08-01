@@ -335,8 +335,6 @@ extension OutlineCentralViewController: WindowControllerDataSource, WindowContro
     
     func onNotebookMenu() {
         let vc: NotebookManagerViewController = NotebookManagerViewController();
-        // TODO: Change!!!
-//        vc.notebooks = [self.notebook];
         self.presentAsSheet(vc);
     }
     

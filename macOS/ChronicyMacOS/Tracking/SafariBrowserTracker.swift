@@ -65,7 +65,7 @@ extension SafariBrowserModule {
                 return;
             }
             
-            let notebookManager: NotebookManager = NotebookManagerFactory.create(type: DataSourceManager.manager.sourceType)
+            let notebookManager: NotebookManager = NotebookManagerFactory.create(type: DataSourceManager.manager.sourceType);
             notebookManager.named(name: notebookName) { (notebook: Notebook?, error: NotebookManagerError?) in
                 guard let notebook: Notebook = notebook else {
                     Log.error(message: "Could not find notebook named \(notebookName)!");
