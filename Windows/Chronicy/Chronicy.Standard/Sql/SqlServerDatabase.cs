@@ -10,7 +10,7 @@ namespace Chronicy.Sql
     // flexible using reflection and dynamic code generation
     public class SqlServerDatabase : ISqlDatabase
     {
-        private object databaseLock = new object();
+        private readonly object databaseLock = new object();
 
         public SqlConnection Connection { get; set; }
 
@@ -29,7 +29,6 @@ namespace Chronicy.Sql
         {
             lock (databaseLock)
             {
-
                 try
                 {
                     Connection.Open();
@@ -60,11 +59,11 @@ namespace Chronicy.Sql
                 finally
                 {
                     Connection.Close();
-                }
+                } 
             }
         }
 
-        public async Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
+        public Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunScalarString(query, parameters));
         }
@@ -73,7 +72,6 @@ namespace Chronicy.Sql
         {
             lock (databaseLock)
             {
-
                 try
                 {
                     Connection.Open();
@@ -97,11 +95,11 @@ namespace Chronicy.Sql
                 finally
                 {
                     Connection.Close();
-                }
+                } 
             }
         }
 
-        public async Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
+        public Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunNonQueryString(query, parameters));
         }
@@ -110,7 +108,6 @@ namespace Chronicy.Sql
         {
             lock (databaseLock)
             {
-
                 try
                 {
                     Connection.Open();
@@ -143,11 +140,11 @@ namespace Chronicy.Sql
                 finally
                 {
                     Connection.Close();
-                }
+                } 
             }
         }
 
-        public async Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunScalarProcedure(procedureName, parameters));
         }
@@ -156,7 +153,6 @@ namespace Chronicy.Sql
         {
             lock (databaseLock)
             {
-
                 try
                 {
                     Connection.Open();
@@ -182,11 +178,11 @@ namespace Chronicy.Sql
                 finally
                 {
                     Connection.Close();
-                }
+                } 
             }
         }
 
-        public async Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
+        public Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
             return Task.FromResult(RunNonQueryProcedure(procedureName, parameters));
         }

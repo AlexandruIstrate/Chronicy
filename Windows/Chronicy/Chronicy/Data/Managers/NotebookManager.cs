@@ -1,6 +1,7 @@
 ﻿using Chronicy.Data.Storage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Managers
@@ -34,12 +35,26 @@ namespace Chronicy.Data.Managers
 
         public List<Notebook> GetNotebooks()
         {
-            return new List<Notebook>(dataSource.GetAll());
+            IEnumerable<Notebook> notebooks = dataSource.GetAll();
+
+            if (notebooks == null)
+            {
+                return new List<Notebook>();
+            }
+
+            return notebooks.ToList();
         }
 
         public async Task<List<Notebook>> GetNotebooksAsync()
         {
-            return new List<Notebook>(await dataSource.GetAllAsync());
+            IEnumerable<Notebook> notebooks = await dataSource.GetAllAsync();
+
+            if (notebooks == null)
+            {
+                return new List<Notebook>();
+            }
+
+            return notebooks.ToList();
         }
 
         public void AddNotebook(Notebook notebook)

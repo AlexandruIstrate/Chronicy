@@ -54,7 +54,9 @@ namespace Chronicy.Excel.History
             foreach (IHistoryProvider provider in Providers)
             {
                 HistoryRecord record = provider.Get();
+
                 List<HistoryItem> items = record.Items;
+                items.Sort(new HistoryItemComparer());
 
                 foreach (HistoryItem historyItem in items)
                 {
@@ -84,7 +86,9 @@ namespace Chronicy.Excel.History
             foreach (IHistoryProvider provider in Providers)
             {
                 HistoryRecord record = await provider.GetAsync();
+
                 List<HistoryItem> items = record.Items;
+                items.Sort(new HistoryItemComparer());
 
                 foreach (HistoryItem historyItem in items)
                 {
@@ -107,5 +111,22 @@ namespace Chronicy.Excel.History
             return result;
         }
 
+        private class HistoryItemComparer : IComparer<HistoryItem>
+        {
+            public int Compare(HistoryItem x, HistoryItem y)
+            {
+                if (x.Date > y.Date)
+                {
+                    return 1;
+                }
+
+                if (x.Date < y.Date)
+                {
+                    return -1;
+                }
+
+                return 0;
+            }
+        }
     }
 }
