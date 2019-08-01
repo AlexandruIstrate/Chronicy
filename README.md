@@ -20,7 +20,7 @@ Chronicy features a three-component model, in order to most efficiently track yo
 ## User Interface
 Chronicy features a simple interface that gives you a clear overview of what you are working on.
 
-![Main Window](./Images/MainWindow.png)
+![Main Window](./Images/MainWindow.jpg)
 
 The Microsoft Excel extension
 
@@ -34,11 +34,11 @@ The Safari browser extension
 
 The Windows service that collects data sent by extensions
 
-![Service Windows](./Images/ServiceWindows.png)
+![Service Windows](./Images/ServiceWindows.jpg)
 
-[comment]: <> (The Chronicy web service that allows your stored information to be carried cross-computer and cross-platform)
+The Chronicy web service that allows your stored information to be carried cross-computer and cross-platform
 
-[//]: ![Web](./Images/Web.png)
+![Web](./Images/Website.jpg)
 
 ## Upcoming Features
 - [x] Windows service and Office extensions
