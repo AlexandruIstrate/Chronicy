@@ -25,6 +25,12 @@ namespace Chronicy.Excel.Utils
 
         public static bool Intersects(this Range range, Range other)
         {
+            // If the ranges aren't in the same sheet, then we can't compare them
+            if (range.Worksheet != other.Worksheet)
+            {
+                return false;
+            }
+
             return (Globals.ThisAddIn.Application.Intersect(range, other) != null);
         }
 

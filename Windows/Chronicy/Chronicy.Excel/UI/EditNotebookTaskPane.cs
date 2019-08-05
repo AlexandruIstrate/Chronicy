@@ -94,6 +94,7 @@ namespace Chronicy.Excel.UI
         private void OnRemoveClicked(object sender, EventArgs e)
         {
             notebook.Stacks.Remove(GetSelectedStack());
+            LoadData();
         }
         
     }

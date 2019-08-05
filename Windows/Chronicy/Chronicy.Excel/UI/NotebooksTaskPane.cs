@@ -1,11 +1,9 @@
 ﻿using Chronicy.Data;
-using Chronicy.Excel.Utils;
+using Chronicy.Excel.UI.Errors;
 using Chronicy.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace Chronicy.Excel.UI
@@ -51,12 +49,13 @@ namespace Chronicy.Excel.UI
         {
             Notebooks = notebooks ?? throw new ArgumentNullException(nameof(notebooks));
             InitializeComponent();
+            InitializeGrid();
         }
 
         public NotebooksTaskPane()
         {
             InitializeComponent();
-            fieldsGridView.AutoGenerateColumns = true;
+            InitializeGrid();
         }
 
         public override void OnOk()
@@ -135,7 +134,6 @@ namespace Chronicy.Excel.UI
 
             if (dataSet.HasErrors)
             {
-                MessageBox.Show("The current data set contains errors!", "Cannot Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -185,6 +183,14 @@ namespace Chronicy.Excel.UI
             }
 
             return dataSet;
+        }
+
+        private void InitializeGrid()
+        {
+            fieldsGridView.AutoGenerateColumns = true;
+
+            IGridViewErrorHandler errorHandler = new MessageBoxErrorHandler();
+            fieldsGridView.DataError += errorHandler.ErrorHandler;
         }
     }
 }

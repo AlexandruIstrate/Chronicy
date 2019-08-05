@@ -172,6 +172,7 @@
     <Compile Include="History\HistoryRecord.cs" />
     <Compile Include="History\IHistoryProvider.cs" />
     <Compile Include="History\NotebookHistoryProvider.cs" />
+    <Compile Include="UI\Errors\IGridViewErrorHandler.cs" />
     <Compile Include="Information\MessageBoxContext.cs" />
     <Compile Include="Information\StatusBarContext.cs" />
     <Compile Include="MainRibbon.cs">
@@ -205,6 +206,7 @@
     <Compile Include="UI\EditTaskPane.Designer.cs">
       <DependentUpon>EditTaskPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Errors\MessageBoxErrorHandler.cs" />
     <Compile Include="UI\LoginTaskPane.cs">
       <SubType>UserControl</SubType>
     </Compile>

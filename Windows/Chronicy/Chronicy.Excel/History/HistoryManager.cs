@@ -13,16 +13,6 @@ namespace Chronicy.Excel.History
             Providers = new List<IHistoryProvider>();
         }
 
-        public void Register(IHistoryProvider provider)
-        {
-            Providers.Add(provider);
-        }
-
-        public void Deregister(IHistoryProvider provider)
-        {
-            Providers.Remove(provider);
-        }
-
         public HistoryRecord GetCombinedRecords()
         {
             HistoryRecord record = new HistoryRecord("Combined");

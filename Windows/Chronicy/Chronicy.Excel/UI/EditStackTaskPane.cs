@@ -1,9 +1,8 @@
 ﻿using Chronicy.Data;
-using Chronicy.Excel.Utils;
+using Chronicy.Excel.UI.Errors;
 using Chronicy.Utils;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace Chronicy.Excel.UI
 {
@@ -30,6 +29,11 @@ namespace Chronicy.Excel.UI
             InitializeGrid();
         }
 
+        private void OnLoad(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
         public override void OnOk()
         {
             SaveData();
@@ -53,7 +57,6 @@ namespace Chronicy.Excel.UI
 
             if (dataTable.HasErrors)
             {
-                MessageBox.Show("The current data set contains errors!", "Cannot Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -69,11 +72,6 @@ namespace Chronicy.Excel.UI
 
                 stack.Fields.Add(customField);
             }
-        }
-
-        private void InitializeGrid()
-        {
-            fieldsGridView.AutoGenerateColumns = true;
         }
 
         private DataTable CreateDataSource(Stack stack)
@@ -92,9 +90,12 @@ namespace Chronicy.Excel.UI
             return dataTable;
         }
 
-        private void OnLoad(object sender, EventArgs e)
+        private void InitializeGrid()
         {
-            LoadData();
+            fieldsGridView.AutoGenerateColumns = true;
+
+            IGridViewErrorHandler errorHandler = new MessageBoxErrorHandler();
+            fieldsGridView.DataError += errorHandler.ErrorHandler;
         }
     }
 }

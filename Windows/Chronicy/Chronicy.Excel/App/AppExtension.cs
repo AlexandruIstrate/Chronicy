@@ -100,6 +100,14 @@ namespace Chronicy.Excel.App
             SelectStack(Notebooks.SelectedStack);
         }
 
+        public override void OnStart()
+        {
+            Settings.Default.PropertyChanged += (sender, args) =>
+            {
+                Service.SendUrl(Settings.Default.WebServiceAddress);
+            };
+        }
+
         public override void SelectDataSource(DataSourceType dataSource)
         {
             Service.SendSelectedDataSource(dataSource);
@@ -253,7 +261,7 @@ namespace Chronicy.Excel.App
         private void InitializeHistory()
         {
             Notebooks.DataSourceChanged += (sender, args) => historyProvider.DataSource = Notebooks.DataSource;
-            History.Register(historyProvider);
+            History.Providers.Add(historyProvider);
         }
     }
 }
