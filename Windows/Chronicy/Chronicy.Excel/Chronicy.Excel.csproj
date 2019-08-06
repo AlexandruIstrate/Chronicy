@@ -228,6 +228,12 @@
     <Compile Include="UI\NotebooksTaskPane.Designer.cs">
       <DependentUpon>NotebooksTaskPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Ribbon\ISection.cs" />
+    <Compile Include="UI\Ribbon\Section.cs" />
+    <Compile Include="UI\Ribbon\SelectionSection.cs" />
+    <Compile Include="UI\Ribbon\SupportSection.cs" />
+    <Compile Include="UI\Ribbon\ToolsSection.cs" />
+    <Compile Include="UI\Ribbon\TrackingSection.cs" />
     <Compile Include="UI\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +305,7 @@
       <Name>Chronicy</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

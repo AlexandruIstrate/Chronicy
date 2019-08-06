@@ -69,10 +69,8 @@ namespace Chronicy.Excel.History
 
                         historyItems.Add(new HistoryItem
                         {
-                            //Title = "New Card Added",
-                            //Description = $"Card \"{ card.Name }\" was added to the stack \"{ stack.Name }\"",
-                            Title = card.Name,
-                            Description = $"Stack: \"{ stack.Name }\"",
+                            Title = "New Card Added",
+                            Description = $"Card \"{ card.Name }\" was added to the stack \"{ stack.Name }\"",
                             Category = notebook.Name,
                             Date = card.Date
                         });
@@ -110,10 +108,8 @@ namespace Chronicy.Excel.History
 
                         historyItems.Add(new HistoryItem
                         {
-                            //Title = "New Card Added",
-                            //Description = $"A new card was added in the stack { stack.Name }",
-                            Title = card.Name,
-                            Description = $"Stack: \"{ stack.Name }\"",
+                            Title = "New Card Added",
+                            Description = $"A new card was added in the stack { stack.Name }",
                             Category = notebook.Name,
                             Date = card.Date
                         });

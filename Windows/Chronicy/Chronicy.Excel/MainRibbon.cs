@@ -8,7 +8,7 @@ using Chronicy.Excel.Properties;
 using Chronicy.Excel.Tracking;
 using Chronicy.Excel.UI;
 using Chronicy.Excel.UI.Pane;
-using Chronicy.Excel.User;
+using Chronicy.Excel.UI.Ribbon;
 using Chronicy.Excel.Utils;
 using Chronicy.Information;
 using Chronicy.Tracking;
@@ -30,9 +30,16 @@ namespace Chronicy.Excel
         private IExcelExtension extension;
         private ExcelTracker tracker;
 
+        private ISection trackingSection;
+        private ISection supportSection;
+
         public MainRibbon(IExcelExtension extension) : this()
         {
             this.extension = extension;
+            this.tracker = new ExcelTracker();
+
+            trackingSection = new TrackingSection(tracker, extension.Tracking);
+            supportSection = new SupportSection();
         }
 
         private void SetGroupState(bool enabled)
@@ -54,7 +61,6 @@ namespace Chronicy.Excel
 
         private void InitializeTrackingMenus()
         {
-            tracker = new ExcelTracker();
             tracker.Register<Workbook>(new WorkbookTrackable());
             tracker.Register<Worksheet>(new WorksheetTrackable());
             tracker.Register<Range>(new RangeTrackable());
@@ -89,6 +95,12 @@ namespace Chronicy.Excel
 
             extension.Notebooks.NotebookSelectionChanged += (sender, args) => extension.SelectNotebook(extension.Notebooks.SelectedNotebook);
             extension.Notebooks.StackSelectionChanged += (sender, args) => extension.SelectStack(extension.Notebooks.SelectedStack);
+        }
+
+        private void InitializeRibbonBranding()
+        {
+            supportGroup.Visible = Settings.Default.ShowRibbonBranding;
+            Settings.Default.PropertyChanged += (sender, args) => supportGroup.Visible = Settings.Default.ShowRibbonBranding;
         }
 
         private void LoadDataSources()
@@ -196,6 +208,7 @@ namespace Chronicy.Excel
         private void OnRibbonLoad(object sender, RibbonUIEventArgs e)
         {
             InitializeTrackingMenus();
+            InitializeRibbonBranding();
             SetupActivationCallbacks();
             InitializeNotebooks();
 
@@ -433,51 +446,32 @@ namespace Chronicy.Excel
 
         private void OnTrackWorkbook(object sender, RibbonControlEventArgs e)
         {
-            if (!ShowMissingItemsWarning()) return;
+            if (!ShowMissingItemsWarning())
+            {
+                return;
+            }
 
-            // 1. Submit the current workbook to the TrackingSystem
-            ITrackable trackable = tracker.Get<Workbook>();
-            trackable.ValueUpdated += (value) => extension.Tracking.Post<Workbook>(TrackingEvent.Create((Workbook)value));
-            trackable.TrackedValue = Globals.ThisAddIn.Application.ActiveWorkbook;
-            trackable.Enabled = true;
+            trackingSection.ActivateItem(TrackingSection.ActionIdentifiers.TrackWorkbook);
         }
 
         private void OnTrackSheet(object sender, RibbonControlEventArgs e)
         {
-            if (!ShowMissingItemsWarning()) return;
-
-            // 1. Ask the user to pick a sheet
-            SelectSheetAction action = new SelectSheetAction();
-            action.ActionCompleted += (sheet) => 
+            if (!ShowMissingItemsWarning())
             {
-                if (!ShowMissingItemsWarning()) return;
+                return;
+            }
 
-                /* 2. Submit the sheet to the TrackingSystem */
-                ITrackable trackable = tracker.Get<Worksheet>();
-                trackable.ValueUpdated += (value) => extension.Tracking.Post<Worksheet>(TrackingEvent.Create((Worksheet)value));
-                trackable.TrackedValue = sheet;
-                trackable.Enabled = true;
-            };
-            action.Run();
+            trackingSection.ActivateItem(TrackingSection.ActionIdentifiers.TrackSheet);
         }
 
         private void OnTrackCellRange(object sender, RibbonControlEventArgs e)
         {
-            if (!ShowMissingItemsWarning()) return;
-
-            // 1. Ask the user to pick a range
-            SelectCellRangeAction action = new SelectCellRangeAction();
-            action.ActionCompleted += (range) => 
+            if (!ShowMissingItemsWarning())
             {
-                if (!ShowMissingItemsWarning()) return;
+                return;
+            }
 
-                /* 2. Submit the range to the TrackingSystem */
-                ITrackable trackable = tracker.Get<Range>();
-                trackable.ValueUpdated += (value) => extension.Tracking.Post<Range>(TrackingEvent.Create((Range)value));
-                trackable.TrackedValue = range;
-                trackable.Enabled = true;
-            };
-            action.Run();
+            trackingSection.ActivateItem(TrackingSection.ActionIdentifiers.TrackCellRange);
         }
 
         private void OnLoginClicked(object sender, RibbonControlEventArgs e)
@@ -490,20 +484,17 @@ namespace Chronicy.Excel
 
         private void OnHelpClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Resources.LINK_HELP);
-            link.Open();
+            supportSection.ActivateItem(SupportSection.ActionIdentifiers.OpenHelp);
         }
 
         private void OnReportBugClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Resources.LINK_SUBMIT_BUG);
-            link.Open();
+            supportSection.ActivateItem(SupportSection.ActionIdentifiers.ReportBug);
         }
 
         private void OnViewGitHubClicked(object sender, RibbonControlEventArgs e)
         {
-            ExternalLink link = new ExternalLink(Resources.LINK_PROJECT_PAGE);
-            link.Open();
+            supportSection.ActivateItem(SupportSection.ActionIdentifiers.OpenProjectPage);
         }
 
         private void OnOptionsClicked(object sender, RibbonControlEventArgs e)
