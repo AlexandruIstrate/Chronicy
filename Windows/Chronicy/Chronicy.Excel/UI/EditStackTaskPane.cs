@@ -39,6 +39,12 @@ namespace Chronicy.Excel.UI
             SaveData();
         }
 
+        public override void OnCancel()
+        {
+            DataTable dataTable = (DataTable)fieldsGridView.DataSource;
+            dataTable.RejectChanges();
+        }
+
         private void LoadData()
         {
             nameTextBox.Text = stack.Name;
