@@ -27,6 +27,9 @@ Windows/Chronicy/Chronicy.Website/bin/
 Windows/Chronicy/Chronicy.Website/obj/
 Windows/Chronicy/Chronicy.Website/appsettings.Database.json
 
+Windows/Chronicy/Chronicy.Uwp/bin/
+Windows/Chronicy/Chronicy.Uwp/obj/
+
 Windows/Chronicy/Chronicy.Tests/bin/
 Windows/Chronicy/Chronicy.Tests/obj/
 
