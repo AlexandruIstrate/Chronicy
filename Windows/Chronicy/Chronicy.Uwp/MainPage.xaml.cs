@@ -1,17 +1,9 @@
-﻿using System;
+﻿using Chronicy.Uwp.Views;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +14,40 @@ namespace Chronicy.Uwp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Dictionary<string, Type> pages;
+
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializePages();
+            InitializeComponent();
+        }
+
+        private void InitializePages()
+        {
+            pages = new Dictionary<string, Type>
+            {
+                [Pages.Home] = typeof(HomePage),
+                [Pages.Actions] = typeof(ActionsPage),
+                [Pages.History] = typeof(HistoryPage),
+                [Pages.Settings] = typeof(SettingsPage)
+            };
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.First((item) => (item as NavigationViewItem).Name == Pages.Home);
+            ContentFrame.Navigate(pages[Pages.Home]);
+        }
+
+        private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.IsSettingsInvoked)
+            {
+                ContentFrame.Navigate(typeof(SettingsPage));
+                return;
+            }
+
+            ContentFrame.Navigate(pages[(string)args.InvokedItem]);
         }
     }
 }

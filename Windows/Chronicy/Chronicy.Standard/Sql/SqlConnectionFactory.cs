@@ -7,7 +7,6 @@ namespace Chronicy.Sql
 {
     public class SqlConnectionFactory
     {
-        // TODO: Use parameters
         public static SqlConnection Create(IConfiguration configuration)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder

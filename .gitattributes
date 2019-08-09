@@ -1,6 +1,7 @@
 * linguist-vendored
 *.cs linguist-vendored=false
 *.cshtml linguist-vendored=false
+*.xaml linguist-vendored=false
 *.swift linguist-vendored=false
 *.m linguist-vendored=false
 *.h linguist-vendored=false

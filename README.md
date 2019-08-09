@@ -50,7 +50,7 @@ The Chronicy web service that allows your stored information to be carried cross
 ## Platform Support
 |   Platform   |    Status    |                Components              |
 | ------------ | ------------ | -------------------------------------- |
-| Windows      | Supported    | Windows Service and Office Extensions  |
+| Windows      | Supported    | Desktop app, Windows Service and Office Extensions  |
 | macOS        | Supported    | Desktop app and Safari extension       |
 | Web          | Supported    | Website and API                        |
 
@@ -58,6 +58,7 @@ The Chronicy web service that allows your stored information to be carried cross
 #### Windows
 - [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/)
+- [Universal Windows Platform](https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide)
 - [Windows Communication Foundation](https://docs.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf)
 - [Newtonsoft JSON](https://github.com/JamesNK/Newtonsoft.Json)
 - [NLog](https://github.com/NLog/NLog)

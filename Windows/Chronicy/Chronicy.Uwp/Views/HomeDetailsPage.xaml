@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Chronicy.Uwp.Views.HomeDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chronicy.Uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="OnLoaded"
+    Unloaded="OnUnloaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <StackPanel x:Name="RootPanel" x:DeferLoadStrategy="Lazy">
+        <TextBlock
+            Margin="8,0"
+            Style="{ThemeResource TitleTextBlockStyle}"
+            HorizontalAlignment="Left"
+            Text="{x:Bind Item.Title, Mode=OneWay}" />
+
+        <TextBlock
+            Margin="12,8"
+            HorizontalAlignment="Left"
+            MaxWidth="560"
+            Style="{ThemeResource BodyTextBlockStyle}"
+            Text="{x:Bind Item.Text, Mode=OneWay}"
+            EntranceNavigationTransitionInfo.IsTargetElement="True" />
+    </StackPanel>
+</Page>

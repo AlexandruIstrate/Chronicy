@@ -9,6 +9,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <NavigationView x:Name="NavigationViewControl"
+                        Margin="0,16,0,0"
+                        Loaded="OnLoaded"
+                        ItemInvoked="OnItemInvoked"
+                        IsTabStop="False"
+                        IsSettingsVisible="True"
+                        Header="Chronicy" >
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="Home" />
+                <NavigationViewItem Icon="AllApps" Content="Actions" x:Name="Actions" />
+                <NavigationViewItem Icon="Clock" Content="History" x:Name="History" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame" />
+        </NavigationView>
     </Grid>
 </Page>
