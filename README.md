@@ -66,6 +66,7 @@ The Chronicy web service that allows your stored information to be carried cross
 - [SQLite](https://github.com/praeclarum/sqlite-net)
 - [Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore) (Local storage only)
 - [Humanizer](https://github.com/Humanizr/Humanizer)
+- [InnoSetup](http://www.jrsoftware.org/isinfo.php)
 
 #### macOS
 - [Swift 5](https://swift.org/)

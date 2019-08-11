@@ -1,0 +1,12 @@
+deploy/
+$*
+*~
+*.~*
+*.swp
+*.bak
+bin/
+obj/
+!vsto-installer.iss
+!inc/*.iss
+demo/releases
+*.suo

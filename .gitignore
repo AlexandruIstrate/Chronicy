@@ -4,6 +4,8 @@
 ## Visual Studio ##
 
 # Folders
+Tools/Install/Output/
+
 Windows/Chronicy/.vs/
 Windows/Chronicy/packages/
 
