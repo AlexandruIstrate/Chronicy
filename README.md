@@ -10,6 +10,8 @@ Chronicy features a three-component model, in order to most efficiently track yo
 - Extensions that allow third party application to register their progress in the Chronicy system
 - A GUI application that allows you to communicate with the Chronicy system. This is what gives a normal user the possibility to log custom data and configure the application
 
+Chronicy features both local storage and cloud storage. This way, you can store your data locally or share it between your devices.
+
 ## Features
 - Tracking your actions in supported applications via extensions
 - Automatic insertion of daily activities into your application
