@@ -1,15 +1,18 @@
-#define ApplicationName "Chronicy"
-#define Version "3.0.0"
+#define ApplicationName "Chronicy Tracking Service"
+#define Version "1.0.0"
 #define ServiceName "Chronicy.Service"
 #define ServiceDisplayName "Chronicy Tracking Service"
 
 #define ProjectPath "..\..\Windows\Chronicy\Chronicy.Service\bin\Release"
 #define ExecutableName "Chronicy.Service.exe"
 
+#define InstallerFileName "Chronicy.Service"
+
 [Setup]
 AppName={#ApplicationName}
 AppVersion={#Version}
-DefaultDirName={commonpf}\Chronicy
+DefaultDirName={commonpf}\Chronicy\Chronicy.Service
+OutputBaseFilename={#InstallerFileName}-{#Version}
 PrivilegesRequired=admin
 
 [Files]

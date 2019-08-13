@@ -55,7 +55,10 @@ The Chronicy web service that allows your stored information to be carried cross
 | Web          | Supported    | Website and API                        |
 
 ## The Technologies That Power Chronicy
+
 #### Windows
+
+Code
 - [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/)
 - [Universal Windows Platform](https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide)
@@ -66,7 +69,11 @@ The Chronicy web service that allows your stored information to be carried cross
 - [SQLite](https://github.com/praeclarum/sqlite-net)
 - [Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore) (Local storage only)
 - [Humanizer](https://github.com/Humanizr/Humanizer)
+
+Setup
 - [InnoSetup](http://www.jrsoftware.org/isinfo.php)
+- [VstoAddinInstaller](https://github.com/bovender/VstoAddinInstaller)
+- [inno-download-plugin](https://github.com/andykimpe/inno-download-plugin)
 
 #### macOS
 - [Swift 5](https://swift.org/)

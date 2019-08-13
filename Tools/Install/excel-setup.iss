@@ -44,10 +44,10 @@
 ; The version number. It is suggested to use the semantic versionin
 ; scheme (http://semver.org), but this is not a must. This version
 ; information may contain text.
-#define SEMANTIC_VERSION "3.0.0"
+#define SEMANTIC_VERSION "1.0.0"
 
 ; The version in four-number format
-#define FOUR_NUMBER_VERSION "3.0.0.0"
+#define FOUR_NUMBER_VERSION "1.0.0.0"
 
 ; The year(s) of publication (e.g., "2014-2017")
 #define PUB_YEARS "2019"
@@ -78,11 +78,11 @@
 ; that are illegal in file names.
 #define ADDIN_SHORT_NAME "Chronicy.Excel"
 
-#define COMPANY "Your company name"
-#define DESCRIPTION "Describe your add-in in one short sentence."
-#define HOMEPAGE "http://www.example.com"
-#define HOMEPAGE_SUPPORT "http://optional.example.com"
-#define HOMEPAGE_UPDATES "http://optional.example.com"
+#define COMPANY "Alexandru Istrate"
+#define DESCRIPTION "Chronicy tracking extension for Microsoft Excel"
+#define HOMEPAGE "https://github.com/AlexandruIstrate/Chronicy"
+#define HOMEPAGE_SUPPORT "https://github.com/AlexandruIstrate/Chronicy/issues"
+#define HOMEPAGE_UPDATES "https://github.com/AlexandruIstrate/Chronicy/releases"
 
 ; SOURCEDIR is the directory that contains the files that
 ; need to be installed; e.g. 'MyProject\bin\Release\'.
@@ -95,7 +95,7 @@
 #define VSTOFILE "Chronicy.Excel.vsto"
 
 ; OUTPUTDIR is the directory where the installer will be saved.
-#define OUTPUTDIR "releases\"
+#define OUTPUTDIR "Output\"
 
 #define LOGFILE "INST-LOG.TXT"
 

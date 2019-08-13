@@ -37,7 +37,7 @@
 	
 ; Inno Downloader Plugin is required for this
 ; NB: this directive MUST be located at the end of the [setup] section
-#include <idp.iss>
+#include "..\InnoDownloadPlugin\idp.iss"
 
 [Files]
 Source: {#AddBackslash(SOURCEDIR)}*; DestDir: {app}; Flags: ignoreversion recursesubdirs
