@@ -249,7 +249,7 @@ begin
       dir := ExpandConstant('{userappdata}')
     // end
   end;
-  result := AddBackslash(dir) + '{#ADDIN_SHORT_NAME}';
+  (* result := AddBackslash(dir) + '{#ADDIN_SHORT_NAME}'; *)
   Log('SuggestInstallDir: ' + result);
 end;
 

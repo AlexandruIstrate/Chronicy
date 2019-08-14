@@ -96,6 +96,11 @@
             ItemTemplate="{StaticResource MasterListViewItemTemplate}"
             IsItemClickEnabled="True"
             ItemClick="OnListClicked">
+            <ListView.Header>
+                <StackPanel Orientation="Horizontal" Padding="10" >
+                    <TextBlock Text="Notebooks" FontSize="24" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}" />
+                </StackPanel>
+            </ListView.Header>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

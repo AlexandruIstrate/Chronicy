@@ -18,12 +18,20 @@ AppName={#ApplicationName}
 AppVersion={#Version}
 DefaultDirName="{commonpf}\Chronicy"
 OutputBaseFilename={#ApplicationName}-{#Version}
+
 ; The service installer requires Administrator rights
 PrivilegesRequired=admin
 
+ArchitecturesAllowed=x86 x64
+ArchitecturesInstallIn64BitMode=x64
+
+[Components]
+Name: "service"; Description: "Chronicy Tracking Service"; Types: full compact custom; Flags: fixed
+Name: "excel"; Description: "Microsoft Excel Extension"; Types: full
+
 [Files]
-Source: "{#InstallerSource}\{#ServiceInstallerName}"; DestDir: {#InstallerDestination}; AfterInstall: RunOtherInstaller('{#ServiceInstallerRunLocation}')
-Source: "{#InstallerSource}\{#ExcelInstallerName}"; DestDir: {#InstallerDestination}; AfterInstall: RunOtherInstaller('{#ExcelInstallerRunLocation}')
+Source: "{#InstallerSource}\{#ServiceInstallerName}"; DestDir: {#InstallerDestination}; Components: service; AfterInstall: RunOtherInstaller('{#ServiceInstallerRunLocation}')
+Source: "{#InstallerSource}\{#ExcelInstallerName}"; DestDir: {#InstallerDestination}; Components: excel; AfterInstall: RunOtherInstaller('{#ExcelInstallerRunLocation}')
 
 [Code]
 procedure RunOtherInstaller(path: String);

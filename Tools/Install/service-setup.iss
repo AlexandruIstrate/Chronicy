@@ -11,9 +11,13 @@
 [Setup]
 AppName={#ApplicationName}
 AppVersion={#Version}
+AppId={{5E204208-6FD9-4FD8-AA99-126EECB71868}}
 DefaultDirName={commonpf}\Chronicy\Chronicy.Service
 OutputBaseFilename={#InstallerFileName}-{#Version}
 PrivilegesRequired=admin
+
+ArchitecturesAllowed=x86 x64
+ArchitecturesInstallIn64BitMode=x64
 
 [Files]
 Source: "{#ProjectPath}\*" ; DestDir: {app} ; Excludes: "*.pdb,*.xml,*.config" ; Flags: ignoreversion recursesubdirs

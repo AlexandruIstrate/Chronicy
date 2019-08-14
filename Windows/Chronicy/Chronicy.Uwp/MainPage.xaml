@@ -15,7 +15,14 @@
                         ItemInvoked="OnItemInvoked"
                         IsTabStop="False"
                         IsSettingsVisible="True"
-                        Header="Chronicy" >
+                        PaneDisplayMode="LeftCompact" >
+            <NavigationView.PaneHeader>
+                <TextBlock FontSize="28"
+                           Padding="10"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <Bold>Chronicy</Bold>
+                </TextBlock>
+            </NavigationView.PaneHeader>
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home" x:Name="Home" />
                 <NavigationViewItem Icon="AllApps" Content="Actions" x:Name="Actions" />
