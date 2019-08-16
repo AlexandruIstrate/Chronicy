@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Chronicy.Data
 {
@@ -22,12 +23,23 @@ namespace Chronicy.Data
             {
                 return false;
             }
-            foreach (CustomField field in Fields)
+
+            List<FieldType> currentTypes = Fields.ConvertAll(iter => iter.Type);
+            List<FieldType> otherTypes = other.Fields.ConvertAll(iter => iter.Type);
+
+            foreach (FieldType type in otherTypes)
             {
-                if (!other.Fields.Exists((iter) => iter.Type == field.Type))
+                if (currentTypes.Count == 0)
+                {
+                    return true;
+                }
+
+                if (!currentTypes.Contains(type))
                 {
                     return false;
                 }
+
+                currentTypes.Remove(type);
             }
 
             return true;

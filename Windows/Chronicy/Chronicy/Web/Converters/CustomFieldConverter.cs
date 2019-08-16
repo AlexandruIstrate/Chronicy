@@ -29,7 +29,7 @@ namespace Chronicy.Web.Converters
             try
             {
                 Enum.TryParse(value.Type, out FieldType fieldType);
-                Data.CustomField field =  new Data.CustomField
+                Data.CustomField field = new Data.CustomField
                 {
                     ID = value.ID,
                     Name = value.Name,
