@@ -38,10 +38,19 @@ namespace Chronicy.Data
             Cards = new List<Card>();
         }
 
-        public bool IsCompatible(FieldTemplate template)
+        public void Add(Card card)
         {
-            FieldTemplate current = new FieldTemplate(Fields);
-            return template.Matches(current);
+            Cards.Add(card);
+        }
+
+        public void Add(IEnumerable<Card> cards)
+        {
+            Cards.AddRange(cards);
+        }
+
+        public void Remove(Card card)
+        {
+            Cards.Remove(card);
         }
 
         public override bool Equals(object obj)

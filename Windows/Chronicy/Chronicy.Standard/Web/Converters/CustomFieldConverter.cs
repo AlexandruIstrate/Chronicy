@@ -18,7 +18,7 @@ namespace Chronicy.Web.Converters
 
             if (value.Value != null)
             {
-                field.Value = value.Value.ToString();
+                field.Value = value.Value.ToString(); 
             }
 
             return field;
@@ -38,7 +38,7 @@ namespace Chronicy.Web.Converters
 
                 if (value.Value != null)
                 {
-                    field.Value = ConvertStringToFieldValue(value.Value, fieldType);
+                    field.Value = ConvertStringToFieldValue(value.Value, fieldType); 
                 }
 
                 return field;

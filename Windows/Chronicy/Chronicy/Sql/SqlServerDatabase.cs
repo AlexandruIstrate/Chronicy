@@ -10,8 +10,6 @@ namespace Chronicy.Sql
     // flexible using reflection and dynamic code generation
     public class SqlServerDatabase : ISqlDatabase
     {
-        private readonly object databaseLock = new object();
-
         public SqlConnection Connection { get; set; }
 
         public SqlServerDatabase(SqlConnection connection)
@@ -27,164 +25,164 @@ namespace Chronicy.Sql
 
         public DataSet RunScalarString(string query, List<SqlParameter> parameters = null)
         {
-            lock (databaseLock)
+            try
             {
-                try
-                {
-                    Connection.Open();
+                Connection.Open();
 
-                    using (SqlCommand command = new SqlCommand(query, Connection))
+                using (SqlCommand command = new SqlCommand(query, Connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    if (parameters != null)
                     {
-                        command.CommandType = CommandType.Text;
-
-                        if (parameters != null)
-                        {
-                            command.Parameters.AddRange(parameters.ToArray());
-                        }
-
-                        DataSet dataSet = new DataSet();
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                        {
-                            adapter.Fill(dataSet);
-                        }
-
-                        return dataSet;
+                        command.Parameters.AddRange(parameters.ToArray());
                     }
+
+                    DataSet dataSet = new DataSet();
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataSet);
+                    }
+
+                    return dataSet;
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    Connection.Close();
-                } 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 
         public Task<DataSet> RunScalarStringAsync(string query, List<SqlParameter> parameters = null)
         {
-            return Task.FromResult(RunScalarString(query, parameters));
+            return Task.Run(() =>
+            {
+                return RunScalarString(query, parameters);
+            });
         }
 
         public int RunNonQueryString(string query, List<SqlParameter> parameters = null)
         {
-            lock (databaseLock)
+            try
             {
-                try
-                {
-                    Connection.Open();
+                Connection.Open();
 
-                    using (SqlCommand command = new SqlCommand(query, Connection))
+                using (SqlCommand command = new SqlCommand(query, Connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    if (parameters != null)
                     {
-                        command.CommandType = CommandType.Text;
-
-                        if (parameters != null)
-                        {
-                            command.Parameters.AddRange(parameters.ToArray());
-                        }
-
-                        return command.ExecuteNonQuery();
+                        command.Parameters.AddRange(parameters.ToArray());
                     }
+
+                    return command.ExecuteNonQuery();
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    Connection.Close();
-                } 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 
         public Task<int> RunNonQueryStringAsync(string query, List<SqlParameter> parameters = null)
         {
-            return Task.FromResult(RunNonQueryString(query, parameters));
+            return Task.Run(() =>
+            {
+                return RunNonQueryString(query, parameters);
+            });
         }
 
         public DataSet RunScalarProcedure(string procedureName, List<SqlParameter> parameters = null)
         {
-            lock (databaseLock)
+            try
             {
-                try
-                {
-                    Connection.Open();
+                Connection.Open();
 
-                    using (SqlCommand command = new SqlCommand())
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = Connection;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = procedureName;
+
+                    if (parameters != null)
                     {
-                        command.Connection = Connection;
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = procedureName;
-
-                        if (parameters != null)
-                        {
-                            command.Parameters.AddRange(parameters.ToArray());
-                        }
-
-                        DataSet dataSet = new DataSet();
-
-                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
-                        {
-                            dataAdapter.Fill(dataSet);
-                        }
-
-                        return dataSet;
+                        command.Parameters.AddRange(parameters.ToArray()); 
                     }
+
+                    DataSet dataSet = new DataSet();
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                    {
+                        dataAdapter.Fill(dataSet);
+                    }
+
+                    return dataSet;
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    Connection.Close();
-                } 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 
         public Task<DataSet> RunScalarProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
-            return Task.FromResult(RunScalarProcedure(procedureName, parameters));
+            return Task.Run(() =>
+            {
+                return RunScalarProcedure(procedureName, parameters);
+            });
         }
 
         public int RunNonQueryProcedure(string procedureName, List<SqlParameter> parameters = null)
         {
-            lock (databaseLock)
+            try
             {
-                try
-                {
-                    Connection.Open();
+                Connection.Open();
 
-                    using (SqlCommand command = new SqlCommand())
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = Connection;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = procedureName;
+
+                    if (parameters != null)
                     {
-                        command.Connection = Connection;
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = procedureName;
-
-                        if (parameters != null)
-                        {
-                            command.Parameters.AddRange(parameters.ToArray());
-                        }
-
-                        return command.ExecuteNonQuery();
+                        command.Parameters.AddRange(parameters.ToArray());
                     }
+
+                    return command.ExecuteNonQuery();
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    Connection.Close();
-                } 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 
         public Task<int> RunNonQueryProcedureAsync(string procedureName, List<SqlParameter> parameters = null)
         {
-            return Task.FromResult(RunNonQueryProcedure(procedureName, parameters));
+            return Task.Run(() =>
+            {
+                return RunNonQueryProcedure(procedureName, parameters);
+            });
         }
     }
 }

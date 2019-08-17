@@ -1,7 +1,6 @@
 ﻿using Chronicy.Data.Storage;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chronicy.Data.Managers
@@ -35,26 +34,12 @@ namespace Chronicy.Data.Managers
 
         public List<Notebook> GetNotebooks()
         {
-            IEnumerable<Notebook> notebooks = dataSource.GetAll();
-
-            if (notebooks == null)
-            {
-                return new List<Notebook>();
-            }
-
-            return notebooks.ToList();
+            return new List<Notebook>(dataSource.GetAll());
         }
 
         public async Task<List<Notebook>> GetNotebooksAsync()
         {
-            IEnumerable<Notebook> notebooks = await dataSource.GetAllAsync();
-
-            if (notebooks == null)
-            {
-                return new List<Notebook>();
-            }
-
-            return notebooks.ToList();
+            return new List<Notebook>(await dataSource.GetAllAsync());
         }
 
         public void AddNotebook(Notebook notebook)
@@ -87,7 +72,7 @@ namespace Chronicy.Data.Managers
 
         public void AddCard(Card card)
         {
-            SelectedStack.Cards.Add(card);
+            SelectedStack.Add(card);
             dataSource.Update(SelectedNotebook);
 
             OnNotebooksChanged();
@@ -95,7 +80,7 @@ namespace Chronicy.Data.Managers
 
         public async Task AddCardAsync(Card card)
         {
-            SelectedStack.Cards.Add(card);
+            SelectedStack.Add(card);
             await dataSource.UpdateAsync(SelectedNotebook);
 
             OnNotebooksChanged();
@@ -166,7 +151,6 @@ namespace Chronicy.Data.Managers
         {
             return dataSource.UpdateAsync(notebook);
         }
-
         private void OnNotebooksChanged()
         {
             NotebooksChanged?.Invoke(this, EventArgs.Empty);

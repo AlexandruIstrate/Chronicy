@@ -1,4 +1,5 @@
 ﻿using Chronicy.Data.Encoders;
+using Chronicy.Utils;
 using Chronicy.Web.Exceptions;
 using Chronicy.Web.Models;
 using Newtonsoft.Json;
@@ -15,12 +16,6 @@ namespace Chronicy.Web
         private readonly IClient webClient;
         private readonly ChronicyUrlBuilder urlBuilder;
         private readonly IEncoder encoder;
-
-        public string Url
-        {
-            get => urlBuilder.BaseUrl;
-            set => urlBuilder.BaseUrl = value;
-        }
 
         public Token AccessToken { get; set; }
 
@@ -145,12 +140,12 @@ namespace Chronicy.Web
             }
         }
 
-        public ErrorResponse CreateNotebook(Notebook notebook)
+        public void CreateNotebook(Notebook notebook)
         {
             try
             {
                 string body = JsonConvert.SerializeObject(notebook);
-                return UploadData<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
+                UploadData<ErrorResponse>(urlBuilder.CreateNotebook(), body, ClientMethod.Post);
             }
             catch (HttpRequestException e)
             {
@@ -162,7 +157,7 @@ namespace Chronicy.Web
             }
         }
 
-        public Task<ErrorResponse> CreateNotebookAsync(Notebook notebook)
+        public Task CreateNotebookAsync(Notebook notebook)
         {
             try
             {
@@ -286,9 +281,9 @@ namespace Chronicy.Web
             { AuthorizationHeader, AccessToken.AccessToken }
         };
 
-        // TODO: We should get rid of this static field and find a better way of
+        // TODO: We should get rid of this static field and find a better way of 
         // accessing the API from multiple places in the application
-        public static ChronicyWebApi Shared = new ChronicyWebApi(string.Empty);
+        public static ChronicyWebApi Shared = new ChronicyWebApi("");
 
         public const string AuthorizationHeader = "Authorization";
         public const string JsonContentType = "application/json";

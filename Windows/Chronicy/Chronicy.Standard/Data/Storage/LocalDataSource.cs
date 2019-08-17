@@ -43,8 +43,6 @@ namespace Chronicy.Data.Storage
             try
             {
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
-                EnsureItemDoesNotExist(existing, item);
-
                 existing.Add(item);
 
                 database.Context.SaveChanges();
@@ -60,8 +58,6 @@ namespace Chronicy.Data.Storage
             try
             {
                 DbSet<Notebook> existing = database.Context.Set<Notebook>();
-                await EnsureItemDoesNotExistAsync(existing, item);
-
                 existing.Add(item);
 
                 await database.Context.SaveChangesAsync();
@@ -108,7 +104,7 @@ namespace Chronicy.Data.Storage
             database.Context.SaveChanges();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = existing.Find((item) => item.ID == id).ToList();
+            List<Notebook> notebooks = new List<Notebook>(existing.Find((item) => item.ID == id));
 
             if (notebooks.Count < 1)
             {
@@ -124,7 +120,7 @@ namespace Chronicy.Data.Storage
             await database.Context.SaveChangesAsync();
 
             DbSet<Notebook> existing = database.Context.Set<Notebook>();
-            List<Notebook> notebooks = (await existing.FindAsync((item) => item.ID == id)).ToList();
+            List<Notebook> notebooks = new List<Notebook>(await existing.FindAsync((item) => item.ID == id));
 
             if (notebooks.Count < 1)
             {
@@ -401,22 +397,6 @@ namespace Chronicy.Data.Storage
             {
                 InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update stack", e);
-            }
-        }
-
-        private void EnsureItemDoesNotExist(DbSet<Notebook> dbSet, Notebook notebook)
-        {
-            if (dbSet.Any(item => item.Name == notebook.Name))
-            {
-                throw new DataSourceException($"A notebook named { notebook.Name } already exists");
-            }
-        }
-
-        private async Task EnsureItemDoesNotExistAsync(DbSet<Notebook> dbSet, Notebook notebook)
-        {
-            if (await dbSet.AnyAsync(item => item.Name == notebook.Name))
-            {
-                throw new DataSourceException($"A notebook named { notebook.Name } already exists");
             }
         }
     }

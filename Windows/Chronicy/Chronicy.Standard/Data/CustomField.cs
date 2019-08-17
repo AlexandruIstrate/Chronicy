@@ -21,15 +21,9 @@ namespace Chronicy.Data
         public FieldType Type { get; set; }
 
         [DataMember]
-        [NotMapped] // We cannot store objects in the database
+        [NotMapped] // Testing only
         [JsonProperty("value")]
         public object Value { get; set; }
-
-        public string SerializedValue
-        {
-            get => JsonConvert.SerializeObject(Value);
-            set => Value = JsonConvert.DeserializeObject(value ?? string.Empty);
-        }
 
         public CustomField(string name, FieldType type, object value = null)
         {
@@ -43,7 +37,6 @@ namespace Chronicy.Data
             Name = string.Empty;
             Type = FieldType.String;
             Value = null;
-            SerializedValue = null;
         }
 
         public Type GetSystemType()

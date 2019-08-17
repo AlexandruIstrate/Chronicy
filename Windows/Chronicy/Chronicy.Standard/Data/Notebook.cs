@@ -53,19 +53,6 @@ namespace Chronicy.Data
             Stacks.Remove(stack);
         }
 
-        public bool HasCompatibleStacks(FieldTemplate template)
-        {
-            foreach (Stack stack in Stacks)
-            {
-                if (!stack.IsCompatible(template))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public override bool Equals(object obj)
         {
             if (obj == null)
