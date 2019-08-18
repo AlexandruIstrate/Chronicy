@@ -1,4 +1,5 @@
-﻿using Chronicy.Uwp.ViewModels;
+﻿using Chronicy.Data;
+using Chronicy.Uwp.ViewModels;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -12,7 +13,7 @@ namespace Chronicy.Uwp.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        private ItemViewModel lastSelectedItem;
+        private Notebook lastSelectedItem;
 
         public HomePage()
         {
@@ -39,13 +40,13 @@ namespace Chronicy.Uwp.Views
 
         private void OnListClicked(object sender, ItemClickEventArgs e)
         {
-            ItemViewModel clickedItem = (ItemViewModel)e.ClickedItem;
+            Notebook clickedItem = (Notebook)e.ClickedItem;
             lastSelectedItem = clickedItem;
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
                 // Use "drill in" transition for navigating from master list to detail view
-                Frame.Navigate(typeof(HomeDetailsPage), /* clickedItem.ItemId */ 0, new DrillInNavigationTransitionInfo());
+                Frame.Navigate(typeof(HomeDetailsPage), clickedItem.ID, new DrillInNavigationTransitionInfo());
             }
             else
             {
@@ -61,7 +62,7 @@ namespace Chronicy.Uwp.Views
             if (isNarrow && oldState == DefaultState && lastSelectedItem != null)
             {
                 // Resize down to the detail item. Don't play a transition.
-                Frame.Navigate(typeof(HomeDetailsPage), /* lastSelectedItem.ItemId */ 0, new SuppressNavigationTransitionInfo());
+                Frame.Navigate(typeof(HomeDetailsPage), lastSelectedItem.ID, new SuppressNavigationTransitionInfo());
             }
 
             EntranceNavigationTransitionInfo.SetIsTargetElement(MasterListView, isNarrow);
@@ -86,11 +87,18 @@ namespace Chronicy.Uwp.Views
             }
         }
 
-        private List<ItemViewModel> LoadItems()
+        private List<Notebook> LoadItems()
         {
-            return new List<ItemViewModel>
+            return new List<Notebook>
             {
-                new ItemViewModel { Title = "Test", Text = "This is the description" }
+                new Notebook
+                {
+                    Name = "Notebook1",
+                    Stacks = new List<Stack>
+                    {
+                        new Stack { Name = "Stack1" }
+                    }
+                }
             };
         }
     }

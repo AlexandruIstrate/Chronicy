@@ -163,7 +163,6 @@
     <Compile Include="App\AppExtension.cs" />
     <Compile Include="App\EndpointConnectionException.cs" />
     <Compile Include="App\IExcelExtension.cs" />
-    <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
     <Compile Include="Data\FieldTemplates.cs" />
     <Compile Include="Data\ServiceDataSource.cs" />

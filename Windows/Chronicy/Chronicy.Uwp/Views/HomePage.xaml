@@ -3,14 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Chronicy.Uwp.Views"
-    xmlns:viewmodels="using:Chronicy.Uwp.ViewModels"
+    xmlns:viewmodels="using:Chronicy.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <DataTemplate x:Key="MasterListViewItemTemplate" x:DataType="viewmodels:ItemViewModel">
+        <DataTemplate x:Key="MasterListViewItemTemplate" x:DataType="viewmodels:Notebook">
             <Grid Margin="0,11,0,13">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -22,9 +22,9 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}" />
+                <TextBlock Text="{x:Bind Name}" Style="{ThemeResource BaseTextBlockStyle}" />
 
-                <TextBlock
+                <!--<TextBlock
                     Text="{x:Bind Text}"
                     Grid.Row="1"
                     MaxLines="1"
@@ -34,24 +34,24 @@
                     Text="{x:Bind DateCreatedHourMinute}"
                     Grid.Column="1"
                     Margin="12,1,0,0"
-                    Style="{ThemeResource ListCaptionAltTextblockStyle}" />
+                    Style="{ThemeResource ListCaptionAltTextblockStyle}" />-->
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="DetailContentTemplate" x:DataType="viewmodels:ItemViewModel">
+        <DataTemplate x:Key="DetailContentTemplate" x:DataType="viewmodels:Notebook">
             <StackPanel>
                 <TextBlock
                     Margin="0,8"
                     Style="{ThemeResource TitleTextBlockStyle}"
                     HorizontalAlignment="Left"
-                    Text="{x:Bind Title}"/>
+                    Text="{x:Bind Name}"/>
 
                 <TextBlock
                     Margin="0,9"
                     HorizontalAlignment="Left"
                     MaxWidth="560"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="{x:Bind Text}" />
+                    Text="{x:Bind Name}" />
             </StackPanel>
         </DataTemplate>
     </Page.Resources>

@@ -185,6 +185,7 @@
     <Compile Include="Authentication\AuthenticationException.cs" />
     <Compile Include="Authentication\CredentialsManager.cs" />
     <Compile Include="Authentication\ICredentialsManager.cs" />
+    <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\DataResult.cs" />
     <Compile Include="Communication\ErrorHandlingServiceBehaviorAttribute.cs" />

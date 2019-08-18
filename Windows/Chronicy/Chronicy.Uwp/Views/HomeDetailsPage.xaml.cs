@@ -1,4 +1,5 @@
-﻿using Chronicy.Uwp.ViewModels;
+﻿using Chronicy.Data;
+using Chronicy.Uwp.ViewModels;
 using System.Collections.Generic;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -16,13 +17,13 @@ namespace Chronicy.Uwp.Views
         public const int WidthBreakpoint = 720;
 
         private static readonly DependencyProperty itemProperty =
-            DependencyProperty.Register("Item", typeof(ItemViewModel), typeof(HomeDetailsPage), new PropertyMetadata(null));
+            DependencyProperty.Register("Item", typeof(Notebook), typeof(HomeDetailsPage), new PropertyMetadata(null));
 
         public DependencyProperty ItemProperty => itemProperty;
 
-        public ItemViewModel Item
+        public Notebook Item
         {
-            get => (ItemViewModel)GetValue(ItemProperty);
+            get => (Notebook)GetValue(ItemProperty);
             set => SetValue(ItemProperty, value);
         }
 

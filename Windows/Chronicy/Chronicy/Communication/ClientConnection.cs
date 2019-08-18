@@ -1,8 +1,7 @@
-﻿using Chronicy.Communication;
-using System;
+﻿using System;
 using System.ServiceModel;
 
-namespace Chronicy.Excel.Communication
+namespace Chronicy.Communication
 {
     public class ClientConnection
     {
