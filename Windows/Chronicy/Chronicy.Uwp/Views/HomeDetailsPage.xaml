@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    x:Name="PageRoot"
+    NavigationCacheMode="Enabled"
     Loaded="OnLoaded"
     Unloaded="OnUnloaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -28,7 +30,7 @@
             HorizontalAlignment="Left"
             MaxWidth="560"
             Style="{ThemeResource BodyTextBlockStyle}"
-            Text="{x:Bind Item.Name, Mode=OneWay}"
+            Text="{x:Bind Item.Stacks, Mode=OneWay}"
             EntranceNavigationTransitionInfo.IsTargetElement="True" />
     </StackPanel>
 </Page>

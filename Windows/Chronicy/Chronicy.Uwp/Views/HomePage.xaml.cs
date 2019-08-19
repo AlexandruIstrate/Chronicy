@@ -1,5 +1,4 @@
 ﻿using Chronicy.Data;
-using Chronicy.Uwp.ViewModels;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
