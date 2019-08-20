@@ -1,19 +1,20 @@
-﻿using Chronicy.Data.Storage;
+﻿using Chronicy.Data;
+using Chronicy.Data.Storage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chronicy.Uwp.Data
 {
-    public class BindingDataSource<T> : IBindingList where T : class
+    public class BindingDataSource<T> : IBindingList where T : IStoredObject
     {
         public IDataSource<T> DataSource { get; set; }
 
-        public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IList<T> Items => DataSource.GetAll().ToList();
+
+        public object this[int index] { get => Items[index]; set => Items[index] = (T)value; }
 
         public bool AllowEdit => true;
 
@@ -37,7 +38,7 @@ namespace Chronicy.Uwp.Data
 
         public bool IsReadOnly => throw new NotImplementedException();
 
-        public int Count => throw new NotImplementedException();
+        public int Count => Items.Count;
 
         public bool IsSynchronized => throw new NotImplementedException();
 
@@ -47,16 +48,14 @@ namespace Chronicy.Uwp.Data
 
         public int Add(object value)
         {
-            T obj = value as T;
-
-            if (obj == null)
+            if (!(value is T item))
             {
-                return -1;
+                throw new ArgumentException("The object is not of the required type");
             }
 
-            DataSource.Create(obj);
+            DataSource.Create(item);
 
-            return 0;
+            return Items.Count - 1;
         }
 
         public void AddIndex(PropertyDescriptor property)
@@ -76,12 +75,10 @@ namespace Chronicy.Uwp.Data
 
         public void Clear()
         {
-            //foreach (T item in DataSource.GetAll())
-            //{
-            //    DataSource.Delete(item.ID);
-            //}
-
-            throw new NotImplementedException();
+            foreach (T item in DataSource.GetAll())
+            {
+                DataSource.Delete(item.ID);
+            }
         }
 
         public bool Contains(object value)
@@ -106,7 +103,12 @@ namespace Chronicy.Uwp.Data
 
         public int IndexOf(object value)
         {
-            throw new NotImplementedException();
+            if (!(value is T item))
+            {
+                throw new ArgumentException("The object is not of the required type");
+            }
+
+            return Items.IndexOf(item);
         }
 
         public void Insert(int index, object value)
@@ -116,7 +118,12 @@ namespace Chronicy.Uwp.Data
 
         public void Remove(object value)
         {
-            throw new NotImplementedException();
+            if (!(value is T item))
+            {
+                throw new ArgumentException("The object is not of the required type");
+            }
+
+            DataSource.Delete(item.ID);
         }
 
         public void RemoveAt(int index)

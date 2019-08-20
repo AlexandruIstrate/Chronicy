@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Chronicy.Data
 {
     [DataContract]
-    public class Notebook
+    public class Notebook : IStoredObject
     {
         [DataMember]
         [JsonProperty("id")]
