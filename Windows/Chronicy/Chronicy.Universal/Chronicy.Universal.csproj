@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Communication\ClientConnection.cs" />
     <Compile Include="Communication\ConnectionConstants.cs" />
     <Compile Include="Communication\DataResult.cs" />
     <Compile Include="Communication\IClientCallback.cs" />
@@ -155,6 +156,9 @@
     </PackageReference>
     <PackageReference Include="NLog">
       <Version>4.6.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.ServiceModel.Duplex">
+      <Version>4.5.3</Version>
     </PackageReference>
     <PackageReference Include="System.ServiceModel.Primitives">
       <Version>4.5.3</Version>

@@ -16,6 +16,8 @@ namespace Chronicy.Uwp
     {
         private Dictionary<string, Type> pages;
 
+        public Uwp.App.IApplication App { get; set; }
+
         public MainPage()
         {
             InitializePages();
@@ -37,6 +39,13 @@ namespace Chronicy.Uwp
         {
             NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.First((item) => (item as NavigationViewItem).Name == Pages.Home);
             ContentFrame.Navigate(pages[Pages.Home]);
+
+            App.OnStart();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            App.OnStop();
         }
 
         private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

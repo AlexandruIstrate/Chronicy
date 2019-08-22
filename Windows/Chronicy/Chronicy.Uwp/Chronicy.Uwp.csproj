@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="App\Application.cs" />
+    <Compile Include="App\IApplication.cs" />
     <Compile Include="Communication\TrackedClient.cs" />
     <Compile Include="Converters\StackListConverter.cs" />
     <Compile Include="Data\BindingDataSource.cs" />

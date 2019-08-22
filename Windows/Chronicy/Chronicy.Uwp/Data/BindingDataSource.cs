@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 
 namespace Chronicy.Uwp.Data
 {
@@ -12,7 +13,20 @@ namespace Chronicy.Uwp.Data
     {
         public IDataSource<T> DataSource { get; set; }
 
-        public IList<T> Items => DataSource.GetAll().ToList();
+        public IList<T> Items
+        {
+            get
+            {
+                IList<T> items = DataSource.GetAll().ToList();
+
+                if (IsSorted)
+                {
+                    
+                }
+
+                return items;
+            }
+        }
 
         public object this[int index] { get => Items[index]; set => Items[index] = (T)value; }
 
@@ -50,7 +64,7 @@ namespace Chronicy.Uwp.Data
         {
             if (!(value is T item))
             {
-                throw new ArgumentException("The object is not of the required type");
+                throw new ArgumentException(InvalidObjectTypeMessage);
             }
 
             DataSource.Create(item);
@@ -70,12 +84,20 @@ namespace Chronicy.Uwp.Data
 
         public void ApplySort(PropertyDescriptor property, ListSortDirection direction)
         {
-            throw new NotImplementedException();
+            Type type = typeof(T);
+            PropertyInfo propertyInfo = type.GetProperty(property.Name);
+
+            if (propertyInfo == null)
+            {
+                throw new ArgumentException(InvalidPropertyMessage);
+            }
+
+            
         }
 
         public void Clear()
         {
-            foreach (T item in DataSource.GetAll())
+            foreach (T item in Items)
             {
                 DataSource.Delete(item.ID);
             }
@@ -83,7 +105,12 @@ namespace Chronicy.Uwp.Data
 
         public bool Contains(object value)
         {
-            throw new NotImplementedException();
+            if (!(value is T item))
+            {
+                throw new ArgumentException(InvalidObjectTypeMessage);
+            }
+
+            return Items.Contains(item);
         }
 
         public void CopyTo(Array array, int index)
@@ -105,7 +132,7 @@ namespace Chronicy.Uwp.Data
         {
             if (!(value is T item))
             {
-                throw new ArgumentException("The object is not of the required type");
+                throw new ArgumentException(InvalidObjectTypeMessage);
             }
 
             return Items.IndexOf(item);
@@ -120,7 +147,7 @@ namespace Chronicy.Uwp.Data
         {
             if (!(value is T item))
             {
-                throw new ArgumentException("The object is not of the required type");
+                throw new ArgumentException(InvalidObjectTypeMessage);
             }
 
             DataSource.Delete(item.ID);
@@ -128,7 +155,8 @@ namespace Chronicy.Uwp.Data
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            T item = Items[index];
+            DataSource.Delete(item.ID);
         }
 
         public void RemoveIndex(PropertyDescriptor property)
@@ -140,5 +168,8 @@ namespace Chronicy.Uwp.Data
         {
             throw new NotImplementedException();
         }
+
+        private const string InvalidObjectTypeMessage = "The object is not of the required type";
+        private const string InvalidPropertyMessage = "The property could not be found on the object";
     }
 }
