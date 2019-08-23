@@ -1,8 +1,11 @@
-﻿using Chronicy.Data.Storage;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Chronicy.Standard.Data.Statistics
 {
-    public interface IStatisticsManager : IDataSource<StatisticsItem>
+    public interface IStatisticsManager
     {
+        IEnumerable<StatisticsItem> GetItems();
+        Task<IEnumerable<StatisticsItem>> GetItemsAsync();
     }
 }

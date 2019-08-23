@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Website.Pages.Data
 {
-    [Authorize]
+    //[Authorize]
     public class StatisticsModel : PageModel
     {
         private readonly IStatisticsManager statisticsManager;
