@@ -20,7 +20,7 @@ namespace Chronicy.Website.Pages.Data
 
         public async Task OnGetAsync()
         {
-            Items = new List<StatisticsItem>(await statisticsManager.GetAllAsync());
+            //Items = new List<StatisticsItem>(await statisticsManager.GetAllAsync());
         }
     }
 }

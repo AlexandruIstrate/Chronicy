@@ -8,9 +8,9 @@ namespace Chronicy.Standard.Data.Statistics
     {
         public IStatisticsGenerator StatisticsGenerator { get; set; }
 
-        public StatisticsManager(IStatisticsGenerator statisticsGenerator)
+        public StatisticsManager(/* IStatisticsGenerator statisticsGenerator */)
         {
-            StatisticsGenerator = statisticsGenerator;
+            //StatisticsGenerator = statisticsGenerator;
         }
 
         public IEnumerable<StatisticsItem> GetItems()

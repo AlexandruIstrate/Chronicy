@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Chronicy.Standard\Chronicy.Standard.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Charts\" />
-  </ItemGroup>
-
 </Project>

@@ -1,7 +1,10 @@
-﻿namespace Chronicy.Standard.Data.Statistics
+﻿using System.Collections.Generic;
+
+namespace Chronicy.Standard.Data.Statistics
 {
     public class StatisticsItem
     {
-        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

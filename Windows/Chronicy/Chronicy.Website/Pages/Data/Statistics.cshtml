@@ -1,17 +1,15 @@
 ﻿@page
 @model Chronicy.Website.Pages.Data.StatisticsModel
 @{
+    ViewData["Title"] = "Statistics";
 }
 
 @using Chronicy.Standard.Data.Statistics
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Chronicy.Website
 
     <div class="container">
         <div class="row">
-            @foreach (StatisticsItem item in Model.Items)
-	        {
-                <div class="col">
-                    1 of 3
-                </div>
-	        }
+            <chart type="Bar">Test</chart>
         </div>
     </div>
