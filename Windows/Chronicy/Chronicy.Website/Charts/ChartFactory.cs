@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Chronicy.Website.Charts
 {
     public class ChartFactory
     {
-        public static Chart Create(ChartType chartType)
+        public static IChart Create(ChartType chartType)
         {
             switch (chartType)
             {

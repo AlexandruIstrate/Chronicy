@@ -8,7 +8,7 @@ namespace Chronicy.Website.Charts
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            Chart chart = ChartFactory.Create(Type);
+            IChart chart = ChartFactory.Create(Type);
             output.Content.AppendHtml(chart.GenerateHtml());
         }
     }
