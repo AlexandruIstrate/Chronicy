@@ -56,6 +56,9 @@ The Chronicy web service that allows your stored information to be carried cross
 | macOS        | Supported    | Desktop app and Safari extension       |
 | Web          | Supported    | Website and API                        |
 
+## Installation
+If you want to use Chronicy, head over to the [Releases](https://github.com/AlexandruIstrate/Chronicy/releases) page.
+
 ## The Technologies That Power Chronicy
 
 #### Windows
