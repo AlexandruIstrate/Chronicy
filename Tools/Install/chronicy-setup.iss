@@ -25,6 +25,8 @@ PrivilegesRequired=admin
 ArchitecturesAllowed=x86 x64
 ArchitecturesInstallIn64BitMode=x64
 
+Uninstallable=false
+
 [Components]
 Name: "service"; Description: "Chronicy Tracking Service"; Types: full compact custom; Flags: fixed
 Name: "excel"; Description: "Microsoft Excel Extension"; Types: full

@@ -18,6 +18,7 @@ Chronicy features both local storage and cloud storage. This way, you can store 
 - Modern, fluid user interface
 - Safe storage of your data inside a database
 - Low memory footprint
+- Cross-platform design
 
 ## User Interface
 Chronicy features a simple interface that gives you a clear overview of what you are working on.
