@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.IO;
+using System.Security;
 using System.Threading.Tasks;
 
 namespace Chronicy.Sql
@@ -151,7 +152,7 @@ namespace Chronicy.Sql
 
     public class SQLiteDatabaseContext : DbContext
     {
-        private SQLiteConnection connection;
+        private readonly SQLiteConnection connection;
 
         public DbSet<Notebook> Notebooks { get; set; }
         public DbSet<Stack> Stacks { get; set; }
@@ -171,7 +172,12 @@ namespace Chronicy.Sql
             SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
         }
 
-        internal static SQLiteConnection CreateConnection()
+        public void EncryptDatabase(SecureString password)
+        {
+            connection.ChangePassword(password.ToString());
+        }
+
+        internal SQLiteConnection CreateConnection()
         {
             string savePath = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "Chronicy.sqlite";
