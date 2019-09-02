@@ -160,9 +160,9 @@ namespace Chronicy.Sql
         public DbSet<CustomField> Fields { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
-        public SQLiteDatabaseContext(SQLiteConnection connection = null)
+        public SQLiteDatabaseContext(SQLiteConnection connection = null, SecureString password = null)
         {
-            this.connection = connection ?? CreateConnection();
+            this.connection = connection ?? CreateConnection(password);
             Database.EnsureCreated();
         }
 
@@ -177,7 +177,7 @@ namespace Chronicy.Sql
             connection.ChangePassword(password.ToString());
         }
 
-        internal SQLiteConnection CreateConnection()
+        internal SQLiteConnection CreateConnection(SecureString password = null)
         {
             string savePath = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "Chronicy.sqlite";
@@ -189,7 +189,14 @@ namespace Chronicy.Sql
                 DataSource = dataSource
             };
 
-            return new SQLiteConnection(builder.ConnectionString);
+            SQLiteConnection connection = new SQLiteConnection(builder.ConnectionString);
+
+            if (password != null)
+            {
+                connection.SetPassword(password.ToString()); 
+            }
+
+            return connection;
         }
     }
 }

@@ -60,6 +60,10 @@ The Chronicy web service that allows your stored information to be carried cross
 ## Installation
 If you want to use Chronicy, head over to the [Releases](https://github.com/AlexandruIstrate/Chronicy/releases) page.
 
+## Built With
+
+Visual Studio 2019
+
 ## The Technologies That Power Chronicy
 
 #### Windows
