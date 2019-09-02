@@ -1,5 +1,6 @@
 #define ApplicationName "Chronicy Tracking Service"
 #define Version "1.0.0"
+#define Publisher "Alexandru Istrate"
 #define ServiceName "Chronicy.Service"
 #define ServiceDisplayName "Chronicy Tracking Service"
 
@@ -12,6 +13,7 @@
 AppName={#ApplicationName}
 AppVersion={#Version}
 AppId={{5E204208-6FD9-4FD8-AA99-126EECB71868}}
+AppPublisher={#Publisher}
 DefaultDirName={commonpf}\Chronicy\Chronicy.Service
 OutputBaseFilename={#InstallerFileName}-{#Version}
 PrivilegesRequired=admin
