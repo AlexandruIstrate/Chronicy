@@ -142,8 +142,8 @@ public class WebAPI {
         } catch (let e) {
             print(e);
             
-//            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
-//            print(json);
+            let json: String = String(bytes: data, encoding: .utf8) ?? "Cannot convert data";
+            print(json);
             
             return nil;
         }
