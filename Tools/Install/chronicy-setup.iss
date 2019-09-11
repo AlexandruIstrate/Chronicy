@@ -1,7 +1,7 @@
 ; Installers directory
 #define InstallerSource "Output"
 
-#define ApplicationName "Chronicy"
+#define ApplicationName "ChronicySetup"
 ; TODO: Move to a file
 #define Version "1.0.0"
 

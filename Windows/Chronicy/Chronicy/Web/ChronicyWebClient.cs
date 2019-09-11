@@ -11,7 +11,7 @@ namespace Chronicy.Web
 {
     public class ChronicyWebClient : IClient
     {
-        private HttpClient client;
+        private readonly HttpClient client;
 
         public JsonSerializerSettings JsonSettings { get; set; }
 
@@ -126,16 +126,18 @@ namespace Chronicy.Web
                 AddHeaders(headers);
             }
 
-            HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url);
-            message.Content = new StringContent(body, Encoding, ContentType);
-
-            using (HttpResponseMessage response = Task.Run(() => client.SendAsync(message)).Result)
+            using (HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url))
             {
-                return new Tuple<ResponseInfo, byte[]>(new ResponseInfo
+                message.Content = new StringContent(body, Encoding, ContentType);
+
+                using (HttpResponseMessage response = Task.Run(() => client.SendAsync(message)).Result)
                 {
-                    StatusCode = response.StatusCode,
-                    Headers = ConvertHeaders(response.Headers)
-                }, Task.Run(() => response.Content.ReadAsByteArrayAsync()).Result);
+                    return new Tuple<ResponseInfo, byte[]>(new ResponseInfo
+                    {
+                        StatusCode = response.StatusCode,
+                        Headers = ConvertHeaders(response.Headers)
+                    }, Task.Run(() => response.Content.ReadAsByteArrayAsync()).Result);
+                }
             }
         }
 
@@ -146,16 +148,18 @@ namespace Chronicy.Web
                 AddHeaders(headers);
             }
 
-            HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url);
-            message.Content = new StringContent(body, Encoding, ContentType);
-
-            using (HttpResponseMessage response = await client.SendAsync(message))
+            using (HttpRequestMessage message = new HttpRequestMessage(new HttpMethod(method.ToString().ToUpper()), url))
             {
-                return new Tuple<ResponseInfo, byte[]>(new ResponseInfo
+                message.Content = new StringContent(body, Encoding, ContentType);
+
+                using (HttpResponseMessage response = await client.SendAsync(message))
                 {
-                    StatusCode = response.StatusCode,
-                    Headers = ConvertHeaders(response.Headers)
-                }, await response.Content.ReadAsByteArrayAsync());
+                    return new Tuple<ResponseInfo, byte[]>(new ResponseInfo
+                    {
+                        StatusCode = response.StatusCode,
+                        Headers = ConvertHeaders(response.Headers)
+                    }, await response.Content.ReadAsByteArrayAsync());
+                }
             }
         }
 
