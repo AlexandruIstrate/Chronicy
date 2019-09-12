@@ -20,7 +20,11 @@ namespace Chronicy.Web
 
         public ChronicyWebClient(Encoding encoding = null, string contentType = null)
         {
+#if DEBUG
+            // Allow the use of invalid certificates for development only
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+#endif
+
             client = new HttpClient();
 
             Encoding = encoding ?? Encoding.UTF8;
@@ -83,6 +87,7 @@ namespace Chronicy.Web
         {
             Tuple<ResponseInfo, string> response = Download(url, headers);
 
+            // TODO: Propagate exception instead of using the error JSON
             try
             {
                 return new Tuple<ResponseInfo, T>(response.Item1, JsonConvert.DeserializeObject<T>(response.Item2, JsonSettings));
@@ -97,6 +102,7 @@ namespace Chronicy.Web
         {
             Tuple<ResponseInfo, string> response = await DownloadAsync(url, headers).ConfigureAwait(false);
 
+            // TODO: Propagate exception instead of using the error JSON
             try
             {
                 return new Tuple<ResponseInfo, T>(response.Item1, JsonConvert.DeserializeObject<T>(response.Item2, JsonSettings));
@@ -167,6 +173,7 @@ namespace Chronicy.Web
         {
             Tuple<ResponseInfo, string> response = Upload(url, body, method, headers);
 
+            // TODO: Propagate exception instead of using the error JSON
             try
             {
                 return new Tuple<ResponseInfo, T>(response.Item1, JsonConvert.DeserializeObject<T>(response.Item2, JsonSettings));
@@ -181,6 +188,7 @@ namespace Chronicy.Web
         {
             Tuple<ResponseInfo, string> response = await UploadAsync(url, body, method, headers).ConfigureAwait(false);
 
+            // TODO: Propagate exception instead of using the error JSON
             try
             {
                 return new Tuple<ResponseInfo, T>(response.Item1, JsonConvert.DeserializeObject<T>(response.Item2, JsonSettings));
