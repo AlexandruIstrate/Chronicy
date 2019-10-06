@@ -1,11 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Chronicy.Website.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -18,7 +16,7 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
         private readonly SignInManager<ChronicyUser> signInManager;
         private readonly UserManager<ChronicyUser> userManager;
         private readonly ILogger<RegisterModel> logger;
-        private readonly IEmailSender emailSender;
+        //private readonly IEmailSender emailSender;
 
         [BindProperty]
         public InputData Input { get; set; }
@@ -50,13 +48,13 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
 
         public RegisterModel(UserManager<ChronicyUser> userManager,
                              SignInManager<ChronicyUser> signInManager,
-                             ILogger<RegisterModel> logger,
-                             IEmailSender emailSender)
+                             ILogger<RegisterModel> logger/*,
+                             IEmailSender emailSender */)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
-            this.emailSender = emailSender;
+            //this.emailSender = emailSender;
         }
 
         public void OnGet(string returnUrl = null)
@@ -99,8 +97,8 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
                 protocol: Request.Scheme);
 
             // TODO: Improve this
-            await emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                $"Please confirm your account by <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'>clicking here</a>.");
+            //await emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+            //    $"Please confirm your account by <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'>clicking here</a>.");
 
             return LocalRedirect(returnUrl);
         }

@@ -21,7 +21,7 @@ namespace Chronicy.Website.Pages.Notebooks
             dataSource = new SqlDataSource(database);
         }
 
-        public async Task OnGetAsync()
+        public Task OnGetAsync()
         {
             //Items = new List<Notebook>(await dataSource.GetAllAsync());
 
@@ -33,6 +33,8 @@ namespace Chronicy.Website.Pages.Notebooks
                 new Notebook("Notebok 4"),
                 new Notebook("Notebok 5")
             };
+
+            return Task.CompletedTask;
         }
     }
 }

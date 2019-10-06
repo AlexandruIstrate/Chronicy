@@ -18,9 +18,10 @@ namespace Chronicy.Website.Pages.Data
             this.statisticsManager = statisticsManager;
         }
 
-        public async Task OnGetAsync()
+        public Task OnGetAsync()
         {
             //Items = new List<StatisticsItem>(await statisticsManager.GetAllAsync());
+            return Task.CompletedTask;
         }
     }
 }

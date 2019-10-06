@@ -1,14 +1,17 @@
 ﻿using Chronicy.Sql;
 using Chronicy.Standard.Data;
 using Chronicy.Web.Api;
+using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Text.Json;
 
 namespace Chronicy.Web
 {
@@ -29,13 +32,15 @@ namespace Chronicy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                    .AddJsonOptions(options =>
-                    {
-                        JsonSerializerSettings settings = options.SerializerSettings;
-                        settings.DateFormatString = JsonDefaultSettings.DateFormatString;
-                        settings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
-                    });
+            services.AddMvc(options =>
+                {
+                    options.EnableEndpointRouting = false;
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
+                });
 
             services.AddTransient<IAuthentication>(e => new AuthenticationApi(database));
             services.AddTransient<INotebook>(e => new NotebookApi(new SqlDataSource(database)));
@@ -43,7 +48,7 @@ namespace Chronicy.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime applicationLifetime)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {

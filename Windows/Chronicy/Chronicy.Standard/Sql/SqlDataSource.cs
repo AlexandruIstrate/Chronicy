@@ -14,7 +14,7 @@ namespace Chronicy.Sql
     // TODO: Figure out whether it's better to use Data notebooks or Web notebooks
     public class SqlDataSource : IDataSource<Notebook>, IDisposable
     {
-        private ISqlDatabase database;
+        private readonly ISqlDatabase database;
 
         public SqlDataSource(SqlConnection connection)
         {

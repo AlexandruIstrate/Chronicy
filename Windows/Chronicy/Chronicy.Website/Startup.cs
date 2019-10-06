@@ -11,11 +11,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Chronicy.Website
 {
@@ -36,6 +35,10 @@ namespace Chronicy.Website
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            })
+            .AddMvc(options => 
+            { 
+                options.EnableEndpointRouting = false;
             });
 
             // Add identity types
@@ -46,8 +49,8 @@ namespace Chronicy.Website
                 // Debug only
                 config.SignIn.RequireConfirmedEmail = false;
             })
-                .AddDefaultTokenProviders()
-                .AddDefaultUI(UIFramework.Bootstrap4);
+                .AddDefaultTokenProviders();
+                //.AddDefaultUI(UIFramework.Bootstrap4);
 
             // Add database
             services.AddTransient<ISqlDatabase>(e => new SqlServerDatabase(SqlConnectionFactory.Create(Configuration)));
@@ -60,7 +63,7 @@ namespace Chronicy.Website
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
             services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
-            services.AddTransient<IEmailSender, EmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -101,13 +104,13 @@ namespace Chronicy.Website
                 options.SlidingExpiration = true;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == Environments.Development)
             {
                 app.UseDeveloperExceptionPage();
             }
