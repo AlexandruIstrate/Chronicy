@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace Chronicy.Excel.App
 {
+    /// <summary>
+    /// Provides operations for working with an Excel extension.
+    /// </summary>
     public abstract class IExcelExtension
     {
         private bool enabled;

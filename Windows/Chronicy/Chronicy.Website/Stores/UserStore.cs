@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Website.Stores
 {
+    /// <summary>
+    /// Manages the service users.
+    /// </summary>
     public partial class UserStore : IUserStore<ChronicyUser>
     {
         private readonly ISqlDatabase database;

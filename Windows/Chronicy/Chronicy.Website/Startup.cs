@@ -5,7 +5,6 @@ using Chronicy.Standard.Data.Activity;
 using Chronicy.Standard.Data.Automation;
 using Chronicy.Standard.Data.Statistics;
 using Chronicy.Website.Identity;
-using Chronicy.Website.Services;
 using Chronicy.Website.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

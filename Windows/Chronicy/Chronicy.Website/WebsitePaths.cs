@@ -1,5 +1,8 @@
 ﻿namespace Chronicy.Website
 {
+    /// <summary>
+    /// Provides constants for website paths.
+    /// </summary>
     public static class WebsitePaths
     {
         public const string Error = "/Error";
