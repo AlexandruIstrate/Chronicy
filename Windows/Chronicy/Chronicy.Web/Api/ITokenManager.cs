@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Api
 {
+    /// <summary>
+    /// Provides information for the user tokens.
+    /// </summary>
     public interface ITokenManager
     {
         TokenStatus GetTokenStatus(string token);
@@ -12,6 +15,9 @@ namespace Chronicy.Web.Api
         Task<DateTime> GetExpirationDateAsync(string token);
     }
 
+    /// <summary>
+    /// Represents the status of the token.
+    /// </summary>
     public enum TokenStatus
     {
         Valid, Invalid, Expired

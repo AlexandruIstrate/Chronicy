@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
+    /// <summary>
+    /// Manages API authentication.
+    /// </summary>
     [Produces(MediaTypeNames.Application.Json)]
     [Route("api/[controller]")]
     [ApiController]

@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Api
 {
+    /// <summary>
+    /// Provides operations for authentication.
+    /// </summary>
     public interface IAuthentication
     {
         /// <summary>

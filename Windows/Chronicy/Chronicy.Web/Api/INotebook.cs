@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Api
 {
+    /// <summary>
+    /// Provides operations for working with the stored notebooks.
+    /// </summary>
     public interface INotebook
     {
         IEnumerable<Notebook> GetAll();

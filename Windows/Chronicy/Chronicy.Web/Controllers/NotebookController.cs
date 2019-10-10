@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web.Controllers
 {
+    /// <summary>
+    /// Provides access to stored notebooks.
+    /// </summary>
     [Produces(MediaTypeNames.Application.Json)]
     [Route("api/[controller]")]
     [ApiController]

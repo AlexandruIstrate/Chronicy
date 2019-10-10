@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Handles the registration of tracking objects.
+    /// </summary>
     public class ExcelTracker
     {
         public List<ITrackable> Trackers { get; }
