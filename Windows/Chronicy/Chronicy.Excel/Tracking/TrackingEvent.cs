@@ -2,6 +2,9 @@
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Contains data about a tracking update.
+    /// </summary>
     public class TrackingEvent
     {
         public Type ValueType { get; set; }

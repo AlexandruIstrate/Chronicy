@@ -4,6 +4,9 @@ using ExcelWorksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Tracks changes made to the worksheet.
+    /// </summary>
     public class WorksheetTrackable : ITrackable
     {
         public override Type ValueType => typeof(ExcelWorksheet);

@@ -5,6 +5,9 @@ using System.Diagnostics;
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Tracks changes made to the workbook.
+    /// </summary>
     public class WorkbookTrackable : ITrackable
     {
         public override Type ValueType => typeof(Workbook);

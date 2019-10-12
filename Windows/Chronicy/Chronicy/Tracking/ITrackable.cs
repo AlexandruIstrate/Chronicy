@@ -2,6 +2,9 @@
 
 namespace Chronicy.Tracking
 {
+    /// <summary>
+    /// Represents a property that can be tracked.
+    /// </summary>
     public abstract class ITrackable
     {
         private bool enabled;

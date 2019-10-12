@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Handles posting and listening for events.
+    /// </summary>
     public class TrackingSystem
     {
         private List<TrackingEvent> recordedEvents;

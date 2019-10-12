@@ -5,6 +5,9 @@ using Microsoft.Office.Interop.Excel;
 
 namespace Chronicy.Excel.Tracking
 {
+    /// <summary>
+    /// Tracks changes made to a cell range.
+    /// </summary>
     public class RangeTrackable : ITrackable
     {
         public override Type ValueType => typeof(Range);
