@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Communication\CommunicationTest.cs" />
     <Compile Include="Data\ConversionTest.cs" />
+    <Compile Include="Data\FieldTemplateTest.cs" />
     <Compile Include="Data\SerializationTest.cs" />
     <Compile Include="Information\InformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
