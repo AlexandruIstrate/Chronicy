@@ -2,15 +2,28 @@
 
 namespace Chronicy.Communication
 {
+    /// <summary>
+    /// Represents a WCF service result.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [DataContract]
     public class DataResult<T>
     {
+        /// <summary>
+        /// Gets or sets the value of this result.
+        /// </summary>
         [DataMember]
         public T Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error message of this result.
+        /// </summary>
         [DataMember]
         public string ErrorMessage { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether this result has an error.
+        /// </summary>
         public bool HasError => ErrorMessage != null;
 
         public DataResult(T value)

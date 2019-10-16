@@ -4,6 +4,9 @@ using System.ServiceModel;
 
 namespace Chronicy.Communication
 {
+    /// <summary>
+    /// Represents operations that can be called back on the client.
+    /// </summary>
     public interface IClientCallback
     {
         [OperationContract(IsOneWay = true)]

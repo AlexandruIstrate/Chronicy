@@ -1,5 +1,8 @@
 ﻿namespace Chronicy.Communication
 {
+    /// <summary>
+    /// Provides WCF connection constants.
+    /// </summary>
     public static class ConnectionConstants
     {
         public const string EndpointUri = "net.pipe://localhost";

@@ -1,13 +1,14 @@
 ﻿using Chronicy.Data;
 using Chronicy.Data.Storage;
 using Chronicy.Tracking;
-using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.ServiceModel;
 
 namespace Chronicy.Communication
 {
+    /// <summary>
+    /// Represents a service and the operations applicable on that service.
+    /// </summary>
     [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IClientCallback))]
     public interface IServerService
     {
