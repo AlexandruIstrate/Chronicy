@@ -214,7 +214,7 @@
     <Compile Include="Information\InformationDispatcher.cs" />
     <Compile Include="Information\DebugLogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql\DbSetUtils.cs" />
+    <Compile Include="Sql\DbSetExtensions.cs" />
     <Compile Include="Sql\ISqlDatabase.cs" />
     <Compile Include="Data\Storage\LocalDataSource.cs" />
     <Compile Include="Sql\SqliteDatabase.cs" />

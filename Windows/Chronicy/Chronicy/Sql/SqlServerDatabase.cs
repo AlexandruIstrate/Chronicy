@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Sql
 {
-    // This is a temporary class. In the future it will be replaced by something more
-    // flexible using reflection and dynamic code generation
+    /// <summary>
+    /// Represents an SQL Server database.
+    /// </summary>
     public class SqlServerDatabase : ISqlDatabase
     {
         public SqlConnection Connection { get; set; }

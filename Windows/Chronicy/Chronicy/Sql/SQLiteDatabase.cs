@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Sql
 {
+    /// <summary>
+    /// Represents an SQLite database.
+    /// </summary>
     public class SqliteDatabase : ISqlDatabase
     {
         /// <summary>

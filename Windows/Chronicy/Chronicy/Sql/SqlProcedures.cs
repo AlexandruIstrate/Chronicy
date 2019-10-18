@@ -1,5 +1,8 @@
 ﻿namespace Chronicy.Sql
 {
+    /// <summary>
+    /// Provides constants for procedure names.
+    /// </summary>
     public static class SqlProcedures
     {
         public static class User

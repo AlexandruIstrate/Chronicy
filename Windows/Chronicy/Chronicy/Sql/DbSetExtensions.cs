@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Sql
 {
-    public static class DbSetUtils
+    /// <summary>
+    /// Provides extensions for working with <see cref="Microsoft.EntityFrameworkCore.DbSet{TEntity}"/>.
+    /// </summary>
+    public static class DbSetExtensions
     {
         public static IEnumerable<T> Find<T>(this DbSet<T> dbSet, Expression<Func<T, bool>> predicate) where T : class
         {

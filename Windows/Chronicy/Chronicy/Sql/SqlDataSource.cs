@@ -8,9 +8,12 @@ using Chronicy.Data.Storage;
 
 namespace Chronicy.Sql
 {
+    /// <summary>
+    /// Provides data source operations on an SQL database.
+    /// </summary>
     public class SqlDataSource : IDataSource<Notebook>, IDisposable
     {
-        private ISqlDatabase database;
+        private readonly ISqlDatabase database;
 
         public SqlDataSource(SqlConnection connection)
         {
