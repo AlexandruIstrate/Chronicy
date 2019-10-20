@@ -43,6 +43,10 @@ The Chronicy web service that allows your stored information to be carried cross
 
 ![Web](./Images/Website.jpg)
 
+## Existing Extensions
+- Microsoft Excel
+- Safari for macOS
+
 ## Upcoming Features
 - [x] Windows service and Office extensions
 - [x] Website and web service
