@@ -7,6 +7,9 @@ using Chronicy.Data.Storage;
 
 namespace Chronicy.Excel.Data
 {
+    /// <summary>
+    /// Represents a service data source.
+    /// </summary>
     public class ServiceDataSource : IDataSource<Notebook>
     {
         private readonly IServerService service;

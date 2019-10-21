@@ -7,6 +7,9 @@ using Chronicy.Information;
 
 namespace Chronicy.Excel.Communication
 {
+    /// <summary>
+    /// Represents this client and the operations that can be called by the service.
+    /// </summary>
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class TrackedClient : IClientCallback
     {
