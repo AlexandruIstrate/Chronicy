@@ -5,7 +5,9 @@ using NLog.Targets;
 
 namespace Chronicy.Information
 {
-    // TODO: Singleton pattern is bad. Try using factories in the future.
+    /// <summary>
+    /// Represents a log information context.
+    /// </summary>
     public class DebugLogContext : IInformationContext
     {
         public static DebugLogContext Current { get; } = new DebugLogContext();

@@ -11,8 +11,15 @@ namespace Chronicy.Sql
     /// </summary>
     public class SqlServerDatabase : ISqlDatabase
     {
+        /// <summary>
+        /// The connection to use for the communicating with the database.
+        /// </summary>
         public SqlConnection Connection { get; set; }
 
+        /// <summary>
+        /// Initializs this database using the given connection.
+        /// </summary>
+        /// <param name="connection">The connection to use</param>
         public SqlServerDatabase(SqlConnection connection)
         {
             Connection = connection;
