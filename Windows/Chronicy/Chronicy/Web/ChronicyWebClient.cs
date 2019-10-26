@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Web
 {
+    /// <summary>
+    /// The default implementation of <see cref="Chronicy.Web.IClient"/>.
+    /// </summary>
     public class ChronicyWebClient : IClient
     {
         private readonly HttpClient client;

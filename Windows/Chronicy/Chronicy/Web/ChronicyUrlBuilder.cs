@@ -1,5 +1,8 @@
 ﻿namespace Chronicy.Web
 {
+    /// <summary>
+    /// Builds URL addresses for the Chronicy cloud service.
+    /// </summary>
     public class ChronicyUrlBuilder
     {
         public string BaseUrl { get; set; }

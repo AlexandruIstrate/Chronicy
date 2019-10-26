@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using HeaderCollection = System.Collections.Generic.Dictionary<string, string>;
 
+/// <summary>
+/// Allows interaction with Chronicy's web API.
+/// </summary>
 namespace Chronicy.Web
 {
     public class ChronicyWebApi : IDisposable

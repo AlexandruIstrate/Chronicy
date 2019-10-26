@@ -3,6 +3,9 @@ using System.Text;
 
 namespace Chronicy.Data.Encoders
 {
+    /// <summary>
+    /// Encodes or decodes a string from and to Base64.
+    /// </summary>
     public class Base64Encoder : IEncoder
     {
         public Encoding OperationEncoding { get; set; }

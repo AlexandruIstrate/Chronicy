@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Data.Managers
 {
+    /// <summary>
+    /// Provides methods for managing the retrieval and selection of notebooks.
+    /// </summary>
     public class NotebookManager
     {
         public IDataSource<Notebook> dataSource;

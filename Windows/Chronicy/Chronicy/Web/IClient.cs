@@ -4,6 +4,9 @@ using HeaderCollection = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Chronicy.Web
 {
+    /// <summary>
+    /// Provides a set of operations for downloading or uploading data.
+    /// </summary>
     public interface IClient : IDisposable
     {
         Tuple<ResponseInfo, string> Download(string url, HeaderCollection headers = null);
@@ -26,6 +29,9 @@ namespace Chronicy.Web
         Task<Tuple<ResponseInfo, T>> UploadJsonAsync<T>(string url, string body, ClientMethod method, HeaderCollection headers = null);
     }
 
+    /// <summary>
+    /// Represents a set of POST methods.
+    /// </summary>
     public enum ClientMethod
     {
         Get, Head, Post, Put, Delete, Connect, Options, Trace, Patch
