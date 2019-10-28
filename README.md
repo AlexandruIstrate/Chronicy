@@ -97,8 +97,8 @@ Setup
 - [FatSidebar](https://github.com/CleanCocoa/FatSidebar)
 
 #### Web
-- [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
-- [.NET Core 2.2](https://dotnet.microsoft.com/)
+- [C# 8](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8)
+- [.NET Core 3.0](https://dotnet.microsoft.com/)
 - [ASP.NET Core](https://github.com/aspnet/AspNetCore)
 - [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2017)
 - [Newtonsoft JSON](https://github.com/JamesNK/Newtonsoft.Json)
