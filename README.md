@@ -74,7 +74,7 @@ Visual Studio 2019
 
 Code
 - [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/)
+- [.NET Framework 4.8](https://dotnet.microsoft.com/)
 - [Universal Windows Platform](https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide)
 - [Windows Communication Foundation](https://docs.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf)
 - [Newtonsoft JSON](https://github.com/JamesNK/Newtonsoft.Json)
