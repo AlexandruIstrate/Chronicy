@@ -16,15 +16,13 @@ namespace Chronicy.Communication
         {
             InstanceContext context = new InstanceContext(clientCallback);
 
-            using (DuplexChannelFactory<IServerService> channelFactory = new DuplexChannelFactory<IServerService>(context, new NetNamedPipeBinding(), new EndpointAddress(ConnectionConstants.EndpointFullAddress)))
-            {
-                channelFactory.Closed += (sender, args) => ConnectionClosed?.Invoke(this, EventArgs.Empty);
-                channelFactory.Faulted += (sender, args) => ConnectionFaulted?.Invoke(this, EventArgs.Empty);
+            DuplexChannelFactory<IServerService> channelFactory = new DuplexChannelFactory<IServerService>(context, new NetNamedPipeBinding(), new EndpointAddress(ConnectionConstants.EndpointFullAddress));
+            channelFactory.Closed += (sender, args) => ConnectionClosed?.Invoke(this, EventArgs.Empty);
+            channelFactory.Faulted += (sender, args) => ConnectionFaulted?.Invoke(this, EventArgs.Empty);
 
-                IServerService service = channelFactory.CreateChannel();
-                service.Connect();
-                return service;
-            }
+            IServerService service = channelFactory.CreateChannel();
+            service.Connect();
+            return service;
         }
     }
 }
