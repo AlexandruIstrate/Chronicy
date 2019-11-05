@@ -88,9 +88,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chronicy\Chronicy.csproj">
-      <Project>{2cde38c6-1f0f-41e2-995f-dcdffb272eca}</Project>
-      <Name>Chronicy</Name>
+    <ProjectReference Include="..\Chronicy.Core\Chronicy.Core.csproj">
+      <Project>{82f0b6de-d1ac-413e-acb4-7af9b7518013}</Project>
+      <Name>Chronicy.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
