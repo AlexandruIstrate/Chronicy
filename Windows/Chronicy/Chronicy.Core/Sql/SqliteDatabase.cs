@@ -1,10 +1,10 @@
 ﻿using Chronicy.Data;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SQLite;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -15,7 +15,7 @@ namespace Chronicy.Sql
         /// <summary>
         /// Represents the connection that is used for queries
         /// </summary>
-        public SQLiteConnection Connection { get; set; }
+        public SqliteConnection Connection { get; set; }
 
         /// <summary>
         /// Represents the context used for mapping entities
@@ -26,7 +26,7 @@ namespace Chronicy.Sql
         /// Creates a database with a <see cref="SQLiteDatabaseContext"/> using the specified <see cref="SQLiteConnection"/>
         /// </summary>
         /// <param name="connection">The connection to use</param>
-        public SqliteDatabase(SQLiteConnection connection)
+        public SqliteDatabase(SqliteConnection connection)
         {
             Connection = connection ?? throw new ArgumentNullException(nameof(connection));
             Context = new SQLiteDatabaseContext(connection);
@@ -53,7 +53,7 @@ namespace Chronicy.Sql
             {
                 Connection.Open();
 
-                using (SQLiteCommand command = new SQLiteCommand(query, Connection))
+                using (SqliteCommand command = new SqliteCommand(query, Connection))
                 {
                     command.CommandType = CommandType.Text;
 
@@ -64,10 +64,10 @@ namespace Chronicy.Sql
 
                     DataSet dataSet = new DataSet();
 
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
-                    {
-                        adapter.Fill(dataSet);
-                    }
+                    //using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    //{
+                    //    adapter.Fill(dataSet);
+                    //}
 
                     return dataSet;
                 }
@@ -96,7 +96,7 @@ namespace Chronicy.Sql
             {
                 Connection.Open();
 
-                using (SQLiteCommand command = new SQLiteCommand(query, Connection))
+                using (SqliteCommand command = new SqliteCommand(query, Connection))
                 {
                     command.CommandType = CommandType.Text;
 
@@ -151,7 +151,7 @@ namespace Chronicy.Sql
 
     public class SQLiteDatabaseContext : DbContext
     {
-        private SQLiteConnection connection;
+        private readonly SqliteConnection connection;
 
         public DbSet<Notebook> Notebooks { get; set; }
         public DbSet<Stack> Stacks { get; set; }
@@ -159,7 +159,7 @@ namespace Chronicy.Sql
         public DbSet<CustomField> Fields { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
-        public SQLiteDatabaseContext(SQLiteConnection connection = null)
+        public SQLiteDatabaseContext(SqliteConnection connection = null)
         {
             this.connection = connection ?? CreateConnection();
             Database.EnsureCreated();
@@ -168,22 +168,22 @@ namespace Chronicy.Sql
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(connection);
-            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+            //SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
         }
 
-        internal static SQLiteConnection CreateConnection()
+        internal static SqliteConnection CreateConnection()
         {
             string savePath = AppDomain.CurrentDomain.BaseDirectory;
             string fileName = "Chronicy.sqlite";
 
             string dataSource = Path.Combine(savePath, fileName);
 
-            SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder()
+            SqliteConnectionStringBuilder builder = new SqliteConnectionStringBuilder()
             {
                 DataSource = dataSource
             };
 
-            return new SQLiteConnection(builder.ConnectionString);
+            return new SqliteConnection(builder.ConnectionString);
         }
     }
 }
