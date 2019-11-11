@@ -2,6 +2,8 @@
 using Chronicy.Service.App;
 using Chronicy.Utils;
 using System.ServiceProcess;
+using System;
+using Chronicy.Information;
 
 namespace Chronicy.Service
 {
@@ -20,13 +22,20 @@ namespace Chronicy.Service
 
         protected override void OnStart(string[] args)
         {
-            ServiceStatus status = Status.StartPending;
-            Status.SetServiceStatus(ServiceHandle, ref status);
+            try
+            {
+                ServiceStatus status = Status.StartPending;
+                Status.SetServiceStatus(ServiceHandle, ref status);
 
-            ExceptionUtils.LogExceptions(() => service.OnStart(), context);
+                ExceptionUtils.LogExceptions(() => service.OnStart(), context);
 
-            status = Status.Running;
-            Status.SetServiceStatus(ServiceHandle, ref status);
+                status = Status.Running;
+                Status.SetServiceStatus(ServiceHandle, ref status);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
         }
 
         protected override void OnPause()

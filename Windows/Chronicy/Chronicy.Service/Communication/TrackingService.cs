@@ -11,15 +11,14 @@ using Chronicy.Web.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
 
 namespace Chronicy.Service.Communication
 {
-    //[ErrorHandlingServiceBehavior]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public class TrackingService : IServerService, IInformationContext
     {
-        private IInformationContext context;
+        private readonly IInformationContext context;
+
         private NotebookManager notebookManager;
 
         public IClientCallback Callback { get; set; }
