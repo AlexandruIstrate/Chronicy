@@ -7,7 +7,7 @@ namespace Chronicy.Service.Information
 {
     public class EventLogContext : IInformationContext
     {
-        private EventLog eventLog;
+        private readonly EventLog eventLog;
 
         public static EventLogContext Current { get; } = new EventLogContext();
 

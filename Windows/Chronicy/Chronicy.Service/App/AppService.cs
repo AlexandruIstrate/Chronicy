@@ -6,7 +6,7 @@ namespace Chronicy.Service.App
 {
     public class AppService : IService
     {
-        private EventLogContext logContext;
+        private readonly EventLogContext logContext;
 
         public AppService()
         {
