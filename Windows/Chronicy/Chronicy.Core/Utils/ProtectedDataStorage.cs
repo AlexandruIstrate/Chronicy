@@ -12,6 +12,11 @@ namespace Chronicy.Utils
 
         public static string Protect(string str)
         {
+            if (str == null)
+            {
+                throw new ArgumentNullException("The unprotected string cannot be null", nameof(str));
+            }
+
             try
             {
                 byte[] data = StringEncoding.GetBytes(str);
@@ -26,13 +31,18 @@ namespace Chronicy.Utils
 
         public static string Unprotect(string str)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                throw new ArgumentException("The protected string cannot be null or empty", nameof(str));
+            }
+
             try
             {
                 byte[] data = Convert.FromBase64String(str);
                 byte[] result = ProtectedData.Unprotect(data, aditionalEntropy, DataProtectionScope.CurrentUser);
                 return StringEncoding.GetString(result);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return null;
             }

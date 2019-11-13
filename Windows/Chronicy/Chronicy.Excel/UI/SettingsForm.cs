@@ -22,8 +22,11 @@ namespace Chronicy.Excel.UI
             serverAddressTextBox.Text = Settings.Default.WebServiceAddress;
             autoConnectCheckBox.Checked = Settings.Default.AutoConnect;
 
-            usernameTextBox.Text = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedUsername);
-            passwordTextBox.Text = ProtectedDataStorage.Unprotect(Settings.Default.EncryptedPassword);
+            string username = Settings.Default.EncryptedUsername;
+            usernameTextBox.Text = !string.IsNullOrEmpty(username) ? ProtectedDataStorage.Unprotect(username) : string.Empty;
+
+            string password = Settings.Default.EncryptedPassword;
+            passwordTextBox.Text = !string.IsNullOrEmpty(password) ? ProtectedDataStorage.Unprotect(password) : string.Empty;
         }
 
         private void SaveSettings()

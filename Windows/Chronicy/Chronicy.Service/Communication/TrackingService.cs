@@ -19,7 +19,7 @@ namespace Chronicy.Service.Communication
     {
         private readonly IInformationContext context;
 
-        private NotebookManager notebookManager;
+        private readonly NotebookManager notebookManager;
 
         public IClientCallback Callback { get; set; }
 
@@ -27,21 +27,48 @@ namespace Chronicy.Service.Communication
         {
             context = AgregateContext.Of(EventLogContext.Current, this);
 
-            ExceptionUtils.LogExceptions(() => notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local)), context);
+            try
+            {
+                notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local));
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
+
+            //ExceptionUtils.LogExceptions(() => notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local)), context);
         }
 
         public void Connect()
         {
-            ExceptionUtils.LogExceptions(() =>
+            try
             {
                 Callback = OperationContext.Current.GetCallbackChannel<IClientCallback>();
                 Callback.SendAvailableNotebooks(notebookManager.GetNotebooks());
-            }, context);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
+
+            //ExceptionUtils.LogExceptions(() =>
+            //{
+                
+            //}, context);
         }
 
         public void SendUrl(string url)
         {
-            ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Url = url, context);
+            try
+            {
+                ChronicyWebApi.Shared.Url = url;
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
+
+            //ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Url = url, context);
         }
 
         public DataResult Authenticate(string username, string password)
@@ -66,29 +93,61 @@ namespace Chronicy.Service.Communication
 
         public void SendSelectedDataSource(DataSourceType dataSource)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.DataSource = DataSourceFactory.Create(dataSource), context);
+            try
+            {
+                notebookManager.DataSource = DataSourceFactory.Create(dataSource);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
+
+            //ExceptionUtils.LogExceptions(() => notebookManager.DataSource = DataSourceFactory.Create(dataSource), context);
         }
 
         public void SendSelectedNotebook(Notebook notebook)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.SelectNotebook(notebook), context);
+            try
+            {
+                notebookManager.SelectNotebook(notebook);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
         }
 
         public void SendSelectedStack(Stack stack)
         {
-            ExceptionUtils.LogExceptions(() => notebookManager.SelectStack(stack), context);
+            try
+            {
+                notebookManager.SelectStack(stack);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
         }
 
         public void SendTrackingData(TrackingData data)
         {
-            Card card = new Card(data.Name, data.Comment)
+            try
             {
-                Date = data.Date,
-                Fields = data.Fields,
-                Tags = data.Tags
-            };
+                Card card = new Card(data.Name, data.Comment)
+                {
+                    Date = data.Date,
+                    Fields = data.Fields,
+                    Tags = data.Tags
+                };
 
-            ExceptionUtils.LogExceptions(() => notebookManager.AddCard(card), context);
+                notebookManager.AddCard(card);
+            }
+            catch (Exception e)
+            {
+                InformationDispatcher.Default.Dispatch(e, context);
+            }
+
+            //ExceptionUtils.LogExceptions(() => notebookManager.AddCard(card), context);
         }
 
         public void SendDebugMessage(string message)

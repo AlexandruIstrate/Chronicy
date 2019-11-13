@@ -9,12 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.6.7" />
+    <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chronicy.Standard\Chronicy.Standard.csproj" />
+    <ProjectReference Include="..\Chronicy.Core\Chronicy.Core.csproj" />
   </ItemGroup>
 
 </Project>
