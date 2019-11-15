@@ -1,4 +1,4 @@
-﻿namespace Chronicy.Standard.Data.Statistics
+﻿namespace Chronicy.Data.Statistics
 {
     public class StatisticsGeneratorFactory
     {

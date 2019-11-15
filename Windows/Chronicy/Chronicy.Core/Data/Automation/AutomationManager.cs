@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chronicy.Standard.Data.Automation
+namespace Chronicy.Data.Automation
 {
     // TODO: Change this to use the database as well
     public class AutomationManager : IAutomationManager

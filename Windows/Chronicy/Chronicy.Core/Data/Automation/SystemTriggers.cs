@@ -1,4 +1,4 @@
-﻿namespace Chronicy.Standard.Data.Automation
+﻿namespace Chronicy.Data.Automation
 {
     public static class SystemTriggers
     {

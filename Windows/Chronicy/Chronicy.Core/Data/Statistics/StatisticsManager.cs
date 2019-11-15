@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chronicy.Standard.Data.Statistics
+namespace Chronicy.Data.Statistics
 {
     public class StatisticsManager : IStatisticsManager
     {

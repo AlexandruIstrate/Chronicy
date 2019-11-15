@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Chronicy.Standard.Data.Statistics
+namespace Chronicy.Data.Statistics
 {
     public class StatisticsItem
     {

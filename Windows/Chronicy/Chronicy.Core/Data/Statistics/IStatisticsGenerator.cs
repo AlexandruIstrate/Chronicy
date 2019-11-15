@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Chronicy.Standard.Data.Statistics
+namespace Chronicy.Data.Statistics
 {
     public interface IStatisticsGenerator
     {

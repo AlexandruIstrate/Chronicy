@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Chronicy.Standard.Data.Activity
+namespace Chronicy.Data.Activity
 {
     public interface IActivityManager : IDataSource<ActivityItem>
     {

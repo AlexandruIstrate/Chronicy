@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using Chronicy.Sql;
-using Chronicy.Standard.Data.Activity;
-using Chronicy.Standard.Data.Automation;
-using Chronicy.Standard.Data.Statistics;
+using Chronicy.Data.Activity;
+using Chronicy.Data.Automation;
+using Chronicy.Data.Statistics;
 using Chronicy.Website.Identity;
 using Chronicy.Website.Stores;
 using Microsoft.AspNetCore.Builder;

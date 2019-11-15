@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Chronicy.Standard.Data.Automation;
+using Chronicy.Data.Automation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

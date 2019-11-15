@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chronicy.Core\Chronicy.Core.csproj" />
+    <ProjectReference Include="..\Chronicy.Core\Chronicy.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-using Chronicy.Standard.Data.Activity;
+using Chronicy.Data.Activity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

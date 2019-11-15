@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Chronicy.Standard.Data
+namespace Chronicy.Data
 {
     public static class JsonDefaultSettings
     {

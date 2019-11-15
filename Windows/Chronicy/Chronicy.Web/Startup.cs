@@ -1,5 +1,5 @@
 ﻿using Chronicy.Sql;
-using Chronicy.Standard.Data;
+using Chronicy.Data;
 using Chronicy.Web.Api;
 using Chronicy.Web.Utils;
 using Microsoft.AspNetCore.Builder;

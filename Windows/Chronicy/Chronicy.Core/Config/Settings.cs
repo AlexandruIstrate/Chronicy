@@ -1,4 +1,4 @@
-﻿namespace Chronicy.Standard.Config
+﻿namespace Chronicy.Config
 {
     public static class Settings
     {

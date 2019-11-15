@@ -1,5 +1,4 @@
-using Chronicy.Standard.Data.Statistics;
-using Microsoft.AspNetCore.Authorization;
+using Chronicy.Data.Statistics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Threading.Tasks;

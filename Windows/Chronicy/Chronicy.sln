@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicy.Tests", "Chronicy.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chronicy.Website", "Chronicy.Website\Chronicy.Website.csproj", "{E454E526-FD78-4984-8C02-3DC1651383EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chronicy.Core", "Chronicy.Core\Chronicy.Core.csproj", "{82F0B6DE-D1AC-413E-ACB4-7AF9B7518013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chronicy", "Chronicy.Core\Chronicy.csproj", "{82F0B6DE-D1AC-413E-ACB4-7AF9B7518013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

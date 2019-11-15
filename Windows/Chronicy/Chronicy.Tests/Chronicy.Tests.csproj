@@ -184,9 +184,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chronicy.Core\Chronicy.Core.csproj">
+    <ProjectReference Include="..\Chronicy.Core\Chronicy.csproj">
       <Project>{82f0b6de-d1ac-413e-acb4-7af9b7518013}</Project>
-      <Name>Chronicy.Core</Name>
+      <Name>Chronicy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

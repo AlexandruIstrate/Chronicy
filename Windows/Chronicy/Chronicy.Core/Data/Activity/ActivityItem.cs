@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chronicy.Standard.Data.Activity
+namespace Chronicy.Data.Activity
 {
     public class ActivityItem
     {

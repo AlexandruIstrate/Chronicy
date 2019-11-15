@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chronicy.Standard.Data.Activity
+namespace Chronicy.Data.Activity
 {
     public class ActivityManager : IActivityManager
     {

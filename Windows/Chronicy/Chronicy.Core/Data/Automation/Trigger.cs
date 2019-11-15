@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chronicy.Standard.Data.Automation
+namespace Chronicy.Data.Automation
 {
     public class Trigger : ITrigger
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chronicy.Standard.Data.Automation
+namespace Chronicy.Data.Automation
 {
     public interface ITrigger
     {
