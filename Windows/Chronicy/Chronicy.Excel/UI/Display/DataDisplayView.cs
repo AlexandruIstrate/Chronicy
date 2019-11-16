@@ -9,9 +9,6 @@ namespace Chronicy.Excel.UI.Display
     {
         public IDataSource<T> DataSource { get; set; }
 
-        public delegate void DataChangedHandler(IEnumerable<T> items);
-        public event DataChangedHandler DataChanged;
-
         public DataDisplayView(IDataSource<T> dataSource)
         {
             DataSource = dataSource;
