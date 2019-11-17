@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Chronicy.Data;
-using Chronicy.Data.Storage;
 using Chronicy.Sql;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,13 +10,13 @@ namespace Chronicy.Website.Pages.Notebooks
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly IDataSource<Notebook> dataSource;
+        //private readonly IDataSource<Notebook> dataSource;
 
         public List<Notebook> Items { get; set; }
 
         public IndexModel(ISqlDatabase database)
         {
-            dataSource = new SqlDataSource(database);
+            //dataSource = new SqlDataSource(database);
         }
 
         public Task OnGetAsync()

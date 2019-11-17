@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Chronicy.Website.Services
 {
-    public class EmailSender// : IEmailSender
+    public class EmailSender : IEmailSender
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            //throw new NotImplementedException();
-            return Task.CompletedTask;
+            throw new NotImplementedException();
         }
     }
 }
