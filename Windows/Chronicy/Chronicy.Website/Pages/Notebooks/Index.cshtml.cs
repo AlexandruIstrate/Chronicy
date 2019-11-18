@@ -14,7 +14,7 @@ namespace Chronicy.Website.Pages.Notebooks
 
         public List<Notebook> Items { get; set; }
 
-        public IndexModel(ISqlDatabase database)
+        public IndexModel(/*ISqlDatabase database*/)
         {
             //dataSource = new SqlDataSource(database);
         }

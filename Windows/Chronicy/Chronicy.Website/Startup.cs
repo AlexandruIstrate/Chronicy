@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Chronicy.Website.Services;
+using System.Net;
+using Chronicy.Config;
 
 namespace Chronicy.Website
 {
@@ -62,18 +65,24 @@ namespace Chronicy.Website
             // Identity Services
             services.AddTransient<IUserStore<ChronicyUser>, UserStore>();
             services.AddTransient<IRoleStore<ChronicyRole>, RoleStore>();
-            //services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddTransient<IEmailSender, EmailSender>(e => new EmailSender(Configuration.GetValue<string>(Settings.Email.Host),
+                new NetworkCredential
+                {
+                    UserName = Configuration.GetValue<string>(Settings.Email.Username),
+                    Password = Configuration.GetValue<string>(Settings.Email.Password)
+                }));
+            services.AddTransient<IEmailBuilder, ConfirmationEmailBuilder>();
 
             services.Configure<IdentityOptions>(options =>
             {
-                // TODO: Change these settings to something reasonable
                 // Password settings
-                //options.Password.RequireDigit = true;
-                //options.Password.RequireLowercase = true;
-                //options.Password.RequireNonAlphanumeric = true;
-                //options.Password.RequireUppercase = true;
-                //options.Password.RequiredLength = 8;
-                //options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
 
                 // Debug only options
                 options.Password.RequireDigit = false;

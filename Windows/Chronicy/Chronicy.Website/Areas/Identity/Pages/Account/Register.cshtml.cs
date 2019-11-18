@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Chronicy.Website.Identity;
+using Chronicy.Website.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,6 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<ChronicyUser> signInManager;
-        private readonly UserManager<ChronicyUser> userManager;
-        private readonly ILogger<RegisterModel> logger;
-        //private readonly IEmailSender emailSender;
-
         [BindProperty]
         public InputData Input { get; set; }
 
@@ -46,14 +42,17 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
         }
 
         public RegisterModel(UserManager<ChronicyUser> userManager,
-                             SignInManager<ChronicyUser> signInManager,
-                             ILogger<RegisterModel> logger/*,
-                             IEmailSender emailSender */)
+                             //SignInManager<ChronicyUser> signInManager,
+                             ILogger<RegisterModel> logger,
+                             IEmailSender emailSender,
+                             IEmailBuilder emailBuilder)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
+            //this.signInManager = signInManager;
             this.logger = logger;
-            //this.emailSender = emailSender;
+
+            this.emailSender = emailSender;
+            this.emailBuilder = emailBuilder;
         }
 
         public void OnGet(string returnUrl = null)
@@ -92,14 +91,19 @@ namespace Chronicy.Website.Areas.Identity.Pages.Account
             string callbackUrl = Url.Page(
                 WebsitePaths.ConfirmEmail,
                 pageHandler: null,
-                values: new { userId = user.Id, token = token },
+                values: new { userId = user.Id, token },
                 protocol: Request.Scheme);
 
-            // TODO: Improve this
-            //await emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-            //    $"Please confirm your account by <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'>clicking here</a>.");
+            await emailSender.SendEmailAsync(Input.Email, "Confirm your email", emailBuilder.Build(callbackUrl));
 
             return LocalRedirect(returnUrl);
         }
+
+        private readonly UserManager<ChronicyUser> userManager;
+        //private readonly SignInManager<ChronicyUser> signInManager;
+        private readonly ILogger<RegisterModel> logger;
+
+        private readonly IEmailSender emailSender;
+        private readonly IEmailBuilder emailBuilder;
     }
 }
