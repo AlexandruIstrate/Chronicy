@@ -12,9 +12,9 @@
 
         public static class Email
         {
-            public const string Host = "";
-            public const string Username = "";
-            public const string Password = "";
+            public const string Host = "Settings:Email:Host";
+            public const string Username = "Settings:Email:Username";
+            public const string Password = "Settings:Email:Password";
         }
     }
 }
