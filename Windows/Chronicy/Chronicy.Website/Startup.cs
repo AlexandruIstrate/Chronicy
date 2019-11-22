@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Chronicy.Website.Services;
 using System.Net;
-using Chronicy.Config;
+using Chronicy.Website.Config;
 
 namespace Chronicy.Website
 {

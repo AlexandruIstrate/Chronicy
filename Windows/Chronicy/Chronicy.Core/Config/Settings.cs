@@ -9,12 +9,5 @@
             public const string UserID = "Settings:Database:UserID";
             public const string Password = "Settings:Database:UserID";
         }
-
-        public static class Email
-        {
-            public const string Host = "Settings:Email:Host";
-            public const string Username = "Settings:Email:Username";
-            public const string Password = "Settings:Email:Password";
-        }
     }
 }
