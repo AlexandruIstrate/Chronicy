@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Chronicy.Website.Services;
 using System.Net;
 using Chronicy.Website.Config;
+using Chronicy.Config;
 
 namespace Chronicy.Website
 {
@@ -141,9 +142,9 @@ namespace Chronicy.Website
         {
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            builder.AddJsonFile($"appsettings.{ Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production" }.json", optional: true);
-            builder.AddJsonFile("appsettings.Database.json", optional: true);
+            builder.AddJsonFile(ConfigFiles.MainSettings, optional: false, reloadOnChange: true);
+            builder.AddJsonFile(ConfigFiles.DevelopmentSettings, optional: true);
+            builder.AddJsonFile(ConfigFiles.DatabaseSettings, optional: true);
             builder.AddEnvironmentVariables();
             return builder.Build();
         }

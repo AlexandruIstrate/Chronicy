@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using Chronicy.Config;
 
 namespace Chronicy.Web
 {
@@ -73,9 +74,9 @@ namespace Chronicy.Web
         {
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            builder.AddJsonFile($"appsettings.{ Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production" }.json", optional: true);
-            builder.AddJsonFile("appsettings.Database.json", optional: true);
+            builder.AddJsonFile(ConfigFiles.MainSettings, optional: false, reloadOnChange: true);
+            builder.AddJsonFile(ConfigFiles.DevelopmentSettings, optional: true);
+            builder.AddJsonFile(ConfigFiles.DatabaseSettings, optional: true);
             builder.AddEnvironmentVariables();
             return builder.Build();
         }
