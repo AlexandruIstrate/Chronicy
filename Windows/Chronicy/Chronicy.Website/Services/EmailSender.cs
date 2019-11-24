@@ -15,15 +15,27 @@ namespace Chronicy.Website.Services
             };
         }
 
+        public void SendEmail(string email, string subject, string htmlMessage)
+        {
+            client.Send(BuildMailMessage(email, subject, htmlMessage));
+        }
+
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress("from");
-            message.To.Add(new MailAddress(email));
-            message.Subject = subject;
-            message.Body = htmlMessage;
+            await client.SendMailAsync(BuildMailMessage(email, subject, htmlMessage));
+        }
 
-            await client.SendMailAsync(message);
+        private MailMessage BuildMailMessage(string email, string subject, string htmlMessage)
+        {
+            MailMessage message = new MailMessage
+            {
+                From = new MailAddress("from"),
+                Subject = subject,
+                Body = htmlMessage
+            };
+            message.To.Add(new MailAddress(email));
+
+            return message;
         }
 
         private readonly SmtpClient client;
