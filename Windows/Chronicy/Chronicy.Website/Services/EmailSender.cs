@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Chronicy.Website.Services
 {
+    /// <summary>
+    /// The default implementation of <see cref="Chronicy.Website.Services.IEmailSender"/>.
+    /// </summary>
     public class EmailSender : IEmailSender
     {
         public EmailSender(string host, NetworkCredential networkCredentials)

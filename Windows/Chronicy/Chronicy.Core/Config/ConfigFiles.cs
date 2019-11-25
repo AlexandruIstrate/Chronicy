@@ -2,6 +2,9 @@ using System;
 
 namespace Chronicy.Config
 {
+    /// <summary>
+    /// Provides constants for config file paths.
+    /// </summary>
     public static class ConfigFiles
     {
         public const string MainSettings = "appsettings.json";

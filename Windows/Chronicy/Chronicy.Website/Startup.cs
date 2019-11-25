@@ -18,6 +18,7 @@ using Chronicy.Website.Services;
 using System.Net;
 using Chronicy.Website.Config;
 using Chronicy.Config;
+using Settings = Chronicy.Website.Config.Settings;
 
 namespace Chronicy.Website
 {
