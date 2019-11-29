@@ -1,11 +1,12 @@
 using Chronicy.Data.Statistics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Chronicy.Website.Pages.Data
 {
-    //[Authorize]
+    [Authorize]
     public class StatisticsModel : PageModel
     {
         private readonly IStatisticsManager statisticsManager;
@@ -17,10 +18,9 @@ namespace Chronicy.Website.Pages.Data
             this.statisticsManager = statisticsManager;
         }
 
-        public Task OnGetAsync()
+        public async Task OnGetAsync()
         {
-            //Items = new List<StatisticsItem>(await statisticsManager.GetAllAsync());
-            return Task.CompletedTask;
+            Items = new List<StatisticsItem>(await statisticsManager.GetItemsAsync());
         }
     }
 }
