@@ -163,8 +163,6 @@
     <Compile Include="ServiceStatus.cs" />
     <Compile Include="Communication\ServerConnection.cs" />
     <Compile Include="Communication\TrackingService.cs" />
-    <Compile Include="Dispatch\DispatcherTimer.cs" />
-    <Compile Include="Dispatch\IDispatcher.cs" />
     <Compile Include="Information\EventLogContext.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
