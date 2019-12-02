@@ -50,10 +50,10 @@ Windows/Chronicy/Chronicy.Tests/obj/
 macOS/DerivedData/
 macOS/build/
 macOS/xcuserdata/
+macOS/Pods/
 macOS/Chronicy.xcodeproj/xcuserdata/
 macOS/Chronicy.xcworkspace/xcuserdata/
 macOS/ChronicyFramework/ChronicyFramework.xcodeproj/xcuserdata/
-macOS/Pods/Pods.xcodeproj/xcuserdata/
 
 Tools/Install/macOS/bin/
 Tools/Install/macOS/output/
