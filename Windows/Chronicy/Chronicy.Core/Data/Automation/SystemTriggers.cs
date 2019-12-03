@@ -3,18 +3,16 @@
     public static class SystemTriggers
     {
         public static ITrigger CardAdded = new CardAddedTrigger();
+        public static ITrigger CardRemoved = new CardRemovedTrigger();
     }
 
     public class CardAddedTrigger : Trigger
     {
-        public CardAddedTrigger()
-        {
-            SetupCardWatch();
-        }
+  
+    }
 
-        private void SetupCardWatch()
-        {
-            // TODO: Implement
-        }
+    public class CardRemovedTrigger : Trigger
+    {
+        
     }
 }
