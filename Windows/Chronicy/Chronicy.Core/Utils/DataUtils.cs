@@ -10,7 +10,7 @@ namespace Chronicy.Utils
     {
         public static T ValueOrDefault<T>(T value) where T : class, new()
         {
-            return (value ?? new T());
+            return value ?? new T();
         }
 
         public static DataColumn[] CreateDataColumns<T>(params string[] ignoredColumns)
