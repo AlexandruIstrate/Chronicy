@@ -31,7 +31,7 @@ namespace Chronicy.Excel.App
         public abstract TrackingSystem Tracking { get; }
         public abstract NotebookManager Notebooks { get; }
         public abstract HistoryManager History { get; }
-        public abstract ICredentialsManager CredentialsManager { get; }
+        public abstract IAuthenticationManager CredentialsManager { get; }
 
         public delegate void StateUpdateHandler(bool enabled);
         public delegate void ConnectionUpdateHandler(bool connected);

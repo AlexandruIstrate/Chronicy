@@ -2,6 +2,9 @@
 
 namespace Chronicy.Authentication
 {
+    /// <summary>
+    /// Represents authentication errors.
+    /// </summary>
     public class AuthenticationException : Exception
     {
         public AuthenticationException() : base() { }

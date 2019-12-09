@@ -3,13 +3,13 @@ using System;
 
 namespace Chronicy.Authentication
 {
-    public class CredentialsManager : ICredentialsManager
+    public class AuthenticationManager : IAuthenticationManager
     {
         public IServerService Service { get; set; }
 
         public AuthenticationState State { get; private set; }
 
-        public CredentialsManager(IServerService service)
+        public AuthenticationManager(IServerService service)
         {
             Service = service;
             State = AuthenticationState.NotSignedIn;

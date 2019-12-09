@@ -32,12 +32,12 @@ namespace Chronicy.Excel.App
         private readonly TrackingSystem tracking;
         private readonly NotebookManager notebooks;
         private readonly HistoryManager history;
-        private readonly CredentialsManager credentialsManager;
+        private readonly AuthenticationManager credentialsManager;
 
         public override TrackingSystem Tracking => tracking;
         public override NotebookManager Notebooks => notebooks;
         public override HistoryManager History => history;
-        public override ICredentialsManager CredentialsManager => credentialsManager;
+        public override IAuthenticationManager CredentialsManager => credentialsManager;
 
         public AppExtension()
         {
@@ -49,7 +49,7 @@ namespace Chronicy.Excel.App
             tracking = new TrackingSystem();
             notebooks = new NotebookManager(null);
             history = new HistoryManager();
-            credentialsManager = new CredentialsManager(null);
+            credentialsManager = new AuthenticationManager(null);
 
             InitializeNotebooks();
             InitializeTracking();

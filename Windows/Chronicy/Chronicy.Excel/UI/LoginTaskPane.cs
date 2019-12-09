@@ -6,9 +6,9 @@ namespace Chronicy.Excel.UI
 {
     public partial class LoginTaskPane : UserControl
     {
-        public ICredentialsManager CredentialsManager { get; set; }
+        public IAuthenticationManager CredentialsManager { get; set; }
 
-        public LoginTaskPane(ICredentialsManager credentialsManager)
+        public LoginTaskPane(IAuthenticationManager credentialsManager)
         {
             CredentialsManager = credentialsManager;
             InitializeComponent();
