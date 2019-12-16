@@ -1,7 +1,6 @@
 ﻿using Chronicy.Information;
 using System;
 using System.Diagnostics;
-using System.Text;
 
 namespace Chronicy.Service.Information
 {
@@ -31,18 +30,7 @@ namespace Chronicy.Service.Information
 
         public void ExceptionDispatched(Exception exception)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine(exception.Message);
-            builder.AppendLine(exception.StackTrace);
-
-            if (exception.InnerException != null)
-            {
-                builder.AppendLine("Caused by");
-                builder.AppendLine(exception.InnerException.Message);
-                builder.AppendLine(exception.InnerException.StackTrace);
-            }
-
-            eventLog.WriteEntry(builder.ToString(), EventLogEntryType.Error);
+            eventLog.WriteEntry(exception.ToString(), EventLogEntryType.Error);
         }
 
         private EventLogEntryType InformationKindToEventLogEntry(InformationKind information)
@@ -63,7 +51,7 @@ namespace Chronicy.Service.Information
 
     internal static class EventLogConstants
     {
-        public const string SourceName = "ChronicyService";
-        public const string LogName = "ChronicyEventLog";
+        public const string SourceName = "Chronicy.Service";
+        public const string LogName = "Application";
     }
 }
