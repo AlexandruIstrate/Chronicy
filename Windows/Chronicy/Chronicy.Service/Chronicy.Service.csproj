@@ -193,7 +193,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chronicy.Core\Chronicy.csproj">
+    <ProjectReference Include="..\Chronicy\Chronicy.csproj">
       <Project>{82f0b6de-d1ac-413e-acb4-7af9b7518013}</Project>
       <Name>Chronicy</Name>
     </ProjectReference>
