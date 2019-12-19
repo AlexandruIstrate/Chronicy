@@ -117,10 +117,6 @@
     <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.1.12.351, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.12\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.provider.winsqlite3, Version=2.0.2.669, Culture=neutral, PublicKeyToken=1bf85e8361e9e0b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\SQLitePCLRaw.provider.winsqlite3.2.0.2\lib\netstandard2.0\SQLitePCLRaw.provider.winsqlite3.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
