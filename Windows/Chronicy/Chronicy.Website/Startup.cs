@@ -16,7 +16,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Chronicy.Website.Services;
 using System.Net;
-using Chronicy.Website.Config;
 using Chronicy.Config;
 using Settings = Chronicy.Website.Config.Settings;
 
@@ -40,21 +39,18 @@ namespace Chronicy.Website
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             })
-            .AddMvc(options => 
-            { 
-                options.EnableEndpointRouting = false;
-            });
+            .AddMvc();
 
             // Add identity types
             services.AddIdentity<ChronicyUser, ChronicyRole>(config =>
             {
-                //config.SignIn.RequireConfirmedEmail = true;
-
-                // Debug only
+#if DEBUG
                 config.SignIn.RequireConfirmedEmail = false;
+#else
+                config.SignIn.RequireConfirmedEmail = true;
+#endif
             })
-                .AddDefaultTokenProviders();
-                //.AddDefaultUI(UIFramework.Bootstrap4);
+            .AddDefaultTokenProviders();
 
             // Add database
             services.AddTransient<ISqlDatabase>(e => new SqlServerDatabase(SqlConnectionFactory.Create(Configuration)));
