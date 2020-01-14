@@ -1,5 +1,4 @@
-﻿using Chronicy.Information;
-using Chronicy.Sql;
+﻿using Chronicy.Sql;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -230,7 +229,6 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update notebook", e);
             }
         }
@@ -289,7 +287,6 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update notebook", e);
             }
         }
@@ -344,7 +341,6 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update stack", e);
             }
         }
@@ -399,7 +395,6 @@ namespace Chronicy.Data.Storage
             }
             catch (Exception e)
             {
-                InformationDispatcher.Default.Dispatch(e);  // TODO: Remove
                 throw new DataSourceException("Could not update stack", e);
             }
         }

@@ -39,7 +39,10 @@ namespace Chronicy.Website
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             })
-            .AddMvc();
+            .AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
 
             // Add identity types
             services.AddIdentity<ChronicyUser, ChronicyRole>(config =>
