@@ -1,35 +1,35 @@
-﻿using Chronicy.Information;
-using Chronicy.Service.Information;
+﻿using Chronicy.Service.App;
 using System;
-using System.ServiceProcess;
+using Topshelf;
 
 namespace Chronicy.Service
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        public static void Main()
+        static void Main()
         {
-            try
-            {
-                Run();
-            }
-            catch (Exception e)
-            {
-                InformationDispatcher.Default.Dispatch(e.Message, EventLogContext.Current, InformationKind.Error);
-            }
+            StartTopshelf();
         }
 
-        private static void Run()
+        private static void StartTopshelf()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            TopshelfExitCode rc = HostFactory.Run(x =>                                   
             {
-                new Service()
-            };
-            ServiceBase.Run(ServicesToRun);
+                x.Service<IService>(s =>                                   
+                {
+                    s.ConstructUsing(name => new AppService());              
+                    s.WhenStarted(tc => tc.OnStart());                        
+                    s.WhenStopped(tc => tc.OnStop());                         
+                });
+                x.RunAsLocalSystem();                                       
+
+                x.SetDescription("Gathers data from supported applications");                   
+                x.SetDisplayName("Chronicy Tracking Service");                                  
+                x.SetServiceName("Chronicy.Service");                                  
+            });                                                             
+
+            int exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
+            Environment.ExitCode = exitCode;
         }
     }
 }
