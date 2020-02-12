@@ -8,12 +8,12 @@ namespace Chronicy.Service
     {
         static void Main()
         {
-            StartTopshelf();
+            ConfigureTopshelf();
         }
 
-        private static void StartTopshelf()
+        private static void ConfigureTopshelf()
         {
-            TopshelfExitCode rc = HostFactory.Run(x =>                                   
+            TopshelfExitCode exitCode = HostFactory.Run(x =>                                   
             {
                 x.Service<IService>(s =>                                   
                 {
@@ -21,15 +21,20 @@ namespace Chronicy.Service
                     s.WhenStarted(tc => tc.OnStart());                        
                     s.WhenStopped(tc => tc.OnStop());                         
                 });
+
+                x.StartAutomatically();
                 x.RunAsLocalSystem();                                       
 
-                x.SetDescription("Gathers data from supported applications");                   
-                x.SetDisplayName("Chronicy Tracking Service");                                  
-                x.SetServiceName("Chronicy.Service");                                  
+                x.SetDescription(Description);                   
+                x.SetDisplayName(DisplayName);                                  
+                x.SetServiceName(Name);                                  
             });                                                             
 
-            int exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
-            Environment.ExitCode = exitCode;
+            Environment.ExitCode = (int)Convert.ChangeType(exitCode, exitCode.GetTypeCode());
         }
+
+        private const string Description = "Gathers data from supported applications";
+        private const string DisplayName = "Chronicy Tracking Service";
+        private const string Name = "Chronicy.Service";
     }
 }

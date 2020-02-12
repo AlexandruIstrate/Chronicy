@@ -11,7 +11,6 @@ namespace Chronicy.Data.Managers
     /// </summary>
     public class NotebookManager
     {
-        public IDataSource<Notebook> dataSource;
         public IDataSource<Notebook> DataSource
         {
             get => dataSource;
@@ -184,5 +183,7 @@ namespace Chronicy.Data.Managers
         {
             StackSelectionChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        private IDataSource<Notebook> dataSource;
     }
 }

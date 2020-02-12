@@ -5,7 +5,6 @@ using Chronicy.Data.Storage;
 using Chronicy.Information;
 using Chronicy.Service.Information;
 using Chronicy.Tracking;
-using Chronicy.Utils;
 using Chronicy.Web;
 using Chronicy.Web.Exceptions;
 using System;
@@ -17,10 +16,6 @@ namespace Chronicy.Service.Communication
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public class TrackingService : IServerService, IInformationContext
     {
-        private readonly IInformationContext context;
-
-        private readonly NotebookManager notebookManager;
-
         public IClientCallback Callback { get; set; }
 
         public TrackingService()
@@ -35,8 +30,6 @@ namespace Chronicy.Service.Communication
             {
                 InformationDispatcher.Default.Dispatch(e, context);
             }
-
-            //ExceptionUtils.LogExceptions(() => notebookManager = new NotebookManager(DataSourceFactory.Create(DataSourceType.Local)), context);
         }
 
         public void Connect()
@@ -50,11 +43,6 @@ namespace Chronicy.Service.Communication
             {
                 InformationDispatcher.Default.Dispatch(e, context);
             }
-
-            //ExceptionUtils.LogExceptions(() =>
-            //{
-                
-            //}, context);
         }
 
         public void SendUrl(string url)
@@ -67,8 +55,6 @@ namespace Chronicy.Service.Communication
             {
                 InformationDispatcher.Default.Dispatch(e, context);
             }
-
-            //ExceptionUtils.LogExceptions(() => ChronicyWebApi.Shared.Url = url, context);
         }
 
         public DataResult Authenticate(string username, string password)
@@ -101,8 +87,6 @@ namespace Chronicy.Service.Communication
             {
                 InformationDispatcher.Default.Dispatch(e, context);
             }
-
-            //ExceptionUtils.LogExceptions(() => notebookManager.DataSource = DataSourceFactory.Create(dataSource), context);
         }
 
         public void SendSelectedNotebook(Notebook notebook)
@@ -146,8 +130,6 @@ namespace Chronicy.Service.Communication
             {
                 InformationDispatcher.Default.Dispatch(e, context);
             }
-
-            //ExceptionUtils.LogExceptions(() => notebookManager.AddCard(card), context);
         }
 
         public void SendDebugMessage(string message)
@@ -181,7 +163,7 @@ namespace Chronicy.Service.Communication
         {
             try
             {
-                return new DataResult<IEnumerable<Notebook>>(notebookManager.dataSource.GetAll());
+                return new DataResult<IEnumerable<Notebook>>(notebookManager.DataSource.GetAll());
             }
             catch (DataSourceException e)
             {
@@ -193,7 +175,7 @@ namespace Chronicy.Service.Communication
         {
             try
             {
-                return new DataResult<Notebook>(notebookManager.dataSource.Get(id));
+                return new DataResult<Notebook>(notebookManager.DataSource.Get(id));
             }
             catch (DataSourceException e)
             {
@@ -205,7 +187,7 @@ namespace Chronicy.Service.Communication
         {
             try
             {
-                notebookManager.dataSource.Create(notebook);
+                notebookManager.DataSource.Create(notebook);
             }
             catch (DataSourceException e)
             {
@@ -219,7 +201,7 @@ namespace Chronicy.Service.Communication
         {
             try
             {
-                notebookManager.dataSource.Update(notebook);
+                notebookManager.DataSource.Update(notebook);
             }
             catch (DataSourceException e)
             {
@@ -233,7 +215,7 @@ namespace Chronicy.Service.Communication
         {
             try
             {
-                notebookManager.dataSource.Delete(id);
+                notebookManager.DataSource.Delete(id);
             }
             catch (DataSourceException e)
             {
@@ -242,5 +224,8 @@ namespace Chronicy.Service.Communication
 
             return DataResult.Success();
         }
+
+        private readonly IInformationContext context;
+        private readonly NotebookManager notebookManager;
     }
 }

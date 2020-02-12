@@ -6,21 +6,19 @@ namespace Chronicy.Service.Information
 {
     public class EventLogContext : IInformationContext
     {
-        private readonly EventLog eventLog;
-
         public static EventLogContext Current { get; } = new EventLogContext();
 
         public EventLogContext()
         {
             eventLog = new EventLog();
 
-            if (!EventLog.SourceExists(EventLogConstants.SourceName))
+            if (!EventLog.SourceExists(SourceName))
             {
-                EventLog.CreateEventSource(EventLogConstants.SourceName, EventLogConstants.LogName);
+                EventLog.CreateEventSource(SourceName, LogName);
             }
 
-            eventLog.Source = EventLogConstants.SourceName;
-            eventLog.Log = EventLogConstants.LogName;
+            eventLog.Source = SourceName;
+            eventLog.Log = LogName;
         }
 
         public void MessageDispatched(string message, InformationKind informationKind)
@@ -47,11 +45,10 @@ namespace Chronicy.Service.Information
 
             return EventLogEntryType.Information;
         }
-    }
 
-    internal static class EventLogConstants
-    {
         public const string SourceName = "Chronicy.Service";
         public const string LogName = "Application";
+
+        private readonly EventLog eventLog;
     }
 }
