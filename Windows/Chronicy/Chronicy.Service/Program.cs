@@ -23,11 +23,20 @@ namespace Chronicy.Service
                 });
 
                 x.StartAutomatically();
-                x.RunAsLocalSystem();                                       
+                x.RunAsLocalSystem();
 
-                x.SetDescription(Description);                   
-                x.SetDisplayName(DisplayName);                                  
-                x.SetServiceName(Name);                                  
+                x.EnableServiceRecovery(r =>
+                {
+                    // Try a restart after an interval
+                    r.RestartService(RestartDelayInMinutes);
+
+                    // Only recover after a crash
+                    r.OnCrashOnly();
+                });
+
+                x.SetDescription(Description);
+                x.SetDisplayName(DisplayName);
+                x.SetServiceName(Name);
             });                                                             
 
             Environment.ExitCode = (int)Convert.ChangeType(exitCode, exitCode.GetTypeCode());
@@ -36,5 +45,7 @@ namespace Chronicy.Service
         private const string Description = "Gathers data from supported applications";
         private const string DisplayName = "Chronicy Tracking Service";
         private const string Name = "Chronicy.Service";
+
+        private const int RestartDelayInMinutes = 5;
     }
 }
