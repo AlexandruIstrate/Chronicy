@@ -4,13 +4,22 @@ using Topshelf;
 
 namespace Chronicy.Service
 {
+    /// <summary>
+    /// Represents the running program.
+    /// </summary>
     class Program
     {
-        static void Main()
+        /// <summary>
+        /// The entry point of the application.
+        /// </summary>
+        public static void Main()
         {
             ConfigureTopshelf();
         }
 
+        /// <summary>
+        /// Configures the Topshelf framework.
+        /// </summary>
         private static void ConfigureTopshelf()
         {
             TopshelfExitCode exitCode = HostFactory.Run(x =>                                   
