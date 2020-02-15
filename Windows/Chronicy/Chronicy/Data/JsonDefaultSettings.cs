@@ -2,6 +2,9 @@
 
 namespace Chronicy.Data
 {
+    /// <summary>
+    /// Represents default settings for JSON parsing and serialization.
+    /// </summary>
     public static class JsonDefaultSettings
     {
         public const string DateFormatString = "yyyy-MM-ddTHH:mm:ssK";

@@ -3,6 +3,9 @@ using System;
 
 namespace Chronicy.Authentication
 {
+    /// <summary>
+    /// Manages authentication.
+    /// </summary>
     public class AuthenticationManager : IAuthenticationManager
     {
         public IServerService Service { get; set; }
